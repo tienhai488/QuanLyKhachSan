@@ -1,5 +1,6 @@
 ﻿using HotelManagement.BUS;
 using HotelManagement.DTO;
+using HotelManagement.Ultils;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,6 +16,8 @@ namespace HotelManagement.GUI
 {
     public partial class ServiceUI : Form
     {
+        private BindingSource bindingSourceService = new BindingSource();
+        private BindingSource bindingSourceServiceType = new BindingSource();
         private ServiceBUS serviceBUS = new ServiceBUS();
         private DataTable typeTable = new DataTable();
         private DataTable serviceTable = new DataTable();
@@ -25,10 +28,10 @@ namespace HotelManagement.GUI
             typeTable.Columns.Add("Tên Loại");
 
             serviceTable.Columns.Add("Mã DV");
-            serviceTable.Columns.Add("Tên DV"); 
-            serviceTable.Columns.Add("Tên Loại DV"); 
-            serviceTable.Columns.Add("Giá DV"); 
-            serviceTable.Columns.Add("Đơn Vị"); 
+            serviceTable.Columns.Add("Tên DV");
+            serviceTable.Columns.Add("Loại DV");
+            serviceTable.Columns.Add("Giá DV");
+            serviceTable.Columns.Add("Đơn Vị");
 
             initTypeTable();
             initServiceTable();
@@ -42,10 +45,12 @@ namespace HotelManagement.GUI
 
             List<Service> list = new List<Service>();
             list = serviceBUS.getAllService();
-            list.ForEach(item => { serviceTable.Rows.Add(item.Id, item.Name , item.Service_type_name,item.Unit_price,item.Unit); });
+            list.ForEach(item => { serviceTable.Rows.Add(item.Id, item.Name, item.Service_type_name, item.Unit_price, item.Unit); });
 
             dtgvService.DataSource = serviceTable;
+            bindingSourceService.DataSource = serviceTable;
 
+            initCbxFilterAllService();
         }
         public void initTypeTable()
         {
@@ -56,6 +61,22 @@ namespace HotelManagement.GUI
             list.ForEach(item => { typeTable.Rows.Add(item.Id, item.Name); });
 
             dtgvType.DataSource = typeTable;
+            bindingSourceServiceType.DataSource = typeTable;
+
+            initCbxFilterAllServiceType();
+        }
+
+        public void initCbxFilterAllService()
+        {
+            FormHelpers.initCbxFilter(cbxFilterServiceID, 0, dtgvService);
+            FormHelpers.initCbxFilter(cbxFilterServiceName, 1, dtgvService);
+            FormHelpers.initCbxFilter(cbxFilterServiceType, 2, dtgvService);
+        }
+
+        public void initCbxFilterAllServiceType()
+        {
+            FormHelpers.initCbxFilter(cbxFilterTypeID, 0, dtgvType);
+            FormHelpers.initCbxFilter(cbxFilterTypeName, 1, dtgvType);
         }
         #endregion
 
@@ -90,7 +111,7 @@ dtgvService.SelectedCells.Count;
                     string serviceTypeName = selectedRow.Cells[2].Value.ToString();
 
                     ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
-                    Service service = new Service(id, name,unitPrice,unit,"",serviceTypeName);
+                    Service service = new Service(id, name, unitPrice, unit, "", serviceTypeName);
 
                     serviceInfoUI.fillData(service, "Lưu thông tin");
                     serviceInfoUI.Show();
@@ -222,7 +243,7 @@ dtgvType.SelectedCells.Count;
                         {
                             MessageBox.Show("Đã tồn tại dịch vụ thuộc loại dịch vụ này vui lòng kiểm tra lại!");
                         }
-                        
+
                     }
                 }
                 else
@@ -238,5 +259,74 @@ dtgvType.SelectedCells.Count;
         #endregion
 
 
+        private void btnDelFilterServiceID_Click(object sender, EventArgs e)
+        {
+            cbxFilterServiceID.Text = String.Empty;
+        }
+
+        private void btnDelFilterServiceName_Click(object sender, EventArgs e)
+        {
+            cbxFilterServiceName.Text = String.Empty;
+        }
+
+        private void btnDelFilterServiceType_Click(object sender, EventArgs e)
+        {
+            cbxFilterServiceType.Text = String.Empty;
+        }
+
+        private void btnDeleteAllFilterService_Click(object sender, EventArgs e)
+        {
+            cbxFilterServiceID.Text = String.Empty;
+            cbxFilterServiceName.Text = String.Empty;
+            cbxFilterServiceType.Text = String.Empty;
+        }
+
+        private void btnFilterService_Click(object sender, EventArgs e)
+        {
+            string id = cbxFilterServiceID.Text;
+            string name = cbxFilterServiceName.Text;
+            string type = cbxFilterServiceType.Text;
+
+            bindingSourceService.Filter = @$"
+            `Mã DV` like '%{id}%' and
+            `Tên DV` like '%{name}%' and
+            `Loại DV` like '%{type}%'
+            ";
+
+            dtgvService.DataSource = bindingSourceService;
+            initCbxFilterAllService();
+
+        }
+
+        private void btnDelFilterTypeID_Click(object sender, EventArgs e)
+        {
+            cbxFilterTypeID.Text = String.Empty;
+        }
+
+        private void btnDelFilterTypeName_Click(object sender, EventArgs e)
+        {
+            cbxFilterTypeName.Text = String.Empty;
+        }
+
+        private void btnDeleteAllFilterType_Click(object sender, EventArgs e)
+        {
+            cbxFilterTypeID.Text = String.Empty;
+            cbxFilterTypeName.Text = String.Empty;
+        }
+
+        private void btnFilterType_Click(object sender, EventArgs e)
+        {
+            string id = cbxFilterTypeID.Text;
+            string name = cbxFilterTypeName.Text;
+
+
+            bindingSourceServiceType.Filter = @$"
+            `Mã Loại` like '%{id}%' and
+            `Tên Loại` like '%{name}%'
+            ";
+
+            dtgvType.DataSource = bindingSourceServiceType;
+            initCbxFilterAllServiceType();
+        }
     }
 }

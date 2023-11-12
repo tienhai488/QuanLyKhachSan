@@ -8,8 +8,8 @@ namespace HotelManagement.Ultils
 {
     public class Configs
     {
-        public static string formatBirthday = "dd/MM/yyyy";
+        public const string formatBirthday = "dd/MM/yyyy";
 
-        public static string strBtnSave = "Lưu thông tin";
+        public const string strBtnSave = "Lưu thông tin";
     }
 }
