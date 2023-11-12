@@ -22,8 +22,12 @@ namespace HotelManagement.GUI
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
-
+            materialSkinManager.ColorScheme = new ColorScheme(
+            Primary.Pink800,   // Main background color
+            Primary.Purple900, // Darker background color
+            Primary.Purple500, // Accent background color
+            Accent.Amber200,   // Warm accent color for highlights
+            TextShade.WHITE);    // Text color
             addForm();
         }
         private void addForm()

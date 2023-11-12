@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainUI));
             tableLayoutPanel1 = new TableLayoutPanel();
             btnExit = new Button();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -52,6 +54,7 @@
             tabPage8 = new TabPage();
             tabPage9 = new TabPage();
             tabPage10 = new TabPage();
+            imageList1 = new ImageList(components);
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             materialTabControl1.SuspendLayout();
@@ -270,121 +273,152 @@
             materialTabControl1.Controls.Add(tabPage10);
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
+            materialTabControl1.ImageList = imageList1;
             materialTabControl1.Location = new Point(3, 64);
             materialTabControl1.Margin = new Padding(0);
             materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             materialTabControl1.Multiline = true;
             materialTabControl1.Name = "materialTabControl1";
             materialTabControl1.SelectedIndex = 0;
-            materialTabControl1.Size = new Size(794, 383);
+            materialTabControl1.Size = new Size(1360, 701);
             materialTabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            tabPage1.Location = new Point(4, 24);
+            tabPage1.BackColor = Color.White;
+            tabPage1.ImageKey = "icons8-marriott-hotels-48.png";
+            tabPage1.Location = new Point(4, 39);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(786, 355);
+            tabPage1.Size = new Size(1352, 658);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "HOME";
-            tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            tabPage2.Location = new Point(4, 24);
+            tabPage2.ImageKey = "icons8-door-hanger-48.png";
+            tabPage2.Location = new Point(4, 39);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(786, 355);
+            tabPage2.Size = new Size(1352, 658);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "RESERVATION";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
-            tabPage3.Location = new Point(4, 24);
+            tabPage3.ImageKey = "icons8-hotel-48.png";
+            tabPage3.Location = new Point(4, 39);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(786, 355);
+            tabPage3.Size = new Size(1352, 658);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "ROOM";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            tabPage4.Location = new Point(4, 24);
+            tabPage4.ImageKey = "icons8-receipt-48.png";
+            tabPage4.Location = new Point(4, 39);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(786, 355);
+            tabPage4.Size = new Size(1352, 658);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "INVOICE";
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
-            tabPage5.Location = new Point(4, 24);
+            tabPage5.ImageKey = "icons8-bedroom-48.png";
+            tabPage5.Location = new Point(4, 39);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(786, 355);
+            tabPage5.Size = new Size(1352, 658);
             tabPage5.TabIndex = 4;
-            tabPage5.Text = "ROOM MANAGE";
+            tabPage5.Text = "ROOM DETAIL";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
-            tabPage6.Location = new Point(4, 24);
+            tabPage6.ImageKey = "icons8-service-bell-48.png";
+            tabPage6.Location = new Point(4, 39);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(786, 355);
+            tabPage6.Size = new Size(1352, 658);
             tabPage6.TabIndex = 5;
-            tabPage6.Text = "CONVENIENCE MANAGE";
+            tabPage6.Text = "CONVENIENCE";
             tabPage6.UseVisualStyleBackColor = true;
             // 
             // tabPage7
             // 
-            tabPage7.Location = new Point(4, 24);
+            tabPage7.ImageKey = "icons8-janitor-48.png";
+            tabPage7.Location = new Point(4, 39);
             tabPage7.Name = "tabPage7";
-            tabPage7.Size = new Size(786, 355);
+            tabPage7.Size = new Size(1352, 658);
             tabPage7.TabIndex = 6;
-            tabPage7.Text = "SERVICE MANAGE";
+            tabPage7.Text = "SERVICE";
             tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
             // 
-            tabPage8.Location = new Point(4, 24);
+            tabPage8.ImageKey = "icons8-customer-48.png";
+            tabPage8.Location = new Point(4, 39);
             tabPage8.Name = "tabPage8";
-            tabPage8.Size = new Size(786, 355);
+            tabPage8.Size = new Size(1352, 658);
             tabPage8.TabIndex = 7;
             tabPage8.Text = "CUSTOMER";
             tabPage8.UseVisualStyleBackColor = true;
             // 
             // tabPage9
             // 
-            tabPage9.Location = new Point(4, 24);
+            tabPage9.ImageKey = "icons8-valet-48.png";
+            tabPage9.Location = new Point(4, 39);
             tabPage9.Name = "tabPage9";
-            tabPage9.Size = new Size(786, 355);
+            tabPage9.Size = new Size(1352, 658);
             tabPage9.TabIndex = 8;
             tabPage9.Text = "STAFF";
             tabPage9.UseVisualStyleBackColor = true;
             // 
             // tabPage10
             // 
-            tabPage10.Location = new Point(4, 24);
+            tabPage10.ImageKey = "icons8-change-user-48.png";
+            tabPage10.Location = new Point(4, 39);
             tabPage10.Name = "tabPage10";
-            tabPage10.Size = new Size(786, 355);
+            tabPage10.Size = new Size(1352, 658);
             tabPage10.TabIndex = 9;
             tabPage10.Text = "ACCOUNT";
             tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "icons8-marriott-hotels-48.png");
+            imageList1.Images.SetKeyName(1, "icons8-bedroom-48.png");
+            imageList1.Images.SetKeyName(2, "icons8-door-hanger-48.png");
+            imageList1.Images.SetKeyName(3, "icons8-hotel-48.png");
+            imageList1.Images.SetKeyName(4, "icons8-janitor-48.png");
+            imageList1.Images.SetKeyName(5, "icons8-service-bell-48.png");
+            imageList1.Images.SetKeyName(6, "icons8-sofa-48.png");
+            imageList1.Images.SetKeyName(7, "icons8-valet-48.png");
+            imageList1.Images.SetKeyName(8, "icons8-change-user-48.png");
+            imageList1.Images.SetKeyName(9, "icons8-customer-48.png");
+            imageList1.Images.SetKeyName(10, "icons8-logout-48.png");
+            imageList1.Images.SetKeyName(11, "icons8-verified-account-48.png");
+            imageList1.Images.SetKeyName(12, "icons8-receipt-48.png");
             // 
             // MainUI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1366, 768);
             Controls.Add(materialTabControl1);
+            DrawerAutoShow = true;
             DrawerShowIconsWhenHidden = true;
             DrawerTabControl = materialTabControl1;
             Name = "MainUI";
-            Text = "MainUI";
+            Text = "THE GRAND HOTEL BUDAPEST";
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             tableLayoutPanel2.PerformLayout();
@@ -418,5 +452,6 @@
         private TabPage tabPage8;
         private TabPage tabPage9;
         private TabPage tabPage10;
+        private ImageList imageList1;
     }
 }
