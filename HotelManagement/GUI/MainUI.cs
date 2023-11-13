@@ -32,6 +32,13 @@ namespace HotelManagement.GUI
         }
         private void addForm()
         {
+            ReservationUI reservationForm = new ReservationUI();
+            reservationForm.TopLevel = false;
+            reservationForm.FormBorderStyle = FormBorderStyle.None;
+            reservationForm.Dock = DockStyle.Fill;
+            reservationForm.Show();
+            tabPage2.Controls.Add(reservationForm);
+
             RoomUI roomForm = new RoomUI();
             roomForm.TopLevel = false;
             roomForm.FormBorderStyle = FormBorderStyle.None;

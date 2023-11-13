@@ -51,11 +51,24 @@
             materialRadioButtonEmpty = new MaterialSkin.Controls.MaterialRadioButton();
             label1 = new Label();
             flowLayoutPanel1 = new FlowLayoutPanel();
+            panel5 = new Panel();
+            tableLayoutPanel2 = new TableLayoutPanel();
+            panel6 = new Panel();
+            dateTimePicker1 = new DateTimePicker();
+            panel7 = new Panel();
+            materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
+            panel8 = new Panel();
+            materialButton1 = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
             panel3.SuspendLayout();
             panel2.SuspendLayout();
+            panel5.SuspendLayout();
+            tableLayoutPanel2.SuspendLayout();
+            panel6.SuspendLayout();
+            panel7.SuspendLayout();
+            panel8.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -66,12 +79,12 @@
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 3);
+            tableLayoutPanel1.Location = new Point(3, 83);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1176, 689);
+            tableLayoutPanel1.Size = new Size(1176, 609);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -84,7 +97,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(176, 689);
+            panel1.Size = new Size(176, 609);
             panel1.TabIndex = 0;
             // 
             // panel4
@@ -411,14 +424,121 @@
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.AutoScroll = true;
             flowLayoutPanel1.BackColor = Color.White;
             flowLayoutPanel1.Dock = DockStyle.Fill;
             flowLayoutPanel1.Location = new Point(176, 0);
             flowLayoutPanel1.Margin = new Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Padding = new Padding(15);
-            flowLayoutPanel1.Size = new Size(1000, 689);
+            flowLayoutPanel1.Size = new Size(1000, 609);
             flowLayoutPanel1.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            panel5.Controls.Add(tableLayoutPanel2);
+            panel5.Dock = DockStyle.Top;
+            panel5.Location = new Point(3, 3);
+            panel5.Margin = new Padding(0);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(1176, 80);
+            panel5.TabIndex = 1;
+            // 
+            // tableLayoutPanel2
+            // 
+            tableLayoutPanel2.ColumnCount = 3;
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
+            tableLayoutPanel2.Controls.Add(panel6, 0, 0);
+            tableLayoutPanel2.Controls.Add(panel7, 1, 0);
+            tableLayoutPanel2.Controls.Add(panel8, 2, 0);
+            tableLayoutPanel2.Dock = DockStyle.Fill;
+            tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Margin = new Padding(0);
+            tableLayoutPanel2.Name = "tableLayoutPanel2";
+            tableLayoutPanel2.RowCount = 1;
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel2.Size = new Size(1176, 80);
+            tableLayoutPanel2.TabIndex = 7;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(dateTimePicker1);
+            panel6.Dock = DockStyle.Fill;
+            panel6.Location = new Point(0, 0);
+            panel6.Margin = new Padding(0);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(176, 80);
+            panel6.TabIndex = 9;
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Location = new Point(0, 23);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.Size = new Size(173, 29);
+            dateTimePicker1.TabIndex = 3;
+            // 
+            // panel7
+            // 
+            panel7.Controls.Add(materialTextBox1);
+            panel7.Dock = DockStyle.Fill;
+            panel7.Location = new Point(176, 0);
+            panel7.Margin = new Padding(0);
+            panel7.Name = "panel7";
+            panel7.Size = new Size(588, 80);
+            panel7.TabIndex = 10;
+            // 
+            // materialTextBox1
+            // 
+            materialTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            materialTextBox1.AnimateReadOnly = false;
+            materialTextBox1.BorderStyle = BorderStyle.None;
+            materialTextBox1.Depth = 0;
+            materialTextBox1.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBox1.LeadingIcon = null;
+            materialTextBox1.Location = new Point(0, 14);
+            materialTextBox1.MaxLength = 50;
+            materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
+            materialTextBox1.Multiline = false;
+            materialTextBox1.Name = "materialTextBox1";
+            materialTextBox1.Size = new Size(585, 50);
+            materialTextBox1.TabIndex = 9;
+            materialTextBox1.Text = "";
+            materialTextBox1.TrailingIcon = null;
+            // 
+            // panel8
+            // 
+            panel8.Controls.Add(materialButton1);
+            panel8.Dock = DockStyle.Fill;
+            panel8.Location = new Point(764, 0);
+            panel8.Margin = new Padding(0);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(412, 80);
+            panel8.TabIndex = 11;
+            // 
+            // materialButton1
+            // 
+            materialButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton1.Depth = 0;
+            materialButton1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            materialButton1.HighEmphasis = true;
+            materialButton1.Icon = null;
+            materialButton1.Location = new Point(4, 21);
+            materialButton1.Margin = new Padding(4, 6, 4, 6);
+            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton1.Name = "materialButton1";
+            materialButton1.NoAccentTextColor = Color.Empty;
+            materialButton1.Size = new Size(78, 36);
+            materialButton1.TabIndex = 8;
+            materialButton1.Text = "SEARCH";
+            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton1.UseAccentColor = false;
+            materialButton1.UseVisualStyleBackColor = true;
             // 
             // RoomUI
             // 
@@ -426,6 +546,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 695);
             Controls.Add(tableLayoutPanel1);
+            Controls.Add(panel5);
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "RoomUI";
             Padding = new Padding(3);
@@ -438,6 +559,12 @@
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel5.ResumeLayout(false);
+            tableLayoutPanel2.ResumeLayout(false);
+            panel6.ResumeLayout(false);
+            panel7.ResumeLayout(false);
+            panel8.ResumeLayout(false);
+            panel8.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -466,5 +593,13 @@
         private Label label3;
         private MaterialSkin.Controls.MaterialRadioButton materialRadioButton2;
         private FlowLayoutPanel flowLayoutPanel1;
+        private Panel panel5;
+        private TableLayoutPanel tableLayoutPanel2;
+        private Panel panel6;
+        private DateTimePicker dateTimePicker1;
+        private Panel panel7;
+        private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
+        private Panel panel8;
+        private MaterialSkin.Controls.MaterialButton materialButton1;
     }
 }

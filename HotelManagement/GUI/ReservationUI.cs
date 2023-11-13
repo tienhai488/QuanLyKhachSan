@@ -1,5 +1,4 @@
-﻿using HotelManagement.BUS;
-using HotelManagement.DTO;
+﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -10,17 +9,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using HotelManagement.BUS;
-using HotelManagement.DTO;
-using System.Xml.Linq;
-using MaterialSkin;
 
 namespace HotelManagement.GUI
 {
-    public partial class RoomUI : MaterialForm
+    public partial class ReservationUI : MaterialForm
     {
-        private CustomerBUS customerBUS = new CustomerBUS();
-        public RoomUI()
+        public ReservationUI()
         {
             InitializeComponent();
 
@@ -35,29 +29,11 @@ namespace HotelManagement.GUI
             TextShade.WHITE);    // Text color
         }
 
-        public void addRoomView(String name)
+        private void materialButton2_Click(object sender, EventArgs e)
         {
-            RoomView room = new RoomView(name);
-            flowLayoutPanel1.Controls.Add(room);
-        }
-
-        public void clearRoomView()
-        {
-            flowLayoutPanel1.Controls.Clear();
-        }
-
-        private void materialRadioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            clearRoomView();
-            List<Customer> list = new List<Customer>();
-            list = customerBUS.getAll();
-            foreach (Customer customer in list)
-            {
-                addRoomView(customer.Fullname);
-            }
-
-
+            ReservationBooking booking = new ReservationBooking();
+            booking.TopLevel = true;
+            booking.ShowDialog();
         }
     }
-
 }
