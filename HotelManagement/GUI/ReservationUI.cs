@@ -31,7 +31,7 @@ namespace HotelManagement.GUI
 
         private void materialButton2_Click(object sender, EventArgs e)
         {
-            ReservationBookingUI booking = new ReservationBookingUI();
+            ReservBookingUI booking = new ReservBookingUI();
             booking.ShowDialog();
         }
     }

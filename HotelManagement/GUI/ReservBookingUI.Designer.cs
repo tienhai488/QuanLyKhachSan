@@ -1,6 +1,6 @@
 ﻿namespace HotelManagement.GUI
 {
-    partial class ReservationBookingUI
+    partial class ReservBookingUI
     {
         /// <summary>
         /// Required designer variable.
@@ -304,7 +304,7 @@
             materialLabel8.Depth = 0;
             materialLabel8.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel8.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel8.Location = new Point(21, 433);
+            materialLabel8.Location = new Point(34, 433);
             materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel8.Name = "materialLabel8";
             materialLabel8.Size = new Size(104, 24);
@@ -319,7 +319,7 @@
             materialButton1.Depth = 0;
             materialButton1.HighEmphasis = true;
             materialButton1.Icon = null;
-            materialButton1.Location = new Point(132, 429);
+            materialButton1.Location = new Point(145, 429);
             materialButton1.Margin = new Padding(4, 6, 4, 6);
             materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton1.Name = "materialButton1";
@@ -330,6 +330,7 @@
             materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButton1.UseAccentColor = false;
             materialButton1.UseVisualStyleBackColor = true;
+            materialButton1.Click += materialButton1_Click;
             // 
             // materialLabel7
             // 
@@ -648,7 +649,7 @@
             materialButton3.Depth = 0;
             materialButton3.HighEmphasis = true;
             materialButton3.Icon = null;
-            materialButton3.Location = new Point(882, 6);
+            materialButton3.Location = new Point(932, 6);
             materialButton3.Margin = new Padding(4, 6, 4, 6);
             materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton3.Name = "materialButton3";
@@ -670,7 +671,7 @@
             materialButton2.Depth = 0;
             materialButton2.HighEmphasis = true;
             materialButton2.Icon = null;
-            materialButton2.Location = new Point(716, 6);
+            materialButton2.Location = new Point(766, 6);
             materialButton2.Margin = new Padding(4, 6, 4, 6);
             materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton2.Name = "materialButton2";
@@ -682,13 +683,13 @@
             materialButton2.UseAccentColor = false;
             materialButton2.UseVisualStyleBackColor = true;
             // 
-            // ReservationBookingUI
+            // ReservBookingUI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1238, 768);
             Controls.Add(tableLayoutPanel1);
-            Name = "ReservationBookingUI";
+            Name = "ReservBookingUI";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ROOM BOOKING";
             tableLayoutPanel1.ResumeLayout(false);

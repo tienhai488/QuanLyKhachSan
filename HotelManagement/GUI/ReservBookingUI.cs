@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
-    public partial class ReservationBookingUI : MaterialForm
+    public partial class ReservBookingUI : MaterialForm
     {
-        public ReservationBookingUI()
+        public ReservBookingUI()
         {
             InitializeComponent();
 
@@ -32,6 +32,12 @@ namespace HotelManagement.GUI
         private void materialButton3_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            CustomerInfoUI csInfo = new CustomerInfoUI();
+            csInfo.ShowDialog();
         }
     }
 }

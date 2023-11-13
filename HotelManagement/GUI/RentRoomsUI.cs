@@ -17,10 +17,10 @@ using MaterialSkin;
 
 namespace HotelManagement.GUI
 {
-    public partial class RentDetailUI : MaterialForm
+    public partial class RentRoomsUI : MaterialForm
     {
         private CustomerBUS customerBUS = new CustomerBUS();
-        public RentDetailUI()
+        public RentRoomsUI()
         {
             InitializeComponent();
 
@@ -37,7 +37,7 @@ namespace HotelManagement.GUI
 
         public void addRoomView(String name)
         {
-            RentListUI room = new RentListUI(name);
+            RoomCard room = new RoomCard(name);
             flowLayoutPanel1.Controls.Add(room);
         }
 

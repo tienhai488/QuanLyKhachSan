@@ -1,6 +1,6 @@
 ﻿namespace HotelManagement.GUI
 {
-    partial class RentListUI
+    partial class RoomCard
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RentListUI));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomCard));
             rentTime = new Label();
             panel2 = new Panel();
             roomClean = new Label();
@@ -146,7 +146,7 @@
             pictureBox1.TabIndex = 29;
             pictureBox1.TabStop = false;
             // 
-            // RoomView
+            // RoomCard
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -158,7 +158,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(74, 20, 140);
             Margin = new Padding(4);
-            Name = "RoomView";
+            Name = "RoomCard";
             Size = new Size(295, 150);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

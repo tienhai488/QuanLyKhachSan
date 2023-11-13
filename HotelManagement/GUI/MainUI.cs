@@ -39,7 +39,7 @@ namespace HotelManagement.GUI
             reservationForm.Show();
             tabPage2.Controls.Add(reservationForm);
 
-            RentDetailUI roomForm = new RentDetailUI();
+            RentRoomsUI roomForm = new RentRoomsUI();
             roomForm.TopLevel = false;
             roomForm.FormBorderStyle = FormBorderStyle.None;
             roomForm.Dock = DockStyle.Fill;
