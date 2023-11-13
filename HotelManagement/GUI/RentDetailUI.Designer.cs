@@ -1,6 +1,6 @@
 ﻿namespace HotelManagement.GUI
 {
-    partial class RoomUI
+    partial class RentDetailUI
     {
         /// <summary>
         /// Required designer variable.
@@ -475,10 +475,10 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePicker1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateTimePicker1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker1.Location = new Point(0, 23);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(173, 29);
+            dateTimePicker1.Size = new Size(173, 32);
             dateTimePicker1.TabIndex = 3;
             // 
             // panel7

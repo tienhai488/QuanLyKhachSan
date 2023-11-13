@@ -39,12 +39,19 @@ namespace HotelManagement.GUI
             reservationForm.Show();
             tabPage2.Controls.Add(reservationForm);
 
-            RoomUI roomForm = new RoomUI();
+            RentDetailUI roomForm = new RentDetailUI();
             roomForm.TopLevel = false;
             roomForm.FormBorderStyle = FormBorderStyle.None;
             roomForm.Dock = DockStyle.Fill;
             roomForm.Show();
             tabPage3.Controls.Add(roomForm);
+
+            InvoiceUI invoiceForm = new InvoiceUI();
+            invoiceForm.TopLevel = false;
+            invoiceForm.FormBorderStyle = FormBorderStyle.None;
+            invoiceForm.Dock = DockStyle.Fill;
+            invoiceForm.Show();
+            tabPage4.Controls.Add(invoiceForm);
 
             ServiceUI serviceForm = new ServiceUI();
             serviceForm.TopLevel = false;
@@ -59,6 +66,13 @@ namespace HotelManagement.GUI
             customerForm.Dock = DockStyle.Fill;
             customerForm.Show();
             tabPage8.Controls.Add(customerForm);
+
+            StaffUI staffForm = new StaffUI();
+            staffForm.TopLevel = false;
+            staffForm.FormBorderStyle = FormBorderStyle.None;
+            staffForm.Dock = DockStyle.Fill;
+            staffForm.Show();
+            tabPage9.Controls.Add(staffForm);
         }
     }
 }

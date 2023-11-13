@@ -315,7 +315,7 @@
             tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(1586, 790);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "ROOM";
+            tabPage3.Text = "RENT DETAIL";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
@@ -337,7 +337,7 @@
             tabPage5.Padding = new Padding(3);
             tabPage5.Size = new Size(1586, 790);
             tabPage5.TabIndex = 4;
-            tabPage5.Text = "RENT DETAIL";
+            tabPage5.Text = "ROOM";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6

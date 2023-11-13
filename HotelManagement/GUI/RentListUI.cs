@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
-    public partial class RoomView : UserControl
+    public partial class RentListUI : UserControl
     {
-        public RoomView()
+        public RentListUI()
         {
             InitializeComponent();
         }
 
-        public RoomView(String UserName)
+        public RentListUI(String UserName)
         {
             InitializeComponent();
             customerName.Text = UserName;
