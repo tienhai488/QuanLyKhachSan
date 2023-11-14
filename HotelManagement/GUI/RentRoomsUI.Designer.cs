@@ -540,7 +540,7 @@
             materialButton1.UseAccentColor = false;
             materialButton1.UseVisualStyleBackColor = true;
             // 
-            // RentDetailUI
+            // RentRoomsUI
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -548,7 +548,7 @@
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel5);
             FormStyle = FormStyles.StatusAndActionBar_None;
-            Name = "RentDetailUI";
+            Name = "RentRoomsUI";
             Padding = new Padding(3);
             Text = "RoomUI";
             tableLayoutPanel1.ResumeLayout(false);

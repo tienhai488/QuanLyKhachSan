@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace HotelManagement.GUI
 {
@@ -21,6 +22,12 @@ namespace HotelManagement.GUI
         {
             InitializeComponent();
             customerName.Text = UserName;
+        }
+
+        private void customerName_Click(object sender, EventArgs e)
+        {
+            RentRoomDetail rmDetail = new RentRoomDetail();
+            rmDetail.ShowDialog();
         }
     }
 }

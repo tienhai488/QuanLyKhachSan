@@ -134,6 +134,7 @@
             customerName.Size = new Size(121, 30);
             customerName.TabIndex = 28;
             customerName.Text = "Cus Name";
+            customerName.Click += customerName_Click;
             // 
             // pictureBox1
             // 

@@ -55,9 +55,8 @@ namespace HotelManagement.GUI
             {
                 addRoomView(customer.Fullname);
             }
-
-
         }
+
     }
 
 }
