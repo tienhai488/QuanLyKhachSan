@@ -38,6 +38,7 @@ namespace HotelManagement.GUI
         public void addRoomView(String name)
         {
             RoomCard room = new RoomCard(name);
+            room.Size = new Size(295, 150);
             flowLayoutPanel1.Controls.Add(room);
         }
 
