@@ -29,5 +29,10 @@ namespace HotelManagement.GUI
             RentRoomDetail rmDetail = new RentRoomDetail();
             rmDetail.ShowDialog();
         }
+
+        private void RoomCard_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,13 +32,11 @@
             rentTime = new Label();
             panel2 = new Panel();
             roomClean = new Label();
-            panel3 = new Panel();
-            roomID = new Label();
-            roomStatus = new Label();
-            customerName = new Label();
             pictureBox1 = new PictureBox();
+            customerName = new Label();
+            roomStatus = new Label();
+            roomID = new Label();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -83,33 +81,27 @@
             roomClean.TabIndex = 24;
             roomClean.Text = "Incharge by";
             // 
-            // panel3
+            // pictureBox1
             // 
-            panel3.BackColor = Color.FromArgb(255, 224, 130);
-            panel3.Controls.Add(roomID);
-            panel3.Controls.Add(roomStatus);
-            panel3.Controls.Add(customerName);
-            panel3.Controls.Add(pictureBox1);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 0);
-            panel3.Margin = new Padding(0);
-            panel3.Name = "panel3";
-            panel3.Padding = new Padding(10, 5, 10, 5);
-            panel3.Size = new Size(295, 125);
-            panel3.TabIndex = 29;
+            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(10, 35);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(50, 65);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 29;
+            pictureBox1.TabStop = false;
             // 
-            // roomID
+            // customerName
             // 
-            roomID.AutoSize = true;
-            roomID.BackColor = Color.Transparent;
-            roomID.Font = new Font("Segoe UI Black", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            roomID.ForeColor = Color.FromArgb(173, 20, 87);
-            roomID.Location = new Point(10, 5);
-            roomID.Margin = new Padding(4, 0, 4, 0);
-            roomID.Name = "roomID";
-            roomID.Size = new Size(74, 21);
-            roomID.TabIndex = 30;
-            roomID.Text = "RoomID";
+            customerName.AutoSize = true;
+            customerName.BackColor = Color.Transparent;
+            customerName.Font = new Font("Segoe UI Black", 16F, FontStyle.Regular, GraphicsUnit.Point);
+            customerName.Location = new Point(66, 50);
+            customerName.Name = "customerName";
+            customerName.Size = new Size(121, 30);
+            customerName.TabIndex = 28;
+            customerName.Text = "Cus Name";
             // 
             // roomStatus
             // 
@@ -124,36 +116,29 @@
             roomStatus.TabIndex = 31;
             roomStatus.Text = "Room Status";
             // 
-            // customerName
+            // roomID
             // 
-            customerName.AutoSize = true;
-            customerName.BackColor = Color.Transparent;
-            customerName.Font = new Font("Segoe UI Black", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            customerName.Location = new Point(66, 60);
-            customerName.Name = "customerName";
-            customerName.Size = new Size(121, 30);
-            customerName.TabIndex = 28;
-            customerName.Text = "Cus Name";
-            customerName.Click += customerName_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = Color.Transparent;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(10, 40);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(50, 65);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 29;
-            pictureBox1.TabStop = false;
+            roomID.AutoSize = true;
+            roomID.BackColor = Color.Transparent;
+            roomID.Font = new Font("Segoe UI Black", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            roomID.ForeColor = Color.FromArgb(173, 20, 87);
+            roomID.Location = new Point(10, 5);
+            roomID.Margin = new Padding(4, 0, 4, 0);
+            roomID.Name = "roomID";
+            roomID.Size = new Size(74, 21);
+            roomID.TabIndex = 30;
+            roomID.Text = "RoomID";
             // 
             // RoomCard
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Transparent;
+            BackColor = Color.FromArgb(255, 224, 130);
             BackgroundImageLayout = ImageLayout.Zoom;
-            Controls.Add(panel3);
+            Controls.Add(roomID);
+            Controls.Add(pictureBox1);
+            Controls.Add(customerName);
+            Controls.Add(roomStatus);
             Controls.Add(panel2);
             DoubleBuffered = true;
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -161,22 +146,21 @@
             Margin = new Padding(4);
             Name = "RoomCard";
             Size = new Size(295, 150);
+            Load += RoomCard_Load;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
         private Label rentTime;
         private Panel panel2;
-        private Panel panel3;
-        private Label customerName;
-        private PictureBox pictureBox1;
         private Label roomClean;
-        private Label roomID;
+        private PictureBox pictureBox1;
+        private Label customerName;
         private Label roomStatus;
+        private Label roomID;
     }
 }
