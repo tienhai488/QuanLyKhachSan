@@ -38,20 +38,25 @@
             groupBox3 = new GroupBox();
             tableLayoutPanel3 = new TableLayoutPanel();
             tabControl2 = new TabControl();
-            tabPage3 = new TabPage();
-            tableLayoutPanel4 = new TableLayoutPanel();
-            button7 = new Button();
-            textBox1 = new TextBox();
             tabPage4 = new TabPage();
             tableLayoutPanel6 = new TableLayoutPanel();
-            button5 = new Button();
-            textBox2 = new TextBox();
+            btnDelFilterID = new Button();
+            cbxFilterID = new ComboBox();
             tabPage8 = new TabPage();
+            tableLayoutPanel4 = new TableLayoutPanel();
+            cbxFilterName = new ComboBox();
+            cbxDeleteFilterName = new Button();
             tabPage9 = new TabPage();
+            tableLayoutPanel7 = new TableLayoutPanel();
+            cbxFilterGender = new ComboBox();
+            cbxDeleteFilterGender = new Button();
             tabPage10 = new TabPage();
+            tableLayoutPanel8 = new TableLayoutPanel();
+            cbxFilterCCCD = new ComboBox();
+            cbxDeleteFilterCCCD = new Button();
             tableLayoutPanel5 = new TableLayoutPanel();
-            button6 = new Button();
-            button4 = new Button();
+            btnFilter = new Button();
+            btnDeleteAllFilter = new Button();
             panel4 = new Panel();
             groupBox1 = new GroupBox();
             panel5 = new Panel();
@@ -68,10 +73,14 @@
             groupBox3.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             tabControl2.SuspendLayout();
-            tabPage3.SuspendLayout();
-            tableLayoutPanel4.SuspendLayout();
             tabPage4.SuspendLayout();
             tableLayoutPanel6.SuspendLayout();
+            tabPage8.SuspendLayout();
+            tableLayoutPanel4.SuspendLayout();
+            tabPage9.SuspendLayout();
+            tableLayoutPanel7.SuspendLayout();
+            tabPage10.SuspendLayout();
+            tableLayoutPanel8.SuspendLayout();
             tableLayoutPanel5.SuspendLayout();
             panel4.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -191,7 +200,6 @@
             // 
             // tabControl2
             // 
-            tabControl2.Controls.Add(tabPage3);
             tabControl2.Controls.Add(tabPage4);
             tabControl2.Controls.Add(tabPage8);
             tabControl2.Controls.Add(tabPage9);
@@ -202,53 +210,6 @@
             tabControl2.SelectedIndex = 0;
             tabControl2.Size = new Size(825, 81);
             tabControl2.TabIndex = 2;
-            // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(tableLayoutPanel4);
-            tabPage3.Location = new Point(4, 29);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(817, 48);
-            tabPage3.TabIndex = 0;
-            tabPage3.Text = "Mã HD";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel4
-            // 
-            tableLayoutPanel4.ColumnCount = 2;
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel4.Controls.Add(button7, 1, 0);
-            tableLayoutPanel4.Controls.Add(textBox1, 0, 0);
-            tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 3);
-            tableLayoutPanel4.Name = "tableLayoutPanel4";
-            tableLayoutPanel4.RowCount = 1;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(811, 42);
-            tableLayoutPanel4.TabIndex = 0;
-            // 
-            // button7
-            // 
-            button7.BackColor = SystemColors.HotTrack;
-            button7.Dock = DockStyle.Fill;
-            button7.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button7.ForeColor = SystemColors.ButtonHighlight;
-            button7.Location = new Point(570, 3);
-            button7.Name = "button7";
-            button7.Size = new Size(238, 36);
-            button7.TabIndex = 2;
-            button7.Text = "Xóa";
-            button7.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Bottom;
-            textBox1.Location = new Point(3, 12);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(561, 27);
-            textBox1.TabIndex = 0;
             // 
             // tabPage4
             // 
@@ -266,8 +227,8 @@
             tableLayoutPanel6.ColumnCount = 2;
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel6.Controls.Add(button5, 0, 0);
-            tableLayoutPanel6.Controls.Add(textBox2, 0, 0);
+            tableLayoutPanel6.Controls.Add(btnDelFilterID, 1, 0);
+            tableLayoutPanel6.Controls.Add(cbxFilterID, 0, 0);
             tableLayoutPanel6.Dock = DockStyle.Fill;
             tableLayoutPanel6.Location = new Point(3, 3);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -276,29 +237,35 @@
             tableLayoutPanel6.Size = new Size(811, 42);
             tableLayoutPanel6.TabIndex = 1;
             // 
-            // button5
+            // btnDelFilterID
             // 
-            button5.BackColor = SystemColors.HotTrack;
-            button5.Dock = DockStyle.Fill;
-            button5.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button5.ForeColor = SystemColors.ButtonHighlight;
-            button5.Location = new Point(570, 3);
-            button5.Name = "button5";
-            button5.Size = new Size(238, 36);
-            button5.TabIndex = 3;
-            button5.Text = "Xóa";
-            button5.UseVisualStyleBackColor = false;
+            btnDelFilterID.BackColor = SystemColors.HotTrack;
+            btnDelFilterID.Dock = DockStyle.Fill;
+            btnDelFilterID.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDelFilterID.ForeColor = SystemColors.ButtonHighlight;
+            btnDelFilterID.Location = new Point(570, 3);
+            btnDelFilterID.Name = "btnDelFilterID";
+            btnDelFilterID.Size = new Size(238, 36);
+            btnDelFilterID.TabIndex = 3;
+            btnDelFilterID.Text = "Xóa";
+            btnDelFilterID.UseVisualStyleBackColor = false;
+            btnDelFilterID.Click += btnDelFilterID_Click;
             // 
-            // textBox2
+            // cbxFilterID
             // 
-            textBox2.Dock = DockStyle.Bottom;
-            textBox2.Location = new Point(3, 12);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(561, 27);
-            textBox2.TabIndex = 0;
+            cbxFilterID.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbxFilterID.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbxFilterID.Dock = DockStyle.Fill;
+            cbxFilterID.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cbxFilterID.FormattingEnabled = true;
+            cbxFilterID.Location = new Point(3, 3);
+            cbxFilterID.Name = "cbxFilterID";
+            cbxFilterID.Size = new Size(561, 31);
+            cbxFilterID.TabIndex = 4;
             // 
             // tabPage8
             // 
+            tabPage8.Controls.Add(tableLayoutPanel4);
             tabPage8.Location = new Point(4, 29);
             tabPage8.Name = "tabPage8";
             tabPage8.Padding = new Padding(3);
@@ -307,33 +274,159 @@
             tabPage8.Text = "Tên KH";
             tabPage8.UseVisualStyleBackColor = true;
             // 
+            // tableLayoutPanel4
+            // 
+            tableLayoutPanel4.ColumnCount = 2;
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel4.Controls.Add(cbxFilterName, 0, 0);
+            tableLayoutPanel4.Controls.Add(cbxDeleteFilterName, 1, 0);
+            tableLayoutPanel4.Dock = DockStyle.Fill;
+            tableLayoutPanel4.Location = new Point(3, 3);
+            tableLayoutPanel4.Name = "tableLayoutPanel4";
+            tableLayoutPanel4.RowCount = 1;
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel4.Size = new Size(811, 42);
+            tableLayoutPanel4.TabIndex = 2;
+            // 
+            // cbxFilterName
+            // 
+            cbxFilterName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbxFilterName.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbxFilterName.Dock = DockStyle.Fill;
+            cbxFilterName.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cbxFilterName.FormattingEnabled = true;
+            cbxFilterName.Location = new Point(3, 3);
+            cbxFilterName.Name = "cbxFilterName";
+            cbxFilterName.Size = new Size(561, 31);
+            cbxFilterName.TabIndex = 5;
+            // 
+            // cbxDeleteFilterName
+            // 
+            cbxDeleteFilterName.BackColor = SystemColors.HotTrack;
+            cbxDeleteFilterName.Dock = DockStyle.Bottom;
+            cbxDeleteFilterName.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cbxDeleteFilterName.ForeColor = SystemColors.ButtonHighlight;
+            cbxDeleteFilterName.Location = new Point(570, 3);
+            cbxDeleteFilterName.Name = "cbxDeleteFilterName";
+            cbxDeleteFilterName.Size = new Size(238, 36);
+            cbxDeleteFilterName.TabIndex = 3;
+            cbxDeleteFilterName.Text = "Xóa";
+            cbxDeleteFilterName.UseVisualStyleBackColor = false;
+            cbxDeleteFilterName.Click += cbxDeleteFilterName_Click;
+            // 
             // tabPage9
             // 
+            tabPage9.Controls.Add(tableLayoutPanel7);
             tabPage9.Location = new Point(4, 29);
             tabPage9.Name = "tabPage9";
             tabPage9.Padding = new Padding(3);
             tabPage9.Size = new Size(817, 48);
             tabPage9.TabIndex = 3;
-            tabPage9.Text = "Mã NV";
+            tabPage9.Text = "Giới Tính";
             tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel7
+            // 
+            tableLayoutPanel7.ColumnCount = 2;
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel7.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel7.Controls.Add(cbxFilterGender, 0, 0);
+            tableLayoutPanel7.Controls.Add(cbxDeleteFilterGender, 1, 0);
+            tableLayoutPanel7.Dock = DockStyle.Fill;
+            tableLayoutPanel7.Location = new Point(3, 3);
+            tableLayoutPanel7.Name = "tableLayoutPanel7";
+            tableLayoutPanel7.RowCount = 1;
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel7.Size = new Size(811, 42);
+            tableLayoutPanel7.TabIndex = 3;
+            // 
+            // cbxFilterGender
+            // 
+            cbxFilterGender.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbxFilterGender.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbxFilterGender.Dock = DockStyle.Fill;
+            cbxFilterGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxFilterGender.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cbxFilterGender.FormattingEnabled = true;
+            cbxFilterGender.Location = new Point(3, 3);
+            cbxFilterGender.Name = "cbxFilterGender";
+            cbxFilterGender.Size = new Size(561, 31);
+            cbxFilterGender.TabIndex = 5;
+            // 
+            // cbxDeleteFilterGender
+            // 
+            cbxDeleteFilterGender.BackColor = SystemColors.HotTrack;
+            cbxDeleteFilterGender.Dock = DockStyle.Bottom;
+            cbxDeleteFilterGender.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cbxDeleteFilterGender.ForeColor = SystemColors.ButtonHighlight;
+            cbxDeleteFilterGender.Location = new Point(570, 3);
+            cbxDeleteFilterGender.Name = "cbxDeleteFilterGender";
+            cbxDeleteFilterGender.Size = new Size(238, 36);
+            cbxDeleteFilterGender.TabIndex = 3;
+            cbxDeleteFilterGender.Text = "Xóa";
+            cbxDeleteFilterGender.UseVisualStyleBackColor = false;
+            cbxDeleteFilterGender.Click += cbxDeleteFilterGender_Click;
             // 
             // tabPage10
             // 
+            tabPage10.Controls.Add(tableLayoutPanel8);
             tabPage10.Location = new Point(4, 29);
             tabPage10.Name = "tabPage10";
             tabPage10.Padding = new Padding(3);
             tabPage10.Size = new Size(817, 48);
             tabPage10.TabIndex = 4;
-            tabPage10.Text = "Tên NV";
+            tabPage10.Text = "CCCD";
             tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel8
+            // 
+            tableLayoutPanel8.ColumnCount = 2;
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel8.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel8.Controls.Add(cbxFilterCCCD, 0, 0);
+            tableLayoutPanel8.Controls.Add(cbxDeleteFilterCCCD, 1, 0);
+            tableLayoutPanel8.Dock = DockStyle.Fill;
+            tableLayoutPanel8.Location = new Point(3, 3);
+            tableLayoutPanel8.Name = "tableLayoutPanel8";
+            tableLayoutPanel8.RowCount = 1;
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel8.Size = new Size(811, 42);
+            tableLayoutPanel8.TabIndex = 3;
+            // 
+            // cbxFilterCCCD
+            // 
+            cbxFilterCCCD.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbxFilterCCCD.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbxFilterCCCD.Dock = DockStyle.Fill;
+            cbxFilterCCCD.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cbxFilterCCCD.FormattingEnabled = true;
+            cbxFilterCCCD.Location = new Point(3, 3);
+            cbxFilterCCCD.Name = "cbxFilterCCCD";
+            cbxFilterCCCD.Size = new Size(561, 31);
+            cbxFilterCCCD.TabIndex = 5;
+            // 
+            // cbxDeleteFilterCCCD
+            // 
+            cbxDeleteFilterCCCD.BackColor = SystemColors.HotTrack;
+            cbxDeleteFilterCCCD.Dock = DockStyle.Bottom;
+            cbxDeleteFilterCCCD.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cbxDeleteFilterCCCD.ForeColor = SystemColors.ButtonHighlight;
+            cbxDeleteFilterCCCD.Location = new Point(570, 3);
+            cbxDeleteFilterCCCD.Name = "cbxDeleteFilterCCCD";
+            cbxDeleteFilterCCCD.Size = new Size(238, 36);
+            cbxDeleteFilterCCCD.TabIndex = 3;
+            cbxDeleteFilterCCCD.Text = "Xóa";
+            cbxDeleteFilterCCCD.UseVisualStyleBackColor = false;
+            cbxDeleteFilterCCCD.Click += cbxDeleteFilterCCCD_Click;
             // 
             // tableLayoutPanel5
             // 
             tableLayoutPanel5.ColumnCount = 2;
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Controls.Add(button6, 1, 0);
-            tableLayoutPanel5.Controls.Add(button4, 0, 0);
+            tableLayoutPanel5.Controls.Add(btnFilter, 1, 0);
+            tableLayoutPanel5.Controls.Add(btnDeleteAllFilter, 0, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
             tableLayoutPanel5.Location = new Point(3, 90);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -343,31 +436,33 @@
             tableLayoutPanel5.Size = new Size(825, 38);
             tableLayoutPanel5.TabIndex = 1;
             // 
-            // button6
+            // btnFilter
             // 
-            button6.BackColor = SystemColors.HotTrack;
-            button6.Dock = DockStyle.Fill;
-            button6.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button6.ForeColor = SystemColors.ButtonHighlight;
-            button6.Location = new Point(415, 3);
-            button6.Name = "button6";
-            button6.Size = new Size(407, 32);
-            button6.TabIndex = 1;
-            button6.Text = "Lọc";
-            button6.UseVisualStyleBackColor = false;
+            btnFilter.BackColor = SystemColors.HotTrack;
+            btnFilter.Dock = DockStyle.Fill;
+            btnFilter.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnFilter.ForeColor = SystemColors.ButtonHighlight;
+            btnFilter.Location = new Point(415, 3);
+            btnFilter.Name = "btnFilter";
+            btnFilter.Size = new Size(407, 32);
+            btnFilter.TabIndex = 1;
+            btnFilter.Text = "Lọc";
+            btnFilter.UseVisualStyleBackColor = false;
+            btnFilter.Click += btnFilter_Click;
             // 
-            // button4
+            // btnDeleteAllFilter
             // 
-            button4.BackColor = SystemColors.HotTrack;
-            button4.Dock = DockStyle.Fill;
-            button4.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button4.ForeColor = SystemColors.ButtonHighlight;
-            button4.Location = new Point(3, 3);
-            button4.Name = "button4";
-            button4.Size = new Size(406, 32);
-            button4.TabIndex = 0;
-            button4.Text = "Xóa tất cả";
-            button4.UseVisualStyleBackColor = false;
+            btnDeleteAllFilter.BackColor = SystemColors.HotTrack;
+            btnDeleteAllFilter.Dock = DockStyle.Fill;
+            btnDeleteAllFilter.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleteAllFilter.ForeColor = SystemColors.ButtonHighlight;
+            btnDeleteAllFilter.Location = new Point(3, 3);
+            btnDeleteAllFilter.Name = "btnDeleteAllFilter";
+            btnDeleteAllFilter.Size = new Size(406, 32);
+            btnDeleteAllFilter.TabIndex = 0;
+            btnDeleteAllFilter.Text = "Xóa tất cả";
+            btnDeleteAllFilter.UseVisualStyleBackColor = false;
+            btnDeleteAllFilter.Click += btnDeleteAllFilter_Click;
             // 
             // panel4
             // 
@@ -465,12 +560,14 @@
             groupBox3.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tabControl2.ResumeLayout(false);
-            tabPage3.ResumeLayout(false);
-            tableLayoutPanel4.ResumeLayout(false);
-            tableLayoutPanel4.PerformLayout();
             tabPage4.ResumeLayout(false);
             tableLayoutPanel6.ResumeLayout(false);
-            tableLayoutPanel6.PerformLayout();
+            tabPage8.ResumeLayout(false);
+            tableLayoutPanel4.ResumeLayout(false);
+            tabPage9.ResumeLayout(false);
+            tableLayoutPanel7.ResumeLayout(false);
+            tabPage10.ResumeLayout(false);
+            tableLayoutPanel8.ResumeLayout(false);
             tableLayoutPanel5.ResumeLayout(false);
             panel4.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
@@ -490,25 +587,30 @@
         private GroupBox groupBox3;
         private TableLayoutPanel tableLayoutPanel3;
         private TabControl tabControl2;
-        private TabPage tabPage3;
-        private TableLayoutPanel tableLayoutPanel4;
-        private Button button7;
-        private TextBox textBox1;
         private TabPage tabPage4;
         private TableLayoutPanel tableLayoutPanel6;
-        private Button button5;
-        private TextBox textBox2;
+        private Button btnDelFilterID;
         private TabPage tabPage8;
         private TabPage tabPage9;
         private TabPage tabPage10;
         private TableLayoutPanel tableLayoutPanel5;
-        private Button button6;
-        private Button button4;
+        private Button btnFilter;
+        private Button btnDeleteAllFilter;
         private Panel panel4;
         private GroupBox groupBox1;
         private Panel panel5;
         private Button btnUpdateCustomer;
         private Button btnDeleteCustomer;
         private Button btnAddCustomer;
+        private ComboBox cbxFilterID;
+        private TableLayoutPanel tableLayoutPanel4;
+        private Button cbxDeleteFilterName;
+        private TableLayoutPanel tableLayoutPanel7;
+        private Button cbxDeleteFilterGender;
+        private TableLayoutPanel tableLayoutPanel8;
+        private Button cbxDeleteFilterCCCD;
+        private ComboBox cbxFilterName;
+        private ComboBox cbxFilterGender;
+        private ComboBox cbxFilterCCCD;
     }
 }
