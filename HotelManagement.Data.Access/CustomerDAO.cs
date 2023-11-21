@@ -16,7 +16,7 @@ namespace HotelManagement.DAO
         {
             conn = BaseConnection.getConnection();
         }
-        public List<Customer> getAll()
+        public List<Customer2> getAll()
         {
             conn.Open();
             string query = "select * from customer where IS_DELETED = 0";
@@ -24,7 +24,7 @@ namespace HotelManagement.DAO
             cmd.CommandText = query;
             cmd.Connection = conn;
 
-            List<Customer> list = new List<Customer>();
+            List<Customer2> list = new List<Customer2>();
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
@@ -37,7 +37,7 @@ namespace HotelManagement.DAO
                     string address = reader.GetString("Address");
                     string cccd = reader.GetString("CitizenID");
                     string phone = reader.GetString("PhoneNumber");
-                    list.Add(new Customer(id,fullname,gender,birthday,address,cccd,phone));
+                    list.Add(new Customer2(id,fullname,gender,birthday,address,cccd,phone));
                 }
             }
 
@@ -45,7 +45,7 @@ namespace HotelManagement.DAO
 
             return list;
         }
-        public int add(Customer customer)
+        public int add(Customer2 customer)
         {
             conn.Open();
             string query = "insert into customer (ID,Fullname,Gender,Birthday,Address,CitizenID,PhoneNumber) values " +
@@ -67,7 +67,7 @@ namespace HotelManagement.DAO
             return result;
         }
 
-        public int update(Customer customer)
+        public int update(Customer2 customer)
         {
             conn.Open();
             string query = "update customer set " +

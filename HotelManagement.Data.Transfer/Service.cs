@@ -1,77 +1,68 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HotelManagement.DTO
+﻿namespace HotelManagement.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Numerics;
+
+    public class CancelationStatus
+    {
+        private BigInteger id;
+        private string reason;
+        private double fee;
+        private DateTime time;
+        public BigInteger Id { get => id; private set => id = value; }
+        public string Reason { get => reason; set => reason = value; }
+        public double Fee { get => fee; set => fee = value; }
+        public DateTime Time { get => time; set => time = value; }
+        public CancelationStatus(BigInteger id)
+        {
+            this.id = id;
+        }
+        public CancelationStatus() { }
+    }
+
     public class Service
     {
-        private string id;
+        private BigInteger id;
+        private BigInteger? typeId;
         private string name;
-        private double unit_price;
         private string unit;
-        private string service_type_id;
-        private string service_type_name;
-
-        public Service()
-        {
-            id = name = unit = service_type_id = service_type_name = "";
-            unit_price = 0d;   
-        }
-
-        public Service(string id, string name, double unit_price, string unit, string service_type_id, string service_type_name)
-        {
-            Id = id;
-            Name = name;
-            Unit_price = unit_price;
-            Unit = unit;
-            Service_type_id = service_type_id;
-            Service_type_name = service_type_name;
-        }
-
-        public Service(Service service)
-        {
-            id = service.Id;
-            name = service.Name;
-            unit = service.Unit;
-            unit_price = service.Unit_price;
-            service_type_id = service.Service_type_id;
-            service_type_name = service.service_type_name;
-        }
-
-        public string Id { get => id; set => id = value; }
+        private double unitPrice;
+        private ServiceType serviceType;
+        public BigInteger Id { get => id; private set => id = value; }
+        public BigInteger? TypeId { get => typeId; private set => typeId = value; }
         public string Name { get => name; set => name = value; }
-        public double Unit_price { get => unit_price; set => unit_price = value; }
         public string Unit { get => unit; set => unit = value; }
-        public string Service_type_id { get => service_type_id; set => service_type_id = value; }
-        public string Service_type_name { get => service_type_name; set => service_type_name = value; }
+        public double UnitPrice { get => unitPrice; set => unitPrice = value; }
+        public ServiceType ServiceType { get => serviceType; set => serviceType = value; }
+        public Service(BigInteger id, BigInteger? typeId)
+        {
+            this.id = id;
+            this.typeId = typeId;
+        }
+        public Service() { }
     }
 
     public class ServiceType
     {
-        private string id;
+        private BigInteger id;
         private string name;
-
-        public ServiceType()
+        private IList<Service> services;
+        public BigInteger Id { get => id; private set => id = value; }
+        public string Name { get { return name; } set { name = value; } }
+        public IList<Service> Services
         {
-            id = name = "";
+            get
+            {
+                var r = services;
+                if (r is null) services = r = new List<Service>();
+                return r;
+            }
         }
-
-        public ServiceType(string id, string name)
+        public ServiceType(BigInteger id)
         {
-            Id = id;
-            Name = name;
+            this.id = id;
         }
-
-        public ServiceType(ServiceType o)
-        {
-            id = o.Id;  
-            Name = o.Name;  
-        }
-
-        public string Id { get => id; set => id = value; }
-        public string Name { get => name; set => name = value; }
+        public ServiceType() { }
     }
 }

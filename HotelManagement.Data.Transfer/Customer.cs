@@ -1,55 +1,33 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HotelManagement.DTO
+﻿namespace HotelManagement.Data
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Numerics;
+    using System.Text;
+    using System.Threading.Tasks;
+
     public class Customer
     {
-        private string id;
-        private string fullname;
-        private int gender;
-        private string birthday;
-        private string address;
-        private string citizenId;
-        private string phone;
+        public const bool GenderMale = true, GenderFemale = false;
 
-        public Customer()
-        {
-            id = fullname = birthday = address = citizenId = phone = "";
-            gender = 0;
-        }
-
-        public Customer(string id, string fullname, int gender, string birthday, string address, string citizenId, string phone)
-        {
-            Id = id;
-            Fullname = fullname;    
-            Gender = gender;
-            Birthday = birthday;
-            Address = address;
-            CitizenId = citizenId;
-            Phone = phone;
-        }
-
-        public Customer(Customer customer)
-        {
-            Id = customer.Id;
-            Fullname = customer.Fullname;
-            Gender = customer.Gender;
-            Birthday = customer.Birthday;
-            Address = customer.Address;
-            CitizenId = customer.CitizenId;
-            Phone = customer.Phone;
-        }
-
-        public string Id { get => id; set => id = value; }
-        public string Fullname { get => fullname; set => fullname = value; }
-        public string Birthday { get => birthday; set => birthday = value; }
+        private readonly BigInteger id;
+        private string fullName, address, citizenID, phone;
+        private bool gender;
+        private DateOnly birthday;
+        public BigInteger Id => id;
+        public string FullName { get => fullName; set => fullName = value; }
         public string Address { get => address; set => address = value; }
-        public string CitizenId { get => citizenId; set => citizenId = value; }
+        public string CitizenId { get => citizenID; set => citizenID = value; }
         public string Phone { get => phone; set => phone = value; }
-        public int Gender { get => gender; set => gender = value; }
+        public bool Gender { get => gender; set => gender = value; }
+        public string GenderString { get => gender == GenderMale ? "Male" : "Female"; }
+        public DateOnly Birthday { get => birthday; set => birthday = value; }
+        public Customer(BigInteger id)
+        {
+            this.id = id;
+        }
+
+        public Customer() { }
     }
 }
