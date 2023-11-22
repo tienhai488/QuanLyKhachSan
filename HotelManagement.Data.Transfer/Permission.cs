@@ -13,19 +13,31 @@
 
     public enum Permission : ushort
     {
-        Perm1 = 0,
-        Perm2 = 1,
-        Perm3 = 2,
-        Perm4 = 3,
-        Perm5 = 4,
-        Perm6 = 5,
-        Perm7 = 6,
-        Perm8 = 7,
-        Perm9 = 8,
-        Perm10 = 9,
-        Perm11 = 10,
-        Perm12 = 11,
-        Perm13 = 12
+        ReadAccount = 0,
+        WriteAccount = 1,
+        ReadPermissionGroup = 2,
+        WritePermissionGroup = 3,
+        ReadRole = 4,
+        WriteRole = 5,
+        ReadStaff = 6,
+        WriteStaff = 7,
+        ReadService = 8,
+        WriteService = 9,
+        ReadServiceType = 10,
+        WriteServiceType = 11,
+        ReadRoom = 12,
+        WriteRoom = 13,
+        ReadRoomType = 14,
+        WriteRoomType = 15,
+        ReadConvenient = 16,
+        WriteConvenient = 17,
+        ReadCustomer = 18,
+        WriteCustomer = 19,
+        UpdateReservation = 20,
+        UpdateRoomDetails = 21,
+        UpdateServiceDetails = 22,
+        CancelServiceDetails = 23,
+        UpdateInvoice = 24
     } // Database limit 0-299
 
     public interface IAccessable

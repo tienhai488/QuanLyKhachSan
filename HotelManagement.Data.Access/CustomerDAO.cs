@@ -1,4 +1,4 @@
-﻿using HotelManagement.Core;
+﻿using HotelManagement.Data.Access.Core;
 using HotelManagement.DTO;
 using HotelManagement.Ultils;
 

@@ -16,7 +16,7 @@ namespace HotelManagement.Data.Access.Core
                 Server = "127.0.0.1",
                 Database = "qlks",
                 UserID = "root",
-                Password = "",
+                Password = "$sQ>XnBk2357",
                 Port = 3306
             }.ToString());
 

@@ -313,8 +313,9 @@
                 .HasColumnName("PhoneNumber");
             builder.Property<double>(nameof(Staff.Salary))
                 .HasColumnName("Salary");
-            builder.Property<int>(nameof(Staff.Status))
-                .HasColumnName("Status");
+            builder.Property<StaffState>(nameof(Staff.Status))
+                .HasColumnName("Status")
+                .HasConversion(x => (int)x, x => (StaffState)x);
             builder.Property<string>(nameof(Staff.ImageLink))
                 .HasColumnName("ImageLink");
             builder.OptionalBigIntegerIdProperty(nameof(Staff.RoleId), "RoleID", "RO", "2");
@@ -356,6 +357,9 @@
             builder.Property<AccountState>(nameof(Account.State))
                 .HasColumnName("Status")
                 .HasConversion(x => (int)x, x => (AccountState)x);
+            builder.Ignore(nameof(Account.Linked));
+            builder.Ignore(nameof(Account.Disabled));
+            builder.Ignore(nameof(Account.Permissions));
             builder.Property<string>(nameof(Account.SerializedPermissions))
                 .HasColumnName("Permissions");
             builder.HasKey(nameof(Account.Uid));

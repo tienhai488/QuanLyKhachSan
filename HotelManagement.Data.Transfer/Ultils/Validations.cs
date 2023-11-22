@@ -4,7 +4,7 @@
 
     public static class ValidationsExtensions
     {
-        public static unsafe bool IsValidUserName(this string userName)
+        public static unsafe bool IsValidUserName(this string? userName)
         {
             if (userName is null) return false;
             int length = userName.Length;
@@ -51,7 +51,7 @@
             throw new ArgumentException("'userName' is not valid!", nameof(userName));
         }
 
-        public static unsafe bool IsValidName(this string userName)
+        public static unsafe bool IsValidName(this string? userName)
         {
             if (userName is null) return false;
             int length = userName.Length;
@@ -97,7 +97,7 @@
             throw new ArgumentException("'userName' is not valid!", nameof(userName));
         }
 
-        public static unsafe bool IsValidPassword(this string password)
+        public static unsafe bool IsValidPassword(this string? password)
         {
             if (password is null) return false;
             int length = password.Length;

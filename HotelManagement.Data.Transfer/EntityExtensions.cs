@@ -12,7 +12,7 @@
             => detail == null ? null : "SD" + detail.Id.ToString("D5");
         public static string? IdString(this Invoice? invoice)
             => invoice == null ? null : "IN" + invoice.Id.ToString("D4");
-        public static string? IdString(this Account? account)
+        public static string? UidString(this Account? account)
             => account?.Uid.ToString("D3");
         public static string? IdString(this PermissionGroup? group)
             => group?.Id.ToString("D2");

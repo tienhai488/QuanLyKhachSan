@@ -1,15 +1,13 @@
-﻿using HotelManagement.Core;
-using HotelManagement.DTO;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HotelManagement.DAO
+﻿namespace HotelManagement.DAO
 {
+    using HotelManagement.Data.Access.Core;
+    using HotelManagement.DTO;
+
+    using MySql.Data.MySqlClient;
+
+    using System.Collections.Generic;
+    using System.Data;
+
     public class ServiceDAO
     {
         private MySqlConnection conn;
