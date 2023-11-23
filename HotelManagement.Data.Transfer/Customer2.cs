@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.DTO
 {
-    public class Customer
+    public class Customer2
     {
         private string id;
         private string fullname;
@@ -16,13 +16,13 @@ namespace HotelManagement.DTO
         private string citizenId;
         private string phone;
 
-        public Customer()
+        public Customer2()
         {
             id = fullname = birthday = address = citizenId = phone = "";
             gender = 0;
         }
 
-        public Customer(string id, string fullname, int gender, string birthday, string address, string citizenId, string phone)
+        public Customer2(string id, string fullname, int gender, string birthday, string address, string citizenId, string phone)
         {
             Id = id;
             Fullname = fullname;    
@@ -33,7 +33,7 @@ namespace HotelManagement.DTO
             Phone = phone;
         }
 
-        public Customer(Customer customer)
+        public Customer2(Customer2 customer)
         {
             Id = customer.Id;
             Fullname = customer.Fullname;

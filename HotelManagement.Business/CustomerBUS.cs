@@ -12,16 +12,16 @@ namespace HotelManagement.BUS
     {
         private CustomerDAO customerDAO = new CustomerDAO();
 
-        public List<Customer> getAll()
+        public List<Customer2> getAll()
         {
             return customerDAO.getAll();
         }
-        public int add(Customer customer)
+        public int add(Customer2 customer)
         {
             return customerDAO.add(customer);
         }
 
-        public int update(Customer customer)
+        public int update(Customer2 customer)
         {
             return customerDAO.update(customer);
         }
@@ -35,7 +35,7 @@ namespace HotelManagement.BUS
             return customerDAO.getLength();
         }
 
-        public bool validateEmpty(Customer customer)
+        public bool validateEmpty(Customer2 customer)
         {
             StringBuilder sb = new StringBuilder();
             if(customer.Fullname.Length == 0)
@@ -62,7 +62,7 @@ namespace HotelManagement.BUS
             return true;
         }
 
-        public bool validate(Customer customer)
+        public bool validate(Customer2 customer)
         {
             if (!validateEmpty(customer))
             {

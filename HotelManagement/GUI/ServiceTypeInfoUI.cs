@@ -31,7 +31,7 @@ namespace HotelManagement.GUI
         }
 
         #region method
-        public void fillData(ServiceType serviceType, string type)
+        public void fillData(ServiceType2 serviceType, string type)
         {
             txtId.Text = serviceType.Id;
             txtName.Text = serviceType.Name;
@@ -40,7 +40,7 @@ namespace HotelManagement.GUI
             isEdit = type == "Lưu thông tin" ? true : false;
         }
 
-        public void addType(ServiceType serviceType)
+        public void addType(ServiceType2 serviceType)
         {
             if (serviceBUS.validateType(serviceType))
             {
@@ -58,7 +58,7 @@ namespace HotelManagement.GUI
             }
         }
 
-        public void updateType(ServiceType serviceType)
+        public void updateType(ServiceType2 serviceType)
         {
             if (serviceBUS.validateType(serviceType))
             {
@@ -87,7 +87,7 @@ namespace HotelManagement.GUI
             string id = txtId.Text;
             string name = txtName.Text;
 
-            ServiceType serviceType = new ServiceType(id, name);
+            ServiceType2 serviceType = new ServiceType2(id, name);
             if (isEdit)
             {
                 updateType(serviceType);

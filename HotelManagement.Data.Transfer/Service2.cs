@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.DTO
 {
-    public class Service
+    public class Service2
     {
         private string id;
         private string name;
@@ -15,13 +15,13 @@ namespace HotelManagement.DTO
         private string service_type_id;
         private string service_type_name;
 
-        public Service()
+        public Service2()
         {
             id = name = unit = service_type_id = service_type_name = "";
             unit_price = 0d;   
         }
 
-        public Service(string id, string name, double unit_price, string unit, string service_type_id, string service_type_name)
+        public Service2(string id, string name, double unit_price, string unit, string service_type_id, string service_type_name)
         {
             Id = id;
             Name = name;
@@ -31,7 +31,7 @@ namespace HotelManagement.DTO
             Service_type_name = service_type_name;
         }
 
-        public Service(Service service)
+        public Service2(Service2 service)
         {
             id = service.Id;
             name = service.Name;
@@ -49,23 +49,23 @@ namespace HotelManagement.DTO
         public string Service_type_name { get => service_type_name; set => service_type_name = value; }
     }
 
-    public class ServiceType
+    public class ServiceType2
     {
         private string id;
         private string name;
 
-        public ServiceType()
+        public ServiceType2()
         {
             id = name = "";
         }
 
-        public ServiceType(string id, string name)
+        public ServiceType2(string id, string name)
         {
             Id = id;
             Name = name;
         }
 
-        public ServiceType(ServiceType o)
+        public ServiceType2(ServiceType2 o)
         {
             id = o.Id;  
             Name = o.Name;  

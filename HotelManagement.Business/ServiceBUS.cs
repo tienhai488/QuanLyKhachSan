@@ -15,16 +15,16 @@ namespace HotelManagement.BUS
     {
         private ServiceDAO serviceDAO = new ServiceDAO();
 
-        public List<Service> getAllService()
+        public List<Service2> getAllService()
         {
             return serviceDAO.getAllService();
         }
-        public int addService(Service service)
+        public int addService(Service2 service)
         {
             return serviceDAO.addService(service);
         }
 
-        public int updateService(Service service)
+        public int updateService(Service2 service)
         {
             return serviceDAO.updateService(service);
         }
@@ -37,16 +37,16 @@ namespace HotelManagement.BUS
         {
             return serviceDAO.getLengthService();
         }
-        public List<ServiceType> getAllType()
+        public List<ServiceType2> getAllType()
         {
             return serviceDAO.getAllType();
         }
-        public int addType(ServiceType serviceType)
+        public int addType(ServiceType2 serviceType)
         {
             return serviceDAO.addType(serviceType); 
         }
 
-        public int updateType(ServiceType serviceType)
+        public int updateType(ServiceType2 serviceType)
         {
             return serviceDAO.updateType(serviceType);
         }
@@ -104,7 +104,7 @@ namespace HotelManagement.BUS
             return true;
         }
 
-        public bool validateEmptyType(ServiceType serviceType)
+        public bool validateEmptyType(ServiceType2 serviceType)
         {
             StringBuilder sb = new StringBuilder();
             if (serviceType.Name.Length == 0)
@@ -119,7 +119,7 @@ namespace HotelManagement.BUS
             return true;
         }
 
-        public bool validateType(ServiceType serviceType)
+        public bool validateType(ServiceType2 serviceType)
         {
             if (!validateEmptyType(serviceType))
             {

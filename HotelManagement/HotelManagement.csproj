@@ -10,7 +10,10 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
-    <PackageReference Include="MySql.Data" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\HotelManagement.Business\HotelManagement.Business.csproj" />
   </ItemGroup>
 
   <ItemGroup>
