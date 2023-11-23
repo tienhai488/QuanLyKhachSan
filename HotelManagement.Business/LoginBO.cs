@@ -14,6 +14,9 @@
         public static Account? SignedInAccount => accessable?.Account;
         public static Staff? SignedInStaff => accessable as Staff;
         public static void SignOut() => accessable = null;
+        public static bool IsPermissionGranted(Permission permission)
+            => accessable?.IsPermissionGranted(permission) ?? true;
+
         public static LoginBO Instance
         {
             get

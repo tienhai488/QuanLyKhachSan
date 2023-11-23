@@ -6,6 +6,8 @@
 
     using MySql.EntityFrameworkCore.Infrastructure;
 
+    using System.Numerics;
+
     public class CustomerEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -129,6 +131,24 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>().ConfigureAccount();
+        }
+
+        public IEnumerable<Account> NormalAccounts
+            => from a in Set<Account>() where a.Uid != BigInteger.Zero select a;
+
+        public BigInteger UsableUid
+        {
+            get
+            {
+                IEnumerable<Account> accounts = NormalAccounts.ToList();
+                return (from a in accounts
+                        let uids = from b in accounts
+                                   join c in accounts
+                                   on b.Uid + 1 equals c.Uid
+                                   select b.Uid
+                        where !uids.Contains(a.Uid)
+                        select a.Uid).FirstOrDefault(0) + 1;
+            }
         }
     }
     public class PermissionGroupEFCoreDAO : DbContext

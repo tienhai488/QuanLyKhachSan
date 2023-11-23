@@ -70,26 +70,17 @@
         public Role? Role
         {
             get => role;
-            private set
-            {
-                role = value;
-            }
+            private set => role = value;
         }
         public Account? Account
         {
             get => account;
-            private set
-            {
-                account = value;
-            }
+            private set => account = value;
         }
         public PermissionGroup? Group
         {
             get => group;
-            private set
-            {
-                group = value;
-            }
+            private set => group = value;
         }
 
         public Staff(BigInteger id)

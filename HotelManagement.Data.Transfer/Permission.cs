@@ -113,6 +113,7 @@
                         bs[x] = (byte)(bs[x] | (1 << y));
                     }
                     Base64.EncodeToUtf8InPlace(bs, 38, out int count);
+                    if (count > 50) count = 50;
                     return Encoding.UTF8.GetString(bs, 0, count);
                 }
                 private set
@@ -156,10 +157,23 @@
         private string password;
         private AccountState state;
 
-        public BigInteger Uid { get => uid; private set => uid = value; }
+        public BigInteger Uid
+        {
+            get => uid;
+            private set
+            {
+                uid = value;
+                if (uid == 0)
+                {
+                    var e = ((IAccessable)this).Edit();
+                    foreach (var perm in Permissions)
+                        e.SetGranted(perm);
+                }
+            }
+        }
         public string UserName { get => userName; set => userName = value; }
         public AccountState State { get => state; private set => state = value; }
-        public string Password { get => password ?? ""; private set => password = value; }
+        public string Password { get => password ?? ""; set => password = value; }
 
         public bool Linked
         {
@@ -181,11 +195,9 @@
             }
         }
 
-        public Account(BigInteger uid)
-        {
-            this.uid = uid;
-            if (uid != 0) state = AccountState.Disabled;
-        }
+        public Account(BigInteger uid) => Uid = uid;
+
+        public Account() { }
 
         private protected override Account AsAccount() => this;
 
@@ -201,6 +213,7 @@
         public BigInteger Id { get => id; private set => id = value; }
         public string Name { get => name; set => name = value; }
         public PermissionGroup(BigInteger id) => this.id = id;
+        public PermissionGroup() { }
         private protected override PermissionGroup AsPermissionGroup() => this;
         public static int IdComparison(PermissionGroup x, PermissionGroup y) => x.Id.CompareTo(y.Id);
         public static int NameComparison(PermissionGroup x, PermissionGroup y) => CultureInfo.CurrentCulture.CompareInfo.Compare(x.Name, y.Name);
