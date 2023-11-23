@@ -23,7 +23,7 @@ namespace HotelManagement.DAO
         public List<Customer> getAll()
         {
             conn.Open();
-            string query = "select * from customer where IS_DELETED = 0";
+            string query = "select * from customer";
             using MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = query;
             cmd.Connection = conn;
@@ -102,7 +102,7 @@ namespace HotelManagement.DAO
         public int delete(string id)
         {
             conn.Open();
-            string query = "update customer set IS_DELETED = 1 where ID = @id";
+            string query = "delete from customer where ID = @id";
             using MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = query;
             cmd.Connection = conn;

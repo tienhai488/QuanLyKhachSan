@@ -50,7 +50,7 @@
             rentTime.Location = new Point(10, 0);
             rentTime.Margin = new Padding(4, 0, 4, 0);
             rentTime.Name = "rentTime";
-            rentTime.Size = new Size(70, 19);
+            rentTime.Size = new Size(87, 23);
             rentTime.TabIndex = 25;
             rentTime.Text = "Rent Time";
             // 
@@ -64,7 +64,7 @@
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(10, 0, 10, 0);
-            panel2.Size = new Size(289, 25);
+            panel2.Size = new Size(327, 25);
             panel2.TabIndex = 29;
             // 
             // roomClean
@@ -74,10 +74,10 @@
             roomClean.Dock = DockStyle.Right;
             roomClean.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             roomClean.ForeColor = Color.FromArgb(74, 20, 140);
-            roomClean.Location = new Point(198, 0);
+            roomClean.Location = new Point(217, 0);
             roomClean.Margin = new Padding(4, 0, 4, 0);
             roomClean.Name = "roomClean";
-            roomClean.Size = new Size(81, 19);
+            roomClean.Size = new Size(100, 23);
             roomClean.TabIndex = 24;
             roomClean.Text = "Incharge by";
             // 
@@ -99,7 +99,7 @@
             customerName.Font = new Font("Segoe UI Black", 16F, FontStyle.Regular, GraphicsUnit.Point);
             customerName.Location = new Point(69, 55);
             customerName.Name = "customerName";
-            customerName.Size = new Size(121, 30);
+            customerName.Size = new Size(150, 37);
             customerName.TabIndex = 28;
             customerName.Text = "Cus Name";
             // 
@@ -112,7 +112,7 @@
             roomStatus.Location = new Point(184, 15);
             roomStatus.Margin = new Padding(4, 0, 4, 0);
             roomStatus.Name = "roomStatus";
-            roomStatus.Size = new Size(98, 21);
+            roomStatus.Size = new Size(122, 28);
             roomStatus.TabIndex = 31;
             roomStatus.Text = "Room Status";
             // 
@@ -125,13 +125,13 @@
             roomID.Location = new Point(13, 15);
             roomID.Margin = new Padding(4, 0, 4, 0);
             roomID.Name = "roomID";
-            roomID.Size = new Size(74, 21);
+            roomID.Size = new Size(93, 28);
             roomID.TabIndex = 30;
             roomID.Text = "RoomID";
             // 
             // RoomCard
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(255, 224, 130);
             BackgroundImageLayout = ImageLayout.Zoom;
@@ -145,7 +145,7 @@
             Margin = new Padding(4);
             Name = "RoomCard";
             Padding = new Padding(3, 0, 3, 3);
-            Size = new Size(295, 150);
+            Size = new Size(333, 150);
             Click += RoomCard_Click;
             panel2.ResumeLayout(false);
             panel2.PerformLayout();

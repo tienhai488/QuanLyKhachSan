@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Core;
 using HotelManagement.DTO;
+using HotelManagement.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,7 @@ namespace HotelManagement.DAO
         public List<Service> getAllService()
         {
             conn.Open();
-            string query = "select service.*,service_type.Name as ServiceTypeName from service,service_type where service.ServiceTypeID = service_type.ID and  service.IS_DELETED = 0";
+            string query = "select service.*,service_type.Name as ServiceTypeName from service,service_type where service.ServiceTypeID = service_type.ID ";
             using MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = query;
             cmd.Connection = conn;
@@ -92,7 +93,7 @@ namespace HotelManagement.DAO
         public int deleteService(string id)
         {
             conn.Open();
-            string query = "update service set IS_DELETED = 1 where ID = @id";
+            string query = "delete from service where ID = @id";
             using MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = query;
             cmd.Connection = conn;
@@ -123,7 +124,7 @@ namespace HotelManagement.DAO
         public List<ServiceType> getAllType()
         {
             conn.Open();
-            string query = "select * from service_type where IS_DELETED = 0";
+            string query = "select * from service_type ";
             using MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = query;
             cmd.Connection = conn;
@@ -179,7 +180,7 @@ namespace HotelManagement.DAO
         public int deleteType(string id)
         {
             conn.Open();
-            string query = "update service_type set IS_DELETED = 1 where ID = @id";
+            string query = "delete from service_type  where ID = @id";
             using MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = query;
             cmd.Connection = conn;
@@ -213,7 +214,7 @@ namespace HotelManagement.DAO
             conn.Open();
 
             string query = "select * from service,service_type where service.ServiceTypeID = service_type.ID " +
-                "and service_type.ID = @type_id and service.IS_DELETED = 0";
+                "and service_type.ID = @type_id";
             using MySqlCommand cmd = new MySqlCommand();
             cmd.CommandText = query;
             cmd.Connection = conn;
@@ -227,5 +228,34 @@ namespace HotelManagement.DAO
             conn.Close();
             return table.Rows.Count;
         }
+
+
+
+        //public List<ServiceType> getAllType()
+        //{
+        //    return databaseContext.ServiceTypes.ToList();
+        //}
+        //public int addType(ServiceType serviceType)
+        //{
+        //    databaseContext.Add(serviceType);
+        //    return databaseContext.SaveChanges();
+        //}
+
+        //public int updateType(ServiceType serviceType)
+        //{
+        //    databaseContext.Update(serviceType);
+        //    return databaseContext.SaveChanges();
+        //}
+
+        //public int deleteType(string id)
+        //{
+        //    ServiceType item = databaseContext.ServiceTypes.ToList().First(i => i.ID.Equals(id));
+        //    return databaseContext.SaveChanges();
+        //}
+
+        //public int getLengthType()
+        //{
+        //    return databaseContext.SaveChanges();
+        //}
     }
 }
