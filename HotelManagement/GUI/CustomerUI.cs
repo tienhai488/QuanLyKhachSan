@@ -196,5 +196,9 @@ namespace HotelManagement.GUI
         #endregion
 
 
+        private void tabControl2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
