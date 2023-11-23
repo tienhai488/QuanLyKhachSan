@@ -221,6 +221,7 @@
             // 
             // dtgvService
             // 
+            dtgvService.AllowUserToAddRows = false;
             dtgvService.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvService.BackgroundColor = SystemColors.ButtonHighlight;
             dtgvService.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -582,10 +583,10 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(tableLayoutPanel7);
-            tabPage2.Location = new Point(4, 24);
+            tabPage2.Location = new Point(4, 34);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1142, 583);
+            tabPage2.Size = new Size(1142, 573);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Loại dịch vụ";
             tabPage2.UseVisualStyleBackColor = true;
@@ -603,7 +604,7 @@
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(1136, 577);
+            tableLayoutPanel7.Size = new Size(1136, 567);
             tableLayoutPanel7.TabIndex = 2;
             // 
             // panel6
@@ -612,7 +613,7 @@
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(3, 3);
             panel6.Name = "panel6";
-            panel6.Size = new Size(846, 571);
+            panel6.Size = new Size(846, 561);
             panel6.TabIndex = 0;
             // 
             // tableLayoutPanel8
@@ -627,7 +628,7 @@
             tableLayoutPanel8.RowCount = 2;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Absolute, 197F));
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Size = new Size(846, 571);
+            tableLayoutPanel8.Size = new Size(846, 561);
             tableLayoutPanel8.TabIndex = 0;
             // 
             // panel7
@@ -636,7 +637,7 @@
             panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(3, 200);
             panel7.Name = "panel7";
-            panel7.Size = new Size(840, 368);
+            panel7.Size = new Size(840, 358);
             panel7.TabIndex = 1;
             // 
             // groupBox4
@@ -646,13 +647,14 @@
             groupBox4.ForeColor = SystemColors.HotTrack;
             groupBox4.Location = new Point(0, 0);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(840, 368);
+            groupBox4.Size = new Size(840, 358);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Data";
             // 
             // dtgvType
             // 
+            dtgvType.AllowUserToAddRows = false;
             dtgvType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvType.BackgroundColor = SystemColors.ButtonHighlight;
             dtgvType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -664,7 +666,7 @@
             dtgvType.RowHeadersWidth = 51;
             dtgvType.RowTemplate.Height = 29;
             dtgvType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvType.Size = new Size(834, 337);
+            dtgvType.Size = new Size(834, 327);
             dtgvType.TabIndex = 1;
             // 
             // panel8
@@ -878,7 +880,7 @@
             panel9.Dock = DockStyle.Fill;
             panel9.Location = new Point(855, 3);
             panel9.Name = "panel9";
-            panel9.Size = new Size(278, 571);
+            panel9.Size = new Size(278, 561);
             panel9.TabIndex = 1;
             // 
             // groupBox6
@@ -888,7 +890,7 @@
             groupBox6.ForeColor = SystemColors.HotTrack;
             groupBox6.Location = new Point(0, 0);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(278, 571);
+            groupBox6.Size = new Size(278, 561);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "Chức năng";
@@ -901,7 +903,7 @@
             panel10.Dock = DockStyle.Fill;
             panel10.Location = new Point(3, 28);
             panel10.Name = "panel10";
-            panel10.Size = new Size(272, 540);
+            panel10.Size = new Size(272, 530);
             panel10.TabIndex = 0;
             // 
             // btnUpdateType
