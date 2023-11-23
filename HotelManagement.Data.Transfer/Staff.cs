@@ -49,7 +49,7 @@
         public bool Gender { get => gender; set => gender = value; }
         public DateOnly Birthday { get => birthday; set => birthday = value; }
         public string Phone { get => phone; set => phone = value; }
-        public string GenderString { get => gender == GenderMale ? "Male" : "Female"; }
+        public string GenderString { get => gender == GenderMale ? "Nam" : "Nữ"; }
         public double Salary { get => salary; set => salary = value; }
         public StaffState Status { get => status; private set => status = value; }
         public bool CanDelete

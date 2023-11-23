@@ -276,7 +276,7 @@
                 .HasColumnName("Name");
             builder.Property<double>(nameof(Service.UnitPrice))
                 .HasColumnName("UnitPrice");
-            builder.Property<double>(nameof(Service.Unit))
+            builder.Property<string>(nameof(Service.Unit))
                 .HasColumnName("Unit");
             builder.OptionalBigIntegerIdProperty(nameof(Service.ServiceTypeId   ), "ServiceTypeID", "ST", "2");
             builder.HasKey(nameof(Service.Id));
@@ -450,7 +450,7 @@
         {
             builder.Property<BigInteger>(propertyName)
                 .HasColumnName(columnName)
-                .HasConversion(x => prefix + x.ToString("D" + length), x => BigInteger.Parse(x.Substring(2)));
+                .HasConversion(x => prefix + x.ToString("D" + length), x => BigInteger.Parse(x.Substring(prefix.Length)));
         }
 
         public static void OptionalBigIntegerIdProperty<T>(this EntityTypeBuilder<T> builder, string propertyName, string columnName, string prefix, string length) where T : class
@@ -458,7 +458,7 @@
             builder.Property<BigInteger?>(propertyName)
                 .HasColumnName(columnName).IsRequired(false)
                 .HasConversion(x => x == null ? null : prefix + x.Value.ToString("D" + length),
-                        x => x == null ? null : BigInteger.Parse(x.Substring(2)));
+                        x => x == null ? null : BigInteger.Parse(x.Substring(prefix.Length)));
         }
     }
 }

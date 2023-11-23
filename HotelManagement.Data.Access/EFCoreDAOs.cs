@@ -6,6 +6,7 @@
 
     using MySql.EntityFrameworkCore.Infrastructure;
 
+    using System;
     using System.Numerics;
 
     public class CustomerEFCoreDAO : DbContext
@@ -151,6 +152,12 @@
                         select a.Uid).FirstOrDefault(0) + 1;
             }
         }
+
+        public Account? SignIn(string userName, string password)
+            => (from a in Set<Account>()
+                where a.UserName == userName
+                && a.Password == password
+                select a).FirstOrDefault();
     }
     public class PermissionGroupEFCoreDAO : DbContext
     {
@@ -166,8 +173,25 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<PermissionGroup>().ConfigurePermissionGroup();
-            modelBuilder.Entity<Staff>().ConfigureStaff(includeRoleRelationship: false, includeAccountRelationship: false);
         }
+
+        public IEnumerable<PermissionGroup> PermissionGroups => Set<PermissionGroup>();
+
+        public BigInteger UsableId
+        {
+            get
+            {
+                IEnumerable<PermissionGroup> accounts = PermissionGroups.ToList();
+                return (from a in accounts
+                        let uids = from b in accounts
+                                   join c in accounts
+                                   on b.Id + 1 equals c.Id
+                                   select b.Id
+                        where !uids.Contains(a.Id)
+                        select a.Id).FirstOrDefault(0) + 1;
+            }
+        }
+
     }
     public class RoomEFCoreDAO : DbContext
     {
@@ -308,5 +332,15 @@
             modelBuilder.Entity<PermissionGroup>().ConfigurePermissionGroup();
             modelBuilder.Entity<Staff>().ConfigureStaff();
         }
+
+        public Staff? GetStaffWithAccountId(BigInteger uid)
+            => (from s in Set<Staff>()
+                where s.AccountId == uid
+                select s).FirstOrDefault();
+
+        public bool HasStaffWithPermissionGroup(BigInteger id)
+            => (from s in Set<Staff>()
+                where s.GroupId == id
+                select s).Any();
     }
 }

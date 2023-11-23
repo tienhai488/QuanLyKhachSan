@@ -7,14 +7,20 @@
     using MaterialSkin;
 
     using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
     using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
 
-    public partial class AccountManagerUI : Form
+    public partial class PermissionGroupManagerUI : Form
     {
         private bool editing, searching;
         private int selectedIndex;
-        public AccountManagerUI()
+        public PermissionGroupManagerUI()
         {
             InitializeComponent();
             MinimumSize = new Size(360 + SystemInformation.VerticalScrollBarWidth, 360 + SystemInformation.HorizontalScrollBarHeight);
@@ -25,21 +31,22 @@
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            LoadAccounts();
+            LoadGroups();
             LoadActions();
             LoadInfo();
+            OnResize(EventArgs.Empty);
         }
 
-        private void LoadAccounts()
+        private void LoadGroups()
         {
-            lbAccounts.Clear();
-            foreach (var account in AccountManagerBO.Instance.Accounts)
+            lbGroups.Clear();
+            foreach (var group in PermissonGroupManagerBO.Instance.PermissionGroups)
             {
-                lbAccounts.AddItem(new MaterialListBoxItem()
+                lbGroups.AddItem(new MaterialListBoxItem()
                 {
-                    Tag = account,
-                    Text = account.UserName,
-                    SecondaryText = "UID " + account.UidString()
+                    Tag = group,
+                    Text = group.Name,
+                    SecondaryText = group.IdString()
                 });
             }
         }
@@ -54,14 +61,14 @@
             {
                 if (!editing)
                 {
-                    bool write = LoginBO.IsPermissionGranted(Permission.WriteAccount);
+                    bool write = LoginBO.IsPermissionGranted(Permission.WritePermissionGroup);
                     if (selectedIndex >= 0)
                     {
                         dbtnAdd.Available = write
                             && ClientSize.Width >= 600;
                         dbtnEdit.Available = write;
                         dbtnDelete.Available = write
-                            && AccountManagerBO.Instance.CanDelete;
+                            && PermissonGroupManagerBO.Instance.CanDelete;
                     }
                     else dbtnAdd.Available = write;
                 }
@@ -73,55 +80,60 @@
         private void LoadInfo()
         {
             if (selectedIndex >= 0
-                || AccountManagerBO.Instance.SelectedAccount != null)
+                || PermissonGroupManagerBO.Instance.SelectedGroup != null)
             {
-                pnAccountInfo.Visible = true;
-                ucAccountInfo.LoadAccount();
-                ucAccountInfo.Editing = editing;
+                pnGroupInfo.Visible = true;
+                ucGroupInfo.LoadGroup();
+                ucGroupInfo.Editing = editing;
+                ucGranting.LoadPermissions();
+                ucGranting.Editing = editing;
             }
-            else pnAccountInfo.Visible = false;
+            else pnGroupInfo.Visible = false;
         }
 
         private void AdjustSelectedIndex()
         {
             var sel = -1;
-            var bo = AccountManagerBO.Instance;
-            var accounts = bo.Accounts;
-            for (int i = 0, c = accounts.Count; i < c; ++i)
+            var bo = PermissonGroupManagerBO.Instance;
+            var groups = bo.PermissionGroups;
+            for (int i = 0, c = groups.Count; i < c; ++i)
             {
-                if (accounts[i] == bo.SelectedAccount)
+                if (groups[i] == bo.SelectedGroup)
                 {
                     sel = i;
                     break;
                 }
             }
             selectedIndex = sel;
-            lbAccounts.SelectedIndex = sel;
+            lbGroups.SelectedIndex = sel;
         }
 
-        private void OnSelectedAccountIndex(object sender, MaterialListBoxItem selectedItem)
+        private void OnSelectedGroupIndex(object sender, MaterialListBoxItem selectedItem)
         {
-            var bo = AccountManagerBO.Instance;
+            var bo = PermissonGroupManagerBO.Instance;
             if (editing)
             {
                 bo.CancelEdit();
                 editing = false;
             }
-            selectedIndex = lbAccounts.SelectedIndex;
-            bo.SelectedAccount = (Account?)selectedItem.Tag;
+            selectedIndex = lbGroups.SelectedIndex;
+            var pg = (PermissionGroup?)selectedItem.Tag;
+            bo.SelectedGroup = pg;
+            GrantingPermissionsBO.Instance
+                .SelectedAccessable = pg;
             LoadActions();
             LoadInfo();
         }
 
         private void OnBack(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
+            var bo = PermissonGroupManagerBO.Instance;
             if (searching)
             {
                 tbSearchBox.Text = string.Empty;
                 bo.Searching = false;
                 searching = false;
-                LoadAccounts();
+                LoadGroups();
                 AdjustSelectedIndex();
             }
             else if (editing)
@@ -129,14 +141,20 @@
                 editing = false;
                 bo.CancelEdit();
                 if (selectedIndex >= 0)
-                    bo.SelectedAccount = bo.Accounts[selectedIndex];
+                {
+                    var pg = bo.PermissionGroups[selectedIndex];
+                    bo.SelectedGroup = pg;
+                    GrantingPermissionsBO.Instance
+                        .SelectedAccessable = pg;
+                }
             }
             else if (ClientSize.Width < 600 && selectedIndex >= 0)
             {
                 selectedIndex = -1;
-                lbAccounts.SelectedIndex = -1;
-                bo.SelectedAccount = null;
-
+                lbGroups.SelectedIndex = -1;
+                bo.SelectedGroup = null;
+                GrantingPermissionsBO.Instance
+                    .SelectedAccessable = null;
             }
             else return;
             LoadActions();
@@ -145,38 +163,39 @@
 
         private void OnSave(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            if ((selectedIndex >= 0 || bo.SelectedAccount != null)
-                && ucAccountInfo.CanSaveAccount())
+            var bo = PermissonGroupManagerBO.Instance;
+            if ((selectedIndex >= 0 || bo.SelectedGroup != null)
+                && ucGroupInfo.CanSaveGroup())
             {
-                ucAccountInfo.SaveAccount();
+                ucGroupInfo.SaveGroup();
+                ucGranting.SaveChange();
                 bo.AcceptEdit();
                 editing = false;
-                LoadAccounts();
+                LoadGroups();
                 AdjustSelectedIndex();
                 LoadActions();
             }
             else
             {
-                MessageBox.Show("Tên người dùng hoặc mật khẩu không hợp lệ!",
-                    "Lưu tài khoản", MessageBoxButtons.OK);
+                MessageBox.Show("Tên nhóm quyền không hợp lệ!",
+                    "Lưu nhóm quyền", MessageBoxButtons.OK);
             }
         }
 
         private void OnStartSearch(object sender, EventArgs e)
         {
-            AccountManagerBO.Instance.Searching = true;
+            PermissonGroupManagerBO.Instance.Searching = true;
             searching = true;
-            LoadAccounts();
+            LoadGroups();
             AdjustSelectedIndex();
             LoadActions();
         }
 
         private void OnLookingUp(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            bo.LookupAccount(tbSearchBox.Text);
-            LoadAccounts();
+            var bo = PermissonGroupManagerBO.Instance;
+            bo.LookupGroup(tbSearchBox.Text);
+            LoadGroups();
             AdjustSelectedIndex();
             LoadActions();
             LoadInfo();
@@ -184,7 +203,10 @@
 
         private void OnAdding(object sender, EventArgs e)
         {
-            AccountManagerBO.Instance.CreateAccount();
+            var bo = PermissonGroupManagerBO.Instance;
+            bo.CreateGroup();
+            GrantingPermissionsBO.Instance
+                .SelectedAccessable = bo.SelectedGroup;
             editing = true;
             LoadActions();
             LoadInfo();
@@ -192,8 +214,11 @@
 
         private void OnEditing(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            bo.SelectedAccount = bo.Accounts[selectedIndex];
+            var bo = PermissonGroupManagerBO.Instance;
+            var pg = bo.PermissionGroups[selectedIndex];
+            bo.SelectedGroup = pg;
+            GrantingPermissionsBO.Instance
+                .SelectedAccessable = pg;
             editing = true;
             LoadActions();
             LoadInfo();
@@ -201,13 +226,14 @@
 
         private void OnDeleting(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn xóa tài khoản này không?", "Xóa tài khoản",
+            if (MessageBox.Show("Bạn có muốn xóa nhóm quyền này không?", "Xóa nhóm quyền",
                 MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                AccountManagerBO.Instance.DeleteAccount();
+                PermissonGroupManagerBO.Instance.DeleteGroup();
+                GrantingPermissionsBO.Instance.SelectedAccessable = null;
                 selectedIndex = -1;
                 editing = false;
-                LoadAccounts();
+                LoadGroups();
                 LoadActions();
                 LoadInfo();
             }
@@ -288,27 +314,28 @@
             AdjustToolbar();
             Size s = ClientSize, scrollSize = new(0, 0);
             s.Height -= 56;
-            if (pnAccountInfo.VerticalScroll.Visible)
+            if (pnGroupInfo.VerticalScroll.Visible)
                 scrollSize.Width = SystemInformation.VerticalScrollBarWidth;
-            if (pnAccountInfo.HorizontalScroll.Visible)
+            if (pnGroupInfo.HorizontalScroll.Visible)
                 scrollSize.Height = SystemInformation.HorizontalScrollBarHeight;
             int width = s.Width;
             if (width >= 600)
             {
                 s.Width = (int)(width * 0.4);
-                lbAccounts.ClientSize = s;
-                pnAccountInfo.Location = new(s.Width, 0);
+                lbGroups.ClientSize = s;
+                pnGroupInfo.Location = new(s.Width, 0);
                 s.Width = width - s.Width;
             }
             else
             {
-                lbAccounts.ClientSize = s;
-                pnAccountInfo.Location = new(0, 0);
+                lbGroups.ClientSize = s;
+                pnGroupInfo.Location = new(0, 0);
             }
-            pnAccountInfo.ClientSize = s;
+            pnGroupInfo.ClientSize = s;
             s -= scrollSize;
-            ucAccountInfo.ClientSize = new(s.Width, ucAccountInfo.ClientSize.Height);
-            pnAccountInfo.AutoScrollMinSize = s;
+            ucGroupInfo.ClientSize = new(s.Width, ucGroupInfo.ClientSize.Height);
+            ucGranting.ClientSize = new(s.Width, 0);
+            pnGroupInfo.AutoScrollMinSize = s;
         }
     }
 }

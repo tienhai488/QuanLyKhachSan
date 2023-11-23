@@ -37,22 +37,25 @@
 
         public bool SignIn()
         {
+            if (!IsValidUserName || !IsValidPassword) return false;
+            Account? account = null!;
+            using (var dao = new AccountEFCoreDAO())
+            {
+                account = dao.SignIn(UserName!, Password!);
+                if (account == null || account.Disabled) return false;
+            }
+
+            if (account.Uid == 0)
+            {
+                accessable = account;
+                return true;
+            }
+
             using (var dao = new StaffEFCoreDAO())
             {
-                var account = (from a in dao.Set<Account>()
-                               where a.UserName == UserName
-                               && a.Password == Password
-                               select a).FirstOrDefault();
-                if (account == null || account.Disabled) return false;
-                if (account.Uid != 0)
-                {
-                    var staff = (from s in dao.Set<Staff>()
-                                 where s.AccountId == account.Uid
-                                 select s).FirstOrDefault();
-                    if (staff == null) return false;
-                    else accessable = staff;
-                }
-                else accessable = account;
+                var staff = dao.GetStaffWithAccountId(account.Uid);
+                if (staff == null) return false;
+                else accessable = staff;
                 return true;
             }
         }
