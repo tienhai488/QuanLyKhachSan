@@ -50,9 +50,9 @@ namespace HotelManagement.GUI
         private void materialRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             clearRoomView();
-            List<Customer> list = new List<Customer>();
+            List<Customer2> list = new List<Customer2>();
             list = customerBUS.getAll();
-            foreach (Customer customer in list)
+            foreach (Customer2 customer in list)
             {
                 addRoomView(customer.Fullname);
             }

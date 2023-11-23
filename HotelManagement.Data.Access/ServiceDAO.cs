@@ -1,4 +1,5 @@
-﻿using HotelManagement.Core;
+
+using HotelManagement.Core;
 using HotelManagement.DTO;
 using HotelManagement.Models;
 using MySql.Data.MySqlClient;
@@ -11,6 +12,14 @@ using System.Threading.Tasks;
 
 namespace HotelManagement.DAO
 {
+    using HotelManagement.Data.Access.Core;
+    using HotelManagement.DTO;
+
+    using MySql.Data.MySqlClient;
+
+    using System.Collections.Generic;
+    using System.Data;
+
     public class ServiceDAO
     {
         private MySqlConnection conn;
@@ -18,7 +27,7 @@ namespace HotelManagement.DAO
         {
             conn = BaseConnection.getConnection();
         }
-        public List<Service> getAllService()
+        public List<Service2> getAllService()
         {
             conn.Open();
             string query = "select service.*,service_type.Name as ServiceTypeName from service,service_type where service.ServiceTypeID = service_type.ID ";
@@ -26,7 +35,7 @@ namespace HotelManagement.DAO
             cmd.CommandText = query;
             cmd.Connection = conn;
 
-            List<Service> list = new List<Service>();
+            List<Service2> list = new List<Service2>();
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
@@ -38,7 +47,7 @@ namespace HotelManagement.DAO
                     string unit = reader.GetString("Unit");
                     string serviceTypeId = reader.GetString("ServiceTypeID");
                     string serviceTypeName = reader.GetString("ServiceTypeName");
-                    list.Add(new Service(id, name,unitPrice,unit,serviceTypeId,serviceTypeName));
+                    list.Add(new Service2(id, name,unitPrice,unit,serviceTypeId,serviceTypeName));
                 }
             }
 
@@ -46,7 +55,7 @@ namespace HotelManagement.DAO
 
             return list;
         }
-        public int addService(Service service)
+        public int addService(Service2 service)
         {
             conn.Open();
             string query = "insert into service (ID,Name,UnitPrice,Unit,ServiceTypeID) values " +
@@ -66,7 +75,7 @@ namespace HotelManagement.DAO
             return result;
         }
 
-        public int updateService(Service service)
+        public int updateService(Service2 service)
         {
             conn.Open();
             string query = "update service set " +
@@ -121,7 +130,7 @@ namespace HotelManagement.DAO
             return table.Rows.Count;
         }
 
-        public List<ServiceType> getAllType()
+        public List<ServiceType2> getAllType()
         {
             conn.Open();
             string query = "select * from service_type ";
@@ -129,7 +138,7 @@ namespace HotelManagement.DAO
             cmd.CommandText = query;
             cmd.Connection = conn;
 
-            List<ServiceType> list = new List<ServiceType>();
+            List<ServiceType2> list = new List<ServiceType2>();
             var reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
@@ -137,7 +146,7 @@ namespace HotelManagement.DAO
                 {
                     string id = reader.GetString("ID");
                     string name = reader.GetString("Name");
-                    list.Add(new ServiceType(id, name));
+                    list.Add(new ServiceType2(id, name));
                 }
             }
 
@@ -145,7 +154,7 @@ namespace HotelManagement.DAO
 
             return list;
         }
-        public int addType(ServiceType serviceType)
+        public int addType(ServiceType2 serviceType)
         {
             conn.Open();
             string query = "insert into service_type (ID,Name) values (@id,@name)";
@@ -161,7 +170,7 @@ namespace HotelManagement.DAO
             return result;
         }
 
-        public int updateType(ServiceType serviceType)
+        public int updateType(ServiceType2 serviceType)
         {
             conn.Open();
             string query = "update service_type set Name = @name  where ID = @id";

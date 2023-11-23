@@ -34,13 +34,13 @@ namespace HotelManagement.GUI
         #region method
         public void initCbxServiceType()
         {
-            List<ServiceType> list = serviceBUS.getAllType();
+            List<ServiceType2> list = serviceBUS.getAllType();
             cbxServiceType.DataSource = null;
             cbxServiceType.DataSource = list;
             cbxServiceType.DisplayMember = "name";
             cbxServiceType.ValueMember = "id";
         }
-        public void fillData(Service service, string type)
+        public void fillData(Service2 service, string type)
         {
             txtId.Text = service.Id;
             txtName.Text = service.Name;
@@ -67,7 +67,7 @@ namespace HotelManagement.GUI
         {
             if (serviceBUS.validateService(name, unit, unitPrice))
             {
-                Service service = new Service(id, name, Double.Parse(unitPrice), unit, serviceTypeId, "");
+                Service2 service = new Service2(id, name, Double.Parse(unitPrice), unit, serviceTypeId, "");
                 int result = serviceBUS.addService(service);
                 if (result > 0)
                 {
@@ -86,7 +86,7 @@ namespace HotelManagement.GUI
         {
             if (serviceBUS.validateService(name, unit, unitPrice))
             {
-                Service service = new Service(id, name, Double.Parse(unitPrice), unit, serviceTypeId, "");
+                Service2 service = new Service2(id, name, Double.Parse(unitPrice), unit, serviceTypeId, "");
                 int result = serviceBUS.updateService(service);
                 if (result > 0)
                 {

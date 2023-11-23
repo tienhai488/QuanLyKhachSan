@@ -39,7 +39,7 @@ namespace HotelManagement.GUI
             cbxGender.Items.Add("Nữ");
             cbxGender.Items.Add("Nam");
         }
-        public void fillData(Customer customer, string type)
+        public void fillData(Customer2 customer, string type)
         {
             if (customer.Birthday != "")
             {
@@ -57,7 +57,7 @@ namespace HotelManagement.GUI
             isEdit = type == "Lưu thông tin" ? true : false;
         }
 
-        public void addCustomer(Customer customer)
+        public void addCustomer(Customer2 customer)
         {
 
             if (customerBUS.validate(customer))
@@ -76,7 +76,7 @@ namespace HotelManagement.GUI
             }
         }
 
-        public void updateCustomer(Customer customer)
+        public void updateCustomer(Customer2 customer)
         {
             if (customerBUS.validate(customer))
             {
@@ -108,7 +108,7 @@ namespace HotelManagement.GUI
             string phone = txtPhone.Text;
             string cccd = txtCCCD.Text;
 
-            Customer customer = new Customer(id, fullname, gender, birthday, address, cccd, phone);
+            Customer2 customer = new Customer2(id, fullname, gender, birthday, address, cccd, phone);
             if (isEdit)
             {
                 updateCustomer(customer);

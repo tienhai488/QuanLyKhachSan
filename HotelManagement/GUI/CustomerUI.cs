@@ -37,7 +37,7 @@ namespace HotelManagement.GUI
         {
             dataTable.Rows.Clear();
             dataGridView1.DataSource = null;
-            List<Customer> list = new List<Customer>();
+            List<Customer2> list = new List<Customer2>();
             list = customerBUS.getAll();
             list.ForEach(item => { dataTable.Rows.Add(item.Id, item.Fullname, item.Gender == 1 ? "Nam" : "Nữ", item.Birthday, item.CitizenId, item.Phone, item.Address); });
 
@@ -61,7 +61,7 @@ namespace HotelManagement.GUI
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
             CustomerInfoUI customerInfoUI = new CustomerInfoUI(this);
-            Customer customer = new Customer();
+            Customer2 customer = new Customer2();
             string id = (customerBUS.getLength() + 1).ToString("D3");
             customer.Id = "CUS" + id;
             customerInfoUI.fillData(customer, "Thêm khách hàng");
@@ -91,7 +91,7 @@ namespace HotelManagement.GUI
                     string address = selectedRow.Cells[6].Value.ToString();
 
                     CustomerInfoUI customerInfoUI = new CustomerInfoUI(this);
-                    Customer customer = new Customer(id, fullname, gender, birthday, address, cccd, phone);
+                    Customer2 customer = new Customer2(id, fullname, gender, birthday, address, cccd, phone);
                     customerInfoUI.fillData(customer, "Lưu thông tin");
                     customerInfoUI.Show();
                 }

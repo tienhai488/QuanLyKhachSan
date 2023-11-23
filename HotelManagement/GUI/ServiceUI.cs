@@ -43,7 +43,7 @@ namespace HotelManagement.GUI
             serviceTable.Rows.Clear();
             dtgvService.DataSource = null;
 
-            List<Service> list = new List<Service>();
+            List<Service2> list = new List<Service2>();
             list = serviceBUS.getAllService();
             list.ForEach(item => { serviceTable.Rows.Add(item.Id, item.Name, item.Service_type_name, item.Unit_price, item.Unit); });
 
@@ -56,7 +56,7 @@ namespace HotelManagement.GUI
         {
             typeTable.Rows.Clear();
             dtgvType.DataSource = null;
-            List<ServiceType> list = new List<ServiceType>();
+            List<ServiceType2> list = new List<ServiceType2>();
             list = serviceBUS.getAllType();
             list.ForEach(item => { typeTable.Rows.Add(item.Id, item.Name); });
 
@@ -86,7 +86,7 @@ namespace HotelManagement.GUI
             int index = serviceBUS.getLengthService() + 1;
             string id = "SV" + index.ToString("D3");
             ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
-            Service service = new Service();
+            Service2 service = new Service2();
             service.Id = id;
             serviceInfoUI.fillData(service, "Thêm dịch vụ");
             serviceInfoUI.Show();
@@ -111,7 +111,7 @@ dtgvService.SelectedCells.Count;
                     string serviceTypeName = selectedRow.Cells[2].Value.ToString();
 
                     ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
-                    Service service = new Service(id, name, unitPrice, unit, "", serviceTypeName);
+                    Service2 service = new Service2(id, name, unitPrice, unit, "", serviceTypeName);
 
                     serviceInfoUI.fillData(service, "Lưu thông tin");
                     serviceInfoUI.Show();
@@ -172,7 +172,7 @@ dtgvService.SelectedCells.Count;
             ServiceTypeInfoUI ui = new ServiceTypeInfoUI(this);
             int index = serviceBUS.getLengthType() + 1;
             string id = "ST" + index.ToString("D3");
-            ui.fillData(new ServiceType(id, ""), "Thêm loại");
+            ui.fillData(new ServiceType2(id, ""), "Thêm loại");
             ui.Show();
         }
 
@@ -194,7 +194,7 @@ dtgvType.SelectedCells.Count;
                     string name = selectedRow.Cells[1].Value.ToString();
 
                     ServiceTypeInfoUI serviceTypeInfoUI = new ServiceTypeInfoUI(this);
-                    ServiceType serviceType = new ServiceType(id, name);
+                    ServiceType2 serviceType = new ServiceType2(id, name);
                     serviceTypeInfoUI.fillData(serviceType, "Lưu thông tin");
                     serviceTypeInfoUI.Show();
                 }
