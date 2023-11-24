@@ -499,12 +499,12 @@
             materialTextBox1.Depth = 0;
             materialTextBox1.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox1.LeadingIcon = null;
-            materialTextBox1.Location = new Point(0, 14);
+            materialTextBox1.Location = new Point(29, 14);
             materialTextBox1.MaxLength = 50;
             materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox1.Multiline = false;
             materialTextBox1.Name = "materialTextBox1";
-            materialTextBox1.Size = new Size(585, 50);
+            materialTextBox1.Size = new Size(530, 50);
             materialTextBox1.TabIndex = 9;
             materialTextBox1.Text = "";
             materialTextBox1.TrailingIcon = null;
@@ -521,7 +521,8 @@
             // 
             // materialButton1
             // 
-            materialButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            materialButton1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            materialButton1.AutoSize = false;
             materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             materialButton1.Depth = 0;
@@ -533,7 +534,7 @@
             materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton1.Name = "materialButton1";
             materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(78, 36);
+            materialButton1.Size = new Size(168, 36);
             materialButton1.TabIndex = 8;
             materialButton1.Text = "SEARCH";
             materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -564,7 +565,6 @@
             panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
             panel8.ResumeLayout(false);
-            panel8.PerformLayout();
             ResumeLayout(false);
         }
 

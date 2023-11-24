@@ -28,5 +28,11 @@ namespace HotelManagement.GUI
             Accent.Amber200,   // Warm accent color for highlights
             TextShade.WHITE);    // Text color
         }
+
+        private void materialButton1_Click(object sender, EventArgs e)
+        {
+            UpdateService updateService = new UpdateService();
+            updateService.Show();
+        }
     }
 }

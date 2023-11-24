@@ -86,6 +86,7 @@
             dataGridViewTextBoxColumn15 = new DataGridViewTextBoxColumn();
             materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             panel10 = new Panel();
+            materialButton3 = new MaterialSkin.Controls.MaterialButton();
             materialComboBox2 = new MaterialSkin.Controls.MaterialComboBox();
             materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
@@ -99,7 +100,6 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel8 = new TableLayoutPanel();
             panel12 = new Panel();
-            materialButton3 = new MaterialSkin.Controls.MaterialButton();
             materialButton2 = new MaterialSkin.Controls.MaterialButton();
             panel6 = new Panel();
             materialButton1 = new MaterialSkin.Controls.MaterialButton();
@@ -708,8 +708,10 @@
             // dataGridView6
             // 
             dataGridView6.AllowUserToAddRows = false;
+            dataGridView6.AllowUserToDeleteRows = false;
             dataGridView6.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView6.BackgroundColor = SystemColors.Control;
+            dataGridView6.BackgroundColor = Color.White;
+            dataGridView6.BorderStyle = BorderStyle.None;
             dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView6.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14, dataGridViewTextBoxColumn15 });
             dataGridView6.Dock = DockStyle.Fill;
@@ -754,6 +756,7 @@
             // 
             // panel10
             // 
+            panel10.Controls.Add(materialButton3);
             panel10.Controls.Add(materialComboBox2);
             panel10.Controls.Add(materialLabel20);
             panel10.Controls.Add(materialComboBox1);
@@ -765,6 +768,26 @@
             panel10.Padding = new Padding(15);
             panel10.Size = new Size(352, 461);
             panel10.TabIndex = 20;
+            // 
+            // materialButton3
+            // 
+            materialButton3.AutoSize = false;
+            materialButton3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButton3.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton3.Depth = 0;
+            materialButton3.HighEmphasis = true;
+            materialButton3.Icon = null;
+            materialButton3.Location = new Point(19, 216);
+            materialButton3.Margin = new Padding(4, 6, 4, 6);
+            materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton3.Name = "materialButton3";
+            materialButton3.NoAccentTextColor = Color.Empty;
+            materialButton3.Size = new Size(169, 36);
+            materialButton3.TabIndex = 12;
+            materialButton3.Text = "UPDATE ROOM STATUS";
+            materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton3.UseAccentColor = false;
+            materialButton3.UseVisualStyleBackColor = true;
             // 
             // materialComboBox2
             // 
@@ -798,9 +821,9 @@
             materialLabel20.Location = new Point(18, 118);
             materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel20.Name = "materialLabel20";
-            materialLabel20.Size = new Size(72, 24);
+            materialLabel20.Size = new Size(144, 24);
             materialLabel20.TabIndex = 24;
-            materialLabel20.Text = "PHONE:";
+            materialLabel20.Text = "CLEANED or not";
             // 
             // materialComboBox1
             // 
@@ -947,7 +970,6 @@
             // 
             // panel12
             // 
-            panel12.Controls.Add(materialButton3);
             panel12.Controls.Add(materialButton2);
             panel12.Dock = DockStyle.Fill;
             panel12.Location = new Point(351, 0);
@@ -956,27 +978,6 @@
             panel12.Padding = new Padding(15);
             panel12.Size = new Size(352, 48);
             panel12.TabIndex = 1;
-            // 
-            // materialButton3
-            // 
-            materialButton3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            materialButton3.AutoSize = false;
-            materialButton3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton3.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton3.Depth = 0;
-            materialButton3.HighEmphasis = true;
-            materialButton3.Icon = null;
-            materialButton3.Location = new Point(164, 6);
-            materialButton3.Margin = new Padding(4, 6, 4, 6);
-            materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton3.Name = "materialButton3";
-            materialButton3.NoAccentTextColor = Color.Empty;
-            materialButton3.Size = new Size(169, 36);
-            materialButton3.TabIndex = 12;
-            materialButton3.Text = "UPDATE ROOM STATUS";
-            materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton3.UseAccentColor = false;
-            materialButton3.UseVisualStyleBackColor = true;
             // 
             // materialButton2
             // 
@@ -1011,14 +1012,13 @@
             // 
             // materialButton1
             // 
-            materialButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             materialButton1.AutoSize = false;
             materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
             materialButton1.Depth = 0;
             materialButton1.HighEmphasis = true;
             materialButton1.Icon = null;
-            materialButton1.Location = new Point(163, 6);
+            materialButton1.Location = new Point(19, 6);
             materialButton1.Margin = new Padding(4, 6, 4, 6);
             materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton1.Name = "materialButton1";
@@ -1029,6 +1029,7 @@
             materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButton1.UseAccentColor = false;
             materialButton1.UseVisualStyleBackColor = true;
+            materialButton1.Click += materialButton1_Click;
             // 
             // panel13
             // 
@@ -1052,7 +1053,7 @@
             materialButton6.Depth = 0;
             materialButton6.HighEmphasis = true;
             materialButton6.Icon = null;
-            materialButton6.Location = new Point(161, 6);
+            materialButton6.Location = new Point(169, 6);
             materialButton6.Margin = new Padding(4, 6, 4, 6);
             materialButton6.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton6.Name = "materialButton6";
@@ -1073,7 +1074,7 @@
             materialButton5.Depth = 0;
             materialButton5.HighEmphasis = true;
             materialButton5.Icon = null;
-            materialButton5.Location = new Point(338, 6);
+            materialButton5.Location = new Point(346, 6);
             materialButton5.Margin = new Padding(4, 6, 4, 6);
             materialButton5.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton5.Name = "materialButton5";
@@ -1094,7 +1095,7 @@
             materialButton4.Depth = 0;
             materialButton4.HighEmphasis = true;
             materialButton4.Icon = null;
-            materialButton4.Location = new Point(515, 6);
+            materialButton4.Location = new Point(523, 6);
             materialButton4.Margin = new Padding(4, 6, 4, 6);
             materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton4.Name = "materialButton4";

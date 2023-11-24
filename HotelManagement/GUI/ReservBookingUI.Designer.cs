@@ -68,9 +68,13 @@
             panel3 = new Panel();
             dateTimePicker2 = new DateTimePicker();
             materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
+            tableLayoutPanel5 = new TableLayoutPanel();
             panel6 = new Panel();
             materialButton3 = new MaterialSkin.Controls.MaterialButton();
             materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            panel8 = new Panel();
+            materialButton4 = new MaterialSkin.Controls.MaterialButton();
+            materialButton5 = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel1.SuspendLayout();
@@ -82,7 +86,9 @@
             panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel3.SuspendLayout();
+            tableLayoutPanel5.SuspendLayout();
             panel6.SuspendLayout();
+            panel8.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel3
@@ -106,7 +112,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 90F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 5F));
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 1);
-            tableLayoutPanel1.Controls.Add(panel6, 1, 2);
+            tableLayoutPanel1.Controls.Add(tableLayoutPanel5, 1, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 64);
             tableLayoutPanel1.Margin = new Padding(0);
@@ -319,7 +325,7 @@
             materialButton1.Depth = 0;
             materialButton1.HighEmphasis = true;
             materialButton1.Icon = null;
-            materialButton1.Location = new Point(145, 429);
+            materialButton1.Location = new Point(144, 429);
             materialButton1.Margin = new Padding(4, 6, 4, 6);
             materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton1.Name = "materialButton1";
@@ -406,7 +412,7 @@
             materialRadioButton2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             materialRadioButton2.AutoSize = true;
             materialRadioButton2.Depth = 0;
-            materialRadioButton2.Location = new Point(212, 215);
+            materialRadioButton2.Location = new Point(213, 215);
             materialRadioButton2.Margin = new Padding(0);
             materialRadioButton2.MouseLocation = new Point(-1, -1);
             materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
@@ -631,15 +637,33 @@
             materialLabel9.TabIndex = 16;
             materialLabel9.Text = "TO:";
             // 
+            // tableLayoutPanel5
+            // 
+            tableLayoutPanel5.ColumnCount = 3;
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
+            tableLayoutPanel5.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 35F));
+            tableLayoutPanel5.Controls.Add(panel6, 2, 0);
+            tableLayoutPanel5.Controls.Add(panel8, 1, 0);
+            tableLayoutPanel5.Dock = DockStyle.Fill;
+            tableLayoutPanel5.Location = new Point(61, 651);
+            tableLayoutPanel5.Margin = new Padding(0);
+            tableLayoutPanel5.Name = "tableLayoutPanel5";
+            tableLayoutPanel5.RowCount = 1;
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel5.Size = new Size(1108, 50);
+            tableLayoutPanel5.TabIndex = 2;
+            // 
             // panel6
             // 
             panel6.Controls.Add(materialButton3);
             panel6.Controls.Add(materialButton2);
             panel6.Dock = DockStyle.Fill;
-            panel6.Location = new Point(61, 651);
+            panel6.Location = new Point(719, 0);
             panel6.Margin = new Padding(0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(1108, 50);
+            panel6.Size = new Size(389, 50);
             panel6.TabIndex = 1;
             // 
             // materialButton3
@@ -651,7 +675,7 @@
             materialButton3.Depth = 0;
             materialButton3.HighEmphasis = true;
             materialButton3.Icon = null;
-            materialButton3.Location = new Point(932, 6);
+            materialButton3.Location = new Point(213, 6);
             materialButton3.Margin = new Padding(4, 6, 4, 6);
             materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton3.Name = "materialButton3";
@@ -673,7 +697,7 @@
             materialButton2.Depth = 0;
             materialButton2.HighEmphasis = true;
             materialButton2.Icon = null;
-            materialButton2.Location = new Point(766, 6);
+            materialButton2.Location = new Point(47, 6);
             materialButton2.Margin = new Padding(4, 6, 4, 6);
             materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton2.Name = "materialButton2";
@@ -684,6 +708,59 @@
             materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             materialButton2.UseAccentColor = false;
             materialButton2.UseVisualStyleBackColor = true;
+            // 
+            // panel8
+            // 
+            panel8.Controls.Add(materialButton4);
+            panel8.Controls.Add(materialButton5);
+            panel8.Dock = DockStyle.Fill;
+            panel8.Location = new Point(332, 0);
+            panel8.Margin = new Padding(0);
+            panel8.Name = "panel8";
+            panel8.Size = new Size(387, 50);
+            panel8.TabIndex = 2;
+            // 
+            // materialButton4
+            // 
+            materialButton4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            materialButton4.AutoSize = false;
+            materialButton4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButton4.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton4.Depth = 0;
+            materialButton4.HighEmphasis = true;
+            materialButton4.Icon = null;
+            materialButton4.Location = new Point(400, 6);
+            materialButton4.Margin = new Padding(4, 6, 4, 6);
+            materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton4.Name = "materialButton4";
+            materialButton4.NoAccentTextColor = Color.Empty;
+            materialButton4.Size = new Size(158, 36);
+            materialButton4.TabIndex = 1;
+            materialButton4.Text = "CANCEL";
+            materialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            materialButton4.UseAccentColor = true;
+            materialButton4.UseVisualStyleBackColor = true;
+            // 
+            // materialButton5
+            // 
+            materialButton5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            materialButton5.AutoSize = false;
+            materialButton5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            materialButton5.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton5.Depth = 0;
+            materialButton5.HighEmphasis = true;
+            materialButton5.Icon = null;
+            materialButton5.Location = new Point(212, 6);
+            materialButton5.Margin = new Padding(4, 6, 4, 6);
+            materialButton5.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton5.Name = "materialButton5";
+            materialButton5.NoAccentTextColor = Color.Empty;
+            materialButton5.Size = new Size(158, 36);
+            materialButton5.TabIndex = 0;
+            materialButton5.Text = "SELECT ROOM";
+            materialButton5.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton5.UseAccentColor = false;
+            materialButton5.UseVisualStyleBackColor = true;
             // 
             // ReservBookingUI
             // 
@@ -711,7 +788,9 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            tableLayoutPanel5.ResumeLayout(false);
             panel6.ResumeLayout(false);
+            panel8.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -759,5 +838,9 @@
         private MaterialSkin.Controls.MaterialTextBox materialTextBox2;
         private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
+        private TableLayoutPanel tableLayoutPanel5;
+        private Panel panel8;
+        private MaterialSkin.Controls.MaterialButton materialButton4;
+        private MaterialSkin.Controls.MaterialButton materialButton5;
     }
 }
