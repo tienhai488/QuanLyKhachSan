@@ -11,35 +11,35 @@
     using System.Threading.Tasks;
     using System.Numerics;
 
-    public class PermissonGroupManagerBO
+    public class RoleManagerBO
     {
         private static object syncKey = new();
-        private static PermissonGroupManagerBO? bo;
-        public static PermissonGroupManagerBO Instance
+        private static RoleManagerBO? bo;
+        public static RoleManagerBO Instance
         {
             get
             {
                 if (bo == null)
                     lock (syncKey)
                     {
-                        bo ??= new PermissonGroupManagerBO();
+                        bo ??= new RoleManagerBO();
                     }
                 return bo;
             }
         }
 
-        private PermissionGroup? selectedGroup;
-        public PermissionGroup? SelectedGroup
+        private Role? selectedRole;
+        public Role? SelectedRole
         {
-            get => selectedGroup;
+            get => selectedRole;
             set
             {
-                selectedGroup = value;
+                selectedRole = value;
                 if (value != null)
                 {
                     using (var dao = new StaffEFCoreDAO())
                     {
-                        canDelete = !dao.HasStaffWithPermissionGroup(value.Id);
+                        canDelete = !dao.HasStaffWithRole(value.Id);
                     }
                 }
                 else canDelete = false;
@@ -47,56 +47,56 @@
         }
 
         private BigInteger usableUid;
-        private IList<PermissionGroup>? groups, lookedUpGroups;
-        public IList<PermissionGroup> PermissionGroups
+        private IList<Role>? roles, lookedUpRoles;
+        public IList<Role> Roles
         {
             get
             {
-                if (lookedUpGroups != null)
-                    return lookedUpGroups;
+                if (lookedUpRoles != null)
+                    return lookedUpRoles;
 
-                if (groups == null)
+                if (roles == null)
                     lock (syncKey)
                     {
-                        if (groups == null)
-                            using (var dao = new PermissionGroupEFCoreDAO())
+                        if (roles == null)
+                            using (var dao = new RoleEFCoreDAO())
                             {
-                                groups = dao.PermissionGroups.ToList();
+                                roles = dao.Roles.ToList();
                                 usableUid = dao.UsableId;
                             }
                     }
-                return groups;
+                return roles;
             }
         }
 
         public bool Searching
         {
-            get => lookedUpGroups != null;
+            get => lookedUpRoles != null;
             set
             {
-                if (lookedUpGroups != null == value) return;
-                lookedUpGroups = value ? new List<PermissionGroup>(PermissionGroups) : null;
+                if (lookedUpRoles != null == value) return;
+                lookedUpRoles = value ? new List<Role>(Roles) : null;
             }
         }
 
         private bool creating;
 
-        public void CreateGroup()
+        public void CreateRole()
         {
             if (Searching) return;
-            SelectedGroup = new(usableUid);
+            SelectedRole = new(usableUid);
             creating = true;
         }
 
-        public void LookupGroup(string text)
+        public void LookupRole(string text)
         {
             if (!Searching) return;
-            var lookedUp = lookedUpGroups;
+            var lookedUp = lookedUpRoles;
             if (lookedUp == null) return;
             lookedUp.Clear();
-            var groups = this.groups;
-            if (groups == null) return;
-            foreach (var item in groups)
+            var roles = this.roles;
+            if (roles == null) return;
+            foreach (var item in roles)
             {
                 if (item.Name.Contains(text, StringComparison.CurrentCultureIgnoreCase))
                     lookedUp.Add(item);
@@ -106,23 +106,23 @@
         private bool canDelete;
         public bool CanDelete => canDelete;
 
-        public void DeleteGroup()
+        public void DeleteRole()
         {
             if (Searching) return;
-            if (SelectedGroup == null) return;
+            if (SelectedRole == null) return;
             lock (syncKey)
             {
-                var pg = SelectedGroup;
+                var pg = SelectedRole;
                 if (canDelete)
                 {
-                    using (var dao = new PermissionGroupEFCoreDAO())
+                    using (var dao = new RoleEFCoreDAO())
                     {
                         dao.Remove(pg);
                         dao.SaveChanges();
-                        groups = dao.PermissionGroups.ToList();
+                        roles = dao.Roles.ToList();
                         usableUid = dao.UsableId;
                     }
-                    SelectedGroup = null;
+                    SelectedRole = null;
                 }
             }
         }
@@ -130,22 +130,22 @@
         public void AcceptEdit()
         {
             if (Searching) return;
-            if (SelectedGroup == null) return;
+            if (SelectedRole == null) return;
             lock (syncKey)
             {
-                var group = SelectedGroup;
-                if (group != null)
+                var role = SelectedRole;
+                if (role != null)
                 {
-                    using (var dao = new PermissionGroupEFCoreDAO())
+                    using (var dao = new RoleEFCoreDAO())
                     {
                         if (creating)
                         {
-                            dao.Add(group);
+                            dao.Add(role);
                             creating = false;
                         }
-                        else dao.Update(group);
+                        else dao.Update(role);
                         dao.SaveChanges();
-                        groups = dao.PermissionGroups.ToList();
+                        roles = dao.Roles.ToList();
                         usableUid = dao.UsableId;
                     }
                 }
@@ -157,13 +157,13 @@
             if (Searching) return;
             if (creating)
             {
-                SelectedGroup = null;
+                SelectedRole = null;
                 creating = false;
             }
         }
 
-        public bool IsValidName(string? name) => name.IsValidName();
+        public bool IsValidName(string? name) => !string.IsNullOrWhiteSpace(name);
 
-        private PermissonGroupManagerBO() { }
+        private RoleManagerBO() { }
     }
 }

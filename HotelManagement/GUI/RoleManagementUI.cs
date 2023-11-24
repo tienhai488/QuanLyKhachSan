@@ -7,20 +7,14 @@
     using MaterialSkin;
 
     using System;
-    using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Data;
     using System.Drawing;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
     using System.Windows.Forms;
 
-    public partial class PermissionGroupManagerUI : Form
+    public partial class RoleManagementUI : Form
     {
         private bool editing, searching;
         private int selectedIndex;
-        public PermissionGroupManagerUI()
+        public RoleManagementUI()
         {
             InitializeComponent();
             MinimumSize = new Size(360 + SystemInformation.VerticalScrollBarWidth, 360 + SystemInformation.HorizontalScrollBarHeight);
@@ -31,18 +25,18 @@
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            LoadGroups();
+            LoadRoles();
             LoadActions();
             LoadInfo();
             OnResize(EventArgs.Empty);
         }
 
-        private void LoadGroups()
+        private void LoadRoles()
         {
-            lbGroups.Clear();
-            foreach (var group in PermissionGroupManagerBO.Instance.PermissionGroups)
+            lbRoles.Clear();
+            foreach (var group in RoleManagerBO.Instance.Roles)
             {
-                lbGroups.AddItem(new MaterialListBoxItem()
+                lbRoles.AddItem(new MaterialListBoxItem()
                 {
                     Tag = group,
                     Text = group.Name,
@@ -61,14 +55,14 @@
             {
                 if (!editing)
                 {
-                    bool write = LoginBO.IsPermissionGranted(Permission.WritePermissionGroup);
+                    bool write = LoginBO.IsPermissionGranted(Permission.WriteRole);
                     if (selectedIndex >= 0)
                     {
                         dbtnAdd.Available = write
                             && ClientSize.Width >= 600;
                         dbtnEdit.Available = write;
                         dbtnDelete.Available = write
-                            && PermissionGroupManagerBO.Instance.CanDelete;
+                            && RoleManagerBO.Instance.CanDelete;
                     }
                     else dbtnAdd.Available = write;
                 }
@@ -80,60 +74,56 @@
         private void LoadInfo()
         {
             if (selectedIndex >= 0
-                || PermissionGroupManagerBO.Instance.SelectedGroup != null)
+                || RoleManagerBO.Instance.SelectedRole != null)
             {
-                pnGroupInfo.Visible = true;
-                ucGroupInfo.LoadGroup();
-                ucGroupInfo.Editing = editing;
-                ucGranting.LoadPermissions();
-                ucGranting.Editing = editing;
+                pnRoleInfo.Visible = true;
+                ucRoleInfo.LoadRole();
+                ucRoleInfo.Editing = editing;
             }
-            else pnGroupInfo.Visible = false;
+            else pnRoleInfo.Visible = false;
         }
 
         private void AdjustSelectedIndex()
         {
             var sel = -1;
-            var bo = PermissionGroupManagerBO.Instance;
-            var groups = bo.PermissionGroups;
+            var bo = RoleManagerBO.Instance;
+            var groups = bo.Roles;
             for (int i = 0, c = groups.Count; i < c; ++i)
             {
-                if (groups[i] == bo.SelectedGroup)
+                if (groups[i] == bo.SelectedRole)
                 {
                     sel = i;
                     break;
                 }
             }
             selectedIndex = sel;
-            lbGroups.SelectedIndex = sel;
+            lbRoles.SelectedIndex = sel;
         }
 
-        private void OnSelectedGroupIndex(object sender, MaterialListBoxItem selectedItem)
+        private void OnSelectedRoleIndex(object sender, MaterialListBoxItem selectedItem)
         {
-            var bo = PermissionGroupManagerBO.Instance;
+            var bo = RoleManagerBO.Instance;
             if (editing)
             {
                 bo.CancelEdit();
                 editing = false;
             }
-            selectedIndex = lbGroups.SelectedIndex;
-            var pg = (PermissionGroup?)selectedItem.Tag;
-            bo.SelectedGroup = pg;
-            GrantingPermissionsBO.Instance
-                .SelectedAccessable = pg;
+            selectedIndex = lbRoles.SelectedIndex;
+            var ro = (Role?)selectedItem.Tag;
+            bo.SelectedRole = ro;
             LoadActions();
             LoadInfo();
         }
 
         private void OnBack(object sender, EventArgs e)
         {
-            var bo = PermissionGroupManagerBO.Instance;
+            var bo = RoleManagerBO.Instance;
             if (searching)
             {
                 tbSearchBox.Text = string.Empty;
                 bo.Searching = false;
                 searching = false;
-                LoadGroups();
+                LoadRoles();
                 AdjustSelectedIndex();
             }
             else if (editing)
@@ -142,19 +132,15 @@
                 bo.CancelEdit();
                 if (selectedIndex >= 0)
                 {
-                    var pg = bo.PermissionGroups[selectedIndex];
-                    bo.SelectedGroup = pg;
-                    GrantingPermissionsBO.Instance
-                        .SelectedAccessable = pg;
+                    var pg = bo.Roles[selectedIndex];
+                    bo.SelectedRole = pg;
                 }
             }
             else if (ClientSize.Width < 600 && selectedIndex >= 0)
             {
                 selectedIndex = -1;
-                lbGroups.SelectedIndex = -1;
-                bo.SelectedGroup = null;
-                GrantingPermissionsBO.Instance
-                    .SelectedAccessable = null;
+                lbRoles.SelectedIndex = -1;
+                bo.SelectedRole = null;
             }
             else return;
             LoadActions();
@@ -163,15 +149,14 @@
 
         private void OnSave(object sender, EventArgs e)
         {
-            var bo = PermissionGroupManagerBO.Instance;
-            if ((selectedIndex >= 0 || bo.SelectedGroup != null)
-                && ucGroupInfo.CanSaveGroup())
+            var bo = RoleManagerBO.Instance;
+            if ((selectedIndex >= 0 || bo.SelectedRole != null)
+                && ucRoleInfo.CanSaveRole())
             {
-                ucGroupInfo.SaveGroup();
-                ucGranting.SaveChange();
+                ucRoleInfo.SaveRole();
                 bo.AcceptEdit();
                 editing = false;
-                LoadGroups();
+                LoadRoles();
                 AdjustSelectedIndex();
                 LoadActions();
             }
@@ -184,18 +169,18 @@
 
         private void OnStartSearch(object sender, EventArgs e)
         {
-            PermissionGroupManagerBO.Instance.Searching = true;
+            RoleManagerBO.Instance.Searching = true;
             searching = true;
-            LoadGroups();
+            LoadRoles();
             AdjustSelectedIndex();
             LoadActions();
         }
 
         private void OnLookingUp(object sender, EventArgs e)
         {
-            var bo = PermissionGroupManagerBO.Instance;
-            bo.LookupGroup(tbSearchBox.Text);
-            LoadGroups();
+            var bo = RoleManagerBO.Instance;
+            bo.LookupRole(tbSearchBox.Text);
+            LoadRoles();
             AdjustSelectedIndex();
             LoadActions();
             LoadInfo();
@@ -203,10 +188,8 @@
 
         private void OnAdding(object sender, EventArgs e)
         {
-            var bo = PermissionGroupManagerBO.Instance;
-            bo.CreateGroup();
-            GrantingPermissionsBO.Instance
-                .SelectedAccessable = bo.SelectedGroup;
+            var bo = RoleManagerBO.Instance;
+            bo.CreateRole();
             editing = true;
             LoadActions();
             LoadInfo();
@@ -214,11 +197,8 @@
 
         private void OnEditing(object sender, EventArgs e)
         {
-            var bo = PermissionGroupManagerBO.Instance;
-            var pg = bo.PermissionGroups[selectedIndex];
-            bo.SelectedGroup = pg;
-            GrantingPermissionsBO.Instance
-                .SelectedAccessable = pg;
+            var bo = RoleManagerBO.Instance;
+            bo.SelectedRole = bo.Roles[selectedIndex];
             editing = true;
             LoadActions();
             LoadInfo();
@@ -229,11 +209,10 @@
             if (MessageBox.Show("Bạn có muốn xóa nhóm quyền này không?", "Xóa nhóm quyền",
                 MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                PermissionGroupManagerBO.Instance.DeleteGroup();
-                GrantingPermissionsBO.Instance.SelectedAccessable = null;
+                RoleManagerBO.Instance.DeleteRole();
                 selectedIndex = -1;
                 editing = false;
-                LoadGroups();
+                LoadRoles();
                 LoadActions();
                 LoadInfo();
             }
@@ -314,28 +293,27 @@
             AdjustToolbar();
             Size s = ClientSize, scrollSize = new(0, 0);
             s.Height -= 56;
-            if (pnGroupInfo.VerticalScroll.Visible)
+            if (pnRoleInfo.VerticalScroll.Visible)
                 scrollSize.Width = SystemInformation.VerticalScrollBarWidth;
-            if (pnGroupInfo.HorizontalScroll.Visible)
+            if (pnRoleInfo.HorizontalScroll.Visible)
                 scrollSize.Height = SystemInformation.HorizontalScrollBarHeight;
             int width = s.Width;
             if (width >= 600)
             {
                 s.Width = (int)(width * 0.4);
-                lbGroups.ClientSize = s;
-                pnGroupInfo.Location = new(s.Width, 0);
+                lbRoles.ClientSize = s;
+                pnRoleInfo.Location = new(s.Width, 0);
                 s.Width = width - s.Width;
             }
             else
             {
-                lbGroups.ClientSize = s;
-                pnGroupInfo.Location = new(0, 0);
+                lbRoles.ClientSize = s;
+                pnRoleInfo.Location = new(0, 0);
             }
-            pnGroupInfo.ClientSize = s;
+            pnRoleInfo.ClientSize = s;
             s -= scrollSize;
-            ucGroupInfo.ClientSize = new(s.Width, ucGroupInfo.ClientSize.Height);
-            ucGranting.ClientSize = new(s.Width, 0);
-            pnGroupInfo.AutoScrollMinSize = s;
+            ucRoleInfo.ClientSize = new(s.Width, ucRoleInfo.ClientSize.Height);
+            pnRoleInfo.AutoScrollMinSize = s;
         }
     }
 }

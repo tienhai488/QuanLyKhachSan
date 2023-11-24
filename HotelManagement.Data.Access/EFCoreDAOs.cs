@@ -13,13 +13,7 @@
     {
         public DbSet<Customer> Customers { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -31,13 +25,7 @@
     public class ReservationEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -52,13 +40,7 @@
     public class RentRoomDetailEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -74,13 +56,7 @@
     public class UseServiceDetailEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -89,20 +65,14 @@
             modelBuilder.Entity<Customer>().ConfigureCustomer();
             modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
             modelBuilder.Entity<Invoice>().ConfigureInvoice();
-            modelBuilder.Entity<UseServiceDetail>().ConfigureUseServiceDetail();
             modelBuilder.Entity<CancelationStatus>().ConfigureCancelationStatus();
+            modelBuilder.Entity<UseServiceDetail>().ConfigureUseServiceDetail();
         }
     }
     public class InvoiceEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -122,13 +92,7 @@
     public class AccountEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -162,13 +126,7 @@
     public class PermissionGroupEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -181,17 +139,16 @@
         {
             get
             {
-                IEnumerable<PermissionGroup> accounts = PermissionGroups.ToList();
-                return (from a in accounts
-                        let uids = from b in accounts
-                                   join c in accounts
+                IEnumerable<PermissionGroup> groups = PermissionGroups.ToList();
+                return (from a in groups
+                        let ids = from b in groups
+                                   join c in groups
                                    on b.Id + 1 equals c.Id
                                    select b.Id
-                        where !uids.Contains(a.Id)
+                        where !ids.Contains(a.Id)
                         select a.Id).FirstOrDefault(0) + 1;
             }
         }
-
     }
     public class RoomEFCoreDAO : DbContext
     {
@@ -201,13 +158,7 @@
         public DbSet<Convinience> Conviniences { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -222,13 +173,7 @@
     {
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -240,13 +185,7 @@
     {
         
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -263,13 +202,7 @@
         public DbSet<Service> Services { get; set; }    
         public DbSet<ServiceType> ServiceTypes { get; set; }    
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -283,13 +216,7 @@
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceType> ServiceTypes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
@@ -300,30 +227,34 @@
     public class RoleEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>().ConfigureRole();
-            modelBuilder.Entity<Staff>().ConfigureStaff();
+        }
+
+        public IEnumerable<Role> Roles => Set<Role>();
+
+        public BigInteger UsableId
+        {
+            get
+            {
+                IEnumerable<Role> groups = Roles.ToList();
+                return (from a in groups
+                        let ids = from b in groups
+                                   join c in groups
+                                   on b.Id + 1 equals c.Id
+                                   select b.Id
+                        where !ids.Contains(a.Id)
+                        select a.Id).FirstOrDefault(0) + 1;
+            }
         }
     }
     public class StaffEFCoreDAO : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
+            => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -341,6 +272,11 @@
         public bool HasStaffWithPermissionGroup(BigInteger id)
             => (from s in Set<Staff>()
                 where s.GroupId == id
+                select s).Any();
+
+        public bool HasStaffWithRole(BigInteger id)
+            => (from s in Set<Staff>()
+                where s.RoleId == id
                 select s).Any();
     }
 }

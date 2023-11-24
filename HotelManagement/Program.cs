@@ -13,8 +13,7 @@ namespace HotelManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
-            Application.Run(new RoomUI());
+            Application.Run(new MainUI());
         }
     }
 }
-//

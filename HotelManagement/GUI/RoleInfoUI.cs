@@ -4,11 +4,19 @@
     using HotelManagement.Data.Transfer;
 
     using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Data;
+    using System.Drawing;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
     using System.Windows.Forms;
+    using System.Xml.Linq;
 
-    public partial class PermissonGroupInfoUI : UserControl
+    public partial class RoleInfoUI : UserControl
     {
-        public PermissonGroupInfoUI()
+        public RoleInfoUI()
         {
             InitializeComponent();
             Editing = false;
@@ -25,7 +33,7 @@
                 if (value)
                 {
                     tbName.ReadOnly = false;
-                    var bo = PermissionGroupManagerBO.Instance;
+                    var bo = RoleManagerBO.Instance;
                     lbNameError.Visible = !bo.IsValidName(tbName.Text);
                 }
                 else
@@ -36,10 +44,10 @@
             }
         }
 
-        public void LoadGroup()
+        public void LoadRole()
         {
-            var bo = PermissionGroupManagerBO.Instance;
-            var a = bo.SelectedGroup;
+            var bo = RoleManagerBO.Instance;
+            var a = bo.SelectedRole;
             if (a == null)
             {
                 tbID.Text = string.Empty;
@@ -52,19 +60,19 @@
             }
         }
 
-        public bool CanSaveGroup()
+        public bool CanSaveRole()
             => Editing && !lbNameError.Visible;
 
-        public void SaveGroup()
+        public void SaveRole()
         {
-            var a = PermissionGroupManagerBO.Instance.SelectedGroup;
+            var a = RoleManagerBO.Instance.SelectedRole;
             if (a == null) return;
             a.Name = tbName.Text;
             Editing = false;
         }
 
         private void OnNameChanged(object sender, EventArgs e)
-            => lbNameError.Visible = !PermissionGroupManagerBO.Instance.IsValidName(tbName.Text);
+            => lbNameError.Visible = !RoleManagerBO.Instance.IsValidName(tbName.Text);
 
         protected override void OnResize(EventArgs e)
         {
