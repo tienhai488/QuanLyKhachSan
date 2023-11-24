@@ -1,5 +1,5 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.Data;
+using HotelManagement.DTO;
 using HotelManagement.Ultils;
 using MaterialSkin;
 using MaterialSkin.Controls;
@@ -7,7 +7,12 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using HotelManagement.Data.Transfer.Ultils;
+using System.Drawing;
+using System.Linq;
+using System.ServiceProcess;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
@@ -49,11 +54,9 @@ namespace HotelManagement.GUI
             serviceTable.Rows.Clear();
             dtgvService.DataSource = null;
 
-            serviceBUS.getAllService()
-            .ForEach(item =>
-            {
-                serviceTable.Rows.Add(item.Id, item.Name, item.ServiceType.Name, item.UnitPrice, item.Unit);
-            });
+            List<Service> list = new List<Service>();
+            list = serviceBUS.getAllService();
+            list.ForEach(item => { serviceTable.Rows.Add(item.Id, item.Name, item.Service_type_name, item.Unit_price, item.Unit); });
 
             dtgvService.DataSource = serviceTable;
             bindingSourceService.DataSource = serviceTable;
@@ -131,14 +134,12 @@ namespace HotelManagement.GUI
 
         private void mbtnAddService_Click(object sender, EventArgs e)
         {
-            int index = 1;
-            if (serviceBUS.getLengthService() > 0)
-            {
-                index = serviceBUS.getAllService().Max(item => Functions.convertIdToInteger(item.Id, "SE")) + 1;
-            }
-            string id = "SE" + index.ToString("D3");
+            int index = serviceBUS.getLengthService() + 1;
+            string id = "SV" + index.ToString("D3");
             ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
-            serviceInfoUI.fillData(id, "", 0, "", "", "Thêm dịch vụ");
+            Service service = new Service();
+            service.Id = id;
+            serviceInfoUI.fillData(service, "Thêm dịch vụ");
             serviceInfoUI.Show();
         }
 
@@ -194,8 +195,9 @@ namespace HotelManagement.GUI
                     string serviceTypeName = selectedRow.Cells[2].Value.ToString();
 
                     ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
+                    Service service = new Service(id, name, unitPrice, unit, "", serviceTypeName);
 
-                    serviceInfoUI.fillData(id, name, unitPrice, unit, serviceTypeName, "Lưu thông tin");
+                    serviceInfoUI.fillData(service, "Lưu thông tin");
                     serviceInfoUI.Show();
                 }
                 else
@@ -286,14 +288,10 @@ namespace HotelManagement.GUI
 
         private void mbtnAddType_Click(object sender, EventArgs e)
         {
-            int index = 1;
-            if (serviceBUS.getLengthType() > 0)
-            {
-                index = serviceBUS.getAllType().Max(item => Functions.convertIdToInteger(item.Id, "ST")) + 1;
-            }
-            string id = "ST" + index.ToString("D2");
             ServiceTypeInfoUI ui = new ServiceTypeInfoUI(this);
-            ui.fillData(id, "", "Thêm loại");
+            int index = serviceBUS.getLengthType() + 1;
+            string id = "ST" + index.ToString("D3");
+            ui.fillData(new ServiceType(id, ""), "Thêm loại");
             ui.Show();
         }
 
@@ -314,7 +312,8 @@ namespace HotelManagement.GUI
                     string name = selectedRow.Cells[1].Value.ToString();
 
                     ServiceTypeInfoUI serviceTypeInfoUI = new ServiceTypeInfoUI(this);
-                    serviceTypeInfoUI.fillData(id, name, "Lưu thông tin");
+                    ServiceType serviceType = new ServiceType(id, name);
+                    serviceTypeInfoUI.fillData(serviceType, "Lưu thông tin");
                     serviceTypeInfoUI.Show();
                 }
                 else
@@ -344,8 +343,7 @@ namespace HotelManagement.GUI
                     string id = selectedRow.Cells[0].Value.ToString();
                     if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa loại dịch vụ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        int n = serviceBUS.getLengServiceForType(id);
-                        if (n == 0)
+                        if (serviceBUS.getLengServiceForType(id) == 0)
                         {
                             int result = serviceBUS.deleteType(id);
                             if (result == 0)
@@ -362,6 +360,7 @@ namespace HotelManagement.GUI
                         {
                             MessageBox.Show("Đã tồn tại dịch vụ thuộc loại dịch vụ này vui lòng kiểm tra lại!");
                         }
+
                     }
                 }
                 else

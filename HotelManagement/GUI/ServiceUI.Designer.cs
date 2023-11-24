@@ -1,4 +1,4 @@
-namespace HotelManagement.GUI
+﻿namespace HotelManagement.GUI
 {
     partial class ServiceUI
     {
@@ -198,7 +198,7 @@ namespace HotelManagement.GUI
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle());
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 197F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.Size = new Size(847, 568);
             tableLayoutPanel2.TabIndex = 0;
@@ -230,6 +230,7 @@ namespace HotelManagement.GUI
             // 
             // dtgvService
             // 
+            dtgvService.AllowUserToAddRows = false;
             dtgvService.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvService.BackgroundColor = SystemColors.Control;
             dtgvService.BorderStyle = BorderStyle.None;
@@ -238,7 +239,7 @@ namespace HotelManagement.GUI
             dtgvService.Location = new Point(15, 25);
             dtgvService.Margin = new Padding(0);
             dtgvService.Name = "dtgvService";
-            dtgvService.ReadOnly = true;
+            dtgvService.RowHeadersVisible = false;
             dtgvService.RowHeadersWidth = 51;
             dtgvService.RowTemplate.Height = 29;
             dtgvService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -740,7 +741,7 @@ namespace HotelManagement.GUI
             tableLayoutPanel8.Margin = new Padding(0);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 2;
-            tableLayoutPanel8.RowStyles.Add(new RowStyle());
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Absolute, 197F));
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel8.Size = new Size(847, 568);
             tableLayoutPanel8.TabIndex = 0;
@@ -772,6 +773,7 @@ namespace HotelManagement.GUI
             // 
             // dtgvType
             // 
+            dtgvType.AllowUserToAddRows = false;
             dtgvType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvType.BackgroundColor = SystemColors.Control;
             dtgvType.BorderStyle = BorderStyle.None;
@@ -781,6 +783,7 @@ namespace HotelManagement.GUI
             dtgvType.Margin = new Padding(0);
             dtgvType.Name = "dtgvType";
             dtgvType.ReadOnly = true;
+            dtgvType.RowHeadersVisible = false;
             dtgvType.RowHeadersWidth = 51;
             dtgvType.RowTemplate.Height = 29;
             dtgvType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -1194,7 +1197,7 @@ namespace HotelManagement.GUI
             comboBox2.Location = new Point(3, 3);
             comboBox2.Margin = new Padding(0);
             comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(134, 31);
+            comboBox2.Size = new Size(134, 27);
             comboBox2.TabIndex = 4;
             // 
             // ServiceUI

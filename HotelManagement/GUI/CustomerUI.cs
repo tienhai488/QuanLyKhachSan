@@ -1,8 +1,14 @@
-﻿using System.Data;
-using System.Globalization;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 using HotelManagement.BUS;
-using HotelManagement.Data;
-using HotelManagement.Data.Transfer.Ultils;
+using HotelManagement.DTO;
 using HotelManagement.Ultils;
 
 namespace HotelManagement.GUI
@@ -33,7 +39,7 @@ namespace HotelManagement.GUI
             dataGridView1.DataSource = null;
             List<Customer> list = new List<Customer>();
             list = customerBUS.getAll();
-            list.ForEach(item => { dataTable.Rows.Add(item.Id, item.FullName, item.GenderString, item.Birthday.ToString(Configs.formatBirthday), item.CitizenID, item.PhoneNumber, item.Address); });
+            list.ForEach(item => { dataTable.Rows.Add(item.Id, item.Fullname, item.Gender == 1 ? "Nam" : "Nữ", item.Birthday, item.CitizenId, item.Phone, item.Address); });
 
             dataGridView1.DataSource = dataTable;
             bindingSource.DataSource = dataTable;
@@ -54,14 +60,10 @@ namespace HotelManagement.GUI
         #region event
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            int index = 1;
-            if (customerBUS.getLength() > 0)
-            {
-                index = customerBUS.getAll().Max(item => Functions.convertIdToInteger(item.Id, "CU")) + 1;
-            }
-            string id = "CU" + index.ToString("D3");
             CustomerInfoUI customerInfoUI = new CustomerInfoUI(this);
-            Customer customer = new Customer() { Id = id, Gender = "1" };
+            Customer customer = new Customer();
+            string id = (customerBUS.getLength() + 1).ToString("D3");
+            customer.Id = "CUS" + id;
             customerInfoUI.fillData(customer, "Thêm khách hàng");
             customerInfoUI.Show();
         }
@@ -82,15 +84,14 @@ namespace HotelManagement.GUI
                 {
                     string id = selectedRow.Cells[0].Value.ToString();
                     string fullname = selectedRow.Cells[1].Value.ToString();
-                    string gender = selectedRow.Cells[2].Value.ToString() == "Nam" ? "1" : "0";
+                    int gender = selectedRow.Cells[2].Value.ToString() == "Nam" ? 1 : 0;
                     string birthday = selectedRow.Cells[3].Value.ToString();
                     string cccd = selectedRow.Cells[4].Value.ToString();
                     string phone = selectedRow.Cells[5].Value.ToString();
                     string address = selectedRow.Cells[6].Value.ToString();
 
-                    DateTime birth = DateTime.ParseExact(birthday, Configs.formatBirthday, CultureInfo.InvariantCulture, DateTimeStyles.None);
                     CustomerInfoUI customerInfoUI = new CustomerInfoUI(this);
-                    Customer customer = new Customer(id, fullname, gender, birth, address, cccd, phone);
+                    Customer customer = new Customer(id, fullname, gender, birthday, address, cccd, phone);
                     customerInfoUI.fillData(customer, "Lưu thông tin");
                     customerInfoUI.Show();
                 }

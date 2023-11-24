@@ -114,14 +114,14 @@
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 1);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel5, 1, 2);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 85);
+            tableLayoutPanel1.Location = new Point(3, 64);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 13F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 10F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 67F));
-            tableLayoutPanel1.Size = new Size(1409, 935);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.Size = new Size(1232, 701);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -134,13 +134,13 @@
             tableLayoutPanel2.Controls.Add(panel1, 0, 1);
             tableLayoutPanel2.Controls.Add(panel2, 1, 1);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(70, 13);
+            tableLayoutPanel2.Location = new Point(61, 10);
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 53F));
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1268, 855);
+            tableLayoutPanel2.Size = new Size(1108, 641);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // materialLabel2
@@ -151,11 +151,11 @@
             materialLabel2.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel2.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
             materialLabel2.ForeColor = SystemColors.ControlText;
-            materialLabel2.Location = new Point(3, 4);
-            materialLabel2.Margin = new Padding(3, 4, 3, 4);
+            materialLabel2.Location = new Point(3, 3);
+            materialLabel2.Margin = new Padding(3);
             materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel2.Name = "materialLabel2";
-            materialLabel2.Size = new Size(374, 45);
+            materialLabel2.Size = new Size(326, 34);
             materialLabel2.TabIndex = 2;
             materialLabel2.Text = "Customer Information";
             materialLabel2.TextAlign = ContentAlignment.MiddleCenter;
@@ -167,11 +167,11 @@
             materialLabel3.Dock = DockStyle.Fill;
             materialLabel3.Font = new Font("Roboto", 24F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel3.FontType = MaterialSkin.MaterialSkinManager.fontType.H5;
-            materialLabel3.Location = new Point(383, 4);
-            materialLabel3.Margin = new Padding(3, 4, 3, 4);
+            materialLabel3.Location = new Point(335, 3);
+            materialLabel3.Margin = new Padding(3);
             materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel3.Name = "materialLabel3";
-            materialLabel3.Size = new Size(882, 45);
+            materialLabel3.Size = new Size(770, 34);
             materialLabel3.TabIndex = 3;
             materialLabel3.Text = "Room Information";
             materialLabel3.TextAlign = ContentAlignment.MiddleCenter;
@@ -193,11 +193,11 @@
             panel1.Controls.Add(materialRadioButton1);
             panel1.Controls.Add(materialRadioButton2);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(0, 53);
+            panel1.Location = new Point(0, 40);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Padding = new Padding(17, 20, 17, 20);
-            panel1.Size = new Size(380, 802);
+            panel1.Padding = new Padding(15);
+            panel1.Size = new Size(332, 601);
             panel1.TabIndex = 4;
             // 
             // materialTextBox5
@@ -206,15 +206,14 @@
             materialTextBox5.AnimateReadOnly = false;
             materialTextBox5.BorderStyle = BorderStyle.None;
             materialTextBox5.Depth = 0;
-materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox5.LeadingIcon = null;
-            materialTextBox5.Location = new Point(21, 696);
-            materialTextBox5.Margin = new Padding(3, 4, 3, 4);
+            materialTextBox5.Location = new Point(18, 522);
             materialTextBox5.MaxLength = 50;
             materialTextBox5.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox5.Multiline = false;
             materialTextBox5.Name = "materialTextBox5";
-            materialTextBox5.Size = new Size(339, 50);
+            materialTextBox5.Size = new Size(296, 50);
             materialTextBox5.TabIndex = 22;
             materialTextBox5.Text = "";
             materialTextBox5.TrailingIcon = null;
@@ -227,13 +226,12 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialTextBox4.Depth = 0;
             materialTextBox4.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox4.LeadingIcon = null;
-            materialTextBox4.Location = new Point(21, 464);
-            materialTextBox4.Margin = new Padding(3, 4, 3, 4);
+            materialTextBox4.Location = new Point(18, 348);
             materialTextBox4.MaxLength = 50;
             materialTextBox4.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox4.Multiline = false;
             materialTextBox4.Name = "materialTextBox4";
-            materialTextBox4.Size = new Size(339, 50);
+            materialTextBox4.Size = new Size(296, 50);
             materialTextBox4.TabIndex = 21;
             materialTextBox4.Text = "";
             materialTextBox4.TrailingIcon = null;
@@ -246,13 +244,12 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialTextBox3.Depth = 0;
             materialTextBox3.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox3.LeadingIcon = null;
-            materialTextBox3.Location = new Point(21, 328);
-            materialTextBox3.Margin = new Padding(3, 4, 3, 4);
+            materialTextBox3.Location = new Point(18, 246);
             materialTextBox3.MaxLength = 50;
             materialTextBox3.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox3.Multiline = false;
             materialTextBox3.Name = "materialTextBox3";
-            materialTextBox3.Size = new Size(339, 50);
+            materialTextBox3.Size = new Size(296, 50);
             materialTextBox3.TabIndex = 20;
             materialTextBox3.Text = "";
             materialTextBox3.TrailingIcon = null;
@@ -265,13 +262,12 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialTextBox2.Depth = 0;
             materialTextBox2.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox2.LeadingIcon = null;
-            materialTextBox2.Location = new Point(21, 192);
-            materialTextBox2.Margin = new Padding(3, 4, 3, 4);
+            materialTextBox2.Location = new Point(18, 144);
             materialTextBox2.MaxLength = 50;
             materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox2.Multiline = false;
             materialTextBox2.Name = "materialTextBox2";
-            materialTextBox2.Size = new Size(339, 50);
+            materialTextBox2.Size = new Size(296, 50);
             materialTextBox2.TabIndex = 19;
             materialTextBox2.Text = "";
             materialTextBox2.TrailingIcon = null;
@@ -284,13 +280,12 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialTextBox1.Depth = 0;
             materialTextBox1.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox1.LeadingIcon = null;
-            materialTextBox1.Location = new Point(21, 56);
-            materialTextBox1.Margin = new Padding(3, 4, 3, 4);
+            materialTextBox1.Location = new Point(18, 42);
             materialTextBox1.MaxLength = 50;
             materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox1.Multiline = false;
             materialTextBox1.Name = "materialTextBox1";
-            materialTextBox1.Size = new Size(339, 50);
+            materialTextBox1.Size = new Size(296, 50);
             materialTextBox1.TabIndex = 18;
             materialTextBox1.Text = "";
             materialTextBox1.TrailingIcon = null;
@@ -301,7 +296,7 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialLabel12.Depth = 0;
             materialLabel12.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel12.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel12.Location = new Point(21, 660);
+            materialLabel12.Location = new Point(18, 495);
             materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel12.Name = "materialLabel12";
             materialLabel12.Size = new Size(221, 24);
@@ -315,7 +310,7 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialLabel8.Depth = 0;
             materialLabel8.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel8.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel8.Location = new Point(40, 577);
+            materialLabel8.Location = new Point(34, 433);
             materialLabel8.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel8.Name = "materialLabel8";
             materialLabel8.Size = new Size(104, 24);
@@ -330,13 +325,8 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialButton1.Depth = 0;
             materialButton1.HighEmphasis = true;
             materialButton1.Icon = null;
-<<<<<<< HEAD
             materialButton1.Location = new Point(144, 429);
             materialButton1.Margin = new Padding(4, 6, 4, 6);
-=======
-            materialButton1.Location = new Point(191, 572);
-            materialButton1.Margin = new Padding(5, 8, 5, 8);
->>>>>>> 364d1a8acb25b3dc2c2cf751dac83bbb661dd21b
             materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton1.Name = "materialButton1";
             materialButton1.NoAccentTextColor = Color.Empty;
@@ -354,7 +344,7 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialLabel7.Depth = 0;
             materialLabel7.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel7.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel7.Location = new Point(21, 428);
+            materialLabel7.Location = new Point(18, 321);
             materialLabel7.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel7.Name = "materialLabel7";
             materialLabel7.Size = new Size(92, 24);
@@ -367,7 +357,7 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialLabel6.Depth = 0;
             materialLabel6.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel6.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel6.Location = new Point(21, 292);
+            materialLabel6.Location = new Point(18, 219);
             materialLabel6.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel6.Name = "materialLabel6";
             materialLabel6.Size = new Size(111, 24);
@@ -380,7 +370,7 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialLabel5.Depth = 0;
             materialLabel5.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel5.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel5.Location = new Point(21, 156);
+            materialLabel5.Location = new Point(18, 117);
             materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel5.Name = "materialLabel5";
             materialLabel5.Size = new Size(72, 24);
@@ -393,7 +383,7 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel1.Location = new Point(21, 20);
+            materialLabel1.Location = new Point(18, 15);
             materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(58, 24);
@@ -405,7 +395,7 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialRadioButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             materialRadioButton1.AutoSize = true;
             materialRadioButton1.Depth = 0;
-            materialRadioButton1.Location = new Point(174, 287);
+            materialRadioButton1.Location = new Point(143, 215);
             materialRadioButton1.Margin = new Padding(0);
             materialRadioButton1.MouseLocation = new Point(-1, -1);
             materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -422,11 +412,7 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             materialRadioButton2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             materialRadioButton2.AutoSize = true;
             materialRadioButton2.Depth = 0;
-<<<<<<< HEAD
             materialRadioButton2.Location = new Point(213, 215);
-=======
-            materialRadioButton2.Location = new Point(255, 287);
->>>>>>> 364d1a8acb25b3dc2c2cf751dac83bbb661dd21b
             materialRadioButton2.Margin = new Padding(0);
             materialRadioButton2.MouseLocation = new Point(-1, -1);
             materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
@@ -442,10 +428,10 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             // 
             panel2.Controls.Add(tableLayoutPanel4);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(380, 53);
+            panel2.Location = new Point(332, 40);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(888, 802);
+            panel2.Size = new Size(776, 601);
             panel2.TabIndex = 5;
             // 
             // tableLayoutPanel4
@@ -462,9 +448,9 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             tableLayoutPanel4.Margin = new Padding(0);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 2;
-            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
+            tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(888, 802);
+            tableLayoutPanel4.Size = new Size(776, 601);
             tableLayoutPanel4.TabIndex = 1;
             // 
             // panel7
@@ -475,17 +461,16 @@ materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.
             panel7.Location = new Point(0, 0);
             panel7.Margin = new Padding(0);
             panel7.Name = "panel7";
-            panel7.Padding = new Padding(17, 20, 17, 20);
-            panel7.Size = new Size(444, 64);
+            panel7.Padding = new Padding(15);
+            panel7.Size = new Size(388, 48);
             panel7.TabIndex = 16;
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePicker1.Location = new Point(97, 21);
-            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
+            dateTimePicker1.Location = new Point(85, 16);
             dateTimePicker1.Name = "dateTimePicker1";
-dateTimePicker1.Size = new Size(285, 23);
+            dateTimePicker1.Size = new Size(285, 23);
             dateTimePicker1.TabIndex = 15;
             // 
             // materialLabel4
@@ -494,7 +479,7 @@ dateTimePicker1.Size = new Size(285, 23);
             materialLabel4.Depth = 0;
             materialLabel4.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel4.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel4.Location = new Point(21, 20);
+            materialLabel4.Location = new Point(18, 15);
             materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel4.Name = "materialLabel4";
             materialLabel4.Size = new Size(61, 24);
@@ -506,11 +491,11 @@ dateTimePicker1.Size = new Size(285, 23);
             panel5.Controls.Add(dataGridView2);
             panel5.Controls.Add(materialLabel11);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(0, 64);
+            panel5.Location = new Point(0, 48);
             panel5.Margin = new Padding(0);
             panel5.Name = "panel5";
-            panel5.Padding = new Padding(21, 20, 21, 20);
-            panel5.Size = new Size(444, 738);
+            panel5.Padding = new Padding(18, 15, 18, 15);
+            panel5.Size = new Size(388, 553);
             panel5.TabIndex = 3;
             // 
             // dataGridView2
@@ -521,34 +506,29 @@ dateTimePicker1.Size = new Size(285, 23);
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { Column4, Column5, Column6 });
             dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(21, 44);
-            dataGridView2.Margin = new Padding(3, 4, 3, 4);
+            dataGridView2.Location = new Point(18, 39);
             dataGridView2.MultiSelect = false;
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView2.RowHeadersVisible = false;
-            dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 25;
-dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView2.Size = new Size(352, 499);
             dataGridView2.TabIndex = 16;
             // 
             // Column4
             // 
             Column4.HeaderText = "ID";
-            Column4.MinimumWidth = 6;
             Column4.Name = "Column4";
             // 
             // Column5
             // 
             Column5.HeaderText = "Status";
-            Column5.MinimumWidth = 6;
             Column5.Name = "Column5";
             // 
             // Column6
             // 
             Column6.HeaderText = "Type";
-            Column6.MinimumWidth = 6;
             Column6.Name = "Column6";
             // 
             // materialLabel11
@@ -558,7 +538,7 @@ dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             materialLabel11.Dock = DockStyle.Top;
             materialLabel11.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel11.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel11.Location = new Point(21, 20);
+            materialLabel11.Location = new Point(18, 15);
             materialLabel11.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel11.Name = "materialLabel11";
             materialLabel11.Size = new Size(173, 24);
@@ -570,11 +550,11 @@ dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             panel4.Controls.Add(dataGridView1);
             panel4.Controls.Add(materialLabel10);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(444, 64);
+            panel4.Location = new Point(388, 48);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
-            panel4.Padding = new Padding(21, 20, 21, 20);
-            panel4.Size = new Size(444, 738);
+            panel4.Padding = new Padding(18, 15, 18, 15);
+            panel4.Size = new Size(388, 553);
             panel4.TabIndex = 2;
             // 
             // dataGridView1
@@ -585,34 +565,29 @@ dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3 });
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(21, 44);
-            dataGridView1.Margin = new Padding(3, 4, 3, 4);
+            dataGridView1.Location = new Point(18, 39);
             dataGridView1.MultiSelect = false;
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Size = new Size(352, 499);
             dataGridView1.TabIndex = 15;
             // 
             // Column1
             // 
             Column1.HeaderText = "ID";
-            Column1.MinimumWidth = 6;
             Column1.Name = "Column1";
             // 
             // Column2
             // 
             Column2.HeaderText = "Status";
-            Column2.MinimumWidth = 6;
             Column2.Name = "Column2";
             // 
             // Column3
             // 
             Column3.HeaderText = "Type";
-            Column3.MinimumWidth = 6;
             Column3.Name = "Column3";
             // 
             // materialLabel10
@@ -622,7 +597,7 @@ dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             materialLabel10.Dock = DockStyle.Top;
             materialLabel10.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel10.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel10.Location = new Point(21, 20);
+            materialLabel10.Location = new Point(18, 15);
             materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel10.Name = "materialLabel10";
             materialLabel10.Size = new Size(163, 24);
@@ -634,20 +609,19 @@ dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             panel3.Controls.Add(dateTimePicker2);
             panel3.Controls.Add(materialLabel9);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(444, 0);
+            panel3.Location = new Point(388, 0);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(17, 20, 17, 20);
-            panel3.Size = new Size(444, 64);
+            panel3.Padding = new Padding(15);
+            panel3.Size = new Size(388, 48);
             panel3.TabIndex = 15;
             // 
             // dateTimePicker2
             // 
             dateTimePicker2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePicker2.Location = new Point(64, 21);
-            dateTimePicker2.Margin = new Padding(3, 4, 3, 4);
+            dateTimePicker2.Location = new Point(56, 16);
             dateTimePicker2.Name = "dateTimePicker2";
-dateTimePicker2.Size = new Size(314, 23);
+            dateTimePicker2.Size = new Size(314, 23);
             dateTimePicker2.TabIndex = 16;
             // 
             // materialLabel9
@@ -656,7 +630,7 @@ dateTimePicker2.Size = new Size(314, 23);
             materialLabel9.Depth = 0;
             materialLabel9.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel9.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel9.Location = new Point(21, 20);
+            materialLabel9.Location = new Point(18, 15);
             materialLabel9.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel9.Name = "materialLabel9";
             materialLabel9.Size = new Size(32, 24);
@@ -686,17 +660,10 @@ dateTimePicker2.Size = new Size(314, 23);
             panel6.Controls.Add(materialButton3);
             panel6.Controls.Add(materialButton2);
             panel6.Dock = DockStyle.Fill;
-<<<<<<< HEAD
             panel6.Location = new Point(719, 0);
             panel6.Margin = new Padding(0);
             panel6.Name = "panel6";
             panel6.Size = new Size(389, 50);
-=======
-            panel6.Location = new Point(70, 868);
-            panel6.Margin = new Padding(0);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(1268, 67);
->>>>>>> 364d1a8acb25b3dc2c2cf751dac83bbb661dd21b
             panel6.TabIndex = 1;
             // 
             // materialButton3
@@ -708,17 +675,12 @@ dateTimePicker2.Size = new Size(314, 23);
             materialButton3.Depth = 0;
             materialButton3.HighEmphasis = true;
             materialButton3.Icon = null;
-<<<<<<< HEAD
             materialButton3.Location = new Point(213, 6);
             materialButton3.Margin = new Padding(4, 6, 4, 6);
-=======
-            materialButton3.Location = new Point(1067, 8);
-            materialButton3.Margin = new Padding(5, 8, 5, 8);
->>>>>>> 364d1a8acb25b3dc2c2cf751dac83bbb661dd21b
             materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton3.Name = "materialButton3";
             materialButton3.NoAccentTextColor = Color.Empty;
-            materialButton3.Size = new Size(181, 48);
+            materialButton3.Size = new Size(158, 36);
             materialButton3.TabIndex = 1;
             materialButton3.Text = "CANCEL";
             materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -735,17 +697,12 @@ dateTimePicker2.Size = new Size(314, 23);
             materialButton2.Depth = 0;
             materialButton2.HighEmphasis = true;
             materialButton2.Icon = null;
-<<<<<<< HEAD
             materialButton2.Location = new Point(47, 6);
             materialButton2.Margin = new Padding(4, 6, 4, 6);
-=======
-            materialButton2.Location = new Point(877, 8);
-            materialButton2.Margin = new Padding(5, 8, 5, 8);
->>>>>>> 364d1a8acb25b3dc2c2cf751dac83bbb661dd21b
             materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton2.Name = "materialButton2";
             materialButton2.NoAccentTextColor = Color.Empty;
-            materialButton2.Size = new Size(181, 48);
+            materialButton2.Size = new Size(158, 36);
             materialButton2.TabIndex = 0;
             materialButton2.Text = "SAVE";
             materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -807,13 +764,11 @@ dateTimePicker2.Size = new Size(314, 23);
             // 
             // ReservBookingUI
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1415, 1024);
+            ClientSize = new Size(1238, 768);
             Controls.Add(tableLayoutPanel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "ReservBookingUI";
-            Padding = new Padding(3, 85, 3, 4);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ROOM BOOKING";
             tableLayoutPanel1.ResumeLayout(false);

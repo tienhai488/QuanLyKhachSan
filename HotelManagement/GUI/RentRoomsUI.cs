@@ -1,7 +1,19 @@
 ﻿using HotelManagement.BUS;
+using HotelManagement.DTO;
 using MaterialSkin.Controls;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using HotelManagement.BUS;
+using HotelManagement.DTO;
+using System.Xml.Linq;
 using MaterialSkin;
-using HotelManagement.Data;
 
 namespace HotelManagement.GUI
 {
@@ -41,7 +53,8 @@ namespace HotelManagement.GUI
             list = customerBUS.getAll();
             foreach (Customer customer in list)
             {
-addRoomView(customer.Fullname);
+
+                addRoomView(customer.Fullname);
             }
         }
 

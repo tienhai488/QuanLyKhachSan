@@ -1,5 +1,5 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.Data;
+using HotelManagement.DTO;
 using HotelManagement.Ultils;
 using System;
 using System.Collections.Generic;
@@ -11,7 +11,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Xml.Linq;
 
 namespace HotelManagement.GUI
 {
@@ -32,20 +31,20 @@ namespace HotelManagement.GUI
         }
 
         #region method
-        public void fillData(string id, string name, string type)
+        public void fillData(ServiceType serviceType, string type)
         {
-            txtId.Text = id;
-            txtName.Text = name;
+            txtId.Text = serviceType.Id;
+            txtName.Text = serviceType.Name;
 
             btnSave.Text = type;
             isEdit = type == "Lưu thông tin" ? true : false;
         }
 
-        public void addType(string id, string name)
+        public void addType(ServiceType serviceType)
         {
-            if (serviceBUS.validateType(name))
+            if (serviceBUS.validateType(serviceType))
             {
-                int result = serviceBUS.addType(new ServiceType() {Id = id, Name = name });
+                int result = serviceBUS.addType(serviceType);
                 if (result > 0)
                 {
                     MessageBox.Show("Thêm loại dịch vụ thành công!");
@@ -59,11 +58,11 @@ namespace HotelManagement.GUI
             }
         }
 
-        public void updateType(string id, string name)
+        public void updateType(ServiceType serviceType)
         {
-            if (serviceBUS.validateType(name))
+            if (serviceBUS.validateType(serviceType))
             {
-                int result = serviceBUS.updateType(new ServiceType() { Id = id, Name = name });
+                int result = serviceBUS.updateType(serviceType);
                 if (result > 0)
                 {
                     MessageBox.Show("Cập nhật loại dịch vụ thành công!");
@@ -88,13 +87,14 @@ namespace HotelManagement.GUI
             string id = txtId.Text;
             string name = txtName.Text;
 
+            ServiceType serviceType = new ServiceType(id, name);
             if (isEdit)
             {
-                updateType(id, name);
+                updateType(serviceType);
             }
             else
             {
-                addType(id, name);
+                addType(serviceType);
             }
         }
 

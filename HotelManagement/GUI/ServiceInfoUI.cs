@@ -1,6 +1,5 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.Data;
-using HotelManagement.Data.Transfer.Ultils;
+using HotelManagement.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,23 +37,26 @@ namespace HotelManagement.GUI
             List<ServiceType> list = serviceBUS.getAllType();
             cbxServiceType.DataSource = null;
             cbxServiceType.DataSource = list;
-            cbxServiceType.DisplayMember = "Name";
-            cbxServiceType.ValueMember = "Id";
+            cbxServiceType.DisplayMember = "name";
+            cbxServiceType.ValueMember = "id";
         }
-        public void fillData(string id, string name, double unitPrice, string unit, string typeName, string type)
+        public void fillData(Service service, string type)
         {
-            txtId.Text = id;
-            txtName.Text = name;
-            txtUnit.Text = unit;
-            txtUnitPrice.Text = unitPrice.ToString();
+            txtId.Text = service.Id;
+            txtName.Text = service.Name;
+            txtUnit.Text = service.Unit;
+            txtUnitPrice.Text = service.Unit_price.ToString();
 
-            if(typeName != "")
+            if (service.Service_type_id == "")
             {
-                cbxServiceType.Text = typeName;
+                if (service.Service_type_name != "")
+                {
+                    cbxServiceType.Text = service.Service_type_name;
+                }
             }
             else
             {
-                cbxServiceType.SelectedIndex = 0;
+                cbxServiceType.SelectedValue = service.Service_type_id;
             }
 
             btnSave.Text = type;
@@ -65,9 +67,7 @@ namespace HotelManagement.GUI
         {
             if (serviceBUS.validateService(name, unit, unitPrice))
             {
-                Service service = new Service()
-                { Id  = id,  Name = name, Unit = unit, UnitPrice = int.Parse(unitPrice)};
-                service.ServiceTypeId = serviceTypeId;
+                Service service = new Service(id, name, Double.Parse(unitPrice), unit, serviceTypeId, "");
                 int result = serviceBUS.addService(service);
                 if (result > 0)
                 {
@@ -86,9 +86,7 @@ namespace HotelManagement.GUI
         {
             if (serviceBUS.validateService(name, unit, unitPrice))
             {
-                Service service = new Service()
-                { Id = id, Name = name, Unit = unit, UnitPrice = int.Parse(unitPrice)};
-                service.ServiceTypeId = serviceTypeId;
+                Service service = new Service(id, name, Double.Parse(unitPrice), unit, serviceTypeId, "");
                 int result = serviceBUS.updateService(service);
                 if (result > 0)
                 {
@@ -114,7 +112,7 @@ namespace HotelManagement.GUI
             string name = txtName.Text;
             string unit = txtUnit.Text;
             string unitPrice = txtUnitPrice.Text;
-            string serviceTypeId = cbxServiceType.SelectedValue.ToString()+"";
+            string serviceTypeId = cbxServiceType.SelectedValue.ToString();
 
             if (isEdit)
             {
