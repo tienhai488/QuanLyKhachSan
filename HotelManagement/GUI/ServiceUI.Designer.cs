@@ -1,4 +1,4 @@
-﻿namespace HotelManagement.GUI
+namespace HotelManagement.GUI
 {
     partial class ServiceUI
     {
