@@ -1,16 +1,8 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.DTO;
+using HotelManagement.Data;
 using HotelManagement.Ultils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using HotelManagement.Data.Transfer.Ultils;
 
 namespace HotelManagement.GUI
 {
@@ -43,9 +35,11 @@ namespace HotelManagement.GUI
             serviceTable.Rows.Clear();
             dtgvService.DataSource = null;
 
-            List<Service> list = new List<Service>();
-            list = serviceBUS.getAllService();
-            list.ForEach(item => { serviceTable.Rows.Add(item.Id, item.Name, item.Service_type_name, item.Unit_price, item.Unit); });
+            serviceBUS.getAllService()
+            .ForEach(item =>
+            {
+                serviceTable.Rows.Add(item.Id, item.Name, item.ServiceType.Name, item.UnitPrice, item.Unit);
+            });
 
             dtgvService.DataSource = serviceTable;
             bindingSourceService.DataSource = serviceTable;
@@ -83,12 +77,14 @@ namespace HotelManagement.GUI
         #region event
         private void btnAddService_Click(object sender, EventArgs e)
         {
-            int index = serviceBUS.getLengthService() + 1;
-            string id = "SV" + index.ToString("D3");
+            int index = 1;
+            if (serviceBUS.getLengthService() > 0)
+            {
+                index = serviceBUS.getAllService().Max(item => Functions.convertIdToInteger(item.Id, "SE")) + 1;
+            }
+            string id = "SE" + index.ToString("D3");
             ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
-            Service service = new Service();
-            service.Id = id;
-            serviceInfoUI.fillData(service, "Thêm dịch vụ");
+            serviceInfoUI.fillData(id, "", 0, "", "", "Thêm dịch vụ");
             serviceInfoUI.Show();
         }
 
@@ -111,9 +107,8 @@ dtgvService.SelectedCells.Count;
                     string serviceTypeName = selectedRow.Cells[2].Value.ToString();
 
                     ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
-                    Service service = new Service(id, name, unitPrice, unit, "", serviceTypeName);
 
-                    serviceInfoUI.fillData(service, "Lưu thông tin");
+                    serviceInfoUI.fillData(id, name, unitPrice, unit, serviceTypeName, "Lưu thông tin");
                     serviceInfoUI.Show();
                 }
                 else
@@ -169,10 +164,14 @@ dtgvService.SelectedCells.Count;
 
         private void btnAddType_Click(object sender, EventArgs e)
         {
+            int index = 1;
+            if (serviceBUS.getLengthType() > 0)
+            {
+                index = serviceBUS.getAllType().Max(item => Functions.convertIdToInteger(item.Id, "ST")) + 1;
+            }
+            string id = "ST" + index.ToString("D2");
             ServiceTypeInfoUI ui = new ServiceTypeInfoUI(this);
-            int index = serviceBUS.getLengthType() + 1;
-            string id = "ST" + index.ToString("D3");
-            ui.fillData(new ServiceType(id, ""), "Thêm loại");
+            ui.fillData(id, "", "Thêm loại");
             ui.Show();
         }
 
@@ -194,8 +193,7 @@ dtgvType.SelectedCells.Count;
                     string name = selectedRow.Cells[1].Value.ToString();
 
                     ServiceTypeInfoUI serviceTypeInfoUI = new ServiceTypeInfoUI(this);
-                    ServiceType serviceType = new ServiceType(id, name);
-                    serviceTypeInfoUI.fillData(serviceType, "Lưu thông tin");
+                    serviceTypeInfoUI.fillData(id, name, "Lưu thông tin");
                     serviceTypeInfoUI.Show();
                 }
                 else
@@ -226,7 +224,8 @@ dtgvType.SelectedCells.Count;
                     string id = selectedRow.Cells[0].Value.ToString();
                     if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa loại dịch vụ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        if (serviceBUS.getLengServiceForType(id) == 0)
+                        int n = serviceBUS.getLengServiceForType(id);
+                        if (n == 0)
                         {
                             int result = serviceBUS.deleteType(id);
                             if (result == 0)
@@ -243,7 +242,6 @@ dtgvType.SelectedCells.Count;
                         {
                             MessageBox.Show("Đã tồn tại dịch vụ thuộc loại dịch vụ này vui lòng kiểm tra lại!");
                         }
-
                     }
                 }
                 else
@@ -256,7 +254,6 @@ dtgvType.SelectedCells.Count;
                 MessageBox.Show("Vui lòng chọn loại dịch vụ muốn xóa!");
             }
         }
-        #endregion
 
 
         private void btnDelFilterServiceID_Click(object sender, EventArgs e)
@@ -285,7 +282,7 @@ dtgvType.SelectedCells.Count;
         {
             string id = cbxFilterServiceID.Text;
             string name = cbxFilterServiceName.Text;
-            string type = cbxFilterServiceType.Text;
+            string type = cbxFilterServiceType.Text.Trim();
 
             bindingSourceService.Filter = @$"
             `Mã DV` like '%{id}%' and
@@ -328,5 +325,6 @@ dtgvType.SelectedCells.Count;
             dtgvType.DataSource = bindingSourceServiceType;
             initCbxFilterAllServiceType();
         }
+        #endregion
     }
 }
