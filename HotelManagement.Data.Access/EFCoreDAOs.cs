@@ -142,9 +142,9 @@
                 IEnumerable<PermissionGroup> groups = PermissionGroups.ToList();
                 return (from a in groups
                         let ids = from b in groups
-                                   join c in groups
-                                   on b.Id + 1 equals c.Id
-                                   select b.Id
+                                  join c in groups
+                                  on b.Id + 1 equals c.Id
+                                  select b.Id
                         where !ids.Contains(a.Id)
                         select a.Id).FirstOrDefault(0) + 1;
             }
@@ -243,9 +243,9 @@
                 IEnumerable<Role> groups = Roles.ToList();
                 return (from a in groups
                         let ids = from b in groups
-                                   join c in groups
-                                   on b.Id + 1 equals c.Id
-                                   select b.Id
+                                  join c in groups
+                                  on b.Id + 1 equals c.Id
+                                  select b.Id
                         where !ids.Contains(a.Id)
                         select a.Id).FirstOrDefault(0) + 1;
             }
@@ -262,6 +262,23 @@
             modelBuilder.Entity<Account>().ConfigureAccount();
             modelBuilder.Entity<PermissionGroup>().ConfigurePermissionGroup();
             modelBuilder.Entity<Staff>().ConfigureStaff();
+        }
+
+        public IEnumerable<Role> Roles => Set<Role>();
+
+        public IEnumerable<Account> Accounts => Set<Account>();
+
+        public IEnumerable<PermissionGroup> Groups => Set<PermissionGroup>();
+
+        public IEnumerable<Staff> Staffs => Set<Staff>();
+
+        public BigInteger UsableId
+        {
+            get
+            {
+                var query = from a in Staffs select a.Id;
+                return query.Any() ? query.Max() + 1 : 1;
+            }
         }
 
         public Staff? GetStaffWithAccountId(BigInteger uid)

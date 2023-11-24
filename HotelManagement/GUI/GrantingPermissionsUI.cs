@@ -54,9 +54,10 @@
             foreach (Permission permission in perms)
                 dict.Add(GrantingPermissionsBO.GetPermissionName(permission), permission);
             cbPermissions ??= new CheckBox[perms.Length];
-            var ia = GrantingPermissionsBO.Instance.SelectedAccessable;
-            var acc = ia?.Account;
-            var pg = ia?.Group;
+            var bo = GrantingPermissionsBO.Instance;
+            var ia = bo.SelectedAccessable;
+            var acc = bo.Account;
+            var pg = bo.Group;
             int i = 0;
             foreach (var kv in dict)
             {
@@ -82,12 +83,12 @@
                     if (granted)
                     {
                         cb.Checked = true;
-                        cb.Enabled = acc == null && Editing;
+                        cb.Enabled = ia is PermissionGroup && Editing;
                     }
                     else
                     {
                         cb.Checked = acc != null && acc.IsPermissionGranted(kv.Value);
-                        cb.Enabled = Editing;
+                        cb.Enabled = acc != null && Editing;
                     }
                 }
                 else

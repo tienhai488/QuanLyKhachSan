@@ -22,7 +22,46 @@
             }
         }
 
-        public IAccessable? SelectedAccessable { get; set; } = CreateExampleStaff();
+        private Account? account;
+        private PermissionGroup? group;
+        private IAccessable? selectedAccessable;
+
+        public Account? Account
+        {
+            get => account;
+            set
+            {
+                if (!Editing) return;
+                account = value;
+            }
+        }
+        public PermissionGroup? Group
+        {
+            get => group;
+            set
+            {
+                if (!Editing) return;
+                group = value;
+            }
+        }
+        public IAccessable? SelectedAccessable
+        {
+            get => selectedAccessable;
+            set
+            {
+                selectedAccessable = value;
+                if (value != null)
+                {
+                    account = value.Account;
+                    group = value.Group;
+                }
+                else
+                {
+                    account = null;
+                    group = null;
+                }
+            }
+        }
 
         public bool Editing { get; set; }
 

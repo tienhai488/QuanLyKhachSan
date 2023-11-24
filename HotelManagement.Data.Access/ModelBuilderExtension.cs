@@ -407,8 +407,11 @@
             builder.Property<StaffState>(nameof(Staff.Status))
                 .HasColumnName("Status")
                 .HasConversion(x => (int)x, x => (StaffState)x);
+            builder.Ignore(nameof(Staff.CanDelete));
+            builder.Ignore(nameof(Staff.Resign));
             builder.Property<string>(nameof(Staff.ImageLink))
-                .HasColumnName("ImageLink");
+                .HasColumnName("ImageLink")
+                .IsRequired(false);
             builder.OptionalBigIntegerIdProperty(nameof(Staff.RoleId), "RoleID", "RO", "2");
             builder.OptionalBigIntegerIdProperty(nameof(Staff.GroupId), "PermissionGroupID", "", "2");
             builder.OptionalBigIntegerIdProperty(nameof(Staff.AccountId), "UID", "", "3");
@@ -419,7 +422,7 @@
                 builder.HasOne<Role>(nameof(Staff.Role))
                     .WithMany().IsRequired(false)
                     .HasForeignKey(nameof(Staff.RoleId))
-                    .OnDelete(DeleteBehavior.SetNull);
+                    .OnDelete(DeleteBehavior.Restrict);
             }
             else builder.Ignore(nameof(Staff.Role));
             if (includePermissionGroupRelationship)
@@ -427,14 +430,14 @@
                 builder.HasOne<PermissionGroup>(nameof(Staff.Group))
                     .WithMany().IsRequired(false)
                     .HasForeignKey(nameof(Staff.GroupId))
-                    .OnDelete(DeleteBehavior.SetNull);
+                    .OnDelete(DeleteBehavior.Restrict);
             }
             else builder.Ignore(nameof(Staff.Group));
             if (includeAccountRelationship)
             {
                 builder.HasOne<Account>(nameof(Staff.Account))
                     .WithOne().IsRequired(false)
-                    .HasForeignKey<Staff>(x => x.AccountId)
+                    .HasForeignKey<Staff>(nameof(Staff.AccountId))
                     .OnDelete(DeleteBehavior.SetNull);
             }
             else builder.Ignore(nameof(Staff.Account));
