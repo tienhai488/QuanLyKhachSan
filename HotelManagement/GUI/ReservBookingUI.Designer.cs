@@ -200,7 +200,7 @@
             materialTextBox5.AnimateReadOnly = false;
             materialTextBox5.BorderStyle = BorderStyle.None;
             materialTextBox5.Depth = 0;
-            materialTextBox5.Font = new Font("Microsoft Sans Serif", 9.6F, FontStyle.Regular, GraphicsUnit.Point);
+materialTextBox5.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialTextBox5.LeadingIcon = null;
             materialTextBox5.Location = new Point(21, 696);
             materialTextBox5.Margin = new Padding(3, 4, 3, 4);
@@ -210,7 +210,7 @@
             materialTextBox5.Name = "materialTextBox5";
             materialTextBox5.Size = new Size(339, 50);
             materialTextBox5.TabIndex = 22;
-            materialTextBox5.Text = "từ login hay assign??";
+            materialTextBox5.Text = "";
             materialTextBox5.TrailingIcon = null;
             // 
             // materialTextBox4
@@ -470,7 +470,7 @@
             dateTimePicker1.Location = new Point(97, 21);
             dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(210, 27);
+dateTimePicker1.Size = new Size(285, 23);
             dateTimePicker1.TabIndex = 15;
             // 
             // materialLabel4
@@ -514,7 +514,8 @@
             dataGridView2.RowHeadersVisible = false;
             dataGridView2.RowHeadersWidth = 51;
             dataGridView2.RowTemplate.Height = 25;
-            dataGridView2.Size = new Size(402, 674);
+dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView2.Size = new Size(352, 499);
             dataGridView2.TabIndex = 16;
             // 
             // Column4
@@ -577,7 +578,8 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(402, 674);
+dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Size = new Size(352, 499);
             dataGridView1.TabIndex = 15;
             // 
             // Column1
@@ -630,7 +632,7 @@
             dateTimePicker2.Location = new Point(64, 21);
             dateTimePicker2.Margin = new Padding(3, 4, 3, 4);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(208, 27);
+dateTimePicker2.Size = new Size(314, 23);
             dateTimePicker2.TabIndex = 16;
             // 
             // materialLabel9

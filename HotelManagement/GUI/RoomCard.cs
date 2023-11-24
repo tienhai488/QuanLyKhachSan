@@ -10,21 +10,13 @@
         public RoomCard(String UserName)
         {
             InitializeComponent();
-            customerName.Text = UserName;
+            materialLabel5.Text = UserName;
         }
 
-        private void customerName_Click(object sender, EventArgs e)
+        private void materialLabel5_Click(object sender, EventArgs e)
         {
             RentRoomDetail rmDetail = new RentRoomDetail();
             rmDetail.ShowDialog();
-        }
-
-        private void RoomCard_Click(object sender, EventArgs e)
-        {
-            RentRoomDetail rmDetail = new RentRoomDetail();
-
-            rmDetail.ShowDialog();
-
         }
     }
 }

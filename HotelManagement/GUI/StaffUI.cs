@@ -17,6 +17,6 @@ namespace HotelManagement.GUI
             InitializeComponent();
         }
 
-      
+
     }
 }
