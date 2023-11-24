@@ -1,5 +1,5 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.DTO;
+using HotelManagement.Data;
 using HotelManagement.Ultils;
 using System;
 using System.Collections.Generic;
@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace HotelManagement.GUI
 {
@@ -31,20 +32,20 @@ namespace HotelManagement.GUI
         }
 
         #region method
-        public void fillData(ServiceType2 serviceType, string type)
+        public void fillData(string id, string name, string type)
         {
-            txtId.Text = serviceType.Id;
-            txtName.Text = serviceType.Name;
+            txtId.Text = id;
+            txtName.Text = name;
 
             btnSave.Text = type;
             isEdit = type == "Lưu thông tin" ? true : false;
         }
 
-        public void addType(ServiceType2 serviceType)
+        public void addType(string id, string name)
         {
-            if (serviceBUS.validateType(serviceType))
+            if (serviceBUS.validateType(name))
             {
-                int result = serviceBUS.addType(serviceType);
+                int result = serviceBUS.addType(new ServiceType() {Id = id, Name = name });
                 if (result > 0)
                 {
                     MessageBox.Show("Thêm loại dịch vụ thành công!");
@@ -58,11 +59,11 @@ namespace HotelManagement.GUI
             }
         }
 
-        public void updateType(ServiceType2 serviceType)
+        public void updateType(string id, string name)
         {
-            if (serviceBUS.validateType(serviceType))
+            if (serviceBUS.validateType(name))
             {
-                int result = serviceBUS.updateType(serviceType);
+                int result = serviceBUS.updateType(new ServiceType() { Id = id, Name = name });
                 if (result > 0)
                 {
                     MessageBox.Show("Cập nhật loại dịch vụ thành công!");
@@ -87,14 +88,13 @@ namespace HotelManagement.GUI
             string id = txtId.Text;
             string name = txtName.Text;
 
-            ServiceType2 serviceType = new ServiceType2(id, name);
             if (isEdit)
             {
-                updateType(serviceType);
+                updateType(id, name);
             }
             else
             {
-                addType(serviceType);
+                addType(id, name);
             }
         }
 

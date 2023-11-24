@@ -10,6 +10,7 @@
 
     public class CustomerEFCoreDAO : DbContext
     {
+        public DbSet<Customer> Customers { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -21,9 +22,9 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>().ConfigureCustomer();
-            modelBuilder.Entity<Reservation>().ConfigureReservation(includeRoomRelationship: false, includeStaffRelationship: false);
-            modelBuilder.Entity<Invoice>().ConfigureInvoice(includeStaffRelationship: false);
+            //modelBuilder.Entity<Customer>().ConfigureCustomer();
+            //modelBuilder.Entity<Reservation>().ConfigureReservation(includeRoomRelationship: false, includeStaffRelationship: false);
+            //modelBuilder.Entity<Invoice>().ConfigureInvoice(includeStaffRelationship: false);
         }
     }
     public class ReservationEFCoreDAO : DbContext
@@ -226,6 +227,8 @@
     public class CancelationStatusEFCoreDAO : UseServiceDetail { }
     public class ServiceEFCoreDAO : DbContext
     {
+        public DbSet<Service> Services { get; set; }    
+        public DbSet<ServiceType> ServiceTypes { get; set; }    
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -235,15 +238,17 @@
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<ServiceType>().ConfigureServiceType();
-            modelBuilder.Entity<Service>().ConfigureService();
-            modelBuilder.Entity<UseServiceDetail>().ConfigureUseServiceDetail(includeStaffRelationship: false, includeInvoiceRelationship: false);
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<ServiceType>().ConfigureServiceType();
+        //    modelBuilder.Entity<Service>().ConfigureService();
+        //    //modelBuilder.Entity<UseServiceDetail>().ConfigureUseServiceDetail(includeStaffRelationship: false, includeInvoiceRelationship: false);
+        //}
     }
     public class ServiceTypeEFCoreDAO : DbContext
     {
+        public DbSet<Service> Services { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -253,11 +258,11 @@
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<ServiceType>().ConfigureServiceType();
-            modelBuilder.Entity<Service>().ConfigureService();
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<ServiceType>().ConfigureServiceType();
+        //    modelBuilder.Entity<Service>().ConfigureService();
+        //}
     }
     public class RoleEFCoreDAO : DbContext
     {

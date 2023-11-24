@@ -1,64 +1,97 @@
-﻿using HotelManagement.DAO;
-using HotelManagement.DTO;
+﻿using HotelManagement.Data;
+using HotelManagement.Data.Access;
 using HotelManagement.Ultils;
-using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 using System.Data;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelManagement.BUS
 {
     public class ServiceBUS
     {
-        private ServiceDAO serviceDAO = new ServiceDAO();
+        private ServiceEFCoreDAO serviceEFCoreDAO = new ServiceEFCoreDAO();
+        private ServiceTypeEFCoreDAO serviceTypeEFCoreDAO = new ServiceTypeEFCoreDAO();
 
-        public List<Service2> getAllService()
+        public List<Service> getAllService()
         {
-            return serviceDAO.getAllService();
-        }
-        public int addService(Service2 service)
-        {
-            return serviceDAO.addService(service);
+            return serviceEFCoreDAO.Services.Include(s => s.ServiceType).AsNoTracking().ToList();
         }
 
-        public int updateService(Service2 service)
+        public Service getServiceById(string id)
         {
-            return serviceDAO.updateService(service);
+            return serviceEFCoreDAO.Set<Service>().First(item => item.Id.Equals(id));
+        }
+        public int addService(Service service)
+        {
+            serviceEFCoreDAO.Services.Add(service);
+            return serviceEFCoreDAO.SaveChanges();
+        }
+
+        public int updateService(Service service)
+        {
+            serviceEFCoreDAO.Entry(service).State = EntityState.Detached;
+            serviceEFCoreDAO.Services.Attach(service);
+            serviceEFCoreDAO.Entry(service).State = EntityState.Modified;
+
+            Service temp = serviceEFCoreDAO.Services.First(item => item.Id.Equals(service.Id));
+            temp.Name = service.Name;
+            temp.UnitPrice = service.UnitPrice;
+            temp.Unit = service.Unit;
+            temp.ServiceType = service.ServiceType;
+
+            return serviceEFCoreDAO.SaveChanges();
         }
 
         public int deleteService(string id)
         {
-            return serviceDAO.deleteService(id);
+            var temp = serviceEFCoreDAO.Set<Service>().First(item => item.Id.Equals(id));
+            serviceEFCoreDAO.Set<Service>().Remove(temp);
+            return serviceEFCoreDAO.SaveChanges();
         }
         public int getLengthService()
         {
-            return serviceDAO.getLengthService();
-        }
-        public List<ServiceType2> getAllType()
-        {
-            return serviceDAO.getAllType();
-        }
-        public int addType(ServiceType2 serviceType)
-        {
-            return serviceDAO.addType(serviceType); 
+            return serviceEFCoreDAO.Set<Service>().Count();
         }
 
-        public int updateType(ServiceType2 serviceType)
+        public List<ServiceType> getAllType()
         {
-            return serviceDAO.updateType(serviceType);
+            return serviceTypeEFCoreDAO.Set<ServiceType>().AsNoTracking().ToList();
+        }
+        public int addType(ServiceType serviceType)
+        {
+            var temp = new Service();
+            serviceTypeEFCoreDAO.Set<ServiceType>().Add(serviceType);
+            return serviceTypeEFCoreDAO.SaveChanges();
+        }
+
+
+        public int updateType(ServiceType serviceType)
+        {
+            var temp = serviceTypeEFCoreDAO.Set<ServiceType>().First(item => item.Id.Equals(serviceType.Id));
+            temp.Name = serviceType.Name;
+            return serviceTypeEFCoreDAO.SaveChanges();
         }
 
         public int deleteType(string id)
         {
-            return serviceDAO.deleteType(id);
+            var temp = serviceTypeEFCoreDAO.Set<ServiceType>().First(item => item.Id.Equals(id));
+            serviceTypeEFCoreDAO.Set<ServiceType>().Remove(temp);
+            return serviceTypeEFCoreDAO.SaveChanges();
         }
 
         public int getLengthType()
         {
-            return serviceDAO.getLengthType();
+            return serviceTypeEFCoreDAO.Set<ServiceType>().Count();
+        }
+
+        public int getLengServiceForType(string type_id)
+        {
+            return serviceEFCoreDAO.Services.Where(item=>item.ServiceTypeId.Equals(type_id)).Count();
+        }
+
+        public ServiceType getServiceTypeById(string type_id)
+        {
+            return serviceTypeEFCoreDAO.Set<ServiceType>().First(item => item.Id.Equals(type_id));
         }
 
         public bool validateEmptyService(string name, string unit, string unitPrice)
@@ -104,10 +137,10 @@ namespace HotelManagement.BUS
             return true;
         }
 
-        public bool validateEmptyType(ServiceType2 serviceType)
+        public bool validateEmptyType(string name)
         {
             StringBuilder sb = new StringBuilder();
-            if (serviceType.Name.Length == 0)
+            if (name.Length == 0)
             {
                 sb.Append("Tên loại dịch vụ không được để trống!\n");
             }
@@ -119,18 +152,14 @@ namespace HotelManagement.BUS
             return true;
         }
 
-        public bool validateType(ServiceType2 serviceType)
+        public bool validateType(string name)
         {
-            if (!validateEmptyType(serviceType))
+            if (!validateEmptyType(name))
             {
                 return false;
             }
             return true;
         }
 
-        public int getLengServiceForType(string type_id)
-        {
-            return serviceDAO.getLengServiceForType(type_id);
-        }
     }
 }
