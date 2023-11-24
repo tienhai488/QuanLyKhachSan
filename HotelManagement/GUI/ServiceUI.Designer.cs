@@ -144,7 +144,7 @@
             tabControl1.Location = new Point(0, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1150, 611);
+            tabControl1.Size = new Size(1150, 654);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -153,7 +153,7 @@
             tabPage1.Location = new Point(4, 29);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1142, 578);
+            tabPage1.Size = new Size(1142, 621);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Dịch vụ";
             tabPage1.UseVisualStyleBackColor = true;
@@ -171,7 +171,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1136, 572);
+            tableLayoutPanel1.Size = new Size(1136, 615);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -180,7 +180,7 @@
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Name = "panel1";
-            panel1.Size = new Size(846, 566);
+            panel1.Size = new Size(846, 609);
             panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -195,16 +195,16 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(846, 566);
+            tableLayoutPanel2.Size = new Size(846, 609);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
             // 
             panel3.Controls.Add(groupBox2);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 166);
+            panel3.Location = new Point(3, 155);
             panel3.Name = "panel3";
-            panel3.Size = new Size(840, 397);
+            panel3.Size = new Size(840, 451);
             panel3.TabIndex = 1;
             // 
             // groupBox2
@@ -214,7 +214,7 @@
             groupBox2.ForeColor = SystemColors.HotTrack;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(840, 397);
+            groupBox2.Size = new Size(840, 451);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Data";
@@ -226,10 +226,12 @@
             dtgvService.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvService.Dock = DockStyle.Fill;
             dtgvService.Location = new Point(3, 23);
+            dtgvService.MultiSelect = false;
             dtgvService.Name = "dtgvService";
+            dtgvService.ReadOnly = true;
             dtgvService.RowHeadersWidth = 51;
             dtgvService.RowTemplate.Height = 29;
-            dtgvService.Size = new Size(834, 371);
+            dtgvService.Size = new Size(834, 425);
             dtgvService.TabIndex = 1;
             // 
             // panel2
@@ -238,7 +240,7 @@
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(840, 157);
+            panel2.Size = new Size(840, 146);
             panel2.TabIndex = 0;
             // 
             // groupBox3
@@ -248,7 +250,7 @@
             groupBox3.ForeColor = SystemColors.HotTrack;
             groupBox3.Location = new Point(0, 0);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(840, 157);
+            groupBox3.Size = new Size(840, 146);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Filter";
@@ -263,9 +265,9 @@
             tableLayoutPanel3.Location = new Point(3, 23);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 66.6666641F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.Size = new Size(834, 131);
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            tableLayoutPanel3.Size = new Size(834, 120);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // tabControl2
@@ -277,7 +279,7 @@
             tabControl2.Location = new Point(3, 3);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(828, 81);
+            tabControl2.Size = new Size(828, 66);
             tabControl2.TabIndex = 2;
             // 
             // tabPage3
@@ -286,7 +288,7 @@
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(820, 48);
+            tabPage3.Size = new Size(820, 33);
             tabPage3.TabIndex = 0;
             tabPage3.Text = "Mã DV";
             tabPage3.UseVisualStyleBackColor = true;
@@ -303,18 +305,18 @@
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel6.Size = new Size(814, 42);
+            tableLayoutPanel6.Size = new Size(814, 27);
             tableLayoutPanel6.TabIndex = 2;
             // 
             // btnDelFilterServiceID
             // 
             btnDelFilterServiceID.BackColor = SystemColors.HotTrack;
-            btnDelFilterServiceID.Dock = DockStyle.Fill;
+            btnDelFilterServiceID.Dock = DockStyle.Top;
             btnDelFilterServiceID.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDelFilterServiceID.ForeColor = SystemColors.ButtonHighlight;
             btnDelFilterServiceID.Location = new Point(572, 3);
             btnDelFilterServiceID.Name = "btnDelFilterServiceID";
-            btnDelFilterServiceID.Size = new Size(239, 36);
+            btnDelFilterServiceID.Size = new Size(239, 21);
             btnDelFilterServiceID.TabIndex = 3;
             btnDelFilterServiceID.Text = "Xóa";
             btnDelFilterServiceID.UseVisualStyleBackColor = false;
@@ -338,7 +340,7 @@
             tabPage4.Location = new Point(4, 29);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(820, 48);
+            tabPage4.Size = new Size(820, 40);
             tabPage4.TabIndex = 1;
             tabPage4.Text = "Tên DV";
             tabPage4.UseVisualStyleBackColor = true;
@@ -355,7 +357,7 @@
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(814, 42);
+            tableLayoutPanel4.Size = new Size(814, 34);
             tableLayoutPanel4.TabIndex = 2;
             // 
             // btnDelFilterServiceName
@@ -366,7 +368,7 @@
             btnDelFilterServiceName.ForeColor = SystemColors.ButtonHighlight;
             btnDelFilterServiceName.Location = new Point(572, 3);
             btnDelFilterServiceName.Name = "btnDelFilterServiceName";
-            btnDelFilterServiceName.Size = new Size(239, 36);
+            btnDelFilterServiceName.Size = new Size(239, 28);
             btnDelFilterServiceName.TabIndex = 3;
             btnDelFilterServiceName.Text = "Xóa";
             btnDelFilterServiceName.UseVisualStyleBackColor = false;
@@ -390,7 +392,7 @@
             tabPage5.Location = new Point(4, 29);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(820, 48);
+            tabPage5.Size = new Size(820, 40);
             tabPage5.TabIndex = 2;
             tabPage5.Text = "Loại DV";
             tabPage5.UseVisualStyleBackColor = true;
@@ -407,7 +409,7 @@
             tableLayoutPanel14.Name = "tableLayoutPanel14";
             tableLayoutPanel14.RowCount = 1;
             tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel14.Size = new Size(814, 42);
+            tableLayoutPanel14.Size = new Size(814, 34);
             tableLayoutPanel14.TabIndex = 4;
             // 
             // cbxFilterServiceType
@@ -431,7 +433,7 @@
             btnDelFilterServiceType.ForeColor = SystemColors.ButtonHighlight;
             btnDelFilterServiceType.Location = new Point(572, 3);
             btnDelFilterServiceType.Name = "btnDelFilterServiceType";
-            btnDelFilterServiceType.Size = new Size(239, 36);
+            btnDelFilterServiceType.Size = new Size(239, 28);
             btnDelFilterServiceType.TabIndex = 3;
             btnDelFilterServiceType.Text = "Xóa";
             btnDelFilterServiceType.UseVisualStyleBackColor = false;
@@ -445,12 +447,12 @@
             tableLayoutPanel5.Controls.Add(btnFilterService, 1, 0);
             tableLayoutPanel5.Controls.Add(btnDeleteAllFilterService, 0, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(3, 90);
+            tableLayoutPanel5.Location = new Point(3, 75);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(828, 38);
+            tableLayoutPanel5.Size = new Size(828, 42);
             tableLayoutPanel5.TabIndex = 1;
             // 
             // btnFilterService
@@ -461,7 +463,7 @@
             btnFilterService.ForeColor = SystemColors.ButtonHighlight;
             btnFilterService.Location = new Point(417, 3);
             btnFilterService.Name = "btnFilterService";
-            btnFilterService.Size = new Size(408, 32);
+            btnFilterService.Size = new Size(408, 36);
             btnFilterService.TabIndex = 1;
             btnFilterService.Text = "Lọc";
             btnFilterService.UseVisualStyleBackColor = false;
@@ -475,7 +477,7 @@
             btnDeleteAllFilterService.ForeColor = SystemColors.ButtonHighlight;
             btnDeleteAllFilterService.Location = new Point(3, 3);
             btnDeleteAllFilterService.Name = "btnDeleteAllFilterService";
-            btnDeleteAllFilterService.Size = new Size(408, 32);
+            btnDeleteAllFilterService.Size = new Size(408, 36);
             btnDeleteAllFilterService.TabIndex = 0;
             btnDeleteAllFilterService.Text = "Xóa tất cả";
             btnDeleteAllFilterService.UseVisualStyleBackColor = false;
@@ -487,7 +489,7 @@
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(855, 3);
             panel4.Name = "panel4";
-            panel4.Size = new Size(278, 566);
+            panel4.Size = new Size(278, 609);
             panel4.TabIndex = 1;
             // 
             // groupBox1
@@ -497,7 +499,7 @@
             groupBox1.ForeColor = SystemColors.HotTrack;
             groupBox1.Location = new Point(0, 0);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(278, 566);
+            groupBox1.Size = new Size(278, 609);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chức năng";
@@ -510,7 +512,7 @@
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(3, 23);
             panel5.Name = "panel5";
-            panel5.Size = new Size(272, 540);
+            panel5.Size = new Size(272, 583);
             panel5.TabIndex = 0;
             // 
             // btnUpdateService
@@ -564,7 +566,7 @@
             tabPage2.Location = new Point(4, 29);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1142, 578);
+            tabPage2.Size = new Size(1142, 621);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Loại dịch vụ";
             tabPage2.UseVisualStyleBackColor = true;
@@ -582,7 +584,7 @@
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(1136, 572);
+            tableLayoutPanel7.Size = new Size(1136, 615);
             tableLayoutPanel7.TabIndex = 2;
             // 
             // panel6
@@ -591,7 +593,7 @@
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(3, 3);
             panel6.Name = "panel6";
-            panel6.Size = new Size(846, 566);
+            panel6.Size = new Size(846, 609);
             panel6.TabIndex = 0;
             // 
             // tableLayoutPanel8
@@ -606,7 +608,7 @@
             tableLayoutPanel8.RowCount = 2;
             tableLayoutPanel8.RowStyles.Add(new RowStyle());
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Size = new Size(846, 566);
+            tableLayoutPanel8.Size = new Size(846, 609);
             tableLayoutPanel8.TabIndex = 0;
             // 
             // panel7
@@ -615,7 +617,7 @@
             panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(3, 166);
             panel7.Name = "panel7";
-            panel7.Size = new Size(840, 397);
+            panel7.Size = new Size(840, 440);
             panel7.TabIndex = 1;
             // 
             // groupBox4
@@ -625,7 +627,7 @@
             groupBox4.ForeColor = SystemColors.HotTrack;
             groupBox4.Location = new Point(0, 0);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(840, 397);
+            groupBox4.Size = new Size(840, 440);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Data";
@@ -637,12 +639,13 @@
             dtgvType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvType.Dock = DockStyle.Fill;
             dtgvType.Location = new Point(3, 23);
+            dtgvType.MultiSelect = false;
             dtgvType.Name = "dtgvType";
             dtgvType.ReadOnly = true;
             dtgvType.RowHeadersWidth = 51;
             dtgvType.RowTemplate.Height = 29;
             dtgvType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvType.Size = new Size(834, 371);
+            dtgvType.Size = new Size(834, 414);
             dtgvType.TabIndex = 1;
             // 
             // panel8
@@ -846,7 +849,7 @@
             panel9.Dock = DockStyle.Fill;
             panel9.Location = new Point(855, 3);
             panel9.Name = "panel9";
-            panel9.Size = new Size(278, 566);
+            panel9.Size = new Size(278, 609);
             panel9.TabIndex = 1;
             // 
             // groupBox6
@@ -856,7 +859,7 @@
             groupBox6.ForeColor = SystemColors.HotTrack;
             groupBox6.Location = new Point(0, 0);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(278, 566);
+            groupBox6.Size = new Size(278, 609);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "Chức năng";
@@ -869,7 +872,7 @@
             panel10.Dock = DockStyle.Fill;
             panel10.Location = new Point(3, 23);
             panel10.Name = "panel10";
-            panel10.Size = new Size(272, 540);
+            panel10.Size = new Size(272, 583);
             panel10.TabIndex = 0;
             // 
             // btnUpdateType
@@ -958,7 +961,7 @@
             // 
             // ServiceUI
             // 
-            ClientSize = new Size(1150, 611);
+            ClientSize = new Size(1150, 654);
             Controls.Add(tabControl1);
             Name = "ServiceUI";
             StartPosition = FormStartPosition.CenterScreen;

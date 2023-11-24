@@ -191,9 +191,9 @@
                 .HasConversion(x => x.ToDateTime(TimeOnly.MinValue), x => DateOnly.FromDateTime(x));
             builder.Property<string>(nameof(Customer.Address))
                 .HasColumnName("Address");
-            builder.Property<string>(nameof(Customer.CitizenId))
+            builder.Property<string>(nameof(Customer.CitizenID))
                 .HasColumnName("CitizenID");
-            builder.Property<string>(nameof(Customer.Phone))
+            builder.Property<string>(nameof(Customer.PhoneNumber))
                 .HasColumnName("PhoneNumber");
             builder.HasKey(nameof(Customer.Id));
         }
@@ -208,14 +208,14 @@
                 .HasColumnName("UnitPrice");
             builder.Property<double>(nameof(Service.Unit))
                 .HasColumnName("Unit");
-            builder.OptionalBigIntegerIdProperty(nameof(Service.TypeId), "ServiceTypeID", "ST", "2");
+            builder.OptionalBigIntegerIdProperty(nameof(Service.ServiceTypeId   ), "ServiceTypeID", "ST", "2");
             builder.HasKey(nameof(Service.Id));
 
             if (!includeServiceTypeRelationship) return;
 
             builder.HasOne<ServiceType>(nameof(Service.ServiceType))
                 .WithMany(nameof(ServiceType.Services))
-                .HasForeignKey(nameof(Service.TypeId))
+                .HasForeignKey(nameof(Service.ServiceTypeId))
                 .OnDelete(DeleteBehavior.Restrict);
         }
 

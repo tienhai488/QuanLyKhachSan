@@ -10,10 +10,14 @@
 
   <ItemGroup>
     <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
-  </ItemGroup>
 
-  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.14" />
+    <PackageReference Include="MySql.Data" Version="8.2.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageReference Include="WinForms.DataVisualization" Version="1.9.1" />
+
     <ProjectReference Include="..\HotelManagement.Business\HotelManagement.Business.csproj" />
+
   </ItemGroup>
 
   <ItemGroup>

@@ -2,6 +2,8 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Numerics;
 
     public class CancelationStatus
@@ -21,34 +23,54 @@
         public CancelationStatus() { }
     }
 
+
+    [Table("service")]
     public class Service
     {
-        private BigInteger id;
-        private BigInteger? typeId;
+        [Key]
+        [StringLength(50)]
+        [Column("ID", TypeName = "varchar")]
+        private string id;
+
+        [StringLength(50)]
+        [Column("Name", TypeName = "varchar")]
         private string name;
+
+        [StringLength(50)]
+        [Column("Unit", TypeName = "varchar")]
         private string unit;
+
+        [Column("UnitPrice", TypeName = "double")]
         private double unitPrice;
+
+        [Column("ServiceTypeId", TypeName = "varchar")]
+        private string serviceTypeId;
+
+        [ForeignKey("ServiceTypeId")]
         private ServiceType serviceType;
-        public BigInteger Id { get => id; private set => id = value; }
-        public BigInteger? TypeId { get => typeId; private set => typeId = value; }
+        public string Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public string Unit { get => unit; set => unit = value; }
         public double UnitPrice { get => unitPrice; set => unitPrice = value; }
+        public string ServiceTypeId { get => serviceTypeId; set => serviceTypeId = value; }
         public ServiceType ServiceType { get => serviceType; set => serviceType = value; }
-        public Service(BigInteger id, BigInteger? typeId)
-        {
-            this.id = id;
-            this.typeId = typeId;
-        }
         public Service() { }
     }
 
+    [Table("service_type")]
     public class ServiceType
     {
-        private BigInteger id;
+        [Key]
+        [StringLength(50)]
+        [Column("ID", TypeName = "varchar")]
+        private string id;
+
+        [StringLength(50)]
+        [Column("Name", TypeName = "varchar")]
         private string name;
+
         private IList<Service> services;
-        public BigInteger Id { get => id; private set => id = value; }
+        public string Id { get => id; set => id = value; }
         public string Name { get { return name; } set { name = value; } }
         public IList<Service> Services
         {
@@ -59,7 +81,7 @@
                 return r;
             }
         }
-        public ServiceType(BigInteger id)
+        public ServiceType(string id)
         {
             this.id = id;
         }
