@@ -41,7 +41,7 @@ namespace HotelManagement.GUI
             list = customerBUS.getAll();
             foreach (Customer customer in list)
             {
-addRoomView(customer.Fullname);
+addRoomView(customer.FullName);
             }
         }
 
