@@ -1,6 +1,8 @@
 ﻿using HotelManagement.BUS;
 using HotelManagement.DTO;
 using HotelManagement.Ultils;
+using MaterialSkin;
+using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,7 +16,7 @@ using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
-    public partial class ServiceUI : Form
+    public partial class ServiceUI : MaterialForm
     {
         private BindingSource bindingSourceService = new BindingSource();
         private BindingSource bindingSourceServiceType = new BindingSource();
@@ -24,9 +26,18 @@ namespace HotelManagement.GUI
         public ServiceUI()
         {
             InitializeComponent();
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(
+            Primary.Pink800,   // Main background color
+            Primary.Purple900, // Darker background color
+            Primary.Purple500, // Accent background color
+            Accent.Amber200,   // Warm accent color for highlights
+            TextShade.WHITE);    // Text color
+
             typeTable.Columns.Add("Mã Loại");
             typeTable.Columns.Add("Tên Loại");
-
             serviceTable.Columns.Add("Mã DV");
             serviceTable.Columns.Add("Tên DV");
             serviceTable.Columns.Add("Loại DV");
@@ -68,20 +79,60 @@ namespace HotelManagement.GUI
 
         public void initCbxFilterAllService()
         {
-            FormHelpers.initCbxFilter(cbxFilterServiceID, 0, dtgvService);
-            FormHelpers.initCbxFilter(cbxFilterServiceName, 1, dtgvService);
-            FormHelpers.initCbxFilter(cbxFilterServiceType, 2, dtgvService);
+            FormHelpers.initCbxFilter(mcbxFilterServiceID, 0, dtgvService);
+            FormHelpers.initCbxFilter(mcbxFilterServiceName, 1, dtgvService);
+            FormHelpers.initCbxFilter(mcbxFilterServiceType, 2, dtgvService);
         }
 
         public void initCbxFilterAllServiceType()
         {
-            FormHelpers.initCbxFilter(cbxFilterTypeID, 0, dtgvType);
-            FormHelpers.initCbxFilter(cbxFilterTypeName, 1, dtgvType);
+            FormHelpers.initCbxFilter(mcbxFilterTypeID, 0, dtgvType);
+            FormHelpers.initCbxFilter(mcbxFilterTypeName2, 1, dtgvType);
         }
         #endregion
 
         #region event
-        private void btnAddService_Click(object sender, EventArgs e)
+
+        private void mbtnDelFilterServiceID_Click(object sender, EventArgs e)
+        {
+            mcbxFilterServiceID.Text = String.Empty;
+        }
+
+        private void mbtnDelFilterServiceName_Click(object sender, EventArgs e)
+        {
+            mcbxFilterServiceName.Text = String.Empty;
+        }
+
+        private void mbtnDelFilterServiceType_Click(object sender, EventArgs e)
+        {
+            mcbxFilterServiceType.Text = String.Empty;
+        }
+
+        private void mbtnDeleteAllFilterService_Click(object sender, EventArgs e)
+        {
+            mcbxFilterServiceID.Text = String.Empty;
+            mcbxFilterServiceName.Text = String.Empty;
+            mcbxFilterServiceType.Text = String.Empty;
+        }
+
+        private void mbtnFilterService_Click(object sender, EventArgs e)
+        {
+            string id = mcbxFilterServiceID.Text;
+            string name = mcbxFilterServiceName.Text;
+            string type = mcbxFilterServiceType.Text;
+
+            bindingSourceService.Filter = @$"
+            `Mã DV` like '%{id}%' and
+            `Tên DV` like '%{name}%' and
+            `Loại DV` like '%{type}%'
+            ";
+
+            dtgvService.DataSource = bindingSourceService;
+            initCbxFilterAllService();
+
+        }
+
+        private void mbtnAddService_Click(object sender, EventArgs e)
         {
             int index = serviceBUS.getLengthService() + 1;
             string id = "SV" + index.ToString("D3");
@@ -92,10 +143,9 @@ namespace HotelManagement.GUI
             serviceInfoUI.Show();
         }
 
-        private void btnUpdateService_Click(object sender, EventArgs e)
+        private void materialButton1_Click(object sender, EventArgs e)
         {
-            int selectedCellCount =
-dtgvService.SelectedCells.Count;
+            int selectedCellCount = dtgvService.SelectedCells.Count;
             if (selectedCellCount > 0)
             {
                 DataGridViewCell selectedCell = dtgvService.SelectedCells[0];
@@ -127,10 +177,43 @@ dtgvService.SelectedCells.Count;
             }
         }
 
-        private void btnDeleteService_Click(object sender, EventArgs e)
+        private void materialButton1_Click_1(object sender, EventArgs e)
         {
-            int selectedCellCount =
-        dtgvService.SelectedCells.Count;
+            int selectedCellCount = dtgvService.SelectedCells.Count;
+            if (selectedCellCount > 0)
+            {
+                DataGridViewCell selectedCell = dtgvService.SelectedCells[0];
+
+                DataGridViewRow selectedRow = selectedCell.OwningRow;
+
+                if (!selectedRow.IsNewRow)
+                {
+                    string id = selectedRow.Cells[0].Value.ToString();
+                    string name = selectedRow.Cells[1].Value.ToString();
+                    double unitPrice = Double.Parse(selectedRow.Cells[3].Value.ToString());
+                    string unit = selectedRow.Cells[4].Value.ToString();
+                    string serviceTypeName = selectedRow.Cells[2].Value.ToString();
+
+                    ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
+                    Service service = new Service(id, name, unitPrice, unit, "", serviceTypeName);
+
+                    serviceInfoUI.fillData(service, "Lưu thông tin");
+                    serviceInfoUI.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn dịch vụ muốn cập nhập!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn dịch vụ muốn cập nhập!");
+            }
+        }
+
+        private void mbtnDeleteService_Click(object sender, EventArgs e)
+        {
+            int selectedCellCount = dtgvService.SelectedCells.Count;
             if (selectedCellCount > 0)
             {
                 DataGridViewCell selectedCell = dtgvService.SelectedCells[0];
@@ -167,7 +250,43 @@ dtgvService.SelectedCells.Count;
             }
         }
 
-        private void btnAddType_Click(object sender, EventArgs e)
+        private void materialButton1_Click_2(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mbtnDelFilterTypeID_Click(object sender, EventArgs e)
+        {
+            mcbxFilterTypeID.Text = String.Empty;
+        }
+
+        private void mbtnDelFilterTypeName_Click(object sender, EventArgs e)
+        {
+            mcbxFilterTypeName2.Text = String.Empty;
+        }
+
+        private void mbtnDeleteAllFilterType_Click(object sender, EventArgs e)
+        {
+            mcbxFilterTypeID.Text = String.Empty;
+            mcbxFilterTypeName2.Text = String.Empty;
+        }
+
+        private void mbtnFilterType_Click(object sender, EventArgs e)
+        {
+            string id = mcbxFilterTypeID.Text;
+            string name = mcbxFilterTypeName2.Text;
+
+
+            bindingSourceServiceType.Filter = @$"
+            `Mã Loại` like '%{id}%' and
+            `Tên Loại` like '%{name}%'
+            ";
+
+            dtgvType.DataSource = bindingSourceServiceType;
+            initCbxFilterAllServiceType();
+        }
+
+        private void mbtnAddType_Click(object sender, EventArgs e)
         {
             ServiceTypeInfoUI ui = new ServiceTypeInfoUI(this);
             int index = serviceBUS.getLengthType() + 1;
@@ -176,10 +295,9 @@ dtgvService.SelectedCells.Count;
             ui.Show();
         }
 
-        private void btnUpdateType_Click(object sender, EventArgs e)
+        private void mbtnUpdateType_Click(object sender, EventArgs e)
         {
-            int selectedCellCount =
-dtgvType.SelectedCells.Count;
+            int selectedCellCount = dtgvType.SelectedCells.Count;
             if (selectedCellCount > 0)
             {
                 DataGridViewCell selectedCell = dtgvType.SelectedCells[0];
@@ -209,10 +327,9 @@ dtgvType.SelectedCells.Count;
             }
         }
 
-        private void btnDeleteType_Click(object sender, EventArgs e)
+        private void mbtnDeleteType_Click(object sender, EventArgs e)
         {
-            int selectedCellCount =
-        dtgvType.SelectedCells.Count;
+            int selectedCellCount = dtgvType.SelectedCells.Count;
             if (selectedCellCount > 0)
             {
                 DataGridViewCell selectedCell = dtgvType.SelectedCells[0];
@@ -251,82 +368,9 @@ dtgvType.SelectedCells.Count;
                     MessageBox.Show("Vui lòng chọn loại dịch vụ muốn xóa!");
                 }
             }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn loại dịch vụ muốn xóa!");
-            }
         }
+
         #endregion
 
-
-        private void btnDelFilterServiceID_Click(object sender, EventArgs e)
-        {
-            cbxFilterServiceID.Text = String.Empty;
-        }
-
-        private void btnDelFilterServiceName_Click(object sender, EventArgs e)
-        {
-            cbxFilterServiceName.Text = String.Empty;
-        }
-
-        private void btnDelFilterServiceType_Click(object sender, EventArgs e)
-        {
-            cbxFilterServiceType.Text = String.Empty;
-        }
-
-        private void btnDeleteAllFilterService_Click(object sender, EventArgs e)
-        {
-            cbxFilterServiceID.Text = String.Empty;
-            cbxFilterServiceName.Text = String.Empty;
-            cbxFilterServiceType.Text = String.Empty;
-        }
-
-        private void btnFilterService_Click(object sender, EventArgs e)
-        {
-            string id = cbxFilterServiceID.Text;
-            string name = cbxFilterServiceName.Text;
-            string type = cbxFilterServiceType.Text;
-
-            bindingSourceService.Filter = @$"
-            `Mã DV` like '%{id}%' and
-            `Tên DV` like '%{name}%' and
-            `Loại DV` like '%{type}%'
-            ";
-
-            dtgvService.DataSource = bindingSourceService;
-            initCbxFilterAllService();
-
-        }
-
-        private void btnDelFilterTypeID_Click(object sender, EventArgs e)
-        {
-            cbxFilterTypeID.Text = String.Empty;
-        }
-
-        private void btnDelFilterTypeName_Click(object sender, EventArgs e)
-        {
-            cbxFilterTypeName.Text = String.Empty;
-        }
-
-        private void btnDeleteAllFilterType_Click(object sender, EventArgs e)
-        {
-            cbxFilterTypeID.Text = String.Empty;
-            cbxFilterTypeName.Text = String.Empty;
-        }
-
-        private void btnFilterType_Click(object sender, EventArgs e)
-        {
-            string id = cbxFilterTypeID.Text;
-            string name = cbxFilterTypeName.Text;
-
-
-            bindingSourceServiceType.Filter = @$"
-            `Mã Loại` like '%{id}%' and
-            `Tên Loại` like '%{name}%'
-            ";
-
-            dtgvType.DataSource = bindingSourceServiceType;
-            initCbxFilterAllServiceType();
-        }
     }
 }

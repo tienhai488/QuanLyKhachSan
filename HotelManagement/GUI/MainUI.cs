@@ -28,6 +28,7 @@ namespace HotelManagement.GUI
             Primary.Purple500, // Accent background color
             Accent.Amber200,   // Warm accent color for highlights
             TextShade.WHITE);    // Text color
+
             addForm();
         }
         private void addForm()
