@@ -172,7 +172,8 @@
     public class RoomEFCoreDAO : DbContext
     {
         public DbSet<Room> Rooms { get; set; }
-        
+        public DbSet<RoomTypeConvenience> RoomTypeConveniences { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -229,25 +230,6 @@
         //}
     }
 
-    public class RoomTypeConvinienceEFCoreDAO : DbContext
-    {
-        public DbSet<RoomTypeConvenience> RoomTypeConveniences { get; set; }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
-        }
-
-        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
-        {
-        }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
-        //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
-        //    modelBuilder.Entity<Room>().ConfigureRoom();
-        //}
-    }
     public class CancelationStatusEFCoreDAO : UseServiceDetail { }
     public class ServiceEFCoreDAO : DbContext
     {

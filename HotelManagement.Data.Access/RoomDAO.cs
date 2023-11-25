@@ -18,7 +18,7 @@
 //    {
 //        private MySqlConnection conn;
 //        private MySqlCommand cmd;
-        
+
 
 //        public RoomDAO()
 //        {
@@ -85,7 +85,7 @@
 //                return result;
 //            }
 //            finally { conn.Close(); }
-            
+
 //        }
 
 //        public int update(Room2 room)
@@ -116,7 +116,7 @@
 //                return result;
 //            }
 //            finally { conn.Close(); }
-            
+
 //        }
 
 //        public int delete(string id)
@@ -138,7 +138,7 @@
 //                MessageBox.Show(ex.Message);
 //                return result;
 //            }finally { conn.Close(); }
-            
+
 //        }
 
 //        public int getLength()

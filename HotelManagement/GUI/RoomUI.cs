@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using HotelManagement.BUS;
 using HotelManagement.Data;
 using HotelManagement.Data.Transfer.Ultils;
-using HotelManagement.DTO;
 using HotelManagement.Ultils;
 
 namespace HotelManagement.GUI
@@ -18,7 +17,6 @@ namespace HotelManagement.GUI
     public partial class RoomUI : Form
     {
         private RoomBUS roomBus = new RoomBUS();
-        private Convinience_RoomTypeBUS convinience_RoomTypeBus = new Convinience_RoomTypeBUS();
 
         DataTable dataTableRoom = new DataTable();
         DataTable dataTableRoomType = new DataTable();
@@ -28,7 +26,7 @@ namespace HotelManagement.GUI
         List<Room> roomList;
         List<RoomType> roomTypeList;
         List<Convenience> convinienceList;
-        List<Convinience_RoomType2> convinience_RoomTypeList;
+        List<RoomTypeConvenience> convinience_RoomTypeList;
 
         BindingSource bindingSourceRoom = new BindingSource();
         BindingSource bindingSourceRoomType = new BindingSource();
@@ -55,7 +53,7 @@ namespace HotelManagement.GUI
             roomList = new List<Room>();
             roomList = roomBus.getAllRoom();
 
-            convinience_RoomTypeList = convinience_RoomTypeBus.getAll();
+            convinience_RoomTypeList = roomBus.getAllRoomTypeConvinience();
             foreach (Room room in roomList)
             {
                 string status;
@@ -342,7 +340,7 @@ namespace HotelManagement.GUI
 
         private void btnDeleteRoomType_Click(object sender, EventArgs e)
         {
-            convinience_RoomTypeList = convinience_RoomTypeBus.getAll();
+            convinience_RoomTypeList = roomBus.getAllRoomTypeConvinience();
             if (index1 < 0 || index1 >= roomTypeList.Count)
             {
                 MessageBox.Show("Bạn chưa chọn loại phòng nào");
@@ -355,7 +353,7 @@ namespace HotelManagement.GUI
             {
                 foreach (var conv_room in convinience_RoomTypeList)
                 {
-                    if (id == conv_room.RoomTypeID)
+                    if (id == conv_room.RoomTypeId)
                     {
                         MessageBox.Show("Loại phòng này hiện đang có tiện nghi, bạn nên xóa tiện nghi khỏi loại phòng này trước khi xóa loại phòng");
                         return;
@@ -511,7 +509,7 @@ namespace HotelManagement.GUI
             {
                 foreach (var conv_room in convinience_RoomTypeList)
                 {
-                    if (id == conv_room.ConvinienceID)
+                    if (id == conv_room.ConvenienceId)
                     {
                         MessageBox.Show("Tiện nghi này hiện đang được sử dụng, bạn không thể xóa");
                         return;

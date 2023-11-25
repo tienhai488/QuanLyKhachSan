@@ -147,16 +147,16 @@
 
 
     [Table("convinience_room_type")]
-    [PrimaryKey(nameof(convinienceId), nameof(roomTypeId))]
+    [PrimaryKey(nameof(convenienceId), nameof(roomTypeId))]
     public class RoomTypeConvenience
     {
         [StringLength(50)]
-        [Column("ConvinienceID", TypeName = "varchar")]
-        private string convinienceId;
+        [Column("ConvenienceID", TypeName = "varchar")]
+        private string convenienceId;
 
         
-        [ForeignKey("ConvinienceID")]
-        private Convenience convinience;
+        [ForeignKey("ConvenienceID")]
+        private Convenience convenience;
 
         [StringLength(50)]
         [Column("RoomTypeID", TypeName = "varchar")]
@@ -174,8 +174,8 @@
         private IList<Convenience> conveniences;
 
 
-        public string ConvenienceId { get => convinienceId; set => convinienceId = value; }
-        public Convenience Convenience { get => convinience; set => convinience = value; }
+        public string ConvenienceId { get => convenienceId; set => convenienceId = value; }
+        public Convenience Convenience { get => convenience; set => convenience = value; }
         public string RoomTypeId { get => roomTypeId; set => roomTypeId = value; }
         public RoomType RoomType { get => roomType; set => roomType = value; }
         public int Quantity { get => quantity; set => quantity = value; }
@@ -190,10 +190,11 @@
 
         }
 
-        public RoomTypeConvenience(string roomTypeId, string convenienceId)
+        public RoomTypeConvenience(string convenienceId, string roomTypeId, int quantity)
         {
+            this.convenienceId = convenienceId;
             this.roomTypeId = roomTypeId;
-            this.convinienceId = convenienceId;
+            this.quantity = quantity;
         }
         public RoomTypeConvenience() { }
     }

@@ -42,7 +42,7 @@ namespace HotelManagement.GUI
             createHeaderText();
 
             roomTypeList = roomBus.getAllRoomType();
-            convinience_roomTypeList = crtBUS.getAll();
+            convinience_roomTypeList = roomBus.getAllRoomTypeConvinience();
             convinienceList = roomBus.getAllConvinience();
 
 
@@ -90,13 +90,13 @@ namespace HotelManagement.GUI
             dtgvConvinienceRoomType.DataSource = null;
             foreach (var item in convinience_roomTypeList)
             {
-                if (txbID.Text == item.RoomTypeID)
+                if (txbID.Text == item.RoomTypeId)
                 {
                     foreach (var item1 in convinienceList)
                     {
-                        if (item.ConvinienceID == item1.Id)
+                        if (item.ConvenienceId == item1.Id)
                         {
-                            dataTableConvinienceRoomType.Rows.Add(item.ConvinienceID, item1.Name, item.Quantity);
+                            dataTableConvinienceRoomType.Rows.Add(item.ConvenienceId, item1.Name, item.Quantity);
                         }
                     }
                 }
@@ -253,10 +253,10 @@ namespace HotelManagement.GUI
                     }
                 }
 
-                Convinience_RoomType2 convinience_RoomType2;
+                RoomTypeConvenience convinience_RoomType;
                 if (int.TryParse(txbQuantity.Text, out var quantity) || quantity != 0)
                 {
-                    convinience_RoomType2 = new Convinience_RoomType2(convinienceList[index].Id, txbID.Text, quantity);
+                    convinience_RoomType = new RoomTypeConvenience(convinienceList[index].Id, txbID.Text, quantity);
                 }
                 else
                 {
@@ -264,10 +264,10 @@ namespace HotelManagement.GUI
                     return;
                 }
                 
-                if (crtBUS.add(convinience_RoomType2) > 0)
+                if (roomBus.addRoomTypeConvinience(convinience_RoomType) > 0)
                 {
                     MessageBox.Show("Thêm tiện nghi vào loại phòng thành công");
-                    convinience_roomTypeList = crtBUS.getAll();
+                    convinience_roomTypeList = roomBus.getAllRoomTypeConvinience();
                     convinientRoomTypeData();
                 }
             }
@@ -282,13 +282,13 @@ namespace HotelManagement.GUI
 
                 for (int i = 0; i < convinience_roomTypeList.Count; i++)
                 {
-                    if (convinience_roomTypeList[i].ConvinienceID == dtgvConvinienceRoomType.Rows[index1].Cells[0].Value.ToString()
-                        && convinience_roomTypeList[i].RoomTypeID == txbID.Text)
+                    if (convinience_roomTypeList[i].ConvenienceId == dtgvConvinienceRoomType.Rows[index1].Cells[0].Value.ToString()
+                        && convinience_roomTypeList[i].RoomTypeId == txbID.Text)
                     {
-                        if(crtBUS.delete(convinience_roomTypeList[i].ConvinienceID, convinience_roomTypeList[i].RoomTypeID) > 0)
+                        if(roomBus.deleteRoomTypeConvinience(convinience_roomTypeList[i].ConvenienceId, convinience_roomTypeList[i].RoomTypeId) > 0)
                         {
                             MessageBox.Show("Xóa tiện nghi khỏi loại phòng này thành công");
-                            convinience_roomTypeList = crtBUS.getAll();
+                            convinience_roomTypeList = roomBus.getAllRoomTypeConvinience();
                             convinientRoomTypeData();
                             return;
                         }

@@ -179,36 +179,36 @@ namespace HotelManagement.BUS
 
         //------------------------------RoomType_Convinience BUS-------------------------------
         //private Convinience_RoomTypeDAO convinience_roomTypeDAO = new Convinience_RoomTypeDAO();
-        RoomTypeConvinienceEFCoreDAO roomTypeConvinienceEFCoreDAO = new RoomTypeConvinienceEFCoreDAO();
+        
 
         public List<RoomTypeConvenience> getAllRoomTypeConvinience()
         {
-            return roomTypeConvinienceEFCoreDAO.Set<RoomTypeConvenience>().AsNoTracking().ToList();
+            return roomEFCoreDAO.Set<RoomTypeConvenience>().AsNoTracking().ToList();
         }
 
         public int addRoomTypeConvinience(RoomTypeConvenience roomTypeConvenience)
         {
-            roomTypeConvinienceEFCoreDAO.Set<RoomTypeConvenience>().Add(roomTypeConvenience);
-            return roomTypeConvinienceEFCoreDAO.SaveChanges();
+            roomEFCoreDAO.Set<RoomTypeConvenience>().Add(roomTypeConvenience);
+            return roomEFCoreDAO.SaveChanges();
         }
 
         public int updateRoomTypeConvinience(RoomTypeConvenience roomTypeConvenience)
         {
-            var temp = roomTypeConvinienceEFCoreDAO.Set<RoomTypeConvenience>().First(item => item.ConvenienceId.Equals(roomTypeConvenience.ConvenienceId) && item.RoomTypeId.Equals(roomTypeConvenience.RoomTypeId));
+            var temp = roomEFCoreDAO.Set<RoomTypeConvenience>().First(item => item.ConvenienceId.Equals(roomTypeConvenience.ConvenienceId) && item.RoomTypeId.Equals(roomTypeConvenience.RoomTypeId));
             temp.Quantity = roomTypeConvenience.Quantity;
-            return roomTypeConvinienceEFCoreDAO.SaveChanges();
+            return roomEFCoreDAO.SaveChanges();
         }
 
         public int deleteRoomTypeConvinience(string convinienceID, string roomTypeID)
         {
-            var temp = roomTypeConvinienceEFCoreDAO.Set<RoomTypeConvenience>().First(item => item.ConvenienceId.Equals(convinienceID) && item.RoomTypeId.Equals(roomTypeID));
-            roomTypeConvinienceEFCoreDAO.Set<RoomTypeConvenience>().Remove(temp);
-            return roomTypeConvinienceEFCoreDAO.SaveChanges();
+            var temp = roomEFCoreDAO.Set<RoomTypeConvenience>().First(item => item.ConvenienceId.Equals(convinienceID) && item.RoomTypeId.Equals(roomTypeID));
+            roomEFCoreDAO.Set<RoomTypeConvenience>().Remove(temp);
+            return roomEFCoreDAO.SaveChanges();
         }
 
         public int getLengthRoomTypeConvinience()
         {
-            return roomTypeConvinienceEFCoreDAO.Set<RoomTypeConvenience>().Count();
+            return roomEFCoreDAO.Set<RoomTypeConvenience>().Count();
         }
     }
 }
