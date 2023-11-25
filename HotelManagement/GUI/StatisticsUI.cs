@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
-    public partial class StaffUI : Form
+    public partial class StatisticsUI : Form
     {
-        public StaffUI()
+        public StatisticsUI()
         {
             InitializeComponent();
         }
-
-
     }
 }

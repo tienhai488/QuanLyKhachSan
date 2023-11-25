@@ -1,52 +1,65 @@
-﻿using HotelManagement.DAO;
-using HotelManagement.DTO;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using HotelManagement.Data;
+using HotelManagement.Data.Access;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace HotelManagement.BUS
 {
     public class CustomerBUS
     {
-        private CustomerDAO customerDAO = new CustomerDAO();
+        private CustomerEFCoreDAO customerEFCoreDAO = new CustomerEFCoreDAO();
 
-        public List<Customer2> getAll()
+        public List<Customer> getAll()
         {
-            return customerDAO.getAll();
+            return customerEFCoreDAO.Customers.AsNoTracking().ToList();
         }
-        public int add(Customer2 customer)
+        public int add(Customer customer)
         {
-            return customerDAO.add(customer);
+            customerEFCoreDAO.Customers.Add(customer);
+            return customerEFCoreDAO.SaveChanges();
         }
 
-        public int update(Customer2 customer)
+        public int update(Customer customer)
         {
-            return customerDAO.update(customer);
+            customerEFCoreDAO.Entry(customer).State = EntityState.Detached;
+            customerEFCoreDAO.Customers.Attach(customer);
+            customerEFCoreDAO.Entry(customer).State = EntityState.Modified;
+
+            Customer temp = customerEFCoreDAO.Customers.First(item => item.Id.Equals(customer.Id));
+            temp.FullName = customer.FullName;
+            temp.Gender = customer.Gender;
+            temp.Birthday = customer.Birthday;
+            temp.CitizenID = customer.CitizenID;
+            temp.PhoneNumber = customer.PhoneNumber;
+            temp.Address = customer.Address;
+            
+            return customerEFCoreDAO.SaveChanges(); 
         }
 
         public int delete(string id)
         {
-            return customerDAO.delete(id);
+            Customer temp = customerEFCoreDAO.Customers.First(item => item.Id.Equals(id));
+            customerEFCoreDAO.Customers.Remove(temp);
+
+            return customerEFCoreDAO.SaveChanges();
         }
         public int getLength()
         {
-            return customerDAO.getLength();
+            return getAll().Count();
         }
 
-        public bool validateEmpty(Customer2 customer)
+        public bool validateEmpty(Customer customer)
         {
             StringBuilder sb = new StringBuilder();
-            if(customer.Fullname.Length == 0)
+            if(customer.FullName.Length == 0)
             {
                 sb.Append("Họ tên không được để trống!\n");
             }
-            if (customer.CitizenId.Length == 0)
+            if (customer.CitizenID.Length == 0)
             {
                 sb.Append("CCCD không được để trống!\n");
             }
-            if (customer.Phone.Length == 0)
+            if (customer.PhoneNumber.Length == 0)
             {
                 sb.Append("Sdt không được để trống!\n");
             }
@@ -62,7 +75,7 @@ namespace HotelManagement.BUS
             return true;
         }
 
-        public bool validate(Customer2 customer)
+        public bool validate(Customer customer)
         {
             if (!validateEmpty(customer))
             {

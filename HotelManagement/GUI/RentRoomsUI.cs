@@ -1,19 +1,7 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.DTO;
 using MaterialSkin.Controls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using HotelManagement.BUS;
-using HotelManagement.DTO;
-using System.Xml.Linq;
 using MaterialSkin;
+using HotelManagement.Data;
 
 namespace HotelManagement.GUI
 {
@@ -38,7 +26,6 @@ namespace HotelManagement.GUI
         public void addRoomView(String name)
         {
             RoomCard room = new RoomCard(name);
-            room.Size = new Size(295, 150);
             flowLayoutPanel1.Controls.Add(room);
         }
 
@@ -50,11 +37,11 @@ namespace HotelManagement.GUI
         private void materialRadioButton1_CheckedChanged(object sender, EventArgs e)
         {
             clearRoomView();
-            List<Customer2> list = new List<Customer2>();
+            List<Customer> list = new List<Customer>();
             list = customerBUS.getAll();
-            foreach (Customer2 customer in list)
+            foreach (Customer customer in list)
             {
-                addRoomView(customer.Fullname);
+addRoomView(customer.FullName);
             }
         }
 

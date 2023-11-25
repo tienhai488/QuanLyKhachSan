@@ -29,138 +29,138 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RoomCard));
-            rentTime = new Label();
-            panel2 = new Panel();
-            roomClean = new Label();
             pictureBox1 = new PictureBox();
-            customerName = new Label();
-            roomStatus = new Label();
-            roomID = new Label();
-            panel2.SuspendLayout();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel4 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel5 = new MaterialSkin.Controls.MaterialLabel();
+            materialCard1 = new MaterialSkin.Controls.MaterialCard();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            materialCard1.SuspendLayout();
             SuspendLayout();
-            // 
-            // rentTime
-            // 
-            rentTime.AutoSize = true;
-            rentTime.BackColor = Color.Transparent;
-            rentTime.Dock = DockStyle.Left;
-            rentTime.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            rentTime.ForeColor = Color.FromArgb(74, 20, 140);
-            rentTime.Location = new Point(10, 0);
-            rentTime.Margin = new Padding(4, 0, 4, 0);
-            rentTime.Name = "rentTime";
-            rentTime.Size = new Size(70, 19);
-            rentTime.TabIndex = 25;
-            rentTime.Text = "Rent Time";
-            // 
-            // panel2
-            // 
-            panel2.BackColor = SystemColors.ControlLight;
-            panel2.Controls.Add(rentTime);
-            panel2.Controls.Add(roomClean);
-            panel2.Dock = DockStyle.Bottom;
-            panel2.Location = new Point(3, 122);
-            panel2.Margin = new Padding(0);
-            panel2.Name = "panel2";
-            panel2.Padding = new Padding(10, 0, 10, 0);
-            panel2.Size = new Size(289, 25);
-            panel2.TabIndex = 29;
-            // 
-            // roomClean
-            // 
-            roomClean.AutoSize = true;
-            roomClean.BackColor = Color.Transparent;
-            roomClean.Dock = DockStyle.Right;
-            roomClean.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            roomClean.ForeColor = Color.FromArgb(74, 20, 140);
-            roomClean.Location = new Point(198, 0);
-            roomClean.Margin = new Padding(4, 0, 4, 0);
-            roomClean.Name = "roomClean";
-            roomClean.Size = new Size(81, 19);
-            roomClean.TabIndex = 24;
-            roomClean.Text = "Incharge by";
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.Transparent;
+            pictureBox1.BackColor = Color.White;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(13, 39);
+            pictureBox1.Location = new Point(18, 40);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(50, 65);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 29;
             pictureBox1.TabStop = false;
             // 
-            // customerName
+            // materialLabel1
             // 
-            customerName.AutoSize = true;
-            customerName.BackColor = Color.Transparent;
-            customerName.Font = new Font("Segoe UI Black", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            customerName.Location = new Point(69, 55);
-            customerName.Name = "customerName";
-            customerName.Size = new Size(121, 30);
-            customerName.TabIndex = 28;
-            customerName.Text = "Cus Name";
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialLabel1.Location = new Point(18, 15);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(72, 19);
+            materialLabel1.TabIndex = 30;
+            materialLabel1.Text = "{Room ID}";
             // 
-            // roomStatus
+            // materialLabel2
             // 
-            roomStatus.AutoSize = true;
-            roomStatus.BackColor = Color.Transparent;
-            roomStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            roomStatus.ForeColor = Color.FromArgb(173, 20, 87);
-            roomStatus.Location = new Point(184, 15);
-            roomStatus.Margin = new Padding(4, 0, 4, 0);
-            roomStatus.Name = "roomStatus";
-            roomStatus.Size = new Size(98, 21);
-            roomStatus.TabIndex = 31;
-            roomStatus.Text = "Room Status";
+            materialLabel2.AutoSize = true;
+            materialLabel2.Depth = 0;
+            materialLabel2.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel2.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialLabel2.Location = new Point(164, 15);
+            materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel2.Name = "materialLabel2";
+            materialLabel2.Size = new Size(103, 19);
+            materialLabel2.TabIndex = 31;
+            materialLabel2.Text = "{Room Status}";
             // 
-            // roomID
+            // materialLabel3
             // 
-            roomID.AutoSize = true;
-            roomID.BackColor = Color.Transparent;
-            roomID.Font = new Font("Segoe UI Black", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            roomID.ForeColor = Color.FromArgb(173, 20, 87);
-            roomID.Location = new Point(13, 15);
-            roomID.Margin = new Padding(4, 0, 4, 0);
-            roomID.Name = "roomID";
-            roomID.Size = new Size(74, 21);
-            roomID.TabIndex = 30;
-            roomID.Text = "RoomID";
+            materialLabel3.AutoSize = true;
+            materialLabel3.Depth = 0;
+            materialLabel3.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel3.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
+            materialLabel3.Location = new Point(18, 118);
+            materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel3.Name = "materialLabel3";
+            materialLabel3.Size = new Size(38, 17);
+            materialLabel3.TabIndex = 31;
+            materialLabel3.Text = "From:";
+            // 
+            // materialLabel4
+            // 
+            materialLabel4.AutoSize = true;
+            materialLabel4.Depth = 0;
+            materialLabel4.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel4.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
+            materialLabel4.Location = new Point(164, 118);
+            materialLabel4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel4.Name = "materialLabel4";
+            materialLabel4.Size = new Size(22, 17);
+            materialLabel4.TabIndex = 32;
+            materialLabel4.Text = "To:";
+            // 
+            // materialLabel5
+            // 
+            materialLabel5.AutoSize = true;
+            materialLabel5.Depth = 0;
+            materialLabel5.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel5.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            materialLabel5.Location = new Point(74, 60);
+            materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel5.Name = "materialLabel5";
+            materialLabel5.Size = new Size(146, 24);
+            materialLabel5.TabIndex = 33;
+            materialLabel5.Text = "Customer Name";
+            materialLabel5.Click += materialLabel5_Click;
+            // 
+            // materialCard1
+            // 
+            materialCard1.BackColor = Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(materialLabel3);
+            materialCard1.Controls.Add(materialLabel4);
+            materialCard1.Controls.Add(materialLabel1);
+            materialCard1.Controls.Add(materialLabel5);
+            materialCard1.Controls.Add(pictureBox1);
+            materialCard1.Controls.Add(materialLabel2);
+            materialCard1.Depth = 0;
+            materialCard1.Dock = DockStyle.Fill;
+            materialCard1.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            materialCard1.Location = new Point(0, 0);
+            materialCard1.Margin = new Padding(0);
+            materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCard1.Name = "materialCard1";
+            materialCard1.Padding = new Padding(15);
+            materialCard1.Size = new Size(285, 150);
+            materialCard1.TabIndex = 34;
             // 
             // RoomCard
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(255, 224, 130);
+            AutoScaleMode = AutoScaleMode.None;
+            BackColor = Color.White;
             BackgroundImageLayout = ImageLayout.Zoom;
-            Controls.Add(roomID);
-            Controls.Add(pictureBox1);
-            Controls.Add(customerName);
-            Controls.Add(roomStatus);
-            Controls.Add(panel2);
+            Controls.Add(materialCard1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(74, 20, 140);
-            Margin = new Padding(4);
+            Margin = new Padding(10);
             Name = "RoomCard";
-            Padding = new Padding(3, 0, 3, 3);
-            Size = new Size(295, 150);
-            Click += RoomCard_Click;
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            Size = new Size(285, 150);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            materialCard1.ResumeLayout(false);
+            materialCard1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-        private Label rentTime;
-        private Panel panel2;
-        private Label roomClean;
         private PictureBox pictureBox1;
-        private Label customerName;
-        private Label roomStatus;
-        private Label roomID;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
+        private MaterialSkin.Controls.MaterialLabel materialLabel4;
+        private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialCard materialCard1;
     }
 }
