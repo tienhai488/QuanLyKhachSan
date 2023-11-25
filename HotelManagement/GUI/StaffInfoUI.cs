@@ -216,10 +216,11 @@
             sa.Role = (uint)index < (uint)items.Count ? (Role)items[index] : null;
             items = cbGroup.Items;
             index = cbGroup.SelectedIndex;
-            sa.Group = (uint)index < (uint)items.Count ? (PermissionGroup)items[index] : null;
+            var group = (uint)index < (uint)items.Count ? (PermissionGroup)items[index] : null;
             items = cbAccount.Items;
             index = cbAccount.SelectedIndex;
-            sa.Account = (uint)index < (uint)(items.Count - 1) ? (Account)items[index] : null;
+            var account = (uint)index < (uint)(items.Count - 1) ? (Account)items[index] : null;
+            ((IAccessable)sa).Edit().Assign(account, group);
             Editing = false;
         }
 

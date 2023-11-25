@@ -85,7 +85,7 @@
         public Account? Account
         {
             get => account;
-            set
+            private set
             {
                 account = value;
                 accountId = value?.Uid;
@@ -95,7 +95,7 @@
         public PermissionGroup? Group
         {
             get => group;
-            set
+            private set
             {
                 group = value;
                 groupId = value?.Id;
@@ -114,9 +114,11 @@
             Account? a = account;
             account = this.account;
             this.account = a;
+            accountId = a?.Uid;
             PermissionGroup? pg = group;
             group = this.group;
             this.group = pg;
+            groupId = pg?.Id;
         }
 
         IAccessable.Editor IAccessable.Edit() => new(this, Edit);
