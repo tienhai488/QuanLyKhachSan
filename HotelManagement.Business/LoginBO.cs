@@ -15,7 +15,7 @@
         public static Staff? SignedInStaff => accessable as Staff;
         public static void SignOut() => accessable = null;
         public static bool IsPermissionGranted(Permission permission)
-            => accessable?.IsPermissionGranted(permission) ?? true;
+            => accessable?.IsPermissionGranted(permission) ?? true; // change to 'false' on final build
 
         public static LoginBO Instance
         {
@@ -39,7 +39,7 @@
         {
             if (!IsValidUserName || !IsValidPassword) return false;
             Account? account = null!;
-            using (var dao = new AccountEFCoreDAO())
+            using (var dao = new AccountDAO())
             {
                 account = dao.SignIn(UserName!, Password!);
                 if (account == null || account.Disabled) return false;
@@ -51,7 +51,7 @@
                 return true;
             }
 
-            using (var dao = new StaffEFCoreDAO())
+            using (var dao = new StaffDAO())
             {
                 var staff = dao.GetStaffWithAccountId(account.Uid);
                 if (staff == null) return false;

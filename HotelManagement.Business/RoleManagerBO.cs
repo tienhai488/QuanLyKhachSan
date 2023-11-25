@@ -37,7 +37,7 @@
                 selectedRole = value;
                 if (value != null)
                 {
-                    using (var dao = new StaffEFCoreDAO())
+                    using (var dao = new StaffDAO())
                     {
                         canDelete = !dao.HasStaffWithRole(value.Id);
                     }
@@ -59,7 +59,7 @@
                     lock (syncKey)
                     {
                         if (roles == null)
-                            using (var dao = new RoleEFCoreDAO())
+                            using (var dao = new RoleDAO())
                             {
                                 roles = dao.Roles.ToList();
                                 usableUid = dao.UsableId;
@@ -115,7 +115,7 @@
                 var pg = SelectedRole;
                 if (canDelete)
                 {
-                    using (var dao = new RoleEFCoreDAO())
+                    using (var dao = new RoleDAO())
                     {
                         dao.Remove(pg);
                         dao.SaveChanges();
@@ -136,7 +136,7 @@
                 var role = SelectedRole;
                 if (role != null)
                 {
-                    using (var dao = new RoleEFCoreDAO())
+                    using (var dao = new RoleDAO())
                     {
                         if (creating)
                         {

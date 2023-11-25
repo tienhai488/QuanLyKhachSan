@@ -41,7 +41,7 @@
                     lock (syncKey)
                     {
                         if (accounts == null)
-                            using (var dao = new AccountEFCoreDAO())
+                            using (var dao = new AccountDAO())
                             {
                                 accounts = dao.NormalAccounts.ToList();
                                 usableUid = dao.UsableUid;
@@ -112,7 +112,7 @@
                 var account = SelectedAccount;
                 if (account != null && account.Uid != 0 && !account.Linked)
                 {
-                    using (var dao = new AccountEFCoreDAO())
+                    using (var dao = new AccountDAO())
                     {
                         dao.Remove(account);
                         dao.SaveChanges();
@@ -133,7 +133,7 @@
                 var account = SelectedAccount;
                 if (account != null)
                 {
-                    using (var dao = new AccountEFCoreDAO())
+                    using (var dao = new AccountDAO())
                     {
                         if (creating)
                         {

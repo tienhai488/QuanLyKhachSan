@@ -37,7 +37,7 @@
                 selectedGroup = value;
                 if (value != null)
                 {
-                    using (var dao = new StaffEFCoreDAO())
+                    using (var dao = new StaffDAO())
                     {
                         canDelete = !dao.HasStaffWithPermissionGroup(value.Id);
                     }
@@ -59,7 +59,7 @@
                     lock (syncKey)
                     {
                         if (groups == null)
-                            using (var dao = new PermissionGroupEFCoreDAO())
+                            using (var dao = new PermissionGroupDAO())
                             {
                                 groups = dao.PermissionGroups.ToList();
                                 usableUid = dao.UsableId;
@@ -115,7 +115,7 @@
                 var pg = SelectedGroup;
                 if (canDelete)
                 {
-                    using (var dao = new PermissionGroupEFCoreDAO())
+                    using (var dao = new PermissionGroupDAO())
                     {
                         dao.Remove(pg);
                         dao.SaveChanges();
@@ -136,7 +136,7 @@
                 var group = SelectedGroup;
                 if (group != null)
                 {
-                    using (var dao = new PermissionGroupEFCoreDAO())
+                    using (var dao = new PermissionGroupDAO())
                     {
                         if (creating)
                         {

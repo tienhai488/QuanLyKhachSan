@@ -261,7 +261,7 @@
                 var pg = SelectedStaff;
                 if (canDelete)
                 {
-                    using (var dao = new StaffEFCoreDAO())
+                    using (var dao = new StaffDAO())
                     {
                         dao.Remove(pg);
                         dao.SaveChanges();
@@ -281,7 +281,7 @@
                 var staff = SelectedStaff;
                 if (staff != null)
                 {
-                    using (var dao = new StaffEFCoreDAO())
+                    using (var dao = new StaffDAO())
                     {
                         var entry = dao.Update(staff);
                         if (creating)
@@ -307,7 +307,7 @@
             }
         }
 
-        private void LoadData(StaffEFCoreDAO? dao = null)
+        private void LoadData(StaffDAO? dao = null)
         {
             if (dao != null)
             {
@@ -327,7 +327,7 @@
             }
             else
             {
-                using (dao = new StaffEFCoreDAO())
+                using (dao = new StaffDAO())
                 {
                     LoadData(dao);
                 }

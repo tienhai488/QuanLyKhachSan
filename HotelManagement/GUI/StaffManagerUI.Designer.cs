@@ -47,6 +47,7 @@
             dbtnAdd = new ToolStripMenuItem();
             dbtnEdit = new ToolStripMenuItem();
             dbtnDelete = new ToolStripMenuItem();
+            dbtnImex = new ToolStripMenuItem();
             btnSearch = new ToolStripButton();
             pnAppBar = new Panel();
             pnStaffInfo.SuspendLayout();
@@ -136,7 +137,7 @@
             tsAppBar.Padding = new Padding(0);
             tsAppBar.Size = new Size(600, 56);
             tsAppBar.TabIndex = 2;
-            tsAppBar.Text = "toolStrip1";
+            tsAppBar.Text = "Nhân viên";
             // 
             // btnBack
             // 
@@ -174,7 +175,7 @@
             btnMore.Alignment = ToolStripItemAlignment.Right;
             btnMore.AutoSize = false;
             btnMore.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnMore.DropDownItems.AddRange(new ToolStripItem[] { dbtnSave, dbtnSearch, dbtnAdd, dbtnEdit, dbtnDelete });
+            btnMore.DropDownItems.AddRange(new ToolStripItem[] { dbtnSave, dbtnSearch, dbtnAdd, dbtnEdit, dbtnDelete, dbtnImex });
             btnMore.Image = (Image)resources.GetObject("btnMore.Image");
             btnMore.ImageTransparentColor = Color.Magenta;
             btnMore.Margin = new Padding(0);
@@ -187,7 +188,7 @@
             // 
             dbtnSave.Image = (Image)resources.GetObject("dbtnSave.Image");
             dbtnSave.Name = "dbtnSave";
-            dbtnSave.Size = new Size(246, 44);
+            dbtnSave.Size = new Size(262, 44);
             dbtnSave.Text = "Lưu";
             dbtnSave.Click += OnSave;
             // 
@@ -195,7 +196,7 @@
             // 
             dbtnSearch.Image = (Image)resources.GetObject("dbtnSearch.Image");
             dbtnSearch.Name = "dbtnSearch";
-            dbtnSearch.Size = new Size(246, 44);
+            dbtnSearch.Size = new Size(262, 44);
             dbtnSearch.Text = "Tìm kiếm";
             dbtnSearch.Click += OnStartSearch;
             // 
@@ -203,7 +204,7 @@
             // 
             dbtnAdd.Image = (Image)resources.GetObject("dbtnAdd.Image");
             dbtnAdd.Name = "dbtnAdd";
-            dbtnAdd.Size = new Size(246, 44);
+            dbtnAdd.Size = new Size(262, 44);
             dbtnAdd.Text = "Thêm";
             dbtnAdd.Click += OnAdding;
             // 
@@ -211,7 +212,7 @@
             // 
             dbtnEdit.Image = (Image)resources.GetObject("dbtnEdit.Image");
             dbtnEdit.Name = "dbtnEdit";
-            dbtnEdit.Size = new Size(246, 44);
+            dbtnEdit.Size = new Size(262, 44);
             dbtnEdit.Text = "Sửa";
             dbtnEdit.Click += OnEditing;
             // 
@@ -219,9 +220,17 @@
             // 
             dbtnDelete.Image = (Image)resources.GetObject("dbtnDelete.Image");
             dbtnDelete.Name = "dbtnDelete";
-            dbtnDelete.Size = new Size(246, 44);
+            dbtnDelete.Size = new Size(262, 44);
             dbtnDelete.Text = "Xóa";
             dbtnDelete.Click += OnDeleting;
+            // 
+            // dbtnImex
+            // 
+            dbtnImex.Image = (Image)resources.GetObject("dbtnImex.Image");
+            dbtnImex.Name = "dbtnImex";
+            dbtnImex.Size = new Size(262, 44);
+            dbtnImex.Text = "Nhập/Xuất";
+            dbtnImex.Click += OnStartImex;
             // 
             // btnSearch
             // 
@@ -243,7 +252,7 @@
             pnAppBar.Location = new Point(0, 0);
             pnAppBar.Name = "pnAppBar";
             pnAppBar.Size = new Size(600, 56);
-            pnAppBar.TabIndex = 3;
+            pnAppBar.TabIndex = 2;
             // 
             // StaffManagerUI
             // 
@@ -282,5 +291,6 @@
         private ToolStripMenuItem dbtnAdd;
         private ToolStripMenuItem dbtnEdit;
         private ToolStripMenuItem dbtnDelete;
+        private ToolStripMenuItem dbtnImex;
     }
 }
