@@ -43,14 +43,14 @@
             tabPage3 = new TabPage();
             tableLayoutPanel6 = new TableLayoutPanel();
             mbtnDelFilterServiceID = new MaterialSkin.Controls.MaterialButton();
-            mcbxFilterServiceID = new MaterialSkin.Controls.MaterialComboBox();
+            cbxFilterServiceID = new ComboBox();
             tabPage4 = new TabPage();
             tableLayoutPanel4 = new TableLayoutPanel();
-            mcbxFilterServiceName = new MaterialSkin.Controls.MaterialComboBox();
+            cbxFilterServiceName = new ComboBox();
             mbtnDelFilterServiceName = new MaterialSkin.Controls.MaterialButton();
             tabPage5 = new TabPage();
             tableLayoutPanel14 = new TableLayoutPanel();
-            mcbxFilterServiceType = new MaterialSkin.Controls.MaterialComboBox();
+            cbxFilterServiceType = new ComboBox();
             mbtnDelFilterServiceType = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel5 = new TableLayoutPanel();
             mbtnDeleteAllFilterService = new MaterialSkin.Controls.MaterialButton();
@@ -75,10 +75,10 @@
             tabPage6 = new TabPage();
             tableLayoutPanel11 = new TableLayoutPanel();
             mbtnDelFilterTypeID = new MaterialSkin.Controls.MaterialButton();
-            mcbxFilterTypeID = new MaterialSkin.Controls.MaterialComboBox();
+            cbxFilterTypeID = new ComboBox();
             tabPage7 = new TabPage();
             tableLayoutPanel13 = new TableLayoutPanel();
-            mcbxFilterTypeName2 = new MaterialSkin.Controls.MaterialComboBox();
+            cbxFilterTypeName2 = new ComboBox();
             mbtnDelFilterTypeName = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel12 = new TableLayoutPanel();
             mbtnFilterType = new MaterialSkin.Controls.MaterialButton();
@@ -141,11 +141,11 @@
             tabControl1.Controls.Add(tabPage1);
             tabControl1.Controls.Add(tabPage2);
             tabControl1.Dock = DockStyle.Fill;
-            tabControl1.Location = new Point(3, 0);
+            tabControl1.Location = new Point(0, 0);
             tabControl1.Margin = new Padding(0, 0, 29, 0);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(1144, 608);
+            tabControl1.Size = new Size(1150, 611);
             tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -155,7 +155,7 @@
             tabPage1.Margin = new Padding(0);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1136, 574);
+            tabPage1.Size = new Size(1142, 577);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "Dịch vụ";
             tabPage1.UseVisualStyleBackColor = true;
@@ -174,7 +174,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1130, 568);
+            tableLayoutPanel1.Size = new Size(1136, 571);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -184,7 +184,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(847, 568);
+            panel1.Size = new Size(852, 571);
             panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -200,7 +200,7 @@
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 197F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(847, 568);
+            tableLayoutPanel2.Size = new Size(852, 571);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
@@ -210,7 +210,7 @@
             panel3.Location = new Point(0, 197);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
-            panel3.Size = new Size(847, 371);
+            panel3.Size = new Size(852, 374);
             panel3.TabIndex = 1;
             // 
             // groupBox2
@@ -223,7 +223,7 @@
             groupBox2.Margin = new Padding(0);
             groupBox2.Name = "groupBox2";
             groupBox2.Padding = new Padding(15, 3, 24, 15);
-            groupBox2.Size = new Size(847, 371);
+            groupBox2.Size = new Size(852, 374);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Data";
@@ -243,7 +243,7 @@
             dtgvService.RowHeadersWidth = 51;
             dtgvService.RowTemplate.Height = 29;
             dtgvService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvService.Size = new Size(808, 331);
+            dtgvService.Size = new Size(813, 334);
             dtgvService.TabIndex = 1;
             // 
             // panel2
@@ -253,7 +253,7 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(847, 197);
+            panel2.Size = new Size(852, 197);
             panel2.TabIndex = 0;
             // 
             // groupBox3
@@ -266,7 +266,7 @@
             groupBox3.Margin = new Padding(0, 0, 29, 0);
             groupBox3.Name = "groupBox3";
             groupBox3.Padding = new Padding(15, 3, 15, 15);
-            groupBox3.Size = new Size(847, 197);
+            groupBox3.Size = new Size(852, 197);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Filter";
@@ -284,20 +284,20 @@
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 66.67F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33F));
-            tableLayoutPanel3.Size = new Size(817, 157);
+            tableLayoutPanel3.Size = new Size(822, 157);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // tabControl2
             // 
+            tabControl2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tabControl2.Controls.Add(tabPage3);
             tabControl2.Controls.Add(tabPage4);
             tabControl2.Controls.Add(tabPage5);
-            tabControl2.Dock = DockStyle.Fill;
             tabControl2.Location = new Point(0, 0);
             tabControl2.Margin = new Padding(0);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(817, 104);
+            tabControl2.Size = new Size(822, 104);
             tabControl2.TabIndex = 2;
             // 
             // tabPage3
@@ -307,7 +307,7 @@
             tabPage3.Margin = new Padding(0);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(809, 70);
+            tabPage3.Size = new Size(814, 70);
             tabPage3.TabIndex = 0;
             tabPage3.Text = "Mã DV";
             tabPage3.UseVisualStyleBackColor = true;
@@ -319,14 +319,14 @@
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             tableLayoutPanel6.Controls.Add(mbtnDelFilterServiceID, 1, 0);
-            tableLayoutPanel6.Controls.Add(mcbxFilterServiceID, 0, 0);
+            tableLayoutPanel6.Controls.Add(cbxFilterServiceID, 0, 0);
             tableLayoutPanel6.Dock = DockStyle.Fill;
             tableLayoutPanel6.Location = new Point(3, 3);
             tableLayoutPanel6.Margin = new Padding(0);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel6.Size = new Size(803, 64);
+            tableLayoutPanel6.Size = new Size(808, 64);
             tableLayoutPanel6.TabIndex = 2;
             // 
             // mbtnDelFilterServiceID
@@ -338,12 +338,12 @@
             mbtnDelFilterServiceID.Depth = 0;
             mbtnDelFilterServiceID.HighEmphasis = true;
             mbtnDelFilterServiceID.Icon = null;
-            mbtnDelFilterServiceID.Location = new Point(566, 6);
+            mbtnDelFilterServiceID.Location = new Point(569, 6);
             mbtnDelFilterServiceID.Margin = new Padding(4, 6, 4, 6);
             mbtnDelFilterServiceID.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDelFilterServiceID.Name = "mbtnDelFilterServiceID";
             mbtnDelFilterServiceID.NoAccentTextColor = Color.Empty;
-            mbtnDelFilterServiceID.Size = new Size(233, 49);
+            mbtnDelFilterServiceID.Size = new Size(235, 49);
             mbtnDelFilterServiceID.TabIndex = 3;
             mbtnDelFilterServiceID.Text = "Xóa";
             mbtnDelFilterServiceID.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -351,38 +351,24 @@
             mbtnDelFilterServiceID.UseVisualStyleBackColor = true;
             mbtnDelFilterServiceID.Click += mbtnDelFilterServiceID_Click;
             // 
-            // mcbxFilterServiceID
+            // cbxFilterServiceID
             // 
-            mcbxFilterServiceID.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            mcbxFilterServiceID.AutoResize = false;
-            mcbxFilterServiceID.BackColor = Color.FromArgb(255, 255, 255);
-            mcbxFilterServiceID.Depth = 0;
-            mcbxFilterServiceID.DrawMode = DrawMode.OwnerDrawVariable;
-            mcbxFilterServiceID.DropDownHeight = 174;
-            mcbxFilterServiceID.DropDownStyle = ComboBoxStyle.DropDownList;
-            mcbxFilterServiceID.DropDownWidth = 121;
-            mcbxFilterServiceID.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            mcbxFilterServiceID.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            mcbxFilterServiceID.FormattingEnabled = true;
-            mcbxFilterServiceID.IntegralHeight = false;
-            mcbxFilterServiceID.ItemHeight = 43;
-            mcbxFilterServiceID.Location = new Point(3, 6);
-            mcbxFilterServiceID.Margin = new Padding(3, 6, 29, 3);
-            mcbxFilterServiceID.MaxDropDownItems = 4;
-            mcbxFilterServiceID.MouseState = MaterialSkin.MouseState.OUT;
-            mcbxFilterServiceID.Name = "mcbxFilterServiceID";
-            mcbxFilterServiceID.Size = new Size(530, 49);
-            mcbxFilterServiceID.StartIndex = 0;
-            mcbxFilterServiceID.TabIndex = 3;
+            cbxFilterServiceID.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxFilterServiceID.FormattingEnabled = true;
+            cbxFilterServiceID.Location = new Point(3, 6);
+            cbxFilterServiceID.Margin = new Padding(3, 6, 29, 3);
+            cbxFilterServiceID.Name = "cbxFilterServiceID";
+            cbxFilterServiceID.Size = new Size(533, 29);
+            cbxFilterServiceID.TabIndex = 9;
             // 
             // tabPage4
             // 
             tabPage4.Controls.Add(tableLayoutPanel4);
-            tabPage4.Location = new Point(4, 24);
+            tabPage4.Location = new Point(4, 30);
             tabPage4.Margin = new Padding(0);
             tabPage4.Name = "tabPage4";
             tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(809, 80);
+            tabPage4.Size = new Size(814, 70);
             tabPage4.TabIndex = 1;
             tabPage4.Text = "Tên DV";
             tabPage4.UseVisualStyleBackColor = true;
@@ -393,7 +379,7 @@
             tableLayoutPanel4.ColumnCount = 2;
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel4.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel4.Controls.Add(mcbxFilterServiceName, 0, 0);
+            tableLayoutPanel4.Controls.Add(cbxFilterServiceName, 0, 0);
             tableLayoutPanel4.Controls.Add(mbtnDelFilterServiceName, 1, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
             tableLayoutPanel4.Location = new Point(3, 3);
@@ -401,32 +387,18 @@
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(803, 74);
+            tableLayoutPanel4.Size = new Size(808, 64);
             tableLayoutPanel4.TabIndex = 2;
             // 
-            // mcbxFilterServiceName
+            // cbxFilterServiceName
             // 
-            mcbxFilterServiceName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            mcbxFilterServiceName.AutoResize = false;
-            mcbxFilterServiceName.BackColor = Color.FromArgb(255, 255, 255);
-            mcbxFilterServiceName.Depth = 0;
-            mcbxFilterServiceName.DrawMode = DrawMode.OwnerDrawVariable;
-            mcbxFilterServiceName.DropDownHeight = 174;
-            mcbxFilterServiceName.DropDownStyle = ComboBoxStyle.DropDownList;
-            mcbxFilterServiceName.DropDownWidth = 121;
-            mcbxFilterServiceName.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            mcbxFilterServiceName.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            mcbxFilterServiceName.FormattingEnabled = true;
-            mcbxFilterServiceName.IntegralHeight = false;
-            mcbxFilterServiceName.ItemHeight = 43;
-            mcbxFilterServiceName.Location = new Point(3, 6);
-            mcbxFilterServiceName.Margin = new Padding(3, 6, 29, 3);
-            mcbxFilterServiceName.MaxDropDownItems = 4;
-            mcbxFilterServiceName.MouseState = MaterialSkin.MouseState.OUT;
-            mcbxFilterServiceName.Name = "mcbxFilterServiceName";
-            mcbxFilterServiceName.Size = new Size(530, 49);
-            mcbxFilterServiceName.StartIndex = 0;
-            mcbxFilterServiceName.TabIndex = 4;
+            cbxFilterServiceName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxFilterServiceName.FormattingEnabled = true;
+            cbxFilterServiceName.Location = new Point(3, 6);
+            cbxFilterServiceName.Margin = new Padding(3, 6, 29, 3);
+            cbxFilterServiceName.Name = "cbxFilterServiceName";
+            cbxFilterServiceName.Size = new Size(533, 29);
+            cbxFilterServiceName.TabIndex = 9;
             // 
             // mbtnDelFilterServiceName
             // 
@@ -438,12 +410,12 @@
             mbtnDelFilterServiceName.ForeColor = SystemColors.HotTrack;
             mbtnDelFilterServiceName.HighEmphasis = true;
             mbtnDelFilterServiceName.Icon = null;
-            mbtnDelFilterServiceName.Location = new Point(566, 6);
+            mbtnDelFilterServiceName.Location = new Point(569, 6);
             mbtnDelFilterServiceName.Margin = new Padding(4, 6, 4, 6);
             mbtnDelFilterServiceName.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDelFilterServiceName.Name = "mbtnDelFilterServiceName";
             mbtnDelFilterServiceName.NoAccentTextColor = Color.Empty;
-            mbtnDelFilterServiceName.Size = new Size(233, 49);
+            mbtnDelFilterServiceName.Size = new Size(235, 49);
             mbtnDelFilterServiceName.TabIndex = 4;
             mbtnDelFilterServiceName.Text = "Xóa";
             mbtnDelFilterServiceName.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -458,7 +430,7 @@
             tabPage5.Margin = new Padding(0);
             tabPage5.Name = "tabPage5";
             tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(809, 80);
+            tabPage5.Size = new Size(814, 76);
             tabPage5.TabIndex = 2;
             tabPage5.Text = "Loại DV";
             tabPage5.UseVisualStyleBackColor = true;
@@ -469,7 +441,7 @@
             tableLayoutPanel14.ColumnCount = 2;
             tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel14.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel14.Controls.Add(mcbxFilterServiceType, 0, 0);
+            tableLayoutPanel14.Controls.Add(cbxFilterServiceType, 0, 0);
             tableLayoutPanel14.Controls.Add(mbtnDelFilterServiceType, 1, 0);
             tableLayoutPanel14.Dock = DockStyle.Fill;
             tableLayoutPanel14.Location = new Point(3, 3);
@@ -477,32 +449,18 @@
             tableLayoutPanel14.Name = "tableLayoutPanel14";
             tableLayoutPanel14.RowCount = 1;
             tableLayoutPanel14.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel14.Size = new Size(803, 74);
+            tableLayoutPanel14.Size = new Size(808, 70);
             tableLayoutPanel14.TabIndex = 4;
             // 
-            // mcbxFilterServiceType
+            // cbxFilterServiceType
             // 
-            mcbxFilterServiceType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            mcbxFilterServiceType.AutoResize = false;
-            mcbxFilterServiceType.BackColor = Color.FromArgb(255, 255, 255);
-            mcbxFilterServiceType.Depth = 0;
-            mcbxFilterServiceType.DrawMode = DrawMode.OwnerDrawVariable;
-            mcbxFilterServiceType.DropDownHeight = 174;
-            mcbxFilterServiceType.DropDownStyle = ComboBoxStyle.DropDownList;
-            mcbxFilterServiceType.DropDownWidth = 121;
-            mcbxFilterServiceType.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            mcbxFilterServiceType.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            mcbxFilterServiceType.FormattingEnabled = true;
-            mcbxFilterServiceType.IntegralHeight = false;
-            mcbxFilterServiceType.ItemHeight = 43;
-            mcbxFilterServiceType.Location = new Point(3, 6);
-            mcbxFilterServiceType.Margin = new Padding(3, 6, 29, 3);
-            mcbxFilterServiceType.MaxDropDownItems = 4;
-            mcbxFilterServiceType.MouseState = MaterialSkin.MouseState.OUT;
-            mcbxFilterServiceType.Name = "mcbxFilterServiceType";
-            mcbxFilterServiceType.Size = new Size(530, 49);
-            mcbxFilterServiceType.StartIndex = 0;
-            mcbxFilterServiceType.TabIndex = 5;
+            cbxFilterServiceType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxFilterServiceType.FormattingEnabled = true;
+            cbxFilterServiceType.Location = new Point(3, 6);
+            cbxFilterServiceType.Margin = new Padding(3, 6, 29, 3);
+            cbxFilterServiceType.Name = "cbxFilterServiceType";
+            cbxFilterServiceType.Size = new Size(533, 29);
+            cbxFilterServiceType.TabIndex = 9;
             // 
             // mbtnDelFilterServiceType
             // 
@@ -513,12 +471,12 @@
             mbtnDelFilterServiceType.Depth = 0;
             mbtnDelFilterServiceType.HighEmphasis = true;
             mbtnDelFilterServiceType.Icon = null;
-            mbtnDelFilterServiceType.Location = new Point(566, 6);
+            mbtnDelFilterServiceType.Location = new Point(569, 6);
             mbtnDelFilterServiceType.Margin = new Padding(4, 6, 4, 6);
             mbtnDelFilterServiceType.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDelFilterServiceType.Name = "mbtnDelFilterServiceType";
             mbtnDelFilterServiceType.NoAccentTextColor = Color.Empty;
-            mbtnDelFilterServiceType.Size = new Size(233, 49);
+            mbtnDelFilterServiceType.Size = new Size(235, 49);
             mbtnDelFilterServiceType.TabIndex = 5;
             mbtnDelFilterServiceType.Text = "Xóa";
             mbtnDelFilterServiceType.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -541,7 +499,7 @@
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel5.Size = new Size(817, 53);
+            tableLayoutPanel5.Size = new Size(822, 53);
             tableLayoutPanel5.TabIndex = 3;
             // 
             // mbtnDeleteAllFilterService
@@ -553,12 +511,12 @@
             mbtnDeleteAllFilterService.Dock = DockStyle.Fill;
             mbtnDeleteAllFilterService.HighEmphasis = true;
             mbtnDeleteAllFilterService.Icon = null;
-            mbtnDeleteAllFilterService.Location = new Point(330, 6);
+            mbtnDeleteAllFilterService.Location = new Point(332, 6);
             mbtnDeleteAllFilterService.Margin = new Padding(4, 6, 29, 6);
             mbtnDeleteAllFilterService.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDeleteAllFilterService.Name = "mbtnDeleteAllFilterService";
             mbtnDeleteAllFilterService.NoAccentTextColor = Color.Empty;
-            mbtnDeleteAllFilterService.Size = new Size(212, 41);
+            mbtnDeleteAllFilterService.Size = new Size(213, 41);
             mbtnDeleteAllFilterService.TabIndex = 4;
             mbtnDeleteAllFilterService.Text = "Xóa tất cả";
             mbtnDeleteAllFilterService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -575,12 +533,12 @@
             mbtnFilterService.Dock = DockStyle.Fill;
             mbtnFilterService.HighEmphasis = true;
             mbtnFilterService.Icon = null;
-            mbtnFilterService.Location = new Point(575, 6);
+            mbtnFilterService.Location = new Point(578, 6);
             mbtnFilterService.Margin = new Padding(4, 6, 10, 6);
             mbtnFilterService.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnFilterService.Name = "mbtnFilterService";
             mbtnFilterService.NoAccentTextColor = Color.Empty;
-            mbtnFilterService.Size = new Size(232, 41);
+            mbtnFilterService.Size = new Size(234, 41);
             mbtnFilterService.TabIndex = 5;
             mbtnFilterService.Text = "Lọc";
             mbtnFilterService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -592,10 +550,10 @@
             // 
             panel4.Controls.Add(groupBox1);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(847, 0);
+            panel4.Location = new Point(852, 0);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
-            panel4.Size = new Size(283, 568);
+            panel4.Size = new Size(284, 571);
             panel4.TabIndex = 1;
             // 
             // groupBox1
@@ -608,7 +566,7 @@
             groupBox1.Margin = new Padding(0);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(15, 3, 15, 15);
-            groupBox1.Size = new Size(283, 568);
+            groupBox1.Size = new Size(284, 571);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chức năng";
@@ -622,7 +580,7 @@
             panel5.Location = new Point(15, 25);
             panel5.Margin = new Padding(0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(253, 528);
+            panel5.Size = new Size(254, 531);
             panel5.TabIndex = 0;
             // 
             // mbtnDeleteService
@@ -639,7 +597,7 @@
             mbtnDeleteService.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDeleteService.Name = "mbtnDeleteService";
             mbtnDeleteService.NoAccentTextColor = Color.Empty;
-            mbtnDeleteService.Size = new Size(245, 49);
+            mbtnDeleteService.Size = new Size(246, 49);
             mbtnDeleteService.TabIndex = 8;
             mbtnDeleteService.Text = "Xóa dịch vụ";
             mbtnDeleteService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -661,7 +619,7 @@
             mbtnUpdateService.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnUpdateService.Name = "mbtnUpdateService";
             mbtnUpdateService.NoAccentTextColor = Color.Empty;
-            mbtnUpdateService.Size = new Size(245, 49);
+            mbtnUpdateService.Size = new Size(246, 49);
             mbtnUpdateService.TabIndex = 7;
             mbtnUpdateService.Text = "Cập nhật dịch vụ";
             mbtnUpdateService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -683,7 +641,7 @@
             mbtnAddService.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnAddService.Name = "mbtnAddService";
             mbtnAddService.NoAccentTextColor = Color.Empty;
-            mbtnAddService.Size = new Size(245, 49);
+            mbtnAddService.Size = new Size(246, 49);
             mbtnAddService.TabIndex = 6;
             mbtnAddService.Text = "Thêm dịch vụ";
             mbtnAddService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -694,11 +652,11 @@
             // tabPage2
             // 
             tabPage2.Controls.Add(tableLayoutPanel7);
-            tabPage2.Location = new Point(4, 30);
+            tabPage2.Location = new Point(4, 24);
             tabPage2.Margin = new Padding(0);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(1136, 574);
+            tabPage2.Size = new Size(1142, 583);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Loại dịch vụ";
             tabPage2.UseVisualStyleBackColor = true;
@@ -717,7 +675,7 @@
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(1130, 568);
+            tableLayoutPanel7.Size = new Size(1136, 577);
             tableLayoutPanel7.TabIndex = 2;
             // 
             // panel6
@@ -727,7 +685,7 @@
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(847, 568);
+            panel6.Size = new Size(852, 577);
             panel6.TabIndex = 0;
             // 
             // tableLayoutPanel8
@@ -743,7 +701,7 @@
             tableLayoutPanel8.RowCount = 2;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Absolute, 197F));
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Size = new Size(847, 568);
+            tableLayoutPanel8.Size = new Size(852, 577);
             tableLayoutPanel8.TabIndex = 0;
             // 
             // panel7
@@ -753,7 +711,7 @@
             panel7.Location = new Point(0, 197);
             panel7.Margin = new Padding(0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(847, 371);
+            panel7.Size = new Size(852, 380);
             panel7.TabIndex = 1;
             // 
             // groupBox4
@@ -766,7 +724,7 @@
             groupBox4.Margin = new Padding(0);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(15, 3, 24, 15);
-            groupBox4.Size = new Size(847, 371);
+            groupBox4.Size = new Size(852, 380);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Data";
@@ -787,7 +745,7 @@
             dtgvType.RowHeadersWidth = 51;
             dtgvType.RowTemplate.Height = 29;
             dtgvType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvType.Size = new Size(808, 331);
+            dtgvType.Size = new Size(813, 340);
             dtgvType.TabIndex = 1;
             // 
             // panel8
@@ -797,7 +755,7 @@
             panel8.Location = new Point(0, 0);
             panel8.Margin = new Padding(0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(847, 197);
+            panel8.Size = new Size(852, 197);
             panel8.TabIndex = 0;
             // 
             // groupBox5
@@ -810,7 +768,7 @@
             groupBox5.Margin = new Padding(0);
             groupBox5.Name = "groupBox5";
             groupBox5.Padding = new Padding(15, 3, 15, 15);
-            groupBox5.Size = new Size(847, 197);
+            groupBox5.Size = new Size(852, 197);
             groupBox5.TabIndex = 1;
             groupBox5.TabStop = false;
             groupBox5.Text = "Filter";
@@ -828,19 +786,19 @@
             tableLayoutPanel9.RowCount = 2;
             tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 66.6666641F));
             tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel9.Size = new Size(817, 157);
+            tableLayoutPanel9.Size = new Size(822, 157);
             tableLayoutPanel9.TabIndex = 0;
             // 
             // tabControl3
             // 
+            tabControl3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             tabControl3.Controls.Add(tabPage6);
             tabControl3.Controls.Add(tabPage7);
-            tabControl3.Dock = DockStyle.Fill;
             tabControl3.Location = new Point(0, 0);
             tabControl3.Margin = new Padding(0);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
-            tabControl3.Size = new Size(817, 104);
+            tabControl3.Size = new Size(822, 104);
             tabControl3.TabIndex = 2;
             // 
             // tabPage6
@@ -850,7 +808,7 @@
             tabPage6.Margin = new Padding(0);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(809, 70);
+            tabPage6.Size = new Size(814, 70);
             tabPage6.TabIndex = 0;
             tabPage6.Text = "Mã loại";
             tabPage6.UseVisualStyleBackColor = true;
@@ -862,14 +820,14 @@
             tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
             tableLayoutPanel11.Controls.Add(mbtnDelFilterTypeID, 1, 0);
-            tableLayoutPanel11.Controls.Add(mcbxFilterTypeID, 0, 0);
+            tableLayoutPanel11.Controls.Add(cbxFilterTypeID, 0, 0);
             tableLayoutPanel11.Dock = DockStyle.Fill;
             tableLayoutPanel11.Location = new Point(3, 3);
             tableLayoutPanel11.Margin = new Padding(0);
             tableLayoutPanel11.Name = "tableLayoutPanel11";
             tableLayoutPanel11.RowCount = 1;
             tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel11.Size = new Size(803, 64);
+            tableLayoutPanel11.Size = new Size(808, 64);
             tableLayoutPanel11.TabIndex = 2;
             // 
             // mbtnDelFilterTypeID
@@ -881,12 +839,12 @@
             mbtnDelFilterTypeID.Depth = 0;
             mbtnDelFilterTypeID.HighEmphasis = true;
             mbtnDelFilterTypeID.Icon = null;
-            mbtnDelFilterTypeID.Location = new Point(566, 6);
+            mbtnDelFilterTypeID.Location = new Point(569, 6);
             mbtnDelFilterTypeID.Margin = new Padding(4, 6, 4, 6);
             mbtnDelFilterTypeID.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDelFilterTypeID.Name = "mbtnDelFilterTypeID";
             mbtnDelFilterTypeID.NoAccentTextColor = Color.Empty;
-            mbtnDelFilterTypeID.Size = new Size(233, 49);
+            mbtnDelFilterTypeID.Size = new Size(235, 49);
             mbtnDelFilterTypeID.TabIndex = 4;
             mbtnDelFilterTypeID.Text = "Xóa";
             mbtnDelFilterTypeID.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -894,29 +852,15 @@
             mbtnDelFilterTypeID.UseVisualStyleBackColor = true;
             mbtnDelFilterTypeID.Click += mbtnDelFilterTypeID_Click;
             // 
-            // mcbxFilterTypeID
+            // cbxFilterTypeID
             // 
-            mcbxFilterTypeID.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            mcbxFilterTypeID.AutoResize = false;
-            mcbxFilterTypeID.BackColor = Color.FromArgb(255, 255, 255);
-            mcbxFilterTypeID.Depth = 0;
-            mcbxFilterTypeID.DrawMode = DrawMode.OwnerDrawVariable;
-            mcbxFilterTypeID.DropDownHeight = 174;
-            mcbxFilterTypeID.DropDownStyle = ComboBoxStyle.DropDownList;
-            mcbxFilterTypeID.DropDownWidth = 121;
-            mcbxFilterTypeID.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            mcbxFilterTypeID.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            mcbxFilterTypeID.FormattingEnabled = true;
-            mcbxFilterTypeID.IntegralHeight = false;
-            mcbxFilterTypeID.ItemHeight = 43;
-            mcbxFilterTypeID.Location = new Point(3, 6);
-            mcbxFilterTypeID.Margin = new Padding(3, 6, 29, 3);
-            mcbxFilterTypeID.MaxDropDownItems = 4;
-            mcbxFilterTypeID.MouseState = MaterialSkin.MouseState.OUT;
-            mcbxFilterTypeID.Name = "mcbxFilterTypeID";
-            mcbxFilterTypeID.Size = new Size(530, 49);
-            mcbxFilterTypeID.StartIndex = 0;
-            mcbxFilterTypeID.TabIndex = 3;
+            cbxFilterTypeID.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxFilterTypeID.FormattingEnabled = true;
+            cbxFilterTypeID.Location = new Point(3, 6);
+            cbxFilterTypeID.Margin = new Padding(3, 6, 29, 3);
+            cbxFilterTypeID.Name = "cbxFilterTypeID";
+            cbxFilterTypeID.Size = new Size(533, 29);
+            cbxFilterTypeID.TabIndex = 10;
             // 
             // tabPage7
             // 
@@ -925,7 +869,7 @@
             tabPage7.Margin = new Padding(0);
             tabPage7.Name = "tabPage7";
             tabPage7.Padding = new Padding(3);
-            tabPage7.Size = new Size(809, 80);
+            tabPage7.Size = new Size(814, 76);
             tabPage7.TabIndex = 1;
             tabPage7.Text = "Tên loại";
             tabPage7.UseVisualStyleBackColor = true;
@@ -936,7 +880,7 @@
             tableLayoutPanel13.ColumnCount = 2;
             tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel13.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel13.Controls.Add(mcbxFilterTypeName2, 0, 0);
+            tableLayoutPanel13.Controls.Add(cbxFilterTypeName2, 0, 0);
             tableLayoutPanel13.Controls.Add(mbtnDelFilterTypeName, 1, 0);
             tableLayoutPanel13.Dock = DockStyle.Fill;
             tableLayoutPanel13.Location = new Point(3, 3);
@@ -944,32 +888,18 @@
             tableLayoutPanel13.Name = "tableLayoutPanel13";
             tableLayoutPanel13.RowCount = 1;
             tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel13.Size = new Size(803, 74);
+            tableLayoutPanel13.Size = new Size(808, 70);
             tableLayoutPanel13.TabIndex = 2;
             // 
-            // mcbxFilterTypeName2
+            // cbxFilterTypeName2
             // 
-            mcbxFilterTypeName2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            mcbxFilterTypeName2.AutoResize = false;
-            mcbxFilterTypeName2.BackColor = Color.FromArgb(255, 255, 255);
-            mcbxFilterTypeName2.Depth = 0;
-            mcbxFilterTypeName2.DrawMode = DrawMode.OwnerDrawVariable;
-            mcbxFilterTypeName2.DropDownHeight = 174;
-            mcbxFilterTypeName2.DropDownStyle = ComboBoxStyle.DropDownList;
-            mcbxFilterTypeName2.DropDownWidth = 121;
-            mcbxFilterTypeName2.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            mcbxFilterTypeName2.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            mcbxFilterTypeName2.FormattingEnabled = true;
-            mcbxFilterTypeName2.IntegralHeight = false;
-            mcbxFilterTypeName2.ItemHeight = 43;
-            mcbxFilterTypeName2.Location = new Point(3, 6);
-            mcbxFilterTypeName2.Margin = new Padding(3, 6, 29, 3);
-            mcbxFilterTypeName2.MaxDropDownItems = 4;
-            mcbxFilterTypeName2.MouseState = MaterialSkin.MouseState.OUT;
-            mcbxFilterTypeName2.Name = "mcbxFilterTypeName2";
-            mcbxFilterTypeName2.Size = new Size(530, 49);
-            mcbxFilterTypeName2.StartIndex = 0;
-            mcbxFilterTypeName2.TabIndex = 4;
+            cbxFilterTypeName2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxFilterTypeName2.FormattingEnabled = true;
+            cbxFilterTypeName2.Location = new Point(3, 6);
+            cbxFilterTypeName2.Margin = new Padding(3, 6, 29, 3);
+            cbxFilterTypeName2.Name = "cbxFilterTypeName2";
+            cbxFilterTypeName2.Size = new Size(533, 29);
+            cbxFilterTypeName2.TabIndex = 11;
             // 
             // mbtnDelFilterTypeName
             // 
@@ -980,12 +910,12 @@
             mbtnDelFilterTypeName.Depth = 0;
             mbtnDelFilterTypeName.HighEmphasis = true;
             mbtnDelFilterTypeName.Icon = null;
-            mbtnDelFilterTypeName.Location = new Point(566, 6);
+            mbtnDelFilterTypeName.Location = new Point(569, 6);
             mbtnDelFilterTypeName.Margin = new Padding(4, 6, 4, 6);
             mbtnDelFilterTypeName.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDelFilterTypeName.Name = "mbtnDelFilterTypeName";
             mbtnDelFilterTypeName.NoAccentTextColor = Color.Empty;
-            mbtnDelFilterTypeName.Size = new Size(233, 49);
+            mbtnDelFilterTypeName.Size = new Size(235, 49);
             mbtnDelFilterTypeName.TabIndex = 5;
             mbtnDelFilterTypeName.Text = "Xóa";
             mbtnDelFilterTypeName.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -1007,7 +937,7 @@
             tableLayoutPanel12.Name = "tableLayoutPanel12";
             tableLayoutPanel12.RowCount = 1;
             tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel12.Size = new Size(817, 53);
+            tableLayoutPanel12.Size = new Size(822, 53);
             tableLayoutPanel12.TabIndex = 1;
             // 
             // mbtnFilterType
@@ -1019,12 +949,12 @@
             mbtnFilterType.Dock = DockStyle.Fill;
             mbtnFilterType.HighEmphasis = true;
             mbtnFilterType.Icon = null;
-            mbtnFilterType.Location = new Point(575, 6);
+            mbtnFilterType.Location = new Point(578, 6);
             mbtnFilterType.Margin = new Padding(4, 6, 10, 6);
             mbtnFilterType.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnFilterType.Name = "mbtnFilterType";
             mbtnFilterType.NoAccentTextColor = Color.Empty;
-            mbtnFilterType.Size = new Size(232, 41);
+            mbtnFilterType.Size = new Size(234, 41);
             mbtnFilterType.TabIndex = 6;
             mbtnFilterType.Text = "Lọc";
             mbtnFilterType.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1041,12 +971,12 @@
             mbtnDeleteAllFilterType.Dock = DockStyle.Fill;
             mbtnDeleteAllFilterType.HighEmphasis = true;
             mbtnDeleteAllFilterType.Icon = null;
-            mbtnDeleteAllFilterType.Location = new Point(330, 6);
+            mbtnDeleteAllFilterType.Location = new Point(332, 6);
             mbtnDeleteAllFilterType.Margin = new Padding(4, 6, 29, 6);
             mbtnDeleteAllFilterType.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDeleteAllFilterType.Name = "mbtnDeleteAllFilterType";
             mbtnDeleteAllFilterType.NoAccentTextColor = Color.Empty;
-            mbtnDeleteAllFilterType.Size = new Size(212, 41);
+            mbtnDeleteAllFilterType.Size = new Size(213, 41);
             mbtnDeleteAllFilterType.TabIndex = 5;
             mbtnDeleteAllFilterType.Text = "Xóa tất cả";
             mbtnDeleteAllFilterType.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -1058,10 +988,10 @@
             // 
             panel9.Controls.Add(groupBox6);
             panel9.Dock = DockStyle.Fill;
-            panel9.Location = new Point(847, 0);
+            panel9.Location = new Point(852, 0);
             panel9.Margin = new Padding(0);
             panel9.Name = "panel9";
-            panel9.Size = new Size(283, 568);
+            panel9.Size = new Size(284, 577);
             panel9.TabIndex = 1;
             // 
             // groupBox6
@@ -1074,7 +1004,7 @@
             groupBox6.Margin = new Padding(0);
             groupBox6.Name = "groupBox6";
             groupBox6.Padding = new Padding(15, 3, 15, 15);
-            groupBox6.Size = new Size(283, 568);
+            groupBox6.Size = new Size(284, 577);
             groupBox6.TabIndex = 0;
             groupBox6.TabStop = false;
             groupBox6.Text = "Chức năng";
@@ -1089,7 +1019,7 @@
             panel10.Location = new Point(15, 25);
             panel10.Margin = new Padding(0);
             panel10.Name = "panel10";
-            panel10.Size = new Size(253, 528);
+            panel10.Size = new Size(254, 537);
             panel10.TabIndex = 0;
             // 
             // mbtnDeleteType
@@ -1106,7 +1036,7 @@
             mbtnDeleteType.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnDeleteType.Name = "mbtnDeleteType";
             mbtnDeleteType.NoAccentTextColor = Color.Empty;
-            mbtnDeleteType.Size = new Size(245, 49);
+            mbtnDeleteType.Size = new Size(246, 49);
             mbtnDeleteType.TabIndex = 9;
             mbtnDeleteType.Text = "Xóa dịch vụ";
             mbtnDeleteType.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -1128,7 +1058,7 @@
             mbtnUpdateType.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnUpdateType.Name = "mbtnUpdateType";
             mbtnUpdateType.NoAccentTextColor = Color.Empty;
-            mbtnUpdateType.Size = new Size(245, 49);
+            mbtnUpdateType.Size = new Size(246, 49);
             mbtnUpdateType.TabIndex = 8;
             mbtnUpdateType.Text = "Cập nhật dịch vụ";
             mbtnUpdateType.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1150,7 +1080,7 @@
             mbtnAddType.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnAddType.Name = "mbtnAddType";
             mbtnAddType.NoAccentTextColor = Color.Empty;
-            mbtnAddType.Size = new Size(245, 49);
+            mbtnAddType.Size = new Size(246, 49);
             mbtnAddType.TabIndex = 7;
             mbtnAddType.Text = "Thêm dịch vụ";
             mbtnAddType.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1202,13 +1132,14 @@
             // 
             // ServiceUI
             // 
+            AutoSize = true;
             BackColor = Color.White;
             ClientSize = new Size(1150, 611);
             Controls.Add(tabControl1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormStyle = FormStyles.StatusAndActionBar_None;
             Name = "ServiceUI";
-            Padding = new Padding(3, 0, 3, 3);
+            Padding = new Padding(0);
             StartPosition = FormStartPosition.CenterScreen;
             TransparencyKey = Color.White;
             tabControl1.ResumeLayout(false);
@@ -1308,16 +1239,11 @@
         private MaterialSkin.Controls.MaterialButton mbtnDelFilterServiceType;
         private MaterialSkin.Controls.MaterialButton mbtnDelFilterServiceName;
         private MaterialSkin.Controls.MaterialButton mbtnDelFilterServiceID;
-        private MaterialSkin.Controls.MaterialComboBox mcbxFilterServiceID;
-        private MaterialSkin.Controls.MaterialComboBox mcbxFilterServiceName;
-        private MaterialSkin.Controls.MaterialComboBox mcbxFilterServiceType;
         private MaterialSkin.Controls.MaterialButton mbtnDeleteAllFilterService;
         private MaterialSkin.Controls.MaterialButton mbtnFilterService;
         private MaterialSkin.Controls.MaterialButton mbtnAddService;
         private MaterialSkin.Controls.MaterialButton mbtnUpdateService;
         private MaterialSkin.Controls.MaterialButton mbtnDeleteService;
-        private MaterialSkin.Controls.MaterialComboBox mcbxFilterTypeID;
-        private MaterialSkin.Controls.MaterialComboBox mcbxFilterTypeName2;
         private MaterialSkin.Controls.MaterialButton mbtnDelFilterTypeID;
         private MaterialSkin.Controls.MaterialButton mbtnDelFilterTypeName;
         private MaterialSkin.Controls.MaterialButton mbtnDeleteAllFilterType;
@@ -1326,5 +1252,10 @@
         private MaterialSkin.Controls.MaterialButton mbtnUpdateType;
         private MaterialSkin.Controls.MaterialButton mbtnDeleteType;
         private TableLayoutPanel tableLayoutPanel5;
+        private ComboBox cbxFilterServiceID;
+        private ComboBox cbxFilterServiceName;
+        private ComboBox cbxFilterServiceType;
+        private ComboBox cbxFilterTypeID;
+        private ComboBox cbxFilterTypeName2;
     }
 }

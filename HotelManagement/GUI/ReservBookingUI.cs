@@ -31,7 +31,7 @@ namespace HotelManagement.GUI
 
         private void materialButton3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Dispose();
         }
 
         private void materialButton1_Click(object sender, EventArgs e)

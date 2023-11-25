@@ -79,15 +79,15 @@ namespace HotelManagement.GUI
 
         public void initCbxFilterAllService()
         {
-            FormHelpers.initCbxFilter(mcbxFilterServiceID, 0, dtgvService);
-            FormHelpers.initCbxFilter(mcbxFilterServiceName, 1, dtgvService);
-            FormHelpers.initCbxFilter(mcbxFilterServiceType, 2, dtgvService);
+            FormHelpers.initCbxFilter(cbxFilterServiceID, 0, dtgvService);
+            FormHelpers.initCbxFilter(cbxFilterServiceName, 1, dtgvService);
+            FormHelpers.initCbxFilter(cbxFilterServiceType, 2, dtgvService);
         }
 
         public void initCbxFilterAllServiceType()
         {
-            FormHelpers.initCbxFilter(mcbxFilterTypeID, 0, dtgvType);
-            FormHelpers.initCbxFilter(mcbxFilterTypeName2, 1, dtgvType);
+            FormHelpers.initCbxFilter(cbxFilterTypeID, 0, dtgvType);
+            FormHelpers.initCbxFilter(cbxFilterTypeName2, 1, dtgvType);
         }
         #endregion
 
@@ -95,31 +95,31 @@ namespace HotelManagement.GUI
 
         private void mbtnDelFilterServiceID_Click(object sender, EventArgs e)
         {
-            mcbxFilterServiceID.Text = String.Empty;
+            cbxFilterServiceID.Text = String.Empty;
         }
 
         private void mbtnDelFilterServiceName_Click(object sender, EventArgs e)
         {
-            mcbxFilterServiceName.Text = String.Empty;
+            cbxFilterServiceName.Text = String.Empty;
         }
 
         private void mbtnDelFilterServiceType_Click(object sender, EventArgs e)
         {
-            mcbxFilterServiceType.Text = String.Empty;
+            cbxFilterServiceType.Text = String.Empty;
         }
 
         private void mbtnDeleteAllFilterService_Click(object sender, EventArgs e)
         {
-            mcbxFilterServiceID.Text = String.Empty;
-            mcbxFilterServiceName.Text = String.Empty;
-            mcbxFilterServiceType.Text = String.Empty;
+            cbxFilterServiceID.Text = String.Empty;
+            cbxFilterServiceName.Text = String.Empty;
+            cbxFilterServiceType.Text = String.Empty;
         }
 
         private void mbtnFilterService_Click(object sender, EventArgs e)
         {
-            string id = mcbxFilterServiceID.Text;
-            string name = mcbxFilterServiceName.Text;
-            string type = mcbxFilterServiceType.Text;
+            string id = cbxFilterServiceID.Text;
+            string name = cbxFilterServiceName.Text;
+            string type = cbxFilterServiceType.Text;
 
             bindingSourceService.Filter = @$"
             `Mã DV` like '%{id}%' and
@@ -257,24 +257,24 @@ namespace HotelManagement.GUI
 
         private void mbtnDelFilterTypeID_Click(object sender, EventArgs e)
         {
-            mcbxFilterTypeID.Text = String.Empty;
+            cbxFilterTypeID.Text = String.Empty;
         }
 
         private void mbtnDelFilterTypeName_Click(object sender, EventArgs e)
         {
-            mcbxFilterTypeName2.Text = String.Empty;
+            cbxFilterTypeName2.Text = String.Empty;
         }
 
         private void mbtnDeleteAllFilterType_Click(object sender, EventArgs e)
         {
-            mcbxFilterTypeID.Text = String.Empty;
-            mcbxFilterTypeName2.Text = String.Empty;
+            cbxFilterTypeID.Text = String.Empty;
+            cbxFilterTypeName2.Text = String.Empty;
         }
 
         private void mbtnFilterType_Click(object sender, EventArgs e)
         {
-            string id = mcbxFilterTypeID.Text;
-            string name = mcbxFilterTypeName2.Text;
+            string id = cbxFilterTypeID.Text;
+            string name = cbxFilterTypeName2.Text;
 
 
             bindingSourceServiceType.Filter = @$"

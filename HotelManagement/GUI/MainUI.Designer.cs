@@ -276,13 +276,13 @@
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.ImageList = imageList1;
-            materialTabControl1.Location = new Point(3, 64);
+            materialTabControl1.Location = new Point(0, 80);
             materialTabControl1.Margin = new Padding(0);
             materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             materialTabControl1.Multiline = true;
             materialTabControl1.Name = "materialTabControl1";
             materialTabControl1.SelectedIndex = 0;
-            materialTabControl1.Size = new Size(1594, 833);
+            materialTabControl1.Size = new Size(1597, 817);
             materialTabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -292,7 +292,7 @@
             tabPage1.Location = new Point(4, 39);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(1586, 790);
+            tabPage1.Size = new Size(1589, 774);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "HOME";
             // 
@@ -431,7 +431,9 @@
             DrawerAutoShow = true;
             DrawerShowIconsWhenHidden = true;
             DrawerTabControl = materialTabControl1;
+            FormStyle = FormStyles.ActionBar_56;
             Name = "MainUI";
+            Padding = new Padding(0, 80, 3, 3);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "THE GRAND HOTEL BUDAPEST";
             tableLayoutPanel1.ResumeLayout(false);
