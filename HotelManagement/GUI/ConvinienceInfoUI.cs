@@ -1,5 +1,5 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.DTO;
+using HotelManagement.Data;
 using HotelManagement.Ultils;
 using System;
 using System.Collections.Generic;
@@ -19,13 +19,9 @@ namespace HotelManagement.GUI
         private bool isEdit = false;
         private RoomBUS roomBUS = new RoomBUS();
         private RoomUI roomUI;
-        private RoomTypeBUS rtBUS = new RoomTypeBUS();
-        private Convinience_RoomTypeBUS crtBUS = new Convinience_RoomTypeBUS();
-        private ConvinienceBUS cBUS = new ConvinienceBUS();
 
-        private List<RoomType2> roomTypeList;
-        private List<Convinience_RoomType2> convinience_roomType;
-        private List<Convinience2> convinience;
+        private List<RoomTypeConvenience> convinience_roomType;
+        private List<Convenience> convinience;
 
         public ConvinienceInfoUI(RoomUI roomUI)
         {
@@ -50,7 +46,7 @@ namespace HotelManagement.GUI
             
         }
 
-        public void fillData(Convinience2 conv, string type)
+        public void fillData(Convenience conv, string type)
         {
             labelTitle.Text = type;
             txbID.Enabled = false;
@@ -78,10 +74,10 @@ namespace HotelManagement.GUI
             string id = txbID.Text;
             string name = txbName.Text;
 
-            Convinience2 conv = new Convinience2(id, name);
+            Convenience conv = new Convenience(id, name);
             if (isEdit)
             {
-                if (cBUS.update(conv) > 0)
+                if (roomBUS.updateConvinience(conv) > 0)
                 {
                     MessageBox.Show("Cập nhật tiện nghi thành công");
                     this.roomUI.initTableConvinience();
@@ -95,7 +91,7 @@ namespace HotelManagement.GUI
             }
             else
             {
-                if (cBUS.add(conv) > 0)
+                if (roomBUS.addConvinience(conv) > 0)
                 {
                     MessageBox.Show("Thêm tiện nghi thành công");
                     this.roomUI.initTableConvinience();

@@ -38,15 +38,15 @@
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Convenience>().ConfigureConvenience();
-            modelBuilder.Entity<RoomType>().ConfigureRoomType();
-            modelBuilder.Entity<Room>().ConfigureRoom();
-            modelBuilder.Entity<Customer>().ConfigureCustomer();
-            modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
-            modelBuilder.Entity<Reservation>().ConfigureReservation();
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
+        //    modelBuilder.Entity<Room>().ConfigureRoom();
+        //    modelBuilder.Entity<Customer>().ConfigureCustomer();
+        //    modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
+        //    modelBuilder.Entity<Reservation>().ConfigureReservation();
+        //}
     }
     public class RentRoomDetailEFCoreDAO : DbContext
     {
@@ -59,16 +59,16 @@
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Convenience>().ConfigureConvenience();
-            modelBuilder.Entity<RoomType>().ConfigureRoomType();
-            modelBuilder.Entity<Room>().ConfigureRoom();
-            modelBuilder.Entity<Customer>().ConfigureCustomer();
-            modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
-            modelBuilder.Entity<Invoice>().ConfigureInvoice();
-            modelBuilder.Entity<RentRoomDetail>().ConfigureRentRoomDetail();
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
+        //    modelBuilder.Entity<Room>().ConfigureRoom();
+        //    modelBuilder.Entity<Customer>().ConfigureCustomer();
+        //    modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
+        //    modelBuilder.Entity<Invoice>().ConfigureInvoice();
+        //    modelBuilder.Entity<RentRoomDetail>().ConfigureRentRoomDetail();
+        //}
     }
     public class UseServiceDetailEFCoreDAO : DbContext
     {
@@ -171,6 +171,8 @@
     }
     public class RoomEFCoreDAO : DbContext
     {
+        public DbSet<Room> Rooms { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -180,17 +182,18 @@
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Convenience>().ConfigureConvenience();
-            modelBuilder.Entity<RoomType>().ConfigureRoomType();
-            modelBuilder.Entity<Room>().ConfigureRoom();
-            modelBuilder.Entity<Reservation>().ConfigureReservation(includeStaffRelationship: false, includeCustomerRelationship: false);
-            modelBuilder.Entity<RentRoomDetail>().ConfigureRentRoomDetail(includeStaffRelationship: false, includeInvoiceRelationship: false);
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
+        //    modelBuilder.Entity<Room>().ConfigureRoom();
+        //    modelBuilder.Entity<Reservation>().ConfigureReservation(includeStaffRelationship: false, includeCustomerRelationship: false);
+        //    modelBuilder.Entity<RentRoomDetail>().ConfigureRentRoomDetail(includeStaffRelationship: false, includeInvoiceRelationship: false);
+        //}
     }
     public class ConvenienceEFCoreDAO : DbContext
     {
+        public DbSet<Convenience> Conveniences { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -200,14 +203,15 @@
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Convenience>().ConfigureConvenience();
-            modelBuilder.Entity<RoomType>().ConfigureRoomType();
-        }
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
+        //}
     }
     public class RoomTypeEFCoreDAO : DbContext
     {
+        public DbSet<RoomType> RoomTypes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -217,12 +221,32 @@
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
+        //    modelBuilder.Entity<Room>().ConfigureRoom();
+        //}
+    }
+
+    public class RoomTypeConvinienceEFCoreDAO : DbContext
+    {
+        public DbSet<RoomTypeConvenience> RoomTypeConveniences { get; set; }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            modelBuilder.Entity<Convenience>().ConfigureConvenience();
-            modelBuilder.Entity<RoomType>().ConfigureRoomType();
-            modelBuilder.Entity<Room>().ConfigureRoom();
+            optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
         }
+
+        private void OnConfiguringMySQL(MySQLDbContextOptionsBuilder builder)
+        {
+        }
+
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
+        //    modelBuilder.Entity<Room>().ConfigureRoom();
+        //}
     }
     public class CancelationStatusEFCoreDAO : UseServiceDetail { }
     public class ServiceEFCoreDAO : DbContext

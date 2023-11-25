@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.BUS;
+using HotelManagement.Data;
+using HotelManagement.Data.Transfer.Ultils;
 using HotelManagement.DTO;
 using HotelManagement.Ultils;
 
@@ -16,8 +18,6 @@ namespace HotelManagement.GUI
     public partial class RoomUI : Form
     {
         private RoomBUS roomBus = new RoomBUS();
-        private RoomTypeBUS roomTypeBus = new RoomTypeBUS();
-        private ConvinienceBUS convinienceBUS = new ConvinienceBUS();
         private Convinience_RoomTypeBUS convinience_RoomTypeBus = new Convinience_RoomTypeBUS();
 
         DataTable dataTableRoom = new DataTable();
@@ -25,9 +25,9 @@ namespace HotelManagement.GUI
         DataTable dataTableConvinience = new DataTable();
 
 
-        List<Room2> roomList;
-        List<RoomType2> roomTypeList;
-        List<Convinience2> convinienceList;
+        List<Room> roomList;
+        List<RoomType> roomTypeList;
+        List<Convenience> convinienceList;
         List<Convinience_RoomType2> convinience_RoomTypeList;
 
         BindingSource bindingSourceRoom = new BindingSource();
@@ -52,15 +52,15 @@ namespace HotelManagement.GUI
         {
             dataTableRoom.Rows.Clear();
             dtgvShowRoom.DataSource = null;
-            roomList = new List<Room2>();
-            roomList = roomBus.getAll();
+            roomList = new List<Room>();
+            roomList = roomBus.getAllRoom();
 
             convinience_RoomTypeList = convinience_RoomTypeBus.getAll();
-            foreach (Room2 room in roomList)
+            foreach (Room room in roomList)
             {
                 string status;
                 status = checkStatus(room.Status);
-                dataTableRoom.Rows.Add(room.Id, status, room.RoomTypeID);
+                dataTableRoom.Rows.Add(room.Id, status, room.RoomType.Id);
             }
 
             dtgvShowRoom.DataSource = dataTableRoom;
@@ -138,9 +138,9 @@ namespace HotelManagement.GUI
 
             string id = roomList[index].Id;
             int status = roomList[index].Status;
-            string roomTypeID = roomList[index].RoomTypeID;
+            string roomTypeID = roomList[index].RoomType.Id;
 
-            Room2 room = new Room2(id, status, roomTypeID);
+            Room room = new Room(id, status, roomTypeID);
 
             RoomInfoUI roomInfo = new RoomInfoUI(this);
             roomInfo.fillData(room, "Cập nhật phòng");
@@ -229,9 +229,9 @@ namespace HotelManagement.GUI
         {
             dataTableRoomType.Rows.Clear();
             dtgvShowRoomType.DataSource = null;
-            roomTypeList = new List<RoomType2>();
-            roomTypeList = roomTypeBus.getAll();
-            foreach (RoomType2 roomType in roomTypeList)
+            roomTypeList = new List<RoomType>();
+            roomTypeList = roomBus.getAllRoomType();
+            foreach (RoomType roomType in roomTypeList)
             {
                 dataTableRoomType.Rows.Add(roomType.Id, roomType.Name, roomType.UnitPrice);
             }
@@ -307,10 +307,15 @@ namespace HotelManagement.GUI
         private void btnAddRoomType_Click(object sender, EventArgs e)
         {
             RoomTypeInfoUI roomTypeInfoUI = new RoomTypeInfoUI(this);
-            RoomType2 roomType = new RoomType2();
-            string chuoi = roomTypeBus.getMaxID().Substring(2);
-            string id = (Convert.ToInt64(chuoi) + 1).ToString("D2");
-            roomType.Id = "RT" + id;
+            RoomType roomType = new RoomType();
+
+            if (roomBus.getLengthRoomType() > 0)
+            {
+                index = roomBus.getAllRoomType().Max(item => Functions.convertIdToInteger(item.Id, "RT")) + 1;
+            }
+            string id = "RT" + index.ToString("D2");
+
+            roomType.Id = id;
             roomTypeInfoUI.fillData(roomType, "Thêm loại phòng");
             roomTypeInfoUI.ShowDialog();
         }
@@ -327,7 +332,7 @@ namespace HotelManagement.GUI
             string name = roomTypeList[index1].Name;
             double price = roomTypeList[index1].UnitPrice;
 
-            RoomType2 roomType = new RoomType2(id, name, price);
+            RoomType roomType = new RoomType(id, name, price);
 
             RoomTypeInfoUI roomTypeInfo = new RoomTypeInfoUI(this);
             roomTypeInfo.fillData(roomType, "Cập nhật loại phòng");
@@ -356,7 +361,7 @@ namespace HotelManagement.GUI
                         return;
                     }
                 }
-                if (roomTypeBus.delete(id) > 0)
+                if (roomBus.deleteRoomType(id) > 0)
                 {
                     MessageBox.Show("Xóa loại phòng thành công");
                     initTableRoomType();
@@ -379,10 +384,10 @@ namespace HotelManagement.GUI
         {
             dataTableConvinience.Rows.Clear();
             dtgvShowConvinience.DataSource = null;
-            convinienceList = new List<Convinience2>();
-            convinienceList = convinienceBUS.getAll();
+            convinienceList = new List<Convenience>();
+            convinienceList = roomBus.getAllConvinience();
 
-            foreach (Convinience2 conv in convinienceList)
+            foreach (Convenience conv in convinienceList)
             {
                 dataTableConvinience.Rows.Add(conv.Id, conv.Name);
             }
@@ -452,10 +457,16 @@ namespace HotelManagement.GUI
         private void btnAddConvinience_Click(object sender, EventArgs e)
         {
             ConvinienceInfoUI convInfoUI = new ConvinienceInfoUI(this);
-            Convinience2 conv = new Convinience2();
-            string chuoi = convinienceBUS.getMaxID().Substring(2);
-            string id = (Convert.ToInt64(chuoi) + 1).ToString("D2");
-            conv.Id = "CO" + id;
+            Convenience conv = new Convenience();
+
+            if (roomBus.getLengthConvinience() > 0)
+            {
+                index = roomBus.getAllConvinience().Max(item => Functions.convertIdToInteger(item.Id, "CO")) + 1;
+            }
+            string id = "CO" + index.ToString("D2");
+            //string chuoi = roomBus.getMaxID().Substring(2);
+            //string id = (Convert.ToInt64(chuoi) + 1).ToString("D2");
+            conv.Id = id;
             convInfoUI.fillData(conv, "Thêm tiện nghi");
             convInfoUI.ShowDialog();
         }
@@ -464,14 +475,14 @@ namespace HotelManagement.GUI
         {
             if (index2 < 0 || index2 >= convinienceList.Count)
             {
-                MessageBox.Show("Bạn chưa chọn loại phòng nào.");
+                MessageBox.Show("Bạn chưa chọn tiện nghi nào.");
                 return;
             }
 
             string id = convinienceList[index2].Id;
             string name = convinienceList[index2].Name;
 
-            Convinience2 conv = new Convinience2(id, name);
+            Convenience conv = new Convenience(id, name);
 
             ConvinienceInfoUI convInfo = new ConvinienceInfoUI(this);
             convInfo.fillData(conv, "Cập nhật tiện nghi");
@@ -487,7 +498,7 @@ namespace HotelManagement.GUI
 
         private void btnDeleteConvinience_Click(object sender, EventArgs e)
         {
-            convinienceList = convinienceBUS.getAll();
+            convinienceList = roomBus.getAllConvinience();
             if (index2 < 0 || index2 >= convinienceList.Count)
             {
                 MessageBox.Show("Bạn chưa chọn tiện nghi nào");
@@ -496,20 +507,20 @@ namespace HotelManagement.GUI
 
             string id = convinienceList[index2].Id;
 
-            if (MessageBox.Show("Bạn có muốn xóa loại phòng này không", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            if (MessageBox.Show("Bạn có muốn xóa tiện nghi này không", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 foreach (var conv_room in convinience_RoomTypeList)
                 {
-                    if (id == conv_room.RoomTypeID)
+                    if (id == conv_room.ConvinienceID)
                     {
-                        MessageBox.Show("Loại phòng này hiện đang có tiện nghi, bạn nên xóa tiện nghi khỏi loại phòng này trước khi xóa loại phòng");
+                        MessageBox.Show("Tiện nghi này hiện đang được sử dụng, bạn không thể xóa");
                         return;
                     }
                 }
-                if (roomTypeBus.delete(id) > 0)
+                if (roomBus.deleteConvinience(id) > 0)
                 {
-                    MessageBox.Show("Xóa loại phòng thành công");
-                    initTableRoomType();
+                    MessageBox.Show("Xóa tiện nghi thành công");
+                    initTableConvinience();
                     index = -1;
                 }
             }

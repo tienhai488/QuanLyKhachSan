@@ -1,6 +1,5 @@
 ﻿using HotelManagement.BUS;
 using HotelManagement.Data;
-using HotelManagement.DTO;
 using HotelManagement.Ultils;
 using System;
 using System.Collections.Generic;
@@ -22,13 +21,12 @@ namespace HotelManagement.GUI
 
         private bool isEdit = false;
         private RoomUI roomUI;
-        private RoomTypeBUS rtBUS = new RoomTypeBUS();
-        private Convinience_RoomTypeBUS crtBUS = new Convinience_RoomTypeBUS();
-        private ConvinienceBUS cBUS = new ConvinienceBUS();
+        
+        private RoomBUS roomBus = new RoomBUS();
 
-        private List<RoomType2> roomTypeList;
-        private List<Convinience_RoomType2> convinience_roomTypeList;
-        private List<Convinience2> convinienceList;
+        private List<RoomType> roomTypeList;
+        private List<RoomTypeConvenience> convinience_roomTypeList;
+        private List<Convenience> convinienceList;
 
         public RoomTypeInfoUI(RoomUI roomUI)
         {
@@ -43,14 +41,14 @@ namespace HotelManagement.GUI
         {
             createHeaderText();
 
-            roomTypeList = rtBUS.getAll();
+            roomTypeList = roomBus.getAllRoomType();
             convinience_roomTypeList = crtBUS.getAll();
-            convinienceList = cBUS.getAll();
+            convinienceList = roomBus.getAllConvinience();
 
 
             dataTableConvinience.Rows.Clear();
             dtgvConvinience.DataSource = null;
-            foreach (Convinience2 conv in convinienceList)
+            foreach (Convenience conv in convinienceList)
             {
                 dataTableConvinience.Rows.Add(conv.Id, conv.Name);
             }
@@ -123,7 +121,7 @@ namespace HotelManagement.GUI
 
 
         //Xem kiểu sự kiện "Thêm hay sửa"
-        public void fillData(RoomType2 roomType, string type)
+        public void fillData(RoomType roomType, string type)
         {
             labelTitle.Text = type;
             txbID.Enabled = false;
@@ -164,15 +162,15 @@ namespace HotelManagement.GUI
                 return;
             }
 
-            RoomType2 roomType = new RoomType2(id, name, price);
+            RoomType roomType = new RoomType(id, name, price);
 
-            if (!rtBUS.validate(roomType))
+            if (!roomBus.validate(roomType))
             {
                 return;
             }
             if (isEdit)
             {
-                if (rtBUS.update(roomType) > 0)
+                if (roomBus.updateRoomType(roomType) > 0)
                 {
                     MessageBox.Show("Cập nhật loại phòng thành công");
                     this.roomUI.initTableRoomType();
@@ -185,7 +183,7 @@ namespace HotelManagement.GUI
             }
             else
             {
-                if (rtBUS.add(roomType) > 0)
+                if (roomBus.addRoomType(roomType) > 0)
                 {
                     MessageBox.Show("Thêm loại phòng thành công");
                     this.roomUI.initTableRoomType();

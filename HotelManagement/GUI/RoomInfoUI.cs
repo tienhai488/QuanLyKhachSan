@@ -1,5 +1,5 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.DTO;
+using HotelManagement.Data;
 using HotelManagement.Ultils;
 using System;
 using System.Collections.Generic;
@@ -19,14 +19,11 @@ namespace HotelManagement.GUI
         private bool isEdit = false;
         private RoomBUS roomBUS = new RoomBUS();
         private RoomUI roomUI;
-        private RoomTypeBUS rtBUS = new RoomTypeBUS();
-        private Convinience_RoomTypeBUS crtBUS = new Convinience_RoomTypeBUS();
-        private ConvinienceBUS cBUS = new ConvinienceBUS();
 
         private List<String> status = new List<string>() { "Trống", "Quá hạn", "Đã đặt", "Đang sửa" };
-        private List<RoomType2> roomTypeList;
-        private List<Convinience_RoomType2> convinience_roomType;
-        private List<Convinience2> convinience;
+        private List<RoomType> roomTypeList;
+        private List<RoomTypeConvenience> convinience_roomType;
+        private List<Convenience> convinience;
 
         public RoomInfoUI(RoomUI roomUI)
         {
@@ -42,7 +39,7 @@ namespace HotelManagement.GUI
             listViewConvinience.Columns.Add("Convinience name", 150);
             listViewConvinience.Columns.Add("Quantity ", 100);
             cbbStatus.Items.AddRange(status.ToArray());
-            roomTypeList = rtBUS.getAll();
+            roomTypeList = roomBUS.getAllRoomType();
 
 
             foreach (var item in roomTypeList)
@@ -50,8 +47,8 @@ namespace HotelManagement.GUI
                 cbbRoomTypeID.Items.Add(item.Id.ToString());
             }
 
-            convinience_roomType = crtBUS.getAll();
-            convinience = cBUS.getAll();
+            convinience_roomType = roomBUS.getAllRoomTypeConvinience();
+            convinience = roomBUS.getAllConvinience();
         }
 
         public void roomTypeIDData()
@@ -72,12 +69,12 @@ namespace HotelManagement.GUI
             //foreach (var item in )
             foreach (var item in convinience_roomType)
             {
-                if (cbbRoomTypeID.Text == item.RoomTypeID)
+                if (cbbRoomTypeID.Text == item.RoomTypeId)
                 {
-                    ListViewItem listViewItem = new ListViewItem(item.ConvinienceID);
+                    ListViewItem listViewItem = new ListViewItem(item.ConvenienceId);
                     foreach (var item1 in convinience)
                     {
-                        if (item.ConvinienceID == item1.Id)
+                        if (item.ConvenienceId == item1.Id)
                         {
                             listViewItem.SubItems.Add(item1.Name);
                         }
@@ -89,7 +86,7 @@ namespace HotelManagement.GUI
             }
         }
 
-        public void fillData(Room2 room, string type)
+        public void fillData(Room room, string type)
         {
             labelTitle.Text = type;
             txbID.Enabled = false;
@@ -101,7 +98,7 @@ namespace HotelManagement.GUI
             isEdit = type == "Cập nhật phòng" ? true : false;
             if (isEdit)
             {
-                cbbRoomTypeID.Text = room.RoomTypeID;
+                cbbRoomTypeID.Text = room.RoomTypeId;
             }
             else
             {
@@ -119,10 +116,10 @@ namespace HotelManagement.GUI
             int status = cbbStatus.SelectedIndex;
             string roomTypeID = cbbRoomTypeID.Text;
 
-            Room2 room = new Room2(id, status, roomTypeID);
+            Room room = new Room(id, status, roomTypeID);
             if (isEdit)
             {
-                if (roomBUS.update(room) > 0)
+                if (roomBUS.updateRoom(room) > 0)
                 {
                     MessageBox.Show("Cập nhật phòng thành công");
                     this.roomUI.initTableRoom();
@@ -136,16 +133,16 @@ namespace HotelManagement.GUI
             }
             else
             {
-                if (roomBUS.add(room) > 0)
-                {
-                    MessageBox.Show("Thêm phòng thành công");
-                    this.roomUI.initTableRoom();
-                    this.Close();
-                }
-                else
-                {
-                    MessageBox.Show("Thêm phòng không thành công");
-                }
+                //if (roomBUS.add(room) > 0)
+                //{
+                //    MessageBox.Show("Thêm phòng thành công");
+                //    this.roomUI.initTableRoom();
+                //    this.Close();
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Thêm phòng không thành công");
+                //}
             }
         }
 
