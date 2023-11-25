@@ -1,16 +1,7 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.DTO;
+using HotelManagement.Data;
 using HotelManagement.Ultils;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
@@ -41,17 +32,13 @@ namespace HotelManagement.GUI
         }
         public void fillData(Customer customer, string type)
         {
-            if (customer.Birthday != "")
-            {
-                dateTimeBirthday.Value = DateTime.ParseExact(customer.Birthday, Configs.formatBirthday, CultureInfo.InvariantCulture, DateTimeStyles.None);
-            }
             txtId.Text = customer.Id;
-            txtFullname.Text = customer.Fullname;
-            txtCCCD.Text = customer.CitizenId;
+            txtFullname.Text = customer.FullName;
+            txtCCCD.Text = customer.CitizenID;
             txtAddress.Text = customer.Address;
-            txtPhone.Text = customer.Phone;
-
-            cbxGender.SelectedIndex = customer.Gender;
+            txtPhone.Text = customer.PhoneNumber;
+            dateTimeBirthday.Value = customer.Birthday;
+            cbxGender.Text = customer.GenderString;
 
             btnSave.Text = type;
             isEdit = type == "Lưu thông tin" ? true : false;
@@ -102,8 +89,8 @@ namespace HotelManagement.GUI
         {
             string id = txtId.Text;
             string fullname = txtFullname.Text;
-            int gender = cbxGender.SelectedIndex;
-            string birthday = dateTimeBirthday.Value.ToString(Configs.formatBirthday);
+            string gender = cbxGender.Text == "Name" ? "1" : "0";
+            DateTime birthday = dateTimeBirthday.Value;
             string address = txtAddress.Text;
             string phone = txtPhone.Text;
             string cccd = txtCCCD.Text;
