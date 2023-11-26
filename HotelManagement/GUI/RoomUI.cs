@@ -25,8 +25,8 @@ namespace HotelManagement.GUI
 
         List<Room> roomList;
         List<RoomType> roomTypeList;
-        List<Convenience> convinienceList;
-        List<RoomTypeConvenience> convinience_RoomTypeList;
+        List<Convinience> convinienceList;
+        List<RoomTypeConvinience> convinience_RoomTypeList;
 
         BindingSource bindingSourceRoom = new BindingSource();
         BindingSource bindingSourceRoomType = new BindingSource();
@@ -382,10 +382,10 @@ namespace HotelManagement.GUI
         {
             dataTableConvinience.Rows.Clear();
             dtgvShowConvinience.DataSource = null;
-            convinienceList = new List<Convenience>();
+            convinienceList = new List<Convinience>();
             convinienceList = roomBus.getAllConvinience();
 
-            foreach (Convenience conv in convinienceList)
+            foreach (Convinience conv in convinienceList)
             {
                 dataTableConvinience.Rows.Add(conv.Id, conv.Name);
             }
@@ -455,7 +455,7 @@ namespace HotelManagement.GUI
         private void btnAddConvinience_Click(object sender, EventArgs e)
         {
             ConvinienceInfoUI convInfoUI = new ConvinienceInfoUI(this);
-            Convenience conv = new Convenience();
+            Convinience conv = new Convinience();
 
             if (roomBus.getLengthConvinience() > 0)
             {
@@ -480,7 +480,7 @@ namespace HotelManagement.GUI
             string id = convinienceList[index2].Id;
             string name = convinienceList[index2].Name;
 
-            Convenience conv = new Convenience(id, name);
+            Convinience conv = new Convinience(id, name);
 
             ConvinienceInfoUI convInfo = new ConvinienceInfoUI(this);
             convInfo.fillData(conv, "Cập nhật tiện nghi");
@@ -509,7 +509,7 @@ namespace HotelManagement.GUI
             {
                 foreach (var conv_room in convinience_RoomTypeList)
                 {
-                    if (id == conv_room.ConvenienceId)
+                    if (id == conv_room.ConvinienceId)
                     {
                         MessageBox.Show("Tiện nghi này hiện đang được sử dụng, bạn không thể xóa");
                         return;

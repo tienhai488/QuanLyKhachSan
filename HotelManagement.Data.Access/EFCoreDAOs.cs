@@ -172,7 +172,7 @@
     public class RoomEFCoreDAO : DbContext
     {
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<RoomTypeConvenience> RoomTypeConveniences { get; set; }
+        public DbSet<RoomTypeConvinience> RoomTypeConveniences { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -194,7 +194,7 @@
     }
     public class ConvenienceEFCoreDAO : DbContext
     {
-        public DbSet<Convenience> Conveniences { get; set; }
+        public DbSet<Convinience> Conviniences { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);

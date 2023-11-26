@@ -20,8 +20,8 @@ namespace HotelManagement.GUI
         private RoomBUS roomBUS = new RoomBUS();
         private RoomUI roomUI;
 
-        private List<RoomTypeConvenience> convinience_roomType;
-        private List<Convenience> convinience;
+        private List<RoomTypeConvinience> convinience_roomType;
+        private List<Convinience> convinience;
 
         public ConvinienceInfoUI(RoomUI roomUI)
         {
@@ -46,7 +46,7 @@ namespace HotelManagement.GUI
             
         }
 
-        public void fillData(Convenience conv, string type)
+        public void fillData(Convinience conv, string type)
         {
             labelTitle.Text = type;
             txbID.Enabled = false;
@@ -74,7 +74,7 @@ namespace HotelManagement.GUI
             string id = txbID.Text;
             string name = txbName.Text;
 
-            Convenience conv = new Convenience(id, name);
+            Convinience conv = new Convinience(id, name);
             if (isEdit)
             {
                 if (roomBUS.updateConvinience(conv) > 0)

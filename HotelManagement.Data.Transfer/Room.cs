@@ -71,8 +71,8 @@
         [Column("UnitPrice", TypeName = "double")]
         private double unitPrice;
 
-        private IList<Convenience> conveniences;
-        private IList<RoomTypeConvenience> quantities;
+        private IList<Convinience> conviniences;
+        private IList<RoomTypeConvinience> quantities;
         private IList<Room> rooms;
 
         public string Id { get => id; set => id = value; }
@@ -80,23 +80,23 @@
 
         public double UnitPrice { get => unitPrice; set => unitPrice = value; }
 
-        public IList<Convenience> Conveniences
+        public IList<Convinience> Conviniences
         {
             get
             {
-                var r = conveniences;
-                if (r is null) conveniences = r
-                        = new List<Convenience>();
+                var r = conviniences;
+                if (r is null) conviniences = r
+                        = new List<Convinience>();
                 return r;
             }
         }
-        public IList<RoomTypeConvenience> Quantities
+        public IList<RoomTypeConvinience> Quantities
         {
             get
             {
                 var r = quantities;
                 if (r is null) quantities = r
-                        = new List<RoomTypeConvenience>();
+                        = new List<RoomTypeConvinience>();
                 return r;
             }
         }
@@ -123,7 +123,7 @@
 
 
     [Table("convinience")]
-    public class Convenience
+    public class Convinience
     {
         [Key]
         [StringLength(50)]
@@ -137,26 +137,26 @@
         public string Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
 
-        public Convenience(string id, string name)
+        public Convinience(string id, string name)
         {
             this.Id = id;
             this.Name = name;
         }
-        public Convenience() { }
+        public Convinience() { }
     }
 
 
     [Table("convinience_room_type")]
-    [PrimaryKey(nameof(convenienceId), nameof(roomTypeId))]
-    public class RoomTypeConvenience
+    [PrimaryKey(nameof(convinienceId), nameof(roomTypeId))]
+    public class RoomTypeConvinience
     {
         [StringLength(50)]
-        [Column("ConvenienceID", TypeName = "varchar")]
-        private string convenienceId;
+        [Column("ConvinienceID", TypeName = "varchar")]
+        private string convinienceId;
 
         
-        [ForeignKey("ConvenienceID")]
-        private Convenience convenience;
+        [ForeignKey("ConvinienceID")]
+        private Convinience convinience;
 
         [StringLength(50)]
         [Column("RoomTypeID", TypeName = "varchar")]
@@ -171,32 +171,32 @@
         [Column("Quantity", TypeName = "int")]
         private int quantity;
 
-        private IList<Convenience> conveniences;
+        private IList<Convinience> conviniences;
 
 
-        public string ConvenienceId { get => convenienceId; set => convenienceId = value; }
-        public Convenience Convenience { get => convenience; set => convenience = value; }
+        public string ConvinienceId { get => convinienceId; set => convinienceId = value; }
+        public Convinience Convinience { get => convinience; set => convinience = value; }
         public string RoomTypeId { get => roomTypeId; set => roomTypeId = value; }
         public RoomType RoomType { get => roomType; set => roomType = value; }
         public int Quantity { get => quantity; set => quantity = value; }
-        public IList<Convenience> Conveniences
+        public IList<Convinience> Conviniences
         {
             get
             {
-                var r = conveniences;
-                if (r is null) conveniences = r = new List<Convenience>();
+                var r = conviniences;
+                if (r is null) conviniences = r = new List<Convinience>();
                 return r;
             }
 
         }
 
-        public RoomTypeConvenience(string convenienceId, string roomTypeId, int quantity)
+        public RoomTypeConvinience(string convinienceId, string roomTypeId, int quantity)
         {
-            this.convenienceId = convenienceId;
+            this.convinienceId = convinienceId;
             this.roomTypeId = roomTypeId;
             this.quantity = quantity;
         }
-        public RoomTypeConvenience() { }
+        public RoomTypeConvinience() { }
     }
 
     

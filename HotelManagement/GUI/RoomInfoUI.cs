@@ -22,8 +22,8 @@ namespace HotelManagement.GUI
 
         private List<String> status = new List<string>() { "Trống", "Quá hạn", "Đã đặt", "Đang sửa" };
         private List<RoomType> roomTypeList;
-        private List<RoomTypeConvenience> convinience_roomType;
-        private List<Convenience> convinience;
+        private List<RoomTypeConvinience> convinience_roomType;
+        private List<Convinience> convinience;
 
         public RoomInfoUI(RoomUI roomUI)
         {
@@ -71,10 +71,10 @@ namespace HotelManagement.GUI
             {
                 if (cbbRoomTypeID.Text == item.RoomTypeId)
                 {
-                    ListViewItem listViewItem = new ListViewItem(item.ConvenienceId);
+                    ListViewItem listViewItem = new ListViewItem(item.ConvinienceId);
                     foreach (var item1 in convinience)
                     {
-                        if (item.ConvenienceId == item1.Id)
+                        if (item.ConvinienceId == item1.Id)
                         {
                             listViewItem.SubItems.Add(item1.Name);
                         }

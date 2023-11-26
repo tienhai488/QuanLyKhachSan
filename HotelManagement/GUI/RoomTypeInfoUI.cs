@@ -25,8 +25,8 @@ namespace HotelManagement.GUI
         private RoomBUS roomBus = new RoomBUS();
 
         private List<RoomType> roomTypeList;
-        private List<RoomTypeConvenience> convinience_roomTypeList;
-        private List<Convenience> convinienceList;
+        private List<RoomTypeConvinience> convinience_roomTypeList;
+        private List<Convinience> convinienceList;
 
         public RoomTypeInfoUI(RoomUI roomUI)
         {
@@ -48,7 +48,7 @@ namespace HotelManagement.GUI
 
             dataTableConvinience.Rows.Clear();
             dtgvConvinience.DataSource = null;
-            foreach (Convenience conv in convinienceList)
+            foreach (Convinience conv in convinienceList)
             {
                 dataTableConvinience.Rows.Add(conv.Id, conv.Name);
             }
@@ -94,9 +94,9 @@ namespace HotelManagement.GUI
                 {
                     foreach (var item1 in convinienceList)
                     {
-                        if (item.ConvenienceId == item1.Id)
+                        if (item.ConvinienceId == item1.Id)
                         {
-                            dataTableConvinienceRoomType.Rows.Add(item.ConvenienceId, item1.Name, item.Quantity);
+                            dataTableConvinienceRoomType.Rows.Add(item.ConvinienceId, item1.Name, item.Quantity);
                         }
                     }
                 }
@@ -253,10 +253,10 @@ namespace HotelManagement.GUI
                     }
                 }
 
-                RoomTypeConvenience convinience_RoomType;
+                RoomTypeConvinience convinience_RoomType;
                 if (int.TryParse(txbQuantity.Text, out var quantity) || quantity != 0)
                 {
-                    convinience_RoomType = new RoomTypeConvenience(convinienceList[index].Id, txbID.Text, quantity);
+                    convinience_RoomType = new RoomTypeConvinience(convinienceList[index].Id, txbID.Text, quantity);
                 }
                 else
                 {
@@ -282,10 +282,10 @@ namespace HotelManagement.GUI
 
                 for (int i = 0; i < convinience_roomTypeList.Count; i++)
                 {
-                    if (convinience_roomTypeList[i].ConvenienceId == dtgvConvinienceRoomType.Rows[index1].Cells[0].Value.ToString()
+                    if (convinience_roomTypeList[i].ConvinienceId == dtgvConvinienceRoomType.Rows[index1].Cells[0].Value.ToString()
                         && convinience_roomTypeList[i].RoomTypeId == txbID.Text)
                     {
-                        if(roomBus.deleteRoomTypeConvinience(convinience_roomTypeList[i].ConvenienceId, convinience_roomTypeList[i].RoomTypeId) > 0)
+                        if(roomBus.deleteRoomTypeConvinience(convinience_roomTypeList[i].ConvinienceId, convinience_roomTypeList[i].RoomTypeId) > 0)
                         {
                             MessageBox.Show("Xóa tiện nghi khỏi loại phòng này thành công");
                             convinience_roomTypeList = roomBus.getAllRoomTypeConvinience();
