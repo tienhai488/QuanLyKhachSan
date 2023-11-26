@@ -366,6 +366,7 @@ namespace HotelManagement.GUI
 
             string id = roomTypeList[index1].Id;
 
+
             if (MessageBox.Show("Bạn có muốn xóa loại phòng này không", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 foreach (var conv_room in convinience_RoomTypeList)
@@ -376,6 +377,16 @@ namespace HotelManagement.GUI
                         return;
                     }
                 }
+
+                foreach(var room in roomList)
+                {
+                    if(id == room.RoomTypeId)
+                    {
+                        MessageBox.Show("Loại phòng này hiện đang được sử dụng, bạn nên xóa loại phòng khỏi phòng trước khi xóa loại phòng");
+                        return;
+                    }
+                }
+                
                 if (roomBus.deleteRoomType(id) > 0)
                 {
                     MessageBox.Show("Xóa loại phòng thành công");
