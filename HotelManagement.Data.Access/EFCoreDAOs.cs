@@ -172,6 +172,9 @@
     public class RoomEFCoreDAO : DbContext
     {
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomType> RoomTypes { get; set; }
+        public DbSet<RoomTypeConvinience> RoomTypeConviniences { get; set; }
+        public DbSet<Convinience> Conviniences { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -193,7 +196,7 @@
     }
     public class ConvenienceEFCoreDAO : DbContext
     {
-        public DbSet<Convinience> Conviniences { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -211,8 +214,7 @@
     }
     public class RoomTypeEFCoreDAO : DbContext
     {
-        public DbSet<RoomType> RoomTypes { get; set; }
-        public DbSet<RoomTypeConvinience> RoomTypeConviniences { get; set; }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);

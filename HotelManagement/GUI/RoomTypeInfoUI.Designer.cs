@@ -38,6 +38,7 @@
             btnSave = new Button();
             panel2 = new Panel();
             panel7 = new Panel();
+            cbbQuantity = new ComboBox();
             label1 = new Label();
             btnActive = new Button();
             panel4 = new Panel();
@@ -56,7 +57,6 @@
             txbName = new TextBox();
             groupBox1 = new GroupBox();
             txbID = new TextBox();
-            cbbQuantity = new ComboBox();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -191,6 +191,16 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(875, 98);
             panel7.TabIndex = 6;
+            // 
+            // cbbQuantity
+            // 
+            cbbQuantity.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbbQuantity.FormattingEnabled = true;
+            cbbQuantity.Items.AddRange(new object[] { "1", "2", "3", "4" });
+            cbbQuantity.Location = new Point(104, 13);
+            cbbQuantity.Name = "cbbQuantity";
+            cbbQuantity.Size = new Size(151, 28);
+            cbbQuantity.TabIndex = 12;
             // 
             // label1
             // 
@@ -384,15 +394,6 @@
             txbID.Name = "txbID";
             txbID.Size = new Size(869, 27);
             txbID.TabIndex = 0;
-            // 
-            // cbbQuantity
-            // 
-            cbbQuantity.FormattingEnabled = true;
-            cbbQuantity.Items.AddRange(new object[] { "1", "2", "3", "4" });
-            cbbQuantity.Location = new Point(104, 13);
-            cbbQuantity.Name = "cbbQuantity";
-            cbbQuantity.Size = new Size(151, 28);
-            cbbQuantity.TabIndex = 12;
             // 
             // RoomTypeInfoUI
             // 
