@@ -41,7 +41,7 @@
                     lock (syncKey)
                     {
                         if (accounts == null)
-                            using (var dao = new AccountEFCoreDAO())
+                            using (var dao = new AccountDAO())
                             {
                                 accounts = dao.NormalAccounts.ToList();
                                 usableUid = dao.UsableUid;
@@ -93,7 +93,7 @@
                 return account != null && !account.Linked;
             }
         }
-        
+
         public bool CanDisable
         {
             get
@@ -110,17 +110,14 @@
             lock (syncKey)
             {
                 var account = SelectedAccount;
-                if (account != null)
+                if (account != null && account.Uid != 0 && !account.Linked)
                 {
-                    if (account.Uid != 0 && !account.Linked)
+                    using (var dao = new AccountDAO())
                     {
-                        using (var dao = new AccountEFCoreDAO())
-                        {
-                            dao.Remove(account);
-                            dao.SaveChanges();
-                            accounts = dao.NormalAccounts.ToList();
-                            usableUid = dao.UsableUid;
-                        }
+                        dao.Remove(account);
+                        dao.SaveChanges();
+                        accounts = dao.NormalAccounts.ToList();
+                        usableUid = dao.UsableUid;
                     }
                     SelectedAccount = null;
                 }
@@ -136,7 +133,7 @@
                 var account = SelectedAccount;
                 if (account != null)
                 {
-                    using (var dao = new AccountEFCoreDAO())
+                    using (var dao = new AccountDAO())
                     {
                         if (creating)
                         {

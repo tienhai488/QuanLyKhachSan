@@ -2,12 +2,12 @@
 {
     partial class StaffInfoUI
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,480 +20,423 @@
             base.Dispose(disposing);
         }
 
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
-            tableLayoutPanel2 = new TableLayoutPanel();
-            label1 = new Label();
-            panel3 = new Panel();
-            tableLayoutPanel1 = new TableLayoutPanel();
-            button1 = new Button();
-            button2 = new Button();
-            panel2 = new Panel();
-            tableLayoutPanel3 = new TableLayoutPanel();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            textBox2 = new TextBox();
-            label18 = new Label();
-            label16 = new Label();
-            label14 = new Label();
-            label12 = new Label();
-            textBox16 = new TextBox();
-            textBox15 = new TextBox();
-            label9 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label5 = new Label();
-            label4 = new Label();
-            textBox19 = new TextBox();
-            textBox17 = new TextBox();
-            textBox14 = new TextBox();
-            label2 = new Label();
-            textBox1 = new TextBox();
-            label10 = new Label();
-            panel1.SuspendLayout();
-            tableLayoutPanel2.SuspendLayout();
-            panel3.SuspendLayout();
-            tableLayoutPanel1.SuspendLayout();
-            panel2.SuspendLayout();
-            tableLayoutPanel3.SuspendLayout();
+            lbID = new Label();
+            lbFullName = new Label();
+            lbGender = new Label();
+            lbBirthday = new Label();
+            tbID = new TextBox();
+            tbFullName = new TextBox();
+            lbFullNameError = new Label();
+            lbAddress = new Label();
+            lbCitizenId = new Label();
+            lbCitizenIdError = new Label();
+            lbPhone = new Label();
+            lbPhoneError = new Label();
+            lbRole = new Label();
+            tbAddress = new TextBox();
+            tbCitizenId = new TextBox();
+            tbPhone = new TextBox();
+            lbSalary = new Label();
+            lbAccount = new Label();
+            lbGroup = new Label();
+            lbStatus = new Label();
+            tbSalary = new TextBox();
+            cbStatus = new CheckBox();
+            dpBirthday = new DateTimePicker();
+            cbGender = new ComboBox();
+            cbRole = new ComboBox();
+            cbAccount = new ComboBox();
+            cbGroup = new ComboBox();
+            lbAddressError = new Label();
+            lbSalaryError = new Label();
             SuspendLayout();
             // 
-            // panel1
+            // lbID
             // 
-            panel1.Controls.Add(tableLayoutPanel2);
-            panel1.Dock = DockStyle.Top;
-            panel1.Location = new Point(0, 0);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(701, 72);
-            panel1.TabIndex = 0;
+            lbID.AutoSize = true;
+            lbID.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbID.Location = new Point(16, 20);
+            lbID.Name = "lbID";
+            lbID.Size = new Size(28, 21);
+            lbID.TabIndex = 0;
+            lbID.Text = "ID:";
             // 
-            // tableLayoutPanel2
+            // lbFullName
             // 
-            tableLayoutPanel2.ColumnCount = 1;
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Controls.Add(label1, 0, 0);
-            tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(0, 0);
-            tableLayoutPanel2.Name = "tableLayoutPanel2";
-            tableLayoutPanel2.RowCount = 1;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(701, 72);
-            tableLayoutPanel2.TabIndex = 0;
+            lbFullName.AutoSize = true;
+            lbFullName.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbFullName.Location = new Point(16, 72);
+            lbFullName.Name = "lbFullName";
+            lbFullName.Size = new Size(108, 21);
+            lbFullName.TabIndex = 0;
+            lbFullName.Text = "Tên nhân viên:";
             // 
-            // label1
+            // lbGender
             // 
-            label1.Anchor = AnchorStyles.None;
-            label1.AutoSize = true;
-            label1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(251, 24);
-            label1.Name = "label1";
-            label1.Size = new Size(199, 24);
-            label1.TabIndex = 0;
-            label1.Text = "Thông tin nhân viên";
+            lbGender.AutoSize = true;
+            lbGender.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbGender.Location = new Point(16, 124);
+            lbGender.Name = "lbGender";
+            lbGender.Size = new Size(73, 21);
+            lbGender.TabIndex = 0;
+            lbGender.Text = "Giới tính:";
             // 
-            // panel3
+            // lbBirthday
             // 
-            panel3.Controls.Add(tableLayoutPanel1);
-            panel3.Dock = DockStyle.Bottom;
-            panel3.Location = new Point(0, 564);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(701, 51);
-            panel3.TabIndex = 1;
+            lbBirthday.AutoSize = true;
+            lbBirthday.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbBirthday.Location = new Point(16, 176);
+            lbBirthday.Name = "lbBirthday";
+            lbBirthday.Size = new Size(83, 21);
+            lbBirthday.TabIndex = 0;
+            lbBirthday.Text = "Ngày sinh:";
             // 
-            // tableLayoutPanel1
+            // tbID
             // 
-            tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Controls.Add(button1, 0, 0);
-            tableLayoutPanel1.Controls.Add(button2, 1, 0);
-            tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(0, 0);
-            tableLayoutPanel1.Name = "tableLayoutPanel1";
-            tableLayoutPanel1.RowCount = 1;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(701, 51);
-            tableLayoutPanel1.TabIndex = 0;
+            tbID.BackColor = Color.White;
+            tbID.BorderStyle = BorderStyle.FixedSingle;
+            tbID.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbID.Location = new Point(144, 16);
+            tbID.Name = "tbID";
+            tbID.ReadOnly = true;
+            tbID.Size = new Size(200, 29);
+            tbID.TabIndex = 0;
+            tbID.TabStop = false;
             // 
-            // button1
+            // tbFullName
             // 
-            button1.Anchor = AnchorStyles.None;
-            button1.BackColor = SystemColors.HotTrack;
-            button1.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button1.ForeColor = SystemColors.ButtonHighlight;
-            button1.Location = new Point(95, 8);
-            button1.Name = "button1";
-            button1.Size = new Size(159, 34);
-            button1.TabIndex = 2;
-            button1.Text = "Reset";
-            button1.UseVisualStyleBackColor = false;
+            tbFullName.BackColor = Color.White;
+            tbFullName.BorderStyle = BorderStyle.FixedSingle;
+            tbFullName.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbFullName.Location = new Point(144, 68);
+            tbFullName.Name = "tbFullName";
+            tbFullName.ReadOnly = true;
+            tbFullName.Size = new Size(200, 29);
+            tbFullName.TabIndex = 1;
+            tbFullName.TextChanged += OnFullNameChanged;
             // 
-            // button2
+            // lbFullNameError
             // 
-            button2.Anchor = AnchorStyles.None;
-            button2.BackColor = SystemColors.HotTrack;
-            button2.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.ForeColor = SystemColors.ButtonHighlight;
-            button2.Location = new Point(446, 8);
-            button2.Name = "button2";
-            button2.Size = new Size(159, 34);
-            button2.TabIndex = 1;
-            button2.Text = "Lưu thông tin";
-            button2.UseVisualStyleBackColor = false;
+            lbFullNameError.AutoSize = true;
+            lbFullNameError.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
+            lbFullNameError.ForeColor = Color.Red;
+            lbFullNameError.Location = new Point(144, 100);
+            lbFullNameError.Name = "lbFullNameError";
+            lbFullNameError.Size = new Size(164, 15);
+            lbFullNameError.TabIndex = 0;
+            lbFullNameError.Text = "Tên nhân viên không hợp lệ!";
             // 
-            // panel2
+            // lbAddress
             // 
-            panel2.AutoScroll = true;
-            panel2.Controls.Add(tableLayoutPanel3);
-            panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(0, 72);
-            panel2.Margin = new Padding(20, 0, 20, 0);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(701, 492);
-            panel2.TabIndex = 2;
+            lbAddress.AutoSize = true;
+            lbAddress.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbAddress.Location = new Point(16, 228);
+            lbAddress.Name = "lbAddress";
+            lbAddress.Size = new Size(60, 21);
+            lbAddress.TabIndex = 0;
+            lbAddress.Text = "Địa chỉ:";
             // 
-            // tableLayoutPanel3
+            // lbCitizenId
             // 
-            tableLayoutPanel3.AutoScroll = true;
-            tableLayoutPanel3.ColumnCount = 1;
-            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel3.Controls.Add(textBox6, 0, 21);
-            tableLayoutPanel3.Controls.Add(textBox5, 0, 19);
-            tableLayoutPanel3.Controls.Add(textBox4, 0, 17);
-            tableLayoutPanel3.Controls.Add(textBox3, 0, 15);
-            tableLayoutPanel3.Controls.Add(textBox2, 0, 13);
-            tableLayoutPanel3.Controls.Add(label18, 0, 20);
-            tableLayoutPanel3.Controls.Add(label16, 0, 18);
-            tableLayoutPanel3.Controls.Add(label14, 0, 16);
-            tableLayoutPanel3.Controls.Add(label12, 0, 14);
-            tableLayoutPanel3.Controls.Add(textBox16, 0, 11);
-            tableLayoutPanel3.Controls.Add(textBox15, 0, 9);
-            tableLayoutPanel3.Controls.Add(label9, 0, 10);
-            tableLayoutPanel3.Controls.Add(label7, 0, 8);
-            tableLayoutPanel3.Controls.Add(label6, 0, 6);
-            tableLayoutPanel3.Controls.Add(label5, 0, 4);
-            tableLayoutPanel3.Controls.Add(label4, 0, 2);
-            tableLayoutPanel3.Controls.Add(textBox19, 0, 7);
-            tableLayoutPanel3.Controls.Add(textBox17, 0, 5);
-            tableLayoutPanel3.Controls.Add(textBox14, 0, 3);
-            tableLayoutPanel3.Controls.Add(label2, 0, 0);
-            tableLayoutPanel3.Controls.Add(textBox1, 0, 1);
-            tableLayoutPanel3.Controls.Add(label10, 0, 12);
-            tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(0, 0);
-            tableLayoutPanel3.Name = "tableLayoutPanel3";
-            tableLayoutPanel3.RowCount = 23;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(701, 492);
-            tableLayoutPanel3.TabIndex = 0;
+            lbCitizenId.AutoSize = true;
+            lbCitizenId.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbCitizenId.Location = new Point(16, 280);
+            lbCitizenId.Name = "lbCitizenId";
+            lbCitizenId.Size = new Size(107, 21);
+            lbCitizenId.TabIndex = 0;
+            lbCitizenId.Text = "CCCD/CMND:";
             // 
-            // textBox6
+            // lbCitizenIdError
             // 
-            textBox6.Dock = DockStyle.Fill;
-            textBox6.Location = new Point(15, 840);
-            textBox6.Margin = new Padding(15, 0, 15, 0);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(671, 27);
-            textBox6.TabIndex = 48;
+            lbCitizenIdError.AutoSize = true;
+            lbCitizenIdError.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
+            lbCitizenIdError.ForeColor = Color.Red;
+            lbCitizenIdError.Location = new Point(144, 308);
+            lbCitizenIdError.Name = "lbCitizenIdError";
+            lbCitizenIdError.Size = new Size(158, 15);
+            lbCitizenIdError.TabIndex = 0;
+            lbCitizenIdError.Text = "CCCD/CMND không hợp lệ!";
             // 
-            // textBox5
+            // lbPhone
             // 
-            textBox5.Dock = DockStyle.Fill;
-            textBox5.Location = new Point(15, 760);
-            textBox5.Margin = new Padding(15, 0, 15, 0);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(671, 27);
-            textBox5.TabIndex = 47;
+            lbPhone.AutoSize = true;
+            lbPhone.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbPhone.Location = new Point(16, 332);
+            lbPhone.Name = "lbPhone";
+            lbPhone.Size = new Size(104, 21);
+            lbPhone.TabIndex = 0;
+            lbPhone.Text = "Số điện thoại:";
             // 
-            // textBox4
+            // lbPhoneError
             // 
-            textBox4.Dock = DockStyle.Fill;
-            textBox4.Location = new Point(15, 680);
-            textBox4.Margin = new Padding(15, 0, 15, 0);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(671, 27);
-            textBox4.TabIndex = 46;
+            lbPhoneError.AutoSize = true;
+            lbPhoneError.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
+            lbPhoneError.ForeColor = Color.Red;
+            lbPhoneError.Location = new Point(144, 360);
+            lbPhoneError.Name = "lbPhoneError";
+            lbPhoneError.Size = new Size(160, 15);
+            lbPhoneError.TabIndex = 0;
+            lbPhoneError.Text = "Số điện thoại không hợp lệ!";
             // 
-            // textBox3
+            // lbRole
             // 
-            textBox3.Dock = DockStyle.Fill;
-            textBox3.Location = new Point(15, 600);
-            textBox3.Margin = new Padding(15, 0, 15, 0);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(671, 27);
-            textBox3.TabIndex = 45;
+            lbRole.AutoSize = true;
+            lbRole.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbRole.Location = new Point(16, 384);
+            lbRole.Name = "lbRole";
+            lbRole.Size = new Size(69, 21);
+            lbRole.TabIndex = 0;
+            lbRole.Text = "Chức vụ:";
             // 
-            // textBox2
+            // tbAddress
             // 
-            textBox2.Dock = DockStyle.Fill;
-            textBox2.Location = new Point(15, 520);
-            textBox2.Margin = new Padding(15, 0, 15, 0);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(671, 27);
-            textBox2.TabIndex = 44;
+            tbAddress.BackColor = Color.White;
+            tbAddress.BorderStyle = BorderStyle.FixedSingle;
+            tbAddress.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbAddress.Location = new Point(144, 224);
+            tbAddress.Name = "tbAddress";
+            tbAddress.ReadOnly = true;
+            tbAddress.Size = new Size(200, 29);
+            tbAddress.TabIndex = 4;
+            tbAddress.TabStop = false;
+            tbAddress.TextChanged += OnAddressChanged;
             // 
-            // label18
+            // tbCitizenId
             // 
-            label18.AutoSize = true;
-            label18.Dock = DockStyle.Bottom;
-            label18.Location = new Point(20, 820);
-            label18.Margin = new Padding(20, 0, 20, 0);
-            label18.Name = "label18";
-            label18.Size = new Size(661, 20);
-            label18.TabIndex = 43;
-            label18.Text = "Mã tài khoản";
+            tbCitizenId.BackColor = Color.White;
+            tbCitizenId.BorderStyle = BorderStyle.FixedSingle;
+            tbCitizenId.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbCitizenId.Location = new Point(144, 276);
+            tbCitizenId.Name = "tbCitizenId";
+            tbCitizenId.ReadOnly = true;
+            tbCitizenId.Size = new Size(200, 29);
+            tbCitizenId.TabIndex = 5;
+            tbCitizenId.TextChanged += OnCitizenIdChanged;
             // 
-            // label16
+            // tbPhone
             // 
-            label16.AutoSize = true;
-            label16.Dock = DockStyle.Bottom;
-            label16.Location = new Point(20, 740);
-            label16.Margin = new Padding(20, 0, 20, 0);
-            label16.Name = "label16";
-            label16.Size = new Size(661, 20);
-            label16.TabIndex = 41;
-            label16.Text = "Quyền";
+            tbPhone.BackColor = Color.White;
+            tbPhone.BorderStyle = BorderStyle.FixedSingle;
+            tbPhone.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbPhone.Location = new Point(144, 328);
+            tbPhone.Name = "tbPhone";
+            tbPhone.ReadOnly = true;
+            tbPhone.Size = new Size(200, 29);
+            tbPhone.TabIndex = 6;
+            tbPhone.TextChanged += OnPhoneNumberChanged;
             // 
-            // label14
+            // lbSalary
             // 
-            label14.AutoSize = true;
-            label14.Dock = DockStyle.Bottom;
-            label14.Location = new Point(20, 660);
-            label14.Margin = new Padding(20, 0, 20, 0);
-            label14.Name = "label14";
-            label14.Size = new Size(661, 20);
-            label14.TabIndex = 39;
-            label14.Text = "Nhóm quyền";
+            lbSalary.AutoSize = true;
+            lbSalary.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbSalary.Location = new Point(16, 436);
+            lbSalary.Name = "lbSalary";
+            lbSalary.Size = new Size(58, 21);
+            lbSalary.TabIndex = 0;
+            lbSalary.Text = "Lương:";
             // 
-            // label12
+            // lbAccount
             // 
-            label12.AutoSize = true;
-            label12.Dock = DockStyle.Bottom;
-            label12.Location = new Point(20, 580);
-            label12.Margin = new Padding(20, 0, 20, 0);
-            label12.Name = "label12";
-            label12.Size = new Size(661, 20);
-            label12.TabIndex = 37;
-            label12.Text = "Lương";
+            lbAccount.AutoSize = true;
+            lbAccount.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbAccount.Location = new Point(16, 488);
+            lbAccount.Name = "lbAccount";
+            lbAccount.Size = new Size(78, 21);
+            lbAccount.TabIndex = 0;
+            lbAccount.Text = "Tài khoản:";
             // 
-            // textBox16
+            // lbGroup
             // 
-            textBox16.Dock = DockStyle.Fill;
-            textBox16.Location = new Point(15, 440);
-            textBox16.Margin = new Padding(15, 0, 15, 0);
-            textBox16.Name = "textBox16";
-            textBox16.Size = new Size(671, 27);
-            textBox16.TabIndex = 30;
+            lbGroup.AutoSize = true;
+            lbGroup.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbGroup.Location = new Point(16, 540);
+            lbGroup.Name = "lbGroup";
+            lbGroup.Size = new Size(104, 21);
+            lbGroup.TabIndex = 0;
+            lbGroup.Text = "Nhóm quyền:";
             // 
-            // textBox15
+            // lbStatus
             // 
-            textBox15.Dock = DockStyle.Fill;
-            textBox15.Location = new Point(15, 360);
-            textBox15.Margin = new Padding(15, 0, 15, 0);
-            textBox15.Name = "textBox15";
-            textBox15.Size = new Size(671, 27);
-            textBox15.TabIndex = 29;
+            lbStatus.AutoSize = true;
+            lbStatus.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            lbStatus.Location = new Point(16, 592);
+            lbStatus.Name = "lbStatus";
+            lbStatus.Size = new Size(82, 21);
+            lbStatus.TabIndex = 0;
+            lbStatus.Text = "Trạng thái:";
             // 
-            // label9
+            // tbSalary
             // 
-            label9.AutoSize = true;
-            label9.Dock = DockStyle.Bottom;
-            label9.Location = new Point(15, 420);
-            label9.Margin = new Padding(15, 0, 0, 0);
-            label9.Name = "label9";
-            label9.Size = new Size(686, 20);
-            label9.TabIndex = 28;
-            label9.Text = "CCCD/CMND";
+            tbSalary.BackColor = Color.White;
+            tbSalary.BorderStyle = BorderStyle.FixedSingle;
+            tbSalary.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            tbSalary.Location = new Point(144, 432);
+            tbSalary.Name = "tbSalary";
+            tbSalary.ReadOnly = true;
+            tbSalary.Size = new Size(200, 29);
+            tbSalary.TabIndex = 8;
+            tbSalary.TabStop = false;
+            tbSalary.TextChanged += OnSalaryChanged;
             // 
-            // label7
+            // cbStatus
             // 
-            label7.AutoSize = true;
-            label7.Dock = DockStyle.Bottom;
-            label7.Location = new Point(15, 340);
-            label7.Margin = new Padding(15, 0, 0, 0);
-            label7.Name = "label7";
-            label7.Size = new Size(686, 20);
-            label7.TabIndex = 26;
-            label7.Text = "Địa chỉ";
+            cbStatus.AutoSize = true;
+            cbStatus.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbStatus.ForeColor = Color.Black;
+            cbStatus.Location = new Point(144, 589);
+            cbStatus.Name = "cbStatus";
+            cbStatus.Size = new Size(127, 27);
+            cbStatus.TabIndex = 11;
+            cbStatus.Text = "Đã nghỉ việc";
+            cbStatus.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // dpBirthday
             // 
-            label6.AutoSize = true;
-            label6.Dock = DockStyle.Bottom;
-            label6.Location = new Point(15, 260);
-            label6.Margin = new Padding(15, 0, 0, 0);
-            label6.Name = "label6";
-            label6.Size = new Size(686, 20);
-            label6.TabIndex = 25;
-            label6.Text = "Ngày sinh";
+            dpBirthday.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            dpBirthday.Format = DateTimePickerFormat.Short;
+            dpBirthday.Location = new Point(144, 172);
+            dpBirthday.Name = "dpBirthday";
+            dpBirthday.Size = new Size(200, 29);
+            dpBirthday.TabIndex = 3;
             // 
-            // label5
+            // cbGender
             // 
-            label5.AutoSize = true;
-            label5.Dock = DockStyle.Bottom;
-            label5.Location = new Point(15, 180);
-            label5.Margin = new Padding(15, 0, 0, 0);
-            label5.Name = "label5";
-            label5.Size = new Size(686, 20);
-            label5.TabIndex = 24;
-            label5.Text = "Giới tính";
+            cbGender.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGender.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbGender.FormattingEnabled = true;
+            cbGender.Location = new Point(144, 120);
+            cbGender.Name = "cbGender";
+            cbGender.Size = new Size(200, 29);
+            cbGender.TabIndex = 2;
             // 
-            // label4
+            // cbRole
             // 
-            label4.AutoSize = true;
-            label4.Dock = DockStyle.Bottom;
-            label4.Location = new Point(15, 100);
-            label4.Margin = new Padding(15, 0, 0, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(686, 20);
-            label4.TabIndex = 23;
-            label4.Text = "Tên nhân viên";
+            cbRole.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbRole.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbRole.FormattingEnabled = true;
+            cbRole.Location = new Point(144, 380);
+            cbRole.Name = "cbRole";
+            cbRole.Size = new Size(200, 29);
+            cbRole.TabIndex = 7;
             // 
-            // textBox19
+            // cbAccount
             // 
-            textBox19.Dock = DockStyle.Fill;
-            textBox19.Location = new Point(15, 280);
-            textBox19.Margin = new Padding(15, 0, 15, 0);
-            textBox19.Name = "textBox19";
-            textBox19.Size = new Size(671, 27);
-            textBox19.TabIndex = 22;
+            cbAccount.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbAccount.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbAccount.FormattingEnabled = true;
+            cbAccount.Location = new Point(144, 484);
+            cbAccount.Name = "cbAccount";
+            cbAccount.Size = new Size(200, 29);
+            cbAccount.TabIndex = 9;
+            cbAccount.SelectedIndexChanged += OnPermissionsInfoChanged;
             // 
-            // textBox17
+            // cbGroup
             // 
-            textBox17.Dock = DockStyle.Fill;
-            textBox17.Location = new Point(15, 200);
-            textBox17.Margin = new Padding(15, 0, 15, 0);
-            textBox17.Name = "textBox17";
-            textBox17.Size = new Size(671, 27);
-            textBox17.TabIndex = 20;
+            cbGroup.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbGroup.Font = new Font("Segoe UI", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            cbGroup.FormattingEnabled = true;
+            cbGroup.Location = new Point(144, 536);
+            cbGroup.Name = "cbGroup";
+            cbGroup.Size = new Size(200, 29);
+            cbGroup.TabIndex = 10;
+            cbGroup.SelectedIndexChanged += OnPermissionsInfoChanged;
             // 
-            // textBox14
+            // lbAddressError
             // 
-            textBox14.Dock = DockStyle.Fill;
-            textBox14.Location = new Point(15, 120);
-            textBox14.Margin = new Padding(15, 0, 15, 0);
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(671, 27);
-            textBox14.TabIndex = 18;
+            lbAddressError.AutoSize = true;
+            lbAddressError.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
+            lbAddressError.ForeColor = Color.Red;
+            lbAddressError.Location = new Point(144, 256);
+            lbAddressError.Name = "lbAddressError";
+            lbAddressError.Size = new Size(124, 15);
+            lbAddressError.TabIndex = 0;
+            lbAddressError.Text = "Địa chỉ không hợp lệ!";
             // 
-            // label2
+            // lbSalaryError
             // 
-            label2.AutoSize = true;
-            label2.Dock = DockStyle.Bottom;
-            label2.Location = new Point(15, 20);
-            label2.Margin = new Padding(15, 0, 0, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(686, 20);
-            label2.TabIndex = 0;
-            label2.Text = "Mã nhân viên";
-            // 
-            // textBox1
-            // 
-            textBox1.Dock = DockStyle.Fill;
-            textBox1.Location = new Point(15, 40);
-            textBox1.Margin = new Padding(15, 0, 15, 0);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(671, 27);
-            textBox1.TabIndex = 1;
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Dock = DockStyle.Bottom;
-            label10.Location = new Point(20, 500);
-            label10.Margin = new Padding(20, 0, 20, 0);
-            label10.Name = "label10";
-            label10.Size = new Size(661, 20);
-            label10.TabIndex = 35;
-            label10.Text = "Số điện thoại";
+            lbSalaryError.AutoSize = true;
+            lbSalaryError.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Pixel);
+            lbSalaryError.ForeColor = Color.Red;
+            lbSalaryError.Location = new Point(144, 464);
+            lbSalaryError.Name = "lbSalaryError";
+            lbSalaryError.Size = new Size(123, 15);
+            lbSalaryError.TabIndex = 0;
+            lbSalaryError.Text = "Lương không hợp lệ!";
             // 
             // StaffInfoUI
             // 
-            ClientSize = new Size(701, 615);
-            Controls.Add(panel2);
-            Controls.Add(panel3);
-            Controls.Add(panel1);
+            BackColor = Color.White;
+            Controls.Add(cbGroup);
+            Controls.Add(cbAccount);
+            Controls.Add(cbRole);
+            Controls.Add(cbGender);
+            Controls.Add(dpBirthday);
+            Controls.Add(cbStatus);
+            Controls.Add(tbPhone);
+            Controls.Add(tbCitizenId);
+            Controls.Add(tbFullName);
+            Controls.Add(tbSalary);
+            Controls.Add(tbAddress);
+            Controls.Add(tbID);
+            Controls.Add(lbStatus);
+            Controls.Add(lbRole);
+            Controls.Add(lbSalaryError);
+            Controls.Add(lbPhoneError);
+            Controls.Add(lbGroup);
+            Controls.Add(lbBirthday);
+            Controls.Add(lbPhone);
+            Controls.Add(lbAddressError);
+            Controls.Add(lbCitizenIdError);
+            Controls.Add(lbAccount);
+            Controls.Add(lbGender);
+            Controls.Add(lbCitizenId);
+            Controls.Add(lbSalary);
+            Controls.Add(lbFullNameError);
+            Controls.Add(lbAddress);
+            Controls.Add(lbFullName);
+            Controls.Add(lbID);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            ForeColor = Color.Black;
+            MinimumSize = new Size(360, 660);
             Name = "StaffInfoUI";
-            Text = "Thông tin nhân viên";
-            panel1.ResumeLayout(false);
-            tableLayoutPanel2.ResumeLayout(false);
-            tableLayoutPanel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            tableLayoutPanel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            tableLayoutPanel3.ResumeLayout(false);
-            tableLayoutPanel3.PerformLayout();
+            Size = new Size(360, 660);
             ResumeLayout(false);
+            PerformLayout();
         }
 
-
-        #region Windows Form Designer generated code
-
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
-
         #endregion
-        private Panel panel1;
-        private TableLayoutPanel tableLayoutPanel2;
-        private Label label1;
-        private Panel panel2;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button button2;
-        private TableLayoutPanel tableLayoutPanel3;
-        private Label label2;
-        private TextBox textBox1;
-        private TextBox textBox16;
-        private TextBox textBox15;
-        private Label label9;
-        private Label label7;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private TextBox textBox19;
-        private TextBox textBox17;
-        private TextBox textBox14;
-        private Label label10;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox4;
-        private TextBox textBox3;
-        private TextBox textBox2;
-        private Label label18;
-        private Label label16;
-        private Label label14;
-        private Label label12;
-        private Button button1;
-        private Panel panel3;
+
+        private Label lbID, lbFullName, lbGender, lbBirthday, lbAccount, lbGroup;
+        private TextBox tbID;
+        private TextBox tbFullName;
+        private Label lbFullNameError;
+        private CheckBox cbStatus;
+        private Label lbAddress;
+        private Label lbCitizenId;
+        private Label lbCitizenIdError;
+        private Label lbPhone;
+        private Label lbPhoneError;
+        private Label lbRole;
+        private TextBox tbAddress;
+        private TextBox tbCitizenId;
+        private TextBox tbPhone;
+        private Label lbSalary;
+        private Label lbStatus;
+        private TextBox tbSalary;
+        private DateTimePicker dpBirthday;
+        private ComboBox cbGender;
+        private ComboBox cbRole;
+        private ComboBox cbAccount;
+        private ComboBox cbGroup;
+        private Label lbAddressError;
+        private Label lbSalaryError;
     }
 }

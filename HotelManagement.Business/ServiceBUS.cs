@@ -9,8 +9,8 @@ namespace HotelManagement.BUS
 {
     public class ServiceBUS
     {
-        private ServiceEFCoreDAO serviceEFCoreDAO = new ServiceEFCoreDAO();
-        private ServiceTypeEFCoreDAO serviceTypeEFCoreDAO = new ServiceTypeEFCoreDAO();
+        private ServiceDAO serviceEFCoreDAO = new ServiceDAO();
+        private ServiceTypeDAO serviceTypeEFCoreDAO = new ServiceTypeDAO();
 
         public List<Service> getAllService()
         {

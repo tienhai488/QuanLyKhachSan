@@ -25,7 +25,7 @@
         //public static string? IdString(this Service? service)
         //    => service == null ? null : "SE" + service.Id.ToString("D3");
         //public static string? IdString(this ServiceType? type)
-        //    => type == null ? null : "ST" + type.Id.ToString("D4");
+        //    => type == null ? null : "ST" + type.Id.ToString("D2");
         public static string? IdString(this Role? role)
             => role == null ? null : "RO" + role.Id.ToString("D2");
         public static string? IdString(this Staff? staff)

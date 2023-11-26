@@ -10,11 +10,11 @@
     using System.Drawing;
     using System.Windows.Forms;
 
-    public partial class AccountManagerUI : Form
+    public partial class RoleManagementUI : Form
     {
         private bool editing, searching;
         private int selectedIndex;
-        public AccountManagerUI()
+        public RoleManagementUI()
         {
             InitializeComponent();
             MinimumSize = new Size(360 + SystemInformation.VerticalScrollBarWidth, 360 + SystemInformation.HorizontalScrollBarHeight);
@@ -25,21 +25,22 @@
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            LoadAccounts();
+            LoadRoles();
             LoadActions();
             LoadInfo();
+            OnResize(EventArgs.Empty);
         }
 
-        private void LoadAccounts()
+        private void LoadRoles()
         {
-            lbAccounts.Clear();
-            foreach (var account in AccountManagerBO.Instance.Accounts)
+            lbRoles.Clear();
+            foreach (var group in RoleManagerBO.Instance.Roles)
             {
-                lbAccounts.AddItem(new MaterialListBoxItem()
+                lbRoles.AddItem(new MaterialListBoxItem()
                 {
-                    Tag = account,
-                    Text = account.UserName,
-                    SecondaryText = "UID " + account.UidString()
+                    Tag = group,
+                    Text = group.Name,
+                    SecondaryText = group.IdString()
                 });
             }
         }
@@ -54,14 +55,14 @@
             {
                 if (!editing)
                 {
-                    bool write = LoginBO.IsPermissionGranted(Permission.WriteAccount);
+                    bool write = LoginBO.IsPermissionGranted(Permission.WriteRole);
                     if (selectedIndex >= 0)
                     {
                         dbtnAdd.Available = write
                             && ClientSize.Width >= 600;
                         dbtnEdit.Available = write;
                         dbtnDelete.Available = write
-                            && AccountManagerBO.Instance.CanDelete;
+                            && RoleManagerBO.Instance.CanDelete;
                     }
                     else dbtnAdd.Available = write;
                 }
@@ -73,55 +74,56 @@
         private void LoadInfo()
         {
             if (selectedIndex >= 0
-                || AccountManagerBO.Instance.SelectedAccount != null)
+                || RoleManagerBO.Instance.SelectedRole != null)
             {
-                pnAccountInfo.Visible = true;
-                ucAccountInfo.LoadAccount();
-                ucAccountInfo.Editing = editing;
+                pnRoleInfo.Visible = true;
+                ucRoleInfo.LoadRole();
+                ucRoleInfo.Editing = editing;
             }
-            else pnAccountInfo.Visible = false;
+            else pnRoleInfo.Visible = false;
         }
 
         private void AdjustSelectedIndex()
         {
             var sel = -1;
-            var bo = AccountManagerBO.Instance;
-            var accounts = bo.Accounts;
-            for (int i = 0, c = accounts.Count; i < c; ++i)
+            var bo = RoleManagerBO.Instance;
+            var groups = bo.Roles;
+            for (int i = 0, c = groups.Count; i < c; ++i)
             {
-                if (accounts[i] == bo.SelectedAccount)
+                if (groups[i] == bo.SelectedRole)
                 {
                     sel = i;
                     break;
                 }
             }
             selectedIndex = sel;
-            lbAccounts.SelectedIndex = sel;
+            lbRoles.SelectedIndex = sel;
         }
 
-        private void OnSelectedAccountIndex(object sender, MaterialListBoxItem selectedItem)
+        private void OnSelectedRoleIndex(object sender, MaterialListBoxItem selectedItem)
         {
-            var bo = AccountManagerBO.Instance;
+            var bo = RoleManagerBO.Instance;
             if (editing)
             {
                 bo.CancelEdit();
                 editing = false;
             }
-            selectedIndex = lbAccounts.SelectedIndex;
-            bo.SelectedAccount = (Account?)selectedItem.Tag;
+            selectedIndex = lbRoles.SelectedIndex;
+            var ro = (Role?)selectedItem.Tag;
+            bo.SelectedRole = ro;
             LoadActions();
             LoadInfo();
         }
 
         private void OnBack(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
+            var bo = RoleManagerBO.Instance;
             if (searching)
             {
                 tbSearchBox.Text = string.Empty;
                 bo.Searching = false;
                 searching = false;
-                LoadAccounts();
+                LoadRoles();
                 AdjustSelectedIndex();
             }
             else if (editing)
@@ -129,14 +131,16 @@
                 editing = false;
                 bo.CancelEdit();
                 if (selectedIndex >= 0)
-                    bo.SelectedAccount = bo.Accounts[selectedIndex];
+                {
+                    var pg = bo.Roles[selectedIndex];
+                    bo.SelectedRole = pg;
+                }
             }
             else if (ClientSize.Width < 600 && selectedIndex >= 0)
             {
                 selectedIndex = -1;
-                lbAccounts.SelectedIndex = -1;
-                bo.SelectedAccount = null;
-
+                lbRoles.SelectedIndex = -1;
+                bo.SelectedRole = null;
             }
             else return;
             LoadActions();
@@ -145,38 +149,38 @@
 
         private void OnSave(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            if ((selectedIndex >= 0 || bo.SelectedAccount != null)
-                && ucAccountInfo.CanSaveAccount())
+            var bo = RoleManagerBO.Instance;
+            if ((selectedIndex >= 0 || bo.SelectedRole != null)
+                && ucRoleInfo.CanSaveRole())
             {
-                ucAccountInfo.SaveAccount();
+                ucRoleInfo.SaveRole();
                 bo.AcceptEdit();
                 editing = false;
-                LoadAccounts();
+                LoadRoles();
                 AdjustSelectedIndex();
                 LoadActions();
             }
             else
             {
-                MessageBox.Show("Tên người dùng hoặc mật khẩu không hợp lệ!",
-                    "Lưu tài khoản", MessageBoxButtons.OK);
+                MessageBox.Show("Tên nhóm quyền không hợp lệ!",
+                    "Lưu nhóm quyền", MessageBoxButtons.OK);
             }
         }
 
         private void OnStartSearch(object sender, EventArgs e)
         {
-            AccountManagerBO.Instance.Searching = true;
+            RoleManagerBO.Instance.Searching = true;
             searching = true;
-            LoadAccounts();
+            LoadRoles();
             AdjustSelectedIndex();
             LoadActions();
         }
 
         private void OnLookingUp(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            bo.LookupAccount(tbSearchBox.Text);
-            LoadAccounts();
+            var bo = RoleManagerBO.Instance;
+            bo.LookupRole(tbSearchBox.Text);
+            LoadRoles();
             AdjustSelectedIndex();
             LoadActions();
             LoadInfo();
@@ -184,7 +188,8 @@
 
         private void OnAdding(object sender, EventArgs e)
         {
-            AccountManagerBO.Instance.CreateAccount();
+            var bo = RoleManagerBO.Instance;
+            bo.CreateRole();
             editing = true;
             LoadActions();
             LoadInfo();
@@ -192,8 +197,8 @@
 
         private void OnEditing(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            bo.SelectedAccount = bo.Accounts[selectedIndex];
+            var bo = RoleManagerBO.Instance;
+            bo.SelectedRole = bo.Roles[selectedIndex];
             editing = true;
             LoadActions();
             LoadInfo();
@@ -201,13 +206,13 @@
 
         private void OnDeleting(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn xóa tài khoản này không?", "Xóa tài khoản",
+            if (MessageBox.Show("Bạn có muốn xóa nhóm quyền này không?", "Xóa nhóm quyền",
                 MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                AccountManagerBO.Instance.DeleteAccount();
+                RoleManagerBO.Instance.DeleteRole();
                 selectedIndex = -1;
                 editing = false;
-                LoadAccounts();
+                LoadRoles();
                 LoadActions();
                 LoadInfo();
             }
@@ -288,27 +293,27 @@
             AdjustToolbar();
             Size s = ClientSize, scrollSize = new(0, 0);
             s.Height -= 56;
-            if (pnAccountInfo.VerticalScroll.Visible)
+            if (pnRoleInfo.VerticalScroll.Visible)
                 scrollSize.Width = SystemInformation.VerticalScrollBarWidth;
-            if (pnAccountInfo.HorizontalScroll.Visible)
+            if (pnRoleInfo.HorizontalScroll.Visible)
                 scrollSize.Height = SystemInformation.HorizontalScrollBarHeight;
             int width = s.Width;
             if (width >= 600)
             {
                 s.Width = (int)(width * 0.4);
-                lbAccounts.ClientSize = s;
-                pnAccountInfo.Location = new(s.Width, 0);
+                lbRoles.ClientSize = s;
+                pnRoleInfo.Location = new(s.Width, 0);
                 s.Width = width - s.Width;
             }
             else
             {
-                lbAccounts.ClientSize = s;
-                pnAccountInfo.Location = new(0, 0);
+                lbRoles.ClientSize = s;
+                pnRoleInfo.Location = new(0, 0);
             }
-            pnAccountInfo.ClientSize = s;
+            pnRoleInfo.ClientSize = s;
             s -= scrollSize;
-            ucAccountInfo.ClientSize = new(s.Width, ucAccountInfo.ClientSize.Height);
-            pnAccountInfo.AutoScrollMinSize = s;
+            ucRoleInfo.ClientSize = new(s.Width, ucRoleInfo.ClientSize.Height);
+            pnRoleInfo.AutoScrollMinSize = s;
         }
     }
 }

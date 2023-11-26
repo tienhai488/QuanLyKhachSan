@@ -14,7 +14,7 @@ namespace HotelManagement.BUS
     {
 
         //------------------------------Room BUS-------------------------------
-        private RoomEFCoreDAO roomEFCoreDAO = new RoomEFCoreDAO();
+        private RoomDAO roomEFCoreDAO = new RoomDAO();
 
         public List<Room> getAllRoom()
         {
