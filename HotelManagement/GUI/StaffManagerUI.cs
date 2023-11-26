@@ -10,13 +10,14 @@
     using System.Drawing;
     using System.Windows.Forms;
 
-    public partial class AccountManagerUI : Form
+    public partial class StaffManagerUI : Form
     {
         private bool editing, searching;
         private int selectedIndex;
-        public AccountManagerUI()
+        public StaffManagerUI()
         {
             InitializeComponent();
+            ucStaffInfo.PermissionsInfoChanged += OnPermissionsInfoChanged;
             MinimumSize = new Size(360 + SystemInformation.VerticalScrollBarWidth, 360 + SystemInformation.HorizontalScrollBarHeight);
             ClientSize = new Size(600, 600);
             selectedIndex = -1;
@@ -25,21 +26,24 @@
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            LoadAccounts();
+            LoadStaffs();
             LoadActions();
             LoadInfo();
+            OnResize(EventArgs.Empty);
         }
 
-        private void LoadAccounts()
+        private void OnPermissionsInfoChanged(object? sender, EventArgs e) => ucGranting.LoadPermissions();
+
+        private void LoadStaffs()
         {
-            lbAccounts.Clear();
-            foreach (var account in AccountManagerBO.Instance.Accounts)
+            lbStaffs.Clear();
+            foreach (var staff in StaffManagerBO.Instance.Staffs)
             {
-                lbAccounts.AddItem(new MaterialListBoxItem()
+                lbStaffs.AddItem(new MaterialListBoxItem()
                 {
-                    Tag = account,
-                    Text = account.UserName,
-                    SecondaryText = "UID " + account.UidString()
+                    Tag = staff,
+                    Text = staff.FullName,
+                    SecondaryText = staff.IdString()
                 });
             }
         }
@@ -54,14 +58,14 @@
             {
                 if (!editing)
                 {
-                    bool write = LoginBO.IsPermissionGranted(Permission.WriteAccount);
+                    bool write = LoginBO.IsPermissionGranted(Permission.WriteStaff);
                     if (selectedIndex >= 0)
                     {
                         dbtnAdd.Available = write
                             && ClientSize.Width >= 600;
                         dbtnEdit.Available = write;
                         dbtnDelete.Available = write
-                            && AccountManagerBO.Instance.CanDelete;
+                            && StaffManagerBO.Instance.CanDelete;
                     }
                     else dbtnAdd.Available = write;
                 }
@@ -73,55 +77,60 @@
         private void LoadInfo()
         {
             if (selectedIndex >= 0
-                || AccountManagerBO.Instance.SelectedAccount != null)
+                || StaffManagerBO.Instance.SelectedStaff != null)
             {
-                pnAccountInfo.Visible = true;
-                ucAccountInfo.LoadAccount();
-                ucAccountInfo.Editing = editing;
+                pnStaffInfo.Visible = true;
+                ucStaffInfo.LoadStaff();
+                ucStaffInfo.Editing = editing;
+                ucGranting.LoadPermissions();
+                ucGranting.Editing = editing;
             }
-            else pnAccountInfo.Visible = false;
+            else pnStaffInfo.Visible = false;
         }
 
         private void AdjustSelectedIndex()
         {
             var sel = -1;
-            var bo = AccountManagerBO.Instance;
-            var accounts = bo.Accounts;
-            for (int i = 0, c = accounts.Count; i < c; ++i)
+            var bo = StaffManagerBO.Instance;
+            var staffs = bo.Staffs;
+            for (int i = 0, c = staffs.Count; i < c; ++i)
             {
-                if (accounts[i] == bo.SelectedAccount)
+                if (staffs[i] == bo.SelectedStaff)
                 {
                     sel = i;
                     break;
                 }
             }
             selectedIndex = sel;
-            lbAccounts.SelectedIndex = sel;
+            lbStaffs.SelectedIndex = sel;
         }
 
-        private void OnSelectedAccountIndex(object sender, MaterialListBoxItem selectedItem)
+        private void OnSelectedStaffIndex(object sender, MaterialListBoxItem selectedItem)
         {
-            var bo = AccountManagerBO.Instance;
+            var bo = StaffManagerBO.Instance;
             if (editing)
             {
                 bo.CancelEdit();
                 editing = false;
             }
-            selectedIndex = lbAccounts.SelectedIndex;
-            bo.SelectedAccount = (Account?)selectedItem.Tag;
+            selectedIndex = lbStaffs.SelectedIndex;
+            var sa = (Staff?)selectedItem.Tag;
+            bo.SelectedStaff = sa;
+            GrantingPermissionsBO.Instance
+                .SelectedAccessable = sa;
             LoadActions();
             LoadInfo();
         }
 
         private void OnBack(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
+            var bo = StaffManagerBO.Instance;
             if (searching)
             {
                 tbSearchBox.Text = string.Empty;
                 bo.Searching = false;
                 searching = false;
-                LoadAccounts();
+                LoadStaffs();
                 AdjustSelectedIndex();
             }
             else if (editing)
@@ -129,14 +138,20 @@
                 editing = false;
                 bo.CancelEdit();
                 if (selectedIndex >= 0)
-                    bo.SelectedAccount = bo.Accounts[selectedIndex];
+                {
+                    var sa = bo.Staffs[selectedIndex];
+                    bo.SelectedStaff = sa;
+                    GrantingPermissionsBO.Instance
+                        .SelectedAccessable = sa;
+                }
             }
             else if (ClientSize.Width < 600 && selectedIndex >= 0)
             {
                 selectedIndex = -1;
-                lbAccounts.SelectedIndex = -1;
-                bo.SelectedAccount = null;
-
+                lbStaffs.SelectedIndex = -1;
+                bo.SelectedStaff = null;
+                GrantingPermissionsBO.Instance
+                    .SelectedAccessable = null;
             }
             else return;
             LoadActions();
@@ -145,38 +160,39 @@
 
         private void OnSave(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            if ((selectedIndex >= 0 || bo.SelectedAccount != null)
-                && ucAccountInfo.CanSaveAccount())
+            var bo = StaffManagerBO.Instance;
+            if ((selectedIndex >= 0 || bo.SelectedStaff != null)
+                && ucStaffInfo.CanSaveStaff())
             {
-                ucAccountInfo.SaveAccount();
+                ucStaffInfo.SaveStaff();
+                ucGranting.SaveChange();
                 bo.AcceptEdit();
                 editing = false;
-                LoadAccounts();
+                LoadStaffs();
                 AdjustSelectedIndex();
                 LoadActions();
             }
             else
             {
-                MessageBox.Show("Tên người dùng hoặc mật khẩu không hợp lệ!",
-                    "Lưu tài khoản", MessageBoxButtons.OK);
+                MessageBox.Show("Tên nhân viên không hợp lệ!",
+                    "Lưu nhân viên", MessageBoxButtons.OK);
             }
         }
 
         private void OnStartSearch(object sender, EventArgs e)
         {
-            AccountManagerBO.Instance.Searching = true;
+            StaffManagerBO.Instance.Searching = true;
             searching = true;
-            LoadAccounts();
+            LoadStaffs();
             AdjustSelectedIndex();
             LoadActions();
         }
 
         private void OnLookingUp(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            bo.LookupAccount(tbSearchBox.Text);
-            LoadAccounts();
+            var bo = StaffManagerBO.Instance;
+            bo.LookupStaff(tbSearchBox.Text);
+            LoadStaffs();
             AdjustSelectedIndex();
             LoadActions();
             LoadInfo();
@@ -184,7 +200,10 @@
 
         private void OnAdding(object sender, EventArgs e)
         {
-            AccountManagerBO.Instance.CreateAccount();
+            var bo = StaffManagerBO.Instance;
+            bo.CreateStaff();
+            GrantingPermissionsBO.Instance
+                .SelectedAccessable = bo.SelectedStaff;
             editing = true;
             LoadActions();
             LoadInfo();
@@ -192,8 +211,11 @@
 
         private void OnEditing(object sender, EventArgs e)
         {
-            var bo = AccountManagerBO.Instance;
-            bo.SelectedAccount = bo.Accounts[selectedIndex];
+            var bo = StaffManagerBO.Instance;
+            var pg = bo.Staffs[selectedIndex];
+            bo.SelectedStaff = pg;
+            GrantingPermissionsBO.Instance
+                .SelectedAccessable = pg;
             editing = true;
             LoadActions();
             LoadInfo();
@@ -201,17 +223,21 @@
 
         private void OnDeleting(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn xóa tài khoản này không?", "Xóa tài khoản",
+            if (MessageBox.Show("Bạn có muốn xóa nhân viên này không?", "Xóa nhân viên",
                 MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
-                AccountManagerBO.Instance.DeleteAccount();
+                StaffManagerBO.Instance.DeleteStaff();
+                GrantingPermissionsBO.Instance.SelectedAccessable = null;
                 selectedIndex = -1;
                 editing = false;
-                LoadAccounts();
+                LoadStaffs();
                 LoadActions();
                 LoadInfo();
             }
         }
+
+        private void OnStartImex(object sender, EventArgs e)
+            => new StaffImexUI().ShowDialog();
 
         private int AdjustBackButtonSize()
         {
@@ -288,27 +314,28 @@
             AdjustToolbar();
             Size s = ClientSize, scrollSize = new(0, 0);
             s.Height -= 56;
-            if (pnAccountInfo.VerticalScroll.Visible)
+            if (pnStaffInfo.VerticalScroll.Visible)
                 scrollSize.Width = SystemInformation.VerticalScrollBarWidth;
-            if (pnAccountInfo.HorizontalScroll.Visible)
+            if (pnStaffInfo.HorizontalScroll.Visible)
                 scrollSize.Height = SystemInformation.HorizontalScrollBarHeight;
             int width = s.Width;
             if (width >= 600)
             {
                 s.Width = (int)(width * 0.4);
-                lbAccounts.ClientSize = s;
-                pnAccountInfo.Location = new(s.Width, 0);
+                lbStaffs.ClientSize = s;
+                pnStaffInfo.Location = new(s.Width, 0);
                 s.Width = width - s.Width;
             }
             else
             {
-                lbAccounts.ClientSize = s;
-                pnAccountInfo.Location = new(0, 0);
+                lbStaffs.ClientSize = s;
+                pnStaffInfo.Location = new(0, 0);
             }
-            pnAccountInfo.ClientSize = s;
+            pnStaffInfo.ClientSize = s;
             s -= scrollSize;
-            ucAccountInfo.ClientSize = new(s.Width, ucAccountInfo.ClientSize.Height);
-            pnAccountInfo.AutoScrollMinSize = s;
+            ucStaffInfo.ClientSize = new(s.Width, ucStaffInfo.ClientSize.Height);
+            ucGranting.ClientSize = new(s.Width, 0);
+            pnStaffInfo.AutoScrollMinSize = s;
         }
     }
 }

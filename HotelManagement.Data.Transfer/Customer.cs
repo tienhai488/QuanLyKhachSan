@@ -8,6 +8,7 @@
     public class Customer
     {
         public const bool GenderMale = true, GenderFemale = false;
+        public const string GenderMaleString = "Nam", GenderFemaleString = "Nữ";
 
         [Key]
         [StringLength(50)]

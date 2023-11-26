@@ -7,7 +7,7 @@ namespace HotelManagement.BUS
 {
     public class CustomerBUS
     {
-        private CustomerEFCoreDAO customerEFCoreDAO = new CustomerEFCoreDAO();
+        private CustomerDAO customerEFCoreDAO = new CustomerDAO();
 
         public List<Customer> getAll()
         {

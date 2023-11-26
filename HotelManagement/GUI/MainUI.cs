@@ -67,7 +67,7 @@ namespace HotelManagement.GUI
             customerForm.Show();
             tabPage8.Controls.Add(customerForm);
 
-            StaffUI staffForm = new StaffUI();
+            StaffManagerUI staffForm = new StaffManagerUI();
             staffForm.TopLevel = false;
             staffForm.FormBorderStyle = FormBorderStyle.None;
             staffForm.Dock = DockStyle.Fill;
