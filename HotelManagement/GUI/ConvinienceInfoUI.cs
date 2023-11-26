@@ -20,31 +20,17 @@ namespace HotelManagement.GUI
         private RoomBUS roomBUS = new RoomBUS();
         private RoomUI roomUI;
 
-        private List<RoomTypeConvinience> convinience_roomType;
-        private List<Convinience> convinience;
+        private List<RoomTypeConvinience> convinience_roomTypeList;
+        private List<Convinience> convinienceList;
 
         public ConvinienceInfoUI(RoomUI roomUI)
         {
             InitializeComponent();
-            initCbx();
+            convinienceList = roomBUS.getAllConvinience();
             this.roomUI = roomUI;
         }
 
         #region method
-        public void initCbx()
-        {
-            
-        }
-
-        public void roomTypeIDData()
-        {
-            
-        }
-
-        public void convinientData()
-        {
-            
-        }
 
         public void fillData(Convinience conv, string type)
         {
@@ -107,8 +93,22 @@ namespace HotelManagement.GUI
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            //cbbStatus.SelectedIndex = 0;
-            //cbbRoomTypeID.SelectedIndex = 0;
+            if(isEdit)
+            {
+                foreach(var conv in convinienceList)
+                {
+                    if(conv.Id == txbID.Text)
+                    {
+                        txbName.Text = conv.Name;
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                txbName.Text = string.Empty;
+                return;
+            }
         }
         #endregion
 

@@ -9,6 +9,7 @@
     using System.Numerics;
     using System.Text;
     using System.Threading.Tasks;
+    using static System.Windows.Forms.VisualStyles.VisualStyleElement.ProgressBar;
 
     public enum RoomStatus : int
     {
@@ -154,7 +155,7 @@
         [Column("ConvinienceID", TypeName = "varchar")]
         private string convinienceId;
 
-        
+
         [ForeignKey("ConvinienceID")]
         private Convinience convinience;
 
@@ -162,7 +163,7 @@
         [Column("RoomTypeID", TypeName = "varchar")]
         private string roomTypeId;
 
-        
+
         [ForeignKey("RoomTypeID")]
         private RoomType roomType;
 
@@ -199,5 +200,156 @@
         public RoomTypeConvinience() { }
     }
 
-    
+
+    //public class Room
+    //{
+    //    private string id;
+    //    private int status;
+    //    private string roomTypeId;
+    //    private RoomType roomType;
+
+    //    public string Id { get => id; set => id = value; }
+    //    public int Status { get => status; set => status = value; }
+    //    public string RoomTypeId { get => roomTypeId; set => roomTypeId = value; }
+    //    public RoomType RoomType
+    //    {
+    //        get => roomType;
+    //        set
+    //        {
+    //            roomType = value;
+    //            roomTypeId = value?.Id;
+    //        }
+    //    }
+
+    //    public Room(string id)
+    //    {
+    //        this.Id = id;
+    //    }
+
+    //    public Room(string id, int status, string roomTypeId)
+    //    {
+    //        this.id = id;
+    //        this.status = status;
+    //        this.roomTypeId = roomTypeId;
+    //    }
+    //    public Room() { }
+    //}
+
+    //public class RoomType
+    //{
+    //    private string id;
+    //    private string name;
+    //    private double unitPrice;
+
+    //    private IList<Convinience> conveniences;
+    //    private IList<RoomTypeConvinience> quantities;
+    //    private IList<Room> rooms;
+
+    //    public string Id { get => id; set => id = value; }
+    //    public string Name { get { return name; } set { name = value; } }
+
+    //    public double UnitPrice { get => unitPrice; set => unitPrice = value; }
+
+    //    public IList<Convinience> Conviniences
+    //    {
+    //        get
+    //        {
+    //            var r = conveniences;
+    //            if (r is null) conveniences = r
+    //                    = new List<Convinience>();
+    //            return r;
+    //        }
+    //    }
+    //    public IList<RoomTypeConvinience> Quantities
+    //    {
+    //        get
+    //        {
+    //            var r = quantities;
+    //            if (r is null) quantities = r
+    //                    = new List<RoomTypeConvinience>();
+    //            return r;
+    //        }
+    //    }
+    //    public IList<Room> Rooms
+    //    {
+    //        get
+    //        {
+    //            var r = rooms;
+    //            if (r is null) rooms = r
+    //                    = new List<Room>();
+    //            return r;
+    //        }
+    //    }
+
+
+    //    public RoomType(string id, string name, double unitPrice)
+    //    {
+    //        this.id = id;
+    //        this.name = name;
+    //        this.unitPrice = unitPrice;
+    //    }
+    //    public RoomType() { }
+    //}
+
+
+    //public class Convinience
+    //{
+    //    private string id;
+    //    private string name;
+
+    //    public string Id { get => id; set => id = value; }
+    //    public string Name { get => name; set => name = value; }
+
+    //    public Convinience(string id, string name)
+    //    {
+    //        this.Id = id;
+    //        this.Name = name;
+    //    }
+    //    public Convinience() { }
+    //}
+
+    //public class RoomTypeConvinience
+    //{
+    //    private string convinienceId;
+    //    private Convinience convinience;
+    //    private string roomTypeId;
+    //    private RoomType roomType;
+    //    private int quantity;
+
+    //    public string ConvinienceId { get => convinienceId; set => convinienceId = value; }
+    //    public Convinience Convenience
+    //    {
+    //        get => convinience;
+    //        set
+    //        {
+    //            convinience = value;
+    //            convinienceId = value.Id;
+    //        }
+    //    }
+    //    public string RoomTypeId { get => roomTypeId; set => roomTypeId = value; }
+    //    public RoomType RoomType
+    //    {
+    //        get => roomType;
+    //        set
+    //        {
+    //            roomType = value;
+    //            roomTypeId = value.Id;
+    //        }
+    //    }
+    //    public int Quantity { get => quantity; set => quantity = value; }
+    //    public RoomTypeConvinience(string roomTypeId, string convenienceId)
+    //    {
+    //        this.roomTypeId = roomTypeId;
+    //        this.convinienceId = convenienceId;
+    //    }
+    //    public RoomTypeConvinience() { }
+
+
+    //    public RoomTypeConvinience(string convinienceId, string roomTypeId, int quantity)
+    //    {
+    //        this.convinienceId = convinienceId;
+    //        this.roomTypeId = roomTypeId;
+    //        this.quantity = quantity;
+    //    }
+    //}
 }

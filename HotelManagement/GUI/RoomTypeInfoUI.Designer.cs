@@ -39,7 +39,6 @@
             panel2 = new Panel();
             panel7 = new Panel();
             label1 = new Label();
-            txbQuantity = new TextBox();
             btnActive = new Button();
             panel4 = new Panel();
             tableLayoutPanelThongTin = new TableLayoutPanel();
@@ -57,6 +56,7 @@
             txbName = new TextBox();
             groupBox1 = new GroupBox();
             txbID = new TextBox();
+            cbbQuantity = new ComboBox();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel3.SuspendLayout();
@@ -183,8 +183,8 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(cbbQuantity);
             panel7.Controls.Add(label1);
-            panel7.Controls.Add(txbQuantity);
             panel7.Controls.Add(btnActive);
             panel7.Dock = DockStyle.Top;
             panel7.Location = new Point(0, 427);
@@ -200,13 +200,6 @@
             label1.Size = new Size(69, 20);
             label1.TabIndex = 11;
             label1.Text = "Số lượng";
-            // 
-            // txbQuantity
-            // 
-            txbQuantity.Location = new Point(52, 44);
-            txbQuantity.Name = "txbQuantity";
-            txbQuantity.Size = new Size(148, 27);
-            txbQuantity.TabIndex = 10;
             // 
             // btnActive
             // 
@@ -392,6 +385,15 @@
             txbID.Size = new Size(869, 27);
             txbID.TabIndex = 0;
             // 
+            // cbbQuantity
+            // 
+            cbbQuantity.FormattingEnabled = true;
+            cbbQuantity.Items.AddRange(new object[] { "1", "2", "3", "4" });
+            cbbQuantity.Location = new Point(104, 13);
+            cbbQuantity.Name = "cbbQuantity";
+            cbbQuantity.Size = new Size(151, 28);
+            cbbQuantity.TabIndex = 12;
+            // 
             // RoomTypeInfoUI
             // 
             ClientSize = new Size(875, 684);
@@ -457,7 +459,7 @@
         private DataGridView dtgvConvinienceRoomType;
         private Panel panel7;
         private Label label1;
-        private TextBox txbQuantity;
         private Button btnActive;
+        private ComboBox cbbQuantity;
     }
 }

@@ -21,6 +21,7 @@ namespace HotelManagement.GUI
         private RoomUI roomUI;
 
         private List<String> status = new List<string>() { "Trống", "Quá hạn", "Đã đặt", "Đang sửa" };
+        private List<Room> roomList;
         private List<RoomType> roomTypeList;
         private List<RoomTypeConvinience> convinience_roomType;
         private List<Convinience> convinience;
@@ -40,6 +41,7 @@ namespace HotelManagement.GUI
             listViewConvinience.Columns.Add("Quantity ", 100);
             cbbStatus.Items.AddRange(status.ToArray());
             roomTypeList = roomBUS.getAllRoomType();
+            roomList = roomBUS.getAllRoom();
 
 
             foreach (var item in roomTypeList)
@@ -149,16 +151,25 @@ namespace HotelManagement.GUI
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            cbbStatus.SelectedIndex = 0;
-            cbbRoomTypeID.SelectedIndex = 0;
+            
+            foreach(var item in roomList)
+            {
+                if(txbID.Text == item.Id)
+                {
+                    cbbStatus.SelectedIndex = item.Status;
+                    cbbRoomTypeID.Text = item.RoomTypeId;
+                }
+            }
         }
-        #endregion
-
 
         private void cbbRoomTypeID_SelectedValueChanged(object sender, EventArgs e)
         {
             roomTypeIDData();
             convinientData();
         }
+        #endregion
+
+
+
     }
 }

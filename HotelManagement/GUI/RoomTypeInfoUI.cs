@@ -55,19 +55,7 @@ namespace HotelManagement.GUI
 
             dtgvConvinience.DataSource = dataTableConvinience;
 
-            //Tiện nghi của loại phòng
             createHeaderText2();
-            //dataTableConvinienceRoomType.Rows.Clear();
-            //dtgvConvinienceRoomType.DataSource = null;
-            //foreach (Convinience_RoomType2 conv_roomType in convinience_roomTypeList)
-            //{
-            //    dataTableConvinienceRoomType.Rows.Add(conv_roomType.ConvinienceID, conv_roomType.RoomTypeID, conv_roomType.Quantity);
-            //}
-
-            //dtgvConvinienceRoomType.DataSource = dataTableConvinienceRoomType;
-
-
-
         }
 
 
@@ -199,17 +187,28 @@ namespace HotelManagement.GUI
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            //cbbStatus.SelectedIndex = 0;
-            //cbbRoomTypeID.SelectedIndex = 0;
+            if(isEdit)
+            {
+                foreach (var item in roomTypeList)
+                {
+                    if (txbID.Text == item.Id)
+                    {
+                        txbName.Text = item.Name;
+                        txbPrice.Text = item.UnitPrice.ToString();
+                    }
+                }
+            }
+            else
+            {
+                txbName.Text = string.Empty;
+                txbPrice.Text = string.Empty;
+                cbbQuantity.Text = string.Empty;
+            }
+            
         }
         #endregion
 
-
-        private void cbbRoomTypeID_SelectedValueChanged(object sender, EventArgs e)
-        {
-            //roomTypeIDData();
-            //convinientData();
-        }
+        int indexSearch = -1;
 
         int index = -1;
         private void dtgvConvinience_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -218,7 +217,7 @@ namespace HotelManagement.GUI
             if (index < 0 || index >= convinienceList.Count)
                 return;
             btnActive.Text = "Thêm";
-            txbQuantity.Enabled = true;
+            cbbQuantity.Enabled = true;
         }
 
         int index1 = -1;
@@ -228,7 +227,7 @@ namespace HotelManagement.GUI
             if (index1 < 0 || index1 >= dtgvConvinienceRoomType.RowCount - 1)
                 return;
             btnActive.Text = "Xóa";
-            txbQuantity.Enabled = false;
+            cbbQuantity.Enabled = false;
         }
 
         private void btnActive_Click(object sender, EventArgs e)
@@ -254,7 +253,7 @@ namespace HotelManagement.GUI
                 }
 
                 RoomTypeConvinience convinience_RoomType;
-                if (int.TryParse(txbQuantity.Text, out var quantity) || quantity != 0)
+                if (int.TryParse(cbbQuantity.Text, out var quantity) && (quantity > 0 && quantity < 5))
                 {
                     convinience_RoomType = new RoomTypeConvinience(convinienceList[index].Id, txbID.Text, quantity);
                 }

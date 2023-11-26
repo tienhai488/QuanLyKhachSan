@@ -172,7 +172,6 @@
     public class RoomEFCoreDAO : DbContext
     {
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<RoomTypeConvinience> RoomTypeConveniences { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -185,7 +184,7 @@
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
-        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<Convinience>().ConfigureConvenience();
         //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
         //    modelBuilder.Entity<Room>().ConfigureRoom();
         //    modelBuilder.Entity<Reservation>().ConfigureReservation(includeStaffRelationship: false, includeCustomerRelationship: false);
@@ -206,13 +205,14 @@
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
-        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<Convinience>().ConfigureConvenience();
         //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
         //}
     }
     public class RoomTypeEFCoreDAO : DbContext
     {
         public DbSet<RoomType> RoomTypes { get; set; }
+        public DbSet<RoomTypeConvinience> RoomTypeConviniences { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseMySQL(BaseConnection.Connection, OnConfiguringMySQL);
@@ -224,11 +224,12 @@
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
-        //    modelBuilder.Entity<Convenience>().ConfigureConvenience();
+        //    modelBuilder.Entity<Convinience>().ConfigureConvenience();
         //    modelBuilder.Entity<RoomType>().ConfigureRoomType();
         //    modelBuilder.Entity<Room>().ConfigureRoom();
         //}
     }
+
 
     public class CancelationStatusEFCoreDAO : UseServiceDetail { }
     public class ServiceEFCoreDAO : DbContext
