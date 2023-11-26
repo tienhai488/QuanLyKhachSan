@@ -46,11 +46,11 @@
 
             if (!includeRoomTypeRelationship) return;
 
-            builder.HasOne<RoomType>(nameof(Room.RoomType))
-                .WithMany(nameof(RoomType.Rooms))
-                .HasForeignKey(nameof(Room.RoomTypeId))
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+            //builder.HasOne<RoomType>(nameof(Room.RoomType))
+            //    .WithMany(nameof(RoomType.Rooms))
+            //    .HasForeignKey(nameof(Room.RoomTypeId))
+            //    .IsRequired()
+            //    .OnDelete(DeleteBehavior.Restrict);
         }
 
 
@@ -86,9 +86,9 @@
 
             if (!includeConvenienceRelationship) return;
 
-            builder.HasMany<Convinience>(nameof(RoomType.Conviniences))
-                .WithMany().UsingEntity<RoomTypeConvinience>()
-                .ConfigureRoomTypeConvenience();
+            //builder.HasMany<Convinience>(nameof(RoomType.Conviniences))
+            //    .WithMany().UsingEntity<RoomTypeConvinience>()
+            //    .ConfigureRoomTypeConvenience();
         }
 
         //public static void ConfigureRoomTypeConvenience(this EntityTypeBuilder<RoomTypeConvinience> builder)
@@ -121,9 +121,9 @@
 
             builder.HasOne<Convinience>(nameof(RoomTypeConvinience.Convinience))
                 .WithMany().HasForeignKey(nameof(RoomTypeConvinience.ConvinienceId));
-            builder.HasOne<RoomType>(nameof(RoomTypeConvinience.RoomType))
-                .WithMany(nameof(RoomType.Quantities))
-                .HasForeignKey(nameof(RoomTypeConvinience.RoomTypeId));
+            //builder.HasOne<RoomType>(nameof(RoomTypeConvinience.RoomType))
+            //    .WithMany(nameof(RoomType.Quantities))
+            //    .HasForeignKey(nameof(RoomTypeConvinience.RoomTypeId));
         }
 
         //public static void ConfigureConvenience(this EntityTypeBuilder<Convinience> builder)

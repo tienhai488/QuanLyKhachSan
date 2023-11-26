@@ -255,14 +255,34 @@ namespace HotelManagement.GUI
                 RoomTypeConvinience convinience_RoomType;
                 if (int.TryParse(cbbQuantity.Text, out var quantity) && (quantity > 0 && quantity < 5))
                 {
-                    convinience_RoomType = new RoomTypeConvinience(convinienceList[index].Id, txbID.Text, quantity);
+                    convinience_RoomType = new RoomTypeConvinience()
+                    {
+                        RoomType = roomBus.getRoomTypeById(txbID.Text),
+                        Convinience = roomBus.getConvinienceById(convinienceList[index].Id),
+                        Quantity = quantity
+                    };
                 }
                 else
                 {
                     MessageBox.Show("Số lượng tiện nghi sai định dạng");
                     return;
                 }
-                
+
+                //RoomTypeConvinience convinience_RoomType;
+                //if (int.TryParse(cbbQuantity.Text, out var quantity) && (quantity > 0 && quantity < 5))
+                //{
+                //    convinience_RoomType = new RoomTypeConvinience(convinienceList[index].Id, txbID.Text, quantity)
+                //    {
+                //        RoomType = ?,
+                //        Convinience = ?
+                //    };
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Số lượng tiện nghi sai định dạng");
+                //    return;
+                //}
+
                 if (roomBus.addRoomTypeConvinience(convinience_RoomType) > 0)
                 {
                     MessageBox.Show("Thêm tiện nghi vào loại phòng thành công");
@@ -284,12 +304,15 @@ namespace HotelManagement.GUI
                     if (convinience_roomTypeList[i].ConvinienceId == dtgvConvinienceRoomType.Rows[index1].Cells[0].Value.ToString()
                         && convinience_roomTypeList[i].RoomTypeId == txbID.Text)
                     {
-                        if(roomBus.deleteRoomTypeConvinience(convinience_roomTypeList[i].ConvinienceId, convinience_roomTypeList[i].RoomTypeId) > 0)
+                        if(MessageBox.Show("Bạn có muốn xóa tiện nghi " + convinience_roomTypeList[i].ConvinienceId + " khỏi loại phòng " + convinience_roomTypeList[i].RoomTypeId +" không.", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         {
-                            MessageBox.Show("Xóa tiện nghi khỏi loại phòng này thành công");
-                            convinience_roomTypeList = roomBus.getAllRoomTypeConvinience();
-                            convinientRoomTypeData();
-                            return;
+                            if (roomBus.deleteRoomTypeConvinience(convinience_roomTypeList[i].ConvinienceId, convinience_roomTypeList[i].RoomTypeId) > 0)
+                            {
+                                MessageBox.Show("Xóa tiện nghi khỏi loại phòng này thành công");
+                                convinience_roomTypeList = roomBus.getAllRoomTypeConvinience();
+                                convinientRoomTypeData();
+                                return;
+                            }
                         }
                     }
                 }

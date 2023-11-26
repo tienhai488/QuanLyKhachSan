@@ -106,12 +106,34 @@ namespace HotelManagement.GUI
 
         #region event TabPageRoom
         int index = -1;
-
+        string status1 = "";
+        int indexSearch = -1;
         private void dtgvShowRoom_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            index = e.RowIndex;
-            if (index < 0 || index >= roomList.Count)
-                return;
+            
+            if (status1 == "filter")
+            {
+                
+                indexSearch = e.RowIndex;
+                if (indexSearch < 0 || indexSearch >= dtgvShowRoom.Rows.Count - 1)
+                {
+                    return;
+                }
+                    
+                for (int i = 0; i < roomList.Count; i++)
+                {
+                    if (roomList[i].Id == dtgvShowRoom.Rows[indexSearch].Cells[0].Value.ToString())
+                    {
+                        index = i;
+                    }
+                }
+            }
+            else
+            {
+                index = e.RowIndex;
+                if (index < 0 || index >= dtgvShowRoom.Rows.Count - 1)
+                    return;
+            }
         }
 
 
@@ -178,6 +200,8 @@ namespace HotelManagement.GUI
         ////}
 
 
+
+        // Lọc --------------------------------------------------------------
         private void btnFilterRoom_Click(object sender, EventArgs e)
         {
             string id = cbbFilterIDRoom.Text;
@@ -190,10 +214,12 @@ namespace HotelManagement.GUI
             `Mã loại phòng` like '%{typeID}%'";
 
             dtgvShowRoom.DataSource = bindingSourceRoom;
+            status1 = "filter";
             initCbxFilterAllRoom();
         }
 
 
+        
         private void btnDeleteFilterIDRoom_Click(object sender, EventArgs e)
         {
             cbbFilterIDRoom.Text = string.Empty;
@@ -264,43 +290,34 @@ namespace HotelManagement.GUI
         #region event TabPageRoomType
 
         int index1 = -1;
+        string status2 = "";
+        int indexsearch1 = -1;
 
         private void dtgvShowRoomType_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            index1 = e.RowIndex;
-            if (index1 < 0 || index1 >= roomList.Count)
-                return;
+            if (status2 == "filter2")
+            {
+                indexsearch1 = e.RowIndex;
+                if (indexsearch1 < 0 || indexsearch1 >= dtgvShowRoomType.Rows.Count - 1)
+                {
+                    return;
+                }
+
+                for (int i = 0; i < roomTypeList.Count; i++)
+                {
+                    if (roomTypeList[i].Id == dtgvShowRoomType.Rows[indexsearch1].Cells[0].Value.ToString())
+                    {
+                        index1 = i;
+                    }
+                }
+            }
+            else
+            {
+                index1 = e.RowIndex;
+                if (index1 < 0 || index1 >= dtgvShowRoomType.Rows.Count - 1)
+                    return;
+            }
         }
-
-        private void btnFilterRoomType_Click(object sender, EventArgs e)
-        {
-            string id = cbbFilterIDRoomType.Text;
-            string name = cbbFilterNameRoomType.Text;
-
-            bindingSourceRoomType.Filter = @$"
-            `Mã loại phòng` like '%{id}%' and
-            `Tên loại phòng` like '%{name}%'";
-
-            dtgvShowRoomType.DataSource = bindingSourceRoomType;
-            initCbxFilterAllRoomType();
-        }
-
-        private void btnDeleteFilterIDRoomType_Click(object sender, EventArgs e)
-        {
-            cbbFilterIDRoomType.Text = string.Empty;
-        }
-
-        private void btnDeleteFilterNameRoomType_Click(object sender, EventArgs e)
-        {
-            cbbFilterNameRoomType.Text = string.Empty;
-        }
-
-        private void btnDeleteAllFilterRoomType_Click(object sender, EventArgs e)
-        {
-            cbbFilterIDRoomType.Text = string.Empty;
-            cbbFilterNameRoomType.Text = string.Empty;
-        }
-
 
         private void btnAddRoomType_Click(object sender, EventArgs e)
         {
@@ -368,6 +385,43 @@ namespace HotelManagement.GUI
             }
         }
 
+
+
+        // Lọc-------------------------------
+
+        private void btnFilterRoomType_Click(object sender, EventArgs e)
+        {
+            string id = cbbFilterIDRoomType.Text;
+            string name = cbbFilterNameRoomType.Text;
+
+            bindingSourceRoomType.Filter = @$"
+            `Mã loại phòng` like '%{id}%' and
+            `Tên loại phòng` like '%{name}%'";
+
+            dtgvShowRoomType.DataSource = bindingSourceRoomType;
+            status2 = "filter2";
+            initCbxFilterAllRoomType();
+        }
+
+        private void btnDeleteFilterIDRoomType_Click(object sender, EventArgs e)
+        {
+            cbbFilterIDRoomType.Text = string.Empty;
+        }
+
+        private void btnDeleteFilterNameRoomType_Click(object sender, EventArgs e)
+        {
+            cbbFilterNameRoomType.Text = string.Empty;
+        }
+
+        private void btnDeleteAllFilterRoomType_Click(object sender, EventArgs e)
+        {
+            cbbFilterIDRoomType.Text = string.Empty;
+            cbbFilterNameRoomType.Text = string.Empty;
+        }
+
+
+        
+
         #endregion
 
 
@@ -414,43 +468,36 @@ namespace HotelManagement.GUI
         #region event TabPageConvinience
 
         int index2 = -1;
+        string status3 = "";
+        int indexSearch2 = -1;
 
         private void dtgvShowConvinience_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            index2 = e.RowIndex;
-            if (index2 < 0 || index2 >= convinienceList.Count)
-                return;
+            if (status3 == "filter3")
+            {
+
+                indexSearch2 = e.RowIndex;
+                if (indexSearch2 < 0 || indexSearch2 >= dtgvShowConvinience.Rows.Count - 1)
+                {
+                    return;
+                }
+
+                for (int i = 0; i < convinienceList.Count; i++)
+                {
+                    if (convinienceList[i].Id == dtgvShowConvinience.Rows[indexSearch2].Cells[0].Value.ToString())
+                    {
+                        index2 = i;
+                    }
+                }
+            }
+            else
+            {
+                index2 = e.RowIndex;
+                if (index2 < 0 || index2 >= dtgvShowRoom.Rows.Count - 1)
+                    return;
+            }
+            
         }
-
-        private void btnFilterConvinience_Click(object sender, EventArgs e)
-        {
-            string id = cbbFilterConvinienceID.Text;
-            string name = cbbFilterConvinienceName.Text;
-
-            bindingSourceConvinience.Filter = @$"
-            `Mã tiện nghi` like '%{id}%' and
-            `Tên tiện nghi` like '%{name}%'";
-
-            dtgvShowConvinience.DataSource = bindingSourceConvinience;
-            initCbxFilterAllConvinience();
-        }
-
-        private void btnDeleteFilterConvinienceID_Click(object sender, EventArgs e)
-        {
-            cbbFilterConvinienceID.Text = string.Empty;
-        }
-
-        private void btnDeleteFilterConvinienceName_Click(object sender, EventArgs e)
-        {
-            cbbFilterConvinienceName.Text = string.Empty;
-        }
-
-        private void btnDeleteAllFilterConvinience_Click(object sender, EventArgs e)
-        {
-            cbbFilterConvinienceID.Text = string.Empty;
-            cbbFilterConvinienceName.Text = string.Empty;
-        }
-
 
         private void btnAddConvinience_Click(object sender, EventArgs e)
         {
@@ -462,8 +509,6 @@ namespace HotelManagement.GUI
                 index = roomBus.getAllConvinience().Max(item => Functions.convertIdToInteger(item.Id, "CO")) + 1;
             }
             string id = "CO" + index.ToString("D2");
-            //string chuoi = roomBus.getMaxID().Substring(2);
-            //string id = (Convert.ToInt64(chuoi) + 1).ToString("D2");
             conv.Id = id;
             convInfoUI.fillData(conv, "Thêm tiện nghi");
             convInfoUI.ShowDialog();
@@ -488,11 +533,19 @@ namespace HotelManagement.GUI
             index2 = -1;
         }
 
-        #endregion
+        private void btnFilterConvinience_Click(object sender, EventArgs e)
+        {
+            string id = cbbFilterConvinienceID.Text;
+            string name = cbbFilterConvinienceName.Text;
 
+            bindingSourceConvinience.Filter = @$"
+            `Mã tiện nghi` like '%{id}%' and
+            `Tên tiện nghi` like '%{name}%'";
 
-
-
+            dtgvShowConvinience.DataSource = bindingSourceConvinience;
+            status3 = "filter3";
+            initCbxFilterAllConvinience();
+        }
 
         private void btnDeleteConvinience_Click(object sender, EventArgs e)
         {
@@ -523,5 +576,34 @@ namespace HotelManagement.GUI
                 }
             }
         }
+
+
+        // Lọc ----------------------------------------------------------
+        private void btnDeleteFilterConvinienceID_Click(object sender, EventArgs e)
+        {
+            cbbFilterConvinienceID.Text = string.Empty;
+        }
+
+        private void btnDeleteFilterConvinienceName_Click(object sender, EventArgs e)
+        {
+            cbbFilterConvinienceName.Text = string.Empty;
+        }
+
+        private void btnDeleteAllFilterConvinience_Click(object sender, EventArgs e)
+        {
+            cbbFilterConvinienceID.Text = string.Empty;
+            cbbFilterConvinienceName.Text = string.Empty;
+        }
+
+
+       
+
+        #endregion
+
+
+
+
+
+        
     }
 }
