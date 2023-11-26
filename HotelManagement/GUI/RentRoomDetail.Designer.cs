@@ -741,8 +741,8 @@
             dataGridView6.RowHeadersVisible = false;
             dataGridView6.RowHeadersWidth = 51;
             dataGridView6.RowTemplate.Height = 25;
-dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView6.Size = new Size(315, 407);
+            dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView6.Size = new Size(360, 551);
             dataGridView6.TabIndex = 16;
             // 
             // dataGridViewTextBoxColumn13
@@ -880,10 +880,11 @@ dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             // dateTimePicker6
             // 
             dateTimePicker6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker6.CustomFormat = "dd/MM/yyyy";
             dateTimePicker6.Location = new Point(97, 21);
             dateTimePicker6.Margin = new Padding(3, 4, 3, 4);
             dateTimePicker6.Name = "dateTimePicker6";
-dateTimePicker6.Size = new Size(247, 23);
+            dateTimePicker6.Size = new Size(247, 27);
             dateTimePicker6.TabIndex = 15;
             // 
             // materialLabel12
@@ -914,9 +915,10 @@ dateTimePicker6.Size = new Size(247, 23);
             // dateTimePicker7
             // 
             dateTimePicker7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-dateTimePicker7.Location = new Point(56, 16);
+            dateTimePicker7.CustomFormat = "dd/MM/yyyy";
+            dateTimePicker7.Location = new Point(56, 16);
             dateTimePicker7.Name = "dateTimePicker7";
-            dateTimePicker7.Size = new Size(285, 23);
+            dateTimePicker7.Size = new Size(285, 27);
             dateTimePicker7.TabIndex = 16;
             // 
             // materialLabel13

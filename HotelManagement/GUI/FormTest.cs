@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
-    public partial class StatisticsUI : Form
+    public partial class FormTest : Form
     {
-        public StatisticsUI()
+        public FormTest()
         {
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel2_Paint(object sender, PaintEventArgs e)
+        private void chartGrossRevenue_Click(object sender, EventArgs e)
         {
 
         }
