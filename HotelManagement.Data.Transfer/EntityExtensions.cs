@@ -16,10 +16,10 @@
             => account?.Uid.ToString("D3");
         public static string? IdString(this PermissionGroup? group)
             => group?.Id.ToString("D2");
-        public static string? IdString(this RoomType? type)
-            => type == null ? null : "RT" + type.Id.ToString("D2");
-        public static string? IdString(this Convenience? convenience)
-            => convenience == null ? null : "CO" + convenience.Id.ToString("D2");
+        //public static string? IdString(this RoomType? type)
+        //    => type == null ? null : "RT" + type.Id.ToString("D2");
+        //public static string? IdString(this Convenience? convenience)
+        //    => convenience == null ? null : "CO" + convenience.Id.ToString("D2");
         public static string? IdString(this CancelationStatus? cancelation)
             => cancelation == null ? null : "SD" + cancelation.Id.ToString("D5");
         //public static string? IdString(this Service? service)

@@ -12,6 +12,27 @@
 
     internal static class ModelBuilderExtension
     {
+        //public static void ConfigureRoom(this EntityTypeBuilder<Room> builder, bool includeRoomTypeRelationship = true)
+        //{
+        //    builder.ToTable("room");
+        //    builder.Property<string>(nameof(Room.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<int>(nameof(Room.Status))
+        //        .HasColumnName("Status");
+        //    builder.Property<string>(nameof(Room.RoomTypeId))
+        //        .HasColumnName("RoomTypeID");
+        //    builder.HasKey(nameof(Room.Id));
+
+        //    if (includeRoomTypeRelationship)
+        //    {
+        //        builder.HasOne<RoomType>(nameof(Room.RoomType))
+        //            .WithMany(nameof(RoomType.Rooms))
+        //            .HasForeignKey(nameof(Room.RoomTypeId))
+        //            .IsRequired()
+        //            .OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Room.RoomType));
+        //}
         public static void ConfigureRoom(this EntityTypeBuilder<Room> builder, bool includeRoomTypeRelationship = true)
         {
             builder.ToTable("room");
@@ -32,6 +53,27 @@
                 .OnDelete(DeleteBehavior.Restrict);
         }
 
+
+        //public static void ConfigureRoomType(this EntityTypeBuilder<RoomType> builder, bool includeConvenienceRelationship = true)
+        //{
+        //    builder.ToTable("roomtype");
+        //    builder.Property<string>(nameof(RoomType.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<string>(nameof(RoomType.Name))
+        //        .HasColumnName("Name");
+        //    builder.Property<double>(nameof(RoomType.UnitPrice))
+        //        .HasColumnName("UnitPrice");
+        //    builder.HasKey(nameof(RoomType.Id));
+
+        //    if (includeConvenienceRelationship)
+        //    {
+        //        builder.HasMany<Convinience>(nameof(RoomType.Conviniences))
+        //        .WithMany().UsingEntity<RoomTypeConvinience>()
+        //        .ConfigureRoomTypeConvenience();
+        //    }
+        //    else builder.Ignore(nameof(RoomType.Conviniences));
+        //}
+
         public static void ConfigureRoomType(this EntityTypeBuilder<RoomType> builder, bool includeConvenienceRelationship = true)
         {
             builder.ToTable("roomtype");
@@ -44,35 +86,63 @@
 
             if (!includeConvenienceRelationship) return;
 
-            builder.HasMany<Convenience>(nameof(RoomType.Conveniences))
-                .WithMany().UsingEntity<RoomTypeConvenience>()
+            builder.HasMany<Convinience>(nameof(RoomType.Conviniences))
+                .WithMany().UsingEntity<RoomTypeConvinience>()
                 .ConfigureRoomTypeConvenience();
         }
 
-        public static void ConfigureRoomTypeConvenience(this EntityTypeBuilder<RoomTypeConvenience> builder)
+        //public static void ConfigureRoomTypeConvenience(this EntityTypeBuilder<RoomTypeConvinience> builder)
+        //{
+        //    builder.ToTable("convinience_roomtype");
+
+        //    builder.Property<string>(nameof(RoomTypeConvinience.RoomTypeId))
+        //        .HasColumnName("RoomTypeId");
+        //    builder.Property<string>(nameof(RoomTypeConvinience.ConvinienceId))
+        //        .HasColumnName("ConvinienceId");
+        //    builder.Property<int>(nameof(RoomTypeConvinience.Quantity))
+        //        .HasColumnName("Quantity").HasDefaultValue(1);
+        //    builder.HasKey(nameof(RoomTypeConvinience.RoomTypeId), nameof(RoomTypeConvinience.ConvinienceId));
+
+        //    builder.HasOne<Convinience>(nameof(RoomTypeConvinience.Convenience))
+        //        .WithMany().HasForeignKey(nameof(RoomTypeConvinience.Convenience));
+        //    builder.HasOne<RoomType>(nameof(RoomTypeConvinience.RoomType))
+        //        .WithMany(nameof(RoomType.Quantities))
+        //        .HasForeignKey(nameof(RoomTypeConvinience.RoomTypeId));
+        //}
+        public static void ConfigureRoomTypeConvenience(this EntityTypeBuilder<RoomTypeConvinience> builder)
         {
             builder.ToTable("convinience_roomtype");
 
-            builder.BigIntegerIdProperty(nameof(RoomTypeConvenience.RoomTypeId), "RoomTypeId", "RT", "2");
-            builder.BigIntegerIdProperty(nameof(RoomTypeConvenience.ConvenienceId), "ConvinienceId", "CO", "2");
-            builder.Property<int>(nameof(RoomTypeConvenience.Quantity))
+            builder.BigIntegerIdProperty(nameof(RoomTypeConvinience.RoomTypeId), "RoomTypeId", "RT", "2");
+            builder.BigIntegerIdProperty(nameof(RoomTypeConvinience.ConvinienceId), "ConvinienceId", "CO", "2");
+            builder.Property<int>(nameof(RoomTypeConvinience.Quantity))
                 .HasColumnName("Quantity").HasDefaultValue(1);
-            builder.HasKey(nameof(RoomTypeConvenience.RoomTypeId), nameof(RoomTypeConvenience.ConvenienceId));
+            builder.HasKey(nameof(RoomTypeConvinience.RoomTypeId), nameof(RoomTypeConvinience.ConvinienceId));
 
-            builder.HasOne<Convenience>(nameof(RoomTypeConvenience.Convenience))
-                .WithMany().HasForeignKey(nameof(RoomTypeConvenience.ConvenienceId));
-            builder.HasOne<RoomType>(nameof(RoomTypeConvenience.RoomType))
+            builder.HasOne<Convinience>(nameof(RoomTypeConvinience.Convinience))
+                .WithMany().HasForeignKey(nameof(RoomTypeConvinience.ConvinienceId));
+            builder.HasOne<RoomType>(nameof(RoomTypeConvinience.RoomType))
                 .WithMany(nameof(RoomType.Quantities))
-                .HasForeignKey(nameof(RoomTypeConvenience.RoomTypeId));
+                .HasForeignKey(nameof(RoomTypeConvinience.RoomTypeId));
         }
 
-        public static void ConfigureConvenience(this EntityTypeBuilder<Convenience> builder)
+        //public static void ConfigureConvenience(this EntityTypeBuilder<Convinience> builder)
+        //{
+        //    builder.ToTable("convinience");
+        //    builder.Property<string>(nameof(Convinience.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<string>(nameof(Convinience.Name))
+        //        .HasColumnName("Name");
+        //    builder.HasKey(nameof(Convinience.Id));
+        //}
+
+        public static void ConfigureConvenience(this EntityTypeBuilder<Convinience> builder)
         {
             builder.ToTable("convinience");
-            builder.BigIntegerIdProperty(nameof(Convenience.Id), "ID", "CO", "2");
-            builder.Property<string>(nameof(Convenience.Name))
+            builder.BigIntegerIdProperty(nameof(Convinience.Id), "ID", "CO", "2");
+            builder.Property<string>(nameof(Convinience.Name))
                 .HasColumnName("Name");
-            builder.HasKey(nameof(Convenience.Id));
+            builder.HasKey(nameof(Convinience.Id));
         }
 
         public static void ConfigureReservation(this EntityTypeBuilder<Reservation> builder,
