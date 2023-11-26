@@ -1,4 +1,5 @@
-﻿using MaterialSkin;
+﻿using HotelManagement.BUS;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace HotelManagement.GUI
 {
     public partial class ReservBookingUI : MaterialForm
     {
+
         public ReservBookingUI()
         {
             InitializeComponent();
@@ -27,17 +29,29 @@ namespace HotelManagement.GUI
             Primary.Purple500, // Accent background color
             Accent.Amber200,   // Warm accent color for highlights
             TextShade.WHITE);    // Text color
+
+            initDataA();
         }
 
-        private void materialButton3_Click(object sender, EventArgs e)
+        public void initDataA()
         {
-            this.Close();
+ 
         }
 
-        private void materialButton1_Click(object sender, EventArgs e)
+        private void mbtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void mbtnAddCustomer_Click(object sender, EventArgs e)
         {
             CustomerInfoUI csInfo = new CustomerInfoUI();
             csInfo.ShowDialog();
+        }
+
+        private void mbtnFindCustomer_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
