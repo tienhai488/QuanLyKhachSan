@@ -10,10 +10,17 @@ namespace HotelManagement
             InitializeComponent();
 
             MinimumSize = SizeFromClientSize(new(384, 384));
+            LoadDefault();
+        }
+
+        private void LoadDefault()
+        {
             txtUserNameError.Visible = false;
             txtPasswordError.Visible = false;
             txtLoginFailed.Visible = false;
             btnLogin.Enabled = false;
+            tbUserName.Text = string.Empty;
+            tbPassword.Text = string.Empty;
         }
 
         private void OnUserNameChanged(object sender, EventArgs e)
@@ -55,8 +62,10 @@ namespace HotelManagement
             var bo = LoginBO.Instance;
             if (bo.SignIn())
             {
-                Dispose();
-                new MainUI().Show();
+                Hide();
+                new MainUI().ShowDialog();
+                LoadDefault();
+                Show();
             }
             else txtLoginFailed.Visible = true;
         }
