@@ -20,7 +20,7 @@ namespace HotelManagement.GUI
         private RoomBUS roomBUS = new RoomBUS();
         private RoomUI roomUI;
 
-        private List<String> status = new List<string>() { "Trống", "Đã đặt", "Đang thuê", "Dọn dẹp", "Sửa chữa" };
+        private List<String> status = new List<string>() { "Đã dọn dẹp", "Chưa dọn dẹp", "Sửa chữa"};
         private List<Room> roomList;
         private List<RoomType> roomTypeList;
         private List<RoomTypeConvinience> convinience_roomType;

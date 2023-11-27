@@ -69,15 +69,11 @@ namespace HotelManagement.GUI
         public string checkStatus(int status)
         {
             if (status == 1)
-                return "Đã đặt";
+                return "Chưa dọn dẹp";
             else if (status == 2)
-                return "Đang thuê";
-            else if (status == 3)
-                return "Đang dọn dẹp";
-            else if (status == 4)
                 return "Đang sửa chữa";
             else
-                return "Trống";
+                return "Đã dọn dẹp";
         }
 
 
