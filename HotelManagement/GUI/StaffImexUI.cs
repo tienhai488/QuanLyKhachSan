@@ -18,10 +18,7 @@
             StaffImexBO.Instance.LoadData();
             InitDataSource();
             if (!LoginBO.IsPermissionGranted(Permission.WriteStaff))
-            {
                 btnImport.Visible = false;
-                btnTemplate.Visible = false;
-            }
             btnSave.Visible = false;
             Text = "Xem trước";
         }

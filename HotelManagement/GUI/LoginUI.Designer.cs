@@ -30,7 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            txtTitle = new Label();
+            Label txtTitle;
             tbUserName = new TextBox();
             tbPassword = new TextBox();
             txtUserNameLabel = new Label();
@@ -40,6 +40,7 @@
             txtUserNameError = new Label();
             btnLogin = new Button();
             txtPasswordLabel = new Label();
+            txtTitle = new Label();
             pnLogin.SuspendLayout();
             SuspendLayout();
             // 
@@ -64,6 +65,7 @@
             tbUserName.ShortcutsEnabled = false;
             tbUserName.Size = new Size(280, 35);
             tbUserName.TabIndex = 3;
+            tbUserName.TextChanged += OnUserNameChanged;
             // 
             // tbPassword
             // 
@@ -76,6 +78,7 @@
             tbPassword.Size = new Size(280, 35);
             tbPassword.TabIndex = 4;
             tbPassword.UseSystemPasswordChar = true;
+            tbPassword.TextChanged += OnPasswordChanged;
             // 
             // txtUserNameLabel
             // 
@@ -153,6 +156,7 @@
             btnLogin.TabIndex = 7;
             btnLogin.Text = "Đăng nhập";
             btnLogin.UseVisualStyleBackColor = false;
+            btnLogin.Click += OnSignIn;
             // 
             // txtPasswordLabel
             // 
@@ -167,14 +171,13 @@
             // 
             // LoginUI
             // 
-            AutoScaleDimensions = new SizeF(96F, 96F);
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.WindowFrame;
+            ClientSize = new Size(358, 313);
             Controls.Add(pnLogin);
             Margin = new Padding(0);
             MinimumSize = new Size(384, 384);
             Name = "LoginUI";
-            Size = new Size(384, 384);
             pnLogin.ResumeLayout(false);
             pnLogin.PerformLayout();
             ResumeLayout(false);

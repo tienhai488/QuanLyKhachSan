@@ -37,14 +37,15 @@
 
     public class RentRoomDetail
     {
-        private BigInteger id, roomId, staffId, invoiceId;
+        private BigInteger id, staffId, invoiceId;
         private DateTime startTime, endTime, addedTime;
+        private string roomId;
         private Room room;
         private Staff staff;
         private Invoice invoice;
 
         public BigInteger Id { get => id; private set => id = value; }
-        public BigInteger RoomId { get => roomId; private set => roomId = value; }
+        public string RoomId { get => roomId; private set => roomId = value; }
         public BigInteger StaffId { get => staffId; private set => staffId = value; }
         public BigInteger InvoiceId { get => invoiceId; private set => invoiceId = value; }
 
@@ -54,7 +55,7 @@
         public Room Room { get => room; set => room = value; }
         public Staff Staff { get => staff; set => staff = value; }
         public Invoice Invoice { get => invoice; set => invoice = value; }
-        public RentRoomDetail(BigInteger id, BigInteger roomId, BigInteger staffId, BigInteger invoiceId)
+        public RentRoomDetail(BigInteger id, string roomId, BigInteger staffId, BigInteger invoiceId)
         {
             this.id = id;
             this.roomId = roomId;
@@ -69,9 +70,10 @@
 
     public class UseServiceDetail
     {
-        private BigInteger id, staffId, invoiceId, serviceId;
+        private BigInteger id, staffId, invoiceId;
+        private string serviceId;
         private DateTime usedTime;
-        private ulong quantity;
+        private int quantity;
         private Service service;
         private Staff staff;
         private Invoice invoice;
@@ -80,16 +82,16 @@
         public BigInteger Id { get => id; private set => id = value; }
         public BigInteger StaffId { get => staffId; private set => staffId = value; }
         public BigInteger InvoiceId { get => invoiceId; private set => invoiceId = value; }
-        public BigInteger ServiceId { get => serviceId; private set => serviceId = value; }
+        public string ServiceId { get => serviceId; private set => serviceId = value; }
 
         public DateTime UsedTime { get => usedTime; set => usedTime = value; }
-        public ulong Quantity { get => quantity; set => quantity = value; }
+        public int Quantity { get => quantity; set => quantity = value; }
         public Service Service { get => service; set => service = value; }
         public Staff Staff { get => staff; set => staff = value; }
         public Invoice Invoice { get => invoice; set => invoice = value; }
         public CancelationStatus CancelationStatus { get => cancelationStatus; set => cancelationStatus = value; }
 
-        public UseServiceDetail(BigInteger id, BigInteger staffId, BigInteger invoiceId, BigInteger serviceId)
+        public UseServiceDetail(BigInteger id, BigInteger staffId, BigInteger invoiceId, string serviceId)
         {
             this.id = id;
             this.staffId = staffId;
@@ -104,7 +106,8 @@
 
     public class Invoice
     {
-        private BigInteger id, staffId, customerId;
+        private BigInteger id, staffId;
+        private string customerId;
         private Staff staff;
         private Customer customer;
         private readonly IList<RentRoomDetail> rentRooms;
@@ -114,7 +117,7 @@
 
         public BigInteger Id { get => id; private set => id = value; }
         public BigInteger StaffId { get => staffId; private set => staffId = value; }
-        public BigInteger CustomerId { get => customerId; private set => customerId = value; }
+        public string CustomerId { get => customerId; private set => customerId = value; }
 
         public Staff Staff { get => staff; set => staff = value; }
         public Customer Customer { get => customer; set => customer = value; }
@@ -127,7 +130,7 @@
         public double TotalDue { get => totalDue; set => totalDue = value; }
         public DateTime? PaidTime { get => paidTime; set => paidTime = value; }
 
-        public Invoice(BigInteger id, BigInteger staffId, BigInteger customerId)
+        public Invoice(BigInteger id, BigInteger staffId, string customerId)
         {
             this.id = id;
             this.staffId = staffId;

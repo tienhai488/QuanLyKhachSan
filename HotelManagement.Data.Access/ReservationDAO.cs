@@ -4,8 +4,16 @@
 
     using Microsoft.EntityFrameworkCore;
 
+    using System;
+    using System.Numerics;
+
     public class ReservationDAO : DbContext
     {
+        public bool HasStaffId(BigInteger id)
+            => (from i in Set<Reservation>()
+                where i.StaffId == id
+                select i).Any();
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseMySQL(BaseConnection.Connection);
 

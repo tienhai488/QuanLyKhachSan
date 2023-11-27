@@ -46,6 +46,7 @@
 
         private void LoadActions()
         {
+            dbtnGroups.Available = LoginBO.IsPermissionGranted(Permission.ReadPermissionGroup);
             dbtnSave.Available = false;
             dbtnAdd.Available = false;
             dbtnEdit.Available = false;
@@ -212,6 +213,12 @@
                 LoadInfo();
             }
         }
+
+        private void OnStartPermissionGroupManager(object sender, EventArgs e)
+            => new PermissionGroupManagerUI()
+            {
+                StartPosition = 0
+            }.ShowDialog();
 
         private int AdjustBackButtonSize()
         {
