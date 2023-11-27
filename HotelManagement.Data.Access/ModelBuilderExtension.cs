@@ -411,7 +411,7 @@
             builder.Property<StaffState>(nameof(Staff.Status))
                 .HasColumnName("Status")
                 .HasConversion(x => (int)x, x => (StaffState)x);
-            builder.Ignore(nameof(Staff.CanDelete));
+            //builder.Ignore(nameof(Staff.CanDelete));
             builder.Ignore(nameof(Staff.Resign));
             builder.Property<string>(nameof(Staff.ImageLink))
                 .HasColumnName("ImageLink")

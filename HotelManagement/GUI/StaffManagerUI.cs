@@ -50,6 +50,7 @@
 
         private void LoadActions()
         {
+            dbtnRoleManager.Available = LoginBO.IsPermissionGranted(Permission.ReadRole);
             dbtnSave.Available = false;
             dbtnAdd.Available = false;
             dbtnEdit.Available = false;
@@ -237,7 +238,16 @@
         }
 
         private void OnStartImex(object sender, EventArgs e)
-            => new StaffImexUI().ShowDialog();
+            => new StaffImexUI()
+            {
+                StartPosition = FormStartPosition.CenterScreen
+            }.ShowDialog();
+
+        private void OnStartRoleManager(object sender, EventArgs e)
+            => new RoleManagementUI()
+            {
+                StartPosition = FormStartPosition.CenterScreen
+            }.ShowDialog();
 
         private int AdjustBackButtonSize()
         {

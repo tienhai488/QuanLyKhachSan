@@ -15,7 +15,7 @@
         public static Staff? SignedInStaff => accessable as Staff;
         public static void SignOut() => accessable = null;
         public static bool IsPermissionGranted(Permission permission)
-            => accessable?.IsPermissionGranted(permission) ?? true; // change to 'false' on final build
+            => accessable?.IsPermissionGranted(permission) ?? false; // change to 'true' to test a form, 'false' on final build
 
         public static LoginBO Instance
         {

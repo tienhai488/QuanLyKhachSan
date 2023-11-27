@@ -169,8 +169,9 @@
                 if (uid == 0)
                 {
                     var e = ((IAccessable)this).Edit();
-                    foreach (var perm in Permissions)
-                        e.SetGranted(perm);
+                    foreach (var perm in Enum.GetValues<Permission>())
+                        if ((ushort)perm < (uint)Permission.UpdateReservation)
+                            e.SetGranted(perm);
                 }
             }
         }

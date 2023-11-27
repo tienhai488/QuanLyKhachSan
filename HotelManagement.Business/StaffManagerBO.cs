@@ -37,14 +37,44 @@
                 selectedStaff = value;
                 if (value != null)
                 {
-                    //using (var dao = new StaffEFCoreDAO())
-                    //{
-                    //    canDelete = !dao.HasStaffWithStaff(value.Id);
-                    //}
+                    bool candel = true;
+                    if (candel)
+                    {
+                        using (var dao = new InvoiceDAO())
+                        {
+                            if (dao.HasStaffId(value.Id))
+                                canDelete = false;
+                        }
+                    }
+                    if (candel)
+                    {
+                        using (var dao = new ReservationDAO())
+                        {
+                            if (dao.HasStaffId(value.Id))
+                                canDelete = false;
+                        }
+                    }
+                    if (candel)
+                    {
+                        using (var dao = new RentRoomDetailDAO())
+                        {
+                            if (dao.HasStaffId(value.Id))
+                                canDelete = false;
+                        }
+                    }
+                    if (candel)
+                    {
+                        using (var dao = new UseServiceDetailDAO())
+                        {
+                            if (dao.HasStaffId(value.Id))
+                                canDelete = false;
+                        }
+                    }
                     canSelectedAccounts = (from a in accounts
                                            where !a.Linked && a.Uid != 0 || a.Uid == value.AccountId
                                            select a).ToList();
-                    canDelete = value.CanDelete;
+                    //canDelete = value.CanDelete;
+                    canDelete = candel;
                 }
                 else
                 {
