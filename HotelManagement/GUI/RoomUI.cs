@@ -69,11 +69,13 @@ namespace HotelManagement.GUI
         public string checkStatus(int status)
         {
             if (status == 1)
-                return "Quá hạn";
-            else if (status == 2)
                 return "Đã đặt";
+            else if (status == 2)
+                return "Đang thuê";
             else if (status == 3)
-                return "Đang sửa";
+                return "Đang dọn dẹp";
+            else if (status == 4)
+                return "Đang sửa chữa";
             else
                 return "Trống";
         }
@@ -200,7 +202,7 @@ namespace HotelManagement.GUI
         ////}
 
 
-
+        
         // Lọc --------------------------------------------------------------
         private void btnFilterRoom_Click(object sender, EventArgs e)
         {
@@ -366,6 +368,7 @@ namespace HotelManagement.GUI
 
             string id = roomTypeList[index1].Id;
 
+
             if (MessageBox.Show("Bạn có muốn xóa loại phòng này không", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 foreach (var conv_room in convinience_RoomTypeList)
@@ -376,6 +379,16 @@ namespace HotelManagement.GUI
                         return;
                     }
                 }
+
+                foreach(var room in roomList)
+                {
+                    if(id == room.RoomTypeId)
+                    {
+                        MessageBox.Show("Loại phòng này hiện đang được sử dụng, bạn nên xóa loại phòng khỏi phòng trước khi xóa loại phòng");
+                        return;
+                    }
+                }
+                
                 if (roomBus.deleteRoomType(id) > 0)
                 {
                     MessageBox.Show("Xóa loại phòng thành công");
