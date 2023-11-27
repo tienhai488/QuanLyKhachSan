@@ -38,10 +38,10 @@
             builder.ToTable("room");
             builder.Property<string>(nameof(Room.Id))
                 .HasColumnName("ID");
-            builder.Property<RoomStatus>(nameof(Room.Status))
-                .HasColumnName("Status")
-                .HasConversion(x => (int)x, x => (RoomStatus)x);
-            builder.OptionalBigIntegerIdProperty(nameof(Room.RoomTypeId), "RoomTypeID", "RT", "2");
+            builder.Property<int>(nameof(Room.Status))
+                .HasColumnName("Status");
+            builder.Property<string>(nameof(Room.RoomTypeId))
+                .HasColumnName("RoomTypeID");
             builder.HasKey(nameof(Room.Id));
 
             //if (includeRoomTypeRelationship)
@@ -78,7 +78,8 @@
         public static void ConfigureRoomType(this EntityTypeBuilder<RoomType> builder, bool includeConvenienceRelationship = true)
         {
             builder.ToTable("roomtype");
-            builder.BigIntegerIdProperty(nameof(RoomType.Id), "ID", "RT", "2");
+            builder.Property<string>(nameof(RoomType.Id))
+                .HasColumnName("ID");
             builder.Property<string>(nameof(RoomType.Name))
                 .HasColumnName("Name");
             builder.Property<double>(nameof(RoomType.UnitPrice))
@@ -243,7 +244,8 @@
             builder.Property<DateTime?>(nameof(Invoice.PaidTime))
                 .HasColumnName("PaidTime");
             builder.BigIntegerIdProperty(nameof(Invoice.StaffId), "StaffID", "SA", "3");
-            builder.BigIntegerIdProperty(nameof(Invoice.CustomerId), "CustomerID", "CU", "3");
+            builder.Property<string>(nameof(Invoice.CustomerId))
+                .HasColumnName("CustomerID");
             builder.HasKey(nameof(Invoice.Id));
 
             if (includeStaffRelationship)
@@ -265,15 +267,14 @@
         public static void ConfigureCustomer(this EntityTypeBuilder<Customer> builder)
         {
             builder.ToTable("customer");
-            builder.BigIntegerIdProperty(nameof(Customer.Id), "ID", "CU", "3");
+            builder.Property(nameof(Customer.Id))
+                .HasColumnName("ID");
             builder.Property<string>(nameof(Customer.FullName))
                 .HasColumnName("FullName");
-            builder.Property<bool>(nameof(Customer.Gender))
-                .HasColumnName("Gender")
-                .HasConversion(x => x == Customer.GenderMale ? "0" : "1", x => x == "0" ? Customer.GenderMale : Customer.GenderFemale);
-            builder.Property<DateOnly>(nameof(Customer.Birthday))
-                .HasColumnName("Birthday")
-                .HasConversion(x => x.ToDateTime(TimeOnly.MinValue), x => DateOnly.FromDateTime(x));
+            builder.Property<string>(nameof(Customer.Gender))
+                .HasColumnName("Gender");
+            builder.Property<DateTime>(nameof(Customer.Birthday))
+                .HasColumnName("Birthday");
             builder.Property<string>(nameof(Customer.Address))
                 .HasColumnName("Address");
             builder.Property<string>(nameof(Customer.CitizenID))
@@ -286,14 +287,16 @@
         public static void ConfigureService(this EntityTypeBuilder<Service> builder, bool includeServiceTypeRelationship = true)
         {
             builder.ToTable("service");
-            builder.BigIntegerIdProperty(nameof(Service.Id), "ID", "SE", "3");
+            builder.Property<string>(nameof(Service.Id))
+                .HasColumnName("ID");
             builder.Property<string>(nameof(Service.Name))
                 .HasColumnName("Name");
             builder.Property<double>(nameof(Service.UnitPrice))
                 .HasColumnName("UnitPrice");
             builder.Property<string>(nameof(Service.Unit))
                 .HasColumnName("Unit");
-            builder.OptionalBigIntegerIdProperty(nameof(Service.ServiceTypeId   ), "ServiceTypeID", "ST", "2");
+            builder.Property<string>(nameof(Service.ServiceTypeId))
+                .HasColumnName("ServiceTypeID");
             builder.HasKey(nameof(Service.Id));
 
             if (includeServiceTypeRelationship)
@@ -339,7 +342,8 @@
             builder.Property<DateTime>(nameof(UseServiceDetail.UsedTime))
                 .HasColumnName("UsedTime");
             builder.BigIntegerIdProperty(nameof(UseServiceDetail.InvoiceId), "InvoiceID", "IN", "4");
-            builder.BigIntegerIdProperty(nameof(UseServiceDetail.ServiceId), "ServiceID", "SE", "3");
+            builder.Property<string>(nameof(UseServiceDetail.ServiceId))
+                .HasColumnName("ServiceID");
             builder.BigIntegerIdProperty(nameof(UseServiceDetail.StaffId), "StaffID", "SA", "3");
             builder.HasKey(nameof(UseServiceDetail.Id));
 
