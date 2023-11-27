@@ -97,19 +97,21 @@
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.ForeColor = SystemColors.HotTrack;
             tableLayoutPanel1.Location = new Point(0, 0);
+            tableLayoutPanel1.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1133, 581);
+            tableLayoutPanel1.Size = new Size(991, 436);
             tableLayoutPanel1.TabIndex = 2;
             // 
             // panel1
             // 
             panel1.Controls.Add(tableLayoutPanel2);
             panel1.Dock = DockStyle.Fill;
-            panel1.Location = new Point(3, 3);
+            panel1.Location = new Point(3, 2);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(843, 575);
+            panel1.Size = new Size(737, 432);
             panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -120,20 +122,22 @@
             tableLayoutPanel2.Controls.Add(panel2, 0, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
             tableLayoutPanel2.Location = new Point(0, 0);
+            tableLayoutPanel2.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
             tableLayoutPanel2.RowStyles.Add(new RowStyle());
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(843, 575);
+            tableLayoutPanel2.Size = new Size(737, 432);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // panel3
             // 
             panel3.Controls.Add(groupBox2);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 166);
+            panel3.Location = new Point(3, 124);
+            panel3.Margin = new Padding(3, 2, 3, 2);
             panel3.Name = "panel3";
-            panel3.Size = new Size(837, 406);
+            panel3.Size = new Size(731, 306);
             panel3.TabIndex = 1;
             // 
             // groupBox2
@@ -142,8 +146,10 @@
             groupBox2.Dock = DockStyle.Fill;
             groupBox2.ForeColor = SystemColors.Desktop;
             groupBox2.Location = new Point(0, 0);
+            groupBox2.Margin = new Padding(3, 2, 3, 2);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(837, 406);
+            groupBox2.Padding = new Padding(3, 2, 3, 2);
+            groupBox2.Size = new Size(731, 306);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Data";
@@ -154,21 +160,23 @@
             dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(3, 23);
+            dataGridView1.Location = new Point(3, 18);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 29;
-            dataGridView1.Size = new Size(831, 380);
+            dataGridView1.Size = new Size(725, 286);
             dataGridView1.TabIndex = 1;
             // 
             // panel2
             // 
             panel2.Controls.Add(groupBox3);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(3, 3);
+            panel2.Location = new Point(3, 2);
+            panel2.Margin = new Padding(3, 2, 3, 2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(837, 157);
+            panel2.Size = new Size(731, 118);
             panel2.TabIndex = 0;
             // 
             // groupBox3
@@ -177,8 +185,10 @@
             groupBox3.Dock = DockStyle.Fill;
             groupBox3.ForeColor = SystemColors.HotTrack;
             groupBox3.Location = new Point(0, 0);
+            groupBox3.Margin = new Padding(3, 2, 3, 2);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(837, 157);
+            groupBox3.Padding = new Padding(3, 2, 3, 2);
+            groupBox3.Size = new Size(731, 118);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Filter";
@@ -190,12 +200,13 @@
             tableLayoutPanel3.Controls.Add(tabControl2, 0, 0);
             tableLayoutPanel3.Controls.Add(tableLayoutPanel5, 0, 1);
             tableLayoutPanel3.Dock = DockStyle.Fill;
-            tableLayoutPanel3.Location = new Point(3, 23);
+            tableLayoutPanel3.Location = new Point(3, 18);
+            tableLayoutPanel3.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 66.6666641F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.Size = new Size(831, 131);
+            tableLayoutPanel3.Size = new Size(725, 98);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // tabControl2
@@ -205,19 +216,21 @@
             tabControl2.Controls.Add(tabPage9);
             tabControl2.Controls.Add(tabPage10);
             tabControl2.Dock = DockStyle.Fill;
-            tabControl2.Location = new Point(3, 3);
+            tabControl2.Location = new Point(3, 2);
+            tabControl2.Margin = new Padding(3, 2, 3, 2);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(825, 81);
+            tabControl2.Size = new Size(719, 61);
             tabControl2.TabIndex = 2;
             // 
             // tabPage4
             // 
             tabPage4.Controls.Add(tableLayoutPanel6);
-            tabPage4.Location = new Point(4, 29);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Margin = new Padding(3, 2, 3, 2);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(817, 48);
+            tabPage4.Padding = new Padding(3, 2, 3, 2);
+            tabPage4.Size = new Size(711, 33);
             tabPage4.TabIndex = 1;
             tabPage4.Text = "Mã KH";
             tabPage4.UseVisualStyleBackColor = true;
@@ -230,11 +243,12 @@
             tableLayoutPanel6.Controls.Add(btnDelFilterID, 1, 0);
             tableLayoutPanel6.Controls.Add(cbxFilterID, 0, 0);
             tableLayoutPanel6.Dock = DockStyle.Fill;
-            tableLayoutPanel6.Location = new Point(3, 3);
+            tableLayoutPanel6.Location = new Point(3, 2);
+            tableLayoutPanel6.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel6.Size = new Size(811, 42);
+            tableLayoutPanel6.Size = new Size(705, 29);
             tableLayoutPanel6.TabIndex = 1;
             // 
             // btnDelFilterID
@@ -243,9 +257,10 @@
             btnDelFilterID.Dock = DockStyle.Fill;
             btnDelFilterID.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDelFilterID.ForeColor = SystemColors.ButtonHighlight;
-            btnDelFilterID.Location = new Point(570, 3);
+            btnDelFilterID.Location = new Point(496, 2);
+            btnDelFilterID.Margin = new Padding(3, 2, 3, 2);
             btnDelFilterID.Name = "btnDelFilterID";
-            btnDelFilterID.Size = new Size(238, 36);
+            btnDelFilterID.Size = new Size(206, 25);
             btnDelFilterID.TabIndex = 3;
             btnDelFilterID.Text = "Xóa";
             btnDelFilterID.UseVisualStyleBackColor = false;
@@ -258,18 +273,20 @@
             cbxFilterID.Dock = DockStyle.Fill;
             cbxFilterID.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cbxFilterID.FormattingEnabled = true;
-            cbxFilterID.Location = new Point(3, 3);
+            cbxFilterID.Location = new Point(3, 2);
+            cbxFilterID.Margin = new Padding(3, 2, 3, 2);
             cbxFilterID.Name = "cbxFilterID";
-            cbxFilterID.Size = new Size(561, 31);
+            cbxFilterID.Size = new Size(487, 27);
             cbxFilterID.TabIndex = 4;
             // 
             // tabPage8
             // 
             tabPage8.Controls.Add(tableLayoutPanel4);
-            tabPage8.Location = new Point(4, 29);
+            tabPage8.Location = new Point(4, 24);
+            tabPage8.Margin = new Padding(3, 2, 3, 2);
             tabPage8.Name = "tabPage8";
-            tabPage8.Padding = new Padding(3);
-            tabPage8.Size = new Size(817, 48);
+            tabPage8.Padding = new Padding(3, 2, 3, 2);
+            tabPage8.Size = new Size(711, 33);
             tabPage8.TabIndex = 2;
             tabPage8.Text = "Tên KH";
             tabPage8.UseVisualStyleBackColor = true;
@@ -282,11 +299,12 @@
             tableLayoutPanel4.Controls.Add(cbxFilterName, 0, 0);
             tableLayoutPanel4.Controls.Add(cbxDeleteFilterName, 1, 0);
             tableLayoutPanel4.Dock = DockStyle.Fill;
-            tableLayoutPanel4.Location = new Point(3, 3);
+            tableLayoutPanel4.Location = new Point(3, 2);
+            tableLayoutPanel4.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel4.Name = "tableLayoutPanel4";
             tableLayoutPanel4.RowCount = 1;
             tableLayoutPanel4.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel4.Size = new Size(811, 42);
+            tableLayoutPanel4.Size = new Size(705, 29);
             tableLayoutPanel4.TabIndex = 2;
             // 
             // cbxFilterName
@@ -296,9 +314,10 @@
             cbxFilterName.Dock = DockStyle.Fill;
             cbxFilterName.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cbxFilterName.FormattingEnabled = true;
-            cbxFilterName.Location = new Point(3, 3);
+            cbxFilterName.Location = new Point(3, 2);
+            cbxFilterName.Margin = new Padding(3, 2, 3, 2);
             cbxFilterName.Name = "cbxFilterName";
-            cbxFilterName.Size = new Size(561, 31);
+            cbxFilterName.Size = new Size(487, 27);
             cbxFilterName.TabIndex = 5;
             // 
             // cbxDeleteFilterName
@@ -307,9 +326,10 @@
             cbxDeleteFilterName.Dock = DockStyle.Bottom;
             cbxDeleteFilterName.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cbxDeleteFilterName.ForeColor = SystemColors.ButtonHighlight;
-            cbxDeleteFilterName.Location = new Point(570, 3);
+            cbxDeleteFilterName.Location = new Point(496, 2);
+            cbxDeleteFilterName.Margin = new Padding(3, 2, 3, 2);
             cbxDeleteFilterName.Name = "cbxDeleteFilterName";
-            cbxDeleteFilterName.Size = new Size(238, 36);
+            cbxDeleteFilterName.Size = new Size(206, 25);
             cbxDeleteFilterName.TabIndex = 3;
             cbxDeleteFilterName.Text = "Xóa";
             cbxDeleteFilterName.UseVisualStyleBackColor = false;
@@ -318,10 +338,11 @@
             // tabPage9
             // 
             tabPage9.Controls.Add(tableLayoutPanel7);
-            tabPage9.Location = new Point(4, 29);
+            tabPage9.Location = new Point(4, 24);
+            tabPage9.Margin = new Padding(3, 2, 3, 2);
             tabPage9.Name = "tabPage9";
-            tabPage9.Padding = new Padding(3);
-            tabPage9.Size = new Size(817, 48);
+            tabPage9.Padding = new Padding(3, 2, 3, 2);
+            tabPage9.Size = new Size(711, 33);
             tabPage9.TabIndex = 3;
             tabPage9.Text = "Giới Tính";
             tabPage9.UseVisualStyleBackColor = true;
@@ -334,11 +355,12 @@
             tableLayoutPanel7.Controls.Add(cbxFilterGender, 0, 0);
             tableLayoutPanel7.Controls.Add(cbxDeleteFilterGender, 1, 0);
             tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(3, 3);
+            tableLayoutPanel7.Location = new Point(3, 2);
+            tableLayoutPanel7.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 1;
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(811, 42);
+            tableLayoutPanel7.Size = new Size(705, 29);
             tableLayoutPanel7.TabIndex = 3;
             // 
             // cbxFilterGender
@@ -349,9 +371,10 @@
             cbxFilterGender.DropDownStyle = ComboBoxStyle.DropDownList;
             cbxFilterGender.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cbxFilterGender.FormattingEnabled = true;
-            cbxFilterGender.Location = new Point(3, 3);
+            cbxFilterGender.Location = new Point(3, 2);
+            cbxFilterGender.Margin = new Padding(3, 2, 3, 2);
             cbxFilterGender.Name = "cbxFilterGender";
-            cbxFilterGender.Size = new Size(561, 31);
+            cbxFilterGender.Size = new Size(487, 27);
             cbxFilterGender.TabIndex = 5;
             // 
             // cbxDeleteFilterGender
@@ -360,9 +383,10 @@
             cbxDeleteFilterGender.Dock = DockStyle.Bottom;
             cbxDeleteFilterGender.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cbxDeleteFilterGender.ForeColor = SystemColors.ButtonHighlight;
-            cbxDeleteFilterGender.Location = new Point(570, 3);
+            cbxDeleteFilterGender.Location = new Point(496, 2);
+            cbxDeleteFilterGender.Margin = new Padding(3, 2, 3, 2);
             cbxDeleteFilterGender.Name = "cbxDeleteFilterGender";
-            cbxDeleteFilterGender.Size = new Size(238, 36);
+            cbxDeleteFilterGender.Size = new Size(206, 25);
             cbxDeleteFilterGender.TabIndex = 3;
             cbxDeleteFilterGender.Text = "Xóa";
             cbxDeleteFilterGender.UseVisualStyleBackColor = false;
@@ -371,10 +395,11 @@
             // tabPage10
             // 
             tabPage10.Controls.Add(tableLayoutPanel8);
-            tabPage10.Location = new Point(4, 29);
+            tabPage10.Location = new Point(4, 24);
+            tabPage10.Margin = new Padding(3, 2, 3, 2);
             tabPage10.Name = "tabPage10";
-            tabPage10.Padding = new Padding(3);
-            tabPage10.Size = new Size(817, 48);
+            tabPage10.Padding = new Padding(3, 2, 3, 2);
+            tabPage10.Size = new Size(711, 33);
             tabPage10.TabIndex = 4;
             tabPage10.Text = "CCCD";
             tabPage10.UseVisualStyleBackColor = true;
@@ -387,11 +412,12 @@
             tableLayoutPanel8.Controls.Add(cbxFilterCCCD, 0, 0);
             tableLayoutPanel8.Controls.Add(cbxDeleteFilterCCCD, 1, 0);
             tableLayoutPanel8.Dock = DockStyle.Fill;
-            tableLayoutPanel8.Location = new Point(3, 3);
+            tableLayoutPanel8.Location = new Point(3, 2);
+            tableLayoutPanel8.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 1;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.Size = new Size(811, 42);
+            tableLayoutPanel8.Size = new Size(705, 29);
             tableLayoutPanel8.TabIndex = 3;
             // 
             // cbxFilterCCCD
@@ -401,9 +427,10 @@
             cbxFilterCCCD.Dock = DockStyle.Fill;
             cbxFilterCCCD.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cbxFilterCCCD.FormattingEnabled = true;
-            cbxFilterCCCD.Location = new Point(3, 3);
+            cbxFilterCCCD.Location = new Point(3, 2);
+            cbxFilterCCCD.Margin = new Padding(3, 2, 3, 2);
             cbxFilterCCCD.Name = "cbxFilterCCCD";
-            cbxFilterCCCD.Size = new Size(561, 31);
+            cbxFilterCCCD.Size = new Size(487, 27);
             cbxFilterCCCD.TabIndex = 5;
             // 
             // cbxDeleteFilterCCCD
@@ -412,9 +439,10 @@
             cbxDeleteFilterCCCD.Dock = DockStyle.Bottom;
             cbxDeleteFilterCCCD.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             cbxDeleteFilterCCCD.ForeColor = SystemColors.ButtonHighlight;
-            cbxDeleteFilterCCCD.Location = new Point(570, 3);
+            cbxDeleteFilterCCCD.Location = new Point(496, 2);
+            cbxDeleteFilterCCCD.Margin = new Padding(3, 2, 3, 2);
             cbxDeleteFilterCCCD.Name = "cbxDeleteFilterCCCD";
-            cbxDeleteFilterCCCD.Size = new Size(238, 36);
+            cbxDeleteFilterCCCD.Size = new Size(206, 25);
             cbxDeleteFilterCCCD.TabIndex = 3;
             cbxDeleteFilterCCCD.Text = "Xóa";
             cbxDeleteFilterCCCD.UseVisualStyleBackColor = false;
@@ -428,12 +456,13 @@
             tableLayoutPanel5.Controls.Add(btnFilter, 1, 0);
             tableLayoutPanel5.Controls.Add(btnDeleteAllFilter, 0, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(3, 90);
+            tableLayoutPanel5.Location = new Point(3, 67);
+            tableLayoutPanel5.Margin = new Padding(3, 2, 3, 2);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(825, 38);
+            tableLayoutPanel5.Size = new Size(719, 29);
             tableLayoutPanel5.TabIndex = 1;
             // 
             // btnFilter
@@ -442,9 +471,10 @@
             btnFilter.Dock = DockStyle.Fill;
             btnFilter.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnFilter.ForeColor = SystemColors.ButtonHighlight;
-            btnFilter.Location = new Point(415, 3);
+            btnFilter.Location = new Point(362, 2);
+            btnFilter.Margin = new Padding(3, 2, 3, 2);
             btnFilter.Name = "btnFilter";
-            btnFilter.Size = new Size(407, 32);
+            btnFilter.Size = new Size(354, 25);
             btnFilter.TabIndex = 1;
             btnFilter.Text = "Lọc";
             btnFilter.UseVisualStyleBackColor = false;
@@ -456,9 +486,10 @@
             btnDeleteAllFilter.Dock = DockStyle.Fill;
             btnDeleteAllFilter.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDeleteAllFilter.ForeColor = SystemColors.ButtonHighlight;
-            btnDeleteAllFilter.Location = new Point(3, 3);
+            btnDeleteAllFilter.Location = new Point(3, 2);
+            btnDeleteAllFilter.Margin = new Padding(3, 2, 3, 2);
             btnDeleteAllFilter.Name = "btnDeleteAllFilter";
-            btnDeleteAllFilter.Size = new Size(406, 32);
+            btnDeleteAllFilter.Size = new Size(353, 25);
             btnDeleteAllFilter.TabIndex = 0;
             btnDeleteAllFilter.Text = "Xóa tất cả";
             btnDeleteAllFilter.UseVisualStyleBackColor = false;
@@ -468,9 +499,10 @@
             // 
             panel4.Controls.Add(groupBox1);
             panel4.Dock = DockStyle.Fill;
-            panel4.Location = new Point(852, 3);
+            panel4.Location = new Point(746, 2);
+            panel4.Margin = new Padding(3, 2, 3, 2);
             panel4.Name = "panel4";
-            panel4.Size = new Size(278, 575);
+            panel4.Size = new Size(242, 432);
             panel4.TabIndex = 1;
             // 
             // groupBox1
@@ -479,8 +511,10 @@
             groupBox1.Dock = DockStyle.Fill;
             groupBox1.ForeColor = SystemColors.HotTrack;
             groupBox1.Location = new Point(0, 0);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(278, 575);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(242, 432);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chức năng";
@@ -491,9 +525,10 @@
             panel5.Controls.Add(btnDeleteCustomer);
             panel5.Controls.Add(btnAddCustomer);
             panel5.Dock = DockStyle.Fill;
-            panel5.Location = new Point(3, 23);
+            panel5.Location = new Point(3, 18);
+            panel5.Margin = new Padding(3, 2, 3, 2);
             panel5.Name = "panel5";
-            panel5.Size = new Size(272, 549);
+            panel5.Size = new Size(236, 412);
             panel5.TabIndex = 0;
             // 
             // btnUpdateCustomer
@@ -502,10 +537,10 @@
             btnUpdateCustomer.BackColor = SystemColors.HotTrack;
             btnUpdateCustomer.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnUpdateCustomer.ForeColor = SystemColors.Control;
-            btnUpdateCustomer.Location = new Point(4, 67);
-            btnUpdateCustomer.Margin = new Padding(10);
+            btnUpdateCustomer.Location = new Point(4, 50);
+            btnUpdateCustomer.Margin = new Padding(9, 8, 9, 8);
             btnUpdateCustomer.Name = "btnUpdateCustomer";
-            btnUpdateCustomer.Size = new Size(268, 47);
+            btnUpdateCustomer.Size = new Size(232, 35);
             btnUpdateCustomer.TabIndex = 2;
             btnUpdateCustomer.Text = "Cập nhật khách hàng";
             btnUpdateCustomer.UseVisualStyleBackColor = false;
@@ -517,10 +552,10 @@
             btnDeleteCustomer.BackColor = SystemColors.HotTrack;
             btnDeleteCustomer.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDeleteCustomer.ForeColor = SystemColors.Control;
-            btnDeleteCustomer.Location = new Point(4, 122);
-            btnDeleteCustomer.Margin = new Padding(10);
+            btnDeleteCustomer.Location = new Point(4, 92);
+            btnDeleteCustomer.Margin = new Padding(9, 8, 9, 8);
             btnDeleteCustomer.Name = "btnDeleteCustomer";
-            btnDeleteCustomer.Size = new Size(268, 47);
+            btnDeleteCustomer.Size = new Size(232, 35);
             btnDeleteCustomer.TabIndex = 1;
             btnDeleteCustomer.Text = "Xóa khách hàng";
             btnDeleteCustomer.UseVisualStyleBackColor = false;
@@ -532,10 +567,10 @@
             btnAddCustomer.BackColor = SystemColors.HotTrack;
             btnAddCustomer.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddCustomer.ForeColor = SystemColors.Control;
-            btnAddCustomer.Location = new Point(4, 10);
-            btnAddCustomer.Margin = new Padding(10);
+            btnAddCustomer.Location = new Point(4, 8);
+            btnAddCustomer.Margin = new Padding(9, 8, 9, 8);
             btnAddCustomer.Name = "btnAddCustomer";
-            btnAddCustomer.Size = new Size(268, 47);
+            btnAddCustomer.Size = new Size(232, 35);
             btnAddCustomer.TabIndex = 0;
             btnAddCustomer.Text = "Thêm khách hàng";
             btnAddCustomer.UseVisualStyleBackColor = false;
@@ -543,10 +578,11 @@
             // 
             // CustomerUI
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1133, 581);
+            ClientSize = new Size(991, 436);
             Controls.Add(tableLayoutPanel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "CustomerUI";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CustomerUI";

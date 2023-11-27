@@ -37,7 +37,7 @@ namespace HotelManagement.GUI
             initServiceTable();
         }
 
-        #region method
+        #region  
         public void initServiceTable()
         {
             serviceTable.Rows.Clear();

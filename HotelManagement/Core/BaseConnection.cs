@@ -15,7 +15,7 @@ namespace HotelManagement.Core
             mysqlBuilder["Server"] = "127.0.0.1";
             mysqlBuilder["Database"] = "qlks";
             mysqlBuilder["UID"] = "root";
-            mysqlBuilder["PWD"] = "";
+            mysqlBuilder["PWD"] = "Tankhuong@25";
             mysqlBuilder["Port"] = "3306";
 
             string mysqlStringConnection = mysqlBuilder.ToString();
