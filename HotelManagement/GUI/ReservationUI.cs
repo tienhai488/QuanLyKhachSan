@@ -43,8 +43,7 @@ namespace HotelManagement.GUI
 
             reservationBUS.getAll().ForEach(item =>
             {
-                Staff staff = reservationBUS.getStaffById("");
-                dataTable.Rows.Add(item.Id, item.Customer.FullName, staff.FullName, item.CreatedAt.ToString(Configs.formatDateTime));
+                dataTable.Rows.Add(item.Id, item.Customer.FullName, item.Staff.FullName, item.CreatedAt.ToString(Configs.formatDateTime));
             });
             dataGridView1.DataSource = dataTable;
             bindingSource.DataSource = dataTable;

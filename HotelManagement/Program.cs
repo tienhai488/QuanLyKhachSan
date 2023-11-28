@@ -1,7 +1,7 @@
 using HotelManagement.Data;
 using HotelManagement.Data.Access;
 using HotelManagement.GUI;
-
+using System.Diagnostics;
 using System.Numerics;
 
 namespace HotelManagement
@@ -40,7 +40,7 @@ namespace HotelManagement
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
 
-            Application.Run(new LoginUI());
+            Application.Run(new ReservationUI());
         }
     }
 }

@@ -4,6 +4,7 @@ using HotelManagement.Data.Access;
 using HotelManagement.Data.Transfer;
 using HotelManagement.Data.Transfer.Ultils;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 using System.Linq;
 
 namespace HotelManagement.Business
@@ -15,7 +16,7 @@ namespace HotelManagement.Business
         public List<Reservation> getAll()
         {
             return reservationDAO.Reservations
-                //.Include(r => r.Staff)
+                .Include(r => r.Staff)
                 .Include(r => r.Customer)
                 .AsNoTracking()
                 .ToList();
@@ -64,14 +65,18 @@ namespace HotelManagement.Business
             return getAll().Any(item =>  item.Id.Equals(id));
         }
 
-        public Staff getStaffById(string id)
-        {
-            using (StaffDAO staffDAO = new StaffDAO())
-            {
-                staffDAO.Set<Staff>().ToList().Find(item => item.Id == 1);
-            }
-            return reservationDAO.Set<Staff>().ToList().Find(item => item.Id == 1);
-        }
+        //public Staff getStaffById(string id)
+        //{
+        //    using (StaffDAO staffDAO = new StaffDAO())
+        //    {
+        //        foreach (var item in staffDAO.Set<Staff>())
+        //        {
+        //            Debug.WriteLine(item);
+        //        }
+        //        staffDAO.Set<Staff>().ToList().Find(item => item.Id == 1);
+        //    }
+        //    return reservationDAO.Set<Staff>().ToList().Find(item => item.Id == 1);
+        //}
     }
 
     public class RoomReservationBUS
