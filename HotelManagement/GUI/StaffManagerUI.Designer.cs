@@ -48,6 +48,7 @@
             dbtnEdit = new ToolStripMenuItem();
             dbtnDelete = new ToolStripMenuItem();
             dbtnImex = new ToolStripMenuItem();
+            dbtnRoleManager = new ToolStripMenuItem();
             btnSearch = new ToolStripButton();
             pnAppBar = new Panel();
             pnStaffInfo.SuspendLayout();
@@ -175,7 +176,7 @@
             btnMore.Alignment = ToolStripItemAlignment.Right;
             btnMore.AutoSize = false;
             btnMore.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnMore.DropDownItems.AddRange(new ToolStripItem[] { dbtnSave, dbtnSearch, dbtnAdd, dbtnEdit, dbtnDelete, dbtnImex });
+            btnMore.DropDownItems.AddRange(new ToolStripItem[] { dbtnSave, dbtnSearch, dbtnAdd, dbtnEdit, dbtnDelete, dbtnImex, dbtnRoleManager });
             btnMore.Image = (Image)resources.GetObject("btnMore.Image");
             btnMore.ImageTransparentColor = Color.Magenta;
             btnMore.Margin = new Padding(0);
@@ -188,7 +189,7 @@
             // 
             dbtnSave.Image = (Image)resources.GetObject("dbtnSave.Image");
             dbtnSave.Name = "dbtnSave";
-            dbtnSave.Size = new Size(262, 44);
+            dbtnSave.Size = new Size(359, 44);
             dbtnSave.Text = "Lưu";
             dbtnSave.Click += OnSave;
             // 
@@ -196,7 +197,7 @@
             // 
             dbtnSearch.Image = (Image)resources.GetObject("dbtnSearch.Image");
             dbtnSearch.Name = "dbtnSearch";
-            dbtnSearch.Size = new Size(262, 44);
+            dbtnSearch.Size = new Size(359, 44);
             dbtnSearch.Text = "Tìm kiếm";
             dbtnSearch.Click += OnStartSearch;
             // 
@@ -204,7 +205,7 @@
             // 
             dbtnAdd.Image = (Image)resources.GetObject("dbtnAdd.Image");
             dbtnAdd.Name = "dbtnAdd";
-            dbtnAdd.Size = new Size(262, 44);
+            dbtnAdd.Size = new Size(359, 44);
             dbtnAdd.Text = "Thêm";
             dbtnAdd.Click += OnAdding;
             // 
@@ -212,7 +213,7 @@
             // 
             dbtnEdit.Image = (Image)resources.GetObject("dbtnEdit.Image");
             dbtnEdit.Name = "dbtnEdit";
-            dbtnEdit.Size = new Size(262, 44);
+            dbtnEdit.Size = new Size(359, 44);
             dbtnEdit.Text = "Sửa";
             dbtnEdit.Click += OnEditing;
             // 
@@ -220,7 +221,7 @@
             // 
             dbtnDelete.Image = (Image)resources.GetObject("dbtnDelete.Image");
             dbtnDelete.Name = "dbtnDelete";
-            dbtnDelete.Size = new Size(262, 44);
+            dbtnDelete.Size = new Size(359, 44);
             dbtnDelete.Text = "Xóa";
             dbtnDelete.Click += OnDeleting;
             // 
@@ -228,9 +229,17 @@
             // 
             dbtnImex.Image = (Image)resources.GetObject("dbtnImex.Image");
             dbtnImex.Name = "dbtnImex";
-            dbtnImex.Size = new Size(262, 44);
+            dbtnImex.Size = new Size(359, 44);
             dbtnImex.Text = "Nhập/Xuất";
             dbtnImex.Click += OnStartImex;
+            // 
+            // dbtnRoleManager
+            // 
+            dbtnRoleManager.Image = (Image)resources.GetObject("dbtnRoleManager.Image");
+            dbtnRoleManager.Name = "dbtnRoleManager";
+            dbtnRoleManager.Size = new Size(359, 44);
+            dbtnRoleManager.Text = "Chức vụ";
+            dbtnRoleManager.Click += OnStartRoleManager;
             // 
             // btnSearch
             // 
@@ -292,5 +301,6 @@
         private ToolStripMenuItem dbtnEdit;
         private ToolStripMenuItem dbtnDelete;
         private ToolStripMenuItem dbtnImex;
+        private ToolStripMenuItem dbtnRoleManager;
     }
 }

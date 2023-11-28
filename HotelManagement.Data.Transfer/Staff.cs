@@ -27,7 +27,7 @@
     public enum StaffState : int
     {
         None = 0,
-        CannotDelete = 0x80,
+        //CannotDelete = 0x80,
         Resign = 0x01 // nghỉ việc
     }
 
@@ -57,11 +57,11 @@
         public string GenderString { get => gender == GenderMale ? GenderMaleString : GenderFemaleString; }
         public double Salary { get => salary; set => salary = value; }
         public StaffState Status { get => status; private set => status = value; }
-        public bool CanDelete
-        {
-            get => (status & StaffState.CannotDelete) != StaffState.CannotDelete;
-            set => status = value ? status & ~StaffState.CannotDelete : status | StaffState.CannotDelete;
-        }
+        //public bool CanDelete
+        //{
+        //    get => (status & StaffState.CannotDelete) != StaffState.CannotDelete;
+        //    set => status = value ? status & ~StaffState.CannotDelete : status | StaffState.CannotDelete;
+        //}
         public bool Resign
         {
             get => (status & StaffState.Resign) == StaffState.Resign;

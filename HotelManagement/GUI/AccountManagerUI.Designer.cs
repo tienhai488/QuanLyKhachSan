@@ -45,6 +45,7 @@
             dbtnDelete = new ToolStripMenuItem();
             btnSearch = new ToolStripButton();
             panel1 = new Panel();
+            dbtnGroups = new ToolStripMenuItem();
             pnAccountInfo.SuspendLayout();
             toolStrip1.SuspendLayout();
             panel1.SuspendLayout();
@@ -155,7 +156,7 @@
             btnMore.Alignment = ToolStripItemAlignment.Right;
             btnMore.AutoSize = false;
             btnMore.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            btnMore.DropDownItems.AddRange(new ToolStripItem[] { dbtnSave, dbtnSearch, dbtnAdd, dbtnEdit, dbtnDelete });
+            btnMore.DropDownItems.AddRange(new ToolStripItem[] { dbtnSave, dbtnSearch, dbtnAdd, dbtnEdit, dbtnDelete, dbtnGroups });
             btnMore.Image = (Image)resources.GetObject("btnMore.Image");
             btnMore.ImageTransparentColor = Color.Magenta;
             btnMore.Margin = new Padding(0);
@@ -168,7 +169,7 @@
             // 
             dbtnSave.Image = (Image)resources.GetObject("dbtnSave.Image");
             dbtnSave.Name = "dbtnSave";
-            dbtnSave.Size = new Size(246, 44);
+            dbtnSave.Size = new Size(359, 44);
             dbtnSave.Text = "Lưu";
             dbtnSave.Click += OnSave;
             // 
@@ -176,7 +177,7 @@
             // 
             dbtnSearch.Image = (Image)resources.GetObject("dbtnSearch.Image");
             dbtnSearch.Name = "dbtnSearch";
-            dbtnSearch.Size = new Size(246, 44);
+            dbtnSearch.Size = new Size(359, 44);
             dbtnSearch.Text = "Tìm kiếm";
             dbtnSearch.Click += OnStartSearch;
             // 
@@ -184,7 +185,7 @@
             // 
             dbtnAdd.Image = (Image)resources.GetObject("dbtnAdd.Image");
             dbtnAdd.Name = "dbtnAdd";
-            dbtnAdd.Size = new Size(246, 44);
+            dbtnAdd.Size = new Size(359, 44);
             dbtnAdd.Text = "Thêm";
             dbtnAdd.Click += OnAdding;
             // 
@@ -192,7 +193,7 @@
             // 
             dbtnEdit.Image = (Image)resources.GetObject("dbtnEdit.Image");
             dbtnEdit.Name = "dbtnEdit";
-            dbtnEdit.Size = new Size(246, 44);
+            dbtnEdit.Size = new Size(359, 44);
             dbtnEdit.Text = "Sửa";
             dbtnEdit.Click += OnEditing;
             // 
@@ -200,7 +201,7 @@
             // 
             dbtnDelete.Image = (Image)resources.GetObject("dbtnDelete.Image");
             dbtnDelete.Name = "dbtnDelete";
-            dbtnDelete.Size = new Size(246, 44);
+            dbtnDelete.Size = new Size(359, 44);
             dbtnDelete.Text = "Xóa";
             dbtnDelete.Click += OnDeleting;
             // 
@@ -225,6 +226,14 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(600, 56);
             panel1.TabIndex = 3;
+            // 
+            // dbtnGroups
+            // 
+            dbtnGroups.Image = (Image)resources.GetObject("dbtnGroups.Image");
+            dbtnGroups.Name = "dbtnGroups";
+            dbtnGroups.Size = new Size(359, 44);
+            dbtnGroups.Text = "Nhóm quyền";
+            dbtnGroups.Click += OnStartPermissionGroupManager;
             // 
             // AccountManagerUI
             // 
@@ -261,5 +270,6 @@
         private ToolStripMenuItem dbtnAdd;
         private ToolStripMenuItem dbtnEdit;
         private ToolStripMenuItem dbtnDelete;
+        private ToolStripMenuItem dbtnGroups;
     }
 }
