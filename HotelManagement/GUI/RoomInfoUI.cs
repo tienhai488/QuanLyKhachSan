@@ -97,15 +97,29 @@ namespace HotelManagement.GUI
 
 
             btnSave.Text = type;
-            isEdit = type == "Cập nhật phòng" ? true : false;
-            if (isEdit)
+            if(type == "Chi tiết phòng")
             {
                 cbbRoomTypeID.Text = room.RoomTypeId;
+                cbbRoomTypeID.Enabled = false;
+                cbbStatus.Enabled = false;
+                btnReset.Visible = false;
+                btnSave.Visible = false;
             }
             else
             {
-                cbbRoomTypeID.SelectedIndex = 0;
+                isEdit = type == "Cập nhật phòng" ? true : false;
+                if (isEdit)
+                {
+                    cbbRoomTypeID.Text = room.RoomTypeId;
+                }
+                else
+                {
+                    cbbRoomTypeID.SelectedIndex = 0;
+                }
             }
+            
+
+
         }
 
         #endregion

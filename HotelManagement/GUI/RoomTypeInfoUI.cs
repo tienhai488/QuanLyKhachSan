@@ -1,6 +1,7 @@
 ﻿using HotelManagement.BUS;
 using HotelManagement.Data;
 using HotelManagement.Ultils;
+using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -117,19 +118,33 @@ namespace HotelManagement.GUI
 
 
             btnSave.Text = type;
-            isEdit = type == "Cập nhật loại phòng" ? true : false;
-            if (isEdit)
+
+            if (type == "Chi tiết loại phòng")
             {
-                txbName.Text = roomType.Name;
-                txbPrice.Text = roomType.UnitPrice.ToString();
+                txbName.Enabled = false;
+                txbPrice.Enabled = false;
+                panel7.Enabled = false;
+                tableLayoutPanelThongTin.Enabled = false;
+                btnSave.Visible = false;
+                btnReset.Visible = false;
             }
             else
             {
-                txbName.Text = string.Empty;
-                txbPrice.Text = string.Empty;
-                panel7.Visible = false;
-                tableLayoutPanelThongTin.Visible = false;
+                isEdit = type == "Cập nhật loại phòng" ? true : false;
+                if (isEdit)
+                {
+                    txbName.Text = roomType.Name;
+                    txbPrice.Text = roomType.UnitPrice.ToString();
+                }
+                else
+                {
+                    txbName.Text = string.Empty;
+                    txbPrice.Text = string.Empty;
+                    panel7.Visible = false;
+                    tableLayoutPanelThongTin.Visible = false;
+                }
             }
+            
             convinientRoomTypeData();
         }
 
@@ -271,7 +286,7 @@ namespace HotelManagement.GUI
                 //RoomTypeConvinience convinience_RoomType;
                 //if (int.TryParse(cbbQuantity.Text, out var quantity) && (quantity > 0 && quantity < 5))
                 //{
-                //    convinience_RoomType = new RoomTypeConvinience(convinienceList[index].Id, txbID.Text, quantity)
+                //convinience_RoomType = new RoomTypeConvinience(convinienceList[index].Id, txbID.Text, quantity);
                 //    {
                 //        RoomType = ?,
                 //        Convinience = ?

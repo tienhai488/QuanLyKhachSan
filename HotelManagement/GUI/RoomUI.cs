@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using HotelManagement.BUS;
+using HotelManagement.Business;
 using HotelManagement.Data;
 using HotelManagement.Data.Transfer.Ultils;
 using HotelManagement.Ultils;
@@ -43,6 +44,8 @@ namespace HotelManagement.GUI
 
             createHeadTextConvinience();
             initTableConvinience();
+
+            //checkPermission();
         }
 
         #region method TabPageRoom
@@ -108,16 +111,16 @@ namespace HotelManagement.GUI
         int indexSearch = -1;
         private void dtgvShowRoom_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
+
             if (status1 == "filter")
             {
-                
+
                 indexSearch = e.RowIndex;
                 if (indexSearch < 0 || indexSearch >= dtgvShowRoom.Rows.Count - 1)
                 {
                     return;
                 }
-                    
+
                 for (int i = 0; i < roomList.Count; i++)
                 {
                     if (roomList[i].Id == dtgvShowRoom.Rows[indexSearch].Cells[0].Value.ToString())
@@ -132,6 +135,26 @@ namespace HotelManagement.GUI
                 if (index < 0 || index >= dtgvShowRoom.Rows.Count - 1)
                     return;
             }
+        }
+
+        private void btnRoomDetail_Click(object sender, EventArgs e)
+        {
+            if (index < 0 || index >= roomList.Count)
+            {
+                MessageBox.Show("Bạn chưa chọn phòng nào.");
+                return;
+            }
+
+            string id = roomList[index].Id;
+            int status = roomList[index].Status;
+            string roomTypeID = roomList[index].RoomType.Id;
+
+            Room room = new Room(id, status, roomTypeID);
+
+            RoomInfoUI roomInfo = new RoomInfoUI(this);
+            roomInfo.fillData(room, "Chi tiết phòng");
+            roomInfo.ShowDialog();
+            index = -1;
         }
 
 
@@ -198,7 +221,7 @@ namespace HotelManagement.GUI
         ////}
 
 
-        
+
         // Lọc --------------------------------------------------------------
         private void btnFilterRoom_Click(object sender, EventArgs e)
         {
@@ -217,7 +240,7 @@ namespace HotelManagement.GUI
         }
 
 
-        
+
         private void btnDeleteFilterIDRoom_Click(object sender, EventArgs e)
         {
             cbbFilterIDRoom.Text = string.Empty;
@@ -317,6 +340,28 @@ namespace HotelManagement.GUI
             }
         }
 
+        private void btnRoomTypeDetail_Click(object sender, EventArgs e)
+        {
+            if (index1 < 0 || index1 >= roomTypeList.Count)
+            {
+                MessageBox.Show("Bạn chưa chọn loại phòng nào.");
+                return;
+            }
+
+            string id = roomTypeList[index1].Id;
+            string name = roomTypeList[index1].Name;
+            double price = roomTypeList[index1].UnitPrice;
+
+            RoomType roomType = new RoomType(id, name, price);
+
+            RoomTypeInfoUI roomTypeInfo = new RoomTypeInfoUI(this);
+            roomTypeInfo.fillData(roomType, "Chi tiết loại phòng");
+            roomTypeInfo.ShowDialog();
+            index1 = -1;
+        }
+
+
+
         private void btnAddRoomType_Click(object sender, EventArgs e)
         {
             RoomTypeInfoUI roomTypeInfoUI = new RoomTypeInfoUI(this);
@@ -376,15 +421,15 @@ namespace HotelManagement.GUI
                     }
                 }
 
-                foreach(var room in roomList)
+                foreach (var room in roomList)
                 {
-                    if(id == room.RoomTypeId)
+                    if (id == room.RoomTypeId)
                     {
                         MessageBox.Show("Loại phòng này hiện đang được sử dụng, bạn nên xóa loại phòng khỏi phòng trước khi xóa loại phòng");
                         return;
                     }
                 }
-                
+
                 if (roomBus.deleteRoomType(id) > 0)
                 {
                     MessageBox.Show("Xóa loại phòng thành công");
@@ -429,7 +474,7 @@ namespace HotelManagement.GUI
         }
 
 
-        
+
 
         #endregion
 
@@ -505,7 +550,26 @@ namespace HotelManagement.GUI
                 if (index2 < 0 || index2 >= dtgvShowRoom.Rows.Count - 1)
                     return;
             }
-            
+
+        }
+
+        private void btnConvinienceDetail_Click(object sender, EventArgs e)
+        {
+            if (index2 < 0 || index2 >= convinienceList.Count)
+            {
+                MessageBox.Show("Bạn chưa chọn tiện nghi nào.");
+                return;
+            }
+
+            string id = convinienceList[index2].Id;
+            string name = convinienceList[index2].Name;
+
+            Convinience conv = new Convinience(id, name);
+
+            ConvinienceInfoUI convInfo = new ConvinienceInfoUI(this);
+            convInfo.fillData(conv, "Chi tiết tiện nghi");
+            convInfo.ShowDialog();
+            index2 = -1;
         }
 
         private void btnAddConvinience_Click(object sender, EventArgs e)
@@ -605,9 +669,47 @@ namespace HotelManagement.GUI
         }
 
 
-       
 
+
+        public void checkPermission()
+        {
+            bool permission = LoginBO.IsPermissionGranted(Permission.WriteRoom);
+            if (permission)
+                btnEditRoom.Visible = permission;
+            else
+                btnEditRoom.Visible = !permission;
+
+            bool permission1 = LoginBO.IsPermissionGranted(Permission.WriteRoomType);
+            if (permission1)
+            {
+                btnAddRoomType.Visible = btnEditRoomType.Visible = btnDeleteRoomType.Visible = permission1;
+            }
+            else
+            {
+                btnAddRoomType.Visible = btnEditRoomType.Visible = btnDeleteRoomType.Visible = !permission1;
+            }
+
+            bool permission2 = LoginBO.IsPermissionGranted(Permission.WriteConvenient);
+            if (permission2)
+            {
+                btnAddConvinience.Visible = btnEditConvinience.Visible = btnDeleteConvinience.Visible = permission2;
+            }
+            else
+            {
+                btnAddConvinience.Visible = btnEditConvinience.Visible = btnDeleteConvinience.Visible = !permission2;
+            }
+
+            if (LoginBO.IsPermissionGranted(Permission.ReadRoom))
+                tabPageRoom.Visible = false;
+            else if (LoginBO.IsPermissionGranted(Permission.ReadRoomType))
+                tabPageRoomType.Visible = false;
+            else if (LoginBO.IsPermissionGranted(Permission.ReadConvenient))
+                tabPageConvinience.Visible = false;
+        }
         #endregion
+
+
+
 
 
 
