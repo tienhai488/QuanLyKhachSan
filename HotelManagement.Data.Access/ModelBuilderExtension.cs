@@ -9,6 +9,8 @@
     using System.Text;
     using System.Threading.Tasks;
     using System.Numerics;
+    using HotelManagement.Data.Transfer;
+    using System.Reflection.Emit;
 
     internal static class ModelBuilderExtension
     {
@@ -152,43 +154,40 @@
             builder.HasKey(nameof(Convinience.Id));
         }
 
-        public static void ConfigureReservation(this EntityTypeBuilder<Reservation> builder,
-            bool includeRoomRelationship = true, bool includeStaffRelationship = true, bool includeCustomerRelationship = true)
-        {
-            builder.ToTable("reservation");
-            builder.BigIntegerIdProperty(nameof(Reservation.Id), "ID", "RE", "5");
-            builder.Property<DateTime>(nameof(Reservation.StartTime))
-                .HasColumnName("StartTime");
-            builder.Property<DateTime>(nameof(Reservation.EndTime))
-                .HasColumnName("EndTime");
-            builder.Property<string>(nameof(Reservation.RoomId))
-                .HasColumnName("RoomID");
-            builder.BigIntegerIdProperty(nameof(Reservation.StaffId), "StaffID", "SA", "3");
-            builder.BigIntegerIdProperty(nameof(Reservation.CustomerId), "CustomerID", "CU", "3");
-            builder.HasKey(nameof(Reservation.Id));
+        //public static void ConfigureReservation(this EntityTypeBuilder<Reservation> builder,
+        //    bool includeRoomRelationship = true, bool includeStaffRelationship = true, bool includeCustomerRelationship = true)
+        //{
+        //    builder.ToTable("reservation");
+        //    builder.Property<string>(nameof(Reservation.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<DateTime>(nameof(Reservation.CreatedAt))
+        //        .HasColumnName("CreatedAt");
+        //    builder.BigIntegerIdProperty(nameof(Reservation.StaffId), "StaffID", "SA", "3");
+        //    builder.BigIntegerIdProperty(nameof(Reservation.CustomerId), "CustomerID", "CU", "3");
+        //    builder.HasKey(nameof(Reservation.Id));
 
-            if (includeRoomRelationship)
-            {
-                builder.HasOne<Room>(nameof(Reservation.Room))
-                    .WithMany().HasForeignKey(nameof(Reservation.RoomId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(Reservation.Room));
-            if (includeStaffRelationship)
-            {
-                builder.HasOne<Staff>(nameof(Reservation.Staff))
-                    .WithMany().HasForeignKey(nameof(Reservation.StaffId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(Reservation.Staff));
-            if (includeCustomerRelationship)
-            {
-                builder.HasOne<Customer>(nameof(Reservation.Customer))
-                    .WithMany().HasForeignKey(nameof(Reservation.CustomerId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(Reservation.Customer));
-        }
+        //    if (includeRoomRelationship)
+        //    {
+        //        builder.HasOne<Room>(nameof(Reservation.Room))
+        //            .WithMany().HasForeignKey(nameof(Reservation.RoomId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Reservation.Room));
+        //    if (includeStaffRelationship)
+        //    {
+        //        builder.HasOne<Staff>(nameof(Reservation.Staff))
+        //            .WithMany().HasForeignKey(nameof(Reservation.StaffId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Reservation.Staff));
+        //    if (includeCustomerRelationship)
+        //    {
+        //        builder.HasOne<Customer>(nameof(Reservation.Customer))
+        //            .WithMany().HasForeignKey(nameof(Reservation.CustomerId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Reservation.Customer));
+        //}
 
         public static void ConfigureRentRoomDetail(this EntityTypeBuilder<RentRoomDetail> builder,
             bool includeRoomRelationship = true, bool includeStaffRelationship = true, bool includeInvoiceRelationship = true)

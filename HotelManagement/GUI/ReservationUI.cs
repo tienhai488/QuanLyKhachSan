@@ -1,19 +1,18 @@
-﻿using MaterialSkin;
+﻿using HotelManagement.Business;
+using HotelManagement.Data;
+using HotelManagement.Data.Transfer.Ultils;
+using HotelManagement.Ultils;
+using MaterialSkin;
 using MaterialSkin.Controls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
     public partial class ReservationUI : MaterialForm
     {
+        private BindingSource bindingSource = new BindingSource();
+        private ReservationBUS reservationBUS = new ReservationBUS();
+        DataTable dataTable = new DataTable();
         public ReservationUI()
         {
             InitializeComponent();
@@ -27,12 +26,66 @@ namespace HotelManagement.GUI
             Primary.Purple500, // Accent background color
             Accent.Amber200,   // Warm accent color for highlights
             TextShade.WHITE);    // Text color
+
+            dataTable.Columns.Add("ID");
+            dataTable.Columns.Add("Customer");
+            dataTable.Columns.Add("Staff");
+            dataTable.Columns.Add("CreatdAt");
+
+            initTable();
         }
 
-        private void materialButton2_Click(object sender, EventArgs e)
+        #region method
+        public void initTable()
         {
-            ReservBookingUI booking = new ReservBookingUI();
-            booking.ShowDialog();
+            dataTable.Rows.Clear();
+            dataGridView1.DataSource = null;
+
+            reservationBUS.getAll().ForEach(item =>
+            {
+                Staff staff = reservationBUS.getStaffById("");
+                dataTable.Rows.Add(item.Id, item.Customer.FullName, staff.FullName, item.CreatedAt.ToString(Configs.formatDateTime));
+            });
+            dataGridView1.DataSource = dataTable;
+            bindingSource.DataSource = dataTable;
+            initCbxFilterAll();
         }
+
+        public void initCbxFilterAll()
+        {
+            FormHelpers.initCbxFilter(cbxFilter, 0, dataGridView1);
+        }
+
+        public string getReservationID()
+        {
+            int index = 1;
+            if (reservationBUS.getLength() > 0)
+            {
+                index = reservationBUS.getAll().Max(item => Functions.convertIdToInteger(item.Id, "RE")) + 1;
+            }
+            return "RE" + index.ToString("D5");
+        }
+        #endregion
+
+        #region event
+        private void btnAddBook_Click(object sender, EventArgs e)
+        {
+            string id = getReservationID();
+            ReservBookingUI reservBookingUI = new ReservBookingUI(this, id);
+            reservBookingUI.Show();
+        }
+
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            string id = cbxFilter.Text;
+
+            bindingSource.Filter = @$"
+            `ID` like '%{id}%' 
+            ";
+
+            dataGridView1.DataSource = bindingSource;
+            initCbxFilterAll();
+        }
+        #endregion
     }
 }

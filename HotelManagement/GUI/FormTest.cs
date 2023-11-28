@@ -21,5 +21,10 @@ namespace HotelManagement.GUI
         {
 
         }
+
+        private void pieChart1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

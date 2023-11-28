@@ -28,7 +28,6 @@ namespace HotelManagement.GUI
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ServiceUI));
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
@@ -87,7 +86,6 @@ namespace HotelManagement.GUI
             panel9 = new Panel();
             groupBox6 = new GroupBox();
             panel10 = new Panel();
-            pictureBox1 = new PictureBox();
             btnUpdateType = new Button();
             btnDeleteType = new Button();
             btnAddType = new Button();
@@ -135,7 +133,6 @@ namespace HotelManagement.GUI
             panel9.SuspendLayout();
             groupBox6.SuspendLayout();
             panel10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             tableLayoutPanel10.SuspendLayout();
             SuspendLayout();
             // 
@@ -869,7 +866,6 @@ namespace HotelManagement.GUI
             // 
             // panel10
             // 
-            panel10.Controls.Add(pictureBox1);
             panel10.Controls.Add(btnUpdateType);
             panel10.Controls.Add(btnDeleteType);
             panel10.Controls.Add(btnAddType);
@@ -878,16 +874,6 @@ namespace HotelManagement.GUI
             panel10.Name = "panel10";
             panel10.Size = new Size(272, 583);
             panel10.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(0, 0);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(272, 583);
-            pictureBox1.TabIndex = 3;
-            pictureBox1.TabStop = false;
             // 
             // btnUpdateType
             // 
@@ -1020,7 +1006,6 @@ namespace HotelManagement.GUI
             panel9.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
             panel10.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel10.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -1094,6 +1079,5 @@ namespace HotelManagement.GUI
         private TableLayoutPanel tableLayoutPanel14;
         private ComboBox cbxFilterServiceType;
         private Button btnDelFilterServiceType;
-        private PictureBox pictureBox1;
     }
 }

@@ -226,7 +226,6 @@
             tabControl2.SelectedIndex = 0;
             tabControl2.Size = new Size(1127, 100);
             tabControl2.TabIndex = 2;
-            tabControl2.SelectedIndexChanged += tabControl2_SelectedIndexChanged;
             // 
             // tabPage4
             // 

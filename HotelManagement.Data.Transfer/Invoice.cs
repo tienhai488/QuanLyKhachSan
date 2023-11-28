@@ -7,33 +7,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    public class Reservation
-    {
-        private BigInteger id, staffId, customerId;
-        private DateTime startTime, endTime;
-        private string roomId;
-        private Room room;
-        private Staff staff;
-        private Customer customer;
-
-        public BigInteger Id { get => id; private set => id = value; }
-        public BigInteger StaffId { get => staffId; private set => staffId = value; }
-        public BigInteger CustomerId { get => customerId; private set => customerId = value; }
-        public string RoomId { get => roomId; private set => roomId = value; }
-
-        public DateTime StartTime { get => startTime; set => startTime = value; }
-        public DateTime EndTime { get => endTime; set => endTime = value; }
-        public Room Room { get => room; set => room = value; }
-        public Staff Staff { get => staff; set => staff = value; }
-        public Customer Customer { get => customer; set => customer = value; }
-        public Reservation(BigInteger id, BigInteger staffId, BigInteger customerId)
-        {
-            this.id = id;
-            this.staffId = staffId;
-            this.customerId = customerId;
-        }
-        public Reservation() { }
-    }
+    
 
     public class RentRoomDetail
     {

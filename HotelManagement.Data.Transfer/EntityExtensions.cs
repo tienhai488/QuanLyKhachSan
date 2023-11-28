@@ -4,8 +4,8 @@
     {
         //public static string? IdString(this Customer? customer)
         //    => customer == null ? null : "CU" + customer.Id.ToString("D3");
-        public static string? IdString(this Reservation? reservation)
-            => reservation == null ? null : "RE" + reservation.Id.ToString("D5");
+        //public static string? IdString(this Reservation? reservation)
+        //    => reservation == null ? null : "RE" + reservation.Id.ToString("D5");
         public static string? IdString(this RentRoomDetail? detail)
             => detail == null ? null : "RD" + detail.Id.ToString("D5");
         public static string? IdString(this UseServiceDetail? detail)
