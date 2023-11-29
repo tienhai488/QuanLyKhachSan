@@ -141,6 +141,7 @@ namespace HotelManagement.GUI
                 tableLayoutPanelThongTin.Enabled = false;
                 btnSave.Visible = false;
                 btnReset.Visible = false;
+                //Sao không chỉnh được nhỉ
             }
             else
             {
