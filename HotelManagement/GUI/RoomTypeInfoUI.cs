@@ -33,6 +33,8 @@ namespace HotelManagement.GUI
         {
             InitializeComponent();
             initCbx();
+            
+
             this.roomUI = roomUI;
         }
 
@@ -55,6 +57,12 @@ namespace HotelManagement.GUI
             }
 
             dtgvConvinience.DataSource = dataTableConvinience;
+
+            foreach(DataGridViewColumn column in dtgvConvinience.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
+            
 
             createHeaderText2();
         }
@@ -92,6 +100,10 @@ namespace HotelManagement.GUI
             }
 
             dtgvConvinienceRoomType.DataSource = dataTableConvinienceRoomType;
+            foreach (DataGridViewColumn column in dtgvConvinienceRoomType.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
         }
 
         public void createHeaderText()
@@ -123,6 +135,8 @@ namespace HotelManagement.GUI
             {
                 txbName.Enabled = false;
                 txbPrice.Enabled = false;
+                txbName.Text = roomType.Name;
+                txbPrice.Text = roomType.UnitPrice.ToString();
                 panel7.Enabled = false;
                 tableLayoutPanelThongTin.Enabled = false;
                 btnSave.Visible = false;
@@ -159,9 +173,9 @@ namespace HotelManagement.GUI
             String unitPrice = txbPrice.Text;
 
 
-            if (!Double.TryParse(unitPrice, out double price))
+            if (!Double.TryParse(unitPrice, out double price) || (price < 0 || price > 10000000))
             {
-                MessageBox.Show("Bạn nhập giá phòng chưa đúng định dạng");
+                MessageBox.Show("Bạn nhập giá phòng chưa đúng định dạng, giá loại phòng phải lớn hơn 0 và nhỏ hơn 10 triệu đồng");
                 return;
             }
 
@@ -230,8 +244,12 @@ namespace HotelManagement.GUI
         {
             index = e.RowIndex;
             if (index < 0 || index >= convinienceList.Count)
+            {
+                btnActive.Text = "Thêm";
                 return;
+            }
             btnActive.Text = "Thêm";
+
             cbbQuantity.Enabled = true;
         }
 
@@ -239,7 +257,7 @@ namespace HotelManagement.GUI
         private void dtgvConvinienceRoomType_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             index1 = e.RowIndex;
-            if (index1 < 0 || index1 >= dtgvConvinienceRoomType.RowCount - 1)
+            if (index1 < 0 || index1 >= dtgvConvinienceRoomType.RowCount)
                 return;
             btnActive.Text = "Xóa";
             cbbQuantity.Enabled = false;
@@ -283,21 +301,6 @@ namespace HotelManagement.GUI
                     return;
                 }
 
-                //RoomTypeConvinience convinience_RoomType;
-                //if (int.TryParse(cbbQuantity.Text, out var quantity) && (quantity > 0 && quantity < 5))
-                //{
-                //convinience_RoomType = new RoomTypeConvinience(convinienceList[index].Id, txbID.Text, quantity);
-                //    {
-                //        RoomType = ?,
-                //        Convinience = ?
-                //    };
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Số lượng tiện nghi sai định dạng");
-                //    return;
-                //}
-
                 if (roomBus.addRoomTypeConvinience(convinience_RoomType) > 0)
                 {
                     MessageBox.Show("Thêm tiện nghi vào loại phòng thành công");
@@ -307,7 +310,7 @@ namespace HotelManagement.GUI
             }
             else if(btnActive.Text == "Xóa")
             {
-                if (index1 < 0 || index1 >= dtgvConvinienceRoomType.RowCount - 1)
+                if (index1 < 0 || index1 >= dtgvConvinienceRoomType.RowCount)
                 {
                     MessageBox.Show("Bạn chưa chọn tiện nghi muốn xóa");
                     return;

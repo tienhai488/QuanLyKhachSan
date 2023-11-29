@@ -66,6 +66,10 @@ namespace HotelManagement.GUI
 
             dtgvShowRoom.DataSource = dataTableRoom;
             bindingSourceRoom.DataSource = dataTableRoom;
+            foreach (DataGridViewColumn column in dtgvShowRoom.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
             initCbxFilterAllRoom();
         }
 
@@ -116,7 +120,7 @@ namespace HotelManagement.GUI
             {
 
                 indexSearch = e.RowIndex;
-                if (indexSearch < 0 || indexSearch >= dtgvShowRoom.Rows.Count - 1)
+                if (indexSearch < 0 || indexSearch >= dtgvShowRoom.Rows.Count)
                 {
                     return;
                 }
@@ -132,7 +136,7 @@ namespace HotelManagement.GUI
             else
             {
                 index = e.RowIndex;
-                if (index < 0 || index >= dtgvShowRoom.Rows.Count - 1)
+                if (index < 0 || index >= dtgvShowRoom.Rows.Count)
                     return;
             }
         }
@@ -283,6 +287,10 @@ namespace HotelManagement.GUI
 
             dtgvShowRoomType.DataSource = dataTableRoomType;
             bindingSourceRoomType.DataSource = dataTableRoomType;
+            foreach (DataGridViewColumn column in dtgvShowRoomType.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
             initCbxFilterAllRoomType();
         }
 
@@ -319,7 +327,7 @@ namespace HotelManagement.GUI
             if (status2 == "filter2")
             {
                 indexsearch1 = e.RowIndex;
-                if (indexsearch1 < 0 || indexsearch1 >= dtgvShowRoomType.Rows.Count - 1)
+                if (indexsearch1 < 0 || indexsearch1 >= dtgvShowRoomType.Rows.Count)
                 {
                     return;
                 }
@@ -335,7 +343,7 @@ namespace HotelManagement.GUI
             else
             {
                 index1 = e.RowIndex;
-                if (index1 < 0 || index1 >= dtgvShowRoomType.Rows.Count - 1)
+                if (index1 < 0 || index1 >= dtgvShowRoomType.Rows.Count)
                     return;
             }
         }
@@ -500,6 +508,10 @@ namespace HotelManagement.GUI
 
             dtgvShowConvinience.DataSource = dataTableConvinience;
             bindingSourceConvinience.DataSource = dataTableConvinience;
+            foreach (DataGridViewColumn column in dtgvShowConvinience.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable;
+            }
             initCbxFilterAllConvinience();
         }
 
@@ -531,7 +543,7 @@ namespace HotelManagement.GUI
             {
 
                 indexSearch2 = e.RowIndex;
-                if (indexSearch2 < 0 || indexSearch2 >= dtgvShowConvinience.Rows.Count - 1)
+                if (indexSearch2 < 0 || indexSearch2 >= dtgvShowConvinience.Rows.Count)
                 {
                     return;
                 }
@@ -547,7 +559,7 @@ namespace HotelManagement.GUI
             else
             {
                 index2 = e.RowIndex;
-                if (index2 < 0 || index2 >= dtgvShowRoom.Rows.Count - 1)
+                if (index2 < 0 || index2 >= dtgvShowRoom.Rows.Count)
                     return;
             }
 

@@ -507,6 +507,8 @@
             // 
             // dtgvShowRoom
             // 
+            dtgvShowRoom.AllowUserToAddRows = false;
+            dtgvShowRoom.AllowUserToDeleteRows = false;
             dtgvShowRoom.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvShowRoom.BackgroundColor = SystemColors.ButtonHighlight;
             dtgvShowRoom.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;

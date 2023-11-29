@@ -280,6 +280,8 @@
             // 
             // dtgvConvinience
             // 
+            dtgvConvinience.AllowUserToAddRows = false;
+            dtgvConvinience.AllowUserToDeleteRows = false;
             dtgvConvinience.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvConvinience.BackgroundColor = SystemColors.ButtonHighlight;
             dtgvConvinience.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -317,6 +319,8 @@
             // 
             // dtgvConvinienceRoomType
             // 
+            dtgvConvinienceRoomType.AllowUserToAddRows = false;
+            dtgvConvinienceRoomType.AllowUserToDeleteRows = false;
             dtgvConvinienceRoomType.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvConvinienceRoomType.BackgroundColor = SystemColors.ButtonHighlight;
             dtgvConvinienceRoomType.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
