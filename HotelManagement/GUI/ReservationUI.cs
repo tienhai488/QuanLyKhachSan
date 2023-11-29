@@ -1,17 +1,21 @@
-﻿using HotelManagement.Business;
+﻿using HotelManagement.BUS;
+using HotelManagement.Business;
 using HotelManagement.Data;
 using HotelManagement.Data.Transfer.Ultils;
 using HotelManagement.Ultils;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Data;
+using System.Globalization;
 
 namespace HotelManagement.GUI
 {
     public partial class ReservationUI : MaterialForm
     {
-        private BindingSource bindingSource = new BindingSource();
         private ReservationBUS reservationBUS = new ReservationBUS();
+        private RoomReservationBUS roomReservationBUS = new RoomReservationBUS();
+
+        private BindingSource bindingSource = new BindingSource();
         DataTable dataTable = new DataTable();
         public ReservationUI()
         {
@@ -32,6 +36,7 @@ namespace HotelManagement.GUI
             dataTable.Columns.Add("Staff");
             dataTable.Columns.Add("CreatdAt");
 
+            roomReservationBUS.loadOutDateAllRoomReservation();
             initTable();
         }
 
@@ -86,5 +91,46 @@ namespace HotelManagement.GUI
             initCbxFilterAll();
         }
         #endregion
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell selectedCell = dataGridView1.SelectedCells[0];
+
+            DataGridViewRow selectedRow = selectedCell.OwningRow;
+
+            string id = selectedRow.Cells[0].Value.ToString();
+
+            ReservBookingUI reservBookingUI = new ReservBookingUI(this, id);
+            reservBookingUI.Show();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DataGridViewCell selectedCell = dataGridView1.SelectedCells[0];
+
+            DataGridViewRow selectedRow = selectedCell.OwningRow;
+
+            string id = selectedRow.Cells[0].Value.ToString();
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa phiếu đặt phòng", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                int count = roomReservationBUS.getLengthRoomReservationByReservationId(id);
+                if(count > 0)
+                {
+                    MessageBox.Show("Phiếu đặt phòng đã tồn tại ds các phòng đã đặt! Vui lòng kiểm tra lại!");
+                    return;
+                }
+
+                int result = reservationBUS.delete(id);
+                if (result == 0)
+                {
+                    MessageBox.Show("Xóa phiếu đặt phòng không thành công!");
+                }
+                else
+                {
+                    MessageBox.Show("Xóa phiếu đặt phòng thành công!");
+                    initTable();
+                }
+            }
+        }
     }
 }

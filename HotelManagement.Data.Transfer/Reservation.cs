@@ -41,6 +41,13 @@ namespace HotelManagement.Data.Transfer
         public DateTime CreatedAt { get => createdAt; set => createdAt = value; }
     }
 
+    public enum RoomReservationStatus : int
+    {
+        Booked = 0,
+        Rented = 1,
+        OutDate = 2
+    }
+
     [Table("room_reservation")]
     [PrimaryKey(nameof(RoomID), nameof(ReservationID))]
     public class RoomReservation
@@ -61,7 +68,7 @@ namespace HotelManagement.Data.Transfer
 
         [MaxLength(11)]
         [Column("Status", TypeName = "int")]
-        private int status;
+        private RoomReservationStatus status;
 
         [ForeignKey("RoomID")]
         private Room room;
@@ -73,19 +80,26 @@ namespace HotelManagement.Data.Transfer
         public string ReservationID { get => reservationID; set => reservationID = value; }
         public DateTime StartTime { get => startTime; set => startTime = value; }
         public DateTime EndTime { get => endTime; set => endTime = value; }
-        public int Status { get => status; set => status = value; }
 
-        public string getStatusString
+        static public string getStatusString(RoomReservationStatus roomReservationStatus)
         {
-            get {
-                string value = "";
-                if (status == 0) value = "Chưa nhận phòng";
-                else if (status == 1) value = "Đã nhận phòng";
-                else if (status == 2) value = "Đã hủy đặt";
-                return value;
-            }
+            string value = "";
+            if (roomReservationStatus == RoomReservationStatus.Booked) value = "Booked";
+            else if (roomReservationStatus == RoomReservationStatus.Rented) value = "Rented";
+            else if (roomReservationStatus == RoomReservationStatus.OutDate) value = "OutDate";
+            return value;
+        }
+
+        static public RoomReservationStatus getStatusEnum(string statusString)
+        {
+            statusString = statusString.Trim();
+            if(statusString.Equals("Rented")) return RoomReservationStatus.Rented;
+            else if(statusString.Equals("OutDate")) return RoomReservationStatus.OutDate;
+            return RoomReservationStatus.Booked;
         }
         public Reservation Reservation { get => reservation; set => reservation = value; }
+        public Room Room { get => room; set => room = value; }
+        public RoomReservationStatus Status { get => status; set => status = value; }
     }
 
 }

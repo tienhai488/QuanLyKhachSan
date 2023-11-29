@@ -57,7 +57,7 @@
         public Room() { }
     }
 
-    [Table("roomtype")]
+    [Table("room_type")]
     public class RoomType
     {
         [Key]

@@ -1,4 +1,5 @@
-﻿using HotelManagement.BUS;
+﻿using Google.Protobuf.Reflection;
+using HotelManagement.BUS;
 using HotelManagement.Business;
 using HotelManagement.Data;
 using HotelManagement.Data.Transfer;
@@ -21,38 +22,9 @@ namespace HotelManagement.GUI
         private CustomerBUS customerBUS = new CustomerBUS();
         private ReservationBUS reservationBUS = new ReservationBUS();
         private RoomReservationBUS roomReservationBUS = new RoomReservationBUS();
+        private Reservation reservationOld = null;
 
         ReservationUI reservationUI;
-
-        private int colRemove = 0;
-        public ReservBookingUI()
-        {
-            InitializeComponent();
-
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(
-            Primary.Pink800,   // Main background color
-            Primary.Purple900, // Darker background color
-            Primary.Purple500, // Accent background color
-            Accent.Amber200,   // Warm accent color for highlights
-            TextShade.WHITE);    // Text color  
-
-            dataTableRoom.Columns.Add("ID");
-            dataTableRoom.Columns.Add("Type");
-
-            dataTableBook.Columns.Add("ID");
-            dataTableBook.Columns.Add("Type");
-            dataTableBook.Columns.Add("StartTime");
-            dataTableBook.Columns.Add("EndTime");
-
-            initTableRoom(DateTime.Now, DateTime.Now);
-            //initTableBook();
-
-            labelDontExist.Visible = false;
-        }
-
         public ReservBookingUI(ReservationUI reservationUI, string reservationId)
         {
             InitializeComponent();
@@ -74,24 +46,41 @@ namespace HotelManagement.GUI
             dataTableBook.Columns.Add("Type");
             dataTableBook.Columns.Add("StartTime");
             dataTableBook.Columns.Add("EndTime");
+            dataTableBook.Columns.Add("Status");
 
-            initTableRoom(DateTime.Now, DateTime.Now);
-            //initTableBook();
+            txtId.Text = reservationId;
 
             labelDontExist.Visible = false;
 
-            txtId.Text = reservationId;
             this.reservationUI = reservationUI;
+
+            this.reservationOld = reservationBUS.getById(reservationId);
+
+            initTableBookedByReservationId(reservationId);
+
+            initTableRoom(fromTime.Value, toTime.Value);
+
+            fillDataCustomerByReservation(this.reservationOld);
         }
 
         #region method
-        public void addColumnAction(DataGridView dtgv, string text)
+        public void fillDataCustomerByReservation(Reservation reservation)
+        {
+            if (reservation != null)
+            {
+                fillDataCustomer(this.reservationOld.Customer);
+            }
+        }
+
+        public void addColumnAction(DataGridView dtgv, string text, DataTable dataTable)
         {
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
             buttonColumn.HeaderText = "Action";
             buttonColumn.Text = text;
             buttonColumn.UseColumnTextForButtonValue = true;
 
+            if (dataTable.Columns.Count != dtgv.Columns.Count)
+                return;
             dtgv.Columns.Add(buttonColumn);
         }
 
@@ -104,36 +93,57 @@ namespace HotelManagement.GUI
                 DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
                 if (Functions.getDayGap(fromTimeBook, from) == 0 && Functions.getDayGap(to, toTimeBook) == 0)
                 {
-                    DataRow rowToRemove = dataTableRoom.Rows.Cast<DataRow>().FirstOrDefault(row => row["ID"].Equals(id));
-                    dataTableRoom.Rows.Remove(rowToRemove);
+                    int index = -1;
+                    int temp = 0;
+                    foreach (DataRow row in dataTableRoom.Rows)
+                    {
+                        if (row[0].Equals(id))
+                        {
+                            index = temp;
+                            break;
+                        }
+                        temp++;
+                    }
+                    if (index != -1)
+                    {
+                        dataTableRoom.Rows.RemoveAt(index);
+                    }
                 }
             }
         }
+
 
         public void initTableRoom(DateTime from, DateTime to)
         {
             dataTableRoom.Rows.Clear();
             tableRoom.DataSource = null;
             tableRoom.Columns.Clear();
-            roomReservationBUS.getListRoomAllowBooking(from).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
+
+            this.reservationOld = reservationBUS.getById(txtId.Text);
+            if (this.reservationOld == null)
+            {
+                roomReservationBUS.getListRoomAllowBooking(from).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
+            }
+            else
+            {
+                roomReservationBUS.getListRoomAllowBookingWithReservationId(from, this.reservationOld.Id).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
+            }
 
             removeItemInDataTableRoom(from, to);
             tableRoom.DataSource = dataTableRoom;
-            if (tableRoom.Columns.Count <= 2)
-            {
-                addColumnAction(tableRoom, "Add");
-            }
+
+            addColumnAction(tableRoom, "Add", dataTableRoom);
         }
 
         public void initTableRoomEmpty()
         {
             dataTableRoom.Rows.Clear();
-            tableRoom.DataSource = null;
             tableRoom.Columns.Clear();
+            tableRoom.DataSource = null;
             tableRoom.DataSource = dataTableRoom;
         }
 
-        public void initTableByTime()
+        public void initTableRoomByTime()
         {
             DateTime from = fromTime.Value;
             DateTime to = toTime.Value;
@@ -141,12 +151,24 @@ namespace HotelManagement.GUI
             if (days >= 0 && Functions.getDayGap(DateTime.Now, from) >= 0)
             {
                 initTableRoom(from, to);
-                colRemove = 2;
+                //colRemoveTableRoom = 2;
             }
             else
             {
                 initTableRoomEmpty();
             }
+        }
+
+        public void initTableBookedByReservationId(string reservationId)
+        {
+            dataTableBook.Rows.Clear();
+            roomReservationBUS.getAllRoomReservationByReservationId(reservationId)
+                .ForEach(item => dataTableBook.Rows.Add(item.RoomID, item.Room.RoomType.Name,
+                item.StartTime.ToString(Configs.formatBirthday), item.EndTime.ToString(Configs.formatBirthday),
+                RoomReservation.getStatusString(item.Status)));
+
+            tableBook.DataSource = dataTableBook;
+            addColumnAction(tableBook, "Remove", dataTableBook);
         }
 
         public void fillDataCustomer(Customer customer)
@@ -216,10 +238,10 @@ namespace HotelManagement.GUI
             int result = reservationBUS.update(reservation);
             if (result > 0)
             {
-                MessageBox.Show("Cập nhập danh sách đặt phòng thành công!");
                 roomReservationBUS.deleteAllBookedRoomInReservation(reservation.Id);
                 roomReservationBUS.addAllBookedRoomInReservation(getListRoomReservationFromBooked(reservation.Id));
                 this.reservationUI.initTable();
+                MessageBox.Show("Cập nhập danh sách đặt phòng thành công!");
                 this.Dispose();
             }
             else
@@ -237,7 +259,7 @@ namespace HotelManagement.GUI
                 string room_id = item[0].ToString();
                 DateTime fromTimeBook = Functions.convertStringToDateTime(item[2].ToString());
                 DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
-                int status = 0;
+                RoomReservationStatus status = RoomReservation.getStatusEnum(item[4].ToString());
 
                 list.Add(new RoomReservation() { RoomID = room_id, ReservationID = reservationId, StartTime = fromTimeBook, EndTime = toTimeBook, Status = status });
             }
@@ -259,8 +281,9 @@ namespace HotelManagement.GUI
                 Reservation reservation = new Reservation()
                 { Id = reservationId, CustomerID = customer.Id, StaffID = 1, CreatedAt = DateTime.Now };
 
-                if (reservationBUS.checkReservationId(reservationId))
+                if (this.reservationOld != null)
                 {
+                    reservation.CreatedAt = this.reservationOld.CreatedAt;
                     updateReservation(reservation);
                 }
                 else
@@ -314,12 +337,12 @@ namespace HotelManagement.GUI
 
         private void fromTime_ValueChanged(object sender, EventArgs e)
         {
-            initTableByTime();
+            initTableRoomByTime();
         }
 
         private void toTime_ValueChanged(object sender, EventArgs e)
         {
-            initTableByTime();
+            initTableRoomByTime();
         }
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
@@ -338,42 +361,61 @@ namespace HotelManagement.GUI
             int index = e.RowIndex;
             if (index < 0)
                 return;
-            if (e.ColumnIndex != colRemove)
+
+            string text = tableRoom.Rows[index].Cells[e.ColumnIndex].Value.ToString();
+            if (!text.Equals("Add"))
                 return;
 
             string roomId = tableRoom.Rows[index].Cells["ID"].Value.ToString();
             string type = tableRoom.Rows[index].Cells["Type"].Value.ToString();
+
+            List<RoomReservation> bookedRooms = getListRoomReservationFromBooked(txtId.Text);
+            bool checkContainRoomId = bookedRooms.Any(item => item.RoomID.Equals(roomId));
+            if (checkContainRoomId)
+            {
+                MessageBox.Show($"Phiếu đặt phòng đã có phòng {roomId}! Vui lòng kiểm tra lại!");
+                return;
+            }
 
             DataRow rowToRemove = dataTableRoom.Rows.Cast<DataRow>().FirstOrDefault(row => row["ID"].Equals(roomId));
             dataTableRoom.Rows.Remove(rowToRemove);
 
             tableRoom.DataSource = dataTableRoom;
 
+            string statusString = RoomReservation.getStatusString(RoomReservationStatus.Booked);
             string from = fromTime.Value.ToString(Configs.formatBirthday);
             string to = toTime.Value.ToString(Configs.formatBirthday);
 
-            dataTableBook.Rows.Add(roomId, type, from, to);
+
+            dataTableBook.Rows.Add(roomId, type, from, to, statusString);
             tableBook.DataSource = dataTableBook;
-            if (tableBook.Columns.Count <= 4)
-            {
-                addColumnAction(tableBook, "Remove");
-            }
+
+            addColumnAction(tableBook, "Remove", dataTableBook);
         }
 
         private void tableBook_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
-            if (index >= 0 && e.ColumnIndex == 4)
+            if (index < 0)
+                return;
+            string text = tableBook.Rows[index].Cells[e.ColumnIndex].Value.ToString();
+            if (!text.Equals("Remove"))
+                return;
+
+            string roomId = tableBook.Rows[index].Cells["ID"].Value.ToString();
+            string statusString = tableBook.Rows[index].Cells["Status"].Value.ToString();
+
+            if (RoomReservation.getStatusEnum(statusString) != RoomReservationStatus.Booked)
             {
-                string roomId = tableBook.Rows[index].Cells[0].Value.ToString();
-
-                DataRow rowToRemove = dataTableBook.Rows.Cast<DataRow>().FirstOrDefault(row => row["ID"].Equals(roomId));
-                dataTableBook.Rows.Remove(rowToRemove);
-
-                tableBook.DataSource = dataTableBook;
-                initTableRoom(fromTime.Value, toTime.Value);
-                colRemove = 2;
+                MessageBox.Show($"Xóa phòng {roomId} không hợp lệ (Không phải ở trạng thái đã đặt)");
+                return;
             }
+
+            DataRow rowToRemove = dataTableBook.Rows.Cast<DataRow>().FirstOrDefault(row => row["ID"].Equals(roomId));
+            dataTableBook.Rows.Remove(rowToRemove);
+
+            tableBook.DataSource = dataTableBook;
+            initTableRoom(fromTime.Value, toTime.Value);
         }
         #endregion
     }
