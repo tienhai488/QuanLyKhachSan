@@ -60,6 +60,11 @@ namespace HotelManagement.BUS
             return roomEFCoreDAO.Rooms.Count();
         }
 
+        public List<Room> getAllCleanedRoom()
+        {
+            return getAllRoom().Where(item =>item.Status==0).ToList();
+        }
+
 
 
         //------------------------------Convinience BUS-------------------------------
