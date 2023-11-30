@@ -35,26 +35,26 @@
         //    }
         //    else builder.Ignore(nameof(Room.RoomType));
         //}
-        public static void ConfigureRoom(this EntityTypeBuilder<Room> builder, bool includeRoomTypeRelationship = true)
-        {
-            builder.ToTable("room");
-            builder.Property<string>(nameof(Room.Id))
-                .HasColumnName("ID");
-            builder.Property<int>(nameof(Room.Status))
-                .HasColumnName("Status");
-            builder.Property<string>(nameof(Room.RoomTypeId))
-                .HasColumnName("RoomTypeID");
-            builder.HasKey(nameof(Room.Id));
+        //public static void ConfigureRoom(this EntityTypeBuilder<Room> builder, bool includeRoomTypeRelationship = true)
+        //{
+        //    builder.ToTable("room");
+        //    builder.Property<string>(nameof(Room.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<int>(nameof(Room.Status))
+        //        .HasColumnName("Status");
+        //    builder.Property<string>(nameof(Room.RoomTypeId))
+        //        .HasColumnName("RoomTypeID");
+        //    builder.HasKey(nameof(Room.Id));
 
-            //if (includeRoomTypeRelationship)
-            //{
-            //    builder.HasOne<RoomType>(nameof(Room.RoomType))
-            //        .WithMany(nameof(RoomType.Rooms))
-            //        .HasForeignKey(nameof(Room.RoomTypeId))
-            //        .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            //}
-            //else builder.Ignore(nameof(Room.RoomType));
-        }
+        //    //if (includeRoomTypeRelationship)
+        //    //{
+        //    //    builder.HasOne<RoomType>(nameof(Room.RoomType))
+        //    //        .WithMany(nameof(RoomType.Rooms))
+        //    //        .HasForeignKey(nameof(Room.RoomTypeId))
+        //    //        .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    //}
+        //    //else builder.Ignore(nameof(Room.RoomType));
+        //}
 
 
         //public static void ConfigureRoomType(this EntityTypeBuilder<RoomType> builder, bool includeConvenienceRelationship = true)
@@ -77,29 +77,29 @@
         //    else builder.Ignore(nameof(RoomType.Conviniences));
         //}
 
-        public static void ConfigureRoomType(this EntityTypeBuilder<RoomType> builder, bool includeConvenienceRelationship = true)
-        {
-            builder.ToTable("roomtype");
-            builder.Property<string>(nameof(RoomType.Id))
-                .HasColumnName("ID");
-            builder.Property<string>(nameof(RoomType.Name))
-                .HasColumnName("Name");
-            builder.Property<double>(nameof(RoomType.UnitPrice))
-                .HasColumnName("UnitPrice");
-            builder.HasKey(nameof(RoomType.Id));
+        //public static void ConfigureRoomType(this EntityTypeBuilder<RoomType> builder, bool includeConvenienceRelationship = true)
+        //{
+        //    builder.ToTable("roomtype");
+        //    builder.Property<string>(nameof(RoomType.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<string>(nameof(RoomType.Name))
+        //        .HasColumnName("Name");
+        //    builder.Property<double>(nameof(RoomType.UnitPrice))
+        //        .HasColumnName("UnitPrice");
+        //    builder.HasKey(nameof(RoomType.Id));
 
-            //if (includeConvenienceRelationship)
-            //{
-            //    builder.HasMany<Convenience>(nameof(RoomType.Conveniences))
-            //    .WithMany().UsingEntity<RoomTypeConvenience>()
-            //    .ConfigureRoomTypeConvenience();
-            //}
-            //else
-            //{
-            //    builder.Ignore(nameof(RoomType.Conveniences));
-            //    builder.Ignore(nameof(RoomType.Quantities));
-            //}
-        }
+        //    //if (includeConvenienceRelationship)
+        //    //{
+        //    //    builder.HasMany<Convenience>(nameof(RoomType.Conveniences))
+        //    //    .WithMany().UsingEntity<RoomTypeConvenience>()
+        //    //    .ConfigureRoomTypeConvenience();
+        //    //}
+        //    //else
+        //    //{
+        //    //    builder.Ignore(nameof(RoomType.Conveniences));
+        //    //    builder.Ignore(nameof(RoomType.Quantities));
+        //    //}
+        //}
 
         //public static void ConfigureRoomTypeConvenience(this EntityTypeBuilder<RoomTypeConvinience> builder)
         //{
@@ -190,78 +190,78 @@
         //    else builder.Ignore(nameof(Reservation.Customer));
         //}
 
-        public static void ConfigureRentRoomDetail(this EntityTypeBuilder<RentRoomDetail> builder,
-            bool includeRoomRelationship = true, bool includeStaffRelationship = true, bool includeInvoiceRelationship = true)
-        {
-            builder.ToTable("rentroomdetail");
-            builder.BigIntegerIdProperty(nameof(RentRoomDetail.Id), "ID", "RD", "5");
-            builder.Property<DateTime>(nameof(RentRoomDetail.StartTime))
-                .HasColumnName("StartTime");
-            builder.Property<DateTime>(nameof(RentRoomDetail.EndTime))
-                .HasColumnName("EndTime");
-            builder.Property<DateTime>(nameof(RentRoomDetail.AddedTime))
-                .HasColumnName("AddedTime");
-            builder.Property<string>(nameof(RentRoomDetail.RoomId))
-                .HasColumnName("RoomID");
-            builder.BigIntegerIdProperty(nameof(RentRoomDetail.InvoiceId), "InvoiceID", "IN", "4");
-            builder.BigIntegerIdProperty(nameof(RentRoomDetail.StaffId), "StaffID", "SA", "3");
-            builder.HasKey(nameof(RentRoomDetail.Id));
+        //public static void ConfigureRentRoomDetail(this EntityTypeBuilder<RentRoomDetail> builder,
+        //    bool includeRoomRelationship = true, bool includeStaffRelationship = true, bool includeInvoiceRelationship = true)
+        //{
+        //    builder.ToTable("rentroomdetail");
+        //    builder.BigIntegerIdProperty(nameof(RentRoomDetail.Id), "ID", "RD", "5");
+        //    builder.Property<DateTime>(nameof(RentRoomDetail.StartTime))
+        //        .HasColumnName("StartTime");
+        //    builder.Property<DateTime>(nameof(RentRoomDetail.EndTime))
+        //        .HasColumnName("EndTime");
+        //    builder.Property<DateTime>(nameof(RentRoomDetail.AddedTime))
+        //        .HasColumnName("AddedTime");
+        //    builder.Property<string>(nameof(RentRoomDetail.RoomId))
+        //        .HasColumnName("RoomID");
+        //    builder.BigIntegerIdProperty(nameof(RentRoomDetail.InvoiceId), "InvoiceID", "IN", "4");
+        //    builder.BigIntegerIdProperty(nameof(RentRoomDetail.StaffId), "StaffID", "SA", "3");
+        //    builder.HasKey(nameof(RentRoomDetail.Id));
 
-            if (includeRoomRelationship)
-            {
-                builder.HasOne<Room>(nameof(RentRoomDetail.Room))
-                    .WithMany().HasForeignKey(nameof(RentRoomDetail.RoomId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(RentRoomDetail.Room));
-            if (includeStaffRelationship)
-            {
-                builder.HasOne<Staff>(nameof(RentRoomDetail.Staff))
-                    .WithMany().HasForeignKey(nameof(RentRoomDetail.StaffId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(RentRoomDetail.Staff));
-            if (includeInvoiceRelationship)
-            {
-                builder.HasOne<Invoice>(nameof(RentRoomDetail.Invoice))
-                    .WithMany(nameof(Invoice.RentRooms))
-                    .HasForeignKey(nameof(RentRoomDetail.InvoiceId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(RentRoomDetail.Invoice));
-        }
+        //    if (includeRoomRelationship)
+        //    {
+        //        builder.HasOne<Room>(nameof(RentRoomDetail.Room))
+        //            .WithMany().HasForeignKey(nameof(RentRoomDetail.RoomId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(RentRoomDetail.Room));
+        //    if (includeStaffRelationship)
+        //    {
+        //        builder.HasOne<Staff>(nameof(RentRoomDetail.Staff))
+        //            .WithMany().HasForeignKey(nameof(RentRoomDetail.StaffId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(RentRoomDetail.Staff));
+        //    if (includeInvoiceRelationship)
+        //    {
+        //        builder.HasOne<Invoice>(nameof(RentRoomDetail.Invoice))
+        //            .WithMany(nameof(Invoice.RentRooms))
+        //            .HasForeignKey(nameof(RentRoomDetail.InvoiceId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(RentRoomDetail.Invoice));
+        //}
 
-        public static void ConfigureInvoice(this EntityTypeBuilder<Invoice> builder,
-            bool includeStaffRelationship = true, bool includeCustomerRelationship = true)
-        {
-            builder.ToTable("invoice");
-            builder.BigIntegerIdProperty(nameof(Invoice.Id), "ID", "IN", "4");
-            builder.Property<double>(nameof(Invoice.Subtotal))
-                .HasColumnName("Subtotal");
-            builder.Property<double>(nameof(Invoice.TotalDue))
-                .HasColumnName("TotalDue");
-            builder.Property<DateTime?>(nameof(Invoice.PaidTime))
-                .HasColumnName("PaidTime");
-            builder.BigIntegerIdProperty(nameof(Invoice.StaffId), "StaffID", "SA", "3");
-            builder.Property<string>(nameof(Invoice.CustomerId))
-                .HasColumnName("CustomerID");
-            builder.HasKey(nameof(Invoice.Id));
+        //public static void ConfigureInvoice(this EntityTypeBuilder<Invoice> builder,
+        //    bool includeStaffRelationship = true, bool includeCustomerRelationship = true)
+        //{
+        //    builder.ToTable("invoice");
+        //    builder.BigIntegerIdProperty(nameof(Invoice.Id), "ID", "IN", "4");
+        //    builder.Property<double>(nameof(Invoice.Subtotal))
+        //        .HasColumnName("Subtotal");
+        //    builder.Property<double>(nameof(Invoice.TotalDue))
+        //        .HasColumnName("TotalDue");
+        //    builder.Property<DateTime?>(nameof(Invoice.PaidTime))
+        //        .HasColumnName("PaidTime");
+        //    builder.BigIntegerIdProperty(nameof(Invoice.StaffId), "StaffID", "SA", "3");
+        //    builder.Property<string>(nameof(Invoice.CustomerId))
+        //        .HasColumnName("CustomerID");
+        //    builder.HasKey(nameof(Invoice.Id));
 
-            if (includeStaffRelationship)
-            {
-                builder.HasOne<Staff>(nameof(Invoice.Staff))
-                    .WithMany().HasForeignKey(nameof(Invoice.StaffId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(Invoice.Staff));
-            if (includeCustomerRelationship)
-            {
-                builder.HasOne<Customer>(nameof(Invoice.Customer))
-                    .WithMany().HasForeignKey(nameof(Invoice.CustomerId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(Invoice.Customer));
-        }
+        //    if (includeStaffRelationship)
+        //    {
+        //        builder.HasOne<Staff>(nameof(Invoice.Staff))
+        //            .WithMany().HasForeignKey(nameof(Invoice.StaffId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Invoice.Staff));
+        //    if (includeCustomerRelationship)
+        //    {
+        //        builder.HasOne<Customer>(nameof(Invoice.Customer))
+        //            .WithMany().HasForeignKey(nameof(Invoice.CustomerId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Invoice.Customer));
+        //}
 
         public static void ConfigureCustomer(this EntityTypeBuilder<Customer> builder)
         {
@@ -317,65 +317,65 @@
             builder.HasKey(nameof(ServiceType.Id));
         }
 
-        public static void ConfigureCancelationStatus(this EntityTypeBuilder<CancelationStatus> builder)
-        {
-            builder.ToTable("cancelationstatus");
-            builder.BigIntegerIdProperty(nameof(CancelationStatus.Id), "ID", "SD", "5");
-            builder.Property<string>(nameof(CancelationStatus.Reason))
-                .HasColumnName("Reason");
-            builder.Property<double>(nameof(CancelationStatus.Fee))
-                .HasColumnName("Fee");
-            builder.Property<DateTime>(nameof(CancelationStatus.Time))
-                .HasColumnName("Time");
-            builder.HasKey(nameof(CancelationStatus.Id));
-        }
+        //public static void ConfigureCancelationStatus(this EntityTypeBuilder<CancelationStatus> builder)
+        //{
+        //    builder.ToTable("cancelationstatus");
+        //    builder.BigIntegerIdProperty(nameof(CancelationStatus.Id), "ID", "SD", "5");
+        //    builder.Property<string>(nameof(CancelationStatus.Reason))
+        //        .HasColumnName("Reason");
+        //    builder.Property<double>(nameof(CancelationStatus.Fee))
+        //        .HasColumnName("Fee");
+        //    builder.Property<DateTime>(nameof(CancelationStatus.Time))
+        //        .HasColumnName("Time");
+        //    builder.HasKey(nameof(CancelationStatus.Id));
+        //}
 
-        public static void ConfigureUseServiceDetail(this EntityTypeBuilder<UseServiceDetail> builder,
-            bool includeServiceRelationship = true, bool includeStaffRelationship = true, bool includeInvoiceRelationship = true,
-            bool includeCancelationStatusRelationship = true)
-        {
-            builder.ToTable("useservicedetail");
-            builder.BigIntegerIdProperty(nameof(UseServiceDetail.Id), "ID", "SD", "5");
-            builder.Property<int>(nameof(UseServiceDetail.Quantity))
-                .HasColumnName("Quantity");
-            builder.Property<DateTime>(nameof(UseServiceDetail.UsedTime))
-                .HasColumnName("UsedTime");
-            builder.BigIntegerIdProperty(nameof(UseServiceDetail.InvoiceId), "InvoiceID", "IN", "4");
-            builder.Property<string>(nameof(UseServiceDetail.ServiceId))
-                .HasColumnName("ServiceID");
-            builder.BigIntegerIdProperty(nameof(UseServiceDetail.StaffId), "StaffID", "SA", "3");
-            builder.HasKey(nameof(UseServiceDetail.Id));
+        //public static void ConfigureUseServiceDetail(this EntityTypeBuilder<UseServiceDetail> builder,
+        //    bool includeServiceRelationship = true, bool includeStaffRelationship = true, bool includeInvoiceRelationship = true,
+        //    bool includeCancelationStatusRelationship = true)
+        //{
+        //    builder.ToTable("useservicedetail");
+        //    builder.BigIntegerIdProperty(nameof(UseServiceDetail.Id), "ID", "SD", "5");
+        //    builder.Property<int>(nameof(UseServiceDetail.Quantity))
+        //        .HasColumnName("Quantity");
+        //    builder.Property<DateTime>(nameof(UseServiceDetail.UsedTime))
+        //        .HasColumnName("UsedTime");
+        //    builder.BigIntegerIdProperty(nameof(UseServiceDetail.InvoiceId), "InvoiceID", "IN", "4");
+        //    builder.Property<string>(nameof(UseServiceDetail.ServiceId))
+        //        .HasColumnName("ServiceID");
+        //    builder.BigIntegerIdProperty(nameof(UseServiceDetail.StaffId), "StaffID", "SA", "3");
+        //    builder.HasKey(nameof(UseServiceDetail.Id));
 
-            if (includeServiceRelationship)
-            {
-                builder.HasOne<Service>(nameof(UseServiceDetail.Service))
-                    .WithMany().HasForeignKey(nameof(UseServiceDetail.ServiceId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(UseServiceDetail.Service));
-            if (includeStaffRelationship)
-            {
-                builder.HasOne<Staff>(nameof(UseServiceDetail.Staff))
-                    .WithMany().HasForeignKey(nameof(UseServiceDetail.StaffId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(UseServiceDetail.Staff));
-            if (includeInvoiceRelationship)
-            {
-                builder.HasOne<Invoice>(nameof(UseServiceDetail.Invoice))
-                    .WithMany(nameof(Invoice.UseServices))
-                    .HasForeignKey(nameof(UseServiceDetail.InvoiceId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            else builder.Ignore(nameof(UseServiceDetail.Invoice));
-            if (includeCancelationStatusRelationship)
-            {
-                builder.HasOne<CancelationStatus>(nameof(UseServiceDetail.CancelationStatus))
-                    .WithOne().IsRequired(false).OnDelete(DeleteBehavior.Restrict)
-                    .HasForeignKey<CancelationStatus>(nameof(CancelationStatus.Id));
-            }
-            else builder.Ignore(nameof(UseServiceDetail.CancelationStatus));
-        }
+        //    if (includeServiceRelationship)
+        //    {
+        //        builder.HasOne<Service>(nameof(UseServiceDetail.Service))
+        //            .WithMany().HasForeignKey(nameof(UseServiceDetail.ServiceId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(UseServiceDetail.Service));
+        //    if (includeStaffRelationship)
+        //    {
+        //        builder.HasOne<Staff>(nameof(UseServiceDetail.Staff))
+        //            .WithMany().HasForeignKey(nameof(UseServiceDetail.StaffId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(UseServiceDetail.Staff));
+        //    if (includeInvoiceRelationship)
+        //    {
+        //        builder.HasOne<Invoice>(nameof(UseServiceDetail.Invoice))
+        //            .WithMany(nameof(Invoice.UseServices))
+        //            .HasForeignKey(nameof(UseServiceDetail.InvoiceId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(UseServiceDetail.Invoice));
+        //    if (includeCancelationStatusRelationship)
+        //    {
+        //        builder.HasOne<CancelationStatus>(nameof(UseServiceDetail.CancelationStatus))
+        //            .WithOne().IsRequired(false).OnDelete(DeleteBehavior.Restrict)
+        //            .HasForeignKey<CancelationStatus>(nameof(CancelationStatus.Id));
+        //    }
+        //    else builder.Ignore(nameof(UseServiceDetail.CancelationStatus));
+        //}
 
         public static void ConfigureRole(this EntityTypeBuilder<Role> builder)
         {

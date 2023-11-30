@@ -1,7 +1,7 @@
 ﻿namespace HotelManagement.Data.Access
 {
     using HotelManagement.Data.Access.Core;
-
+    using HotelManagement.Data.Transfer;
     using Microsoft.EntityFrameworkCore;
 
     using System;
@@ -11,25 +11,36 @@
     {
         public bool HasStaffId(BigInteger id)
             => (from i in Set<Invoice>()
-                where i.StaffId == id
+                where i.StaffID == id
                 select i).Any();
+        public DbSet<Invoice> Invoices { get; set; }
+
+        public DbSet<RentRoomDetail> RentRoomDetails { get; set; }
+
+        public DbSet<UseServiceDetail> UseServiceDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>().ConfigureCustomer();
             modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
-            modelBuilder.Entity<Invoice>().ConfigureInvoice();
 
-            modelBuilder.Entity<Service>().ConfigureService(false);
-            modelBuilder.Entity<UseServiceDetail>().ConfigureUseServiceDetail();
-            modelBuilder.Entity<CancelationStatus>().ConfigureCancelationStatus();
+            modelBuilder.Entity<Invoice>()
+                .BigIntegerIdProperty(nameof(Invoice.StaffID), "StaffID", "SA", "3");
 
-            modelBuilder.Entity<RoomType>().ConfigureRoomType(false);
-            modelBuilder.Entity<Room>().ConfigureRoom();
-            modelBuilder.Entity<RentRoomDetail>().ConfigureRentRoomDetail();
+            modelBuilder.Entity<Invoice>().HasOne(invoice => invoice.Reservation)
+                .WithOne(reser => reser.Invoice)
+                .HasForeignKey<Invoice>(invoice => invoice.ReservationID);
+
+            modelBuilder.Entity<RentRoomDetail>()
+                .BigIntegerIdProperty(nameof(RentRoomDetail.StaffID), "StaffID", "SA", "3");
+
+            modelBuilder.Entity<UseServiceDetail>()
+                .BigIntegerIdProperty(nameof(UseServiceDetail.StaffID), "StaffID", "SA", "3");
+
+            modelBuilder.Entity<Reservation>()
+                .BigIntegerIdProperty(nameof(Reservation.StaffID), "StaffID", "SA", "3");
         }
     }
 }

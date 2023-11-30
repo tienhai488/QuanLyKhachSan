@@ -33,12 +33,16 @@ namespace HotelManagement.Data.Transfer
         [ForeignKey("StaffID")]
         private Staff staff;
 
+        [ForeignKey("ID")]
+        public virtual Invoice Invoice { get; set; }
+
         public string Id { get => id; set => id = value; }
         public string CustomerID { get => customerID; set => customerID = value; }
         public BigInteger StaffID { get => staffID; set => staffID = value; }
         public Customer Customer { get => customer; set => customer = value; }
         public Staff Staff { get => staff; set => staff = value; }
         public DateTime CreatedAt { get => createdAt; set => createdAt = value; }
+        //public Invoice Invoice { get => invoice; set => invoice = value; }
     }
 
     public enum RoomReservationStatus : int

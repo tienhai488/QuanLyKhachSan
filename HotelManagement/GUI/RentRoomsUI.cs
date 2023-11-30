@@ -82,19 +82,21 @@ namespace HotelManagement.GUI
                 .ForEach(item =>
                 {
                     string labelMain = "Empty Room";
-                    string reserTypeName = "Empty";
-                    string statusClean = roomBUS.convertRoomStatusToString(item.Status);
+                    string roomStatus = "Empty";
+                    string roomClean = roomBUS.convertRoomStatusToString(item.Status);
                     string from = "From: ";
                     string to = "To: ";
+                    string labelReservationID = "";
                     RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomID.Equals(item.Id));
                     if (roomReservation != null)
                     {
                         labelMain = roomReservation.Reservation.Customer.FullName;
-                        reserTypeName = RoomReservation.getStatusString(roomReservation.Status);
+                        roomStatus = RoomReservation.getStatusString(roomReservation.Status);
                         from += roomReservation.StartTime.ToString(Configs.formatBirthday);
                         to += roomReservation.EndTime.ToString(Configs.formatBirthday);
+                        labelReservationID = roomReservation.ReservationID;
                     }
-                    addRoomView(item.Id, item.RoomType.Name, labelMain, reserTypeName, statusClean, from, to);
+                    addRoomView(item.Id, item.RoomType.Name, labelMain, roomStatus, roomClean, from, to, labelReservationID);
                 });
         }
 
@@ -137,9 +139,9 @@ namespace HotelManagement.GUI
             panel.Controls.Add(radio);
         }
 
-        public void addRoomView(string id, string typeName, string labelMain, string reserTypeName, string statusClean, string fromTime, string toTime)
+        public void addRoomView(string id, string roomType, string labelMain, string roomStatus, string roomClean, string fromTime, string toTime, string reservationID)
         {
-            RoomCard room = new RoomCard(id, typeName, labelMain, reserTypeName, statusClean, fromTime, toTime);
+            RoomCard room = new RoomCard(id, roomType, labelMain, roomStatus, roomClean, fromTime, toTime, reservationID);
             flowLayoutRooms.Controls.Add(room);
         }
 
@@ -206,7 +208,7 @@ namespace HotelManagement.GUI
 
         #endregion
 
-        
+
     }
 
 }

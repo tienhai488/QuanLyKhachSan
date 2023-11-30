@@ -1,7 +1,7 @@
 ﻿namespace HotelManagement.Data.Access
 {
     using HotelManagement.Data.Access.Core;
-
+    using HotelManagement.Data.Transfer;
     using Microsoft.EntityFrameworkCore;
 
     using System;
@@ -11,22 +11,37 @@
     {
         public bool HasStaffId(BigInteger id)
             => (from i in Set<UseServiceDetail>()
-                where i.StaffId == id
+                where i.StaffID == id
                 select i).Any();
+
+        public DbSet<Invoice> Invoices { get; set; }
+
+        public DbSet<RentRoomDetail> RentRoomDetails { get; set; }
+
+        public DbSet<UseServiceDetail> UseServiceDetails { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseMySQL(BaseConnection.Connection);
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ServiceType>().ConfigureServiceType();
-            modelBuilder.Entity<Service>().ConfigureService();
-            modelBuilder.Entity<Customer>().ConfigureCustomer();
             modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
-            modelBuilder.Entity<Invoice>().ConfigureInvoice();
-            modelBuilder.Entity<CancelationStatus>().ConfigureCancelationStatus();
-            modelBuilder.Entity<UseServiceDetail>().ConfigureUseServiceDetail();
+
+            modelBuilder.Entity<Invoice>()
+                .BigIntegerIdProperty(nameof(Invoice.StaffID), "StaffID", "SA", "3");
+
+            modelBuilder.Entity<Invoice>().HasOne(invoice => invoice.Reservation)
+                .WithOne(reser => reser.Invoice)
+                .HasForeignKey<Invoice>(invoice => invoice.Id);
+
+            modelBuilder.Entity<RentRoomDetail>()
+                .BigIntegerIdProperty(nameof(RentRoomDetail.StaffID), "StaffID", "SA", "3");
+
+            modelBuilder.Entity<UseServiceDetail>()
+                .BigIntegerIdProperty(nameof(UseServiceDetail.StaffID), "StaffID", "SA", "3");
+
+            modelBuilder.Entity<Reservation>()
+                .BigIntegerIdProperty(nameof(Reservation.StaffID), "StaffID", "SA", "3");
         }
     }
-    public class CancelationStatusEFCoreDAO : UseServiceDetailDAO { }
 }

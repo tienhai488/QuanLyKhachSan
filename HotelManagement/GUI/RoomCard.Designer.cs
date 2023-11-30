@@ -37,9 +37,10 @@
             labelMain = new MaterialSkin.Controls.MaterialLabel();
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             panel2 = new Panel();
+            labelReservationID = new Label();
             panel1 = new Panel();
-            labelReservationStatus = new MaterialSkin.Controls.MaterialLabel();
-            labelRoomStatusClean = new MaterialSkin.Controls.MaterialLabel();
+            labelRoomStatus = new MaterialSkin.Controls.MaterialLabel();
+            labelRoomClean = new MaterialSkin.Controls.MaterialLabel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             materialCard1.SuspendLayout();
             panel2.SuspendLayout();
@@ -155,6 +156,7 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(labelReservationID);
             panel2.Controls.Add(labelMain);
             panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(15, 42);
@@ -163,11 +165,20 @@
             panel2.TabIndex = 37;
             panel2.DoubleClick += card_DoubleClick;
             // 
+            // labelReservationID
+            // 
+            labelReservationID.AutoSize = true;
+            labelReservationID.Location = new Point(81, 65);
+            labelReservationID.Name = "labelReservationID";
+            labelReservationID.Size = new Size(65, 28);
+            labelReservationID.TabIndex = 34;
+            labelReservationID.Text = "label1";
+            // 
             // panel1
             // 
             panel1.BackColor = Color.FromArgb(224, 224, 224);
-            panel1.Controls.Add(labelReservationStatus);
-            panel1.Controls.Add(labelRoomStatusClean);
+            panel1.Controls.Add(labelRoomStatus);
+            panel1.Controls.Add(labelRoomClean);
             panel1.Controls.Add(labelFromTime);
             panel1.Controls.Add(labelToTime);
             panel1.Dock = DockStyle.Bottom;
@@ -177,33 +188,33 @@
             panel1.TabIndex = 36;
             panel1.DoubleClick += card_DoubleClick;
             // 
-            // labelReservationStatus
+            // labelRoomStatus
             // 
-            labelReservationStatus.AutoSize = true;
-            labelReservationStatus.Depth = 0;
-            labelReservationStatus.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            labelReservationStatus.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelReservationStatus.Location = new Point(3, 9);
-            labelReservationStatus.MouseState = MaterialSkin.MouseState.HOVER;
-            labelReservationStatus.Name = "labelReservationStatus";
-            labelReservationStatus.Size = new Size(190, 19);
-            labelReservationStatus.TabIndex = 35;
-            labelReservationStatus.Text = "{Room Status Reservation}";
-            labelReservationStatus.DoubleClick += card_DoubleClick;
+            labelRoomStatus.AutoSize = true;
+            labelRoomStatus.Depth = 0;
+            labelRoomStatus.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            labelRoomStatus.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            labelRoomStatus.Location = new Point(3, 9);
+            labelRoomStatus.MouseState = MaterialSkin.MouseState.HOVER;
+            labelRoomStatus.Name = "labelRoomStatus";
+            labelRoomStatus.Size = new Size(190, 19);
+            labelRoomStatus.TabIndex = 35;
+            labelRoomStatus.Text = "{Room Status Reservation}";
+            labelRoomStatus.DoubleClick += card_DoubleClick;
             // 
-            // labelRoomStatusClean
+            // labelRoomClean
             // 
-            labelRoomStatusClean.AutoSize = true;
-            labelRoomStatusClean.Depth = 0;
-            labelRoomStatusClean.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
-            labelRoomStatusClean.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomStatusClean.Location = new Point(199, 9);
-            labelRoomStatusClean.MouseState = MaterialSkin.MouseState.HOVER;
-            labelRoomStatusClean.Name = "labelRoomStatusClean";
-            labelRoomStatusClean.Size = new Size(147, 19);
-            labelRoomStatusClean.TabIndex = 34;
-            labelRoomStatusClean.Text = "{Room Status Clean}";
-            labelRoomStatusClean.DoubleClick += card_DoubleClick;
+            labelRoomClean.AutoSize = true;
+            labelRoomClean.Depth = 0;
+            labelRoomClean.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
+            labelRoomClean.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            labelRoomClean.Location = new Point(199, 9);
+            labelRoomClean.MouseState = MaterialSkin.MouseState.HOVER;
+            labelRoomClean.Name = "labelRoomClean";
+            labelRoomClean.Size = new Size(147, 19);
+            labelRoomClean.TabIndex = 34;
+            labelRoomClean.Text = "{Room Status Clean}";
+            labelRoomClean.DoubleClick += card_DoubleClick;
             // 
             // RoomCard
             // 
@@ -233,9 +244,10 @@
         private MaterialSkin.Controls.MaterialLabel labelToTime;
         private MaterialSkin.Controls.MaterialLabel labelMain;
         private MaterialSkin.Controls.MaterialCard materialCard1;
-        private MaterialSkin.Controls.MaterialLabel labelRoomStatusClean;
-        private MaterialSkin.Controls.MaterialLabel labelReservationStatus;
+        private MaterialSkin.Controls.MaterialLabel labelRoomClean;
+        private MaterialSkin.Controls.MaterialLabel labelRoomStatus;
         private Panel panel1;
         private Panel panel2;
+        private Label labelReservationID;
     }
 }

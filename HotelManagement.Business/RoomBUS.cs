@@ -25,7 +25,7 @@ namespace HotelManagement.BUS
 
         public Room getRoomById(string id)
         {
-            return roomEFCoreDAO.Rooms.First(item => item.Id.Equals(id));
+            return getAllRoom().First(item => item.Id.Equals(id));
         }
 
 
@@ -90,6 +90,8 @@ namespace HotelManagement.BUS
 
             return result;
         }
+
+
 
 
 

@@ -18,6 +18,7 @@ namespace HotelManagement.Business
             return reservationDAO.Reservations
                 .Include(r => r.Staff)
                 .Include(r => r.Customer)
+                .Include(r => r.Invoice)
                 .AsNoTracking()
                 .ToList();
         }
@@ -31,6 +32,7 @@ namespace HotelManagement.Business
         {
             return getAll().Find(item => item.Id.Equals(id));
         }
+
         public int add(Reservation reservation)
         {
             reservationDAO.Entry(reservation).State = EntityState.Detached;
@@ -84,6 +86,11 @@ namespace HotelManagement.Business
                 .Include(r => r.Reservation)
                 .Include(r => r.Reservation.Customer)
                 .AsNoTracking().ToList();
+        }
+
+        public RoomReservation getRoomReservation(string reservationId, string roomId)
+        {
+            return getAllRoomReservation().Find(item => item.ReservationID.Equals(reservationId) && item.RoomID.Equals(roomId));
         }
 
         public List<RoomReservation> getAllRoomReservationByReservationId(string reservationID)

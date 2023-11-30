@@ -80,41 +80,45 @@
             materialLabel9 = new MaterialSkin.Controls.MaterialLabel();
             tableLayoutPanel7 = new TableLayoutPanel();
             panel18 = new Panel();
-            dataGridView6 = new DataGridView();
+            dataGridViewService = new DataGridView();
             dataGridViewTextBoxColumn13 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn14 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn15 = new DataGridViewTextBoxColumn();
             materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             panel10 = new Panel();
-            materialComboBox2 = new MaterialSkin.Controls.MaterialComboBox();
+            cbxRoomClean = new MaterialSkin.Controls.MaterialComboBox();
+            btnChange = new MaterialSkin.Controls.MaterialButton();
+            datetimeChange = new DateTimePicker();
+            changeEndT = new MaterialSkin.Controls.MaterialLabel();
             materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
-            materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
             materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
+            txtRoomStatus = new MaterialSkin.Controls.MaterialTextBox();
             panel19 = new Panel();
-            dateTimePicker6 = new DateTimePicker();
             materialLabel12 = new MaterialSkin.Controls.MaterialLabel();
+            txtFrom = new MaterialSkin.Controls.MaterialTextBox();
             panel20 = new Panel();
-            dateTimePicker7 = new DateTimePicker();
+            txtTo = new MaterialSkin.Controls.MaterialTextBox();
             materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel8 = new TableLayoutPanel();
             panel12 = new Panel();
-            materialButton3 = new MaterialSkin.Controls.MaterialButton();
             materialButton2 = new MaterialSkin.Controls.MaterialButton();
             panel6 = new Panel();
-            materialButton1 = new MaterialSkin.Controls.MaterialButton();
+            btnUpdateService = new MaterialSkin.Controls.MaterialButton();
             panel13 = new Panel();
-            materialButton6 = new MaterialSkin.Controls.MaterialButton();
-            materialButton5 = new MaterialSkin.Controls.MaterialButton();
-            materialButton4 = new MaterialSkin.Controls.MaterialButton();
+            btnCheckout = new MaterialSkin.Controls.MaterialButton();
+            btnSave = new MaterialSkin.Controls.MaterialButton();
+            btnCancel = new MaterialSkin.Controls.MaterialButton();
             panel14 = new Panel();
-            materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            labelRoomID = new MaterialSkin.Controls.MaterialLabel();
             panel11 = new Panel();
-            materialTextBox3 = new MaterialSkin.Controls.MaterialTextBox();
-            materialLabel21 = new MaterialSkin.Controls.MaterialLabel();
-            materialTextBox2 = new MaterialSkin.Controls.MaterialTextBox();
+            txtPhone = new MaterialSkin.Controls.MaterialTextBox();
+            materialLabel18 = new MaterialSkin.Controls.MaterialLabel();
+            txtName = new MaterialSkin.Controls.MaterialTextBox();
+            txtCCCD = new MaterialSkin.Controls.MaterialTextBox();
             materialLabel17 = new MaterialSkin.Controls.MaterialLabel();
-            materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
+            materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
+            txtInvoiceId = new MaterialSkin.Controls.MaterialTextBox();
             materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
             tableLayoutPanel2.SuspendLayout();
             panel5.SuspendLayout();
@@ -138,7 +142,7 @@
             panel16.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
             panel18.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewService).BeginInit();
             panel10.SuspendLayout();
             panel19.SuspendLayout();
             panel20.SuspendLayout();
@@ -715,7 +719,7 @@
             // 
             // panel18
             // 
-            panel18.Controls.Add(dataGridView6);
+            panel18.Controls.Add(dataGridViewService);
             panel18.Controls.Add(materialLabel10);
             panel18.Dock = DockStyle.Fill;
             panel18.Location = new Point(0, 64);
@@ -725,25 +729,25 @@
             panel18.Size = new Size(402, 615);
             panel18.TabIndex = 21;
             // 
-            // dataGridView6
+            // dataGridViewService
             // 
-            dataGridView6.AllowUserToAddRows = false;
-            dataGridView6.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView6.BackgroundColor = SystemColors.Control;
-            dataGridView6.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView6.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14, dataGridViewTextBoxColumn15 });
-            dataGridView6.Dock = DockStyle.Fill;
-            dataGridView6.Location = new Point(21, 44);
-            dataGridView6.Margin = new Padding(3, 4, 3, 4);
-            dataGridView6.MultiSelect = false;
-            dataGridView6.Name = "dataGridView6";
-            dataGridView6.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
-            dataGridView6.RowHeadersVisible = false;
-            dataGridView6.RowHeadersWidth = 51;
-            dataGridView6.RowTemplate.Height = 25;
-            dataGridView6.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView6.Size = new Size(360, 551);
-            dataGridView6.TabIndex = 16;
+            dataGridViewService.AllowUserToAddRows = false;
+            dataGridViewService.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewService.BackgroundColor = SystemColors.Control;
+            dataGridViewService.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewService.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14, dataGridViewTextBoxColumn15 });
+            dataGridViewService.Dock = DockStyle.Fill;
+            dataGridViewService.Location = new Point(21, 44);
+            dataGridViewService.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewService.MultiSelect = false;
+            dataGridViewService.Name = "dataGridViewService";
+            dataGridViewService.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewService.RowHeadersVisible = false;
+            dataGridViewService.RowHeadersWidth = 51;
+            dataGridViewService.RowTemplate.Height = 25;
+            dataGridViewService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewService.Size = new Size(360, 551);
+            dataGridViewService.TabIndex = 16;
             // 
             // dataGridViewTextBoxColumn13
             // 
@@ -779,10 +783,13 @@
             // 
             // panel10
             // 
-            panel10.Controls.Add(materialComboBox2);
+            panel10.Controls.Add(cbxRoomClean);
+            panel10.Controls.Add(btnChange);
+            panel10.Controls.Add(datetimeChange);
+            panel10.Controls.Add(changeEndT);
             panel10.Controls.Add(materialLabel20);
-            panel10.Controls.Add(materialComboBox1);
             panel10.Controls.Add(materialLabel19);
+            panel10.Controls.Add(txtRoomStatus);
             panel10.Dock = DockStyle.Fill;
             panel10.Location = new Point(402, 64);
             panel10.Margin = new Padding(0);
@@ -791,29 +798,73 @@
             panel10.Size = new Size(402, 615);
             panel10.TabIndex = 20;
             // 
-            // materialComboBox2
+            // cbxRoomClean
             // 
-            materialComboBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            materialComboBox2.AutoResize = false;
-            materialComboBox2.BackColor = Color.FromArgb(255, 255, 255);
-            materialComboBox2.Depth = 0;
-            materialComboBox2.DrawMode = DrawMode.OwnerDrawVariable;
-            materialComboBox2.DropDownHeight = 174;
-            materialComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialComboBox2.DropDownWidth = 121;
-            materialComboBox2.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialComboBox2.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialComboBox2.FormattingEnabled = true;
-            materialComboBox2.IntegralHeight = false;
-            materialComboBox2.ItemHeight = 43;
-            materialComboBox2.Location = new Point(21, 193);
-            materialComboBox2.Margin = new Padding(3, 4, 3, 4);
-            materialComboBox2.MaxDropDownItems = 4;
-            materialComboBox2.MouseState = MaterialSkin.MouseState.OUT;
-            materialComboBox2.Name = "materialComboBox2";
-            materialComboBox2.Size = new Size(369, 49);
-            materialComboBox2.StartIndex = 0;
-            materialComboBox2.TabIndex = 25;
+            cbxRoomClean.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxRoomClean.AutoResize = false;
+            cbxRoomClean.BackColor = Color.FromArgb(255, 255, 255);
+            cbxRoomClean.Depth = 0;
+            cbxRoomClean.DrawMode = DrawMode.OwnerDrawVariable;
+            cbxRoomClean.DropDownHeight = 174;
+            cbxRoomClean.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxRoomClean.DropDownWidth = 121;
+            cbxRoomClean.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cbxRoomClean.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cbxRoomClean.FormattingEnabled = true;
+            cbxRoomClean.IntegralHeight = false;
+            cbxRoomClean.ItemHeight = 43;
+            cbxRoomClean.Location = new Point(21, 202);
+            cbxRoomClean.MaxDropDownItems = 4;
+            cbxRoomClean.MouseState = MaterialSkin.MouseState.OUT;
+            cbxRoomClean.Name = "cbxRoomClean";
+            cbxRoomClean.Size = new Size(361, 49);
+            cbxRoomClean.StartIndex = 0;
+            cbxRoomClean.TabIndex = 27;
+            // 
+            // btnChange
+            // 
+            btnChange.AutoSize = false;
+            btnChange.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnChange.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnChange.Depth = 0;
+            btnChange.HighEmphasis = true;
+            btnChange.Icon = null;
+            btnChange.Location = new Point(21, 409);
+            btnChange.Margin = new Padding(5, 8, 5, 8);
+            btnChange.MouseState = MaterialSkin.MouseState.HOVER;
+            btnChange.Name = "btnChange";
+            btnChange.NoAccentTextColor = Color.Empty;
+            btnChange.Size = new Size(193, 48);
+            btnChange.TabIndex = 14;
+            btnChange.Text = "CHANGE";
+            btnChange.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnChange.UseAccentColor = false;
+            btnChange.UseVisualStyleBackColor = true;
+            btnChange.Click += btnChange_Click;
+            // 
+            // datetimeChange
+            // 
+            datetimeChange.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            datetimeChange.CustomFormat = "dd/MM/yyyy";
+            datetimeChange.Format = DateTimePickerFormat.Custom;
+            datetimeChange.Location = new Point(22, 337);
+            datetimeChange.Margin = new Padding(3, 4, 3, 4);
+            datetimeChange.Name = "datetimeChange";
+            datetimeChange.Size = new Size(360, 27);
+            datetimeChange.TabIndex = 26;
+            // 
+            // changeEndT
+            // 
+            changeEndT.AutoSize = true;
+            changeEndT.Depth = 0;
+            changeEndT.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            changeEndT.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            changeEndT.Location = new Point(22, 298);
+            changeEndT.MouseState = MaterialSkin.MouseState.HOVER;
+            changeEndT.Name = "changeEndT";
+            changeEndT.Size = new Size(180, 24);
+            changeEndT.TabIndex = 24;
+            changeEndT.Text = "CHANGE END TIME:";
             // 
             // materialLabel20
             // 
@@ -821,36 +872,12 @@
             materialLabel20.Depth = 0;
             materialLabel20.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel20.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel20.Location = new Point(21, 157);
+            materialLabel20.Location = new Point(22, 159);
             materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel20.Name = "materialLabel20";
-            materialLabel20.Size = new Size(72, 24);
+            materialLabel20.Size = new Size(131, 24);
             materialLabel20.TabIndex = 24;
-            materialLabel20.Text = "PHONE:";
-            // 
-            // materialComboBox1
-            // 
-            materialComboBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            materialComboBox1.AutoResize = false;
-            materialComboBox1.BackColor = Color.FromArgb(255, 255, 255);
-            materialComboBox1.Depth = 0;
-            materialComboBox1.DrawMode = DrawMode.OwnerDrawVariable;
-            materialComboBox1.DropDownHeight = 174;
-            materialComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            materialComboBox1.DropDownWidth = 121;
-            materialComboBox1.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialComboBox1.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            materialComboBox1.FormattingEnabled = true;
-            materialComboBox1.IntegralHeight = false;
-            materialComboBox1.ItemHeight = 43;
-            materialComboBox1.Location = new Point(21, 56);
-            materialComboBox1.Margin = new Padding(3, 4, 3, 4);
-            materialComboBox1.MaxDropDownItems = 4;
-            materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
-            materialComboBox1.Name = "materialComboBox1";
-            materialComboBox1.Size = new Size(369, 49);
-            materialComboBox1.StartIndex = 0;
-            materialComboBox1.TabIndex = 23;
+            materialLabel20.Text = "ROOM CLEAN:";
             // 
             // materialLabel19
             // 
@@ -858,17 +885,37 @@
             materialLabel19.Depth = 0;
             materialLabel19.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel19.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel19.Location = new Point(21, 20);
+            materialLabel19.Location = new Point(22, 30);
             materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel19.Name = "materialLabel19";
             materialLabel19.Size = new Size(143, 24);
             materialLabel19.TabIndex = 0;
             materialLabel19.Text = "ROOM STATUS:";
             // 
+            // txtRoomStatus
+            // 
+            txtRoomStatus.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtRoomStatus.AnimateReadOnly = false;
+            txtRoomStatus.BorderStyle = BorderStyle.None;
+            txtRoomStatus.Depth = 0;
+            txtRoomStatus.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtRoomStatus.LeadingIcon = null;
+            txtRoomStatus.Location = new Point(21, 69);
+            txtRoomStatus.Margin = new Padding(3, 4, 3, 4);
+            txtRoomStatus.MaxLength = 50;
+            txtRoomStatus.MouseState = MaterialSkin.MouseState.OUT;
+            txtRoomStatus.Multiline = false;
+            txtRoomStatus.Name = "txtRoomStatus";
+            txtRoomStatus.ReadOnly = true;
+            txtRoomStatus.Size = new Size(361, 50);
+            txtRoomStatus.TabIndex = 19;
+            txtRoomStatus.Text = "";
+            txtRoomStatus.TrailingIcon = null;
+            // 
             // panel19
             // 
-            panel19.Controls.Add(dateTimePicker6);
             panel19.Controls.Add(materialLabel12);
+            panel19.Controls.Add(txtFrom);
             panel19.Dock = DockStyle.Fill;
             panel19.Location = new Point(0, 0);
             panel19.Margin = new Padding(0);
@@ -876,16 +923,6 @@
             panel19.Padding = new Padding(17, 20, 17, 20);
             panel19.Size = new Size(402, 64);
             panel19.TabIndex = 17;
-            // 
-            // dateTimePicker6
-            // 
-            dateTimePicker6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePicker6.CustomFormat = "dd/MM/yyyy";
-            dateTimePicker6.Location = new Point(97, 21);
-            dateTimePicker6.Margin = new Padding(3, 4, 3, 4);
-            dateTimePicker6.Name = "dateTimePicker6";
-            dateTimePicker6.Size = new Size(247, 27);
-            dateTimePicker6.TabIndex = 15;
             // 
             // materialLabel12
             // 
@@ -900,9 +937,29 @@
             materialLabel12.TabIndex = 14;
             materialLabel12.Text = "FROM:";
             // 
+            // txtFrom
+            // 
+            txtFrom.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtFrom.AnimateReadOnly = false;
+            txtFrom.BorderStyle = BorderStyle.None;
+            txtFrom.Depth = 0;
+            txtFrom.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtFrom.LeadingIcon = null;
+            txtFrom.Location = new Point(101, 10);
+            txtFrom.Margin = new Padding(3, 4, 3, 4);
+            txtFrom.MaxLength = 50;
+            txtFrom.MouseState = MaterialSkin.MouseState.OUT;
+            txtFrom.Multiline = false;
+            txtFrom.Name = "txtFrom";
+            txtFrom.ReadOnly = true;
+            txtFrom.Size = new Size(277, 50);
+            txtFrom.TabIndex = 19;
+            txtFrom.Text = "";
+            txtFrom.TrailingIcon = null;
+            // 
             // panel20
             // 
-            panel20.Controls.Add(dateTimePicker7);
+            panel20.Controls.Add(txtTo);
             panel20.Controls.Add(materialLabel13);
             panel20.Dock = DockStyle.Fill;
             panel20.Location = new Point(402, 0);
@@ -912,14 +969,25 @@
             panel20.Size = new Size(402, 64);
             panel20.TabIndex = 19;
             // 
-            // dateTimePicker7
+            // txtTo
             // 
-            dateTimePicker7.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePicker7.CustomFormat = "dd/MM/yyyy";
-            dateTimePicker7.Location = new Point(56, 16);
-            dateTimePicker7.Name = "dateTimePicker7";
-            dateTimePicker7.Size = new Size(285, 27);
-            dateTimePicker7.TabIndex = 16;
+            txtTo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtTo.AnimateReadOnly = false;
+            txtTo.BorderStyle = BorderStyle.None;
+            txtTo.Depth = 0;
+            txtTo.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtTo.LeadingIcon = null;
+            txtTo.Location = new Point(59, 10);
+            txtTo.Margin = new Padding(3, 4, 3, 4);
+            txtTo.MaxLength = 50;
+            txtTo.MouseState = MaterialSkin.MouseState.OUT;
+            txtTo.Multiline = false;
+            txtTo.Name = "txtTo";
+            txtTo.ReadOnly = true;
+            txtTo.Size = new Size(322, 50);
+            txtTo.TabIndex = 20;
+            txtTo.Text = "";
+            txtTo.TrailingIcon = null;
             // 
             // materialLabel13
             // 
@@ -977,7 +1045,6 @@
             // 
             // panel12
             // 
-            panel12.Controls.Add(materialButton3);
             panel12.Controls.Add(materialButton2);
             panel12.Dock = DockStyle.Fill;
             panel12.Location = new Point(402, 0);
@@ -986,27 +1053,6 @@
             panel12.Padding = new Padding(17, 20, 17, 20);
             panel12.Size = new Size(402, 64);
             panel12.TabIndex = 1;
-            // 
-            // materialButton3
-            // 
-            materialButton3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            materialButton3.AutoSize = false;
-            materialButton3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton3.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton3.Depth = 0;
-            materialButton3.HighEmphasis = true;
-            materialButton3.Icon = null;
-            materialButton3.Location = new Point(187, 8);
-            materialButton3.Margin = new Padding(5, 8, 5, 8);
-            materialButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton3.Name = "materialButton3";
-            materialButton3.NoAccentTextColor = Color.Empty;
-            materialButton3.Size = new Size(193, 48);
-            materialButton3.TabIndex = 12;
-            materialButton3.Text = "UPDATE ROOM STATUS";
-            materialButton3.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton3.UseAccentColor = false;
-            materialButton3.UseVisualStyleBackColor = true;
             // 
             // materialButton2
             // 
@@ -1030,7 +1076,7 @@
             // 
             // panel6
             // 
-            panel6.Controls.Add(materialButton1);
+            panel6.Controls.Add(btnUpdateService);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(0);
@@ -1039,32 +1085,33 @@
             panel6.Size = new Size(402, 64);
             panel6.TabIndex = 0;
             // 
-            // materialButton1
+            // btnUpdateService
             // 
-            materialButton1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            materialButton1.AutoSize = false;
-            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton1.Depth = 0;
-            materialButton1.HighEmphasis = true;
-            materialButton1.Icon = null;
-            materialButton1.Location = new Point(187, 8);
-            materialButton1.Margin = new Padding(5, 8, 5, 8);
-            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton1.Name = "materialButton1";
-            materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(193, 48);
-            materialButton1.TabIndex = 11;
-            materialButton1.Text = "UPDATE SERVICE";
-            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton1.UseAccentColor = false;
-            materialButton1.UseVisualStyleBackColor = true;
+            btnUpdateService.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnUpdateService.AutoSize = false;
+            btnUpdateService.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnUpdateService.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnUpdateService.Depth = 0;
+            btnUpdateService.HighEmphasis = true;
+            btnUpdateService.Icon = null;
+            btnUpdateService.Location = new Point(187, 8);
+            btnUpdateService.Margin = new Padding(5, 8, 5, 8);
+            btnUpdateService.MouseState = MaterialSkin.MouseState.HOVER;
+            btnUpdateService.Name = "btnUpdateService";
+            btnUpdateService.NoAccentTextColor = Color.Empty;
+            btnUpdateService.Size = new Size(193, 48);
+            btnUpdateService.TabIndex = 11;
+            btnUpdateService.Text = "UPDATE SERVICE";
+            btnUpdateService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnUpdateService.UseAccentColor = false;
+            btnUpdateService.UseVisualStyleBackColor = true;
+            btnUpdateService.Click += btnUpdateService_Click;
             // 
             // panel13
             // 
-            panel13.Controls.Add(materialButton6);
-            panel13.Controls.Add(materialButton5);
-            panel13.Controls.Add(materialButton4);
+            panel13.Controls.Add(btnCheckout);
+            panel13.Controls.Add(btnSave);
+            panel13.Controls.Add(btnCancel);
             panel13.Dock = DockStyle.Fill;
             panel13.Location = new Point(469, 807);
             panel13.Margin = new Padding(0);
@@ -1073,72 +1120,75 @@
             panel13.Size = new Size(804, 64);
             panel13.TabIndex = 11;
             // 
-            // materialButton6
+            // btnCheckout
             // 
-            materialButton6.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            materialButton6.AutoSize = false;
-            materialButton6.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton6.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton6.Depth = 0;
-            materialButton6.HighEmphasis = true;
-            materialButton6.Icon = null;
-            materialButton6.Location = new Point(185, 8);
-            materialButton6.Margin = new Padding(5, 8, 5, 8);
-            materialButton6.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton6.Name = "materialButton6";
-            materialButton6.NoAccentTextColor = Color.Empty;
-            materialButton6.Size = new Size(193, 48);
-            materialButton6.TabIndex = 15;
-            materialButton6.Text = "CHECKOUT TO INVOICE";
-            materialButton6.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton6.UseAccentColor = false;
-            materialButton6.UseVisualStyleBackColor = true;
+            btnCheckout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCheckout.AutoSize = false;
+            btnCheckout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCheckout.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCheckout.Depth = 0;
+            btnCheckout.HighEmphasis = true;
+            btnCheckout.Icon = null;
+            btnCheckout.Location = new Point(185, 8);
+            btnCheckout.Margin = new Padding(5, 8, 5, 8);
+            btnCheckout.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCheckout.Name = "btnCheckout";
+            btnCheckout.NoAccentTextColor = Color.Empty;
+            btnCheckout.Size = new Size(193, 48);
+            btnCheckout.TabIndex = 15;
+            btnCheckout.Text = "RECEIVE ROOM";
+            btnCheckout.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnCheckout.UseAccentColor = false;
+            btnCheckout.UseVisualStyleBackColor = true;
+            btnCheckout.Click += btnCheckout_Click;
             // 
-            // materialButton5
+            // btnSave
             // 
-            materialButton5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            materialButton5.AutoSize = false;
-            materialButton5.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton5.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton5.Depth = 0;
-            materialButton5.HighEmphasis = true;
-            materialButton5.Icon = null;
-            materialButton5.Location = new Point(387, 8);
-            materialButton5.Margin = new Padding(5, 8, 5, 8);
-            materialButton5.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton5.Name = "materialButton5";
-            materialButton5.NoAccentTextColor = Color.Empty;
-            materialButton5.Size = new Size(193, 48);
-            materialButton5.TabIndex = 14;
-            materialButton5.Text = "SAVE";
-            materialButton5.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton5.UseAccentColor = false;
-            materialButton5.UseVisualStyleBackColor = true;
+            btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSave.AutoSize = false;
+            btnSave.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnSave.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnSave.Depth = 0;
+            btnSave.HighEmphasis = true;
+            btnSave.Icon = null;
+            btnSave.Location = new Point(388, 8);
+            btnSave.Margin = new Padding(5, 8, 5, 8);
+            btnSave.MouseState = MaterialSkin.MouseState.HOVER;
+            btnSave.Name = "btnSave";
+            btnSave.NoAccentTextColor = Color.Empty;
+            btnSave.Size = new Size(193, 48);
+            btnSave.TabIndex = 14;
+            btnSave.Text = "SAVE";
+            btnSave.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnSave.UseAccentColor = false;
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
-            // materialButton4
+            // btnCancel
             // 
-            materialButton4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            materialButton4.AutoSize = false;
-            materialButton4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton4.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton4.Depth = 0;
-            materialButton4.HighEmphasis = true;
-            materialButton4.Icon = null;
-            materialButton4.Location = new Point(590, 8);
-            materialButton4.Margin = new Padding(5, 8, 5, 8);
-            materialButton4.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton4.Name = "materialButton4";
-            materialButton4.NoAccentTextColor = Color.Empty;
-            materialButton4.Size = new Size(193, 48);
-            materialButton4.TabIndex = 13;
-            materialButton4.Text = "CANCEL";
-            materialButton4.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
-            materialButton4.UseAccentColor = true;
-            materialButton4.UseVisualStyleBackColor = true;
+            btnCancel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnCancel.AutoSize = false;
+            btnCancel.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCancel.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCancel.Depth = 0;
+            btnCancel.HighEmphasis = true;
+            btnCancel.Icon = null;
+            btnCancel.Location = new Point(590, 8);
+            btnCancel.Margin = new Padding(5, 8, 5, 8);
+            btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCancel.Name = "btnCancel";
+            btnCancel.NoAccentTextColor = Color.Empty;
+            btnCancel.Size = new Size(193, 48);
+            btnCancel.TabIndex = 13;
+            btnCancel.Text = "CANCEL";
+            btnCancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
+            btnCancel.UseAccentColor = true;
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // panel14
             // 
-            panel14.Controls.Add(materialLabel14);
+            panel14.Controls.Add(labelRoomID);
             panel14.Dock = DockStyle.Fill;
             panel14.Location = new Point(67, 0);
             panel14.Margin = new Padding(0);
@@ -1147,27 +1197,29 @@
             panel14.Size = new Size(402, 64);
             panel14.TabIndex = 12;
             // 
-            // materialLabel14
+            // labelRoomID
             // 
-            materialLabel14.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            materialLabel14.AutoSize = true;
-            materialLabel14.Depth = 0;
-            materialLabel14.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel14.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel14.Location = new Point(21, 20);
-            materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel14.Name = "materialLabel14";
-            materialLabel14.Size = new Size(97, 24);
-            materialLabel14.TabIndex = 15;
-            materialLabel14.Text = "{ROOM ID}";
+            labelRoomID.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            labelRoomID.AutoSize = true;
+            labelRoomID.Depth = 0;
+            labelRoomID.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            labelRoomID.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            labelRoomID.Location = new Point(28, 20);
+            labelRoomID.MouseState = MaterialSkin.MouseState.HOVER;
+            labelRoomID.Name = "labelRoomID";
+            labelRoomID.Size = new Size(97, 24);
+            labelRoomID.TabIndex = 15;
+            labelRoomID.Text = "{ROOM ID}";
             // 
             // panel11
             // 
-            panel11.Controls.Add(materialTextBox3);
-            panel11.Controls.Add(materialLabel21);
-            panel11.Controls.Add(materialTextBox2);
+            panel11.Controls.Add(txtPhone);
+            panel11.Controls.Add(materialLabel18);
+            panel11.Controls.Add(txtName);
+            panel11.Controls.Add(txtCCCD);
             panel11.Controls.Add(materialLabel17);
-            panel11.Controls.Add(materialTextBox1);
+            panel11.Controls.Add(materialLabel16);
+            panel11.Controls.Add(txtInvoiceId);
             panel11.Controls.Add(materialLabel15);
             panel11.Dock = DockStyle.Fill;
             panel11.Location = new Point(67, 64);
@@ -1177,56 +1229,78 @@
             panel11.Size = new Size(402, 679);
             panel11.TabIndex = 13;
             // 
-            // materialTextBox3
+            // txtPhone
             // 
-            materialTextBox3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox3.AnimateReadOnly = false;
-            materialTextBox3.BorderStyle = BorderStyle.None;
-            materialTextBox3.Depth = 0;
-            materialTextBox3.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox3.LeadingIcon = null;
-            materialTextBox3.Location = new Point(21, 333);
-            materialTextBox3.Margin = new Padding(3, 4, 3, 4);
-            materialTextBox3.MaxLength = 50;
-            materialTextBox3.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox3.Multiline = false;
-            materialTextBox3.Name = "materialTextBox3";
-            materialTextBox3.Size = new Size(361, 50);
-            materialTextBox3.TabIndex = 22;
-            materialTextBox3.Text = "";
-            materialTextBox3.TrailingIcon = null;
+            txtPhone.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtPhone.AnimateReadOnly = false;
+            txtPhone.BorderStyle = BorderStyle.None;
+            txtPhone.Depth = 0;
+            txtPhone.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtPhone.LeadingIcon = null;
+            txtPhone.Location = new Point(21, 488);
+            txtPhone.Margin = new Padding(3, 4, 3, 4);
+            txtPhone.MaxLength = 50;
+            txtPhone.MouseState = MaterialSkin.MouseState.OUT;
+            txtPhone.Multiline = false;
+            txtPhone.Name = "txtPhone";
+            txtPhone.ReadOnly = true;
+            txtPhone.Size = new Size(361, 50);
+            txtPhone.TabIndex = 19;
+            txtPhone.Text = "";
+            txtPhone.TrailingIcon = null;
             // 
-            // materialLabel21
+            // materialLabel18
             // 
-            materialLabel21.AutoSize = true;
-            materialLabel21.Depth = 0;
-            materialLabel21.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel21.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel21.Location = new Point(21, 297);
-            materialLabel21.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel21.Name = "materialLabel21";
-            materialLabel21.Size = new Size(197, 24);
-            materialLabel21.TabIndex = 21;
-            materialLabel21.Text = "INCHARGE BY STAFF:";
+            materialLabel18.AutoSize = true;
+            materialLabel18.Depth = 0;
+            materialLabel18.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel18.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            materialLabel18.Location = new Point(21, 452);
+            materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel18.Name = "materialLabel18";
+            materialLabel18.Size = new Size(72, 24);
+            materialLabel18.TabIndex = 18;
+            materialLabel18.Text = "PHONE:";
             // 
-            // materialTextBox2
+            // txtName
             // 
-            materialTextBox2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox2.AnimateReadOnly = false;
-            materialTextBox2.BorderStyle = BorderStyle.None;
-            materialTextBox2.Depth = 0;
-            materialTextBox2.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox2.LeadingIcon = null;
-            materialTextBox2.Location = new Point(21, 195);
-            materialTextBox2.Margin = new Padding(3, 4, 3, 4);
-            materialTextBox2.MaxLength = 50;
-            materialTextBox2.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox2.Multiline = false;
-            materialTextBox2.Name = "materialTextBox2";
-            materialTextBox2.Size = new Size(361, 50);
-            materialTextBox2.TabIndex = 19;
-            materialTextBox2.Text = "";
-            materialTextBox2.TrailingIcon = null;
+            txtName.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtName.AnimateReadOnly = false;
+            txtName.BorderStyle = BorderStyle.None;
+            txtName.Depth = 0;
+            txtName.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtName.LeadingIcon = null;
+            txtName.Location = new Point(21, 195);
+            txtName.Margin = new Padding(3, 4, 3, 4);
+            txtName.MaxLength = 50;
+            txtName.MouseState = MaterialSkin.MouseState.OUT;
+            txtName.Multiline = false;
+            txtName.Name = "txtName";
+            txtName.ReadOnly = true;
+            txtName.Size = new Size(361, 50);
+            txtName.TabIndex = 19;
+            txtName.Text = "";
+            txtName.TrailingIcon = null;
+            // 
+            // txtCCCD
+            // 
+            txtCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtCCCD.AnimateReadOnly = false;
+            txtCCCD.BorderStyle = BorderStyle.None;
+            txtCCCD.Depth = 0;
+            txtCCCD.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtCCCD.LeadingIcon = null;
+            txtCCCD.Location = new Point(21, 349);
+            txtCCCD.Margin = new Padding(3, 4, 3, 4);
+            txtCCCD.MaxLength = 50;
+            txtCCCD.MouseState = MaterialSkin.MouseState.OUT;
+            txtCCCD.Multiline = false;
+            txtCCCD.Name = "txtCCCD";
+            txtCCCD.ReadOnly = true;
+            txtCCCD.Size = new Size(361, 50);
+            txtCCCD.TabIndex = 16;
+            txtCCCD.Text = "";
+            txtCCCD.TrailingIcon = null;
             // 
             // materialLabel17
             // 
@@ -1237,28 +1311,42 @@
             materialLabel17.Location = new Point(21, 159);
             materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel17.Name = "materialLabel17";
-            materialLabel17.Size = new Size(83, 24);
+            materialLabel17.Size = new Size(62, 24);
             materialLabel17.TabIndex = 18;
-            materialLabel17.Text = "INVOICE:";
+            materialLabel17.Text = "NAME:";
             // 
-            // materialTextBox1
+            // materialLabel16
             // 
-            materialTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox1.AnimateReadOnly = false;
-            materialTextBox1.BorderStyle = BorderStyle.None;
-            materialTextBox1.Depth = 0;
-            materialTextBox1.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox1.LeadingIcon = null;
-            materialTextBox1.Location = new Point(21, 56);
-            materialTextBox1.Margin = new Padding(3, 4, 3, 4);
-            materialTextBox1.MaxLength = 50;
-            materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox1.Multiline = false;
-            materialTextBox1.Name = "materialTextBox1";
-            materialTextBox1.Size = new Size(361, 50);
-            materialTextBox1.TabIndex = 16;
-            materialTextBox1.Text = "";
-            materialTextBox1.TrailingIcon = null;
+            materialLabel16.AutoSize = true;
+            materialLabel16.Depth = 0;
+            materialLabel16.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel16.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            materialLabel16.Location = new Point(21, 313);
+            materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel16.Name = "materialLabel16";
+            materialLabel16.Size = new Size(104, 24);
+            materialLabel16.TabIndex = 15;
+            materialLabel16.Text = "CITIZEN ID:";
+            // 
+            // txtInvoiceId
+            // 
+            txtInvoiceId.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtInvoiceId.AnimateReadOnly = false;
+            txtInvoiceId.BorderStyle = BorderStyle.None;
+            txtInvoiceId.Depth = 0;
+            txtInvoiceId.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtInvoiceId.LeadingIcon = null;
+            txtInvoiceId.Location = new Point(21, 56);
+            txtInvoiceId.Margin = new Padding(3, 4, 3, 4);
+            txtInvoiceId.MaxLength = 50;
+            txtInvoiceId.MouseState = MaterialSkin.MouseState.OUT;
+            txtInvoiceId.Multiline = false;
+            txtInvoiceId.Name = "txtInvoiceId";
+            txtInvoiceId.ReadOnly = true;
+            txtInvoiceId.Size = new Size(361, 50);
+            txtInvoiceId.TabIndex = 16;
+            txtInvoiceId.Text = "";
+            txtInvoiceId.TrailingIcon = null;
             // 
             // materialLabel15
             // 
@@ -1269,9 +1357,9 @@
             materialLabel15.Location = new Point(21, 20);
             materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel15.Name = "materialLabel15";
-            materialLabel15.Size = new Size(111, 24);
+            materialLabel15.Size = new Size(83, 24);
             materialLabel15.TabIndex = 15;
-            materialLabel15.Text = "CUSTOMER:";
+            materialLabel15.Text = "INVOICE:";
             // 
             // RentRoomDetail
             // 
@@ -1317,7 +1405,7 @@
             tableLayoutPanel7.ResumeLayout(false);
             panel18.ResumeLayout(false);
             panel18.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewService).EndInit();
             panel10.ResumeLayout(false);
             panel10.PerformLayout();
             panel19.ResumeLayout(false);
@@ -1391,41 +1479,45 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel9;
         private TableLayoutPanel tableLayoutPanel7;
         private Panel panel19;
-        private DateTimePicker dateTimePicker6;
         private MaterialSkin.Controls.MaterialLabel materialLabel12;
         private Panel panel20;
-        private DateTimePicker dateTimePicker7;
         private MaterialSkin.Controls.MaterialLabel materialLabel13;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel18;
-        private DataGridView dataGridView6;
+        private DataGridView dataGridViewService;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
         private Panel panel10;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox2;
         private MaterialSkin.Controls.MaterialLabel materialLabel20;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox1;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private MaterialSkin.Controls.MaterialButton btnUpdateService;
         private MaterialSkin.Controls.MaterialLabel materialLabel19;
         private TableLayoutPanel tableLayoutPanel8;
         private Panel panel12;
-        private MaterialSkin.Controls.MaterialButton materialButton3;
         private MaterialSkin.Controls.MaterialButton materialButton2;
         private Panel panel6;
         private Panel panel13;
-        private MaterialSkin.Controls.MaterialButton materialButton6;
-        private MaterialSkin.Controls.MaterialButton materialButton5;
-        private MaterialSkin.Controls.MaterialButton materialButton4;
+        private MaterialSkin.Controls.MaterialButton btnCheckout;
+        private MaterialSkin.Controls.MaterialButton btnSave;
+        private MaterialSkin.Controls.MaterialButton btnCancel;
         private Panel panel14;
-        private MaterialSkin.Controls.MaterialLabel materialLabel14;
+        private MaterialSkin.Controls.MaterialLabel labelRoomID;
         private Panel panel11;
         private MaterialSkin.Controls.MaterialLabel materialLabel15;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox3;
-        private MaterialSkin.Controls.MaterialLabel materialLabel21;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox2;
+        private MaterialSkin.Controls.MaterialTextBox txtName;
         private MaterialSkin.Controls.MaterialLabel materialLabel17;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
+        private MaterialSkin.Controls.MaterialTextBox txtInvoiceId;
+        private MaterialSkin.Controls.MaterialTextBox txtPhone;
+        private MaterialSkin.Controls.MaterialLabel materialLabel18;
+        private MaterialSkin.Controls.MaterialTextBox txtCCCD;
+        private MaterialSkin.Controls.MaterialLabel materialLabel16;
+        private MaterialSkin.Controls.MaterialTextBox txtRoomStatus;
+        private MaterialSkin.Controls.MaterialTextBox txtFrom;
+        private MaterialSkin.Controls.MaterialTextBox txtTo;
+        private DateTimePicker datetimeChange;
+        private MaterialSkin.Controls.MaterialLabel changeEndT;
+        private MaterialSkin.Controls.MaterialComboBox cbxRoomClean;
+        private MaterialSkin.Controls.MaterialButton btnChange;
     }
 }

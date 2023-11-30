@@ -395,9 +395,9 @@ namespace HotelManagement.GUI
             materialLabel1.Location = new Point(17, 150);
             materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(58, 24);
+            materialLabel1.Size = new Size(104, 24);
             materialLabel1.TabIndex = 0;
-            materialLabel1.Text = "CCCD:";
+            materialLabel1.Text = "CITIZEN ID:";
             // 
             // panel2
             // 

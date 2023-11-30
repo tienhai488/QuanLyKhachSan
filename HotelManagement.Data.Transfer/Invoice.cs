@@ -1,115 +1,133 @@
-﻿namespace HotelManagement.Data
+﻿using HotelManagement.Data.Transfer;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Numerics;
+
+namespace HotelManagement.Data
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Numerics;
-    using System.Text;
-    using System.Threading.Tasks;
-
-    
-
+    [Table("rent_room_detail")]
     public class RentRoomDetail
     {
-        private BigInteger id, staffId, invoiceId;
-        private DateTime startTime, endTime, addedTime;
-        private string roomId;
+        [Key]
+        [StringLength(50)]
+        [Column("ID", TypeName = "varchar")]
+        private string id;
+
+        [Column("AddedTime", TypeName = "datetime")]
+        private string addedTime;
+
+        [Column("PaidTime", TypeName = "datetime")]
+        private string paidTime;
+
+        [StringLength(50)]
+        [Column("RoomID", TypeName = "varchar")]
+        private string roomID;
+
+        [ForeignKey("RoomID")]
         private Room room;
+
+        private BigInteger staffID;
+
+        [ForeignKey("StaffID")]
         private Staff staff;
+
+        [StringLength(50)]
+        [Column("InvoiceID", TypeName = "varchar")]
+        private string invoiceID;
+
+        [ForeignKey("InvoiceID")]
         private Invoice invoice;
 
-        public BigInteger Id { get => id; private set => id = value; }
-        public string RoomId { get => roomId; private set => roomId = value; }
-        public BigInteger StaffId { get => staffId; private set => staffId = value; }
-        public BigInteger InvoiceId { get => invoiceId; private set => invoiceId = value; }
-
-        public DateTime StartTime { get => startTime; set => startTime = value; }
-        public DateTime EndTime { get => endTime; set => endTime = value; }
-        public DateTime AddedTime { get => addedTime; set => addedTime = value; }
+        public string Id { get => id; set => id = value; }
+        public string AddedTime { get => addedTime; set => addedTime = value; }
+        public string PaidTime { get => paidTime; set => paidTime = value; }
+        public string RoomID { get => roomID; set => roomID = value; }
         public Room Room { get => room; set => room = value; }
+        public BigInteger StaffID { get => staffID; set => staffID = value; }
         public Staff Staff { get => staff; set => staff = value; }
+        public string InvoiceID { get => invoiceID; set => invoiceID = value; }
         public Invoice Invoice { get => invoice; set => invoice = value; }
-        public RentRoomDetail(BigInteger id, string roomId, BigInteger staffId, BigInteger invoiceId)
-        {
-            this.id = id;
-            this.roomId = roomId;
-            this.staffId = staffId;
-            this.invoiceId = invoiceId;
-        }
-        public RentRoomDetail()
-        {
-
-        }
     }
 
+    [Table("use_service_detail")]
     public class UseServiceDetail
     {
-        private BigInteger id, staffId, invoiceId;
-        private string serviceId;
-        private DateTime usedTime;
-        private int quantity;
-        private Service service;
+        [Key]
+        [StringLength(50)]
+        [Column("ID", TypeName = "varchar")]
+        private string id;
+
+        [Column("Quantity", TypeName = "int")]
+        private string quantity;
+
+        private BigInteger staffID;
+
+        [ForeignKey("StaffID")]
         private Staff staff;
+
+        [StringLength(50)]
+        [Column("InvoiceID", TypeName = "varchar")]
+        private string invoiceID;
+
+        [ForeignKey("InvoiceID")]
         private Invoice invoice;
-        private CancelationStatus cancelationStatus;
 
-        public BigInteger Id { get => id; private set => id = value; }
-        public BigInteger StaffId { get => staffId; private set => staffId = value; }
-        public BigInteger InvoiceId { get => invoiceId; private set => invoiceId = value; }
-        public string ServiceId { get => serviceId; private set => serviceId = value; }
+        [StringLength(50)]
+        [Column("ServiceID", TypeName = "varchar")]
+        private string serviceID;
 
-        public DateTime UsedTime { get => usedTime; set => usedTime = value; }
-        public int Quantity { get => quantity; set => quantity = value; }
-        public Service Service { get => service; set => service = value; }
+        [ForeignKey("ServiceID")]
+        private Service service;
+
+        public string Id { get => id; set => id = value; }
+        public string Quantity { get => quantity; set => quantity = value; }
+        public BigInteger StaffID { get => staffID; set => staffID = value; }
         public Staff Staff { get => staff; set => staff = value; }
+        public string InvoiceID { get => invoiceID; set => invoiceID = value; }
         public Invoice Invoice { get => invoice; set => invoice = value; }
-        public CancelationStatus CancelationStatus { get => cancelationStatus; set => cancelationStatus = value; }
-
-        public UseServiceDetail(BigInteger id, BigInteger staffId, BigInteger invoiceId, string serviceId)
-        {
-            this.id = id;
-            this.staffId = staffId;
-            this.invoiceId = invoiceId;
-            this.serviceId = serviceId;
-        }
-        public UseServiceDetail()
-        {
-
-        }
+        public string ServiceID { get => serviceID; set => serviceID = value; }
+        public Service Service { get => service; set => service = value; }
     }
 
+    [Table("invoice")]
     public class Invoice
     {
-        private BigInteger id, staffId;
-        private string customerId;
-        private Staff staff;
+        [Key]
+        [StringLength(50)]
+        [Column("ID", TypeName = "varchar")]
+        private string id;
+
+        [StringLength(50)]
+        [Column("CustomerID", TypeName = "varchar")]
+        private string customerID;
+
+        [ForeignKey("CustomerID")]
         private Customer customer;
-        private readonly IList<RentRoomDetail> rentRooms;
-        private readonly IList<UseServiceDetail> useServices;
-        private double subtotal, totalDue;
-        private DateTime? paidTime;
 
-        public BigInteger Id { get => id; private set => id = value; }
-        public BigInteger StaffId { get => staffId; private set => staffId = value; }
-        public string CustomerId { get => customerId; private set => customerId = value; }
+        [StringLength(50)]
+        [Column("ReservationID", TypeName = "varchar")]
+        private string reservationID;
 
-        public Staff Staff { get => staff; set => staff = value; }
+        [ForeignKey("ReservationID")]
+        public virtual Reservation Reservation { get; set; }
+
+        private BigInteger staffID;
+
+        [ForeignKey("StaffID")]
+        private Staff staff;
+
+        private List<RentRoomDetail> rentRoomDetails;
+
+        private List<UseServiceDetail> useServiceDetails;
+
+        public string Id { get => id; set => id = value; }
+        public string CustomerID { get => customerID; set => customerID = value; }
         public Customer Customer { get => customer; set => customer = value; }
-
-        public IList<RentRoomDetail> RentRooms => rentRooms;
-
-        public IList<UseServiceDetail> UseServices => useServices;
-
-        public double Subtotal { get => subtotal; set => subtotal = value; }
-        public double TotalDue { get => totalDue; set => totalDue = value; }
-        public DateTime? PaidTime { get => paidTime; set => paidTime = value; }
-
-        public Invoice(BigInteger id, BigInteger staffId, string customerId)
-        {
-            this.id = id;
-            this.staffId = staffId;
-            this.customerId = customerId;
-        }
-        public Invoice() { }
+        public string ReservationID { get => reservationID; set => reservationID = value; }
+        //public Reservation Reservation { get => reservation; set => reservation = value; }
+        public BigInteger StaffID { get => staffID; set => staffID = value; }
+        public Staff Staff { get => staff; set => staff = value; }
+        public List<RentRoomDetail> RentRoomDetails { get => rentRoomDetails; set => rentRoomDetails = value; }
+        public List<UseServiceDetail> UseServiceDetails { get => useServiceDetails; set => useServiceDetails = value; }
     }
 }
