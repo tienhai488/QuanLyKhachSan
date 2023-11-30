@@ -29,6 +29,12 @@
             modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
             modelBuilder.Entity<Reservation>()
                 .BigIntegerIdProperty(nameof(Reservation.StaffID), "StaffID", "SA", "3");
+            modelBuilder.Entity<Invoice>()
+                .BigIntegerIdProperty(nameof(Invoice.StaffID), "StaffID", "SA", "3");
+            modelBuilder.Entity<RentRoomDetail>()
+                            .BigIntegerIdProperty(nameof(RentRoomDetail.StaffID), "StaffID", "SA", "3");
+            modelBuilder.Entity<UseServiceDetail>()
+                            .BigIntegerIdProperty(nameof(UseServiceDetail.StaffID), "StaffID", "SA", "3");
 
         }
     }

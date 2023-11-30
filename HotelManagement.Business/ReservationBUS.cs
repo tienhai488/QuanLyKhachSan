@@ -18,6 +18,7 @@ namespace HotelManagement.Business
             return reservationDAO.Reservations
                 .Include(r => r.Staff)
                 .Include(r => r.Customer)
+                .Include(r => r.Invoice)
                 .AsNoTracking()
                 .ToList();
         }
@@ -31,6 +32,7 @@ namespace HotelManagement.Business
         {
             return getAll().Find(item => item.Id.Equals(id));
         }
+
         public int add(Reservation reservation)
         {
             reservationDAO.Entry(reservation).State = EntityState.Detached;
@@ -79,10 +81,16 @@ namespace HotelManagement.Business
         public List<RoomReservation> getAllRoomReservation()
         {
             return reservationDAO.RoomReservations
-                .Include(r => r.Room.RoomType)
                 .Include(r => r.Room)
+                .Include(r => r.Room.RoomType)
                 .Include(r => r.Reservation)
+                .Include(r => r.Reservation.Customer)
                 .AsNoTracking().ToList();
+        }
+
+        public RoomReservation getRoomReservation(string reservationId, string roomId)
+        {
+            return getAllRoomReservation().Find(item => item.ReservationID.Equals(reservationId) && item.RoomID.Equals(roomId));
         }
 
         public List<RoomReservation> getAllRoomReservationByReservationId(string reservationID)
@@ -137,26 +145,48 @@ namespace HotelManagement.Business
                 .Count();
         }
 
-
-
-        public List<RoomReservation> getListBookedRoom(DateTime from)
+        public List<RoomReservation> getListRoomReservationBookedAndRentedHistory(DateTime date)
         {
             return getAllRoomReservation()
-                .Where(item => item.Status == RoomReservationStatus.Booked && Functions.getDayGap(from, item.EndTime) >= 0)
+                .Where(item =>
+                {
+                    bool checkInRange = (Functions.getDayGap(item.StartTime, date) >= 0 && Functions.getDayGap(date, item.EndTime) >= 0);
+                    bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented;
+                    return checkStatus && checkInRange;
+                })
                 .ToList();
         }
 
-        public List<RoomReservation> getListBookedRoomWithReservationID(DateTime from, string reservationId)
+        public List<RoomReservation> getListBookedAndRentedRoom(DateTime from, DateTime to)
         {
             return getAllRoomReservation()
-                .Where(item => (item.Status == RoomReservationStatus.Booked && Functions.getDayGap(from, item.EndTime) >= 0) && !item.ReservationID.Equals(reservationId))
+                .Where(item =>
+                {
+                    bool checkInRange = (Functions.getDayGap(from, item.StartTime) >= 0 && Functions.getDayGap(item.StartTime, to) >= 0) ||
+                    (Functions.getDayGap(from, item.EndTime) >= 0 && Functions.getDayGap(item.EndTime, to) >= 0);
+                    bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented;
+                    return checkStatus && checkInRange;
+                })
+                .ToList();  
+        }
+
+        public List<RoomReservation> getListBookedAndRentedRoomWithReservationID(DateTime from, DateTime to, string reservationId)
+        {
+            return getAllRoomReservation()
+                .Where(item =>
+                {
+                    bool checkInRange = (Functions.getDayGap(from, item.StartTime) >= 0 && Functions.getDayGap(item.StartTime, to) >= 0) ||
+                    (Functions.getDayGap(from, item.EndTime) >= 0 && Functions.getDayGap(item.EndTime, to) >= 0);
+                    bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented;
+                    return checkStatus && checkInRange && !item.ReservationID.Equals(reservationId);
+                })
                 .ToList();
         }
 
-        public List<Room> getListRoomAllowBooking(DateTime from)
+        public List<Room> getListRoomAllowBooking(DateTime from, DateTime to)
         {
             //Danh sach cac phong da duoc dat
-            List<RoomReservation> listBookedRoom = getListBookedRoom(from);
+            List<RoomReservation> listBookedRoom = getListBookedAndRentedRoom(from, to);
 
             //Danh sach cac phong co the dat
             List<Room> listCleanedRoom = roomBUS.getAllCleanedRoom();
@@ -168,10 +198,10 @@ namespace HotelManagement.Business
             return listRoomAllowBooking;
         }
 
-        public List<Room> getListRoomAllowBookingWithReservationId(DateTime from, string reservationId)
+        public List<Room> getListRoomAllowBookingWithReservationId(DateTime from, DateTime to, string reservationId)
         {
             //Danh sach cac phong da duoc dat
-            List<RoomReservation> listBookedRoom = getListBookedRoomWithReservationID(from, reservationId);
+            List<RoomReservation> listBookedRoom = getListBookedAndRentedRoomWithReservationID(from, to, reservationId);
 
             //Danh sach cac phong co the dat
             List<Room> listCleanedRoom = roomBUS.getAllCleanedRoom();

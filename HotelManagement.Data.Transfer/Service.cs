@@ -6,23 +6,6 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Numerics;
 
-    public class CancelationStatus
-    {
-        private BigInteger id;
-        private string reason;
-        private double fee;
-        private DateTime time;
-        public BigInteger Id { get => id; private set => id = value; }
-        public string Reason { get => reason; set => reason = value; }
-        public double Fee { get => fee; set => fee = value; }
-        public DateTime Time { get => time; set => time = value; }
-        public CancelationStatus(BigInteger id)
-        {
-            this.id = id;
-        }
-        public CancelationStatus() { }
-    }
-
 
     [Table("service")]
     public class Service
