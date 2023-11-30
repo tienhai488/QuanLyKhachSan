@@ -6,8 +6,6 @@ using HotelManagement.Data.Transfer.Ultils;
 using HotelManagement.Ultils;
 using MaterialSkin;
 using MaterialSkin.Controls;
-using OfficeOpenXml.Drawing.Slicer.Style;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace HotelManagement.GUI
 {

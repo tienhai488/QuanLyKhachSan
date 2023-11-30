@@ -1,4 +1,4 @@
-﻿using HotelManagement.BUS;
+using HotelManagement.BUS;
 using HotelManagement.Business;
 using HotelManagement.Data;
 using HotelManagement.Data.Transfer;
