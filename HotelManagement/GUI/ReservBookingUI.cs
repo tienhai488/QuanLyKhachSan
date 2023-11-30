@@ -1,3 +1,4 @@
+
 ﻿using Google.Protobuf.Reflection;
 using HotelManagement.BUS;
 using HotelManagement.Business;
@@ -5,6 +6,7 @@ using HotelManagement.Data;
 using HotelManagement.Data.Transfer;
 using HotelManagement.Data.Transfer.Ultils;
 using HotelManagement.Ultils;
+
 using MaterialSkin;
 using MaterialSkin.Controls;
 using System.Data;
@@ -13,6 +15,10 @@ namespace HotelManagement.GUI
 {
     public partial class ReservBookingUI : MaterialForm
     {
+
+
+        public ReservBookingUI()
+
         //Danh sach phong de hien thi khi dat
         private DataTable dataTableRoom = new DataTable();
         //Danh sach phong da duoc dat
@@ -26,6 +32,7 @@ namespace HotelManagement.GUI
 
         ReservationUI reservationUI;
         public ReservBookingUI(ReservationUI reservationUI, string reservationId)
+
         {
             InitializeComponent();
 
@@ -36,7 +43,7 @@ namespace HotelManagement.GUI
             Primary.Pink800,   // Main background color
             Primary.Purple900, // Darker background color
             Primary.Purple500, // Accent background color
-            Accent.Amber200,   // Warm accent color for highlights
+
             TextShade.WHITE);    // Text color  
 
             dataTableRoom.Columns.Add("ID");
@@ -341,6 +348,7 @@ namespace HotelManagement.GUI
         }
 
         private void toTime_ValueChanged(object sender, EventArgs e)
+
         {
             initTableRoomByTime();
         }
@@ -417,6 +425,15 @@ namespace HotelManagement.GUI
             tableBook.DataSource = dataTableBook;
             initTableRoom(fromTime.Value, toTime.Value);
         }
+
+        /*1-anh-dat
+
+        private void mbtnFindCustomer_Click(object sender, EventArgs e)
+        {
+
+        }*/
+
         #endregion
+
     }
 }

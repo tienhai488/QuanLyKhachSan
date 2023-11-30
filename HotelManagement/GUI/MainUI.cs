@@ -52,12 +52,12 @@ namespace HotelManagement.GUI
             roomForm.Show();
             tabPage3.Controls.Add(roomForm);
 
-            InvoiceUI invoiceForm = new InvoiceUI();
-            invoiceForm.TopLevel = false;
-            invoiceForm.FormBorderStyle = FormBorderStyle.None;
-            invoiceForm.Dock = DockStyle.Fill;
-            invoiceForm.Show();
-            tabPage4.Controls.Add(invoiceForm);
+            InvoiceListUI invoiceList = new InvoiceListUI();
+            invoiceList.TopLevel = false;
+            invoiceList.FormBorderStyle = FormBorderStyle.None;
+            invoiceList.Dock = DockStyle.Fill;
+            invoiceList.Show();
+            tabPage4.Controls.Add(invoiceList);
 
             ServiceUI serviceForm = new ServiceUI();
             serviceForm.TopLevel = false;
