@@ -6,21 +6,25 @@ using HotelManagement.Data.Transfer.Ultils;
 using HotelManagement.Ultils;
 using MaterialSkin;
 using MaterialSkin.Controls;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace HotelManagement.GUI
 {
-    public partial class RentRoomDetail : MaterialForm
+    public partial class RentRoomDetailUI : MaterialForm
     {
         private RoomBUS roomBUS = new RoomBUS();
         private ReservationBUS reservationBUS = new ReservationBUS();
         private RoomReservationBUS roomReservationBUS = new RoomReservationBUS();
         private InvoiceBUS invoiceBUS = new InvoiceBUS();
+        private RentRoomDetailBUS rentRoomDetailBUS = new RentRoomDetailBUS();
+        private CustomerBUS customerBUS = new CustomerBUS();
 
         private Reservation reservationOld = null;
         private Room roomOld = null;
         private string roomStatusOld = null;
         private bool isCheckout = false;
-        public RentRoomDetail(Reservation reservation, Room room, string roomStatus)
+
+        public RentRoomDetailUI(Reservation reservation, Room room, string roomStatus)
         {
             InitializeComponent();
 
@@ -46,7 +50,7 @@ namespace HotelManagement.GUI
             initCbxRoomClean();
 
             this.isCheckout = txtRoomStatus.Text == "Rented";
-            loadButtonForm(this.isCheckout);
+            loadButtonForm();
         }
 
         #region method
@@ -104,10 +108,70 @@ namespace HotelManagement.GUI
             cbxRoomClean.SelectedIndex = this.roomOld.Status;
         }
 
-        public void loadButtonForm(bool isCheckout)
+        public void loadButtonForm()
         {
+            this.isCheckout = txtRoomStatus.Text == "Rented";
             btnUpdateService.Enabled = isCheckout;
             btnCheckout.Text = isCheckout ? "Checkout" : "Recive Room";
+        }
+
+        public string getRentRoomDetailId()
+        {
+            int index = 1;
+            if (rentRoomDetailBUS.getLengthRentRoomDetail() > 0)
+            {
+                index = rentRoomDetailBUS.getAll().Max(item => Functions.convertIdToInteger(item.Id, "RR")) + 1;
+            }
+            return "RR" + index.ToString("D5");
+        }
+
+        public void handleCheckout()
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn trả phỏng không?", "Trả phòng", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+            //int result = checkoutRentRoomDetail(this.reservationOld.Invoice.Id, this.roomOld.Id, )
+        }
+
+
+
+        public void handleReceiveRoom()
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn nhận phòng không?", "Nhận phòng", MessageBoxButtons.YesNo) != DialogResult.Yes)
+                return;
+            if (this.reservationOld.Invoice == null)
+            {
+                string cus_id = this.reservationOld.Customer.Id;
+                int i = invoiceBUS.add(new Invoice() { Id = txtInvoiceId.Text, StaffID = 1, CustomerID = cus_id, ReservationID = this.reservationOld.Id });
+
+                this.reservationOld = reservationBUS.getById(this.reservationOld.Id);
+            }
+
+
+
+            RentRoomDetail data = new RentRoomDetail();
+            data.Id = getRentRoomDetailId();
+            data.AddedTime = DateTime.Now;
+            data.StartTime = Functions.convertStringToDateTime(txtFrom.Text);
+            data.EndTime = Functions.convertStringToDateTime(txtTo.Text);
+            data.RoomID = this.roomOld.Id;
+            data.StaffID = 1;
+            data.InvoiceID = txtInvoiceId.Text;
+
+            rentRoomDetailBUS.add(data);
+
+            int result = roomReservationBUS.updateStatusBookedToRented(this.reservationOld.Id, this.roomOld.Id, txtTo.Text, txtFrom.Text);
+
+            if (result == 0)
+            {
+                MessageBox.Show("Nhận phòng không thành công");
+            }
+            else
+            {
+                MessageBox.Show("Nhận phòng thành công!");
+            }
+            loadButtonForm();
+            initCbxRoomClean();
+
         }
         #endregion
 
@@ -124,7 +188,14 @@ namespace HotelManagement.GUI
 
         private void btnCheckout_Click(object sender, EventArgs e)
         {
-
+            if (isCheckout)
+            {
+                handleCheckout();
+            }
+            else
+            {
+                handleReceiveRoom();
+            }
         }
 
         private void btnSave_Click(object sender, EventArgs e)

@@ -1,6 +1,6 @@
 ﻿namespace HotelManagement.GUI
 {
-    partial class RentRoomDetail
+    partial class RentRoomDetailUI
     {
         /// <summary>
         /// Required designer variable.
@@ -81,9 +81,6 @@
             tableLayoutPanel7 = new TableLayoutPanel();
             panel18 = new Panel();
             dataGridViewService = new DataGridView();
-            dataGridViewTextBoxColumn13 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn14 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn15 = new DataGridViewTextBoxColumn();
             materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             panel10 = new Panel();
             cbxRoomClean = new MaterialSkin.Controls.MaterialComboBox();
@@ -120,7 +117,7 @@
             materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             txtInvoiceId = new MaterialSkin.Controls.MaterialTextBox();
             materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
-            materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
+            labelRentRoomId = new MaterialSkin.Controls.MaterialLabel();
             tableLayoutPanel2.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -736,7 +733,6 @@
             dataGridViewService.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewService.BackgroundColor = SystemColors.Control;
             dataGridViewService.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewService.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14, dataGridViewTextBoxColumn15 });
             dataGridViewService.Dock = DockStyle.Fill;
             dataGridViewService.Location = new Point(21, 44);
             dataGridViewService.Margin = new Padding(3, 4, 3, 4);
@@ -749,24 +745,6 @@
             dataGridViewService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewService.Size = new Size(360, 551);
             dataGridViewService.TabIndex = 16;
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            dataGridViewTextBoxColumn13.HeaderText = "ID";
-            dataGridViewTextBoxColumn13.MinimumWidth = 6;
-            dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            dataGridViewTextBoxColumn14.HeaderText = "Name";
-            dataGridViewTextBoxColumn14.MinimumWidth = 6;
-            dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            dataGridViewTextBoxColumn15.HeaderText = "Type";
-            dataGridViewTextBoxColumn15.MinimumWidth = 6;
-            dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             // 
             // materialLabel10
             // 
@@ -1015,7 +993,7 @@
             tableLayoutPanel1.Controls.Add(panel13, 2, 3);
             tableLayoutPanel1.Controls.Add(panel14, 1, 0);
             tableLayoutPanel1.Controls.Add(panel11, 1, 1);
-            tableLayoutPanel1.Controls.Add(materialLabel14, 2, 0);
+            tableLayoutPanel1.Controls.Add(labelRentRoomId, 2, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 85);
             tableLayoutPanel1.Margin = new Padding(0);
@@ -1363,19 +1341,19 @@
             materialLabel15.TabIndex = 15;
             materialLabel15.Text = "INVOICE:";
             // 
-            // materialLabel14
+            // labelRentRoomId
             // 
-            materialLabel14.Anchor = AnchorStyles.None;
-            materialLabel14.AutoSize = true;
-            materialLabel14.Depth = 0;
-            materialLabel14.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
-            materialLabel14.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel14.Location = new Point(810, 20);
-            materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
-            materialLabel14.Name = "materialLabel14";
-            materialLabel14.Size = new Size(122, 24);
-            materialLabel14.TabIndex = 14;
-            materialLabel14.Text = "Rent Room ID";
+            labelRentRoomId.Anchor = AnchorStyles.None;
+            labelRentRoomId.AutoSize = true;
+            labelRentRoomId.Depth = 0;
+            labelRentRoomId.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            labelRentRoomId.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            labelRentRoomId.Location = new Point(810, 20);
+            labelRentRoomId.MouseState = MaterialSkin.MouseState.HOVER;
+            labelRentRoomId.Name = "labelRentRoomId";
+            labelRentRoomId.Size = new Size(122, 24);
+            labelRentRoomId.TabIndex = 14;
+            labelRentRoomId.Text = "Rent Room ID";
             // 
             // RentRoomDetail
             // 
@@ -1502,9 +1480,6 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel18;
         private DataGridView dataGridViewService;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
         private MaterialSkin.Controls.MaterialLabel materialLabel10;
         private Panel panel10;
         private MaterialSkin.Controls.MaterialLabel materialLabel20;
@@ -1536,6 +1511,6 @@
         private MaterialSkin.Controls.MaterialLabel changeEndT;
         private MaterialSkin.Controls.MaterialComboBox cbxRoomClean;
         private MaterialSkin.Controls.MaterialButton btnChange;
-        private MaterialSkin.Controls.MaterialLabel materialLabel14;
+        private MaterialSkin.Controls.MaterialLabel labelRentRoomId;
     }
 }

@@ -24,7 +24,7 @@ namespace HotelManagement.GUI
         Customer customer2 = new Customer("002", "Datxua hay feed", "Nam", new DateTime(1999, 12, 31), "Phan Thiết", "261550471", "0932091822");
 
 
-        List<RentRoomDetail> rentRooms = new List<RentRoomDetail>();
+        List<RentRoomDetailUI> rentRooms = new List<RentRoomDetailUI>();
         List<UseServiceDetail> useServiceDetails = new List<UseServiceDetail>();
 
         public InvoiceListUI()

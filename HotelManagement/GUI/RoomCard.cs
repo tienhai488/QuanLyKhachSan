@@ -39,7 +39,7 @@ namespace HotelManagement.GUI
                 Reservation reservation = reservationBUS.getById(reservationID);
                 Room room = roomBUS.getRoomById(labelRoomID.Text);
 
-                RentRoomDetail rentRoomDetail = new RentRoomDetail(reservation, room, labelRoomStatus.Text);
+                RentRoomDetailUI rentRoomDetail = new RentRoomDetailUI(reservation, room, labelRoomStatus.Text);
                 rentRoomDetail.Show();
             }
             else
