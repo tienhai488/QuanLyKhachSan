@@ -87,29 +87,31 @@ namespace HotelManagement.GUI
         {
             foreach (DataRow item in dataTableBook.Rows)
             {
-                string id = item[0].ToString();
-
-                int index = -1;
-                int temp = 0;
-                foreach (DataRow row in dataTableRoom.Rows)
+                if (RoomReservationStatus.OutDate != RoomReservation.getStatusEnum(item[4].ToString()))
                 {
-                    if (row[0].Equals(id))
+                    DateTime fromTimeBook = Functions.convertStringToDateTime(item[2].ToString());
+                    DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
+                    if (Functions.getDayGap(fromTimeBook, from) == 0 && Functions.getDayGap(to, toTimeBook) == 0)
                     {
-                        index = temp;
-                        break;
-                    }
-                    temp++;
-                }
-                if (index != -1)
-                {
-                    dataTableRoom.Rows.RemoveAt(index);
-                }
+                        string id = item[0].ToString();
 
-                //DateTime fromTimeBook = Functions.convertStringToDateTime(item[2].ToString());
-                //DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
-                //if (Functions.getDayGap(fromTimeBook, from) == 0 && Functions.getDayGap(to, toTimeBook) == 0)
-                //{
-                //}
+                        int index = -1;
+                        int temp = 0;
+                        foreach (DataRow row in dataTableRoom.Rows)
+                        {
+                            if (row[0].Equals(id))
+                            {
+                                index = temp;
+                                break;
+                            }
+                            temp++;
+                        }
+                        if (index != -1)
+                        {
+                            dataTableRoom.Rows.RemoveAt(index);
+                        }
+                    }
+                }
             }
         }
 
@@ -226,10 +228,26 @@ namespace HotelManagement.GUI
             }
         }
 
+        public int getRoomReservationIdInt()
+        {
+            int index = 1;
+            if (roomReservationBUS.getAllRoomReservation().Count > 0)
+            {
+                index = roomReservationBUS.getAllRoomReservation().Max(item => Functions.convertIdToInteger(item.Id, "RR")) + 1;
+            }
+            return index;
+        }
+
+        public string getRoomReservationIdString(int index)
+        {
+            return "RR" + index.ToString("D5");
+        }
+
         public List<RoomReservation> getListRoomReservationFromBooked(string reservationId)
         {
             List<RoomReservation> list = new List<RoomReservation>();
 
+            int index = getRoomReservationIdInt();
             foreach (DataRow item in dataTableBook.Rows)
             {
                 string room_id = item[0].ToString();
@@ -237,7 +255,7 @@ namespace HotelManagement.GUI
                 DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
                 RoomReservationStatus status = RoomReservation.getStatusEnum(item[4].ToString());
 
-                list.Add(new RoomReservation() { RoomID = room_id, ReservationID = reservationId, StartTime = fromTimeBook, EndTime = toTimeBook, Status = status });
+                list.Add(new RoomReservation() { Id = getRoomReservationIdString(index++) , RoomID = room_id, ReservationID = reservationId, StartTime = fromTimeBook, EndTime = toTimeBook, Status = status });
             }
 
             return list;
@@ -346,12 +364,12 @@ namespace HotelManagement.GUI
             string type = tableRoom.Rows[index].Cells["Type"].Value.ToString();
 
             List<RoomReservation> bookedRooms = getListRoomReservationFromBooked(txtId.Text);
-            bool checkContainRoomId = bookedRooms.Any(item => item.RoomID.Equals(roomId));
-            if (checkContainRoomId)
-            {
-                MessageBox.Show($"Phiếu đặt phòng đã có phòng {roomId}! Vui lòng kiểm tra lại!");
-                return;
-            }
+            //bool checkContainRoomId = bookedRooms.Any(item => item.RoomID.Equals(roomId));
+            //if (checkContainRoomId)
+            //{
+            //    MessageBox.Show($"Phiếu đặt phòng đã có phòng {roomId}! Vui lòng kiểm tra lại!");
+            //    return;
+            //}
 
             DataRow rowToRemove = dataTableRoom.Rows.Cast<DataRow>().FirstOrDefault(row => row["ID"].Equals(roomId));
             dataTableRoom.Rows.Remove(rowToRemove);

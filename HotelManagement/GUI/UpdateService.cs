@@ -1,22 +1,24 @@
 ﻿using HotelManagement.BUS;
-using HotelManagement.Data;
+using HotelManagement.Ultils;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Microsoft.VisualBasic;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Globalization;
 
 namespace HotelManagement.GUI
 {
     public partial class UpdateService : MaterialForm
     {
+        private BindingSource bindingSourceService = new BindingSource();
+        private BindingSource bindingSourceServiceType = new BindingSource();
+        private ServiceBUS serviceBUS = new ServiceBUS();
+
+        private DataTable serviceTable = new DataTable();
+        private DataTable selectedTable = new DataTable();
+
+
+
         public UpdateService()
         {
             InitializeComponent();
@@ -31,32 +33,52 @@ namespace HotelManagement.GUI
             Accent.Amber200,   // Warm accent color for highlights
             TextShade.WHITE);    // Text color
 
-            loadCmb();
-            loadGrid();
+            selectedTable.Columns.Add("ID");
+            selectedTable.Columns.Add("Name");
+            selectedTable.Columns.Add("Price");
+            selectedTable.Columns.Add("Quantity");
+            selectedTable.Columns.Add("Total");
+
+            serviceTable.Columns.Add("ID");
+            serviceTable.Columns.Add("Name");
+            serviceTable.Columns.Add("Type");
+            serviceTable.Columns.Add("Price");
+            serviceTable.Columns.Add("Unit");
+
+            initServiceTable();
+            initSelectedTable();
+            //loadCmb();
+            //loadGrid();
         }
 
-        private BindingSource bindingSourceService = new BindingSource();
-        private BindingSource bindingSourceServiceType = new BindingSource();
-        private ServiceBUS serviceBUS = new ServiceBUS();
-        private DataTable typeTable = new DataTable();
-        private DataTable serviceTable = new DataTable();
-        public void loadGrid()
+        public void initServiceTable()
         {
-            foreach (Service s in serviceBUS.getAllService())
+            serviceTable.Rows.Clear();
+            dataGridViewService.DataSource = null;
+
+            serviceBUS.getAllService()
+            .ForEach(item =>
             {
-                string[] g = { s.Id, s.Name, s.Unit, s.UnitPrice.ToString() };
-                dataGridViewService.Rows.Add(g);
-            }
+                serviceTable.Rows.Add(item.Id, item.Name, item.ServiceType.Name, item.UnitPrice.ToString("N0"), item.Unit);
+            });
+
+            dataGridViewService.DataSource = serviceTable;
+            bindingSourceService.DataSource = serviceTable;
+
+            initCbxFilterAllService();
         }
 
-        public void loadCmb()
+        public void initSelectedTable()
         {
-            mcmbServiceType.Items.Add("All services");
-            mcmbServiceType.SelectedIndex = 0;
-            dataGridViewService.Rows.Clear();
-            foreach (Service s in serviceBUS.getAllService())
-                if (!mcmbServiceType.Items.Contains(s.ServiceTypeId))
-                    mcmbServiceType.Items.Add(s.ServiceTypeId);
+            selectedTable.Rows.Clear();
+            dataGridViewSelected.DataSource = null;
+
+            dataGridViewSelected.DataSource = selectedTable;
+        }
+
+        public void initCbxFilterAllService()
+        {
+            FormHelpers.initCbxFilter(cbxFilterType, 2, dataGridViewService);
         }
 
 
@@ -74,84 +96,80 @@ namespace HotelManagement.GUI
 
         private void mbtnSelectService_Click(object sender, EventArgs e)
         {
-            if (dataGridViewService.SelectedRows.Count > 0)
+            if(dataGridViewService.SelectedRows.Count == 0)
             {
-                DataGridViewRow selectedRow = dataGridViewService.SelectedRows[0];
-                Boolean flag = true;
-                foreach (DataGridViewRow row in dataGridViewSelected.Rows)
+                MessageBox.Show("No row selected."); ;
+                return;
+            }
+            DataGridViewRow selectedRow = dataGridViewService.SelectedRows[0];
+            foreach (DataGridViewRow row in dataGridViewSelected.Rows)
+            {
+                if (selectedRow.Cells["ID"].Value.ToString().Equals(row.Cells["ID"].Value.ToString()))
                 {
-                    if (selectedRow.Cells[1].Value.ToString().Equals(row.Cells[1].Value.ToString()))
-                    {
-                        int i = Int32.Parse(row.Cells[2].Value.ToString()) + 1;
-                        row.Cells[2].Value = i.ToString();
-                        row.Cells[3].Value = (i * Int32.Parse(selectedRow.Cells[3].Value.ToString())).ToString();
-                        flag = false; break;
-                    }
+                    int i = Int32.Parse(row.Cells["Quantity"].Value.ToString()) + 1;
+                    row.Cells["Quantity"].Value = i.ToString();
+                    row.Cells["Total"].Value = (i * Int32.Parse(selectedRow.Cells["Price"].Value.ToString(), NumberStyles.AllowThousands)).ToString("N0");
+                    return;
                 }
-                if (flag)
-                {
-                    string id = selectedRow.Cells[0].Value.ToString();
-                    string name = selectedRow.Cells[1].Value.ToString();
-                    string unit = selectedRow.Cells[2].Value.ToString();
-                    string price = (Int32.Parse(selectedRow.Cells[2].Value.ToString()) *
-                        Int32.Parse(selectedRow.Cells[3].Value.ToString())).ToString();
-                    string[] g = { id, name, unit, price };
-                    dataGridViewSelected.Rows.Add(g);
-                }
+            }
+            string id = selectedRow.Cells["ID"].Value.ToString();
+            string name = selectedRow.Cells["Name"].Value.ToString();
+            string price = selectedRow.Cells["Price"].Value.ToString();
 
-            }
-            else
-            {
-                MessageBox.Show("No row selected.");
-            }
+            selectedTable.Rows.Add(id, name, price, "1", price);
+            dataGridViewSelected.DataSource = selectedTable;
         }
 
         private void mcmbServiceType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dataGridViewService.Rows.Clear();
-            if (mcmbServiceType.SelectedIndex == 0)
-            {
-                loadGrid();
-            }
-            else
-                foreach (Service s in serviceBUS.getAllService())
-                    if (mcmbServiceType.SelectedItem.ToString().Equals(s.ServiceTypeId))
-                    {
-                        string[] g = { s.Id, s.Name, s.Unit, s.UnitPrice.ToString() };
-                        dataGridViewService.Rows.Add(g);
-                    }
+            string type = cbxFilterType.Text.Trim();
+
+            bindingSourceService.Filter = @$"
+            `Type` like '%{type}%'
+            ";
+
+            dataGridViewService.DataSource = bindingSourceService;
         }
 
         private void mbtnCheckOut_Click(object sender, EventArgs e)
         {
             this.Dispose();
-            /*System.Windows.Forms.Application.Exit();
-            int total = 0;
-            foreach (DataGridViewRow row in dataGridViewSelected.Rows)
-                total += Int32.Parse(row.Cells[3].Value.ToString());
-            MessageBox.Show($"Total price of the service: {total}");*/
         }
 
         private void mbtnChangeQuantity_Click(object sender, EventArgs e)
         {
-            DataGridViewRow selectedRow = dataGridViewSelected.SelectedRows[0];
-            DataGridViewRow serviceRow = dataGridViewService.SelectedRows[0];
-            if (dataGridViewSelected.SelectedRows.Count > 0)
+            if (dataGridViewSelected.SelectedRows.Count == 0)
             {
-                string q = Interaction.InputBox("Enter quantity:", "Enter quantity:", "").ToString();
-                if (q.Equals(""))
-                    MessageBox.Show("Enter a property.");
-                else if (Int32.Parse(q) == 0)
+                MessageBox.Show("No row selected.");
+                return;
+            }
+
+            DataGridViewRow selectedRow = dataGridViewSelected.SelectedRows[0];
+
+            string id = selectedRow.Cells["ID"].Value.ToString();
+            string name = selectedRow.Cells["Name"].Value.ToString();
+            string price = selectedRow.Cells["Price"].Value.ToString();
+            string quantity = selectedRow.Cells["Quantity"].Value.ToString();
+            
+            string q = Interaction.InputBox("Enter quantity: ", $"Change Quantity {id} - {name}", quantity).ToString();
+            int quantityUpdate;
+            if (int.TryParse(q, out quantityUpdate))
+            {
+                if(quantityUpdate < 0)
+                {
+                    MessageBox.Show("Invalid data."); return;
+                }
+                else if (quantityUpdate == 0)
                     dataGridViewSelected.Rows.RemoveAt(selectedRow.Index);
                 else
                 {
-                    selectedRow.Cells[2].Value = q;
-                    selectedRow.Cells[3].Value = (Int32.Parse(q) * Int32.Parse(serviceRow.Cells[3].Value.ToString())).ToString();
+                    selectedRow.Cells["Quantity"].Value = quantityUpdate + "";
+                    selectedRow.Cells["Total"].Value = (quantityUpdate * Int32.Parse(price, NumberStyles.AllowThousands)).ToString("N0");
                 }
             }
             else
             {
-                MessageBox.Show("No row selected.");
+                MessageBox.Show("Invalid data.");
             }
         }
     }
