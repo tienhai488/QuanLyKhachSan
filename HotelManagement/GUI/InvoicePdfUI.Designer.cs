@@ -37,11 +37,12 @@
             // 
             richTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             richTextBox1.BackColor = Color.White;
-            richTextBox1.Location = new Point(12, 12);
+            richTextBox1.Location = new Point(14, 16);
+            richTextBox1.Margin = new Padding(3, 4, 3, 4);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
             richTextBox1.ScrollBars = RichTextBoxScrollBars.Vertical;
-            richTextBox1.Size = new Size(719, 819);
+            richTextBox1.Size = new Size(821, 495);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             // 
@@ -54,12 +55,12 @@
             mbtnPrint.Depth = 0;
             mbtnPrint.HighEmphasis = true;
             mbtnPrint.Icon = null;
-            mbtnPrint.Location = new Point(573, 840);
-            mbtnPrint.Margin = new Padding(4, 6, 4, 6);
+            mbtnPrint.Location = new Point(655, 523);
+            mbtnPrint.Margin = new Padding(5, 8, 5, 8);
             mbtnPrint.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnPrint.Name = "mbtnPrint";
             mbtnPrint.NoAccentTextColor = Color.Empty;
-            mbtnPrint.Size = new Size(158, 36);
+            mbtnPrint.Size = new Size(181, 48);
             mbtnPrint.TabIndex = 1;
             mbtnPrint.Text = "SAVE AND PRINT";
             mbtnPrint.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -76,12 +77,12 @@
             mbtnCancel.Depth = 0;
             mbtnCancel.HighEmphasis = true;
             mbtnCancel.Icon = null;
-            mbtnCancel.Location = new Point(407, 840);
-            mbtnCancel.Margin = new Padding(4, 6, 4, 6);
+            mbtnCancel.Location = new Point(465, 523);
+            mbtnCancel.Margin = new Padding(5, 8, 5, 8);
             mbtnCancel.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnCancel.Name = "mbtnCancel";
             mbtnCancel.NoAccentTextColor = Color.Empty;
-            mbtnCancel.Size = new Size(158, 36);
+            mbtnCancel.Size = new Size(181, 48);
             mbtnCancel.TabIndex = 2;
             mbtnCancel.Text = "CANCEL";
             mbtnCancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -89,18 +90,19 @@
             mbtnCancel.UseVisualStyleBackColor = true;
             mbtnCancel.Click += mbtnCancel_Click;
             // 
-            // InvoicePdf
+            // InvoicePdfUI
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(744, 891);
+            ClientSize = new Size(850, 591);
             Controls.Add(mbtnCancel);
             Controls.Add(mbtnPrint);
             Controls.Add(richTextBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "InvoicePdf";
+            Name = "InvoicePdfUI";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "InvoiceDetail";
             ResumeLayout(false);

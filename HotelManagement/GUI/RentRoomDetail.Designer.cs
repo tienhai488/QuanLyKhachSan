@@ -120,6 +120,7 @@
             materialLabel16 = new MaterialSkin.Controls.MaterialLabel();
             txtInvoiceId = new MaterialSkin.Controls.MaterialTextBox();
             materialLabel15 = new MaterialSkin.Controls.MaterialLabel();
+            materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             tableLayoutPanel2.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
@@ -1014,6 +1015,7 @@
             tableLayoutPanel1.Controls.Add(panel13, 2, 3);
             tableLayoutPanel1.Controls.Add(panel14, 1, 0);
             tableLayoutPanel1.Controls.Add(panel11, 1, 1);
+            tableLayoutPanel1.Controls.Add(materialLabel14, 2, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 85);
             tableLayoutPanel1.Margin = new Padding(0);
@@ -1361,6 +1363,20 @@
             materialLabel15.TabIndex = 15;
             materialLabel15.Text = "INVOICE:";
             // 
+            // materialLabel14
+            // 
+            materialLabel14.Anchor = AnchorStyles.None;
+            materialLabel14.AutoSize = true;
+            materialLabel14.Depth = 0;
+            materialLabel14.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel14.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            materialLabel14.Location = new Point(810, 20);
+            materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel14.Name = "materialLabel14";
+            materialLabel14.Size = new Size(122, 24);
+            materialLabel14.TabIndex = 14;
+            materialLabel14.Text = "Rent Room ID";
+            // 
             // RentRoomDetail
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -1413,6 +1429,7 @@
             panel20.ResumeLayout(false);
             panel20.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel1.PerformLayout();
             tableLayoutPanel8.ResumeLayout(false);
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
@@ -1519,5 +1536,6 @@
         private MaterialSkin.Controls.MaterialLabel changeEndT;
         private MaterialSkin.Controls.MaterialComboBox cbxRoomClean;
         private MaterialSkin.Controls.MaterialButton btnChange;
+        private MaterialSkin.Controls.MaterialLabel materialLabel14;
     }
 }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Security.Cryptography.Pkcs;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
@@ -29,5 +30,6 @@ namespace HotelManagement.Data.Transfer.Ultils
         {
             return DateTime.ParseExact(str, Configs.formatBirthday, CultureInfo.InvariantCulture, DateTimeStyles.None);
         }
+
     }
 }

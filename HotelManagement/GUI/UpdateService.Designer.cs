@@ -37,19 +37,11 @@ namespace HotelManagement.GUI
             tableLayoutPanel2 = new TableLayoutPanel();
             mbtnCheckOut = new MaterialSkin.Controls.MaterialButton();
             dataGridViewSelected = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
             dataGridViewService = new DataGridView();
-            Column1 = new DataGridViewTextBoxColumn();
-            Column2 = new DataGridViewTextBoxColumn();
-            Column3 = new DataGridViewTextBoxColumn();
-            Column4 = new DataGridViewTextBoxColumn();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel2 = new Panel();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            mcmbServiceType = new MaterialSkin.Controls.MaterialComboBox();
+            cbxFilterType = new MaterialSkin.Controls.MaterialComboBox();
             mbtnChangeQuantity = new MaterialSkin.Controls.MaterialButton();
             mbtnDelete = new MaterialSkin.Controls.MaterialButton();
             mbtnSelectService = new MaterialSkin.Controls.MaterialButton();
@@ -121,44 +113,23 @@ namespace HotelManagement.GUI
             dataGridViewSelected.AllowUserToResizeColumns = false;
             dataGridViewSelected.AllowUserToResizeRows = false;
             dataGridViewSelected.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewSelected.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewSelected.BackgroundColor = Color.White;
             dataGridViewSelected.BorderStyle = BorderStyle.None;
             dataGridViewSelected.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewSelected.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewSelected.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4 });
             dataGridViewSelected.Location = new Point(604, 0);
             dataGridViewSelected.Margin = new Padding(0, 0, 29, 29);
+            dataGridViewSelected.MultiSelect = false;
             dataGridViewSelected.Name = "dataGridViewSelected";
+            dataGridViewSelected.ReadOnly = true;
             dataGridViewSelected.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewSelected.RowHeadersVisible = false;
+            dataGridViewSelected.RowHeadersWidth = 51;
             dataGridViewSelected.RowTemplate.Height = 25;
             dataGridViewSelected.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewSelected.Size = new Size(575, 546);
             dataGridViewSelected.TabIndex = 10;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn1.HeaderText = "Service ID";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn2.HeaderText = "Service Name";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn3.HeaderText = "Quantity";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewTextBoxColumn4.HeaderText = "Price";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             // 
             // dataGridViewService
             // 
@@ -167,44 +138,23 @@ namespace HotelManagement.GUI
             dataGridViewService.AllowUserToResizeColumns = false;
             dataGridViewService.AllowUserToResizeRows = false;
             dataGridViewService.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewService.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewService.BackgroundColor = Color.White;
             dataGridViewService.BorderStyle = BorderStyle.None;
             dataGridViewService.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             dataGridViewService.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewService.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
             dataGridViewService.Location = new Point(29, 0);
             dataGridViewService.Margin = new Padding(29, 0, 29, 29);
+            dataGridViewService.MultiSelect = false;
             dataGridViewService.Name = "dataGridViewService";
+            dataGridViewService.ReadOnly = true;
             dataGridViewService.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dataGridViewService.RowHeadersVisible = false;
+            dataGridViewService.RowHeadersWidth = 51;
             dataGridViewService.RowTemplate.Height = 25;
             dataGridViewService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridViewService.Size = new Size(546, 546);
             dataGridViewService.TabIndex = 4;
-            // 
-            // Column1
-            // 
-            Column1.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column1.HeaderText = "Service ID";
-            Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            Column2.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column2.HeaderText = "Service Name";
-            Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            Column3.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column3.HeaderText = "Quantity";
-            Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            Column4.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Column4.HeaderText = "Price/1";
-            Column4.Name = "Column4";
             // 
             // tableLayoutPanel1
             // 
@@ -234,7 +184,7 @@ namespace HotelManagement.GUI
             // 
             panel2.BackColor = SystemColors.Control;
             panel2.Controls.Add(materialLabel1);
-            panel2.Controls.Add(mcmbServiceType);
+            panel2.Controls.Add(cbxFilterType);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(0);
@@ -256,29 +206,29 @@ namespace HotelManagement.GUI
             materialLabel1.TabIndex = 8;
             materialLabel1.Text = "Select a service type:";
             // 
-            // mcmbServiceType
+            // cbxFilterType
             // 
-            mcmbServiceType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            mcmbServiceType.AutoResize = false;
-            mcmbServiceType.BackColor = Color.FromArgb(255, 255, 255);
-            mcmbServiceType.Depth = 0;
-            mcmbServiceType.DrawMode = DrawMode.OwnerDrawVariable;
-            mcmbServiceType.DropDownHeight = 174;
-            mcmbServiceType.DropDownStyle = ComboBoxStyle.DropDownList;
-            mcmbServiceType.DropDownWidth = 121;
-            mcmbServiceType.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
-            mcmbServiceType.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            mcmbServiceType.FormattingEnabled = true;
-            mcmbServiceType.IntegralHeight = false;
-            mcmbServiceType.ItemHeight = 43;
-            mcmbServiceType.Location = new Point(29, 23);
-            mcmbServiceType.MaxDropDownItems = 4;
-            mcmbServiceType.MouseState = MaterialSkin.MouseState.OUT;
-            mcmbServiceType.Name = "mcmbServiceType";
-            mcmbServiceType.Size = new Size(345, 49);
-            mcmbServiceType.StartIndex = 0;
-            mcmbServiceType.TabIndex = 9;
-            mcmbServiceType.SelectedIndexChanged += mcmbServiceType_SelectedIndexChanged;
+            cbxFilterType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            cbxFilterType.AutoResize = false;
+            cbxFilterType.BackColor = Color.FromArgb(255, 255, 255);
+            cbxFilterType.Depth = 0;
+            cbxFilterType.DrawMode = DrawMode.OwnerDrawVariable;
+            cbxFilterType.DropDownHeight = 174;
+            cbxFilterType.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxFilterType.DropDownWidth = 121;
+            cbxFilterType.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
+            cbxFilterType.ForeColor = Color.FromArgb(222, 0, 0, 0);
+            cbxFilterType.FormattingEnabled = true;
+            cbxFilterType.IntegralHeight = false;
+            cbxFilterType.ItemHeight = 43;
+            cbxFilterType.Location = new Point(29, 23);
+            cbxFilterType.MaxDropDownItems = 4;
+            cbxFilterType.MouseState = MaterialSkin.MouseState.OUT;
+            cbxFilterType.Name = "cbxFilterType";
+            cbxFilterType.Size = new Size(345, 49);
+            cbxFilterType.StartIndex = 0;
+            cbxFilterType.TabIndex = 9;
+            cbxFilterType.SelectedIndexChanged += mcmbServiceType_SelectedIndexChanged;
             // 
             // mbtnChangeQuantity
             // 
@@ -375,19 +325,11 @@ namespace HotelManagement.GUI
         private TableLayoutPanel tableLayoutPanel2;
         private MaterialSkin.Controls.MaterialButton mbtnCheckOut;
         private DataGridView dataGridViewSelected;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private DataGridView dataGridViewService;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel2;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;
-        private MaterialSkin.Controls.MaterialComboBox mcmbServiceType;
+        private MaterialSkin.Controls.MaterialComboBox cbxFilterType;
         private MaterialSkin.Controls.MaterialButton mbtnChangeQuantity;
         private MaterialSkin.Controls.MaterialButton mbtnDelete;
         private MaterialSkin.Controls.MaterialButton mbtnSelectService;

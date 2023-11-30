@@ -56,9 +56,13 @@ namespace HotelManagement.Data.Transfer
     }
 
     [Table("room_reservation")]
-    [PrimaryKey(nameof(RoomID), nameof(ReservationID))]
     public class RoomReservation
     {
+        [Key]
+        [StringLength(50)]
+        [Column("ID", TypeName = "varchar")]
+        private string id;
+
         [StringLength(50)]
         [Column("RoomID", TypeName = "varchar")]
         private string roomID;
@@ -113,6 +117,7 @@ namespace HotelManagement.Data.Transfer
         public Reservation Reservation { get => reservation; set => reservation = value; }
         public Room Room { get => room; set => room = value; }
         public RoomReservationStatus Status { get => status; set => status = value; }
+        public string Id { get => id; set => id = value; }
     }
 
 }

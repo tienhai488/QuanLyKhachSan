@@ -19,6 +19,12 @@ namespace HotelManagement.Data
         [Column("PaidTime", TypeName = "datetime")]
         private string paidTime;
 
+        [Column("StartTime", TypeName = "datetime")]
+        private string startTime;
+
+        [Column("EndTime", TypeName = "datetime")]
+        private string endTime;
+
         [StringLength(50)]
         [Column("RoomID", TypeName = "varchar")]
         private string roomID;
@@ -38,6 +44,8 @@ namespace HotelManagement.Data
         [ForeignKey("InvoiceID")]
         private Invoice invoice;
 
+        private List<UseServiceDetail> useServiceDetails;
+
         public string Id { get => id; set => id = value; }
         public string AddedTime { get => addedTime; set => addedTime = value; }
         public string PaidTime { get => paidTime; set => paidTime = value; }
@@ -47,6 +55,9 @@ namespace HotelManagement.Data
         public Staff Staff { get => staff; set => staff = value; }
         public string InvoiceID { get => invoiceID; set => invoiceID = value; }
         public Invoice Invoice { get => invoice; set => invoice = value; }
+        public List<UseServiceDetail> UseServiceDetails { get => useServiceDetails; set => useServiceDetails = value; }
+        public string StartTime { get => startTime; set => startTime = value; }
+        public string EndTime { get => endTime; set => endTime = value; }
     }
 
     [Table("use_service_detail")]
@@ -66,11 +77,11 @@ namespace HotelManagement.Data
         private Staff staff;
 
         [StringLength(50)]
-        [Column("InvoiceID", TypeName = "varchar")]
-        private string invoiceID;
+        [Column("RentRoomID", TypeName = "varchar")]
+        private string rentRoomID;
 
-        [ForeignKey("InvoiceID")]
-        private Invoice invoice;
+        [ForeignKey("RentRoomID")]
+        private RentRoomDetail rentRoomDetail;
 
         [StringLength(50)]
         [Column("ServiceID", TypeName = "varchar")]
@@ -83,10 +94,10 @@ namespace HotelManagement.Data
         public string Quantity { get => quantity; set => quantity = value; }
         public BigInteger StaffID { get => staffID; set => staffID = value; }
         public Staff Staff { get => staff; set => staff = value; }
-        public string InvoiceID { get => invoiceID; set => invoiceID = value; }
-        public Invoice Invoice { get => invoice; set => invoice = value; }
         public string ServiceID { get => serviceID; set => serviceID = value; }
         public Service Service { get => service; set => service = value; }
+        public string RentRoomID { get => rentRoomID; set => rentRoomID = value; }
+        public RentRoomDetail RentRoomDetail { get => rentRoomDetail; set => rentRoomDetail = value; }
     }
 
     [Table("invoice")]
@@ -118,8 +129,6 @@ namespace HotelManagement.Data
 
         private List<RentRoomDetail> rentRoomDetails;
 
-        private List<UseServiceDetail> useServiceDetails;
-
         public string Id { get => id; set => id = value; }
         public string CustomerID { get => customerID; set => customerID = value; }
         public Customer Customer { get => customer; set => customer = value; }
@@ -128,6 +137,5 @@ namespace HotelManagement.Data
         public BigInteger StaffID { get => staffID; set => staffID = value; }
         public Staff Staff { get => staff; set => staff = value; }
         public List<RentRoomDetail> RentRoomDetails { get => rentRoomDetails; set => rentRoomDetails = value; }
-        public List<UseServiceDetail> UseServiceDetails { get => useServiceDetails; set => useServiceDetails = value; }
     }
 }

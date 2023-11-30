@@ -54,26 +54,26 @@ namespace HotelManagement.GUI
 
         public void initDataLoad()
         {
-            invoiceTable.Rows.Clear();
-            dataGridView1.DataSource = null;
+            //invoiceTable.Rows.Clear();
+            //dataGridView1.DataSource = null;
 
-            foreach (Invoice item in getAllInvoice())
-            {
-                invoiceTable.Rows.Add("IN" + item.Id.ToString("D4"), "CU" + item.CustomerId.ToString("D3"), item.PaidTime, item.Subtotal, item.TotalDue, "SA" + item.StaffId.ToString("D3"), "Chi tiết");
-            }
+            //foreach (Invoice item in getAllInvoice())
+            //{
+            //    invoiceTable.Rows.Add("IN" + item.Id.ToString("D4"), "CU" + item.CustomerId.ToString("D3"), item.PaidTime, item.Subtotal, item.TotalDue, "SA" + item.StaffId.ToString("D3"), "Chi tiết");
+            //}
 
-            dataGridView1.DataSource = invoiceTable;
-            bindingSourceInvoice.DataSource = invoiceTable;
+            //dataGridView1.DataSource = invoiceTable;
+            //bindingSourceInvoice.DataSource = invoiceTable;
 
         }
         public List<Invoice> getAllInvoice()
         {
             List<Invoice> list = new List<Invoice>();
-            Invoice invoice1 = new Invoice(0001, staff1.Id, Int32.Parse(customer1.Id));
-            Invoice invoice2 = new Invoice(0002, staff1.Id, Int32.Parse(customer2.Id));
-            invoice1.PaidTime = DateTime.Now;
-            invoice2.PaidTime = DateTime.Now.AddDays(-10);
-            list.Add(invoice1); list.Add(invoice2);
+            //Invoice invoice1 = new Invoice(0001, staff1.Id, Int32.Parse(customer1.Id));
+            //Invoice invoice2 = new Invoice(0002, staff1.Id, Int32.Parse(customer2.Id));
+            //invoice1.PaidTime = DateTime.Now;
+            //invoice2.PaidTime = DateTime.Now.AddDays(-10);
+            //list.Add(invoice1); list.Add(invoice2);
             return list;
         }
 
@@ -83,13 +83,13 @@ namespace HotelManagement.GUI
 
             DateTime selectedDate = dateTimePickerInvoice.Value.Date;
 
-            foreach (Invoice item in getAllInvoice())
-            {
-                if (selectedDate >= item.PaidTime.Value.Date)
-                {
-                    invoiceTable.Rows.Add("IN" + item.Id.ToString("D4"), "CU" + item.CustomerId.ToString("D3"), item.PaidTime, item.Subtotal, item.TotalDue, "SA" + item.StaffId.ToString("D3"), "Chi tiết");
-                }
-            }
+            //foreach (Invoice item in getAllInvoice())
+            //{
+            //    if (selectedDate >= item.PaidTime.Value.Date)
+            //    {
+            //        invoiceTable.Rows.Add("IN" + item.Id.ToString("D4"), "CU" + item.CustomerId.ToString("D3"), item.PaidTime, item.Subtotal, item.TotalDue, "SA" + item.StaffId.ToString("D3"), "Chi tiết");
+            //    }
+            //}
 
             bindingSourceInvoice.DataSource = invoiceTable;
             dataGridView1.DataSource = bindingSourceInvoice;
@@ -99,13 +99,13 @@ namespace HotelManagement.GUI
             if (!mtxtCustomerID.Text.Equals(string.Empty))
             {
                 invoiceTable.Rows.Clear();
-                foreach (Invoice item in getAllInvoice())
-                {
-                    if (mtxtCustomerID.Text.Equals("CU" + item.CustomerId.ToString("D3"), StringComparison.OrdinalIgnoreCase))
-                    {
-                        invoiceTable.Rows.Add("IN" + item.Id.ToString("D4"), "CU" + item.CustomerId.ToString("D3"), item.PaidTime, item.Subtotal, item.TotalDue, "SA" + item.StaffId.ToString("D3"), "Chi tiết");
-                    }
-                }
+                //foreach (Invoice item in getAllInvoice())
+                //{
+                //    if (mtxtCustomerID.Text.Equals("CU" + item.CustomerId.ToString("D3"), StringComparison.OrdinalIgnoreCase))
+                //    {
+                //        invoiceTable.Rows.Add("IN" + item.Id.ToString("D4"), "CU" + item.CustomerId.ToString("D3"), item.PaidTime, item.Subtotal, item.TotalDue, "SA" + item.StaffId.ToString("D3"), "Chi tiết");
+                //    }
+                //}
 
                 bindingSourceInvoice.DataSource = invoiceTable;
                 dataGridView1.DataSource = bindingSourceInvoice;
