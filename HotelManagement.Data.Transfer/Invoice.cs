@@ -14,16 +14,16 @@ namespace HotelManagement.Data
         private string id;
 
         [Column("AddedTime", TypeName = "datetime")]
-        private string addedTime;
+        private DateTime addedTime;
 
         [Column("PaidTime", TypeName = "datetime")]
-        private string paidTime;
+        private DateTime paidTime;
 
         [Column("StartTime", TypeName = "datetime")]
-        private string startTime;
+        private DateTime startTime;
 
         [Column("EndTime", TypeName = "datetime")]
-        private string endTime;
+        private DateTime endTime;
 
         [StringLength(50)]
         [Column("RoomID", TypeName = "varchar")]
@@ -47,8 +47,6 @@ namespace HotelManagement.Data
         private List<UseServiceDetail> useServiceDetails;
 
         public string Id { get => id; set => id = value; }
-        public string AddedTime { get => addedTime; set => addedTime = value; }
-        public string PaidTime { get => paidTime; set => paidTime = value; }
         public string RoomID { get => roomID; set => roomID = value; }
         public Room Room { get => room; set => room = value; }
         public BigInteger StaffID { get => staffID; set => staffID = value; }
@@ -56,8 +54,10 @@ namespace HotelManagement.Data
         public string InvoiceID { get => invoiceID; set => invoiceID = value; }
         public Invoice Invoice { get => invoice; set => invoice = value; }
         public List<UseServiceDetail> UseServiceDetails { get => useServiceDetails; set => useServiceDetails = value; }
-        public string StartTime { get => startTime; set => startTime = value; }
-        public string EndTime { get => endTime; set => endTime = value; }
+        public DateTime AddedTime { get => addedTime; set => addedTime = value; }
+        public DateTime PaidTime { get => paidTime; set => paidTime = value; }
+        public DateTime StartTime { get => startTime; set => startTime = value; }
+        public DateTime EndTime { get => endTime; set => endTime = value; }
     }
 
     [Table("use_service_detail")]

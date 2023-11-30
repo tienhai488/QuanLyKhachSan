@@ -230,5 +230,27 @@ namespace HotelManagement.Business
             reservationDAO.RoomReservations.AddRange(list);
             return reservationDAO.SaveChanges();
         }
+
+        public int updateStatusBookedToRented(string reservationId, string roomId, string fromTime, string toTime)
+        {
+            DateTime from = Functions.convertStringToDateTime(fromTime);
+            DateTime to = Functions.convertStringToDateTime(toTime);
+
+            RoomReservation temp = reservationDAO.RoomReservations
+                .ToList()
+                .Find(item => item.Status == RoomReservationStatus.Booked && item.ReservationID.Equals(reservationId) && item.RoomID.Equals(roomId)
+                && Functions.getDayGap(item.StartTime, from) == 0 && Functions.getDayGap(item.EndTime, to) == 0);
+            if(temp == null)
+            {
+                return 0;
+            }
+
+            if(temp.Status == RoomReservationStatus.Booked)
+            {
+                temp.Status = RoomReservationStatus.Rented;
+            }
+
+            return reservationDAO.SaveChanges();
+        }
     }
 }

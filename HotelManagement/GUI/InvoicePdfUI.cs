@@ -25,9 +25,9 @@ namespace HotelManagement.GUI
         Invoice invoice;
         Staff staff;
         UseServiceDetail useServiceDetail;
-        RentRoomDetail roomDetail;
+        RentRoomDetailUI roomDetail;
         IList<UseServiceDetail> useServiceDetails;
-        IList<RentRoomDetail> rentRoomDetails;
+        IList<RentRoomDetailUI> rentRoomDetails;
 
         public InvoicePdfUI()
         {
