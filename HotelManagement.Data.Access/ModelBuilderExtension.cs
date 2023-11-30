@@ -9,106 +9,186 @@
     using System.Text;
     using System.Threading.Tasks;
     using System.Numerics;
+    using HotelManagement.Data.Transfer;
+    using System.Reflection.Emit;
 
     internal static class ModelBuilderExtension
     {
+        //public static void ConfigureRoom(this EntityTypeBuilder<Room> builder, bool includeRoomTypeRelationship = true)
+        //{
+        //    builder.ToTable("room");
+        //    builder.Property<string>(nameof(Room.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<int>(nameof(Room.Status))
+        //        .HasColumnName("Status");
+        //    builder.Property<string>(nameof(Room.RoomTypeId))
+        //        .HasColumnName("RoomTypeID");
+        //    builder.HasKey(nameof(Room.Id));
+
+        //    if (includeRoomTypeRelationship)
+        //    {
+        //        builder.HasOne<RoomType>(nameof(Room.RoomType))
+        //            .WithMany(nameof(RoomType.Rooms))
+        //            .HasForeignKey(nameof(Room.RoomTypeId))
+        //            .IsRequired()
+        //            .OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Room.RoomType));
+        //}
         public static void ConfigureRoom(this EntityTypeBuilder<Room> builder, bool includeRoomTypeRelationship = true)
         {
             builder.ToTable("room");
             builder.Property<string>(nameof(Room.Id))
                 .HasColumnName("ID");
-            builder.Property<RoomStatus>(nameof(Room.Status))
-                .HasColumnName("Status")
-                .HasConversion(x => (int)x, x => (RoomStatus)x);
-            builder.OptionalBigIntegerIdProperty(nameof(Room.RoomTypeId), "RoomTypeID", "RT", "2");
+            builder.Property<int>(nameof(Room.Status))
+                .HasColumnName("Status");
+            builder.Property<string>(nameof(Room.RoomTypeId))
+                .HasColumnName("RoomTypeID");
             builder.HasKey(nameof(Room.Id));
 
-            if (!includeRoomTypeRelationship) return;
-
-            builder.HasOne<RoomType>(nameof(Room.RoomType))
-                .WithMany(nameof(RoomType.Rooms))
-                .HasForeignKey(nameof(Room.RoomTypeId))
-                .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+            //if (includeRoomTypeRelationship)
+            //{
+            //    builder.HasOne<RoomType>(nameof(Room.RoomType))
+            //        .WithMany(nameof(RoomType.Rooms))
+            //        .HasForeignKey(nameof(Room.RoomTypeId))
+            //        .IsRequired().OnDelete(DeleteBehavior.Restrict);
+            //}
+            //else builder.Ignore(nameof(Room.RoomType));
         }
+
+
+        //public static void ConfigureRoomType(this EntityTypeBuilder<RoomType> builder, bool includeConvenienceRelationship = true)
+        //{
+        //    builder.ToTable("roomtype");
+        //    builder.Property<string>(nameof(RoomType.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<string>(nameof(RoomType.Name))
+        //        .HasColumnName("Name");
+        //    builder.Property<double>(nameof(RoomType.UnitPrice))
+        //        .HasColumnName("UnitPrice");
+        //    builder.HasKey(nameof(RoomType.Id));
+
+        //    if (includeConvenienceRelationship)
+        //    {
+        //        builder.HasMany<Convinience>(nameof(RoomType.Conviniences))
+        //        .WithMany().UsingEntity<RoomTypeConvinience>()
+        //        .ConfigureRoomTypeConvenience();
+        //    }
+        //    else builder.Ignore(nameof(RoomType.Conviniences));
+        //}
 
         public static void ConfigureRoomType(this EntityTypeBuilder<RoomType> builder, bool includeConvenienceRelationship = true)
         {
             builder.ToTable("roomtype");
-            builder.BigIntegerIdProperty(nameof(RoomType.Id), "ID", "RT", "2");
+            builder.Property<string>(nameof(RoomType.Id))
+                .HasColumnName("ID");
             builder.Property<string>(nameof(RoomType.Name))
                 .HasColumnName("Name");
             builder.Property<double>(nameof(RoomType.UnitPrice))
                 .HasColumnName("UnitPrice");
             builder.HasKey(nameof(RoomType.Id));
 
-            if (!includeConvenienceRelationship) return;
-
-            builder.HasMany<Convenience>(nameof(RoomType.Conveniences))
-                .WithMany().UsingEntity<RoomTypeConvenience>()
-                .ConfigureRoomTypeConvenience();
+            //if (includeConvenienceRelationship)
+            //{
+            //    builder.HasMany<Convenience>(nameof(RoomType.Conveniences))
+            //    .WithMany().UsingEntity<RoomTypeConvenience>()
+            //    .ConfigureRoomTypeConvenience();
+            //}
+            //else
+            //{
+            //    builder.Ignore(nameof(RoomType.Conveniences));
+            //    builder.Ignore(nameof(RoomType.Quantities));
+            //}
         }
 
-        public static void ConfigureRoomTypeConvenience(this EntityTypeBuilder<RoomTypeConvenience> builder)
+        //public static void ConfigureRoomTypeConvenience(this EntityTypeBuilder<RoomTypeConvinience> builder)
+        //{
+        //    builder.ToTable("convinience_roomtype");
+
+        //    builder.Property<string>(nameof(RoomTypeConvinience.RoomTypeId))
+        //        .HasColumnName("RoomTypeId");
+        //    builder.Property<string>(nameof(RoomTypeConvinience.ConvinienceId))
+        //        .HasColumnName("ConvinienceId");
+        //    builder.Property<int>(nameof(RoomTypeConvinience.Quantity))
+        //        .HasColumnName("Quantity").HasDefaultValue(1);
+        //    builder.HasKey(nameof(RoomTypeConvinience.RoomTypeId), nameof(RoomTypeConvinience.ConvinienceId));
+
+        //    builder.HasOne<Convinience>(nameof(RoomTypeConvinience.Convenience))
+        //        .WithMany().HasForeignKey(nameof(RoomTypeConvinience.Convenience));
+        //    builder.HasOne<RoomType>(nameof(RoomTypeConvinience.RoomType))
+        //        .WithMany(nameof(RoomType.Quantities))
+        //        .HasForeignKey(nameof(RoomTypeConvinience.RoomTypeId));
+        //}
+        public static void ConfigureRoomTypeConvenience(this EntityTypeBuilder<RoomTypeConvinience> builder)
         {
             builder.ToTable("convinience_roomtype");
 
-            builder.BigIntegerIdProperty(nameof(RoomTypeConvenience.RoomTypeId), "RoomTypeId", "RT", "2");
-            builder.BigIntegerIdProperty(nameof(RoomTypeConvenience.ConvenienceId), "ConvinienceId", "CO", "2");
-            builder.Property<int>(nameof(RoomTypeConvenience.Quantity))
+            builder.BigIntegerIdProperty(nameof(RoomTypeConvinience.RoomTypeId), "RoomTypeId", "RT", "2");
+            builder.BigIntegerIdProperty(nameof(RoomTypeConvinience.ConvinienceId), "ConvinienceId", "CO", "2");
+            builder.Property<int>(nameof(RoomTypeConvinience.Quantity))
                 .HasColumnName("Quantity").HasDefaultValue(1);
-            builder.HasKey(nameof(RoomTypeConvenience.RoomTypeId), nameof(RoomTypeConvenience.ConvenienceId));
+            builder.HasKey(nameof(RoomTypeConvinience.RoomTypeId), nameof(RoomTypeConvinience.ConvinienceId));
 
-            builder.HasOne<Convenience>(nameof(RoomTypeConvenience.Convenience))
-                .WithMany().HasForeignKey(nameof(RoomTypeConvenience.ConvenienceId));
-            builder.HasOne<RoomType>(nameof(RoomTypeConvenience.RoomType))
-                .WithMany(nameof(RoomType.Quantities))
-                .HasForeignKey(nameof(RoomTypeConvenience.RoomTypeId));
+            builder.HasOne<Convinience>(nameof(RoomTypeConvinience.Convinience))
+                .WithMany().HasForeignKey(nameof(RoomTypeConvinience.ConvinienceId));
+            //builder.HasOne<RoomType>(nameof(RoomTypeConvinience.RoomType))
+            //    .WithMany(nameof(RoomType.Quantities))
+            //    .HasForeignKey(nameof(RoomTypeConvinience.RoomTypeId));
         }
 
-        public static void ConfigureConvenience(this EntityTypeBuilder<Convenience> builder)
+        //public static void ConfigureConvenience(this EntityTypeBuilder<Convinience> builder)
+        //{
+        //    builder.ToTable("convinience");
+        //    builder.Property<string>(nameof(Convinience.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<string>(nameof(Convinience.Name))
+        //        .HasColumnName("Name");
+        //    builder.HasKey(nameof(Convinience.Id));
+        //}
+
+        public static void ConfigureConvenience(this EntityTypeBuilder<Convinience> builder)
         {
             builder.ToTable("convinience");
-            builder.BigIntegerIdProperty(nameof(Convenience.Id), "ID", "CO", "2");
-            builder.Property<string>(nameof(Convenience.Name))
+            builder.BigIntegerIdProperty(nameof(Convinience.Id), "ID", "CO", "2");
+            builder.Property<string>(nameof(Convinience.Name))
                 .HasColumnName("Name");
-            builder.HasKey(nameof(Convenience.Id));
+            builder.HasKey(nameof(Convinience.Id));
         }
 
-        public static void ConfigureReservation(this EntityTypeBuilder<Reservation> builder,
-            bool includeRoomRelationship = true, bool includeStaffRelationship = true, bool includeCustomerRelationship = true)
-        {
-            builder.ToTable("reservation");
-            builder.BigIntegerIdProperty(nameof(Reservation.Id), "ID", "RE", "5");
-            builder.Property<DateTime>(nameof(Reservation.StartTime))
-                .HasColumnName("StartTime");
-            builder.Property<DateTime>(nameof(Reservation.EndTime))
-                .HasColumnName("EndTime");
-            builder.Property<string>(nameof(Reservation.RoomId))
-                .HasColumnName("RoomID");
-            builder.BigIntegerIdProperty(nameof(Reservation.StaffId), "StaffID", "SA", "3");
-            builder.BigIntegerIdProperty(nameof(Reservation.CustomerId), "CustomerID", "CU", "3");
-            builder.HasKey(nameof(Reservation.Id));
+        //public static void ConfigureReservation(this EntityTypeBuilder<Reservation> builder,
+        //    bool includeRoomRelationship = true, bool includeStaffRelationship = true, bool includeCustomerRelationship = true)
+        //{
+        //    builder.ToTable("reservation");
+        //    builder.Property<string>(nameof(Reservation.Id))
+        //        .HasColumnName("ID");
+        //    builder.Property<DateTime>(nameof(Reservation.CreatedAt))
+        //        .HasColumnName("CreatedAt");
+        //    builder.BigIntegerIdProperty(nameof(Reservation.StaffId), "StaffID", "SA", "3");
+        //    builder.BigIntegerIdProperty(nameof(Reservation.CustomerId), "CustomerID", "CU", "3");
+        //    builder.HasKey(nameof(Reservation.Id));
 
-            if (includeRoomRelationship)
-            {
-                builder.HasOne<Room>(nameof(Reservation.Room))
-                    .WithMany().HasForeignKey(nameof(Reservation.RoomId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            if (includeStaffRelationship)
-            {
-                builder.HasOne<Staff>(nameof(Reservation.Staff))
-                    .WithMany().HasForeignKey(nameof(Reservation.StaffId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-            if (includeCustomerRelationship)
-            {
-                builder.HasOne<Customer>(nameof(Reservation.Customer))
-                    .WithMany().HasForeignKey(nameof(Reservation.CustomerId))
-                    .IsRequired().OnDelete(DeleteBehavior.Restrict);
-            }
-        }
+        //    if (includeRoomRelationship)
+        //    {
+        //        builder.HasOne<Room>(nameof(Reservation.Room))
+        //            .WithMany().HasForeignKey(nameof(Reservation.RoomId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Reservation.Room));
+        //    if (includeStaffRelationship)
+        //    {
+        //        builder.HasOne<Staff>(nameof(Reservation.Staff))
+        //            .WithMany().HasForeignKey(nameof(Reservation.StaffId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Reservation.Staff));
+        //    if (includeCustomerRelationship)
+        //    {
+        //        builder.HasOne<Customer>(nameof(Reservation.Customer))
+        //            .WithMany().HasForeignKey(nameof(Reservation.CustomerId))
+        //            .IsRequired().OnDelete(DeleteBehavior.Restrict);
+        //    }
+        //    else builder.Ignore(nameof(Reservation.Customer));
+        //}
 
         public static void ConfigureRentRoomDetail(this EntityTypeBuilder<RentRoomDetail> builder,
             bool includeRoomRelationship = true, bool includeStaffRelationship = true, bool includeInvoiceRelationship = true)
@@ -133,12 +213,14 @@
                     .WithMany().HasForeignKey(nameof(RentRoomDetail.RoomId))
                     .IsRequired().OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(RentRoomDetail.Room));
             if (includeStaffRelationship)
             {
                 builder.HasOne<Staff>(nameof(RentRoomDetail.Staff))
                     .WithMany().HasForeignKey(nameof(RentRoomDetail.StaffId))
                     .IsRequired().OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(RentRoomDetail.Staff));
             if (includeInvoiceRelationship)
             {
                 builder.HasOne<Invoice>(nameof(RentRoomDetail.Invoice))
@@ -146,6 +228,7 @@
                     .HasForeignKey(nameof(RentRoomDetail.InvoiceId))
                     .IsRequired().OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(RentRoomDetail.Invoice));
         }
 
         public static void ConfigureInvoice(this EntityTypeBuilder<Invoice> builder,
@@ -160,7 +243,8 @@
             builder.Property<DateTime?>(nameof(Invoice.PaidTime))
                 .HasColumnName("PaidTime");
             builder.BigIntegerIdProperty(nameof(Invoice.StaffId), "StaffID", "SA", "3");
-            builder.BigIntegerIdProperty(nameof(Invoice.CustomerId), "CustomerID", "CU", "3");
+            builder.Property<string>(nameof(Invoice.CustomerId))
+                .HasColumnName("CustomerID");
             builder.HasKey(nameof(Invoice.Id));
 
             if (includeStaffRelationship)
@@ -169,26 +253,27 @@
                     .WithMany().HasForeignKey(nameof(Invoice.StaffId))
                     .IsRequired().OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(Invoice.Staff));
             if (includeCustomerRelationship)
             {
                 builder.HasOne<Customer>(nameof(Invoice.Customer))
                     .WithMany().HasForeignKey(nameof(Invoice.CustomerId))
                     .IsRequired().OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(Invoice.Customer));
         }
 
         public static void ConfigureCustomer(this EntityTypeBuilder<Customer> builder)
         {
             builder.ToTable("customer");
-            builder.BigIntegerIdProperty(nameof(Customer.Id), "ID", "CU", "3");
+            builder.Property(nameof(Customer.Id))
+                .HasColumnName("ID");
             builder.Property<string>(nameof(Customer.FullName))
                 .HasColumnName("FullName");
-            builder.Property<bool>(nameof(Customer.Gender))
-                .HasColumnName("Gender")
-                .HasConversion(x => x == Customer.GenderMale ? "0" : "1", x => x == "0" ? Customer.GenderMale : Customer.GenderFemale);
-            builder.Property<DateOnly>(nameof(Customer.Birthday))
-                .HasColumnName("Birthday")
-                .HasConversion(x => x.ToDateTime(TimeOnly.MinValue), x => DateOnly.FromDateTime(x));
+            builder.Property<string>(nameof(Customer.Gender))
+                .HasColumnName("Gender");
+            builder.Property<DateTime>(nameof(Customer.Birthday))
+                .HasColumnName("Birthday");
             builder.Property<string>(nameof(Customer.Address))
                 .HasColumnName("Address");
             builder.Property<string>(nameof(Customer.CitizenID))
@@ -201,22 +286,26 @@
         public static void ConfigureService(this EntityTypeBuilder<Service> builder, bool includeServiceTypeRelationship = true)
         {
             builder.ToTable("service");
-            builder.BigIntegerIdProperty(nameof(Service.Id), "ID", "SE", "3");
+            builder.Property<string>(nameof(Service.Id))
+                .HasColumnName("ID");
             builder.Property<string>(nameof(Service.Name))
                 .HasColumnName("Name");
             builder.Property<double>(nameof(Service.UnitPrice))
                 .HasColumnName("UnitPrice");
-            builder.Property<double>(nameof(Service.Unit))
+            builder.Property<string>(nameof(Service.Unit))
                 .HasColumnName("Unit");
-            builder.OptionalBigIntegerIdProperty(nameof(Service.ServiceTypeId   ), "ServiceTypeID", "ST", "2");
+            builder.Property<string>(nameof(Service.ServiceTypeId))
+                .HasColumnName("ServiceTypeID");
             builder.HasKey(nameof(Service.Id));
 
-            if (!includeServiceTypeRelationship) return;
-
-            builder.HasOne<ServiceType>(nameof(Service.ServiceType))
+            if (includeServiceTypeRelationship)
+            {
+                builder.HasOne<ServiceType>(nameof(Service.ServiceType))
                 .WithMany(nameof(ServiceType.Services))
                 .HasForeignKey(nameof(Service.ServiceTypeId))
                 .OnDelete(DeleteBehavior.Restrict);
+            }
+            else builder.Ignore(nameof(Service.ServiceType));
         }
 
         public static void ConfigureServiceType(this EntityTypeBuilder<ServiceType> builder)
@@ -228,7 +317,7 @@
             builder.HasKey(nameof(ServiceType.Id));
         }
 
-        public static void ConfigureCancelationStatus(this EntityTypeBuilder<CancelationStatus> builder, bool includeUseServiceDetailRelationship = true)
+        public static void ConfigureCancelationStatus(this EntityTypeBuilder<CancelationStatus> builder)
         {
             builder.ToTable("cancelationstatus");
             builder.BigIntegerIdProperty(nameof(CancelationStatus.Id), "ID", "SD", "5");
@@ -239,17 +328,11 @@
             builder.Property<DateTime>(nameof(CancelationStatus.Time))
                 .HasColumnName("Time");
             builder.HasKey(nameof(CancelationStatus.Id));
-
-            if (!includeUseServiceDetailRelationship) return;
-
-            builder.HasOne<UseServiceDetail>()
-                .WithOne(nameof(UseServiceDetail.CancelationStatus))
-                .HasForeignKey<CancelationStatus>(nameof(CancelationStatus.Id))
-                .IsRequired(false).OnDelete(DeleteBehavior.Restrict);
         }
 
         public static void ConfigureUseServiceDetail(this EntityTypeBuilder<UseServiceDetail> builder,
-            bool includeServiceRelationship = true, bool includeStaffRelationship = true, bool includeInvoiceRelationship = true)
+            bool includeServiceRelationship = true, bool includeStaffRelationship = true, bool includeInvoiceRelationship = true,
+            bool includeCancelationStatusRelationship = true)
         {
             builder.ToTable("useservicedetail");
             builder.BigIntegerIdProperty(nameof(UseServiceDetail.Id), "ID", "SD", "5");
@@ -258,7 +341,8 @@
             builder.Property<DateTime>(nameof(UseServiceDetail.UsedTime))
                 .HasColumnName("UsedTime");
             builder.BigIntegerIdProperty(nameof(UseServiceDetail.InvoiceId), "InvoiceID", "IN", "4");
-            builder.BigIntegerIdProperty(nameof(UseServiceDetail.ServiceId), "ServiceID", "SE", "3");
+            builder.Property<string>(nameof(UseServiceDetail.ServiceId))
+                .HasColumnName("ServiceID");
             builder.BigIntegerIdProperty(nameof(UseServiceDetail.StaffId), "StaffID", "SA", "3");
             builder.HasKey(nameof(UseServiceDetail.Id));
 
@@ -268,12 +352,14 @@
                     .WithMany().HasForeignKey(nameof(UseServiceDetail.ServiceId))
                     .IsRequired().OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(UseServiceDetail.Service));
             if (includeStaffRelationship)
             {
                 builder.HasOne<Staff>(nameof(UseServiceDetail.Staff))
                     .WithMany().HasForeignKey(nameof(UseServiceDetail.StaffId))
                     .IsRequired().OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(UseServiceDetail.Staff));
             if (includeInvoiceRelationship)
             {
                 builder.HasOne<Invoice>(nameof(UseServiceDetail.Invoice))
@@ -281,6 +367,14 @@
                     .HasForeignKey(nameof(UseServiceDetail.InvoiceId))
                     .IsRequired().OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(UseServiceDetail.Invoice));
+            if (includeCancelationStatusRelationship)
+            {
+                builder.HasOne<CancelationStatus>(nameof(UseServiceDetail.CancelationStatus))
+                    .WithOne().IsRequired(false).OnDelete(DeleteBehavior.Restrict)
+                    .HasForeignKey<CancelationStatus>(nameof(CancelationStatus.Id));
+            }
+            else builder.Ignore(nameof(UseServiceDetail.CancelationStatus));
         }
 
         public static void ConfigureRole(this EntityTypeBuilder<Role> builder)
@@ -316,8 +410,11 @@
             builder.Property<StaffState>(nameof(Staff.Status))
                 .HasColumnName("Status")
                 .HasConversion(x => (int)x, x => (StaffState)x);
+            //builder.Ignore(nameof(Staff.CanDelete));
+            builder.Ignore(nameof(Staff.Resign));
             builder.Property<string>(nameof(Staff.ImageLink))
-                .HasColumnName("ImageLink");
+                .HasColumnName("ImageLink")
+                .IsRequired(false);
             builder.OptionalBigIntegerIdProperty(nameof(Staff.RoleId), "RoleID", "RO", "2");
             builder.OptionalBigIntegerIdProperty(nameof(Staff.GroupId), "PermissionGroupID", "", "2");
             builder.OptionalBigIntegerIdProperty(nameof(Staff.AccountId), "UID", "", "3");
@@ -328,22 +425,25 @@
                 builder.HasOne<Role>(nameof(Staff.Role))
                     .WithMany().IsRequired(false)
                     .HasForeignKey(nameof(Staff.RoleId))
-                    .OnDelete(DeleteBehavior.SetNull);
+                    .OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(Staff.Role));
             if (includePermissionGroupRelationship)
             {
                 builder.HasOne<PermissionGroup>(nameof(Staff.Group))
                     .WithMany().IsRequired(false)
                     .HasForeignKey(nameof(Staff.GroupId))
-                    .OnDelete(DeleteBehavior.SetNull);
+                    .OnDelete(DeleteBehavior.Restrict);
             }
+            else builder.Ignore(nameof(Staff.Group));
             if (includeAccountRelationship)
             {
                 builder.HasOne<Account>(nameof(Staff.Account))
                     .WithOne().IsRequired(false)
-                    .HasForeignKey<Staff>(x => x.AccountId)
+                    .HasForeignKey<Staff>(nameof(Staff.AccountId))
                     .OnDelete(DeleteBehavior.SetNull);
             }
+            else builder.Ignore(nameof(Staff.Account));
         }
 
         public static void ConfigureAccount(this EntityTypeBuilder<Account> builder)
@@ -380,7 +480,7 @@
         {
             builder.Property<BigInteger>(propertyName)
                 .HasColumnName(columnName)
-                .HasConversion(x => prefix + x.ToString("D" + length), x => BigInteger.Parse(x.Substring(2)));
+                .HasConversion(x => prefix + x.ToString("D" + length), x => BigInteger.Parse(x.Substring(prefix.Length)));
         }
 
         public static void OptionalBigIntegerIdProperty<T>(this EntityTypeBuilder<T> builder, string propertyName, string columnName, string prefix, string length) where T : class
@@ -388,7 +488,7 @@
             builder.Property<BigInteger?>(propertyName)
                 .HasColumnName(columnName).IsRequired(false)
                 .HasConversion(x => x == null ? null : prefix + x.Value.ToString("D" + length),
-                        x => x == null ? null : BigInteger.Parse(x.Substring(2)));
+                        x => x == null ? null : BigInteger.Parse(x.Substring(prefix.Length)));
         }
     }
 }

@@ -7,6 +7,7 @@
     using System.Collections;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.ComponentModel.DataAnnotations.Schema;
     using System.Globalization;
     using System.Numerics;
     using System.Text;
@@ -17,31 +18,34 @@
         WriteAccount = 1,
         ReadPermissionGroup = 2,
         WritePermissionGroup = 3,
-        ReadRole = 4,
-        WriteRole = 5,
-        ReadStaff = 6,
-        WriteStaff = 7,
-        ReadService = 8,
-        WriteService = 9,
-        ReadServiceType = 10,
-        WriteServiceType = 11,
-        ReadRoom = 12,
-        WriteRoom = 13,
-        ReadRoomType = 14,
-        WriteRoomType = 15,
-        ReadConvenient = 16,
-        WriteConvenient = 17,
-        ReadCustomer = 18,
-        WriteCustomer = 19,
-        UpdateReservation = 20,
-        UpdateRoomDetails = 21,
-        UpdateServiceDetails = 22,
-        CancelServiceDetails = 23,
-        UpdateInvoice = 24
+        GrantPermission = 4,
+        ReadRole = 5,
+        WriteRole = 6,
+        ReadStaff = 7,
+        WriteStaff = 8,
+        ReadService = 9,
+        WriteService = 10,
+        ReadServiceType = 11,
+        WriteServiceType = 12,
+        ReadRoom = 13,
+        WriteRoom = 14,
+        ReadRoomType = 15,
+        WriteRoomType = 16,
+        ReadConvenient = 17,
+        WriteConvenient = 18,
+        ReadCustomer = 19,
+        WriteCustomer = 20,
+        UpdateReservation = 21,
+        UpdateRoomDetails = 22,
+        UpdateServiceDetails = 23,
+        CancelServiceDetails = 24,
+        UpdateInvoice = 25
     } // Database limit 0-299
 
     public interface IAccessable
     {
+        private static Comparer<Permission> comparer = Comparer<Permission>.Create(AccessableExtensions.Compare);
+
         Account? Account { get; }
         PermissionGroup? Group { get; }
         Editor Edit();
@@ -79,7 +83,7 @@
             {
                 if (helper is IList<Permission> permissions)
                 {
-                    int index = permissions.BinarySearch(permission, Comparer<Permission>.Default);
+                    int index = permissions.BinarySearch(permission, comparer);
                     if (index >= 0 == granted) return;
                     if (!granted) permissions.RemoveAt(index);
                     else permissions.Insert(~index, permission);
@@ -127,8 +131,8 @@
                         if (bs[i] == 0) continue;
                         for (int j = 0; j < 8; ++j)
                         {
-                            if (((bs[i] >> j) & 1) == 0) continue;
-                            permissions.Add((Permission)(i << 3 | ((~j) & 7)));
+                            if (((bs[i] >> ((~j) & 7)) & 1) == 0) continue;
+                            permissions.Add((Permission)(i << 3 | j));
                         }
                     }
                 }
@@ -136,7 +140,7 @@
             private protected Key() => permissions = new List<Permission>();
             private protected virtual Account? AsAccount() => null;
             private protected virtual PermissionGroup? AsPermissionGroup() => null;
-            public bool IsPermissionGranted(Permission permission) => permissions.BinarySearch(permission, Comparer<Permission>.Default) >= 0;
+            public bool IsPermissionGranted(Permission permission) => permissions.BinarySearch(permission, comparer) >= 0;
             Account? IAccessable.Account => AsAccount();
             PermissionGroup? IAccessable.Group => AsPermissionGroup();
             Editor IAccessable.Edit() => new(this, permissions);
@@ -166,8 +170,9 @@
                 if (uid == 0)
                 {
                     var e = ((IAccessable)this).Edit();
-                    foreach (var perm in Permissions)
-                        e.SetGranted(perm);
+                    foreach (var perm in Enum.GetValues<Permission>())
+                        if ((ushort)perm < (uint)Permission.UpdateReservation)
+                            e.SetGranted(perm);
                 }
             }
         }
@@ -221,6 +226,8 @@
 
     public static class AccessableExtensions
     {
+        public static int Compare(this Permission x, Permission y) => ((ushort)x).CompareTo((ushort)y);
+
         public static bool IsPermissionGranted(this IAccessable accessable, Permission permission)
             => accessable is IAccessable.Key key ? key.IsPermissionGranted(permission)
             : accessable is not null && ((accessable.Group?.IsPermissionGranted(permission) ?? false)

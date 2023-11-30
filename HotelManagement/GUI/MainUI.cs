@@ -1,6 +1,11 @@
-﻿using MaterialSkin;
+﻿using HotelManagement.Business;
+using HotelManagement.Data;
+
+using MaterialSkin;
 using MaterialSkin.Controls;
+
 using Org.BouncyCastle.Crmf;
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,6 +35,7 @@ namespace HotelManagement.GUI
             TextShade.WHITE);    // Text color
             addForm();
         }
+
         private void addForm()
         {
             ReservationUI reservationForm = new ReservationUI();
@@ -67,12 +73,81 @@ namespace HotelManagement.GUI
             customerForm.Show();
             tabPage8.Controls.Add(customerForm);
 
-            StaffUI staffForm = new StaffUI();
-            staffForm.TopLevel = false;
-            staffForm.FormBorderStyle = FormBorderStyle.None;
-            staffForm.Dock = DockStyle.Fill;
-            staffForm.Show();
-            tabPage9.Controls.Add(staffForm);
+            AddStaffOrRoleForm();
+            AddAccountOrPermissionGroupForm();
+            AddStatistic2Form();
+        }
+
+        private void AddStaffOrRoleForm()
+        {
+            if (LoginBO.IsPermissionGranted(Permission.ReadStaff))
+            {
+                StaffManagerUI staffForm = new StaffManagerUI();
+                staffForm.TopLevel = false;
+                staffForm.FormBorderStyle = FormBorderStyle.None;
+                staffForm.Dock = DockStyle.Fill;
+                staffForm.Show();
+                tabPage9.Controls.Add(staffForm);
+            }
+            else if (LoginBO.IsPermissionGranted(Permission.ReadRole))
+            {
+                RoleManagementUI roleForm = new RoleManagementUI();
+                roleForm.TopLevel = false;
+                roleForm.FormBorderStyle = FormBorderStyle.None;
+                roleForm.Dock = DockStyle.Fill;
+                roleForm.Show();
+                tabPage9.Controls.Add(roleForm);
+            }
+            else
+            {
+                tabPage9.Controls.Add(new Label()
+                {
+                    Dock = DockStyle.Fill,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Text = "Permission Required!"
+                });
+            }
+        }
+
+        private void AddAccountOrPermissionGroupForm()
+        {
+            if (LoginBO.IsPermissionGranted(Permission.ReadAccount))
+            {
+                AccountManagerUI accountForm = new AccountManagerUI();
+                accountForm.TopLevel = false;
+                accountForm.FormBorderStyle = FormBorderStyle.None;
+                accountForm.Dock = DockStyle.Fill;
+                accountForm.Show();
+                tabPage10.Controls.Add(accountForm);
+            }
+            else if (LoginBO.IsPermissionGranted(Permission.ReadPermissionGroup))
+            {
+                PermissionGroupManagerUI pgForm = new PermissionGroupManagerUI();
+                pgForm.TopLevel = false;
+                pgForm.FormBorderStyle = FormBorderStyle.None;
+                pgForm.Dock = DockStyle.Fill;
+                pgForm.Show();
+                tabPage10.Controls.Add(pgForm);
+            }
+            else
+            {
+                tabPage10.Controls.Add(new Label()
+                {
+                    Dock = DockStyle.Fill,
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Text = "Permission Required!"
+                });
+            }
+        }
+
+        private void AddStatistic2Form()
+        {
+            StatisticsUI2 statsForm = new StatisticsUI2();
+            statsForm.TopLevel = false;
+            statsForm.FormBorderStyle = FormBorderStyle.None;
+            statsForm.Dock = DockStyle.Fill;
+            tabPage11.Controls.Add(statsForm);
+            statsForm.Show();
         }
     }
 }

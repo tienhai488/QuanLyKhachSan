@@ -10,6 +10,8 @@ namespace HotelManagement.Ultils
     {
         public const string formatBirthday = "dd/MM/yyyy";
 
+        public const string formatDateTime = "dd/MM/yyyy HH:mm:ss";
+
         public const string strBtnSave = "Lưu thông tin";
     }
 }

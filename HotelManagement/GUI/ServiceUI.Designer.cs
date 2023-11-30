@@ -193,7 +193,7 @@ namespace HotelManagement.GUI
             tableLayoutPanel2.Location = new Point(0, 0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 2;
-            tableLayoutPanel2.RowStyles.Add(new RowStyle());
+            tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 155F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel2.Size = new Size(846, 609);
             tableLayoutPanel2.TabIndex = 0;
@@ -202,9 +202,9 @@ namespace HotelManagement.GUI
             // 
             panel3.Controls.Add(groupBox2);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(3, 155);
+            panel3.Location = new Point(3, 158);
             panel3.Name = "panel3";
-            panel3.Size = new Size(840, 451);
+            panel3.Size = new Size(840, 448);
             panel3.TabIndex = 1;
             // 
             // groupBox2
@@ -214,7 +214,7 @@ namespace HotelManagement.GUI
             groupBox2.ForeColor = SystemColors.HotTrack;
             groupBox2.Location = new Point(0, 0);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(840, 451);
+            groupBox2.Size = new Size(840, 448);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Data";
@@ -231,7 +231,7 @@ namespace HotelManagement.GUI
             dtgvService.ReadOnly = true;
             dtgvService.RowHeadersWidth = 51;
             dtgvService.RowTemplate.Height = 29;
-            dtgvService.Size = new Size(834, 425);
+            dtgvService.Size = new Size(834, 422);
             dtgvService.TabIndex = 1;
             // 
             // panel2
@@ -240,7 +240,7 @@ namespace HotelManagement.GUI
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(3, 3);
             panel2.Name = "panel2";
-            panel2.Size = new Size(840, 146);
+            panel2.Size = new Size(840, 149);
             panel2.TabIndex = 0;
             // 
             // groupBox3
@@ -250,7 +250,7 @@ namespace HotelManagement.GUI
             groupBox3.ForeColor = SystemColors.HotTrack;
             groupBox3.Location = new Point(0, 0);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(840, 146);
+            groupBox3.Size = new Size(840, 149);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Filter";
@@ -265,9 +265,9 @@ namespace HotelManagement.GUI
             tableLayoutPanel3.Location = new Point(3, 23);
             tableLayoutPanel3.Name = "tableLayoutPanel3";
             tableLayoutPanel3.RowCount = 2;
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
-            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
-            tableLayoutPanel3.Size = new Size(834, 120);
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 65F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 35F));
+            tableLayoutPanel3.Size = new Size(834, 123);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // tabControl2
@@ -279,7 +279,7 @@ namespace HotelManagement.GUI
             tabControl2.Location = new Point(3, 3);
             tabControl2.Name = "tabControl2";
             tabControl2.SelectedIndex = 0;
-            tabControl2.Size = new Size(828, 66);
+            tabControl2.Size = new Size(828, 73);
             tabControl2.TabIndex = 2;
             // 
             // tabPage3
@@ -288,7 +288,7 @@ namespace HotelManagement.GUI
             tabPage3.Location = new Point(4, 29);
             tabPage3.Name = "tabPage3";
             tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(820, 33);
+            tabPage3.Size = new Size(820, 40);
             tabPage3.TabIndex = 0;
             tabPage3.Text = "Mã DV";
             tabPage3.UseVisualStyleBackColor = true;
@@ -305,18 +305,18 @@ namespace HotelManagement.GUI
             tableLayoutPanel6.Name = "tableLayoutPanel6";
             tableLayoutPanel6.RowCount = 1;
             tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel6.Size = new Size(814, 27);
+            tableLayoutPanel6.Size = new Size(814, 34);
             tableLayoutPanel6.TabIndex = 2;
             // 
             // btnDelFilterServiceID
             // 
             btnDelFilterServiceID.BackColor = SystemColors.HotTrack;
-            btnDelFilterServiceID.Dock = DockStyle.Top;
+            btnDelFilterServiceID.Dock = DockStyle.Fill;
             btnDelFilterServiceID.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDelFilterServiceID.ForeColor = SystemColors.ButtonHighlight;
             btnDelFilterServiceID.Location = new Point(572, 3);
             btnDelFilterServiceID.Name = "btnDelFilterServiceID";
-            btnDelFilterServiceID.Size = new Size(239, 21);
+            btnDelFilterServiceID.Size = new Size(239, 28);
             btnDelFilterServiceID.TabIndex = 3;
             btnDelFilterServiceID.Text = "Xóa";
             btnDelFilterServiceID.UseVisualStyleBackColor = false;
@@ -431,9 +431,9 @@ namespace HotelManagement.GUI
             btnDelFilterServiceType.Dock = DockStyle.Bottom;
             btnDelFilterServiceType.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDelFilterServiceType.ForeColor = SystemColors.ButtonHighlight;
-            btnDelFilterServiceType.Location = new Point(572, 3);
+            btnDelFilterServiceType.Location = new Point(572, 12);
             btnDelFilterServiceType.Name = "btnDelFilterServiceType";
-            btnDelFilterServiceType.Size = new Size(239, 28);
+            btnDelFilterServiceType.Size = new Size(239, 19);
             btnDelFilterServiceType.TabIndex = 3;
             btnDelFilterServiceType.Text = "Xóa";
             btnDelFilterServiceType.UseVisualStyleBackColor = false;
@@ -447,12 +447,12 @@ namespace HotelManagement.GUI
             tableLayoutPanel5.Controls.Add(btnFilterService, 1, 0);
             tableLayoutPanel5.Controls.Add(btnDeleteAllFilterService, 0, 0);
             tableLayoutPanel5.Dock = DockStyle.Fill;
-            tableLayoutPanel5.Location = new Point(3, 75);
+            tableLayoutPanel5.Location = new Point(3, 82);
             tableLayoutPanel5.Name = "tableLayoutPanel5";
             tableLayoutPanel5.RowCount = 1;
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel5.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel5.Size = new Size(828, 42);
+            tableLayoutPanel5.Size = new Size(828, 38);
             tableLayoutPanel5.TabIndex = 1;
             // 
             // btnFilterService
@@ -463,7 +463,7 @@ namespace HotelManagement.GUI
             btnFilterService.ForeColor = SystemColors.ButtonHighlight;
             btnFilterService.Location = new Point(417, 3);
             btnFilterService.Name = "btnFilterService";
-            btnFilterService.Size = new Size(408, 36);
+            btnFilterService.Size = new Size(408, 32);
             btnFilterService.TabIndex = 1;
             btnFilterService.Text = "Lọc";
             btnFilterService.UseVisualStyleBackColor = false;
@@ -477,7 +477,7 @@ namespace HotelManagement.GUI
             btnDeleteAllFilterService.ForeColor = SystemColors.ButtonHighlight;
             btnDeleteAllFilterService.Location = new Point(3, 3);
             btnDeleteAllFilterService.Name = "btnDeleteAllFilterService";
-            btnDeleteAllFilterService.Size = new Size(408, 36);
+            btnDeleteAllFilterService.Size = new Size(408, 32);
             btnDeleteAllFilterService.TabIndex = 0;
             btnDeleteAllFilterService.Text = "Xóa tất cả";
             btnDeleteAllFilterService.UseVisualStyleBackColor = false;
@@ -606,7 +606,7 @@ namespace HotelManagement.GUI
             tableLayoutPanel8.Location = new Point(0, 0);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 2;
-            tableLayoutPanel8.RowStyles.Add(new RowStyle());
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Absolute, 155F));
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             tableLayoutPanel8.Size = new Size(846, 609);
             tableLayoutPanel8.TabIndex = 0;
@@ -615,9 +615,9 @@ namespace HotelManagement.GUI
             // 
             panel7.Controls.Add(groupBox4);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(3, 166);
+            panel7.Location = new Point(3, 158);
             panel7.Name = "panel7";
-            panel7.Size = new Size(840, 440);
+            panel7.Size = new Size(840, 448);
             panel7.TabIndex = 1;
             // 
             // groupBox4
@@ -627,7 +627,7 @@ namespace HotelManagement.GUI
             groupBox4.ForeColor = SystemColors.HotTrack;
             groupBox4.Location = new Point(0, 0);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(840, 440);
+            groupBox4.Size = new Size(840, 448);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "Data";
@@ -645,7 +645,7 @@ namespace HotelManagement.GUI
             dtgvType.RowHeadersWidth = 51;
             dtgvType.RowTemplate.Height = 29;
             dtgvType.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvType.Size = new Size(834, 414);
+            dtgvType.Size = new Size(834, 422);
             dtgvType.TabIndex = 1;
             // 
             // panel8
@@ -654,7 +654,7 @@ namespace HotelManagement.GUI
             panel8.Dock = DockStyle.Fill;
             panel8.Location = new Point(3, 3);
             panel8.Name = "panel8";
-            panel8.Size = new Size(840, 157);
+            panel8.Size = new Size(840, 149);
             panel8.TabIndex = 0;
             // 
             // groupBox5
@@ -664,7 +664,7 @@ namespace HotelManagement.GUI
             groupBox5.ForeColor = SystemColors.HotTrack;
             groupBox5.Location = new Point(0, 0);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(840, 157);
+            groupBox5.Size = new Size(840, 149);
             groupBox5.TabIndex = 1;
             groupBox5.TabStop = false;
             groupBox5.Text = "Filter";
@@ -679,9 +679,9 @@ namespace HotelManagement.GUI
             tableLayoutPanel9.Location = new Point(3, 23);
             tableLayoutPanel9.Name = "tableLayoutPanel9";
             tableLayoutPanel9.RowCount = 2;
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 66.6666641F));
-            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel9.Size = new Size(834, 131);
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 65F));
+            tableLayoutPanel9.RowStyles.Add(new RowStyle(SizeType.Percent, 35F));
+            tableLayoutPanel9.Size = new Size(834, 123);
             tableLayoutPanel9.TabIndex = 0;
             // 
             // tabControl3
@@ -692,7 +692,7 @@ namespace HotelManagement.GUI
             tabControl3.Location = new Point(3, 3);
             tabControl3.Name = "tabControl3";
             tabControl3.SelectedIndex = 0;
-            tabControl3.Size = new Size(828, 81);
+            tabControl3.Size = new Size(828, 73);
             tabControl3.TabIndex = 2;
             // 
             // tabPage6
@@ -701,7 +701,7 @@ namespace HotelManagement.GUI
             tabPage6.Location = new Point(4, 29);
             tabPage6.Name = "tabPage6";
             tabPage6.Padding = new Padding(3);
-            tabPage6.Size = new Size(820, 48);
+            tabPage6.Size = new Size(820, 40);
             tabPage6.TabIndex = 0;
             tabPage6.Text = "Mã loại";
             tabPage6.UseVisualStyleBackColor = true;
@@ -718,7 +718,7 @@ namespace HotelManagement.GUI
             tableLayoutPanel11.Name = "tableLayoutPanel11";
             tableLayoutPanel11.RowCount = 1;
             tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel11.Size = new Size(814, 42);
+            tableLayoutPanel11.Size = new Size(814, 34);
             tableLayoutPanel11.TabIndex = 2;
             // 
             // btnDelFilterTypeID
@@ -729,7 +729,7 @@ namespace HotelManagement.GUI
             btnDelFilterTypeID.ForeColor = SystemColors.ButtonHighlight;
             btnDelFilterTypeID.Location = new Point(572, 3);
             btnDelFilterTypeID.Name = "btnDelFilterTypeID";
-            btnDelFilterTypeID.Size = new Size(239, 36);
+            btnDelFilterTypeID.Size = new Size(239, 28);
             btnDelFilterTypeID.TabIndex = 3;
             btnDelFilterTypeID.Text = "Xóa";
             btnDelFilterTypeID.UseVisualStyleBackColor = false;
@@ -753,7 +753,7 @@ namespace HotelManagement.GUI
             tabPage7.Location = new Point(4, 29);
             tabPage7.Name = "tabPage7";
             tabPage7.Padding = new Padding(3);
-            tabPage7.Size = new Size(820, 48);
+            tabPage7.Size = new Size(820, 40);
             tabPage7.TabIndex = 1;
             tabPage7.Text = "Tên loại";
             tabPage7.UseVisualStyleBackColor = true;
@@ -770,7 +770,7 @@ namespace HotelManagement.GUI
             tableLayoutPanel13.Name = "tableLayoutPanel13";
             tableLayoutPanel13.RowCount = 1;
             tableLayoutPanel13.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel13.Size = new Size(814, 42);
+            tableLayoutPanel13.Size = new Size(814, 34);
             tableLayoutPanel13.TabIndex = 2;
             // 
             // btnDelFilterTypeName
@@ -781,7 +781,7 @@ namespace HotelManagement.GUI
             btnDelFilterTypeName.ForeColor = SystemColors.ButtonHighlight;
             btnDelFilterTypeName.Location = new Point(572, 3);
             btnDelFilterTypeName.Name = "btnDelFilterTypeName";
-            btnDelFilterTypeName.Size = new Size(239, 36);
+            btnDelFilterTypeName.Size = new Size(239, 28);
             btnDelFilterTypeName.TabIndex = 3;
             btnDelFilterTypeName.Text = "Xóa";
             btnDelFilterTypeName.UseVisualStyleBackColor = false;
@@ -807,7 +807,7 @@ namespace HotelManagement.GUI
             tableLayoutPanel12.Controls.Add(btnFilterType, 1, 0);
             tableLayoutPanel12.Controls.Add(btnDeleteAllFilterType, 0, 0);
             tableLayoutPanel12.Dock = DockStyle.Fill;
-            tableLayoutPanel12.Location = new Point(3, 90);
+            tableLayoutPanel12.Location = new Point(3, 82);
             tableLayoutPanel12.Name = "tableLayoutPanel12";
             tableLayoutPanel12.RowCount = 1;
             tableLayoutPanel12.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));

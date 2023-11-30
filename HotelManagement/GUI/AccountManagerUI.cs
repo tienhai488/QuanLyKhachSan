@@ -46,6 +46,7 @@
 
         private void LoadActions()
         {
+            dbtnGroups.Available = LoginBO.IsPermissionGranted(Permission.ReadPermissionGroup);
             dbtnSave.Available = false;
             dbtnAdd.Available = false;
             dbtnEdit.Available = false;
@@ -205,12 +206,19 @@
                 MessageBoxButtons.OKCancel) == DialogResult.OK)
             {
                 AccountManagerBO.Instance.DeleteAccount();
+                selectedIndex = -1;
                 editing = false;
                 LoadAccounts();
                 LoadActions();
                 LoadInfo();
             }
         }
+
+        private void OnStartPermissionGroupManager(object sender, EventArgs e)
+            => new PermissionGroupManagerUI()
+            {
+                StartPosition = 0
+            }.ShowDialog();
 
         private int AdjustBackButtonSize()
         {
@@ -297,7 +305,7 @@
                 s.Width = (int)(width * 0.4);
                 lbAccounts.ClientSize = s;
                 pnAccountInfo.Location = new(s.Width, 0);
-                s.Width = width - s.Width - scrollSize.Width;
+                s.Width = width - s.Width;
             }
             else
             {
@@ -305,7 +313,9 @@
                 pnAccountInfo.Location = new(0, 0);
             }
             pnAccountInfo.ClientSize = s;
-            pnAccountInfo.AutoScrollMinSize = s - scrollSize;
+            s -= scrollSize;
+            ucAccountInfo.ClientSize = new(s.Width, ucAccountInfo.ClientSize.Height);
+            pnAccountInfo.AutoScrollMinSize = s;
         }
     }
 }

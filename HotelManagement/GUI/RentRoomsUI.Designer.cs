@@ -475,6 +475,7 @@
             // dateTimePicker1
             // 
             dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
             dateTimePicker1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             dateTimePicker1.Location = new Point(0, 23);
             dateTimePicker1.Name = "dateTimePicker1";

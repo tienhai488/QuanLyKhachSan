@@ -7,25 +7,25 @@ namespace HotelManagement.BUS
 {
     public class CustomerBUS
     {
-        private CustomerEFCoreDAO customerEFCoreDAO = new CustomerEFCoreDAO();
+        private CustomerDAO customerDAO = new CustomerDAO();
 
         public List<Customer> getAll()
         {
-            return customerEFCoreDAO.Customers.AsNoTracking().ToList();
+            return customerDAO.Customers.AsNoTracking().ToList();
         }
         public int add(Customer customer)
         {
-            customerEFCoreDAO.Customers.Add(customer);
-            return customerEFCoreDAO.SaveChanges();
+            customerDAO.Customers.Add(customer);
+            return customerDAO.SaveChanges();
         }
 
         public int update(Customer customer)
         {
-            customerEFCoreDAO.Entry(customer).State = EntityState.Detached;
-            customerEFCoreDAO.Customers.Attach(customer);
-            customerEFCoreDAO.Entry(customer).State = EntityState.Modified;
+            customerDAO.Entry(customer).State = EntityState.Detached;
+            customerDAO.Customers.Attach(customer);
+            customerDAO.Entry(customer).State = EntityState.Modified;
 
-            Customer temp = customerEFCoreDAO.Customers.First(item => item.Id.Equals(customer.Id));
+            Customer temp = customerDAO.Customers.First(item => item.Id.Equals(customer.Id));
             temp.FullName = customer.FullName;
             temp.Gender = customer.Gender;
             temp.Birthday = customer.Birthday;
@@ -33,15 +33,15 @@ namespace HotelManagement.BUS
             temp.PhoneNumber = customer.PhoneNumber;
             temp.Address = customer.Address;
             
-            return customerEFCoreDAO.SaveChanges(); 
+            return customerDAO.SaveChanges(); 
         }
 
         public int delete(string id)
         {
-            Customer temp = customerEFCoreDAO.Customers.First(item => item.Id.Equals(id));
-            customerEFCoreDAO.Customers.Remove(temp);
+            Customer temp = customerDAO.Customers.First(item => item.Id.Equals(id));
+            customerDAO.Customers.Remove(temp);
 
-            return customerEFCoreDAO.SaveChanges();
+            return customerDAO.SaveChanges();
         }
         public int getLength()
         {
@@ -82,6 +82,11 @@ namespace HotelManagement.BUS
                 return false;
             }
             return true;
+        }
+
+        public Customer getCustomerByCCCD(string cccd)
+        {
+            return getAll().Find(item => item.CitizenID.Equals(cccd));
         }
     }
 }

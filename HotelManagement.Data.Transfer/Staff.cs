@@ -16,20 +16,25 @@
             this.id = id;
         }
         public Role() { }
-        public static int NameComparison(Role x, Role y) => CultureInfo.CurrentCulture.CompareInfo.Compare(x.Name, y.Name);
+        public static int NameIDComparison(Role x, Role y)
+        {
+            var com = CultureInfo.CurrentCulture.CompareInfo.Compare(x.Name, y.Name);
+            return com != 0 ? com : x.Id.CompareTo(y.Id);
+        }
     }
 
     [Flags]
     public enum StaffState : int
     {
         None = 0,
-        CanDelete = 0x80,
+        //CannotDelete = 0x80,
         Resign = 0x01 // nghỉ việc
     }
 
     public class Staff : IAccessable
     {
         public const bool GenderMale = true, GenderFemale = false;
+        public const string GenderMaleString = "Nam", GenderFemaleString = "Nữ";
 
         private BigInteger id;
         private BigInteger? roleId, accountId, groupId;
@@ -49,14 +54,14 @@
         public bool Gender { get => gender; set => gender = value; }
         public DateOnly Birthday { get => birthday; set => birthday = value; }
         public string Phone { get => phone; set => phone = value; }
-        public string GenderString { get => gender == GenderMale ? "Male" : "Female"; }
+        public string GenderString { get => gender == GenderMale ? GenderMaleString : GenderFemaleString; }
         public double Salary { get => salary; set => salary = value; }
         public StaffState Status { get => status; private set => status = value; }
-        public bool CanDelete
-        {
-            get => (status & StaffState.CanDelete) == StaffState.CanDelete;
-            set => status = value ? status | StaffState.CanDelete : status & ~StaffState.CanDelete;
-        }
+        //public bool CanDelete
+        //{
+        //    get => (status & StaffState.CannotDelete) != StaffState.CannotDelete;
+        //    set => status = value ? status & ~StaffState.CannotDelete : status | StaffState.CannotDelete;
+        //}
         public bool Resign
         {
             get => (status & StaffState.Resign) == StaffState.Resign;
@@ -70,24 +75,38 @@
         public Role? Role
         {
             get => role;
-            private set => role = value;
+            set
+            {
+                role = value;
+                roleId = value?.Id;
+            }
         }
+
         public Account? Account
         {
             get => account;
-            private set => account = value;
+            private set
+            {
+                account = value;
+                accountId = value?.Uid;
+            }
         }
+
         public PermissionGroup? Group
         {
             get => group;
-            private set => group = value;
+            private set
+            {
+                group = value;
+                groupId = value?.Id;
+            }
         }
 
         public Staff(BigInteger id)
         {
             this.id = id;
         }
-        
+
         public Staff() { }
 
         private void Edit(ref Account? account, ref PermissionGroup? group)
@@ -95,11 +114,18 @@
             Account? a = account;
             account = this.account;
             this.account = a;
+            accountId = a?.Uid;
             PermissionGroup? pg = group;
             group = this.group;
             this.group = pg;
+            groupId = pg?.Id;
         }
 
         IAccessable.Editor IAccessable.Edit() => new(this, Edit);
+        public static int NameIDComparison(Staff x, Staff y)
+        {
+            var com = CultureInfo.CurrentCulture.CompareInfo.Compare(x.FullName, y.FullName);
+            return com != 0 ? com : x.Id.CompareTo(y.Id);
+        }
     }
 }
