@@ -46,7 +46,7 @@ namespace HotelManagement.GUI
             roomForm.Show();
             tabPage3.Controls.Add(roomForm);
 
-            InvoiceList invoiceList = new InvoiceList();
+            InvoiceListUI invoiceList = new InvoiceListUI();
             invoiceList.TopLevel = false;
             invoiceList.FormBorderStyle = FormBorderStyle.None;
             invoiceList.Dock = DockStyle.Fill;

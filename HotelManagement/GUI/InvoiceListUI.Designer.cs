@@ -1,6 +1,6 @@
 ﻿namespace HotelManagement.GUI
 {
-    partial class InvoiceList
+    partial class InvoiceListUI
     {
         /// <summary>
         /// Required designer variable.

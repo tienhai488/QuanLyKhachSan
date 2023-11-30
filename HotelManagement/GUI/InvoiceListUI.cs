@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace HotelManagement.GUI
 {
-    public partial class InvoiceList : MaterialForm
+    public partial class InvoiceListUI : MaterialForm
     {
         private BindingSource bindingSourceInvoice = new BindingSource();
         private DataTable invoiceTable = new DataTable();
@@ -27,7 +27,7 @@ namespace HotelManagement.GUI
         List<RentRoomDetail> rentRooms = new List<RentRoomDetail>();
         List<UseServiceDetail> useServiceDetails = new List<UseServiceDetail>();
 
-        public InvoiceList()
+        public InvoiceListUI()
         {
             InitializeComponent();
 
@@ -122,9 +122,9 @@ namespace HotelManagement.GUI
             {
                 string invoiceId = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString().Substring(2);
 
-                InvoiceDetail invoiceDetail = new InvoiceDetail();
-                invoiceDetail.getData(Int32.Parse(invoiceId));
-                invoiceDetail.Show();
+                InvoicePdfUI invoicePdf = new InvoicePdfUI();
+                invoicePdf.PdfInvoiceId = int.Parse(invoiceId);
+                invoicePdf.Show();
             }
         }
     }
