@@ -28,6 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
+            TabPage tabPage3;
+            TabPage tabPage4;
+            TabPage tabPage2;
+            TabPage tabPage5;
+            tableLayoutPanel10 = new TableLayoutPanel();
+            cbbFilterIDRoomType = new ComboBox();
+            btnDeleteFilterIDRoomType = new Button();
+            tableLayoutPanel11 = new TableLayoutPanel();
+            cbbFilterNameRoomType = new ComboBox();
+            btnDeleteFilterNameRoomType = new Button();
+            tableLayoutPanel17 = new TableLayoutPanel();
+            btnDeleteFilterConvinienceID = new Button();
+            cbbFilterConvinienceID = new ComboBox();
+            tableLayoutPanel18 = new TableLayoutPanel();
+            panel18 = new Panel();
+            btnDeleteFilterConvinienceName = new Button();
+            panel19 = new Panel();
+            cbbFilterConvinienceName = new ComboBox();
+            tabControl = new TabControl();
+            tabPageRoom = new TabPage();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
@@ -60,9 +80,8 @@
             panel4 = new Panel();
             groupBox1 = new GroupBox();
             panel5 = new Panel();
-            btnUpdateRoom = new Button();
-            tabControl = new TabControl();
-            tabPageRoom = new TabPage();
+            btnRoomDetail = new Button();
+            btnEditRoom = new Button();
             tabPageRoomType = new TabPage();
             tableLayoutPanel7 = new TableLayoutPanel();
             panel6 = new Panel();
@@ -74,20 +93,13 @@
             groupBox5 = new GroupBox();
             tableLayoutPanel9 = new TableLayoutPanel();
             tabControl3 = new TabControl();
-            tabPage3 = new TabPage();
-            tableLayoutPanel10 = new TableLayoutPanel();
-            cbbFilterIDRoomType = new ComboBox();
-            btnDeleteFilterIDRoomType = new Button();
-            tabPage4 = new TabPage();
-            tableLayoutPanel11 = new TableLayoutPanel();
-            cbbFilterNameRoomType = new ComboBox();
-            btnDeleteFilterNameRoomType = new Button();
             tableLayoutPanel12 = new TableLayoutPanel();
             btnFilterRoomType = new Button();
             btnDeleteAllFilterRoomType = new Button();
             panel9 = new Panel();
             groupBox6 = new GroupBox();
             panel10 = new Panel();
+            btnRoomTypeDetail = new Button();
             btnDeleteRoomType = new Button();
             btnEditRoomType = new Button();
             btnAddRoomType = new Button();
@@ -102,25 +114,32 @@
             groupBox8 = new GroupBox();
             tableLayoutPanel16 = new TableLayoutPanel();
             tabControl4 = new TabControl();
-            tabPage2 = new TabPage();
-            tableLayoutPanel17 = new TableLayoutPanel();
-            btnDeleteFilterConvinienceID = new Button();
-            cbbFilterConvinienceID = new ComboBox();
-            tabPage5 = new TabPage();
-            tableLayoutPanel18 = new TableLayoutPanel();
-            panel18 = new Panel();
-            btnDeleteFilterConvinienceName = new Button();
-            panel19 = new Panel();
-            cbbFilterConvinienceName = new ComboBox();
             tableLayoutPanel20 = new TableLayoutPanel();
             btnFilterConvinience = new Button();
             btnDeleteAllFilterConvinience = new Button();
             panel22 = new Panel();
             groupBox9 = new GroupBox();
             panel23 = new Panel();
+            btnConvinienceDetail = new Button();
             btnDeleteConvinience = new Button();
             btnAddConvinience = new Button();
             btnEditConvinience = new Button();
+            tabPage3 = new TabPage();
+            tabPage4 = new TabPage();
+            tabPage2 = new TabPage();
+            tabPage5 = new TabPage();
+            tabPage3.SuspendLayout();
+            tableLayoutPanel10.SuspendLayout();
+            tabPage4.SuspendLayout();
+            tableLayoutPanel11.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tableLayoutPanel17.SuspendLayout();
+            tabPage5.SuspendLayout();
+            tableLayoutPanel18.SuspendLayout();
+            panel18.SuspendLayout();
+            panel19.SuspendLayout();
+            tabControl.SuspendLayout();
+            tabPageRoom.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
@@ -145,8 +164,6 @@
             panel4.SuspendLayout();
             groupBox1.SuspendLayout();
             panel5.SuspendLayout();
-            tabControl.SuspendLayout();
-            tabPageRoom.SuspendLayout();
             tabPageRoomType.SuspendLayout();
             tableLayoutPanel7.SuspendLayout();
             panel6.SuspendLayout();
@@ -158,10 +175,6 @@
             groupBox5.SuspendLayout();
             tableLayoutPanel9.SuspendLayout();
             tabControl3.SuspendLayout();
-            tabPage3.SuspendLayout();
-            tableLayoutPanel10.SuspendLayout();
-            tabPage4.SuspendLayout();
-            tableLayoutPanel11.SuspendLayout();
             tableLayoutPanel12.SuspendLayout();
             panel9.SuspendLayout();
             groupBox6.SuspendLayout();
@@ -177,17 +190,259 @@
             groupBox8.SuspendLayout();
             tableLayoutPanel16.SuspendLayout();
             tabControl4.SuspendLayout();
-            tabPage2.SuspendLayout();
-            tableLayoutPanel17.SuspendLayout();
-            tabPage5.SuspendLayout();
-            tableLayoutPanel18.SuspendLayout();
-            panel18.SuspendLayout();
-            panel19.SuspendLayout();
             tableLayoutPanel20.SuspendLayout();
             panel22.SuspendLayout();
             groupBox9.SuspendLayout();
             panel23.SuspendLayout();
             SuspendLayout();
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(tableLayoutPanel10);
+            tabPage3.Location = new Point(4, 29);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(912, 48);
+            tabPage3.TabIndex = 0;
+            tabPage3.Text = "Mã loại phòng";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel10
+            // 
+            tableLayoutPanel10.ColumnCount = 2;
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel10.Controls.Add(cbbFilterIDRoomType, 0, 0);
+            tableLayoutPanel10.Controls.Add(btnDeleteFilterIDRoomType, 1, 0);
+            tableLayoutPanel10.Dock = DockStyle.Fill;
+            tableLayoutPanel10.Location = new Point(3, 3);
+            tableLayoutPanel10.Name = "tableLayoutPanel10";
+            tableLayoutPanel10.RowCount = 1;
+            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel10.Size = new Size(906, 42);
+            tableLayoutPanel10.TabIndex = 0;
+            // 
+            // cbbFilterIDRoomType
+            // 
+            cbbFilterIDRoomType.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbbFilterIDRoomType.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbbFilterIDRoomType.Dock = DockStyle.Fill;
+            cbbFilterIDRoomType.FormattingEnabled = true;
+            cbbFilterIDRoomType.Location = new Point(3, 3);
+            cbbFilterIDRoomType.Name = "cbbFilterIDRoomType";
+            cbbFilterIDRoomType.Size = new Size(628, 28);
+            cbbFilterIDRoomType.TabIndex = 4;
+            // 
+            // btnDeleteFilterIDRoomType
+            // 
+            btnDeleteFilterIDRoomType.BackColor = SystemColors.HotTrack;
+            btnDeleteFilterIDRoomType.Dock = DockStyle.Fill;
+            btnDeleteFilterIDRoomType.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleteFilterIDRoomType.ForeColor = SystemColors.ButtonHighlight;
+            btnDeleteFilterIDRoomType.Location = new Point(637, 3);
+            btnDeleteFilterIDRoomType.Name = "btnDeleteFilterIDRoomType";
+            btnDeleteFilterIDRoomType.Size = new Size(266, 36);
+            btnDeleteFilterIDRoomType.TabIndex = 2;
+            btnDeleteFilterIDRoomType.Text = "Xóa";
+            btnDeleteFilterIDRoomType.UseVisualStyleBackColor = false;
+            btnDeleteFilterIDRoomType.Click += btnDeleteFilterIDRoomType_Click;
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(tableLayoutPanel11);
+            tabPage4.Location = new Point(4, 29);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(912, 48);
+            tabPage4.TabIndex = 1;
+            tabPage4.Text = "Tên loại phòng";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel11
+            // 
+            tableLayoutPanel11.ColumnCount = 2;
+            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel11.Controls.Add(cbbFilterNameRoomType, 0, 0);
+            tableLayoutPanel11.Controls.Add(btnDeleteFilterNameRoomType, 1, 0);
+            tableLayoutPanel11.Dock = DockStyle.Fill;
+            tableLayoutPanel11.Location = new Point(3, 3);
+            tableLayoutPanel11.Name = "tableLayoutPanel11";
+            tableLayoutPanel11.RowCount = 1;
+            tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel11.Size = new Size(906, 42);
+            tableLayoutPanel11.TabIndex = 1;
+            // 
+            // cbbFilterNameRoomType
+            // 
+            cbbFilterNameRoomType.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbbFilterNameRoomType.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbbFilterNameRoomType.Dock = DockStyle.Fill;
+            cbbFilterNameRoomType.FormattingEnabled = true;
+            cbbFilterNameRoomType.Location = new Point(3, 3);
+            cbbFilterNameRoomType.Name = "cbbFilterNameRoomType";
+            cbbFilterNameRoomType.Size = new Size(628, 28);
+            cbbFilterNameRoomType.TabIndex = 4;
+            // 
+            // btnDeleteFilterNameRoomType
+            // 
+            btnDeleteFilterNameRoomType.BackColor = SystemColors.HotTrack;
+            btnDeleteFilterNameRoomType.Dock = DockStyle.Fill;
+            btnDeleteFilterNameRoomType.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleteFilterNameRoomType.ForeColor = SystemColors.ButtonHighlight;
+            btnDeleteFilterNameRoomType.Location = new Point(637, 3);
+            btnDeleteFilterNameRoomType.Name = "btnDeleteFilterNameRoomType";
+            btnDeleteFilterNameRoomType.Size = new Size(266, 36);
+            btnDeleteFilterNameRoomType.TabIndex = 2;
+            btnDeleteFilterNameRoomType.Text = "Xóa";
+            btnDeleteFilterNameRoomType.UseVisualStyleBackColor = false;
+            btnDeleteFilterNameRoomType.Click += btnDeleteFilterNameRoomType_Click;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(tableLayoutPanel17);
+            tabPage2.Location = new Point(4, 29);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(912, 48);
+            tabPage2.TabIndex = 0;
+            tabPage2.Text = "Mã tiện nghi";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel17
+            // 
+            tableLayoutPanel17.ColumnCount = 2;
+            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel17.Controls.Add(btnDeleteFilterConvinienceID, 1, 0);
+            tableLayoutPanel17.Controls.Add(cbbFilterConvinienceID, 0, 0);
+            tableLayoutPanel17.Dock = DockStyle.Fill;
+            tableLayoutPanel17.Location = new Point(3, 3);
+            tableLayoutPanel17.Name = "tableLayoutPanel17";
+            tableLayoutPanel17.RowCount = 1;
+            tableLayoutPanel17.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel17.Size = new Size(906, 42);
+            tableLayoutPanel17.TabIndex = 0;
+            // 
+            // btnDeleteFilterConvinienceID
+            // 
+            btnDeleteFilterConvinienceID.BackColor = SystemColors.HotTrack;
+            btnDeleteFilterConvinienceID.Dock = DockStyle.Fill;
+            btnDeleteFilterConvinienceID.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleteFilterConvinienceID.ForeColor = SystemColors.ButtonHighlight;
+            btnDeleteFilterConvinienceID.Location = new Point(637, 3);
+            btnDeleteFilterConvinienceID.Name = "btnDeleteFilterConvinienceID";
+            btnDeleteFilterConvinienceID.Size = new Size(266, 36);
+            btnDeleteFilterConvinienceID.TabIndex = 2;
+            btnDeleteFilterConvinienceID.Text = "Xóa";
+            btnDeleteFilterConvinienceID.UseVisualStyleBackColor = false;
+            btnDeleteFilterConvinienceID.Click += btnDeleteFilterConvinienceID_Click;
+            // 
+            // cbbFilterConvinienceID
+            // 
+            cbbFilterConvinienceID.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbbFilterConvinienceID.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbbFilterConvinienceID.Dock = DockStyle.Fill;
+            cbbFilterConvinienceID.DropDownHeight = 70;
+            cbbFilterConvinienceID.FormattingEnabled = true;
+            cbbFilterConvinienceID.IntegralHeight = false;
+            cbbFilterConvinienceID.ItemHeight = 20;
+            cbbFilterConvinienceID.Location = new Point(3, 3);
+            cbbFilterConvinienceID.Name = "cbbFilterConvinienceID";
+            cbbFilterConvinienceID.Size = new Size(628, 28);
+            cbbFilterConvinienceID.TabIndex = 3;
+            // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(tableLayoutPanel18);
+            tabPage5.Location = new Point(4, 29);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(912, 48);
+            tabPage5.TabIndex = 1;
+            tabPage5.Text = "Tên tiện nghi";
+            tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel18
+            // 
+            tableLayoutPanel18.ColumnCount = 2;
+            tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
+            tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
+            tableLayoutPanel18.Controls.Add(panel18, 1, 0);
+            tableLayoutPanel18.Controls.Add(panel19, 0, 0);
+            tableLayoutPanel18.Dock = DockStyle.Fill;
+            tableLayoutPanel18.Location = new Point(3, 3);
+            tableLayoutPanel18.Name = "tableLayoutPanel18";
+            tableLayoutPanel18.RowCount = 1;
+            tableLayoutPanel18.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel18.Size = new Size(906, 42);
+            tableLayoutPanel18.TabIndex = 1;
+            // 
+            // panel18
+            // 
+            panel18.Controls.Add(btnDeleteFilterConvinienceName);
+            panel18.Dock = DockStyle.Fill;
+            panel18.Location = new Point(637, 3);
+            panel18.Name = "panel18";
+            panel18.Size = new Size(266, 36);
+            panel18.TabIndex = 0;
+            // 
+            // btnDeleteFilterConvinienceName
+            // 
+            btnDeleteFilterConvinienceName.BackColor = SystemColors.HotTrack;
+            btnDeleteFilterConvinienceName.Dock = DockStyle.Fill;
+            btnDeleteFilterConvinienceName.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnDeleteFilterConvinienceName.ForeColor = SystemColors.ButtonHighlight;
+            btnDeleteFilterConvinienceName.Location = new Point(0, 0);
+            btnDeleteFilterConvinienceName.Name = "btnDeleteFilterConvinienceName";
+            btnDeleteFilterConvinienceName.Size = new Size(266, 36);
+            btnDeleteFilterConvinienceName.TabIndex = 3;
+            btnDeleteFilterConvinienceName.Text = "Xóa";
+            btnDeleteFilterConvinienceName.UseVisualStyleBackColor = false;
+            btnDeleteFilterConvinienceName.Click += btnDeleteFilterConvinienceName_Click;
+            // 
+            // panel19
+            // 
+            panel19.Controls.Add(cbbFilterConvinienceName);
+            panel19.Dock = DockStyle.Fill;
+            panel19.Location = new Point(3, 3);
+            panel19.Name = "panel19";
+            panel19.Size = new Size(628, 36);
+            panel19.TabIndex = 1;
+            // 
+            // cbbFilterConvinienceName
+            // 
+            cbbFilterConvinienceName.AutoCompleteMode = AutoCompleteMode.Suggest;
+            cbbFilterConvinienceName.AutoCompleteSource = AutoCompleteSource.ListItems;
+            cbbFilterConvinienceName.Dock = DockStyle.Fill;
+            cbbFilterConvinienceName.FormattingEnabled = true;
+            cbbFilterConvinienceName.Location = new Point(0, 0);
+            cbbFilterConvinienceName.Name = "cbbFilterConvinienceName";
+            cbbFilterConvinienceName.Size = new Size(628, 28);
+            cbbFilterConvinienceName.TabIndex = 0;
+            // 
+            // tabControl
+            // 
+            tabControl.Controls.Add(tabPageRoom);
+            tabControl.Controls.Add(tabPageRoomType);
+            tabControl.Controls.Add(tabPageConvinience);
+            tabControl.Dock = DockStyle.Fill;
+            tabControl.Location = new Point(0, 0);
+            tabControl.Name = "tabControl";
+            tabControl.SelectedIndex = 0;
+            tabControl.Size = new Size(1273, 711);
+            tabControl.TabIndex = 3;
+            // 
+            // tabPageRoom
+            // 
+            tabPageRoom.Controls.Add(tableLayoutPanel1);
+            tabPageRoom.Location = new Point(4, 29);
+            tabPageRoom.Name = "tabPageRoom";
+            tabPageRoom.Padding = new Padding(3);
+            tabPageRoom.Size = new Size(1265, 678);
+            tabPageRoom.TabIndex = 0;
+            tabPageRoom.Text = "Phòng";
+            tabPageRoom.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
             // 
@@ -252,6 +507,8 @@
             // 
             // dtgvShowRoom
             // 
+            dtgvShowRoom.AllowUserToAddRows = false;
+            dtgvShowRoom.AllowUserToDeleteRows = false;
             dtgvShowRoom.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvShowRoom.BackgroundColor = SystemColors.ButtonHighlight;
             dtgvShowRoom.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -569,50 +826,43 @@
             // 
             // panel5
             // 
-            panel5.Controls.Add(btnUpdateRoom);
+            panel5.Controls.Add(btnRoomDetail);
+            panel5.Controls.Add(btnEditRoom);
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(3, 23);
             panel5.Name = "panel5";
             panel5.Size = new Size(303, 640);
             panel5.TabIndex = 0;
             // 
-            // btnUpdateRoom
+            // btnRoomDetail
             // 
-            btnUpdateRoom.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnUpdateRoom.BackColor = SystemColors.HotTrack;
-            btnUpdateRoom.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnUpdateRoom.ForeColor = SystemColors.Control;
-            btnUpdateRoom.Location = new Point(4, 67);
-            btnUpdateRoom.Margin = new Padding(10);
-            btnUpdateRoom.Name = "btnUpdateRoom";
-            btnUpdateRoom.Size = new Size(289, 47);
-            btnUpdateRoom.TabIndex = 2;
-            btnUpdateRoom.Text = "Cập nhật phòng";
-            btnUpdateRoom.UseVisualStyleBackColor = false;
-            btnUpdateRoom.Click += btnUpdateRoom_Click;
+            btnRoomDetail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnRoomDetail.BackColor = SystemColors.HotTrack;
+            btnRoomDetail.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRoomDetail.ForeColor = SystemColors.Control;
+            btnRoomDetail.Location = new Point(4, 10);
+            btnRoomDetail.Margin = new Padding(10);
+            btnRoomDetail.Name = "btnRoomDetail";
+            btnRoomDetail.Size = new Size(289, 47);
+            btnRoomDetail.TabIndex = 3;
+            btnRoomDetail.Text = "Xem chi tiết";
+            btnRoomDetail.UseVisualStyleBackColor = false;
+            btnRoomDetail.Click += btnRoomDetail_Click;
             // 
-            // tabControl
+            // btnEditRoom
             // 
-            tabControl.Controls.Add(tabPageRoom);
-            tabControl.Controls.Add(tabPageRoomType);
-            tabControl.Controls.Add(tabPageConvinience);
-            tabControl.Dock = DockStyle.Fill;
-            tabControl.Location = new Point(0, 0);
-            tabControl.Name = "tabControl";
-            tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(1273, 711);
-            tabControl.TabIndex = 3;
-            // 
-            // tabPageRoom
-            // 
-            tabPageRoom.Controls.Add(tableLayoutPanel1);
-            tabPageRoom.Location = new Point(4, 29);
-            tabPageRoom.Name = "tabPageRoom";
-            tabPageRoom.Padding = new Padding(3);
-            tabPageRoom.Size = new Size(1265, 678);
-            tabPageRoom.TabIndex = 0;
-            tabPageRoom.Text = "Phòng";
-            tabPageRoom.UseVisualStyleBackColor = true;
+            btnEditRoom.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnEditRoom.BackColor = SystemColors.HotTrack;
+            btnEditRoom.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnEditRoom.ForeColor = SystemColors.Control;
+            btnEditRoom.Location = new Point(4, 67);
+            btnEditRoom.Margin = new Padding(10);
+            btnEditRoom.Name = "btnEditRoom";
+            btnEditRoom.Size = new Size(289, 47);
+            btnEditRoom.TabIndex = 2;
+            btnEditRoom.Text = "Cập nhật phòng";
+            btnEditRoom.UseVisualStyleBackColor = false;
+            btnEditRoom.Click += btnUpdateRoom_Click;
             // 
             // tabPageRoomType
             // 
@@ -748,108 +998,6 @@
             tabControl3.Size = new Size(920, 81);
             tabControl3.TabIndex = 2;
             // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(tableLayoutPanel10);
-            tabPage3.Location = new Point(4, 29);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3);
-            tabPage3.Size = new Size(912, 48);
-            tabPage3.TabIndex = 0;
-            tabPage3.Text = "Mã loại phòng";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel10
-            // 
-            tableLayoutPanel10.ColumnCount = 2;
-            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel10.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel10.Controls.Add(cbbFilterIDRoomType, 0, 0);
-            tableLayoutPanel10.Controls.Add(btnDeleteFilterIDRoomType, 1, 0);
-            tableLayoutPanel10.Dock = DockStyle.Fill;
-            tableLayoutPanel10.Location = new Point(3, 3);
-            tableLayoutPanel10.Name = "tableLayoutPanel10";
-            tableLayoutPanel10.RowCount = 1;
-            tableLayoutPanel10.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel10.Size = new Size(906, 42);
-            tableLayoutPanel10.TabIndex = 0;
-            // 
-            // cbbFilterIDRoomType
-            // 
-            cbbFilterIDRoomType.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cbbFilterIDRoomType.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbbFilterIDRoomType.Dock = DockStyle.Fill;
-            cbbFilterIDRoomType.FormattingEnabled = true;
-            cbbFilterIDRoomType.Location = new Point(3, 3);
-            cbbFilterIDRoomType.Name = "cbbFilterIDRoomType";
-            cbbFilterIDRoomType.Size = new Size(628, 28);
-            cbbFilterIDRoomType.TabIndex = 4;
-            // 
-            // btnDeleteFilterIDRoomType
-            // 
-            btnDeleteFilterIDRoomType.BackColor = SystemColors.HotTrack;
-            btnDeleteFilterIDRoomType.Dock = DockStyle.Fill;
-            btnDeleteFilterIDRoomType.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDeleteFilterIDRoomType.ForeColor = SystemColors.ButtonHighlight;
-            btnDeleteFilterIDRoomType.Location = new Point(637, 3);
-            btnDeleteFilterIDRoomType.Name = "btnDeleteFilterIDRoomType";
-            btnDeleteFilterIDRoomType.Size = new Size(266, 36);
-            btnDeleteFilterIDRoomType.TabIndex = 2;
-            btnDeleteFilterIDRoomType.Text = "Xóa";
-            btnDeleteFilterIDRoomType.UseVisualStyleBackColor = false;
-            btnDeleteFilterIDRoomType.Click += btnDeleteFilterIDRoomType_Click;
-            // 
-            // tabPage4
-            // 
-            tabPage4.Controls.Add(tableLayoutPanel11);
-            tabPage4.Location = new Point(4, 29);
-            tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3);
-            tabPage4.Size = new Size(912, 48);
-            tabPage4.TabIndex = 1;
-            tabPage4.Text = "Tên loại phòng";
-            tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel11
-            // 
-            tableLayoutPanel11.ColumnCount = 2;
-            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel11.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel11.Controls.Add(cbbFilterNameRoomType, 0, 0);
-            tableLayoutPanel11.Controls.Add(btnDeleteFilterNameRoomType, 1, 0);
-            tableLayoutPanel11.Dock = DockStyle.Fill;
-            tableLayoutPanel11.Location = new Point(3, 3);
-            tableLayoutPanel11.Name = "tableLayoutPanel11";
-            tableLayoutPanel11.RowCount = 1;
-            tableLayoutPanel11.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel11.Size = new Size(906, 42);
-            tableLayoutPanel11.TabIndex = 1;
-            // 
-            // cbbFilterNameRoomType
-            // 
-            cbbFilterNameRoomType.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cbbFilterNameRoomType.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbbFilterNameRoomType.Dock = DockStyle.Fill;
-            cbbFilterNameRoomType.FormattingEnabled = true;
-            cbbFilterNameRoomType.Location = new Point(3, 3);
-            cbbFilterNameRoomType.Name = "cbbFilterNameRoomType";
-            cbbFilterNameRoomType.Size = new Size(628, 28);
-            cbbFilterNameRoomType.TabIndex = 4;
-            // 
-            // btnDeleteFilterNameRoomType
-            // 
-            btnDeleteFilterNameRoomType.BackColor = SystemColors.HotTrack;
-            btnDeleteFilterNameRoomType.Dock = DockStyle.Fill;
-            btnDeleteFilterNameRoomType.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDeleteFilterNameRoomType.ForeColor = SystemColors.ButtonHighlight;
-            btnDeleteFilterNameRoomType.Location = new Point(637, 3);
-            btnDeleteFilterNameRoomType.Name = "btnDeleteFilterNameRoomType";
-            btnDeleteFilterNameRoomType.Size = new Size(266, 36);
-            btnDeleteFilterNameRoomType.TabIndex = 2;
-            btnDeleteFilterNameRoomType.Text = "Xóa";
-            btnDeleteFilterNameRoomType.UseVisualStyleBackColor = false;
-            btnDeleteFilterNameRoomType.Click += btnDeleteFilterNameRoomType_Click;
-            // 
             // tableLayoutPanel12
             // 
             tableLayoutPanel12.ColumnCount = 2;
@@ -917,6 +1065,7 @@
             // 
             // panel10
             // 
+            panel10.Controls.Add(btnRoomTypeDetail);
             panel10.Controls.Add(btnDeleteRoomType);
             panel10.Controls.Add(btnEditRoomType);
             panel10.Controls.Add(btnAddRoomType);
@@ -926,16 +1075,31 @@
             panel10.Size = new Size(303, 640);
             panel10.TabIndex = 0;
             // 
+            // btnRoomTypeDetail
+            // 
+            btnRoomTypeDetail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnRoomTypeDetail.BackColor = SystemColors.HotTrack;
+            btnRoomTypeDetail.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRoomTypeDetail.ForeColor = SystemColors.Control;
+            btnRoomTypeDetail.Location = new Point(8, 10);
+            btnRoomTypeDetail.Margin = new Padding(10);
+            btnRoomTypeDetail.Name = "btnRoomTypeDetail";
+            btnRoomTypeDetail.Size = new Size(289, 47);
+            btnRoomTypeDetail.TabIndex = 4;
+            btnRoomTypeDetail.Text = "Xem chi tiết";
+            btnRoomTypeDetail.UseVisualStyleBackColor = false;
+            btnRoomTypeDetail.Click += btnRoomTypeDetail_Click;
+            // 
             // btnDeleteRoomType
             // 
             btnDeleteRoomType.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnDeleteRoomType.BackColor = SystemColors.HotTrack;
             btnDeleteRoomType.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDeleteRoomType.ForeColor = SystemColors.Control;
-            btnDeleteRoomType.Location = new Point(4, 120);
+            btnDeleteRoomType.Location = new Point(8, 178);
             btnDeleteRoomType.Margin = new Padding(10);
             btnDeleteRoomType.Name = "btnDeleteRoomType";
-            btnDeleteRoomType.Size = new Size(295, 47);
+            btnDeleteRoomType.Size = new Size(289, 47);
             btnDeleteRoomType.TabIndex = 3;
             btnDeleteRoomType.Text = "Xóa loại phòng";
             btnDeleteRoomType.UseVisualStyleBackColor = false;
@@ -947,10 +1111,10 @@
             btnEditRoomType.BackColor = SystemColors.HotTrack;
             btnEditRoomType.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnEditRoomType.ForeColor = SystemColors.Control;
-            btnEditRoomType.Location = new Point(4, 67);
+            btnEditRoomType.Location = new Point(8, 125);
             btnEditRoomType.Margin = new Padding(10);
             btnEditRoomType.Name = "btnEditRoomType";
-            btnEditRoomType.Size = new Size(292, 47);
+            btnEditRoomType.Size = new Size(288, 47);
             btnEditRoomType.TabIndex = 2;
             btnEditRoomType.Text = "Cập nhật loại phòng";
             btnEditRoomType.UseVisualStyleBackColor = false;
@@ -962,7 +1126,7 @@
             btnAddRoomType.BackColor = SystemColors.HotTrack;
             btnAddRoomType.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddRoomType.ForeColor = SystemColors.Control;
-            btnAddRoomType.Location = new Point(4, 10);
+            btnAddRoomType.Location = new Point(8, 68);
             btnAddRoomType.Margin = new Padding(10);
             btnAddRoomType.Name = "btnAddRoomType";
             btnAddRoomType.Size = new Size(289, 47);
@@ -1105,129 +1269,6 @@
             tabControl4.Size = new Size(920, 81);
             tabControl4.TabIndex = 2;
             // 
-            // tabPage2
-            // 
-            tabPage2.Controls.Add(tableLayoutPanel17);
-            tabPage2.Location = new Point(4, 29);
-            tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(912, 48);
-            tabPage2.TabIndex = 0;
-            tabPage2.Text = "Mã tiện nghi";
-            tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel17
-            // 
-            tableLayoutPanel17.ColumnCount = 2;
-            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel17.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel17.Controls.Add(btnDeleteFilterConvinienceID, 1, 0);
-            tableLayoutPanel17.Controls.Add(cbbFilterConvinienceID, 0, 0);
-            tableLayoutPanel17.Dock = DockStyle.Fill;
-            tableLayoutPanel17.Location = new Point(3, 3);
-            tableLayoutPanel17.Name = "tableLayoutPanel17";
-            tableLayoutPanel17.RowCount = 1;
-            tableLayoutPanel17.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel17.Size = new Size(906, 42);
-            tableLayoutPanel17.TabIndex = 0;
-            // 
-            // btnDeleteFilterConvinienceID
-            // 
-            btnDeleteFilterConvinienceID.BackColor = SystemColors.HotTrack;
-            btnDeleteFilterConvinienceID.Dock = DockStyle.Fill;
-            btnDeleteFilterConvinienceID.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDeleteFilterConvinienceID.ForeColor = SystemColors.ButtonHighlight;
-            btnDeleteFilterConvinienceID.Location = new Point(637, 3);
-            btnDeleteFilterConvinienceID.Name = "btnDeleteFilterConvinienceID";
-            btnDeleteFilterConvinienceID.Size = new Size(266, 36);
-            btnDeleteFilterConvinienceID.TabIndex = 2;
-            btnDeleteFilterConvinienceID.Text = "Xóa";
-            btnDeleteFilterConvinienceID.UseVisualStyleBackColor = false;
-            btnDeleteFilterConvinienceID.Click += btnDeleteFilterConvinienceID_Click;
-            // 
-            // cbbFilterConvinienceID
-            // 
-            cbbFilterConvinienceID.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cbbFilterConvinienceID.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbbFilterConvinienceID.Dock = DockStyle.Fill;
-            cbbFilterConvinienceID.DropDownHeight = 70;
-            cbbFilterConvinienceID.FormattingEnabled = true;
-            cbbFilterConvinienceID.IntegralHeight = false;
-            cbbFilterConvinienceID.ItemHeight = 20;
-            cbbFilterConvinienceID.Location = new Point(3, 3);
-            cbbFilterConvinienceID.Name = "cbbFilterConvinienceID";
-            cbbFilterConvinienceID.Size = new Size(628, 28);
-            cbbFilterConvinienceID.TabIndex = 3;
-            // 
-            // tabPage5
-            // 
-            tabPage5.Controls.Add(tableLayoutPanel18);
-            tabPage5.Location = new Point(4, 29);
-            tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3);
-            tabPage5.Size = new Size(912, 48);
-            tabPage5.TabIndex = 1;
-            tabPage5.Text = "Tên tiện nghi";
-            tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel18
-            // 
-            tableLayoutPanel18.ColumnCount = 2;
-            tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
-            tableLayoutPanel18.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel18.Controls.Add(panel18, 1, 0);
-            tableLayoutPanel18.Controls.Add(panel19, 0, 0);
-            tableLayoutPanel18.Dock = DockStyle.Fill;
-            tableLayoutPanel18.Location = new Point(3, 3);
-            tableLayoutPanel18.Name = "tableLayoutPanel18";
-            tableLayoutPanel18.RowCount = 1;
-            tableLayoutPanel18.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel18.Size = new Size(906, 42);
-            tableLayoutPanel18.TabIndex = 1;
-            // 
-            // panel18
-            // 
-            panel18.Controls.Add(btnDeleteFilterConvinienceName);
-            panel18.Dock = DockStyle.Fill;
-            panel18.Location = new Point(637, 3);
-            panel18.Name = "panel18";
-            panel18.Size = new Size(266, 36);
-            panel18.TabIndex = 0;
-            // 
-            // btnDeleteFilterConvinienceName
-            // 
-            btnDeleteFilterConvinienceName.BackColor = SystemColors.HotTrack;
-            btnDeleteFilterConvinienceName.Dock = DockStyle.Fill;
-            btnDeleteFilterConvinienceName.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
-            btnDeleteFilterConvinienceName.ForeColor = SystemColors.ButtonHighlight;
-            btnDeleteFilterConvinienceName.Location = new Point(0, 0);
-            btnDeleteFilterConvinienceName.Name = "btnDeleteFilterConvinienceName";
-            btnDeleteFilterConvinienceName.Size = new Size(266, 36);
-            btnDeleteFilterConvinienceName.TabIndex = 3;
-            btnDeleteFilterConvinienceName.Text = "Xóa";
-            btnDeleteFilterConvinienceName.UseVisualStyleBackColor = false;
-            btnDeleteFilterConvinienceName.Click += btnDeleteFilterConvinienceName_Click;
-            // 
-            // panel19
-            // 
-            panel19.Controls.Add(cbbFilterConvinienceName);
-            panel19.Dock = DockStyle.Fill;
-            panel19.Location = new Point(3, 3);
-            panel19.Name = "panel19";
-            panel19.Size = new Size(628, 36);
-            panel19.TabIndex = 1;
-            // 
-            // cbbFilterConvinienceName
-            // 
-            cbbFilterConvinienceName.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cbbFilterConvinienceName.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbbFilterConvinienceName.Dock = DockStyle.Fill;
-            cbbFilterConvinienceName.FormattingEnabled = true;
-            cbbFilterConvinienceName.Location = new Point(0, 0);
-            cbbFilterConvinienceName.Name = "cbbFilterConvinienceName";
-            cbbFilterConvinienceName.Size = new Size(628, 28);
-            cbbFilterConvinienceName.TabIndex = 0;
-            // 
             // tableLayoutPanel20
             // 
             tableLayoutPanel20.ColumnCount = 2;
@@ -1295,6 +1336,7 @@
             // 
             // panel23
             // 
+            panel23.Controls.Add(btnConvinienceDetail);
             panel23.Controls.Add(btnDeleteConvinience);
             panel23.Controls.Add(btnAddConvinience);
             panel23.Controls.Add(btnEditConvinience);
@@ -1304,16 +1346,31 @@
             panel23.Size = new Size(303, 640);
             panel23.TabIndex = 0;
             // 
+            // btnConvinienceDetail
+            // 
+            btnConvinienceDetail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnConvinienceDetail.BackColor = SystemColors.HotTrack;
+            btnConvinienceDetail.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnConvinienceDetail.ForeColor = SystemColors.Control;
+            btnConvinienceDetail.Location = new Point(13, 10);
+            btnConvinienceDetail.Margin = new Padding(10);
+            btnConvinienceDetail.Name = "btnConvinienceDetail";
+            btnConvinienceDetail.Size = new Size(280, 47);
+            btnConvinienceDetail.TabIndex = 5;
+            btnConvinienceDetail.Text = "Xem chi tiết";
+            btnConvinienceDetail.UseVisualStyleBackColor = false;
+            btnConvinienceDetail.Click += btnConvinienceDetail_Click;
+            // 
             // btnDeleteConvinience
             // 
             btnDeleteConvinience.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnDeleteConvinience.BackColor = SystemColors.HotTrack;
             btnDeleteConvinience.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnDeleteConvinience.ForeColor = SystemColors.Control;
-            btnDeleteConvinience.Location = new Point(4, 125);
+            btnDeleteConvinience.Location = new Point(12, 183);
             btnDeleteConvinience.Margin = new Padding(10);
             btnDeleteConvinience.Name = "btnDeleteConvinience";
-            btnDeleteConvinience.Size = new Size(295, 47);
+            btnDeleteConvinience.Size = new Size(286, 47);
             btnDeleteConvinience.TabIndex = 4;
             btnDeleteConvinience.Text = "Xóa tiện nghi";
             btnDeleteConvinience.UseVisualStyleBackColor = false;
@@ -1325,10 +1382,10 @@
             btnAddConvinience.BackColor = SystemColors.HotTrack;
             btnAddConvinience.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnAddConvinience.ForeColor = SystemColors.Control;
-            btnAddConvinience.Location = new Point(2, 10);
+            btnAddConvinience.Location = new Point(10, 68);
             btnAddConvinience.Margin = new Padding(10);
             btnAddConvinience.Name = "btnAddConvinience";
-            btnAddConvinience.Size = new Size(295, 47);
+            btnAddConvinience.Size = new Size(286, 47);
             btnAddConvinience.TabIndex = 3;
             btnAddConvinience.Text = "Thêm tiện nghi";
             btnAddConvinience.UseVisualStyleBackColor = false;
@@ -1340,10 +1397,10 @@
             btnEditConvinience.BackColor = SystemColors.HotTrack;
             btnEditConvinience.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnEditConvinience.ForeColor = SystemColors.Control;
-            btnEditConvinience.Location = new Point(4, 67);
+            btnEditConvinience.Location = new Point(12, 125);
             btnEditConvinience.Margin = new Padding(10);
             btnEditConvinience.Name = "btnEditConvinience";
-            btnEditConvinience.Size = new Size(295, 47);
+            btnEditConvinience.Size = new Size(286, 47);
             btnEditConvinience.TabIndex = 2;
             btnEditConvinience.Text = "Cập nhật tiện nghi";
             btnEditConvinience.UseVisualStyleBackColor = false;
@@ -1358,6 +1415,18 @@
             Name = "RoomUI";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "CustomerUI";
+            tabPage3.ResumeLayout(false);
+            tableLayoutPanel10.ResumeLayout(false);
+            tabPage4.ResumeLayout(false);
+            tableLayoutPanel11.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            tableLayoutPanel17.ResumeLayout(false);
+            tabPage5.ResumeLayout(false);
+            tableLayoutPanel18.ResumeLayout(false);
+            panel18.ResumeLayout(false);
+            panel19.ResumeLayout(false);
+            tabControl.ResumeLayout(false);
+            tabPageRoom.ResumeLayout(false);
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
@@ -1382,8 +1451,6 @@
             panel4.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             panel5.ResumeLayout(false);
-            tabControl.ResumeLayout(false);
-            tabPageRoom.ResumeLayout(false);
             tabPageRoomType.ResumeLayout(false);
             tableLayoutPanel7.ResumeLayout(false);
             panel6.ResumeLayout(false);
@@ -1395,10 +1462,6 @@
             groupBox5.ResumeLayout(false);
             tableLayoutPanel9.ResumeLayout(false);
             tabControl3.ResumeLayout(false);
-            tabPage3.ResumeLayout(false);
-            tableLayoutPanel10.ResumeLayout(false);
-            tabPage4.ResumeLayout(false);
-            tableLayoutPanel11.ResumeLayout(false);
             tableLayoutPanel12.ResumeLayout(false);
             panel9.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
@@ -1414,12 +1477,6 @@
             groupBox8.ResumeLayout(false);
             tableLayoutPanel16.ResumeLayout(false);
             tabControl4.ResumeLayout(false);
-            tabPage2.ResumeLayout(false);
-            tableLayoutPanel17.ResumeLayout(false);
-            tabPage5.ResumeLayout(false);
-            tableLayoutPanel18.ResumeLayout(false);
-            panel18.ResumeLayout(false);
-            panel19.ResumeLayout(false);
             tableLayoutPanel20.ResumeLayout(false);
             panel22.ResumeLayout(false);
             groupBox9.ResumeLayout(false);
@@ -1452,7 +1509,7 @@
         private Panel panel4;
         private GroupBox groupBox1;
         private Panel panel5;
-        private Button btnUpdateRoom;
+        private Button btnEditRoom;
         private TabControl tabControl;
         private TabPage tabPageRoom;
         private TabPage tabPageRoomType;
@@ -1522,5 +1579,8 @@
         private Button btnEditConvinience;
         private Button btnDeleteConvinience;
         private Button btnAddConvinience;
+        private Button btnRoomDetail;
+        private Button btnRoomTypeDetail;
+        private Button btnConvinienceDetail;
     }
 }

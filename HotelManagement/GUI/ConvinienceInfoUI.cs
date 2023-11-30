@@ -1,6 +1,7 @@
 ﻿using HotelManagement.BUS;
 using HotelManagement.Data;
 using HotelManagement.Ultils;
+using Org.BouncyCastle.Asn1.Cmp;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,15 +41,27 @@ namespace HotelManagement.GUI
 
 
             btnSave.Text = type;
-            isEdit = type == "Cập nhật tiện nghi" ? true : false;
-            if (isEdit)
+
+            if (type == "Chi tiết tiện nghi")
             {
+                txbName.Enabled = false;
                 txbName.Text = conv.Name;
+                btnReset.Visible = false;
+                btnSave.Visible = false;
             }
             else
             {
-                txbName.Text = string.Empty;
+                isEdit = type == "Cập nhật tiện nghi" ? true : false;
+                if (isEdit)
+                {
+                    txbName.Text = conv.Name;
+                }
+                else
+                {
+                    txbName.Text = string.Empty;
+                }
             }
+            
         }
 
         #endregion
