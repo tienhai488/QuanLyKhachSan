@@ -31,44 +31,43 @@
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
             panel4 = new Panel();
-            materialRadioButton3 = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonMaintain = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonNotClean = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonCleaned = new MaterialSkin.Controls.MaterialRadioButton();
+            panelRoomClean = new Panel();
+            materialRadioButton2 = new MaterialSkin.Controls.MaterialRadioButton();
+            materialRadioButton4 = new MaterialSkin.Controls.MaterialRadioButton();
+            materialRadioButton10 = new MaterialSkin.Controls.MaterialRadioButton();
+            materialRadioButton11 = new MaterialSkin.Controls.MaterialRadioButton();
             label3 = new Label();
             panel3 = new Panel();
-            materialRadioButton2 = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonPresidential = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonHoneymoon = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonPenthouse = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonDelux = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonStandard = new MaterialSkin.Controls.MaterialRadioButton();
+            panelRoomType = new Panel();
+            materialRadioButton1 = new MaterialSkin.Controls.MaterialRadioButton();
             label2 = new Label();
             panel2 = new Panel();
-            materialRadioButton1 = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonOccu = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonBooked = new MaterialSkin.Controls.MaterialRadioButton();
-            materialRadioButtonEmpty = new MaterialSkin.Controls.MaterialRadioButton();
+            panelRoomStatus = new Panel();
+            materialRadioButton8 = new MaterialSkin.Controls.MaterialRadioButton();
+            materialRadioButton7 = new MaterialSkin.Controls.MaterialRadioButton();
+            materialRadioButton6 = new MaterialSkin.Controls.MaterialRadioButton();
+            materialRadioButton5 = new MaterialSkin.Controls.MaterialRadioButton();
             label1 = new Label();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutRooms = new FlowLayoutPanel();
             panel5 = new Panel();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel6 = new Panel();
-            dateTimePicker1 = new DateTimePicker();
+            datetimeFilter = new DateTimePicker();
             panel7 = new Panel();
-            materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
+            txtFilter = new MaterialSkin.Controls.MaterialTextBox();
             panel8 = new Panel();
-            materialButton1 = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel1.SuspendLayout();
             panel1.SuspendLayout();
             panel4.SuspendLayout();
+            panelRoomClean.SuspendLayout();
             panel3.SuspendLayout();
+            panelRoomType.SuspendLayout();
             panel2.SuspendLayout();
+            panelRoomStatus.SuspendLayout();
             panel5.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel6.SuspendLayout();
             panel7.SuspendLayout();
-            panel8.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -77,14 +76,14 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 85F));
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
-            tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 1, 0);
+            tableLayoutPanel1.Controls.Add(flowLayoutRooms, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Location = new Point(3, 111);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1345, 812);
+            tableLayoutPanel1.Size = new Size(1484, 812);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -97,91 +96,105 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(201, 812);
+            panel1.Size = new Size(222, 812);
             panel1.TabIndex = 0;
             // 
             // panel4
             // 
-            panel4.Controls.Add(materialRadioButton3);
-            panel4.Controls.Add(materialRadioButtonMaintain);
-            panel4.Controls.Add(materialRadioButtonNotClean);
-            panel4.Controls.Add(materialRadioButtonCleaned);
+            panel4.Controls.Add(panelRoomClean);
             panel4.Controls.Add(label3);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 620);
+            panel4.Location = new Point(0, 483);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(17, 20, 17, 20);
-            panel4.Size = new Size(201, 263);
+            panel4.Size = new Size(222, 297);
             panel4.TabIndex = 2;
             // 
-            // materialRadioButton3
+            // panelRoomClean
             // 
-            materialRadioButton3.AutoSize = true;
-            materialRadioButton3.Depth = 0;
-            materialRadioButton3.Dock = DockStyle.Top;
-            materialRadioButton3.Location = new Point(17, 168);
-            materialRadioButton3.Margin = new Padding(0);
-            materialRadioButton3.MouseLocation = new Point(-1, -1);
-            materialRadioButton3.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButton3.Name = "materialRadioButton3";
-            materialRadioButton3.Ripple = true;
-            materialRadioButton3.Size = new Size(167, 37);
-            materialRadioButton3.TabIndex = 13;
-            materialRadioButton3.TabStop = true;
-            materialRadioButton3.Text = "All";
-            materialRadioButton3.UseVisualStyleBackColor = true;
+            panelRoomClean.Controls.Add(materialRadioButton2);
+            panelRoomClean.Controls.Add(materialRadioButton4);
+            panelRoomClean.Controls.Add(materialRadioButton10);
+            panelRoomClean.Controls.Add(materialRadioButton11);
+            panelRoomClean.Dock = DockStyle.Fill;
+            panelRoomClean.Location = new Point(17, 57);
+            panelRoomClean.Name = "panelRoomClean";
+            panelRoomClean.Size = new Size(188, 220);
+            panelRoomClean.TabIndex = 0;
             // 
-            // materialRadioButtonMaintain
+            // materialRadioButton2
             // 
-            materialRadioButtonMaintain.AutoSize = true;
-            materialRadioButtonMaintain.Depth = 0;
-            materialRadioButtonMaintain.Dock = DockStyle.Top;
-            materialRadioButtonMaintain.Location = new Point(17, 131);
-            materialRadioButtonMaintain.Margin = new Padding(0);
-            materialRadioButtonMaintain.MouseLocation = new Point(-1, -1);
-            materialRadioButtonMaintain.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonMaintain.Name = "materialRadioButtonMaintain";
-            materialRadioButtonMaintain.Ripple = true;
-            materialRadioButtonMaintain.Size = new Size(167, 37);
-            materialRadioButtonMaintain.TabIndex = 12;
-            materialRadioButtonMaintain.TabStop = true;
-            materialRadioButtonMaintain.Text = "Maintaining";
-            materialRadioButtonMaintain.UseVisualStyleBackColor = true;
+            materialRadioButton2.AutoSize = true;
+            materialRadioButton2.Depth = 0;
+            materialRadioButton2.Dock = DockStyle.Top;
+            materialRadioButton2.Location = new Point(0, 111);
+            materialRadioButton2.Margin = new Padding(0);
+            materialRadioButton2.MouseLocation = new Point(-1, -1);
+            materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton2.Name = "materialRadioButton2";
+            materialRadioButton2.Ripple = true;
+            materialRadioButton2.Size = new Size(188, 37);
+            materialRadioButton2.TabIndex = 17;
+            materialRadioButton2.TabStop = true;
+            materialRadioButton2.Text = "Maintaining";
+            materialRadioButton2.UseVisualStyleBackColor = true;
+            materialRadioButton2.CheckedChanged += roomClean_CheckedChanged;
             // 
-            // materialRadioButtonNotClean
+            // materialRadioButton4
             // 
-            materialRadioButtonNotClean.AutoSize = true;
-            materialRadioButtonNotClean.Depth = 0;
-            materialRadioButtonNotClean.Dock = DockStyle.Top;
-            materialRadioButtonNotClean.Location = new Point(17, 94);
-            materialRadioButtonNotClean.Margin = new Padding(0);
-            materialRadioButtonNotClean.MouseLocation = new Point(-1, -1);
-            materialRadioButtonNotClean.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonNotClean.Name = "materialRadioButtonNotClean";
-            materialRadioButtonNotClean.Ripple = true;
-            materialRadioButtonNotClean.Size = new Size(167, 37);
-            materialRadioButtonNotClean.TabIndex = 11;
-            materialRadioButtonNotClean.TabStop = true;
-            materialRadioButtonNotClean.Text = "Not cleaned yet";
-            materialRadioButtonNotClean.UseVisualStyleBackColor = true;
+            materialRadioButton4.AutoSize = true;
+            materialRadioButton4.Depth = 0;
+            materialRadioButton4.Dock = DockStyle.Top;
+            materialRadioButton4.Location = new Point(0, 74);
+            materialRadioButton4.Margin = new Padding(0);
+            materialRadioButton4.MouseLocation = new Point(-1, -1);
+            materialRadioButton4.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton4.Name = "materialRadioButton4";
+            materialRadioButton4.Ripple = true;
+            materialRadioButton4.Size = new Size(188, 37);
+            materialRadioButton4.TabIndex = 16;
+            materialRadioButton4.TabStop = true;
+            materialRadioButton4.Text = "NotCleanedYet";
+            materialRadioButton4.UseVisualStyleBackColor = true;
+            materialRadioButton4.CheckedChanged += roomClean_CheckedChanged;
             // 
-            // materialRadioButtonCleaned
+            // materialRadioButton10
             // 
-            materialRadioButtonCleaned.AutoSize = true;
-            materialRadioButtonCleaned.Depth = 0;
-            materialRadioButtonCleaned.Dock = DockStyle.Top;
-            materialRadioButtonCleaned.Location = new Point(17, 57);
-            materialRadioButtonCleaned.Margin = new Padding(0);
-            materialRadioButtonCleaned.MouseLocation = new Point(-1, -1);
-            materialRadioButtonCleaned.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonCleaned.Name = "materialRadioButtonCleaned";
-            materialRadioButtonCleaned.Ripple = true;
-            materialRadioButtonCleaned.Size = new Size(167, 37);
-            materialRadioButtonCleaned.TabIndex = 10;
-            materialRadioButtonCleaned.TabStop = true;
-            materialRadioButtonCleaned.Text = "Cleaned";
-            materialRadioButtonCleaned.UseVisualStyleBackColor = true;
+            materialRadioButton10.AutoSize = true;
+            materialRadioButton10.Depth = 0;
+            materialRadioButton10.Dock = DockStyle.Top;
+            materialRadioButton10.Location = new Point(0, 37);
+            materialRadioButton10.Margin = new Padding(0);
+            materialRadioButton10.MouseLocation = new Point(-1, -1);
+            materialRadioButton10.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton10.Name = "materialRadioButton10";
+            materialRadioButton10.Ripple = true;
+            materialRadioButton10.Size = new Size(188, 37);
+            materialRadioButton10.TabIndex = 15;
+            materialRadioButton10.TabStop = true;
+            materialRadioButton10.Text = "Cleaned";
+            materialRadioButton10.UseVisualStyleBackColor = true;
+            materialRadioButton10.CheckedChanged += roomClean_CheckedChanged;
+            // 
+            // materialRadioButton11
+            // 
+            materialRadioButton11.AutoSize = true;
+            materialRadioButton11.Checked = true;
+            materialRadioButton11.Depth = 0;
+            materialRadioButton11.Dock = DockStyle.Top;
+            materialRadioButton11.Location = new Point(0, 0);
+            materialRadioButton11.Margin = new Padding(0);
+            materialRadioButton11.MouseLocation = new Point(-1, -1);
+            materialRadioButton11.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton11.Name = "materialRadioButton11";
+            materialRadioButton11.Ripple = true;
+            materialRadioButton11.Size = new Size(188, 37);
+            materialRadioButton11.TabIndex = 14;
+            materialRadioButton11.TabStop = true;
+            materialRadioButton11.Text = "All";
+            materialRadioButton11.UseVisualStyleBackColor = true;
+            materialRadioButton11.CheckedChanged += roomClean_CheckedChanged;
             // 
             // label3
             // 
@@ -197,122 +210,44 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(materialRadioButton2);
-            panel3.Controls.Add(materialRadioButtonPresidential);
-            panel3.Controls.Add(materialRadioButtonHoneymoon);
-            panel3.Controls.Add(materialRadioButtonPenthouse);
-            panel3.Controls.Add(materialRadioButtonDelux);
-            panel3.Controls.Add(materialRadioButtonStandard);
+            panel3.Controls.Add(panelRoomType);
             panel3.Controls.Add(label2);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 260);
+            panel3.Location = new Point(0, 262);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(17, 20, 17, 20);
-            panel3.Size = new Size(201, 360);
+            panel3.Size = new Size(222, 221);
             panel3.TabIndex = 1;
             // 
-            // materialRadioButton2
+            // panelRoomType
             // 
-            materialRadioButton2.AutoSize = true;
-            materialRadioButton2.Depth = 0;
-            materialRadioButton2.Dock = DockStyle.Top;
-            materialRadioButton2.Location = new Point(17, 242);
-            materialRadioButton2.Margin = new Padding(0);
-            materialRadioButton2.MouseLocation = new Point(-1, -1);
-            materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButton2.Name = "materialRadioButton2";
-            materialRadioButton2.Ripple = true;
-            materialRadioButton2.Size = new Size(167, 37);
-            materialRadioButton2.TabIndex = 15;
-            materialRadioButton2.TabStop = true;
-            materialRadioButton2.Text = "All";
-            materialRadioButton2.UseVisualStyleBackColor = true;
+            panelRoomType.AutoScroll = true;
+            panelRoomType.Controls.Add(materialRadioButton1);
+            panelRoomType.Dock = DockStyle.Fill;
+            panelRoomType.Location = new Point(17, 57);
+            panelRoomType.Name = "panelRoomType";
+            panelRoomType.Size = new Size(188, 144);
+            panelRoomType.TabIndex = 0;
             // 
-            // materialRadioButtonPresidential
+            // materialRadioButton1
             // 
-            materialRadioButtonPresidential.AutoSize = true;
-            materialRadioButtonPresidential.Depth = 0;
-            materialRadioButtonPresidential.Dock = DockStyle.Top;
-            materialRadioButtonPresidential.Location = new Point(17, 205);
-            materialRadioButtonPresidential.Margin = new Padding(0);
-            materialRadioButtonPresidential.MouseLocation = new Point(-1, -1);
-            materialRadioButtonPresidential.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonPresidential.Name = "materialRadioButtonPresidential";
-            materialRadioButtonPresidential.Ripple = true;
-            materialRadioButtonPresidential.Size = new Size(167, 37);
-            materialRadioButtonPresidential.TabIndex = 14;
-            materialRadioButtonPresidential.TabStop = true;
-            materialRadioButtonPresidential.Text = "Presidential";
-            materialRadioButtonPresidential.UseVisualStyleBackColor = true;
-            // 
-            // materialRadioButtonHoneymoon
-            // 
-            materialRadioButtonHoneymoon.AutoSize = true;
-            materialRadioButtonHoneymoon.Depth = 0;
-            materialRadioButtonHoneymoon.Dock = DockStyle.Top;
-            materialRadioButtonHoneymoon.Location = new Point(17, 168);
-            materialRadioButtonHoneymoon.Margin = new Padding(0);
-            materialRadioButtonHoneymoon.MouseLocation = new Point(-1, -1);
-            materialRadioButtonHoneymoon.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonHoneymoon.Name = "materialRadioButtonHoneymoon";
-            materialRadioButtonHoneymoon.Ripple = true;
-            materialRadioButtonHoneymoon.Size = new Size(167, 37);
-            materialRadioButtonHoneymoon.TabIndex = 13;
-            materialRadioButtonHoneymoon.TabStop = true;
-            materialRadioButtonHoneymoon.Text = "Honeymoon";
-            materialRadioButtonHoneymoon.UseVisualStyleBackColor = true;
-            // 
-            // materialRadioButtonPenthouse
-            // 
-            materialRadioButtonPenthouse.AutoSize = true;
-            materialRadioButtonPenthouse.Depth = 0;
-            materialRadioButtonPenthouse.Dock = DockStyle.Top;
-            materialRadioButtonPenthouse.Location = new Point(17, 131);
-            materialRadioButtonPenthouse.Margin = new Padding(0);
-            materialRadioButtonPenthouse.MouseLocation = new Point(-1, -1);
-            materialRadioButtonPenthouse.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonPenthouse.Name = "materialRadioButtonPenthouse";
-            materialRadioButtonPenthouse.Ripple = true;
-            materialRadioButtonPenthouse.Size = new Size(167, 37);
-            materialRadioButtonPenthouse.TabIndex = 12;
-            materialRadioButtonPenthouse.TabStop = true;
-            materialRadioButtonPenthouse.Text = "Penthouse";
-            materialRadioButtonPenthouse.UseVisualStyleBackColor = true;
-            // 
-            // materialRadioButtonDelux
-            // 
-            materialRadioButtonDelux.AutoSize = true;
-            materialRadioButtonDelux.Depth = 0;
-            materialRadioButtonDelux.Dock = DockStyle.Top;
-            materialRadioButtonDelux.Location = new Point(17, 94);
-            materialRadioButtonDelux.Margin = new Padding(0);
-            materialRadioButtonDelux.MouseLocation = new Point(-1, -1);
-            materialRadioButtonDelux.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonDelux.Name = "materialRadioButtonDelux";
-            materialRadioButtonDelux.Ripple = true;
-            materialRadioButtonDelux.Size = new Size(167, 37);
-            materialRadioButtonDelux.TabIndex = 11;
-            materialRadioButtonDelux.TabStop = true;
-            materialRadioButtonDelux.Text = "Delux";
-            materialRadioButtonDelux.UseVisualStyleBackColor = true;
-            // 
-            // materialRadioButtonStandard
-            // 
-            materialRadioButtonStandard.AutoSize = true;
-            materialRadioButtonStandard.Depth = 0;
-            materialRadioButtonStandard.Dock = DockStyle.Top;
-            materialRadioButtonStandard.Location = new Point(17, 57);
-            materialRadioButtonStandard.Margin = new Padding(0);
-            materialRadioButtonStandard.MouseLocation = new Point(-1, -1);
-            materialRadioButtonStandard.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonStandard.Name = "materialRadioButtonStandard";
-            materialRadioButtonStandard.Ripple = true;
-            materialRadioButtonStandard.Size = new Size(167, 37);
-            materialRadioButtonStandard.TabIndex = 10;
-            materialRadioButtonStandard.TabStop = true;
-            materialRadioButtonStandard.Text = "Standard";
-            materialRadioButtonStandard.UseVisualStyleBackColor = true;
+            materialRadioButton1.AutoSize = true;
+            materialRadioButton1.Checked = true;
+            materialRadioButton1.Depth = 0;
+            materialRadioButton1.Dock = DockStyle.Top;
+            materialRadioButton1.Location = new Point(0, 0);
+            materialRadioButton1.Margin = new Padding(0);
+            materialRadioButton1.MouseLocation = new Point(-1, -1);
+            materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton1.Name = "materialRadioButton1";
+            materialRadioButton1.Ripple = true;
+            materialRadioButton1.Size = new Size(188, 37);
+            materialRadioButton1.TabIndex = 16;
+            materialRadioButton1.TabStop = true;
+            materialRadioButton1.Text = "All";
+            materialRadioButton1.UseVisualStyleBackColor = true;
+            materialRadioButton1.CheckedChanged += roomType_CheckedChanged;
             // 
             // label2
             // 
@@ -328,87 +263,101 @@
             // 
             // panel2
             // 
-            panel2.Controls.Add(materialRadioButton1);
-            panel2.Controls.Add(materialRadioButtonOccu);
-            panel2.Controls.Add(materialRadioButtonBooked);
-            panel2.Controls.Add(materialRadioButtonEmpty);
+            panel2.Controls.Add(panelRoomStatus);
             panel2.Controls.Add(label1);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(17, 20, 17, 20);
-            panel2.Size = new Size(201, 260);
+            panel2.Size = new Size(222, 262);
             panel2.TabIndex = 0;
             // 
-            // materialRadioButton1
+            // panelRoomStatus
             // 
-            materialRadioButton1.AutoSize = true;
-            materialRadioButton1.Depth = 0;
-            materialRadioButton1.Dock = DockStyle.Top;
-            materialRadioButton1.Location = new Point(17, 168);
-            materialRadioButton1.Margin = new Padding(0);
-            materialRadioButton1.MouseLocation = new Point(-1, -1);
-            materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButton1.Name = "materialRadioButton1";
-            materialRadioButton1.Ripple = true;
-            materialRadioButton1.Size = new Size(167, 37);
-            materialRadioButton1.TabIndex = 12;
-            materialRadioButton1.TabStop = true;
-            materialRadioButton1.Text = "All";
-            materialRadioButton1.UseVisualStyleBackColor = true;
-            materialRadioButton1.CheckedChanged += materialRadioButton1_CheckedChanged;
+            panelRoomStatus.AutoScroll = true;
+            panelRoomStatus.Controls.Add(materialRadioButton8);
+            panelRoomStatus.Controls.Add(materialRadioButton7);
+            panelRoomStatus.Controls.Add(materialRadioButton6);
+            panelRoomStatus.Controls.Add(materialRadioButton5);
+            panelRoomStatus.Dock = DockStyle.Fill;
+            panelRoomStatus.Location = new Point(17, 57);
+            panelRoomStatus.Name = "panelRoomStatus";
+            panelRoomStatus.Size = new Size(188, 185);
+            panelRoomStatus.TabIndex = 15;
             // 
-            // materialRadioButtonOccu
+            // materialRadioButton8
             // 
-            materialRadioButtonOccu.AutoSize = true;
-            materialRadioButtonOccu.Depth = 0;
-            materialRadioButtonOccu.Dock = DockStyle.Top;
-            materialRadioButtonOccu.Location = new Point(17, 131);
-            materialRadioButtonOccu.Margin = new Padding(0);
-            materialRadioButtonOccu.MouseLocation = new Point(-1, -1);
-            materialRadioButtonOccu.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonOccu.Name = "materialRadioButtonOccu";
-            materialRadioButtonOccu.Ripple = true;
-            materialRadioButtonOccu.Size = new Size(167, 37);
-            materialRadioButtonOccu.TabIndex = 11;
-            materialRadioButtonOccu.TabStop = true;
-            materialRadioButtonOccu.Text = "Occupating";
-            materialRadioButtonOccu.UseVisualStyleBackColor = true;
+            materialRadioButton8.AutoSize = true;
+            materialRadioButton8.Depth = 0;
+            materialRadioButton8.Dock = DockStyle.Top;
+            materialRadioButton8.Location = new Point(0, 111);
+            materialRadioButton8.Margin = new Padding(0);
+            materialRadioButton8.MouseLocation = new Point(-1, -1);
+            materialRadioButton8.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton8.Name = "materialRadioButton8";
+            materialRadioButton8.Ripple = true;
+            materialRadioButton8.Size = new Size(188, 37);
+            materialRadioButton8.TabIndex = 13;
+            materialRadioButton8.TabStop = true;
+            materialRadioButton8.Text = "Rented";
+            materialRadioButton8.UseVisualStyleBackColor = true;
+            materialRadioButton8.CheckedChanged += roomStatus_CheckedChanged;
             // 
-            // materialRadioButtonBooked
+            // materialRadioButton7
             // 
-            materialRadioButtonBooked.AutoSize = true;
-            materialRadioButtonBooked.Depth = 0;
-            materialRadioButtonBooked.Dock = DockStyle.Top;
-            materialRadioButtonBooked.Location = new Point(17, 94);
-            materialRadioButtonBooked.Margin = new Padding(0);
-            materialRadioButtonBooked.MouseLocation = new Point(-1, -1);
-            materialRadioButtonBooked.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonBooked.Name = "materialRadioButtonBooked";
-            materialRadioButtonBooked.Ripple = true;
-            materialRadioButtonBooked.Size = new Size(167, 37);
-            materialRadioButtonBooked.TabIndex = 10;
-            materialRadioButtonBooked.TabStop = true;
-            materialRadioButtonBooked.Text = "Booked";
-            materialRadioButtonBooked.UseVisualStyleBackColor = true;
+            materialRadioButton7.AutoSize = true;
+            materialRadioButton7.Depth = 0;
+            materialRadioButton7.Dock = DockStyle.Top;
+            materialRadioButton7.Location = new Point(0, 74);
+            materialRadioButton7.Margin = new Padding(0);
+            materialRadioButton7.MouseLocation = new Point(-1, -1);
+            materialRadioButton7.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton7.Name = "materialRadioButton7";
+            materialRadioButton7.Ripple = true;
+            materialRadioButton7.Size = new Size(188, 37);
+            materialRadioButton7.TabIndex = 12;
+            materialRadioButton7.TabStop = true;
+            materialRadioButton7.Text = "Booked";
+            materialRadioButton7.UseVisualStyleBackColor = true;
+            materialRadioButton7.CheckedChanged += roomStatus_CheckedChanged;
             // 
-            // materialRadioButtonEmpty
+            // materialRadioButton6
             // 
-            materialRadioButtonEmpty.AutoSize = true;
-            materialRadioButtonEmpty.Depth = 0;
-            materialRadioButtonEmpty.Dock = DockStyle.Top;
-            materialRadioButtonEmpty.Location = new Point(17, 57);
-            materialRadioButtonEmpty.Margin = new Padding(0);
-            materialRadioButtonEmpty.MouseLocation = new Point(-1, -1);
-            materialRadioButtonEmpty.MouseState = MaterialSkin.MouseState.HOVER;
-            materialRadioButtonEmpty.Name = "materialRadioButtonEmpty";
-            materialRadioButtonEmpty.Ripple = true;
-            materialRadioButtonEmpty.Size = new Size(167, 37);
-            materialRadioButtonEmpty.TabIndex = 9;
-            materialRadioButtonEmpty.TabStop = true;
-            materialRadioButtonEmpty.Text = "Empty";
-            materialRadioButtonEmpty.UseVisualStyleBackColor = true;
+            materialRadioButton6.AutoSize = true;
+            materialRadioButton6.Depth = 0;
+            materialRadioButton6.Dock = DockStyle.Top;
+            materialRadioButton6.Location = new Point(0, 37);
+            materialRadioButton6.Margin = new Padding(0);
+            materialRadioButton6.MouseLocation = new Point(-1, -1);
+            materialRadioButton6.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton6.Name = "materialRadioButton6";
+            materialRadioButton6.Ripple = true;
+            materialRadioButton6.Size = new Size(188, 37);
+            materialRadioButton6.TabIndex = 11;
+            materialRadioButton6.TabStop = true;
+            materialRadioButton6.Text = "Empty";
+            materialRadioButton6.UseVisualStyleBackColor = true;
+            materialRadioButton6.CheckedChanged += roomStatus_CheckedChanged;
+            // 
+            // materialRadioButton5
+            // 
+            materialRadioButton5.AutoSize = true;
+            materialRadioButton5.Checked = true;
+            materialRadioButton5.Depth = 0;
+            materialRadioButton5.Dock = DockStyle.Top;
+            materialRadioButton5.Location = new Point(0, 0);
+            materialRadioButton5.Margin = new Padding(0);
+            materialRadioButton5.MouseLocation = new Point(-1, -1);
+            materialRadioButton5.MouseState = MaterialSkin.MouseState.HOVER;
+            materialRadioButton5.Name = "materialRadioButton5";
+            materialRadioButton5.Ripple = true;
+            materialRadioButton5.Size = new Size(188, 37);
+            materialRadioButton5.TabIndex = 10;
+            materialRadioButton5.TabStop = true;
+            materialRadioButton5.Text = "All";
+            materialRadioButton5.UseVisualStyleBackColor = true;
+            materialRadioButton5.CheckedChanged += roomStatus_CheckedChanged;
             // 
             // label1
             // 
@@ -422,17 +371,17 @@
             label1.TabIndex = 1;
             label1.Text = "Room Status";
             // 
-            // flowLayoutPanel1
+            // flowLayoutRooms
             // 
-            flowLayoutPanel1.AutoScroll = true;
-            flowLayoutPanel1.BackColor = Color.White;
-            flowLayoutPanel1.Dock = DockStyle.Fill;
-            flowLayoutPanel1.Location = new Point(201, 0);
-            flowLayoutPanel1.Margin = new Padding(0);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Padding = new Padding(17, 20, 17, 20);
-            flowLayoutPanel1.Size = new Size(1144, 812);
-            flowLayoutPanel1.TabIndex = 1;
+            flowLayoutRooms.AutoScroll = true;
+            flowLayoutRooms.BackColor = Color.White;
+            flowLayoutRooms.Dock = DockStyle.Fill;
+            flowLayoutRooms.Location = new Point(222, 0);
+            flowLayoutRooms.Margin = new Padding(0);
+            flowLayoutRooms.Name = "flowLayoutRooms";
+            flowLayoutRooms.Padding = new Padding(17, 20, 17, 20);
+            flowLayoutRooms.Size = new Size(1262, 812);
+            flowLayoutRooms.TabIndex = 1;
             // 
             // panel5
             // 
@@ -441,7 +390,7 @@
             panel5.Location = new Point(3, 4);
             panel5.Margin = new Padding(0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1345, 107);
+            panel5.Size = new Size(1484, 107);
             panel5.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -459,116 +408,102 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1345, 107);
+            tableLayoutPanel2.Size = new Size(1484, 107);
             tableLayoutPanel2.TabIndex = 7;
             // 
             // panel6
             // 
-            panel6.Controls.Add(dateTimePicker1);
+            panel6.Controls.Add(datetimeFilter);
             panel6.Dock = DockStyle.Fill;
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(201, 107);
+            panel6.Size = new Size(222, 107);
             panel6.TabIndex = 9;
             // 
-            // dateTimePicker1
+            // datetimeFilter
             // 
-            dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dateTimePicker1.CustomFormat = "dd/MM/yyyy";
-            dateTimePicker1.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
-            dateTimePicker1.Location = new Point(0, 31);
-            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(197, 39);
-            dateTimePicker1.TabIndex = 3;
+            datetimeFilter.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            datetimeFilter.CustomFormat = "dd/MM/yyyy";
+            datetimeFilter.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            datetimeFilter.Format = DateTimePickerFormat.Custom;
+            datetimeFilter.Location = new Point(0, 31);
+            datetimeFilter.Margin = new Padding(3, 4, 3, 4);
+            datetimeFilter.Name = "datetimeFilter";
+            datetimeFilter.Size = new Size(218, 39);
+            datetimeFilter.TabIndex = 3;
+            datetimeFilter.ValueChanged += datetimeFilter_ValueChanged;
             // 
             // panel7
             // 
-            panel7.Controls.Add(materialTextBox1);
+            panel7.Controls.Add(txtFilter);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(201, 0);
+            panel7.Location = new Point(222, 0);
             panel7.Margin = new Padding(0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(672, 107);
+            panel7.Size = new Size(742, 107);
             panel7.TabIndex = 10;
             // 
-            // materialTextBox1
+            // txtFilter
             // 
-            materialTextBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            materialTextBox1.AnimateReadOnly = false;
-            materialTextBox1.BorderStyle = BorderStyle.None;
-            materialTextBox1.Depth = 0;
-            materialTextBox1.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            materialTextBox1.LeadingIcon = null;
-            materialTextBox1.Location = new Point(0, 19);
-            materialTextBox1.Margin = new Padding(3, 4, 3, 4);
-            materialTextBox1.MaxLength = 50;
-            materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
-            materialTextBox1.Multiline = false;
-            materialTextBox1.Name = "materialTextBox1";
-            materialTextBox1.Size = new Size(669, 50);
-            materialTextBox1.TabIndex = 9;
-            materialTextBox1.Text = "";
-            materialTextBox1.TrailingIcon = null;
+            txtFilter.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtFilter.AnimateReadOnly = false;
+            txtFilter.BorderStyle = BorderStyle.None;
+            txtFilter.Depth = 0;
+            txtFilter.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtFilter.LeadingIcon = null;
+            txtFilter.Location = new Point(0, 19);
+            txtFilter.Margin = new Padding(3, 4, 3, 4);
+            txtFilter.MaxLength = 50;
+            txtFilter.MouseState = MaterialSkin.MouseState.OUT;
+            txtFilter.Multiline = false;
+            txtFilter.Name = "txtFilter";
+            txtFilter.Size = new Size(739, 50);
+            txtFilter.TabIndex = 9;
+            txtFilter.Text = "";
+            txtFilter.TrailingIcon = null;
+            txtFilter.KeyUp += txtFilter_KeyUp;
             // 
             // panel8
             // 
-            panel8.Controls.Add(materialButton1);
             panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(873, 0);
+            panel8.Location = new Point(964, 0);
             panel8.Margin = new Padding(0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(472, 107);
+            panel8.Size = new Size(520, 107);
             panel8.TabIndex = 11;
-            // 
-            // materialButton1
-            // 
-            materialButton1.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton1.Depth = 0;
-            materialButton1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            materialButton1.HighEmphasis = true;
-            materialButton1.Icon = null;
-            materialButton1.Location = new Point(5, 40);
-            materialButton1.Margin = new Padding(5, 8, 5, 8);
-            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton1.Name = "materialButton1";
-            materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(78, 36);
-            materialButton1.TabIndex = 8;
-            materialButton1.Text = "SEARCH";
-            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton1.UseAccentColor = false;
-            materialButton1.UseVisualStyleBackColor = true;
             // 
             // RentRoomsUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1351, 927);
+            ClientSize = new Size(1490, 927);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel5);
             FormStyle = FormStyles.StatusAndActionBar_None;
             Margin = new Padding(3, 4, 3, 4);
             Name = "RentRoomsUI";
             Padding = new Padding(3, 4, 3, 4);
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "RoomUI";
             tableLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panelRoomClean.ResumeLayout(false);
+            panelRoomClean.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
+            panelRoomType.ResumeLayout(false);
+            panelRoomType.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panelRoomStatus.ResumeLayout(false);
+            panelRoomStatus.PerformLayout();
             panel5.ResumeLayout(false);
             tableLayoutPanel2.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
-            panel8.ResumeLayout(false);
-            panel8.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -578,32 +513,29 @@
         private Panel panel1;
         private Panel panel2;
         private Label label1;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonEmpty;
         private Panel panel3;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonPresidential;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonHoneymoon;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonPenthouse;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonDelux;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonStandard;
         private Label label2;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton1;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonOccu;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonBooked;
         private Panel panel4;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton3;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonMaintain;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonNotClean;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButtonCleaned;
         private Label label3;
-        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton2;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutRooms;
         private Panel panel5;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel6;
-        private DateTimePicker dateTimePicker1;
+        private DateTimePicker datetimeFilter;
         private Panel panel7;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
+        private MaterialSkin.Controls.MaterialTextBox txtFilter;
         private Panel panel8;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
+        private Panel panelRoomStatus;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton8;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton7;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton6;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton5;
+        private Panel panelRoomClean;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton2;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton4;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton10;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton11;
+        private Panel panelRoomType;
+        private MaterialSkin.Controls.MaterialRadioButton materialRadioButton1;
     }
 }

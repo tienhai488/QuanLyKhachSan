@@ -43,9 +43,12 @@ namespace HotelManagement.Data.Transfer
 
     public enum RoomReservationStatus : int
     {
+        All = -1,
         Booked = 0,
         Rented = 1,
-        OutDate = 2
+        OutDate = 2,
+        Paid = 3,
+        Empty = 4
     }
 
     [Table("room_reservation")]
@@ -87,6 +90,9 @@ namespace HotelManagement.Data.Transfer
             if (roomReservationStatus == RoomReservationStatus.Booked) value = "Booked";
             else if (roomReservationStatus == RoomReservationStatus.Rented) value = "Rented";
             else if (roomReservationStatus == RoomReservationStatus.OutDate) value = "OutDate";
+            else if (roomReservationStatus == RoomReservationStatus.Paid) value = "Paid";
+            else if (roomReservationStatus == RoomReservationStatus.All) value = "All";
+            else if (roomReservationStatus == RoomReservationStatus.Empty) value = "Empty";
             return value;
         }
 
@@ -95,6 +101,9 @@ namespace HotelManagement.Data.Transfer
             statusString = statusString.Trim();
             if(statusString.Equals("Rented")) return RoomReservationStatus.Rented;
             else if(statusString.Equals("OutDate")) return RoomReservationStatus.OutDate;
+            else if(statusString.Equals("Paid")) return RoomReservationStatus.Paid;
+            else if(statusString.Equals("All")) return RoomReservationStatus.All;
+            else if(statusString.Equals("Empty")) return RoomReservationStatus.Empty;
             return RoomReservationStatus.Booked;
         }
         public Reservation Reservation { get => reservation; set => reservation = value; }

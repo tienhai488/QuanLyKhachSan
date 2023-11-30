@@ -1,13 +1,25 @@
 ﻿using HotelManagement.BUS;
-using MaterialSkin.Controls;
-using MaterialSkin;
+using HotelManagement.Business;
 using HotelManagement.Data;
+using HotelManagement.Data.Transfer;
+using HotelManagement.Ultils;
+using MaterialSkin;
+using MaterialSkin.Controls;
 
 namespace HotelManagement.GUI
 {
     public partial class RentRoomsUI : MaterialForm
     {
         private CustomerBUS customerBUS = new CustomerBUS();
+        private RoomBUS roomBUS = new RoomBUS();
+        private ReservationBUS reservationBUS = new ReservationBUS();
+        private RoomReservationBUS roomReservationBUS = new RoomReservationBUS();
+
+        private RoomReservationStatus roomStatusFilter = RoomReservationStatus.All;
+        private string roomTypeFilter = "";
+        private int roomCleanFilter = -1;
+
+        private System.Threading.Timer timer;
         public RentRoomsUI()
         {
             InitializeComponent();
@@ -21,30 +33,137 @@ namespace HotelManagement.GUI
             Primary.Purple500, // Accent background color
             Accent.Amber200,   // Warm accent color for highlights
             TextShade.WHITE);    // Text color
+
+            roomReservationBUS.loadOutDateAllRoomReservation();
+            initFlowLayoutRoom();
         }
 
-        public void addRoomView(String name)
+        #region method
+        public void initFlowLayoutRoom()
         {
-            RoomCard room = new RoomCard(name);
-            flowLayoutPanel1.Controls.Add(room);
+            clearRoomView();
+
+            List<RoomReservation> listRoom = roomReservationBUS.getListRoomReservationBookedAndRentedHistory(datetimeFilter.Value);
+
+            roomBUS.getAllRoom()
+                .Where(item =>
+                {
+                    bool checkRoomStatus = true;
+                    bool checkRoomType = true;
+                    bool checkRoomClean = true;
+
+                    if (this.roomStatusFilter != RoomReservationStatus.All)
+                    {
+                        RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomID.Equals(item.Id));
+                        if (roomReservation != null)
+                        {
+                            checkRoomStatus = roomReservation.Status == this.roomStatusFilter;
+                        }
+                        else
+                        {
+                            checkRoomStatus = this.roomStatusFilter == RoomReservationStatus.Empty;
+                        }
+                    }
+
+                    //if (this.roomTypeFilter != "")
+                    //{
+                    //    checkRoomType = this.roomTypeFilter.Equals(item.RoomType.Name);
+                    //}
+
+                    //if (this.roomCleanFilter != -1)
+                    //{
+                    //    checkRoomClean = item.Status == this.roomCleanFilter;
+                    //}
+
+                    return checkRoomStatus && checkRoomType && checkRoomClean && item.Id.ToLower().Contains(txtFilter.Text.ToLower());
+                })
+                .ToList()
+                .ForEach(item =>
+                {
+                    string labelMain = "Empty Room";
+                    string reserTypeName = "Empty";
+                    string statusClean = item.Status.ToString();
+                    string from = "From: ";
+                    string to = "To: ";
+                    RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomID.Equals(item.Id));
+                    if (roomReservation != null)
+                    {
+                        labelMain = roomReservation.Reservation.Customer.FullName;
+                        reserTypeName = RoomReservation.getStatusString(roomReservation.Status);
+                        from += roomReservation.StartTime.ToString(Configs.formatBirthday);
+                        to += roomReservation.EndTime.ToString(Configs.formatBirthday);
+                    }
+                    addRoomView(item.Id, item.RoomType.Name, labelMain, reserTypeName, statusClean, from, to);
+                });
+        }
+
+        public void addRoomView(string id, string typeName, string labelMain, string reserTypeName, string statusClean, string fromTime, string toTime)
+        {
+            RoomCard room = new RoomCard(id, typeName, labelMain, reserTypeName, statusClean, fromTime, toTime);
+            flowLayoutRooms.Controls.Add(room);
         }
 
         public void clearRoomView()
         {
-            flowLayoutPanel1.Controls.Clear();
+            flowLayoutRooms.Controls.Clear();
         }
 
-        private void materialRadioButton1_CheckedChanged(object sender, EventArgs e)
+        private void TimerCallback(object state)
         {
-            clearRoomView();
-            List<Customer> list = new List<Customer>();
-            list = customerBUS.getAll();
-            foreach (Customer customer in list)
+            if (txtFilter.InvokeRequired)
             {
-                addRoomView(customer.FullName);
+                txtFilter.Invoke(new MethodInvoker(delegate
+                {
+                    // Thực hiện hành động cần thiết sau khi chờ đợi 500ms
+                    initFlowLayoutRoom();
+                }));
+            }
+            else
+            {
+                // Nếu đang chạy trên luồng chính, thực hiện ngay lập tức
+                initFlowLayoutRoom();
             }
         }
+        #endregion
 
+
+        #region event
+
+        private void datetimeFilter_ValueChanged(object sender, EventArgs e)
+        {
+            initFlowLayoutRoom();
+        }
+
+        private void txtFilter_KeyUp(object sender, KeyEventArgs e)
+        {
+            timer?.Change(Timeout.Infinite, Timeout.Infinite);
+
+            // Tạo một timer mới và đặt thời gian chờ đợi là 500ms
+            timer = new System.Threading.Timer(TimerCallback, null, 500, Timeout.Infinite);
+        }
+
+        #endregion
+
+        private void roomType_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void roomStatus_CheckedChanged(object sender, EventArgs e)
+        {
+            string value = FormHelpers.getRadioButtonText(panelRoomStatus);
+            RoomReservationStatus status = RoomReservation.getStatusEnum(value);
+            this.roomStatusFilter = status;
+            initFlowLayoutRoom();
+        }
+
+        private void roomClean_CheckedChanged(object sender, EventArgs e)
+        {
+            //string value = FormHelpers.getRadioButtonText(panelRoomStatus);
+            //RoomReservationStatus status = RoomReservation.getStatusEnum(value);
+            //this.roomStatus = status;
+            //initFlowLayoutRoom();
+        }
     }
 
 }

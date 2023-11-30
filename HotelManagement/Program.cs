@@ -40,7 +40,7 @@ namespace HotelManagement
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
 
-            Application.Run(new ReservationUI());
+            Application.Run(new RentRoomsUI());
         }
     }
 }

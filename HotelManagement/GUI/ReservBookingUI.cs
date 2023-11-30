@@ -1,5 +1,4 @@
-﻿using Google.Protobuf.Reflection;
-using HotelManagement.BUS;
+﻿using HotelManagement.BUS;
 using HotelManagement.Business;
 using HotelManagement.Data;
 using HotelManagement.Data.Transfer;
@@ -89,26 +88,28 @@ namespace HotelManagement.GUI
             foreach (DataRow item in dataTableBook.Rows)
             {
                 string id = item[0].ToString();
-                DateTime fromTimeBook = Functions.convertStringToDateTime(item[2].ToString());
-                DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
-                if (Functions.getDayGap(fromTimeBook, from) == 0 && Functions.getDayGap(to, toTimeBook) == 0)
+
+                int index = -1;
+                int temp = 0;
+                foreach (DataRow row in dataTableRoom.Rows)
                 {
-                    int index = -1;
-                    int temp = 0;
-                    foreach (DataRow row in dataTableRoom.Rows)
+                    if (row[0].Equals(id))
                     {
-                        if (row[0].Equals(id))
-                        {
-                            index = temp;
-                            break;
-                        }
-                        temp++;
+                        index = temp;
+                        break;
                     }
-                    if (index != -1)
-                    {
-                        dataTableRoom.Rows.RemoveAt(index);
-                    }
+                    temp++;
                 }
+                if (index != -1)
+                {
+                    dataTableRoom.Rows.RemoveAt(index);
+                }
+
+                //DateTime fromTimeBook = Functions.convertStringToDateTime(item[2].ToString());
+                //DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
+                //if (Functions.getDayGap(fromTimeBook, from) == 0 && Functions.getDayGap(to, toTimeBook) == 0)
+                //{
+                //}
             }
         }
 
@@ -122,11 +123,11 @@ namespace HotelManagement.GUI
             this.reservationOld = reservationBUS.getById(txtId.Text);
             if (this.reservationOld == null)
             {
-                roomReservationBUS.getListRoomAllowBooking(from).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
+                roomReservationBUS.getListRoomAllowBooking(from, to).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
             }
             else
             {
-                roomReservationBUS.getListRoomAllowBookingWithReservationId(from, this.reservationOld.Id).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
+                roomReservationBUS.getListRoomAllowBookingWithReservationId(from, to, this.reservationOld.Id).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
             }
 
             removeItemInDataTableRoom(from, to);
@@ -177,34 +178,9 @@ namespace HotelManagement.GUI
             txtPhone.Text = customer.PhoneNumber;
             txtName.Text = customer.FullName;
             string gender = customer.Gender == "1" ? "Male" : "Female";
-            setRadioButton(gender);
+            FormHelpers.setRadioButton(panelGender, gender);
             labelDontExist.Visible = false;
             btnAddCustomer.Enabled = false;
-        }
-
-        public string getRadioButtonText()
-        {
-
-            foreach (RadioButton item in panelGender.Controls)
-            {
-                if (item.Checked)
-                {
-                    return item.Text;
-                }
-            }
-            return "";
-        }
-
-        public void setRadioButton(string value)
-        {
-            foreach (RadioButton item in panelGender.Controls)
-            {
-                if (item.Text.Equals(value))
-                {
-                    item.Checked = true;
-                    break;
-                }
-            }
         }
 
         public string getCustomerId()
@@ -326,7 +302,7 @@ namespace HotelManagement.GUI
                 txtName.Text = customer.FullName;
                 txtPhone.Text = customer.PhoneNumber;
                 string gender = customer.Gender == "1" ? "Male" : "Female";
-                setRadioButton(gender);
+                FormHelpers.setRadioButton(panelGender, gender);
             }
             else
             {

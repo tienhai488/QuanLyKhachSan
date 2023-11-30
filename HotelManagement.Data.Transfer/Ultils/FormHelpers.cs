@@ -45,5 +45,30 @@ namespace HotelManagement.Ultils
                 cbxFilter.Text = temp;  
             }
         }
+
+        public static string getRadioButtonText(Panel panel)
+        {
+
+            foreach (RadioButton item in panel.Controls)
+            {
+                if (item.Checked)
+                {
+                    return item.Text;
+                }
+            }
+            return "";
+        }
+
+        public static void setRadioButton(Panel panel, string value)
+        {
+            foreach (RadioButton item in panel.Controls)
+            {
+                if (item.Text.Equals(value))
+                {
+                    item.Checked = true;
+                    break;
+                }
+            }
+        }
     }
 }

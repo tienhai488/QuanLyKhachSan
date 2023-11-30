@@ -1,4 +1,6 @@
-﻿namespace HotelManagement.GUI
+﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+
+namespace HotelManagement.GUI
 {
     public partial class RoomCard : UserControl
     {
@@ -7,16 +9,21 @@
             InitializeComponent();
         }
 
-        public RoomCard(String UserName)
+        public RoomCard(string id, string typeName, string txtMain, string reserTypeName, string statusClean, string fromTime, string toTime)
         {
             InitializeComponent();
-            materialLabel5.Text = UserName;
+            labelRoomID.Text = id;
+            labelRoomType.Text = typeName;
+            labelMain.Text = txtMain;
+            labelReservationStatus.Text = reserTypeName;
+            labelRoomStatusClean.Text = statusClean;
+            labelFromTime.Text = fromTime;
+            labelToTime.Text = toTime;
         }
 
-        private void materialLabel5_Click(object sender, EventArgs e)
+        private void card_DoubleClick(object sender, EventArgs e)
         {
-            RentRoomDetail rmDetail = new RentRoomDetail();
-            rmDetail.ShowDialog();
+            MessageBox.Show("thanh nien");
         }
     }
 }
