@@ -16,7 +16,7 @@ namespace HotelManagement.GUI
         private RoomReservationBUS roomReservationBUS = new RoomReservationBUS();
 
         private RoomReservationStatus roomStatusFilter = RoomReservationStatus.All;
-        private string roomTypeFilter = "";
+        private string roomTypeFilter = "All";
         private int roomCleanFilter = -1;
 
         private System.Threading.Timer timer;
@@ -35,6 +35,7 @@ namespace HotelManagement.GUI
             TextShade.WHITE);    // Text color
 
             roomReservationBUS.loadOutDateAllRoomReservation();
+            initRadioButtonRoomType();
             initFlowLayoutRoom();
         }
 
@@ -65,15 +66,15 @@ namespace HotelManagement.GUI
                         }
                     }
 
-                    //if (this.roomTypeFilter != "")
-                    //{
-                    //    checkRoomType = this.roomTypeFilter.Equals(item.RoomType.Name);
-                    //}
+                    if (!this.roomTypeFilter.Equals("All") && this.roomTypeFilter != "")
+                    {
+                        checkRoomType = item.RoomType.Name.Equals(this.roomTypeFilter);
+                    }
 
-                    //if (this.roomCleanFilter != -1)
-                    //{
-                    //    checkRoomClean = item.Status == this.roomCleanFilter;
-                    //}
+                    if (this.roomCleanFilter != -1)
+                    {
+                        checkRoomClean = item.Status == this.roomCleanFilter;
+                    }
 
                     return checkRoomStatus && checkRoomType && checkRoomClean && item.Id.ToLower().Contains(txtFilter.Text.ToLower());
                 })
@@ -82,7 +83,7 @@ namespace HotelManagement.GUI
                 {
                     string labelMain = "Empty Room";
                     string reserTypeName = "Empty";
-                    string statusClean = item.Status.ToString();
+                    string statusClean = roomBUS.convertRoomStatusToString(item.Status);
                     string from = "From: ";
                     string to = "To: ";
                     RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomID.Equals(item.Id));
@@ -95,6 +96,45 @@ namespace HotelManagement.GUI
                     }
                     addRoomView(item.Id, item.RoomType.Name, labelMain, reserTypeName, statusClean, from, to);
                 });
+        }
+
+        public void initRadioButtonRoomType()
+        {
+            panelRoomType.Controls.Clear();
+
+            roomBUS.getAllRoomType().OrderByDescending(item => item.Name).ToList().ForEach(roomType =>
+            {
+                addRadioButton(panelRoomType, roomType.Name);
+            });
+
+            addRadioButton(panelRoomType, "All");
+
+        }
+
+        public void addRadioButton(Panel panel, string text)
+        {
+            MaterialRadioButton radio = new MaterialRadioButton();
+            radio.AutoSize = true;
+            radio.Depth = 0;
+            radio.Dock = DockStyle.Top;
+            radio.Location = new Point(0, 111);
+            radio.Margin = new Padding(0);
+            radio.MouseLocation = new Point(-1, -1);
+            radio.MouseState = MaterialSkin.MouseState.HOVER;
+            radio.Name = "materialRadioButton8";
+            radio.Ripple = true;
+            radio.Size = new Size(188, 37);
+            radio.TabIndex = 13;
+            radio.TabStop = true;
+            radio.UseVisualStyleBackColor = true;
+            radio.Text = text;
+            radio.MouseUp += roomType_MouseUp;
+
+            if (text == "All")
+            {
+                radio.Checked = true;
+            }
+            panel.Controls.Add(radio);
         }
 
         public void addRoomView(string id, string typeName, string labelMain, string reserTypeName, string statusClean, string fromTime, string toTime)
@@ -142,14 +182,7 @@ namespace HotelManagement.GUI
             timer = new System.Threading.Timer(TimerCallback, null, 500, Timeout.Infinite);
         }
 
-        #endregion
-
-        private void roomType_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void roomStatus_CheckedChanged(object sender, EventArgs e)
+        private void roomStatus_MouseUp(object sender, MouseEventArgs e)
         {
             string value = FormHelpers.getRadioButtonText(panelRoomStatus);
             RoomReservationStatus status = RoomReservation.getStatusEnum(value);
@@ -157,13 +190,23 @@ namespace HotelManagement.GUI
             initFlowLayoutRoom();
         }
 
-        private void roomClean_CheckedChanged(object sender, EventArgs e)
+        private void roomType_MouseUp(object sender, MouseEventArgs e)
         {
-            //string value = FormHelpers.getRadioButtonText(panelRoomStatus);
-            //RoomReservationStatus status = RoomReservation.getStatusEnum(value);
-            //this.roomStatus = status;
-            //initFlowLayoutRoom();
+            this.roomTypeFilter = FormHelpers.getRadioButtonText(panelRoomType);
+            initFlowLayoutRoom();
         }
+
+        private void roomClean_MouseUp(object sender, MouseEventArgs e)
+        {
+            string value = FormHelpers.getRadioButtonText(panelRoomClean);
+            this.roomCleanFilter = roomBUS.convertStringToRoomStatus(value);
+
+            initFlowLayoutRoom();
+        }
+
+        #endregion
+
+        
     }
 
 }

@@ -139,7 +139,7 @@
             materialRadioButton2.TabStop = true;
             materialRadioButton2.Text = "Maintaining";
             materialRadioButton2.UseVisualStyleBackColor = true;
-            materialRadioButton2.CheckedChanged += roomClean_CheckedChanged;
+            materialRadioButton2.MouseUp += roomClean_MouseUp;
             // 
             // materialRadioButton4
             // 
@@ -157,7 +157,7 @@
             materialRadioButton4.TabStop = true;
             materialRadioButton4.Text = "NotCleanedYet";
             materialRadioButton4.UseVisualStyleBackColor = true;
-            materialRadioButton4.CheckedChanged += roomClean_CheckedChanged;
+            materialRadioButton4.MouseUp += roomClean_MouseUp;
             // 
             // materialRadioButton10
             // 
@@ -175,7 +175,7 @@
             materialRadioButton10.TabStop = true;
             materialRadioButton10.Text = "Cleaned";
             materialRadioButton10.UseVisualStyleBackColor = true;
-            materialRadioButton10.CheckedChanged += roomClean_CheckedChanged;
+            materialRadioButton10.MouseUp += roomClean_MouseUp;
             // 
             // materialRadioButton11
             // 
@@ -194,7 +194,7 @@
             materialRadioButton11.TabStop = true;
             materialRadioButton11.Text = "All";
             materialRadioButton11.UseVisualStyleBackColor = true;
-            materialRadioButton11.CheckedChanged += roomClean_CheckedChanged;
+            materialRadioButton11.MouseUp += roomClean_MouseUp;
             // 
             // label3
             // 
@@ -247,7 +247,7 @@
             materialRadioButton1.TabStop = true;
             materialRadioButton1.Text = "All";
             materialRadioButton1.UseVisualStyleBackColor = true;
-            materialRadioButton1.CheckedChanged += roomType_CheckedChanged;
+            materialRadioButton1.MouseUp += roomType_MouseUp;
             // 
             // label2
             // 
@@ -302,7 +302,7 @@
             materialRadioButton8.TabStop = true;
             materialRadioButton8.Text = "Rented";
             materialRadioButton8.UseVisualStyleBackColor = true;
-            materialRadioButton8.CheckedChanged += roomStatus_CheckedChanged;
+            materialRadioButton8.MouseUp += roomStatus_MouseUp;
             // 
             // materialRadioButton7
             // 
@@ -320,7 +320,7 @@
             materialRadioButton7.TabStop = true;
             materialRadioButton7.Text = "Booked";
             materialRadioButton7.UseVisualStyleBackColor = true;
-            materialRadioButton7.CheckedChanged += roomStatus_CheckedChanged;
+            materialRadioButton7.MouseUp += roomStatus_MouseUp;
             // 
             // materialRadioButton6
             // 
@@ -338,7 +338,7 @@
             materialRadioButton6.TabStop = true;
             materialRadioButton6.Text = "Empty";
             materialRadioButton6.UseVisualStyleBackColor = true;
-            materialRadioButton6.CheckedChanged += roomStatus_CheckedChanged;
+            materialRadioButton6.MouseUp += roomStatus_MouseUp;
             // 
             // materialRadioButton5
             // 
@@ -357,7 +357,7 @@
             materialRadioButton5.TabStop = true;
             materialRadioButton5.Text = "All";
             materialRadioButton5.UseVisualStyleBackColor = true;
-            materialRadioButton5.CheckedChanged += roomStatus_CheckedChanged;
+            materialRadioButton5.MouseUp += roomStatus_MouseUp;
             // 
             // label1
             // 
@@ -382,6 +382,7 @@
             flowLayoutRooms.Padding = new Padding(17, 20, 17, 20);
             flowLayoutRooms.Size = new Size(1262, 812);
             flowLayoutRooms.TabIndex = 1;
+            flowLayoutRooms.MouseUp += roomStatus_MouseUp;
             // 
             // panel5
             // 

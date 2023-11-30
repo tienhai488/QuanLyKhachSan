@@ -1,4 +1,5 @@
-﻿using HotelManagement.Data;
+﻿using Google.Protobuf.WellKnownTypes;
+using HotelManagement.Data;
 using HotelManagement.Data.Access;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -63,6 +64,31 @@ namespace HotelManagement.BUS
         public List<Room> getAllCleanedRoom()
         {
             return getAllRoom().Where(item =>item.Status==0).ToList();
+        }
+
+        public int convertStringToRoomStatus(string value)
+        {
+            int result = -1;
+            if (value == "Cleaned")
+                result = 0;
+            else if (value == "NotCleanedYet")
+                result = 1;
+            else if (value == "Maintaining")
+                result = 2;
+            return result;
+        }
+
+        public string convertRoomStatusToString(int status)
+        {
+            string result = "All";
+            if (status == 0)
+                result = "Cleaned";
+            else if (status == 1)
+                result = "NotCleanedYet";
+            else if (status == 2)
+                result = "Maintaining";
+
+            return result;
         }
 
 
