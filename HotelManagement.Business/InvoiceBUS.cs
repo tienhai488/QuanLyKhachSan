@@ -91,9 +91,4 @@ namespace HotelManagement.Business
             return getAll().Count;
         }
     }
-
-    public class UseServiceDetail
-    {
-
-    }
 }

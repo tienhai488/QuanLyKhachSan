@@ -2,10 +2,9 @@
 {
     using HotelManagement.Data.Access.Core;
     using HotelManagement.Data.Transfer;
-    using Microsoft.EntityFrameworkCore;
-    using System.Numerics;
 
-    using System;
+    using Microsoft.EntityFrameworkCore;
+
     using System.Numerics;
 
     public class ReservationDAO : DbContext
@@ -14,9 +13,9 @@
         public DbSet<RoomReservation> RoomReservations { get; set; }
 
         public bool HasStaffId(BigInteger id)
-                    => (from i in Set<Reservation>()
-                        where i.StaffID == id
-                        select i).Any();
+            => (from i in Set<Reservation>()
+                where i.StaffID == id
+                select i).Any();
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseMySQL(BaseConnection.Connection);
 

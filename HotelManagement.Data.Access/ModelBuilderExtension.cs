@@ -467,7 +467,7 @@
 
         public static void ConfigurePermissionGroup(this EntityTypeBuilder<PermissionGroup> builder)
         {
-            builder.ToTable("permissiongroup");
+            builder.ToTable("permission_group");
             builder.BigIntegerIdProperty(nameof(PermissionGroup.Id), "ID", "", "2");
             builder.Property<string>(nameof(PermissionGroup.Name))
                 .HasColumnName("Name");

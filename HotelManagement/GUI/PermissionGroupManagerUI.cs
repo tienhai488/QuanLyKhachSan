@@ -31,7 +31,14 @@
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            var gbo = GrantingPermissionsBO.Instance;
+            var mbo = PermissionGroupManagerBO.Instance;
+            gbo.SelectedAccessable = mbo.SelectedGroup;
+            gbo.Editing = editing;
+
             LoadGroups();
+            AdjustSelectedIndex();
             LoadActions();
             LoadInfo();
             OnResize(EventArgs.Empty);
