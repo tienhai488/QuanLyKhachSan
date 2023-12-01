@@ -1,18 +1,11 @@
 ﻿using iTextSharp.text;
 using iTextSharp.text.pdf;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 using HotelManagement.Data;
-using Microsoft.Extensions.Primitives;
+using HotelManagement.Ultils;
+using HotelManagement.Data.Transfer.Ultils;
+using HotelManagement.BUS;
+using System.Collections.Specialized;
+using HotelManagement.Business;
 
 namespace HotelManagement.GUI
 {
@@ -21,27 +14,32 @@ namespace HotelManagement.GUI
         private int pdfInvoiceId;
         public int PdfInvoiceId { get; set; }
 
-        Customer customer;
-        Invoice invoice;
-        Staff staff;
-        UseServiceDetail useServiceDetail;
-        RentRoomDetailUI roomDetail;
-        IList<UseServiceDetail> useServiceDetails;
-        IList<RentRoomDetailUI> rentRoomDetails;
+        private RentRoomDetail rentRoomDetailOld = null;
 
-        public InvoicePdfUI()
+        private RoomBUS roomBUS = new RoomBUS();
+        private UseServiceDetailBUS useServiceDetailBUS = new UseServiceDetailBUS();
+        private double total = 0;
+
+        public InvoicePdfUI(RentRoomDetail rentRoomDetail)
         {
             InitializeComponent();
-            createData();
+
+            this.rentRoomDetailOld = rentRoomDetail;
+
             FormatInvoice();
         }
 
         private void mbtnCancel_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Close();
         }
+
         private void mbtnPrint_Click(object sender, EventArgs e)
         {
+            if(this.rentRoomDetailOld.PaidTime.ToString(Configs.formatBirthday).Equals("01/01/0001")){
+                MessageBox.Show("Phiếu thuê chưa được thanh toán! Vui lòng kiểm tra lại!");
+                return;
+            }
             using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
             {
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -85,12 +83,12 @@ namespace HotelManagement.GUI
             rtbString.Append(String.Format("{0,52}", "------------------------\n"));
             rtbString.Append("\n");
 
-            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "FROM", "INVOICE# IN" + pdfInvoiceId.ToString("D4")));
+            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "FROM", $"INVOICE: {this.rentRoomDetailOld.InvoiceID} - RENTROOMID: {this.rentRoomDetailOld.Id}"));
             rtbString.Append("\n");
 
-            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "THE GRAND BUDAPEST HOTEL", "DATE: " + DateTime.Now.ToString("dd/MM/yyyy")));
-            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "273 An Duong Vuong, Ward 3,", "TIME: " + DateTime.Now.ToString("HH:mm:ss")));
-            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "District 5, Ho Chi Minh City, VN", "STAFF: Ngộ Không"));
+            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "THE GRAND BUDAPEST HOTEL", $"StartTime: {this.rentRoomDetailOld.StartTime.ToString(Configs.formatBirthday)}"));
+            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "273 An Duong Vuong, Ward 3,", $"EndTime: {this.rentRoomDetailOld.EndTime.ToString(Configs.formatBirthday)}" ));
+            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "District 5, Ho Chi Minh City, VN", $"Paid: {this.rentRoomDetailOld.PaidTime.ToString(Configs.formatDateTime)}"));
             rtbString.Append("\n");
             rtbString.Append("-------------------------------------------------------------------------------\n");
             rtbString.Append("\n");
@@ -98,36 +96,64 @@ namespace HotelManagement.GUI
             rtbString.Append(String.Format("{0,-40}\n", "BILL TO"));
             rtbString.Append("\n");
 
-            rtbString.Append(String.Format("{0}\n", "Customer Name: " + "John Doe"));
-            rtbString.Append(String.Format("{0}\n", "Address: " + "John Doe"));
-            rtbString.Append(String.Format("{0}\n", "Phone Number: " + "John Doe"));
+            rtbString.Append(String.Format("{0}\n", $"Customer Name: {this.rentRoomDetailOld.Invoice.Customer.FullName}"));
+            rtbString.Append("\n");
+            rtbString.Append(String.Format("{0}\n", $"CitizenID: {this.rentRoomDetailOld.Invoice.Customer.CitizenID}"));
+            rtbString.Append("\n");
+            rtbString.Append(String.Format("{0}\n", $"Phone Number: {this.rentRoomDetailOld.Invoice.Customer.PhoneNumber}"));
+            rtbString.Append("\n");
+            rtbString.Append(String.Format("{0}\n", $"Address: {this.rentRoomDetailOld.Invoice.Customer.Address}"));
             rtbString.Append("\n");
             rtbString.Append("-------------------------------------------------------------------------------\n");
             rtbString.Append("\n");
 
-            rtbString.Append(String.Format("{0,-6}{1,-9}{2,-30}{3,-12}{4,-10}{5,-12}\n", "No.", "ID", "DESCRIPTION", "UNIT PRICE", "QUANTITY", "AMOUNT"));
+            rtbString.Append(String.Format("{0,-6}{1,-19}{2,-20}{3,-12}{4,-10}{5,-12}\n", "No.", "NAME", "DESCRIPTION", "UNIT PRICE", "QUANTITY", "AMOUNT"));
             rtbString.Append("\n");
+
+            Room room = roomBUS.getRoomById(rentRoomDetailOld.RoomID);
+            int count = Functions.getDayGap(rentRoomDetailOld.StartTime, rentRoomDetailOld.EndTime) + 1;
+            this.total += room.RoomType.UnitPrice * count;
+            rtbString.Append(String.Format("{0,-6}{1,-19}{2,-20}{3,-12}{4,-10}{5,-12}\n", "1", room.Id, "Phòng được thuê", $"{room.RoomType.UnitPrice}", $"{count}", (this.total).ToString("N0")+"đ"));
+            rtbString.Append("\n");
+
+            int index = 1;
+            useServiceDetailBUS.getServiceByRentRoomID(rentRoomDetailOld.Id)
+                .ForEach(item =>
+                {
+                    index++;
+                    Service service = item.Service;
+                    rtbString.Append(String.Format("{0,-6}{1,-19}{2,-20}{3,-12}{4,-10}{5,-12}\n", $"{index}", service.Name, "", $"{service.UnitPrice}", $"{item.Quantity}", (service.UnitPrice * item.Quantity).ToString("N0")));
+                    rtbString.Append("\n");
+                    this.total += service.UnitPrice * item.Quantity;
+                });
+
+
 
             rtbString.Append("\n");
             rtbString.Append("-------------------------------------------------------------------------------\n");
             rtbString.Append("\n");
-            rtbString.Append(String.Format("{0,67}{1,-12}\n", "TOTAL: ", "999_999_000"));
+            rtbString.Append(String.Format("{0,67}{1,-12}\n", "TOTAL: ", $"{this.total.ToString("N0")}"));
 
             rtbString.Append("\n");
             rtbString.Append("-------------------------------------------------------------------------------\n");
             rtbString.Append("\n");
 
-            rtbString.Append(String.Format("{0}\n", "So tien viet bang chu: " + toVietnameseDong(0)));
+            rtbString.Append(String.Format("{0}\n", "So tien viet bang chu: " + toVietnameseDong((int)this.total)));
             rtbString.Append("\n");
             rtbString.Append("\n");
             rtbString.Append("\n");
 
-            rtbString.Append(String.Format("{0,20}{1,39}{2,-20}\n", "Customer", "", "Cashier"));
-            rtbString.Append(String.Format("{0,30}{1,19}{2,-30}\n", "(Signature and full name)", "", "(Signature and full name)"));
+            rtbString.Append(String.Format("{0,10}{1,-20}{2,19}{3,-30}\n", "", "Customer", "", "Cashier"));
+            rtbString.Append(String.Format("{0,10}{1,-20}{2,19}{3,-30}\n", "", $"{this.rentRoomDetailOld.Invoice.Customer.FullName}", "", $"{this.rentRoomDetailOld.Staff.FullName}"));
 
             richTextBox1.AppendText(rtbString.ToString());
 
             //rtbString.Append($"{itemName} - {quantity} x ${price:0.00} = ${quantity * price:0.00}", new System.Drawing.Font("Arial", 12, FontStyle.Regular), Color.Black);
+
+        }
+
+        private void FormatInvoice2()
+        {
 
         }
 
@@ -161,13 +187,6 @@ namespace HotelManagement.GUI
             }
 
             return $"{words.Trim()} VND";
-        }
-
-        public void createData()
-        {
-            customer = new Customer("001", "Đặng Anh Đạt", "Nam", new DateTime(1999, 1, 1), "Phan Thiết", "060202002071", "0932091822");
-            staff = new Staff(001);
-            return;
         }
     }
 }

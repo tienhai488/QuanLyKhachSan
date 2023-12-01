@@ -29,21 +29,19 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            dataGridView1 = new DataGridView();
+            dataGridViewInvoice = new DataGridView();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel1 = new Panel();
             dateTimePickerInvoice = new DateTimePicker();
             panel2 = new Panel();
             materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            mtxtCustomerID = new MaterialSkin.Controls.MaterialTextBox();
+            txtRentRoomId = new MaterialSkin.Controls.MaterialTextBox();
             panel3 = new Panel();
-            mbtnSearch = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewInvoice).BeginInit();
             tableLayoutPanel2.SuspendLayout();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
-            panel3.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -52,7 +50,7 @@
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 80F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
-            tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
+            tableLayoutPanel1.Controls.Add(dataGridViewInvoice, 1, 1);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
@@ -65,24 +63,25 @@
             tableLayoutPanel1.Size = new Size(1163, 677);
             tableLayoutPanel1.TabIndex = 1;
             // 
-            // dataGridView1
+            // dataGridViewInvoice
             // 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.AllowUserToDeleteRows = false;
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = SystemColors.Control;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(119, 103);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.ReadOnly = true;
-            dataGridView1.RowHeadersVisible = false;
-            dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Size = new Size(924, 571);
-            dataGridView1.TabIndex = 5;
-            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridViewInvoice.AllowUserToAddRows = false;
+            dataGridViewInvoice.AllowUserToDeleteRows = false;
+            dataGridViewInvoice.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewInvoice.BackgroundColor = SystemColors.Control;
+            dataGridViewInvoice.BorderStyle = BorderStyle.None;
+            dataGridViewInvoice.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewInvoice.Dock = DockStyle.Fill;
+            dataGridViewInvoice.Location = new Point(119, 103);
+            dataGridViewInvoice.Name = "dataGridViewInvoice";
+            dataGridViewInvoice.ReadOnly = true;
+            dataGridViewInvoice.RowHeadersVisible = false;
+            dataGridViewInvoice.RowHeadersWidth = 51;
+            dataGridViewInvoice.RowTemplate.Height = 25;
+            dataGridViewInvoice.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewInvoice.Size = new Size(924, 571);
+            dataGridViewInvoice.TabIndex = 5;
+            dataGridViewInvoice.DoubleClick += dataGridViewInvoice_DoubleClick;
             // 
             // tableLayoutPanel2
             // 
@@ -116,16 +115,18 @@
             // dateTimePickerInvoice
             // 
             dateTimePickerInvoice.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dateTimePickerInvoice.CustomFormat = "dd/MM/yyyy";
+            dateTimePickerInvoice.Format = DateTimePickerFormat.Custom;
             dateTimePickerInvoice.Location = new Point(3, 37);
             dateTimePickerInvoice.Name = "dateTimePickerInvoice";
-            dateTimePickerInvoice.Size = new Size(242, 23);
+            dateTimePickerInvoice.Size = new Size(242, 27);
             dateTimePickerInvoice.TabIndex = 0;
             dateTimePickerInvoice.ValueChanged += dateTimePickerInvoice_ValueChanged;
             // 
             // panel2
             // 
             panel2.Controls.Add(materialLabel1);
-            panel2.Controls.Add(mtxtCustomerID);
+            panel2.Controls.Add(txtRentRoomId);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(280, 3);
             panel2.Margin = new Padding(0);
@@ -142,31 +143,31 @@
             materialLabel1.Location = new Point(3, 36);
             materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
-            materialLabel1.Size = new Size(117, 24);
+            materialLabel1.Size = new Size(127, 24);
             materialLabel1.TabIndex = 1;
-            materialLabel1.Text = "Customer ID:";
+            materialLabel1.Text = "Rent Room ID:";
             // 
-            // mtxtCustomerID
+            // txtRentRoomId
             // 
-            mtxtCustomerID.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            mtxtCustomerID.AnimateReadOnly = false;
-            mtxtCustomerID.BorderStyle = BorderStyle.None;
-            mtxtCustomerID.Depth = 0;
-            mtxtCustomerID.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
-            mtxtCustomerID.LeadingIcon = null;
-            mtxtCustomerID.Location = new Point(126, 25);
-            mtxtCustomerID.MaxLength = 50;
-            mtxtCustomerID.MouseState = MaterialSkin.MouseState.OUT;
-            mtxtCustomerID.Multiline = false;
-            mtxtCustomerID.Name = "mtxtCustomerID";
-            mtxtCustomerID.Size = new Size(333, 50);
-            mtxtCustomerID.TabIndex = 0;
-            mtxtCustomerID.Text = "";
-            mtxtCustomerID.TrailingIcon = null;
+            txtRentRoomId.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            txtRentRoomId.AnimateReadOnly = false;
+            txtRentRoomId.BorderStyle = BorderStyle.None;
+            txtRentRoomId.Depth = 0;
+            txtRentRoomId.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtRentRoomId.LeadingIcon = null;
+            txtRentRoomId.Location = new Point(126, 25);
+            txtRentRoomId.MaxLength = 50;
+            txtRentRoomId.MouseState = MaterialSkin.MouseState.OUT;
+            txtRentRoomId.Multiline = false;
+            txtRentRoomId.Name = "txtRentRoomId";
+            txtRentRoomId.Size = new Size(333, 50);
+            txtRentRoomId.TabIndex = 0;
+            txtRentRoomId.Text = "";
+            txtRentRoomId.TrailingIcon = null;
+            txtRentRoomId.TextChanged += txtRentRoomId_TextChanged;
             // 
             // panel3
             // 
-            panel3.Controls.Add(mbtnSearch);
             panel3.Dock = DockStyle.Fill;
             panel3.Location = new Point(742, 3);
             panel3.Margin = new Padding(0);
@@ -174,58 +175,34 @@
             panel3.Size = new Size(185, 94);
             panel3.TabIndex = 5;
             // 
-            // mbtnSearch
+            // InvoiceListUI
             // 
-            mbtnSearch.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            mbtnSearch.AutoSize = false;
-            mbtnSearch.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            mbtnSearch.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            mbtnSearch.Depth = 0;
-            mbtnSearch.HighEmphasis = true;
-            mbtnSearch.Icon = null;
-            mbtnSearch.Location = new Point(33, 32);
-            mbtnSearch.Margin = new Padding(4, 6, 4, 6);
-            mbtnSearch.MouseState = MaterialSkin.MouseState.HOVER;
-            mbtnSearch.Name = "mbtnSearch";
-            mbtnSearch.NoAccentTextColor = Color.Empty;
-            mbtnSearch.Size = new Size(148, 36);
-            mbtnSearch.TabIndex = 0;
-            mbtnSearch.Text = "SEARCH";
-            mbtnSearch.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            mbtnSearch.UseAccentColor = false;
-            mbtnSearch.UseVisualStyleBackColor = true;
-            mbtnSearch.Click += mbtnSearch_Click;
-            // 
-            // InvoiceList
-            // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1163, 677);
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             FormStyle = FormStyles.StatusAndActionBar_None;
-            Name = "InvoiceList";
+            Name = "InvoiceListUI";
             Padding = new Padding(0);
             Text = "InvoiceList";
             tableLayoutPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewInvoice).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            panel3.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private DataGridView dataGridView1;
+        private DataGridView dataGridViewInvoice;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel1;
-        private MaterialSkin.Controls.MaterialTextBox mtxtCustomerID;
+        private MaterialSkin.Controls.MaterialTextBox txtRentRoomId;
         private Panel panel2;
-        private MaterialSkin.Controls.MaterialButton mbtnSearch;
         private Panel panel3;
         private DateTimePicker dateTimePickerInvoice;
         private MaterialSkin.Controls.MaterialLabel materialLabel1;

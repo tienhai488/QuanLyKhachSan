@@ -255,7 +255,7 @@ namespace HotelManagement.GUI
                 DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
                 RoomReservationStatus status = RoomReservation.getStatusEnum(item[4].ToString());
 
-                list.Add(new RoomReservation() { Id = getRoomReservationIdString(index++) , RoomID = room_id, ReservationID = reservationId, StartTime = fromTimeBook, EndTime = toTimeBook, Status = status });
+                list.Add(new RoomReservation() { Id = getRoomReservationIdString(index++), RoomID = room_id, ReservationID = reservationId, StartTime = fromTimeBook, EndTime = toTimeBook, Status = status });
             }
 
             return list;

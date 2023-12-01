@@ -96,7 +96,7 @@ namespace HotelManagement.GUI
                         to += roomReservation.EndTime.ToString(Configs.formatBirthday);
                         labelReservationID = roomReservation.ReservationID;
                     }
-                    addRoomView(item.Id, item.RoomType.Name, labelMain, roomStatus, roomClean, from, to, labelReservationID);
+                    addRoomView(item.Id, item.RoomType.Name, labelMain, roomStatus, roomClean, from, to, labelReservationID, roomReservation);
                 });
         }
 
@@ -139,9 +139,9 @@ namespace HotelManagement.GUI
             panel.Controls.Add(radio);
         }
 
-        public void addRoomView(string id, string roomType, string labelMain, string roomStatus, string roomClean, string fromTime, string toTime, string reservationID)
+        public void addRoomView(string id, string roomType, string labelMain, string roomStatus, string roomClean, string fromTime, string toTime, string reservationID, RoomReservation roomReservation)
         {
-            RoomCard room = new RoomCard(id, roomType, labelMain, roomStatus, roomClean, fromTime, toTime, reservationID);
+            RoomCard room = new RoomCard(this, id, roomType, labelMain, roomStatus, roomClean, fromTime, toTime, reservationID, roomReservation);
             flowLayoutRooms.Controls.Add(room);
         }
 

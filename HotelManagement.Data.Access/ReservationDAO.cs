@@ -22,10 +22,6 @@
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //modelBuilder.Entity<Convenience>().ConfigureConvenience();
-            //modelBuilder.Entity<RoomType>().ConfigureRoomType();
-            //modelBuilder.Entity<Room>().ConfigureRoom();
-            //modelBuilder.Entity<Customer>().ConfigureCustomer();
             modelBuilder.Entity<Staff>().ConfigureStaff(false, false, false);
             modelBuilder.Entity<Reservation>()
                 .BigIntegerIdProperty(nameof(Reservation.StaffID), "StaffID", "SA", "3");
