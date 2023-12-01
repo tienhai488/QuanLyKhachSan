@@ -169,6 +169,7 @@
                 uid = value;
                 if (uid == 0)
                 {
+                    Disabled = false;
                     var e = ((IAccessable)this).Edit();
                     foreach (var perm in Enum.GetValues<Permission>())
                         if ((ushort)perm < (uint)Permission.UpdateReservation)
