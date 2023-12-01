@@ -26,6 +26,7 @@
         {
             base.OnLoad(e);
             LoadRoles();
+            AdjustSelectedIndex();
             LoadActions();
             LoadInfo();
             OnResize(EventArgs.Empty);

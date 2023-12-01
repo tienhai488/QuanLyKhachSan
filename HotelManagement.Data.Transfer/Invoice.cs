@@ -69,7 +69,7 @@ namespace HotelManagement.Data
         private string id;
 
         [Column("Quantity", TypeName = "int")]
-        private string quantity;
+        private int quantity;
 
         private BigInteger staffID;
 
@@ -80,7 +80,6 @@ namespace HotelManagement.Data
         [Column("RentRoomID", TypeName = "varchar")]
         private string rentRoomID;
 
-        [ForeignKey("RentRoomID")]
         private RentRoomDetail rentRoomDetail;
 
         [StringLength(50)]
@@ -91,12 +90,13 @@ namespace HotelManagement.Data
         private Service service;
 
         public string Id { get => id; set => id = value; }
-        public string Quantity { get => quantity; set => quantity = value; }
+        public int Quantity { get => quantity; set => quantity = value; }
         public BigInteger StaffID { get => staffID; set => staffID = value; }
         public Staff Staff { get => staff; set => staff = value; }
         public string ServiceID { get => serviceID; set => serviceID = value; }
         public Service Service { get => service; set => service = value; }
         public string RentRoomID { get => rentRoomID; set => rentRoomID = value; }
+        [ForeignKey("RentRoomID")]
         public RentRoomDetail RentRoomDetail { get => rentRoomDetail; set => rentRoomDetail = value; }
     }
 
