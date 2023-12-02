@@ -49,7 +49,6 @@
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
             tabPage5 = new TabPage();
-            tabPage6 = new TabPage();
             tabPage7 = new TabPage();
             tabPage8 = new TabPage();
             tabPage9 = new TabPage();
@@ -267,7 +266,6 @@
             materialTabControl1.Controls.Add(tabPage3);
             materialTabControl1.Controls.Add(tabPage4);
             materialTabControl1.Controls.Add(tabPage5);
-            materialTabControl1.Controls.Add(tabPage6);
             materialTabControl1.Controls.Add(tabPage7);
             materialTabControl1.Controls.Add(tabPage8);
             materialTabControl1.Controls.Add(tabPage9);
@@ -344,19 +342,7 @@
             tabPage5.TabIndex = 4;
             tabPage5.Text = "ROOM";
             tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            tabPage6.ImageKey = "icons8-service-bell-48.png";
-            tabPage6.Location = new Point(4, 39);
-            tabPage6.Margin = new Padding(3, 4, 3, 4);
-            tabPage6.Name = "tabPage6";
-            tabPage6.Padding = new Padding(3, 4, 3, 4);
-            tabPage6.Size = new Size(1815, 970);
-            tabPage6.TabIndex = 5;
-            tabPage6.Text = "CONVENIENCE";
-            tabPage6.UseVisualStyleBackColor = true;
-            // 
+            
             // tabPage7
             // 
             tabPage7.ImageKey = "icons8-janitor-48.png";
@@ -440,7 +426,6 @@
             ClientSize = new Size(1829, 1102);
             Controls.Add(materialTabControl1);
             DrawerAutoShow = true;
-            DrawerShowIconsWhenHidden = true;
             DrawerTabControl = materialTabControl1;
             Margin = new Padding(3, 4, 3, 4);
             Name = "MainUI";
@@ -475,7 +460,6 @@
         private TabPage tabPage3;
         private TabPage tabPage4;
         private TabPage tabPage5;
-        private TabPage tabPage6;
         private TabPage tabPage7;
         private TabPage tabPage8;
         private TabPage tabPage9;
