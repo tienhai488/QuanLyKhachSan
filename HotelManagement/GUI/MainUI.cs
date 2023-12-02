@@ -38,44 +38,112 @@ namespace HotelManagement.GUI
 
         private void addForm()
         {
-            ReservationUI reservationForm = new ReservationUI();
-            reservationForm.TopLevel = false;
-            reservationForm.FormBorderStyle = FormBorderStyle.None;
-            reservationForm.Dock = DockStyle.Fill;
-            reservationForm.Show();
-            tabPage2.Controls.Add(reservationForm);
-
-            RentRoomsUI roomForm = new RentRoomsUI();
-            roomForm.TopLevel = false;
-            roomForm.FormBorderStyle = FormBorderStyle.None;
-            roomForm.Dock = DockStyle.Fill;
-            roomForm.Show();
-            tabPage3.Controls.Add(roomForm);
-
-            InvoiceListUI invoiceList = new InvoiceListUI();
-            invoiceList.TopLevel = false;
-            invoiceList.FormBorderStyle = FormBorderStyle.None;
-            invoiceList.Dock = DockStyle.Fill;
-            invoiceList.Show();
-            tabPage4.Controls.Add(invoiceList);
-
-            ServiceUI serviceForm = new ServiceUI();
-            serviceForm.TopLevel = false;
-            serviceForm.FormBorderStyle = FormBorderStyle.None;
-            serviceForm.Dock = DockStyle.Fill;
-            serviceForm.Show();
-            tabPage7.Controls.Add(serviceForm);
-
-            CustomerUI customerForm = new CustomerUI();
-            customerForm.TopLevel = false;
-            customerForm.FormBorderStyle = FormBorderStyle.None;
-            customerForm.Dock = DockStyle.Fill;
-            customerForm.Show();
-            tabPage8.Controls.Add(customerForm);
-
+            AddReservationForm();
+            AddRentRoomsForm();
+            AddInvoiceListForm();
+            AddRoomForm();
+            AddServiceForm();
+            AddCustomerForm();
             AddStaffOrRoleForm();
             AddAccountOrPermissionGroupForm();
             AddStatistic2Form();
+        }
+
+        private void PermissionRequired(TabPage page)
+        {
+            page.Controls.Add(new Label()
+            {
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Text = "Permission Required!"
+            });
+        }
+
+        private void AddReservationForm()
+        {
+            if (LoginBO.IsPermissionGranted(Permission.UpdateReservation))
+            {
+                ReservationUI reservationForm = new ReservationUI();
+                reservationForm.TopLevel = false;
+                reservationForm.FormBorderStyle = FormBorderStyle.None;
+                reservationForm.Dock = DockStyle.Fill;
+                reservationForm.Show();
+                tabPage2.Controls.Add(reservationForm);
+            }
+            else PermissionRequired(tabPage2);
+        }
+
+        private void AddRentRoomsForm()
+        {
+            if (LoginBO.IsPermissionGranted(Permission.UpdateRoomDetails))
+            {
+                RentRoomsUI roomForm = new RentRoomsUI();
+                roomForm.TopLevel = false;
+                roomForm.FormBorderStyle = FormBorderStyle.None;
+                roomForm.Dock = DockStyle.Fill;
+                roomForm.Show();
+                tabPage3.Controls.Add(roomForm);
+            }
+            else PermissionRequired(tabPage3);
+        }
+
+        private void AddInvoiceListForm()
+        {
+            if (LoginBO.IsPermissionGranted(Permission.UpdateInvoice))
+            {
+                InvoiceListUI invoiceList = new InvoiceListUI();
+                invoiceList.TopLevel = false;
+                invoiceList.FormBorderStyle = FormBorderStyle.None;
+                invoiceList.Dock = DockStyle.Fill;
+                invoiceList.Show();
+                tabPage4.Controls.Add(invoiceList);
+            }
+            else PermissionRequired(tabPage4);
+        }
+
+        private void AddRoomForm()
+        {
+            if (LoginBO.IsPermissionGranted(Permission.ReadRoom)
+                || LoginBO.IsPermissionGranted(Permission.ReadRoomType)
+                || LoginBO.IsPermissionGranted(Permission.ReadConvenient))
+            {
+                ServiceUI serviceForm = new ServiceUI();
+                serviceForm.TopLevel = false;
+                serviceForm.FormBorderStyle = FormBorderStyle.None;
+                serviceForm.Dock = DockStyle.Fill;
+                serviceForm.Show();
+                tabPage5.Controls.Add(serviceForm);
+            }
+            else PermissionRequired(tabPage7);
+        }
+
+        private void AddServiceForm()
+        {
+            if (LoginBO.IsPermissionGranted(Permission.ReadService)
+                || LoginBO.IsPermissionGranted(Permission.ReadServiceType))
+            {
+                ServiceUI serviceForm = new ServiceUI();
+                serviceForm.TopLevel = false;
+                serviceForm.FormBorderStyle = FormBorderStyle.None;
+                serviceForm.Dock = DockStyle.Fill;
+                serviceForm.Show();
+                tabPage7.Controls.Add(serviceForm);
+            }
+            else PermissionRequired(tabPage7);
+        }
+
+        private void AddCustomerForm()
+        {
+            if (LoginBO.IsPermissionGranted(Permission.ReadCustomer))
+            {
+                CustomerUI customerForm = new CustomerUI();
+                customerForm.TopLevel = false;
+                customerForm.FormBorderStyle = FormBorderStyle.None;
+                customerForm.Dock = DockStyle.Fill;
+                customerForm.Show();
+                tabPage8.Controls.Add(customerForm);
+            }
+            else PermissionRequired(tabPage8);
         }
 
         private void AddStaffOrRoleForm()
@@ -98,15 +166,7 @@ namespace HotelManagement.GUI
                 roleForm.Show();
                 tabPage9.Controls.Add(roleForm);
             }
-            else
-            {
-                tabPage9.Controls.Add(new Label()
-                {
-                    Dock = DockStyle.Fill,
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Text = "Permission Required!"
-                });
-            }
+            else PermissionRequired(tabPage9);
         }
 
         private void AddAccountOrPermissionGroupForm()
@@ -129,15 +189,7 @@ namespace HotelManagement.GUI
                 pgForm.Show();
                 tabPage10.Controls.Add(pgForm);
             }
-            else
-            {
-                tabPage10.Controls.Add(new Label()
-                {
-                    Dock = DockStyle.Fill,
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Text = "Permission Required!"
-                });
-            }
+            else PermissionRequired(tabPage10);
         }
 
         private void AddStatistic2Form()
