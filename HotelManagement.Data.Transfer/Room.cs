@@ -25,23 +25,16 @@
         [Key]
         [StringLength(50)]
         [Column("ID", TypeName = "varchar")]
-        private string id;
+        public string Id { get; set; }
 
         [MaxLength(11)]
         [Column("Status", TypeName = "int")]
-        private int status;
-
+        public int Status { get; set; }
 
         [Column("RoomTypeID", TypeName = "varchar")]
-        private string roomTypeId;
-
-        [ForeignKey("RoomTypeID")]
-        private RoomType roomType;
-
-        public string Id { get => id; set => id = value; }
-        public int Status { get => status; set => status = value; }
-        public string RoomTypeId { get => roomTypeId; set => roomTypeId = value; }
-        public RoomType RoomType { get => roomType; set => roomType = value; }
+        [ForeignKey(nameof(RoomType))]
+        public string RoomTypeId { get; set; }
+        public RoomType RoomType { get; set; }
 
         public Room(string id)
         {
@@ -50,9 +43,9 @@
 
         public Room(string id, int status, string roomTypeId)
         {
-            this.id = id;
-            this.status = status;
-            this.roomTypeId = roomTypeId;
+            Id = id;
+            Status = status;
+            RoomTypeId = roomTypeId;
         }
         public Room() { }
     }

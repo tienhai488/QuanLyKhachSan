@@ -55,7 +55,7 @@ namespace HotelManagement.GUI
 
                     if (this.roomStatusFilter != RoomReservationStatus.All)
                     {
-                        RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomID.Equals(item.Id));
+                        RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomId.Equals(item.Id));
                         if (roomReservation != null)
                         {
                             checkRoomStatus = roomReservation.Status == this.roomStatusFilter;
@@ -87,14 +87,14 @@ namespace HotelManagement.GUI
                     string from = "From: ";
                     string to = "To: ";
                     string labelReservationID = "";
-                    RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomID.Equals(item.Id));
+                    RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomId.Equals(item.Id));
                     if (roomReservation != null)
                     {
                         labelMain = roomReservation.Reservation.Customer.FullName;
                         roomStatus = RoomReservation.getStatusString(roomReservation.Status);
                         from += roomReservation.StartTime.ToString(Configs.formatBirthday);
                         to += roomReservation.EndTime.ToString(Configs.formatBirthday);
-                        labelReservationID = roomReservation.ReservationID;
+                        labelReservationID = roomReservation.ReservationId;
                     }
                     addRoomView(item.Id, item.RoomType.Name, labelMain, roomStatus, roomClean, from, to, labelReservationID, roomReservation);
                 });
