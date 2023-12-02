@@ -32,20 +32,19 @@
             dataGridView1 = new DataGridView();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel1 = new Panel();
-            cbxFilter = new ComboBox();
+            txtIdFilter = new MaterialSkin.Controls.MaterialTextBox();
             panel2 = new Panel();
-            btnFilter = new MaterialSkin.Controls.MaterialButton();
             panel3 = new Panel();
             panel4 = new Panel();
             tableLayoutPanel3 = new TableLayoutPanel();
             btnAddBook = new MaterialSkin.Controls.MaterialButton();
             btnDelete = new MaterialSkin.Controls.MaterialButton();
             btnUpdate = new MaterialSkin.Controls.MaterialButton();
+            label1 = new MaterialSkin.Controls.MaterialLabel();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel2.SuspendLayout();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
             panel4.SuspendLayout();
             tableLayoutPanel3.SuspendLayout();
             SuspendLayout();
@@ -109,7 +108,8 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(cbxFilter);
+            panel1.Controls.Add(label1);
+            panel1.Controls.Add(txtIdFilter);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(3, 3);
             panel1.Margin = new Padding(0);
@@ -117,49 +117,32 @@
             panel1.Size = new Size(356, 74);
             panel1.TabIndex = 3;
             // 
-            // cbxFilter
+            // txtIdFilter
             // 
-            cbxFilter.AutoCompleteMode = AutoCompleteMode.Suggest;
-            cbxFilter.AutoCompleteSource = AutoCompleteSource.ListItems;
-            cbxFilter.FlatStyle = FlatStyle.Popup;
-            cbxFilter.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
-            cbxFilter.FormattingEnabled = true;
-            cbxFilter.Location = new Point(0, 19);
-            cbxFilter.Margin = new Padding(5, 3, 5, 3);
-            cbxFilter.Name = "cbxFilter";
-            cbxFilter.Size = new Size(356, 49);
-            cbxFilter.TabIndex = 5;
+            txtIdFilter.AnimateReadOnly = false;
+            txtIdFilter.BorderStyle = BorderStyle.None;
+            txtIdFilter.Depth = 0;
+            txtIdFilter.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
+            txtIdFilter.LeadingIcon = null;
+            txtIdFilter.Location = new Point(3, 21);
+            txtIdFilter.MaxLength = 50;
+            txtIdFilter.MouseState = MaterialSkin.MouseState.OUT;
+            txtIdFilter.Multiline = false;
+            txtIdFilter.Name = "txtIdFilter";
+            txtIdFilter.Size = new Size(350, 50);
+            txtIdFilter.TabIndex = 0;
+            txtIdFilter.Text = "";
+            txtIdFilter.TrailingIcon = null;
+            txtIdFilter.TextChanged += txtIdFilter_TextChanged;
             // 
             // panel2
             // 
-            panel2.Controls.Add(btnFilter);
             panel2.Dock = DockStyle.Fill;
             panel2.Location = new Point(359, 3);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
             panel2.Size = new Size(213, 74);
             panel2.TabIndex = 4;
-            // 
-            // btnFilter
-            // 
-            btnFilter.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            btnFilter.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnFilter.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnFilter.Depth = 0;
-            btnFilter.HighEmphasis = true;
-            btnFilter.Icon = null;
-            btnFilter.Location = new Point(4, 19);
-            btnFilter.Margin = new Padding(4, 6, 4, 6);
-            btnFilter.MouseState = MaterialSkin.MouseState.HOVER;
-            btnFilter.Name = "btnFilter";
-            btnFilter.NoAccentTextColor = Color.Empty;
-            btnFilter.Size = new Size(78, 36);
-            btnFilter.TabIndex = 0;
-            btnFilter.Text = "SEARCH";
-            btnFilter.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnFilter.UseAccentColor = false;
-            btnFilter.UseVisualStyleBackColor = true;
-            btnFilter.Click += btnFilter_Click;
             // 
             // panel3
             // 
@@ -259,6 +242,19 @@
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Depth = 0;
+            label1.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Pixel);
+            label1.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
+            label1.Location = new Point(3, 4);
+            label1.MouseState = MaterialSkin.MouseState.HOVER;
+            label1.Name = "label1";
+            label1.Size = new Size(75, 14);
+            label1.TabIndex = 1;
+            label1.Text = "ReservationID";
+            // 
             // ReservationUI
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -275,8 +271,7 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tableLayoutPanel2.ResumeLayout(false);
             panel1.ResumeLayout(false);
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
+            panel1.PerformLayout();
             panel4.ResumeLayout(false);
             tableLayoutPanel3.ResumeLayout(false);
             tableLayoutPanel3.PerformLayout();
@@ -292,11 +287,11 @@
         private Panel panel3;
         private MaterialSkin.Controls.MaterialButton btnAddBook;
         private Panel panel2;
-        private MaterialSkin.Controls.MaterialButton btnFilter;
-        private ComboBox cbxFilter;
         private MaterialSkin.Controls.MaterialButton btnUpdate;
         private Panel panel4;
         private TableLayoutPanel tableLayoutPanel3;
         private MaterialSkin.Controls.MaterialButton btnDelete;
+        private MaterialSkin.Controls.MaterialTextBox txtIdFilter;
+        private MaterialSkin.Controls.MaterialLabel label1;
     }
 }

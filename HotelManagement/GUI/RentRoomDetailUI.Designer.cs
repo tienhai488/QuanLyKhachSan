@@ -84,7 +84,9 @@
             materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             panel10 = new Panel();
             cbxRoomClean = new MaterialSkin.Controls.MaterialComboBox();
-            datetimeChange = new DateTimePicker();
+            datetimeEndChange = new DateTimePicker();
+            datetimeStartChange = new DateTimePicker();
+            materialLabel14 = new MaterialSkin.Controls.MaterialLabel();
             changeEndT = new MaterialSkin.Controls.MaterialLabel();
             materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
             materialLabel19 = new MaterialSkin.Controls.MaterialLabel();
@@ -762,7 +764,9 @@
             // panel10
             // 
             panel10.Controls.Add(cbxRoomClean);
-            panel10.Controls.Add(datetimeChange);
+            panel10.Controls.Add(datetimeEndChange);
+            panel10.Controls.Add(datetimeStartChange);
+            panel10.Controls.Add(materialLabel14);
             panel10.Controls.Add(changeEndT);
             panel10.Controls.Add(materialLabel20);
             panel10.Controls.Add(materialLabel19);
@@ -798,16 +802,40 @@
             cbxRoomClean.StartIndex = 0;
             cbxRoomClean.TabIndex = 27;
             // 
-            // datetimeChange
+            // datetimeEndChange
             // 
-            datetimeChange.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            datetimeChange.CustomFormat = "dd/MM/yyyy";
-            datetimeChange.Format = DateTimePickerFormat.Custom;
-            datetimeChange.Location = new Point(22, 337);
-            datetimeChange.Margin = new Padding(3, 4, 3, 4);
-            datetimeChange.Name = "datetimeChange";
-            datetimeChange.Size = new Size(360, 27);
-            datetimeChange.TabIndex = 26;
+            datetimeEndChange.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            datetimeEndChange.CustomFormat = "dd/MM/yyyy";
+            datetimeEndChange.Format = DateTimePickerFormat.Custom;
+            datetimeEndChange.Location = new Point(22, 449);
+            datetimeEndChange.Margin = new Padding(3, 4, 3, 4);
+            datetimeEndChange.Name = "datetimeEndChange";
+            datetimeEndChange.Size = new Size(360, 27);
+            datetimeEndChange.TabIndex = 26;
+            // 
+            // datetimeStartChange
+            // 
+            datetimeStartChange.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            datetimeStartChange.CustomFormat = "dd/MM/yyyy";
+            datetimeStartChange.Format = DateTimePickerFormat.Custom;
+            datetimeStartChange.Location = new Point(22, 337);
+            datetimeStartChange.Margin = new Padding(3, 4, 3, 4);
+            datetimeStartChange.Name = "datetimeStartChange";
+            datetimeStartChange.Size = new Size(360, 27);
+            datetimeStartChange.TabIndex = 26;
+            // 
+            // materialLabel14
+            // 
+            materialLabel14.AutoSize = true;
+            materialLabel14.Depth = 0;
+            materialLabel14.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
+            materialLabel14.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
+            materialLabel14.Location = new Point(22, 410);
+            materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel14.Name = "materialLabel14";
+            materialLabel14.Size = new Size(180, 24);
+            materialLabel14.TabIndex = 24;
+            materialLabel14.Text = "CHANGE END TIME:";
             // 
             // changeEndT
             // 
@@ -818,9 +846,9 @@
             changeEndT.Location = new Point(22, 298);
             changeEndT.MouseState = MaterialSkin.MouseState.HOVER;
             changeEndT.Name = "changeEndT";
-            changeEndT.Size = new Size(180, 24);
+            changeEndT.Size = new Size(203, 24);
             changeEndT.TabIndex = 24;
-            changeEndT.Text = "CHANGE END TIME:";
+            changeEndT.Text = "CHANGE START TIME:";
             // 
             // materialLabel20
             // 
@@ -1482,10 +1510,12 @@
         private MaterialSkin.Controls.MaterialTextBox txtRoomStatus;
         private MaterialSkin.Controls.MaterialTextBox txtFrom;
         private MaterialSkin.Controls.MaterialTextBox txtTo;
-        private DateTimePicker datetimeChange;
+        private DateTimePicker datetimeStartChange;
         private MaterialSkin.Controls.MaterialLabel changeEndT;
         private MaterialSkin.Controls.MaterialComboBox cbxRoomClean;
         private MaterialSkin.Controls.MaterialButton btnChange;
         private MaterialSkin.Controls.MaterialLabel labelRentRoomId;
+        private DateTimePicker datetimeEndChange;
+        private MaterialSkin.Controls.MaterialLabel materialLabel14;
     }
 }

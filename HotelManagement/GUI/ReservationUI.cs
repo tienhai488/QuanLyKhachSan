@@ -17,6 +17,8 @@ namespace HotelManagement.GUI
 
         private BindingSource bindingSource = new BindingSource();
         DataTable dataTable = new DataTable();
+
+        private System.Threading.Timer timer;
         public ReservationUI()
         {
             InitializeComponent();
@@ -52,13 +54,8 @@ namespace HotelManagement.GUI
             });
             dataGridView1.DataSource = dataTable;
             bindingSource.DataSource = dataTable;
-            initCbxFilterAll();
         }
 
-        public void initCbxFilterAll()
-        {
-            FormHelpers.initCbxFilter(cbxFilter, 0, dataGridView1);
-        }
 
         public string getReservationID()
         {
@@ -70,6 +67,31 @@ namespace HotelManagement.GUI
             }
             return "RE" + index.ToString("D5");
         }
+
+        private void TimerCallback(object state)
+        {
+            if (txtIdFilter.InvokeRequired)
+            {
+                txtIdFilter.Invoke(new MethodInvoker(delegate
+                {
+                    // Thực hiện hành động cần thiết sau khi chờ đợi 500ms
+                    bindingSource.Filter = @$"
+                    `ID` like '%{txtIdFilter.Text}%'
+                    ";
+
+                    dataGridView1.DataSource = bindingSource;
+                }));
+            }
+            else
+            {
+                // Nếu đang chạy trên luồng chính, thực hiện ngay lập tức
+                bindingSource.Filter = @$"
+                    `ID` like '%{txtIdFilter.Text}%'
+                    ";
+
+                dataGridView1.DataSource = bindingSource;
+            }
+        }
         #endregion
 
         #region event
@@ -79,19 +101,6 @@ namespace HotelManagement.GUI
             ReservBookingUI reservBookingUI = new ReservBookingUI(this, id);
             reservBookingUI.Show();
         }
-
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-            string id = cbxFilter.Text;
-
-            bindingSource.Filter = @$"
-            `ID` like '%{id}%' 
-            ";
-
-            dataGridView1.DataSource = bindingSource;
-            initCbxFilterAll();
-        }
-        #endregion
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
@@ -115,7 +124,7 @@ namespace HotelManagement.GUI
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa phiếu đặt phòng", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int count = roomReservationBUS.getLengthRoomReservationByReservationId(id);
-                if(count > 0)
+                if (count > 0)
                 {
                     MessageBox.Show("Phiếu đặt phòng đã tồn tại ds các phòng đã đặt! Vui lòng kiểm tra lại!");
                     return;
@@ -133,5 +142,14 @@ namespace HotelManagement.GUI
                 }
             }
         }
+
+        private void txtIdFilter_TextChanged(object sender, EventArgs e)
+        {
+            timer?.Change(Timeout.Infinite, Timeout.Infinite);
+
+            // Tạo một timer mới và đặt thời gian chờ đợi là 500ms
+            timer = new System.Threading.Timer(TimerCallback, null, 500, Timeout.Infinite);
+        }
+        #endregion
     }
 }

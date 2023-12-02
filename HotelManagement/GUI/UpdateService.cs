@@ -27,6 +27,7 @@ namespace HotelManagement.GUI
         private RentRoomDetail rentRoomDetailOld = null;
         private RentRoomDetailUI rentRoomDetailUIOld = null;
 
+        private Staff staffLogin = LoginBO.SignedInStaff;
         public UpdateService()
         {
             InitializeComponent();
@@ -197,7 +198,7 @@ namespace HotelManagement.GUI
                     detail.Quantity = Int32.Parse(row.Cells["Quantity"].Value.ToString());
                     detail.ServiceID = row.Cells["ID"].Value.ToString();
                     detail.RentRoomID = this.rentRoomDetailOld.Id;
-                    detail.StaffID = 1;
+                    detail.StaffID = this.staffLogin.Id;
                     list.Add(detail);
                 }
             }

@@ -24,6 +24,8 @@ namespace HotelManagement.GUI
         private Reservation reservationOld = null;
 
         ReservationUI reservationUI;
+
+        private Staff staffLogin = LoginBO.SignedInStaff;
         public ReservBookingUI(ReservationUI reservationUI, string reservationId)
         {
             InitializeComponent();
@@ -87,32 +89,34 @@ namespace HotelManagement.GUI
         {
             foreach (DataRow item in dataTableBook.Rows)
             {
-                if (RoomReservationStatus.OutDate != RoomReservation.getStatusEnum(item[4].ToString()))
+                var statusEnum = RoomReservation.getStatusEnum(item[4].ToString());
+                if (RoomReservationStatus.OutDate != statusEnum && RoomReservationStatus.Paid != statusEnum)
                 {
                     DateTime fromTimeBook = Functions.convertStringToDateTime(item[2].ToString());
                     DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
-                    if (Functions.getDayGap(fromTimeBook, from) == 0 && Functions.getDayGap(to, toTimeBook) == 0)
+
+                    bool checkInRange = (Functions.getDayGap(from, fromTimeBook) >= 0 && Functions.getDayGap(fromTimeBook, to) >= 0) ||
+                    (Functions.getDayGap(from, toTimeBook) >= 0 && Functions.getDayGap(toTimeBook, to) >= 0);
+
+                    if (checkInRange)
                     {
                         string id = item[0].ToString();
 
-                        int index = -1;
-                        int temp = 0;
                         foreach (DataRow row in dataTableRoom.Rows)
                         {
                             if (row[0].Equals(id))
                             {
-                                index = temp;
+                                dataTableRoom.Rows.Remove(row);
                                 break;
                             }
-                            temp++;
-                        }
-                        if (index != -1)
-                        {
-                            dataTableRoom.Rows.RemoveAt(index);
                         }
                     }
                 }
             }
+
+            tableRoom.DataSource = null;
+            tableRoom.DataSource = dataTableRoom;
+
         }
 
 
@@ -122,14 +126,19 @@ namespace HotelManagement.GUI
             tableRoom.DataSource = null;
             tableRoom.Columns.Clear();
 
-            this.reservationOld = reservationBUS.getById(txtId.Text);
-            if (this.reservationOld == null)
+            bool checkDateTime = Functions.getDayGap(DateTime.Now, from) >= 0 && Functions.getDayGap(from, to) >=0;
+
+            if (checkDateTime)
             {
-                roomReservationBUS.getListRoomAllowBooking(from, to).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
-            }
-            else
-            {
-                roomReservationBUS.getListRoomAllowBookingWithReservationId(from, to, this.reservationOld.Id).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
+                this.reservationOld = reservationBUS.getById(txtId.Text);
+                if (this.reservationOld == null)
+                {
+                    roomReservationBUS.getListRoomAllowBooking(from, to).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
+                }
+                else
+                {
+                    roomReservationBUS.getListRoomAllowBookingWithReservationId(from, to, this.reservationOld.Id).ForEach(item => dataTableRoom.Rows.Add(item.Id, item.RoomType.Name));
+                }
             }
 
             removeItemInDataTableRoom(from, to);
@@ -273,7 +282,7 @@ namespace HotelManagement.GUI
             {
                 string reservationId = txtId.Text;
                 Reservation reservation = new Reservation()
-                { Id = reservationId, CustomerID = customer.Id, StaffID = 1, CreatedAt = DateTime.Now };
+                { Id = reservationId, CustomerID = customer.Id, StaffID = this.staffLogin.Id, CreatedAt = DateTime.Now };
 
                 if (this.reservationOld != null)
                 {
@@ -364,15 +373,8 @@ namespace HotelManagement.GUI
             string type = tableRoom.Rows[index].Cells["Type"].Value.ToString();
 
             List<RoomReservation> bookedRooms = getListRoomReservationFromBooked(txtId.Text);
-            //bool checkContainRoomId = bookedRooms.Any(item => item.RoomID.Equals(roomId));
-            //if (checkContainRoomId)
-            //{
-            //    MessageBox.Show($"Phiếu đặt phòng đã có phòng {roomId}! Vui lòng kiểm tra lại!");
-            //    return;
-            //}
 
-            DataRow rowToRemove = dataTableRoom.Rows.Cast<DataRow>().FirstOrDefault(row => row["ID"].Equals(roomId));
-            dataTableRoom.Rows.Remove(rowToRemove);
+            dataTableRoom.Rows.RemoveAt(index);
 
             tableRoom.DataSource = dataTableRoom;
 
@@ -405,8 +407,7 @@ namespace HotelManagement.GUI
                 return;
             }
 
-            DataRow rowToRemove = dataTableBook.Rows.Cast<DataRow>().FirstOrDefault(row => row["ID"].Equals(roomId));
-            dataTableBook.Rows.Remove(rowToRemove);
+            dataTableBook.Rows.RemoveAt(index);
 
             tableBook.DataSource = dataTableBook;
             initTableRoom(fromTime.Value, toTime.Value);

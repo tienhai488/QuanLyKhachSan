@@ -54,6 +54,7 @@
             panel6 = new Panel();
             datetimeFilter = new DateTimePicker();
             panel7 = new Panel();
+            materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             txtFilter = new MaterialSkin.Controls.MaterialTextBox();
             panel8 = new Panel();
             tableLayoutPanel1.SuspendLayout();
@@ -437,6 +438,7 @@
             // 
             // panel7
             // 
+            panel7.Controls.Add(materialLabel1);
             panel7.Controls.Add(txtFilter);
             panel7.Dock = DockStyle.Fill;
             panel7.Location = new Point(222, 0);
@@ -444,6 +446,19 @@
             panel7.Name = "panel7";
             panel7.Size = new Size(742, 107);
             panel7.TabIndex = 10;
+            // 
+            // materialLabel1
+            // 
+            materialLabel1.AutoSize = true;
+            materialLabel1.Depth = 0;
+            materialLabel1.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Pixel);
+            materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
+            materialLabel1.Location = new Point(8, 10);
+            materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
+            materialLabel1.Name = "materialLabel1";
+            materialLabel1.Size = new Size(44, 14);
+            materialLabel1.TabIndex = 10;
+            materialLabel1.Text = "RoomID";
             // 
             // txtFilter
             // 
@@ -453,7 +468,7 @@
             txtFilter.Depth = 0;
             txtFilter.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtFilter.LeadingIcon = null;
-            txtFilter.Location = new Point(0, 19);
+            txtFilter.Location = new Point(0, 31);
             txtFilter.Margin = new Padding(3, 4, 3, 4);
             txtFilter.MaxLength = 50;
             txtFilter.MouseState = MaterialSkin.MouseState.OUT;
@@ -505,6 +520,7 @@
             tableLayoutPanel2.ResumeLayout(false);
             panel6.ResumeLayout(false);
             panel7.ResumeLayout(false);
+            panel7.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -538,5 +554,6 @@
         private MaterialSkin.Controls.MaterialRadioButton materialRadioButton11;
         private Panel panelRoomType;
         private MaterialSkin.Controls.MaterialRadioButton materialRadioButton1;
+        private MaterialSkin.Controls.MaterialLabel materialLabel1;
     }
 }

@@ -6,6 +6,8 @@ using HotelManagement.Data.Transfer.Ultils;
 using HotelManagement.BUS;
 using System.Collections.Specialized;
 using HotelManagement.Business;
+using System.Globalization;
+using System.Text;
 
 namespace HotelManagement.GUI
 {
@@ -36,10 +38,10 @@ namespace HotelManagement.GUI
 
         private void mbtnPrint_Click(object sender, EventArgs e)
         {
-            if(this.rentRoomDetailOld.PaidTime.ToString(Configs.formatBirthday).Equals("01/01/0001")){
-                MessageBox.Show("Phiếu thuê chưa được thanh toán! Vui lòng kiểm tra lại!");
-                return;
-            }
+            //if(this.rentRoomDetailOld.PaidTime.ToString(Configs.formatBirthday).Equals("01/01/0001")){
+            //    MessageBox.Show("Phiếu thuê chưa được thanh toán! Vui lòng kiểm tra lại!");
+            //    return;
+            //}
             using (SaveFileDialog saveFileDialog = new SaveFileDialog() { Filter = "PDF file|*.pdf", ValidateNames = true })
             {
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -86,9 +88,10 @@ namespace HotelManagement.GUI
             rtbString.Append(String.Format("{0,-40}{1, -39}\n", "FROM", $"INVOICE: {this.rentRoomDetailOld.InvoiceID} - RENTROOMID: {this.rentRoomDetailOld.Id}"));
             rtbString.Append("\n");
 
+            string strPaid = this.rentRoomDetailOld.PaidTime.ToString(Configs.formatBirthday).Equals("01/01/0001") ? "Chua thanh toan" : this.rentRoomDetailOld.PaidTime.ToString(Configs.formatDateTime);
             rtbString.Append(String.Format("{0,-40}{1, -39}\n", "THE GRAND BUDAPEST HOTEL", $"StartTime: {this.rentRoomDetailOld.StartTime.ToString(Configs.formatBirthday)}"));
             rtbString.Append(String.Format("{0,-40}{1, -39}\n", "273 An Duong Vuong, Ward 3,", $"EndTime: {this.rentRoomDetailOld.EndTime.ToString(Configs.formatBirthday)}" ));
-            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "District 5, Ho Chi Minh City, VN", $"Paid: {this.rentRoomDetailOld.PaidTime.ToString(Configs.formatDateTime)}"));
+            rtbString.Append(String.Format("{0,-40}{1, -39}\n", "District 5, Ho Chi Minh City, VN", $"Paid: {strPaid}"));
             rtbString.Append("\n");
             rtbString.Append("-------------------------------------------------------------------------------\n");
             rtbString.Append("\n");
@@ -96,13 +99,13 @@ namespace HotelManagement.GUI
             rtbString.Append(String.Format("{0,-40}\n", "BILL TO"));
             rtbString.Append("\n");
 
-            rtbString.Append(String.Format("{0}\n", $"Customer Name: {this.rentRoomDetailOld.Invoice.Customer.FullName}"));
+            rtbString.Append(String.Format("{0}\n", $"Customer Name: {RemoveDiacritics(this.rentRoomDetailOld.Invoice.Customer.FullName)}"));
             rtbString.Append("\n");
             rtbString.Append(String.Format("{0}\n", $"CitizenID: {this.rentRoomDetailOld.Invoice.Customer.CitizenID}"));
             rtbString.Append("\n");
             rtbString.Append(String.Format("{0}\n", $"Phone Number: {this.rentRoomDetailOld.Invoice.Customer.PhoneNumber}"));
             rtbString.Append("\n");
-            rtbString.Append(String.Format("{0}\n", $"Address: {this.rentRoomDetailOld.Invoice.Customer.Address}"));
+            rtbString.Append(String.Format("{0}\n", $"Address: {RemoveDiacritics(this.rentRoomDetailOld.Invoice.Customer.Address)}"));
             rtbString.Append("\n");
             rtbString.Append("-------------------------------------------------------------------------------\n");
             rtbString.Append("\n");
@@ -113,7 +116,7 @@ namespace HotelManagement.GUI
             Room room = roomBUS.getRoomById(rentRoomDetailOld.RoomID);
             int count = Functions.getDayGap(rentRoomDetailOld.StartTime, rentRoomDetailOld.EndTime) + 1;
             this.total += room.RoomType.UnitPrice * count;
-            rtbString.Append(String.Format("{0,-6}{1,-19}{2,-20}{3,-12}{4,-10}{5,-12}\n", "1", room.Id, "Phòng được thuê", $"{room.RoomType.UnitPrice}", $"{count}", (this.total).ToString("N0")+"đ"));
+            rtbString.Append(String.Format("{0,-6}{1,-19}{2,-20}{3,-12}{4,-10}{5,-12}\n", "1", room.Id, "Phong thue/Ngay", $"{room.RoomType.UnitPrice}", $"{count}", (this.total).ToString("N0")));
             rtbString.Append("\n");
 
             int index = 1;
@@ -122,7 +125,7 @@ namespace HotelManagement.GUI
                 {
                     index++;
                     Service service = item.Service;
-                    rtbString.Append(String.Format("{0,-6}{1,-19}{2,-20}{3,-12}{4,-10}{5,-12}\n", $"{index}", service.Name, "", $"{service.UnitPrice}", $"{item.Quantity}", (service.UnitPrice * item.Quantity).ToString("N0")));
+                    rtbString.Append(String.Format("{0,-6}{1,-19}{2,-20}{3,-12}{4,-10}{5,-12}\n", $"{index}", RemoveDiacritics(service.Name), "", $"{service.UnitPrice}", $"{item.Quantity}", (service.UnitPrice * item.Quantity).ToString("N0")));
                     rtbString.Append("\n");
                     this.total += service.UnitPrice * item.Quantity;
                 });
@@ -132,7 +135,7 @@ namespace HotelManagement.GUI
             rtbString.Append("\n");
             rtbString.Append("-------------------------------------------------------------------------------\n");
             rtbString.Append("\n");
-            rtbString.Append(String.Format("{0,67}{1,-12}\n", "TOTAL: ", $"{this.total.ToString("N0")}"));
+            rtbString.Append(String.Format("{0,67}{1,-12}\n", "TOTAL: ", $"{this.total.ToString("N0")}đ"));
 
             rtbString.Append("\n");
             rtbString.Append("-------------------------------------------------------------------------------\n");
@@ -144,7 +147,7 @@ namespace HotelManagement.GUI
             rtbString.Append("\n");
 
             rtbString.Append(String.Format("{0,10}{1,-20}{2,19}{3,-30}\n", "", "Customer", "", "Cashier"));
-            rtbString.Append(String.Format("{0,10}{1,-20}{2,19}{3,-30}\n", "", $"{this.rentRoomDetailOld.Invoice.Customer.FullName}", "", $"{this.rentRoomDetailOld.Staff.FullName}"));
+            rtbString.Append(String.Format("{0,10}{1,-20}{2,19}{3,-30}\n", "", $"{RemoveDiacritics(this.rentRoomDetailOld.Invoice.Customer.FullName)}", "", $"{RemoveDiacritics(this.rentRoomDetailOld.Staff.FullName)}"));
 
             richTextBox1.AppendText(rtbString.ToString());
 
@@ -152,9 +155,22 @@ namespace HotelManagement.GUI
 
         }
 
-        private void FormatInvoice2()
+        public string RemoveDiacritics(string text)
         {
+            if (string.IsNullOrEmpty(text))
+                return text;
 
+            string normalizedString = text.Normalize(NormalizationForm.FormD);
+            StringBuilder stringBuilder = new StringBuilder();
+
+            foreach (char c in normalizedString)
+            {
+                UnicodeCategory unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark)
+                    stringBuilder.Append(c);
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
 
         private string toVietnameseDong(int totalPrice)
