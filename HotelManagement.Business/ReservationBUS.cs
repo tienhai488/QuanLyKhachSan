@@ -49,9 +49,7 @@ namespace HotelManagement.Business
             reservationDAO.Entry(reservation).State = EntityState.Modified;
 
             Reservation temp = reservationDAO.Reservations.ToList().Find(item => item.Id.Equals(reservation.Id));
-            temp.StaffID = reservation.StaffID;
             temp.CustomerID = reservation.CustomerID;
-            temp.CreatedAt = reservation.CreatedAt;
 
             return reservationDAO.SaveChanges();
         }
@@ -152,6 +150,18 @@ namespace HotelManagement.Business
                 .Where(item => item.ReservationId.Equals(reservationId))
                 .Count();
         }
+
+        //public List<RoomReservation> getListRoomReservationBookedAndRentedHistory(DateTime startTime, DateTime endTime)
+        //{
+        //    return getAllRoomReservation()
+        //        .Where(item =>
+        //        {
+        //            bool checkInRange = getListRoomReservationBookedAndRentedHistory(startTime) || getListRoomReservationBookedAndRentedHistory(endTime);
+        //            bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented;
+        //            return checkStatus && checkInRange;
+        //        })
+        //        .ToList();
+        //}
 
         public List<RoomReservation> getListRoomReservationBookedAndRentedHistory(DateTime date)
         {
@@ -275,6 +285,13 @@ namespace HotelManagement.Business
         {
             var item = reservationDAO.RoomReservations.ToList().Find(item => item.Id.Equals(roomReservationId));
             item.EndTime = endTimeUpdate;
+            return reservationDAO.SaveChanges();
+        }
+
+        public int updateStartTime(string roomReservationId, DateTime startTimeUpdate)
+        {
+            var item = reservationDAO.RoomReservations.ToList().Find(item => item.Id.Equals(roomReservationId));
+            item.StartTime = startTimeUpdate;
             return reservationDAO.SaveChanges();
         }
     }

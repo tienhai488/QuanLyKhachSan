@@ -14,33 +14,33 @@ namespace HotelManagement
         [STAThread]
         static void Main()
         {
-            //using (var dao = new AccountDAO())
-            //{
-            //    if ((from a in dao.Set<Account>()
-            //         where a.Uid == BigInteger.Zero
-            //         select a).Any())
-            //    {
-            //        dao.Update(new Account(0)
-            //        {
-            //            UserName = "root99",
-            //            Password = "Hello|11"
-            //        });
-            //    }
-            //    else
-            //    {
-            //        dao.Add(new Account(0)
-            //        {
-            //            UserName = "root99",
-            //            Password = "Hello|11"
-            //        });
-            //    }
-            //    dao.SaveChanges();
-            //}
+            using (var dao = new AccountDAO())
+            {
+                if ((from a in dao.Set<Account>()
+                     where a.Uid == BigInteger.Zero
+                     select a).Any())
+                {
+                    dao.Update(new Account(0)
+                    {
+                        UserName = "root99",
+                        Password = "Hello|11"
+                    });
+                }
+                else
+                {
+                    dao.Add(new Account(0)
+                    {
+                        UserName = "root99",
+                        Password = "Hello|11"
+                    });
+                }
+                dao.SaveChanges();
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
 
-Application.Run(new LoginUI());
+            Application.Run(new LoginUI());
         }
     }
 }

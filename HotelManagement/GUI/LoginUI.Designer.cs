@@ -115,7 +115,7 @@
             txtLoginFailed.ForeColor = Color.Red;
             txtLoginFailed.Location = new Point(61, 88);
             txtLoginFailed.Name = "txtLoginFailed";
-            txtLoginFailed.Size = new Size(237, 13);
+            txtLoginFailed.Size = new Size(246, 15);
             txtLoginFailed.TabIndex = 10;
             txtLoginFailed.Text = "Tên đăng nhập hoặc mật khẩu không đúng!";
             // 
@@ -126,7 +126,7 @@
             txtPasswordError.ForeColor = Color.Red;
             txtPasswordError.Location = new Point(48, 255);
             txtPasswordError.Name = "txtPasswordError";
-            txtPasswordError.Size = new Size(134, 13);
+            txtPasswordError.Size = new Size(139, 15);
             txtPasswordError.TabIndex = 9;
             txtPasswordError.Text = "Mật khẩu không hợp lệ!";
             // 
@@ -137,7 +137,7 @@
             txtUserNameError.ForeColor = Color.Red;
             txtUserNameError.Location = new Point(48, 175);
             txtUserNameError.Name = "txtUserNameError";
-            txtUserNameError.Size = new Size(162, 13);
+            txtUserNameError.Size = new Size(168, 15);
             txtUserNameError.TabIndex = 8;
             txtUserNameError.Text = "Tên đăng nhập không hợp lệ!";
             // 
@@ -173,11 +173,12 @@
             // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = SystemColors.WindowFrame;
-            ClientSize = new Size(358, 313);
+            ClientSize = new Size(366, 337);
             Controls.Add(pnLogin);
             Margin = new Padding(0);
             MinimumSize = new Size(384, 384);
             Name = "LoginUI";
+            StartPosition = FormStartPosition.CenterScreen;
             pnLogin.ResumeLayout(false);
             pnLogin.PerformLayout();
             ResumeLayout(false);

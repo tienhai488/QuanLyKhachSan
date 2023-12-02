@@ -33,6 +33,8 @@ namespace HotelManagement.GUI
 
         private DataTable useServiceTable = new DataTable();
 
+        private Staff staffLogin = LoginBO.SignedInStaff;
+
         public RentRoomDetailUI(RentRoomsUI rentRoomsUI, Reservation reservation, RoomReservation roomReservation, Room room, string roomStatus)
         {
             InitializeComponent();
@@ -75,16 +77,20 @@ namespace HotelManagement.GUI
         #region method
         public void initUseServiceTable()
         {
+            useServiceTable.Rows.Clear();
+            dataGridViewService.DataSource = null;
+
             if (this.rentRoomDetailOld == null)
             {
                 labelRentRoomId.Text = "";
             }
-            labelRentRoomId.Text = $"Rent Room ID : {this.rentRoomDetailOld.Id}";
-            useServiceTable.Rows.Clear();
-            dataGridViewService.DataSource = null;
-
-            useServiceDetailBUS.getServiceByRentRoomID(this.rentRoomDetailOld.Id)
+            else
+            {
+                labelRentRoomId.Text = $"Rent Room ID : {this.rentRoomDetailOld.Id}";
+                useServiceDetailBUS.getServiceByRentRoomID(this.rentRoomDetailOld.Id)
                 .ForEach(item => useServiceTable.Rows.Add(item.Service.Name, item.Service.UnitPrice.ToString("N0"), item.Quantity, (item.Quantity * item.Service.UnitPrice).ToString("N0")));
+            }
+
             dataGridViewService.DataSource = useServiceTable;
         }
         public void fillInfoCustomer(Customer customer)
@@ -108,7 +114,8 @@ namespace HotelManagement.GUI
             txtFrom.Text = this.roomReservationOld.StartTime.ToString(Configs.formatBirthday);
             txtTo.Text = this.roomReservationOld.EndTime.ToString(Configs.formatBirthday);
 
-            datetimeChange.Value = this.roomReservationOld.EndTime;
+            datetimeStartChange.Value = this.roomReservationOld.StartTime;
+            datetimeEndChange.Value = this.roomReservationOld.EndTime;
 
         }
 
@@ -148,6 +155,7 @@ namespace HotelManagement.GUI
             this.isCheckout = txtRoomStatus.Text == "Rented";
             btnUpdateService.Enabled = isCheckout;
             btnCheckout.Text = isCheckout ? "Checkout" : "Recive Room";
+            datetimeStartChange.Enabled = !isCheckout;
         }
 
 
@@ -161,7 +169,7 @@ namespace HotelManagement.GUI
             {
                 this.rentRoomDetailOld = rentRoomDetailBUS.getRentRoomDetail(this.roomOld.Id, txtFrom.Text, txtTo.Text);
             }
-            if(Functions.getDayGap(to, DateTime.Now) >= 0)
+            if (Functions.getDayGap(to, DateTime.Now) >= 0)
             {
                 roomBUS.updateRoomStatusToNotCleanYet(rentRoomDetailOld.RoomID);
 
@@ -172,7 +180,7 @@ namespace HotelManagement.GUI
 
                 MessageBox.Show("Thực hiện trả phòng thành công!");
 
-                InvoicePdfUI invoicePdfUI = new InvoicePdfUI(this.rentRoomDetailOld);
+                InvoicePdfUI invoicePdfUI = new InvoicePdfUI(rentRoomDetailBUS.getRentRoomById(this.rentRoomDetailOld.Id));
                 invoicePdfUI.Show();
                 this.rentRoomsUIOld.initFlowLayoutRoom();
                 this.Close();
@@ -187,10 +195,18 @@ namespace HotelManagement.GUI
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn nhận phòng không?", "Nhận phòng", MessageBoxButtons.YesNo) != DialogResult.Yes)
                 return;
+
+            DateTime startTime = Functions.convertStringToDateTime(txtFrom.Text);
+            if (Functions.getDayGap(startTime, DateTime.Now) < 0)
+            {
+                MessageBox.Show("Chưa tới thời hạn nhận phòng vui lòng kiểm tra lại hoặc thay đổi ngày nhận phòng!");
+                return;
+            }
+
             if (this.reservationOld.Invoice == null)
             {
                 string cus_id = this.reservationOld.Customer.Id;
-                int i = invoiceBUS.add(new Invoice() { Id = txtInvoiceId.Text, StaffID = 1, CustomerID = cus_id, ReservationID = this.reservationOld.Id });
+                int i = invoiceBUS.add(new Invoice() { Id = txtInvoiceId.Text, StaffID = this.staffLogin.Id, CustomerID = cus_id, ReservationID = this.reservationOld.Id });
 
                 this.reservationOld = reservationBUS.getById(this.reservationOld.Id);
             }
@@ -201,7 +217,7 @@ namespace HotelManagement.GUI
             data.StartTime = Functions.convertStringToDateTime(txtFrom.Text);
             data.EndTime = Functions.convertStringToDateTime(txtTo.Text);
             data.RoomID = this.roomOld.Id;
-            data.StaffID = 1;
+            data.StaffID = this.staffLogin.Id;
             data.InvoiceID = txtInvoiceId.Text;
 
             rentRoomDetailBUS.add(data);
@@ -219,6 +235,7 @@ namespace HotelManagement.GUI
             if (result == 0)
             {
                 MessageBox.Show("Nhận phòng không thành công");
+                this.rentRoomDetailOld = rentRoomDetailBUS.getRentRoomById(this.rentRoomDetailOld.Id);
                 this.rentRoomsUIOld.initFlowLayoutRoom();
             }
             else
@@ -227,6 +244,7 @@ namespace HotelManagement.GUI
                 txtRoomStatus.Text = "Rented";
                 loadButtonForm();
                 initUseServiceTable();
+                this.rentRoomsUIOld.initFlowLayoutRoom();
             }
 
 
@@ -238,7 +256,8 @@ namespace HotelManagement.GUI
         {
             StringBuilder sb = new StringBuilder();
             string roomType = cbxRoomClean.Text;
-            DateTime endTimeUpdate = datetimeChange.Value;
+            DateTime startTimeUpdate = datetimeStartChange.Value;
+            DateTime endTimeUpdate = datetimeEndChange.Value;
             bool checkInitRentRoomsUI = false;
 
             int statusUpdate = roomBUS.convertStringToRoomStatus(roomType);
@@ -265,40 +284,83 @@ namespace HotelManagement.GUI
             }
 
 
+
+
             string from = txtFrom.Text;
             string to = txtTo.Text;
-            if (!endTimeUpdate.ToString(Configs.formatBirthday).Equals(to))
-            {
-                if (Functions.getDayGap(DateTime.Now, endTimeUpdate) >= 0)
-                {
-                    List<RoomReservation> listRoom = roomReservationBUS.getListRoomReservationBookedAndRentedHistory(endTimeUpdate);
-                    bool doubleCheck = listRoom
-                        .Where(item => !item.StartTime.ToString(Configs.formatBirthday).Equals(from) && !item.EndTime.ToString(Configs.formatBirthday).Equals(to))
-                        .ToList()
-                        .Any(item => item.Equals(this.roomOld.Id));
-                    if (!doubleCheck)
-                    {
-                        if (this.rentRoomDetailOld != null)
-                        {
-                            rentRoomDetailBUS.updateEndTime(this.rentRoomDetailOld.Id, endTimeUpdate);
-                            this.rentRoomDetailOld.EndTime = endTimeUpdate;
-                        }
 
-                        roomReservationBUS.updateEndTime(this.roomReservationOld.Id, endTimeUpdate);
-                        this.roomReservationOld.EndTime = endTimeUpdate;
-                        sb.AppendLine("Cập nhập ngày trả phòng thành công");
-                        txtTo.Text = endTimeUpdate.ToString(Configs.formatBirthday);
-                        checkInitRentRoomsUI = true;
+            if (Functions.getDayGap(startTimeUpdate, endTimeUpdate) >= 0)
+            {
+                List<RoomReservation> listRoomStart = roomReservationBUS.getListRoomReservationBookedAndRentedHistory(startTimeUpdate);
+                List<RoomReservation> listRoomEnd = roomReservationBUS.getListRoomReservationBookedAndRentedHistory(endTimeUpdate);
+
+                bool doubleCheckStart = listRoomStart
+                    .Where(item => !item.Id.Equals(this.roomReservationOld.Id))
+                    .ToList()
+                    .Any(item => item.RoomId.Equals(this.roomOld.Id));
+                bool doubleCheckEnd = listRoomEnd
+                    .Where(item => !item.Id.Equals(this.roomReservationOld.Id))
+                    .ToList()
+                    .Any(item => item.RoomId.Equals(this.roomOld.Id));
+
+                if (this.rentRoomDetailOld == null)
+                {
+                    if (!startTimeUpdate.ToString(Configs.formatBirthday).Equals(from))
+                    {
+                        if (Functions.getDayGap(DateTime.Now, startTimeUpdate) >= 0)
+                        {
+                            if (!doubleCheckStart && !doubleCheckEnd)
+                            {
+                                roomReservationBUS.updateStartTime(this.roomReservationOld.Id, startTimeUpdate);
+                                this.roomReservationOld.StartTime = startTimeUpdate;
+                                sb.AppendLine("Cập nhập ngày nhận phòng thành công");
+                                txtFrom.Text = startTimeUpdate.ToString(Configs.formatBirthday);
+                                checkInitRentRoomsUI = true;
+                            }
+                            else
+                            {
+                                sb.AppendLine("Ngày bạn chọn đã trùng lịch!");
+                            }
+                        }
+                        else
+                        {
+                            sb.AppendLine("Ngày nhận phòng bạn chọn nhỏ hơn ngày hiện tại!");
+                        }
+                    }
+                }
+
+                if (!endTimeUpdate.ToString(Configs.formatBirthday).Equals(to))
+                {
+                    if (Functions.getDayGap(DateTime.Now, endTimeUpdate) >= 0)
+                    {
+                        if (!doubleCheckStart && !doubleCheckEnd)
+                        {
+                            if (this.rentRoomDetailOld != null)
+                            {
+                                rentRoomDetailBUS.updateEndTime(this.rentRoomDetailOld.Id, endTimeUpdate);
+                                this.rentRoomDetailOld.EndTime = endTimeUpdate;
+                            }
+
+                            roomReservationBUS.updateEndTime(this.roomReservationOld.Id, endTimeUpdate);
+                            this.roomReservationOld.EndTime = endTimeUpdate;
+                            sb.AppendLine("Cập nhập ngày trả phòng thành công");
+                            txtTo.Text = endTimeUpdate.ToString(Configs.formatBirthday);
+                            checkInitRentRoomsUI = true;
+                        }
+                        else
+                        {
+                            sb.AppendLine("Ngày bạn chọn đã trùng lịch!");
+                        }
                     }
                     else
                     {
-                        sb.AppendLine("Ngày bạn chọn đã trùng lịch!");
+                        sb.AppendLine("Ngày trả phòng bạn chọn nhỏ hơn ngày hiện tại!");
                     }
                 }
-                else
-                {
-                    sb.AppendLine("Ngày trả phòng bạn chọn nhỏ hơn ngày hiện tại!");
-                }
+            }
+            else
+            {
+                sb.AppendLine("Ngày bắt đầu và kết thúc khi thay đổi không hợp lệ!");
             }
 
             if (sb.Length > 0)
@@ -311,6 +373,11 @@ namespace HotelManagement.GUI
                 this.rentRoomsUIOld.initFlowLayoutRoom();
             }
         }
+
+
+
+
+
 
         private void btnUpdateService_Click(object sender, EventArgs e)
         {

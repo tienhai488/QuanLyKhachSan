@@ -30,16 +30,16 @@ namespace HotelManagement.GUI
             labelRoomClean.Text = roomClean;
             labelFromTime.Text = fromTime;
             labelToTime.Text = toTime;
-            labelTagReservationID.Text = reservationID;
             this.roomReservationOld = roomReservation;
             this.rentRoomsUIOld = rentRoomsUI;
             labelReservationID.Text = reservationID;
-            labelTagReservationID.Visible = reservationID != null;
+            labelTagReservationID.Text = "ReservationID:";
+            labelTagReservationID.Visible = roomReservation != null;
         }
 
         private void card_DoubleClick(object sender, EventArgs e)
         {
-            string reservationID = labelTagReservationID.Text;
+            string reservationID = labelReservationID.Text;
             if (reservationID != "")
             {
                 Reservation reservation = reservationBUS.getById(reservationID);
