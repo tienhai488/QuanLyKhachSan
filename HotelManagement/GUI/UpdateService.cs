@@ -1,10 +1,15 @@
 ﻿using HotelManagement.BUS;
+using HotelManagement.Business;
+using HotelManagement.Data;
+using HotelManagement.Data.Transfer.Ultils;
 using HotelManagement.Ultils;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Microsoft.VisualBasic;
+using OfficeOpenXml;
 using System.Data;
 using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace HotelManagement.GUI
 {
@@ -13,11 +18,14 @@ namespace HotelManagement.GUI
         private BindingSource bindingSourceService = new BindingSource();
         private BindingSource bindingSourceServiceType = new BindingSource();
         private ServiceBUS serviceBUS = new ServiceBUS();
+        private RentRoomDetailBUS rentRoomDetailBUS = new RentRoomDetailBUS();
+        private UseServiceDetailBUS useServiceDetailBUS = new UseServiceDetailBUS();
 
         private DataTable serviceTable = new DataTable();
         private DataTable selectedTable = new DataTable();
 
-
+        private RentRoomDetail rentRoomDetailOld = null;
+        private RentRoomDetailUI rentRoomDetailUIOld = null;
 
         public UpdateService()
         {
@@ -47,10 +55,42 @@ namespace HotelManagement.GUI
 
             initServiceTable();
             initSelectedTable();
-            //loadCmb();
-            //loadGrid();
         }
 
+        public UpdateService(RentRoomDetailUI rentRoomDetailUI ,RentRoomDetail rentRoomDetail)
+        {
+            InitializeComponent();
+
+            var materialSkinManager = MaterialSkinManager.Instance;
+            materialSkinManager.AddFormToManage(this);
+            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
+            materialSkinManager.ColorScheme = new ColorScheme(
+            Primary.Pink800,   // Main background color
+            Primary.Purple900, // Darker background color
+            Primary.Purple500, // Accent background color
+            Accent.Amber200,   // Warm accent color for highlights
+            TextShade.WHITE);    // Text color
+
+            selectedTable.Columns.Add("ID");
+            selectedTable.Columns.Add("Name");
+            selectedTable.Columns.Add("Price");
+            selectedTable.Columns.Add("Quantity");
+            selectedTable.Columns.Add("Total");
+
+            serviceTable.Columns.Add("ID");
+            serviceTable.Columns.Add("Name");
+            serviceTable.Columns.Add("Type");
+            serviceTable.Columns.Add("Price");
+            serviceTable.Columns.Add("Unit");
+
+            this.rentRoomDetailOld = rentRoomDetail;
+            this.rentRoomDetailUIOld = rentRoomDetailUI;
+
+            initServiceTable();
+            initSelectedTable();
+        }
+
+        #region method
         public void initServiceTable()
         {
             serviceTable.Rows.Clear();
@@ -73,6 +113,12 @@ namespace HotelManagement.GUI
             selectedTable.Rows.Clear();
             dataGridViewSelected.DataSource = null;
 
+            if (this.rentRoomDetailOld == null)
+                return;
+
+            useServiceDetailBUS.getServiceByRentRoomID(this.rentRoomDetailOld.Id)
+                .ForEach(item => selectedTable.Rows.Add(item.ServiceID, item.Service.Name, item.Service.UnitPrice.ToString("N0"), item.Quantity, (item.Quantity * item.Service.UnitPrice).ToString("N0")));
+
             dataGridViewSelected.DataSource = selectedTable;
         }
 
@@ -80,8 +126,10 @@ namespace HotelManagement.GUI
         {
             FormHelpers.initCbxFilter(cbxFilterType, 2, dataGridViewService);
         }
+        #endregion
 
 
+        #region event
         private void mbtnDelete_Click(object sender, EventArgs e)
         {
             if (dataGridViewSelected.SelectedRows.Count > 0)
@@ -96,7 +144,7 @@ namespace HotelManagement.GUI
 
         private void mbtnSelectService_Click(object sender, EventArgs e)
         {
-            if(dataGridViewService.SelectedRows.Count == 0)
+            if (dataGridViewService.SelectedRows.Count == 0)
             {
                 MessageBox.Show("No row selected."); ;
                 return;
@@ -133,7 +181,33 @@ namespace HotelManagement.GUI
 
         private void mbtnCheckOut_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            if (rentRoomDetailOld == null)
+            {
+                MessageBox.Show("Không tìm thấy phiếu thuê phòng hợp lệ vui lòng kiểm tra lại!");
+                return;
+            }
+            List<UseServiceDetail> list = new List<UseServiceDetail>();
+            int index = useServiceDetailBUS.getUseServiceDetailIDInt();
+            if (dataGridViewSelected.Rows.Count > 0)
+            {
+                foreach (DataGridViewRow row in dataGridViewSelected.Rows)
+                {
+                    UseServiceDetail detail = new UseServiceDetail();
+                    detail.Id = useServiceDetailBUS.getUseServiceDetailIDString(index++);
+                    detail.Quantity = Int32.Parse(row.Cells["Quantity"].Value.ToString());
+                    detail.ServiceID = row.Cells["ID"].Value.ToString();
+                    detail.RentRoomID = this.rentRoomDetailOld.Id;
+                    detail.StaffID = 1;
+                    list.Add(detail);
+                }
+            }
+            useServiceDetailBUS.deleteAllUseServiceByRentRoomId(this.rentRoomDetailOld.Id);
+            useServiceDetailBUS.addListUseService(list);
+
+            this.rentRoomDetailUIOld.initUseServiceTable();
+
+            MessageBox.Show("Thêm dịch vụ cho phiếu thuê phòng thành công!");
+            this.Close();
         }
 
         private void mbtnChangeQuantity_Click(object sender, EventArgs e)
@@ -150,12 +224,16 @@ namespace HotelManagement.GUI
             string name = selectedRow.Cells["Name"].Value.ToString();
             string price = selectedRow.Cells["Price"].Value.ToString();
             string quantity = selectedRow.Cells["Quantity"].Value.ToString();
-            
+
             string q = Interaction.InputBox("Enter quantity: ", $"Change Quantity {id} - {name}", quantity).ToString();
+
+            if (q == "")
+                return;
+
             int quantityUpdate;
             if (int.TryParse(q, out quantityUpdate))
             {
-                if(quantityUpdate < 0)
+                if (quantityUpdate < 0)
                 {
                     MessageBox.Show("Invalid data."); return;
                 }
@@ -172,5 +250,6 @@ namespace HotelManagement.GUI
                 MessageBox.Show("Invalid data.");
             }
         }
+        #endregion
     }
 }

@@ -80,7 +80,8 @@ namespace HotelManagement.Data
         [Column("RentRoomID", TypeName = "varchar")]
         private string rentRoomID;
 
-        private RentRoomDetail rentRoomDetail;
+[ForeignKey("RentRoomID")]
+        private RentRoomDetail rentRoom;
 
         [StringLength(50)]
         [Column("ServiceID", TypeName = "varchar")]
@@ -96,8 +97,7 @@ namespace HotelManagement.Data
         public string ServiceID { get => serviceID; set => serviceID = value; }
         public Service Service { get => service; set => service = value; }
         public string RentRoomID { get => rentRoomID; set => rentRoomID = value; }
-        [ForeignKey("RentRoomID")]
-        public RentRoomDetail RentRoomDetail { get => rentRoomDetail; set => rentRoomDetail = value; }
+public RentRoomDetail RentRoom { get => rentRoom; set => rentRoom = value; }
     }
 
     [Table("invoice")]

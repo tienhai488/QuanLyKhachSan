@@ -63,9 +63,10 @@ namespace HotelManagement.GUI
         public string getReservationID()
         {
             int index = 1;
-            if (reservationBUS.getLength() > 0)
+            var ress = reservationBUS.getAll();
+            if (ress.Count > 0)
             {
-                index = reservationBUS.getAll().Max(item => Functions.convertIdToInteger(item.Id, "RE")) + 1;
+                index = ress.Max(item => Functions.convertIdToInteger(item.Id, "RE")) + 1;
             }
             return "RE" + index.ToString("D5");
         }

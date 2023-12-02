@@ -84,7 +84,6 @@
             materialLabel10 = new MaterialSkin.Controls.MaterialLabel();
             panel10 = new Panel();
             cbxRoomClean = new MaterialSkin.Controls.MaterialComboBox();
-            btnChange = new MaterialSkin.Controls.MaterialButton();
             datetimeChange = new DateTimePicker();
             changeEndT = new MaterialSkin.Controls.MaterialLabel();
             materialLabel20 = new MaterialSkin.Controls.MaterialLabel();
@@ -96,6 +95,7 @@
             panel20 = new Panel();
             txtTo = new MaterialSkin.Controls.MaterialTextBox();
             materialLabel13 = new MaterialSkin.Controls.MaterialLabel();
+            btnChange = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel1 = new TableLayoutPanel();
             tableLayoutPanel8 = new TableLayoutPanel();
             panel12 = new Panel();
@@ -104,7 +104,6 @@
             btnUpdateService = new MaterialSkin.Controls.MaterialButton();
             panel13 = new Panel();
             btnCheckout = new MaterialSkin.Controls.MaterialButton();
-            btnSave = new MaterialSkin.Controls.MaterialButton();
             btnCancel = new MaterialSkin.Controls.MaterialButton();
             panel14 = new Panel();
             labelRoomID = new MaterialSkin.Controls.MaterialLabel();
@@ -763,7 +762,6 @@
             // panel10
             // 
             panel10.Controls.Add(cbxRoomClean);
-            panel10.Controls.Add(btnChange);
             panel10.Controls.Add(datetimeChange);
             panel10.Controls.Add(changeEndT);
             panel10.Controls.Add(materialLabel20);
@@ -799,27 +797,6 @@
             cbxRoomClean.Size = new Size(361, 49);
             cbxRoomClean.StartIndex = 0;
             cbxRoomClean.TabIndex = 27;
-            // 
-            // btnChange
-            // 
-            btnChange.AutoSize = false;
-            btnChange.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnChange.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnChange.Depth = 0;
-            btnChange.HighEmphasis = true;
-            btnChange.Icon = null;
-            btnChange.Location = new Point(21, 409);
-            btnChange.Margin = new Padding(5, 8, 5, 8);
-            btnChange.MouseState = MaterialSkin.MouseState.HOVER;
-            btnChange.Name = "btnChange";
-            btnChange.NoAccentTextColor = Color.Empty;
-            btnChange.Size = new Size(193, 48);
-            btnChange.TabIndex = 14;
-            btnChange.Text = "CHANGE";
-            btnChange.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnChange.UseAccentColor = false;
-            btnChange.UseVisualStyleBackColor = true;
-            btnChange.Click += btnChange_Click;
             // 
             // datetimeChange
             // 
@@ -981,6 +958,27 @@
             materialLabel13.TabIndex = 15;
             materialLabel13.Text = "TO:";
             // 
+            // btnChange
+            // 
+            btnChange.AutoSize = false;
+            btnChange.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnChange.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnChange.Depth = 0;
+            btnChange.HighEmphasis = true;
+            btnChange.Icon = null;
+            btnChange.Location = new Point(189, 8);
+            btnChange.Margin = new Padding(5, 8, 5, 8);
+            btnChange.MouseState = MaterialSkin.MouseState.HOVER;
+            btnChange.Name = "btnChange";
+            btnChange.NoAccentTextColor = Color.Empty;
+            btnChange.Size = new Size(193, 48);
+            btnChange.TabIndex = 14;
+            btnChange.Text = "CHANGE";
+            btnChange.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            btnChange.UseAccentColor = false;
+            btnChange.UseVisualStyleBackColor = true;
+            btnChange.Click += btnChange_Click;
+            // 
             // tableLayoutPanel1
             // 
             tableLayoutPanel1.ColumnCount = 4;
@@ -1026,6 +1024,7 @@
             // panel12
             // 
             panel12.Controls.Add(materialButton2);
+            panel12.Controls.Add(btnChange);
             panel12.Dock = DockStyle.Fill;
             panel12.Location = new Point(402, 0);
             panel12.Margin = new Padding(0);
@@ -1090,7 +1089,6 @@
             // panel13
             // 
             panel13.Controls.Add(btnCheckout);
-            panel13.Controls.Add(btnSave);
             panel13.Controls.Add(btnCancel);
             panel13.Dock = DockStyle.Fill;
             panel13.Location = new Point(469, 807);
@@ -1109,7 +1107,7 @@
             btnCheckout.Depth = 0;
             btnCheckout.HighEmphasis = true;
             btnCheckout.Icon = null;
-            btnCheckout.Location = new Point(185, 8);
+            btnCheckout.Location = new Point(387, 8);
             btnCheckout.Margin = new Padding(5, 8, 5, 8);
             btnCheckout.MouseState = MaterialSkin.MouseState.HOVER;
             btnCheckout.Name = "btnCheckout";
@@ -1121,28 +1119,6 @@
             btnCheckout.UseAccentColor = false;
             btnCheckout.UseVisualStyleBackColor = true;
             btnCheckout.Click += btnCheckout_Click;
-            // 
-            // btnSave
-            // 
-            btnSave.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSave.AutoSize = false;
-            btnSave.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnSave.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnSave.Depth = 0;
-            btnSave.HighEmphasis = true;
-            btnSave.Icon = null;
-            btnSave.Location = new Point(388, 8);
-            btnSave.Margin = new Padding(5, 8, 5, 8);
-            btnSave.MouseState = MaterialSkin.MouseState.HOVER;
-            btnSave.Name = "btnSave";
-            btnSave.NoAccentTextColor = Color.Empty;
-            btnSave.Size = new Size(193, 48);
-            btnSave.TabIndex = 14;
-            btnSave.Text = "SAVE";
-            btnSave.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            btnSave.UseAccentColor = false;
-            btnSave.UseVisualStyleBackColor = true;
-            btnSave.Click += btnSave_Click;
             // 
             // btnCancel
             // 
@@ -1355,14 +1331,14 @@
             labelRentRoomId.TabIndex = 14;
             labelRentRoomId.Text = "Rent Room ID";
             // 
-            // RentRoomDetail
+            // RentRoomDetailUI
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1346, 960);
             Controls.Add(tableLayoutPanel1);
             Margin = new Padding(3, 4, 3, 4);
-            Name = "RentRoomDetail";
+            Name = "RentRoomDetailUI";
             Padding = new Padding(3, 85, 3, 4);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RentRoomDetail";
@@ -1491,7 +1467,6 @@
         private Panel panel6;
         private Panel panel13;
         private MaterialSkin.Controls.MaterialButton btnCheckout;
-        private MaterialSkin.Controls.MaterialButton btnSave;
         private MaterialSkin.Controls.MaterialButton btnCancel;
         private Panel panel14;
         private MaterialSkin.Controls.MaterialLabel labelRoomID;

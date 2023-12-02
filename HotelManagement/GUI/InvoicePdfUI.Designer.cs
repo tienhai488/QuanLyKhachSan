@@ -42,7 +42,7 @@
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
             richTextBox1.ScrollBars = RichTextBoxScrollBars.Vertical;
-            richTextBox1.Size = new Size(821, 495);
+            richTextBox1.Size = new Size(821, 596);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
             // 
@@ -55,7 +55,7 @@
             mbtnPrint.Depth = 0;
             mbtnPrint.HighEmphasis = true;
             mbtnPrint.Icon = null;
-            mbtnPrint.Location = new Point(655, 523);
+            mbtnPrint.Location = new Point(655, 624);
             mbtnPrint.Margin = new Padding(5, 8, 5, 8);
             mbtnPrint.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnPrint.Name = "mbtnPrint";
@@ -77,7 +77,7 @@
             mbtnCancel.Depth = 0;
             mbtnCancel.HighEmphasis = true;
             mbtnCancel.Icon = null;
-            mbtnCancel.Location = new Point(465, 523);
+            mbtnCancel.Location = new Point(465, 624);
             mbtnCancel.Margin = new Padding(5, 8, 5, 8);
             mbtnCancel.MouseState = MaterialSkin.MouseState.HOVER;
             mbtnCancel.Name = "mbtnCancel";
@@ -94,7 +94,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(850, 591);
+            ClientSize = new Size(850, 692);
             Controls.Add(mbtnCancel);
             Controls.Add(mbtnPrint);
             Controls.Add(richTextBox1);

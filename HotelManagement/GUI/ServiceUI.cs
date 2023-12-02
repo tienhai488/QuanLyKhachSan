@@ -3,6 +3,7 @@ using HotelManagement.Data;
 using HotelManagement.Ultils;
 using System.Data;
 using HotelManagement.Data.Transfer.Ultils;
+using HotelManagement.Business;
 
 namespace HotelManagement.GUI
 {
@@ -10,9 +11,12 @@ namespace HotelManagement.GUI
     {
         private BindingSource bindingSourceService = new BindingSource();
         private BindingSource bindingSourceServiceType = new BindingSource();
-        private ServiceBUS serviceBUS = new ServiceBUS();
+
         private DataTable typeTable = new DataTable();
         private DataTable serviceTable = new DataTable();
+
+        private ServiceBUS serviceBUS = new ServiceBUS();
+        private UseServiceDetailBUS useServiceDetailBUS = new UseServiceDetailBUS();
         public ServiceUI()
         {
             InitializeComponent();
@@ -139,6 +143,11 @@ dtgvService.SelectedCells.Count;
                     string id = selectedRow.Cells[0].Value.ToString();
                     if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa dịch vụ", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
+                        if(useServiceDetailBUS.getLengthUseServiceById(id) > 0)
+                        {
+                            MessageBox.Show("Thông tin dịch vụ đã được sử dụng! Vui lòng kiểm tra lại!");
+                            return;
+                        }
                         int result = serviceBUS.deleteService(id);
                         if (result == 0)
                         {

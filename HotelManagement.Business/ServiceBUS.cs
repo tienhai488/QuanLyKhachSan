@@ -19,7 +19,7 @@ namespace HotelManagement.BUS
 
         public Service getServiceById(string id)
         {
-            return serviceDAO.Set<Service>().First(item => item.Id.Equals(id));
+            return getAllService().First(item => item.Id.Equals(id));
         }
         public int addService(Service service)
         {

@@ -91,6 +91,26 @@ namespace HotelManagement.BUS
             return result;
         }
 
+        public int updateRoomStatus(string roomId, int roomStatus)
+        {
+            Room temp = roomEFCoreDAO.Rooms.ToList().Find(item => item.Id.Equals(roomId));
+            if (temp == null)
+                return 0;
+            temp.Status = roomStatus;
+            return roomEFCoreDAO.SaveChanges();
+        }
+
+        public int updateRoomStatusToNotCleanYet(string roomId)
+        {
+            Room temp = roomEFCoreDAO.Rooms.ToList().Find(item => item.Id.Equals(roomId));
+            if (temp == null)
+                return 0;
+            if(temp.Status == 0)
+            {
+                temp.Status = 1;    
+            }
+            return roomEFCoreDAO.SaveChanges();
+        }
 
 
 

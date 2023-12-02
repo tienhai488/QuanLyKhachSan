@@ -1,11 +1,9 @@
 ﻿using HotelManagement.Data.Access;
 using HotelManagement.Data;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using HotelManagement.Ultils;
+using HotelManagement.Data.Transfer.Ultils;
+using Org.BouncyCastle.Asn1.Mozilla;
 
 namespace HotelManagement.Business
 {
@@ -26,26 +24,6 @@ namespace HotelManagement.Business
             invoiceDAO.Invoices.Add(Invoice);
             return invoiceDAO.SaveChanges();
         }
-
-        //public int update(Invoice Invoice)
-        //{
-        //    invoiceDAO.Entry(Invoice).State = EntityState.Detached;
-        //    invoiceDAO.Invoices.Attach(Invoice);
-        //    invoiceDAO.Entry(Invoice).State = EntityState.Modified;
-
-        //    Invoice temp = invoiceDAO.Invoices.First(item => item.Id.Equals(Invoice.Id));
-        //    temp.
-
-        //    return invoiceDAO.SaveChanges();
-        //}
-
-        //public int delete(string id)
-        //{
-        //    Invoice temp = invoiceDAO.Invoices.First(item => item.Id.Equals(id));
-        //    invoiceDAO.Invoices.Remove(temp);
-
-        //    return invoiceDAO.SaveChanges();
-        //}
         public int getLength()
         {
             return getAll().Count();
@@ -62,8 +40,15 @@ namespace HotelManagement.Business
                 .Include(i => i.Room)
                 .Include(i => i.Staff)
                 .Include(i => i.Invoice)
+                .Include(i => i.Invoice.Customer)
+                .Include(i => i.UseServiceDetails)
                 .AsNoTracking()
                 .ToList();
+        }
+
+        public RentRoomDetail getRentRoomById(string rentRoomId)
+        {
+            return getAll().Find(item => item.Id.Equals(rentRoomId));
         }
         public int add(RentRoomDetail rentRoomDetail)
         {
@@ -90,5 +75,94 @@ namespace HotelManagement.Business
         {
             return getAll().Count;
         }
+
+        public RentRoomDetail getRentRoomDetail(string roomId, string fromTime,string toTime)
+        {
+            RentRoomDetail rentRoomDetail = getAll().Find(item => item.RoomID.Equals(roomId)
+            && fromTime.Equals(item.StartTime.ToString(Configs.formatBirthday))
+            && toTime.Equals(item.EndTime.ToString(Configs.formatBirthday)));
+                
+            return rentRoomDetail;
+        }
+
+        public string getRentRoomDetailId()
+        {
+            int index = 1;
+            if (getLengthRentRoomDetail() > 0)
+            {
+                index = getAll().Max(item => Functions.convertIdToInteger(item.Id, "RD")) + 1;
+            }
+            return "RD" + index.ToString("D5");
+        }
+
+        public int updateEndTime(string rentRoomId, DateTime endTimeUpdate)
+        {
+            var item = invoiceDAO.RentRoomDetails.ToList().Find(item => item.Id.Equals(rentRoomId));
+            item.EndTime = endTimeUpdate;
+            return invoiceDAO.SaveChanges();
+        }
+
+        public int updatePaidTime(string rentRoomId)
+        {
+            var temp = invoiceDAO.RentRoomDetails.ToList().Find(item => item.Id.Equals(rentRoomId));
+            if (temp == null)
+                return 0;
+            temp.PaidTime = DateTime.Now;
+            return invoiceDAO.SaveChanges();
+        }
+    }
+
+    public class UseServiceDetailBUS
+    {
+        private InvoiceDAO invoiceDAO = new InvoiceDAO();
+        public List<UseServiceDetail> getAll()
+        {
+            return invoiceDAO.UseServiceDetails
+                .Include(i => i.Service)
+                .Include(i => i.Staff)
+                .Include(i => i.RentRoom)
+                .AsNoTracking()
+                .ToList();
+        }
+
+        public List<UseServiceDetail> getServiceByRentRoomID(string rentRoomID)
+        {
+            return getAll().Where(item => item.RentRoomID.Equals(rentRoomID)).ToList();
+        }
+
+        public int addListUseService(List<UseServiceDetail> list)
+        {
+            invoiceDAO.UseServiceDetails.AddRange(list);
+            return invoiceDAO.SaveChanges();
+        }
+
+        public int deleteAllUseServiceByRentRoomId(string rentRoomID)
+        {
+            List<UseServiceDetail> list = invoiceDAO.UseServiceDetails.Where(item => item.RentRoomID.Equals(rentRoomID)).ToList();
+            invoiceDAO.RemoveRange(list);
+            return invoiceDAO.SaveChanges();
+        }
+
+        public int getUseServiceDetailIDInt()
+        {
+            int index = 1;
+            if (getAll().Count > 0)
+            {
+                index = getAll().Max(item => Functions.convertIdToInteger(item.Id, "SD")) + 1;
+            }
+            return index;
+        }
+
+        public string getUseServiceDetailIDString(int index)
+        {
+            return "SD" + index.ToString("D5");
+        }
+
+        public int getLengthUseServiceById(string serviceId)
+        {
+            return invoiceDAO.UseServiceDetails.Where(item => item.ServiceID.Equals(serviceId)).Count();
+        }
+
+        
     }
 }

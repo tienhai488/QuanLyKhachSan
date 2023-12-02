@@ -3,9 +3,8 @@ using HotelManagement.Data;
 using HotelManagement.Data.Access;
 using HotelManagement.Data.Transfer;
 using HotelManagement.Data.Transfer.Ultils;
+using HotelManagement.Ultils;
 using Microsoft.EntityFrameworkCore;
-using System.Diagnostics;
-using System.Linq;
 
 namespace HotelManagement.Business
 {
@@ -38,6 +37,7 @@ namespace HotelManagement.Business
             reservationDAO.Entry(reservation).State = EntityState.Detached;
             reservationDAO.Reservations.Attach(reservation);
             reservationDAO.Entry(reservation).State = EntityState.Added;
+
             // Save changes to the database
             return reservationDAO.SaveChanges();
         }
@@ -48,7 +48,7 @@ namespace HotelManagement.Business
             reservationDAO.Reservations.Attach(reservation);
             reservationDAO.Entry(reservation).State = EntityState.Modified;
 
-            Reservation temp = reservationDAO.Reservations.First(item => item.Id.Equals(reservation.Id));
+            Reservation temp = reservationDAO.Reservations.ToList().Find(item => item.Id.Equals(reservation.Id));
             temp.StaffID = reservation.StaffID;
             temp.CustomerID = reservation.CustomerID;
             temp.CreatedAt = reservation.CreatedAt;
@@ -81,22 +81,30 @@ namespace HotelManagement.Business
         public List<RoomReservation> getAllRoomReservation()
         {
             return reservationDAO.RoomReservations
-                .Include(r => r.Room)
-                .Include(r => r.Room.RoomType)
+                .Include(r => r.Room).ThenInclude(r => r.RoomType)
                 .Include(r => r.Reservation)
                 .Include(r => r.Reservation.Customer)
                 .AsNoTracking().ToList();
         }
 
-        public RoomReservation getRoomReservation(string reservationId, string roomId)
+        public RoomReservation getRoomReservation(string reservationId, string roomId, string fromTime, string toTime)
         {
-            return getAllRoomReservation().Find(item => item.ReservationID.Equals(reservationId) && item.RoomID.Equals(roomId));
+            DateTime from = Functions.convertStringToDateTime(fromTime);
+            DateTime to = Functions.convertStringToDateTime(toTime);
+
+            return getAllRoomReservation()
+                .Find(item => 
+                item.ReservationId.Equals(reservationId) 
+                && item.RoomId.Equals(roomId)
+                && Functions.getDayGap(item.StartTime, from) == 0 
+                && Functions.getDayGap(item.EndTime, to) == 0
+            );
         }
 
         public List<RoomReservation> getAllRoomReservationByReservationId(string reservationID)
         {
             return getAllRoomReservation()
-                .Where(item => item.ReservationID.Equals(reservationID))
+                .Where(item => item.ReservationId.Equals(reservationID))
                 .ToList();
         }
 
@@ -124,7 +132,7 @@ namespace HotelManagement.Business
 
         public int updateRoomReservation(RoomReservation roomReservation)
         {
-            RoomReservation temp = reservationDAO.RoomReservations.First(item => item.RoomID.Equals(roomReservation.RoomID) && item.ReservationID.Equals(roomReservation.ReservationID));
+            RoomReservation temp = reservationDAO.RoomReservations.First(item => item.RoomId.Equals(roomReservation.RoomId) && item.ReservationId.Equals(roomReservation.ReservationId));
             temp.StartTime = roomReservation.StartTime;
             temp.EndTime = roomReservation.EndTime;
             temp.Status = roomReservation.Status;
@@ -133,7 +141,7 @@ namespace HotelManagement.Business
 
         public int deleteRoomReservation(string roomId, string reservationId)
         {
-            var temp = reservationDAO.RoomReservations.First(item => item.RoomID.Equals(roomId) && item.ReservationID.Equals(reservationId));
+            var temp = reservationDAO.RoomReservations.First(item => item.RoomId.Equals(roomId) && item.ReservationId.Equals(reservationId));
             reservationDAO.RoomReservations.Remove(temp);
             return reservationDAO.SaveChanges();
         }
@@ -141,7 +149,7 @@ namespace HotelManagement.Business
         public int getLengthRoomReservationByReservationId(string reservationId)
         {
             return reservationDAO.RoomReservations
-                .Where(item => item.ReservationID.Equals(reservationId))
+                .Where(item => item.ReservationId.Equals(reservationId))
                 .Count();
         }
 
@@ -178,7 +186,7 @@ namespace HotelManagement.Business
                     bool checkInRange = (Functions.getDayGap(from, item.StartTime) >= 0 && Functions.getDayGap(item.StartTime, to) >= 0) ||
                     (Functions.getDayGap(from, item.EndTime) >= 0 && Functions.getDayGap(item.EndTime, to) >= 0);
                     bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented;
-                    return checkStatus && checkInRange && !item.ReservationID.Equals(reservationId);
+                    return checkStatus && checkInRange && !item.ReservationId.Equals(reservationId);
                 })
                 .ToList();
         }
@@ -193,7 +201,7 @@ namespace HotelManagement.Business
 
             //Danh sach phong Co the dat va chua duoc dat
             List<Room> listRoomAllowBooking = listCleanedRoom
-                .Where(item => !listBookedRoom.Any(book => book.RoomID.Equals(item.Id))).ToList();
+                .Where(item => !listBookedRoom.Any(book => book.RoomId.Equals(item.Id))).ToList();
 
             return listRoomAllowBooking;
         }
@@ -208,7 +216,7 @@ namespace HotelManagement.Business
 
             //Danh sach phong Co the dat va chua duoc dat
             List<Room> listRoomAllowBooking = listCleanedRoom
-                .Where(item => !listBookedRoom.Any(book => book.RoomID.Equals(item.Id)))
+                .Where(item => !listBookedRoom.Any(book => book.RoomId.Equals(item.Id)))
                 .ToList();
 
             return listRoomAllowBooking;
@@ -217,7 +225,7 @@ namespace HotelManagement.Business
         public int deleteAllBookedRoomInReservation(string reservationId)
         {
             var reservationsToRemove = reservationDAO.RoomReservations
-            .Where(item => item.ReservationID.Equals(reservationId))
+            .Where(item => item.ReservationId.Equals(reservationId))
             .ToList();
 
             reservationDAO.RoomReservations.RemoveRange(reservationsToRemove);
@@ -231,25 +239,42 @@ namespace HotelManagement.Business
             return reservationDAO.SaveChanges();
         }
 
-        public int updateStatusBookedToRented(string reservationId, string roomId, string fromTime, string toTime)
+        public int updateStatusBookedToRented(string roomReservationId)
         {
-            DateTime from = Functions.convertStringToDateTime(fromTime);
-            DateTime to = Functions.convertStringToDateTime(toTime);
+            RoomReservation roomReservation = reservationDAO.RoomReservations.ToList()
+                .Find(item => item.Id.Equals(roomReservationId));
 
-            RoomReservation temp = reservationDAO.RoomReservations
-                .ToList()
-                .Find(item => item.Status == RoomReservationStatus.Booked && item.ReservationID.Equals(reservationId) && item.RoomID.Equals(roomId)
-                && Functions.getDayGap(item.StartTime, from) == 0 && Functions.getDayGap(item.EndTime, to) == 0);
-            if(temp == null)
-            {
+            if (roomReservation == null)
                 return 0;
-            }
 
-            if(temp.Status == RoomReservationStatus.Booked)
+            if(roomReservation.Status == RoomReservationStatus.Booked)
             {
-                temp.Status = RoomReservationStatus.Rented;
+                roomReservation.Status = RoomReservationStatus.Rented;
             }
 
+            return reservationDAO.SaveChanges();
+        }
+
+        public int updateStatusBookedToPaid(string roomReservationId)
+        {
+            RoomReservation roomReservation = reservationDAO.RoomReservations.ToList()
+                .Find(item => item.Id.Equals(roomReservationId));
+
+            if (roomReservation == null)
+                return 0;
+
+            if (roomReservation.Status == RoomReservationStatus.Rented)
+            {
+                roomReservation.Status = RoomReservationStatus.Paid;
+            }
+
+            return reservationDAO.SaveChanges();
+        }
+
+        public int updateEndTime(string roomReservationId, DateTime endTimeUpdate)
+        {
+            var item = reservationDAO.RoomReservations.ToList().Find(item => item.Id.Equals(roomReservationId));
+            item.EndTime = endTimeUpdate;
             return reservationDAO.SaveChanges();
         }
     }

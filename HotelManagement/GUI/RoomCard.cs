@@ -2,7 +2,6 @@
 using HotelManagement.Business;
 using HotelManagement.Data;
 using HotelManagement.Data.Transfer;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Runtime.CompilerServices;
 
 namespace HotelManagement.GUI
@@ -12,13 +11,16 @@ namespace HotelManagement.GUI
         private ReservationBUS reservationBUS = new ReservationBUS();
         private RoomReservationBUS roomReservationBUS = new RoomReservationBUS();
         private RoomBUS roomBUS = new RoomBUS();
+
+        private RoomReservation roomReservationOld = null;
+        private RentRoomsUI rentRoomsUIOld;
         public RoomCard()
         {
             InitializeComponent();
         }
 
-        public RoomCard(string id, string roomType, string txtMain, string roomStatus,
-            string roomClean, string fromTime, string toTime, string reservationID)
+        public RoomCard(RentRoomsUI rentRoomsUI, string id, string roomType, string txtMain, string roomStatus,
+            string roomClean, string fromTime, string toTime, string reservationID, RoomReservation roomReservation)
         {
             InitializeComponent();
             labelRoomID.Text = id;
@@ -28,18 +30,22 @@ namespace HotelManagement.GUI
             labelRoomClean.Text = roomClean;
             labelFromTime.Text = fromTime;
             labelToTime.Text = toTime;
+            labelTagReservationID.Text = reservationID;
+            this.roomReservationOld = roomReservation;
+            this.rentRoomsUIOld = rentRoomsUI;
             labelReservationID.Text = reservationID;
+            labelTagReservationID.Visible = reservationID != null;
         }
 
         private void card_DoubleClick(object sender, EventArgs e)
         {
-            string reservationID = labelReservationID.Text;
+            string reservationID = labelTagReservationID.Text;
             if (reservationID != "")
             {
                 Reservation reservation = reservationBUS.getById(reservationID);
                 Room room = roomBUS.getRoomById(labelRoomID.Text);
 
-                RentRoomDetailUI rentRoomDetail = new RentRoomDetailUI(reservation, room, labelRoomStatus.Text);
+                RentRoomDetailUI rentRoomDetail = new RentRoomDetailUI(this.rentRoomsUIOld, reservation, this.roomReservationOld, room, labelRoomStatus.Text);
                 rentRoomDetail.Show();
             }
             else
@@ -48,6 +54,6 @@ namespace HotelManagement.GUI
             }
         }
 
-        
+
     }
 }

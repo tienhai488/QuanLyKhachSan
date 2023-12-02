@@ -16,33 +16,24 @@ namespace HotelManagement.Data.Transfer
         [Key]
         [StringLength(50)]
         [Column("ID", TypeName = "varchar")]
-        private string id;
+        public string Id { get; set; }
 
         [Column("CreatedAt", TypeName = "datetime")]
-        private DateTime createdAt;
+        public DateTime CreatedAt { get; set; }
 
         [StringLength(50)]
         [Column("CustomerID", TypeName = "varchar")]
-        private string customerID;
+        [ForeignKey(nameof(Customer))]
+        public string CustomerID { get; set; }
 
-        private BigInteger staffID;
+        public BigInteger StaffID { get; set; }
 
-        [ForeignKey("CustomerID")]
-        private Customer customer;
+        public Customer Customer { get; set; }
 
-        [ForeignKey("StaffID")]
-        private Staff staff;
+        [ForeignKey(nameof(StaffID))]
+        public Staff Staff { get; set; }
 
-        [ForeignKey("ID")]
         public virtual Invoice Invoice { get; set; }
-
-        public string Id { get => id; set => id = value; }
-        public string CustomerID { get => customerID; set => customerID = value; }
-        public BigInteger StaffID { get => staffID; set => staffID = value; }
-        public Customer Customer { get => customer; set => customer = value; }
-        public Staff Staff { get => staff; set => staff = value; }
-        public DateTime CreatedAt { get => createdAt; set => createdAt = value; }
-        //public Invoice Invoice { get => invoice; set => invoice = value; }
     }
 
     public enum RoomReservationStatus : int
@@ -61,39 +52,35 @@ namespace HotelManagement.Data.Transfer
         [Key]
         [StringLength(50)]
         [Column("ID", TypeName = "varchar")]
-        private string id;
+        public string Id { get; set; }
 
         [StringLength(50)]
         [Column("RoomID", TypeName = "varchar")]
-        private string roomID;
+        [ForeignKey(nameof(Room))]
+        public string RoomId { get; set; }
 
         [StringLength(50)]
         [Column("ReservationID", TypeName = "varchar")]
-        private string reservationID;
+        [ForeignKey(nameof(Reservation))]
+        public string ReservationId { get; set; }
 
         [Column("StartTime", TypeName = "date")]
-        private DateTime startTime;
+        public DateTime StartTime { get; set; }
 
         [Column("EndTime", TypeName = "date")]
-        private DateTime endTime;
+        public DateTime EndTime { get; set; }
 
         [MaxLength(11)]
         [Column("Status", TypeName = "int")]
-        private RoomReservationStatus status;
+        public RoomReservationStatus Status { get; set; }
 
-        [ForeignKey("RoomID")]
-        private Room room;
+        public Room Room { get; set; }
 
-        [ForeignKey("ReservationID")]
-        private Reservation reservation;
-
-        public string RoomID { get => roomID; set => roomID = value; }
-        public string ReservationID { get => reservationID; set => reservationID = value; }
-        public DateTime StartTime { get => startTime; set => startTime = value; }
-        public DateTime EndTime { get => endTime; set => endTime = value; }
+        public Reservation Reservation { get; set; }
 
         static public string getStatusString(RoomReservationStatus roomReservationStatus)
         {
+            return Enum.GetName(roomReservationStatus); // như thế này??
             string value = "";
             if (roomReservationStatus == RoomReservationStatus.Booked) value = "Booked";
             else if (roomReservationStatus == RoomReservationStatus.Rented) value = "Rented";
@@ -101,23 +88,25 @@ namespace HotelManagement.Data.Transfer
             else if (roomReservationStatus == RoomReservationStatus.Paid) value = "Paid";
             else if (roomReservationStatus == RoomReservationStatus.All) value = "All";
             else if (roomReservationStatus == RoomReservationStatus.Empty) value = "Empty";
-            return value;
+            return value; // còn tiếng việt thì làm kiểu này
         }
 
         static public RoomReservationStatus getStatusEnum(string statusString)
         {
+
+            if (!Enum.TryParse(statusString.Trim(), out RoomReservationStatus status))
+            {
+                status = RoomReservationStatus.Booked;
+            }
+            return status; // như thế này??
             statusString = statusString.Trim();
-            if(statusString.Equals("Rented")) return RoomReservationStatus.Rented;
-            else if(statusString.Equals("OutDate")) return RoomReservationStatus.OutDate;
-            else if(statusString.Equals("Paid")) return RoomReservationStatus.Paid;
-            else if(statusString.Equals("All")) return RoomReservationStatus.All;
-            else if(statusString.Equals("Empty")) return RoomReservationStatus.Empty;
+            if (statusString.Equals("Rented")) return RoomReservationStatus.Rented;
+            else if (statusString.Equals("OutDate")) return RoomReservationStatus.OutDate;
+            else if (statusString.Equals("Paid")) return RoomReservationStatus.Paid;
+            else if (statusString.Equals("All")) return RoomReservationStatus.All;
+            else if (statusString.Equals("Empty")) return RoomReservationStatus.Empty;
             return RoomReservationStatus.Booked;
         }
-        public Reservation Reservation { get => reservation; set => reservation = value; }
-        public Room Room { get => room; set => room = value; }
-        public RoomReservationStatus Status { get => status; set => status = value; }
-        public string Id { get => id; set => id = value; }
     }
 
 }

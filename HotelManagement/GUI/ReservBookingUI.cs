@@ -166,7 +166,7 @@ namespace HotelManagement.GUI
         {
             dataTableBook.Rows.Clear();
             roomReservationBUS.getAllRoomReservationByReservationId(reservationId)
-                .ForEach(item => dataTableBook.Rows.Add(item.RoomID, item.Room.RoomType.Name,
+                .ForEach(item => dataTableBook.Rows.Add(item.RoomId, item.Room.RoomType.Name,
                 item.StartTime.ToString(Configs.formatBirthday), item.EndTime.ToString(Configs.formatBirthday),
                 RoomReservation.getStatusString(item.Status)));
 
@@ -255,7 +255,7 @@ namespace HotelManagement.GUI
                 DateTime toTimeBook = Functions.convertStringToDateTime(item[3].ToString());
                 RoomReservationStatus status = RoomReservation.getStatusEnum(item[4].ToString());
 
-                list.Add(new RoomReservation() { Id = getRoomReservationIdString(index++) , RoomID = room_id, ReservationID = reservationId, StartTime = fromTimeBook, EndTime = toTimeBook, Status = status });
+                list.Add(new RoomReservation() { Id = getRoomReservationIdString(index++), RoomId = room_id, ReservationId = reservationId, StartTime = fromTimeBook, EndTime = toTimeBook, Status = status });
             }
 
             return list;

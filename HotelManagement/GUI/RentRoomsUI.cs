@@ -55,7 +55,7 @@ namespace HotelManagement.GUI
 
                     if (this.roomStatusFilter != RoomReservationStatus.All)
                     {
-                        RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomID.Equals(item.Id));
+                        RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomId.Equals(item.Id));
                         if (roomReservation != null)
                         {
                             checkRoomStatus = roomReservation.Status == this.roomStatusFilter;
@@ -87,16 +87,16 @@ namespace HotelManagement.GUI
                     string from = "From: ";
                     string to = "To: ";
                     string labelReservationID = "";
-                    RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomID.Equals(item.Id));
+                    RoomReservation roomReservation = listRoom.Find(roomRe => roomRe.RoomId.Equals(item.Id));
                     if (roomReservation != null)
                     {
                         labelMain = roomReservation.Reservation.Customer.FullName;
                         roomStatus = RoomReservation.getStatusString(roomReservation.Status);
                         from += roomReservation.StartTime.ToString(Configs.formatBirthday);
                         to += roomReservation.EndTime.ToString(Configs.formatBirthday);
-                        labelReservationID = roomReservation.ReservationID;
+                        labelReservationID = roomReservation.ReservationId;
                     }
-                    addRoomView(item.Id, item.RoomType.Name, labelMain, roomStatus, roomClean, from, to, labelReservationID);
+                    addRoomView(item.Id, item.RoomType.Name, labelMain, roomStatus, roomClean, from, to, labelReservationID, roomReservation);
                 });
         }
 
@@ -139,9 +139,9 @@ namespace HotelManagement.GUI
             panel.Controls.Add(radio);
         }
 
-        public void addRoomView(string id, string roomType, string labelMain, string roomStatus, string roomClean, string fromTime, string toTime, string reservationID)
+        public void addRoomView(string id, string roomType, string labelMain, string roomStatus, string roomClean, string fromTime, string toTime, string reservationID, RoomReservation roomReservation)
         {
-            RoomCard room = new RoomCard(id, roomType, labelMain, roomStatus, roomClean, fromTime, toTime, reservationID);
+            RoomCard room = new RoomCard(this, id, roomType, labelMain, roomStatus, roomClean, fromTime, toTime, reservationID, roomReservation);
             flowLayoutRooms.Controls.Add(room);
         }
 
