@@ -4,8 +4,6 @@
 
     using Microsoft.EntityFrameworkCore;
 
-    using MySql.EntityFrameworkCore.Infrastructure;
-
     using System.Numerics;
     public class StaffDAO : DbContext
     {
@@ -38,7 +36,8 @@
         }
 
         public Staff? GetStaffWithAccountId(BigInteger uid)
-            => (from s in Set<Staff>()
+            => (from s in Set<Staff>().Include(nameof(Staff.Account))
+                .Include(nameof(Staff.Group)).Include(nameof(Staff.Role))
                 where s.AccountId == uid
                 select s).FirstOrDefault();
 
