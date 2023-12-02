@@ -429,7 +429,6 @@
             ClientSize = new Size(1600, 900);
             Controls.Add(materialTabControl1);
             DrawerAutoShow = true;
-            DrawerShowIconsWhenHidden = true;
             DrawerTabControl = materialTabControl1;
             Name = "MainUI";
             StartPosition = FormStartPosition.CenterScreen;
