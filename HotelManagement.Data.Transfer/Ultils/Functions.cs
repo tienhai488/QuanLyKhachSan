@@ -1,15 +1,10 @@
-﻿using HotelManagement.Ultils;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Security.Cryptography.Pkcs;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
-
-namespace HotelManagement.Data.Transfer.Ultils
+﻿namespace HotelManagement.Data.Transfer.Ultils
 {
+    using HotelManagement.Ultils;
+
+    using System;
+    using System.Globalization;
+
     public class Functions
     {
         public static int convertIdToInteger(string id, string seperator)

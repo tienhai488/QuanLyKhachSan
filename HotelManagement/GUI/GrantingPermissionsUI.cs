@@ -27,6 +27,7 @@
             InitializeComponent();
             LoadPermissions();
             canEdit = LoginBO.IsPermissionGranted(Permission.GrantPermission);
+            Editing = false;
         }
 
         private bool canEdit, editing;
@@ -88,7 +89,7 @@
                     else
                     {
                         cb.Checked = acc != null && acc.IsPermissionGranted(kv.Value);
-                        cb.Enabled = acc != null && Editing;
+                        cb.Enabled = Editing;
                     }
                 }
                 else

@@ -26,6 +26,7 @@
         {
             base.OnLoad(e);
             LoadAccounts();
+            AdjustSelectedIndex();
             LoadActions();
             LoadInfo();
         }

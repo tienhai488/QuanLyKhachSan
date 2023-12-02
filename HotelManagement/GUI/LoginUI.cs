@@ -15,12 +15,12 @@ namespace HotelManagement
 
         private void LoadDefault()
         {
+            tbUserName.Text = string.Empty;
+            tbPassword.Text = string.Empty;
             txtUserNameError.Visible = false;
             txtPasswordError.Visible = false;
             txtLoginFailed.Visible = false;
             btnLogin.Enabled = false;
-            tbUserName.Text = string.Empty;
-            tbPassword.Text = string.Empty;
         }
 
         private void OnUserNameChanged(object sender, EventArgs e)
@@ -64,6 +64,7 @@ namespace HotelManagement
             {
                 Hide();
                 new MainUI().ShowDialog();
+                LoginBO.SignOut();
                 LoadDefault();
                 Show();
             }

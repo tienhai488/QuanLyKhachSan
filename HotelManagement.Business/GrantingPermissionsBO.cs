@@ -107,44 +107,6 @@
             _ => "Không xác định",
         };
 
-        public static IAccessable CreateExampleStaff()
-        {
-            IAccessable s = new Staff(1234UL)
-            {
-                FullName = "Nguyen Thi C",
-                Gender = Staff.GenderMale,
-                Birthday = new(2000, 3, 18),
-                CitizenId = "012345678901"
-            };
-            s.Edit().Assign(CreateExampleAccount().Account, CreateExamplePermissionGroup().Group);
-            return s;
-        }
-
-        public static IAccessable CreateExampleAccount()
-        {
-            IAccessable a = new Account(4321UL)
-            {
-                UserName = "abcdxyz",
-                Password = "He11o+-World",
-                Linked = false
-            };
-            IAccessable.Editor e = a.Edit();
-            e.SetGranted(Permission.UpdateInvoice, true);
-            e.SetGranted(Permission.ReadConvenient, true);
-            e.SetGranted(Permission.WriteConvenient, true);
-            return a;
-        }
-
-        public static IAccessable CreateExamplePermissionGroup()
-        {
-            IAccessable pg = new PermissionGroup(4321UL) { Name = "xyztabc" };
-            IAccessable.Editor e = pg.Edit();
-            e.SetGranted(Permission.GrantPermission, true);
-            e.SetGranted(Permission.ReadStaff, true);
-            e.SetGranted(Permission.WriteStaff, true);
-            return pg;
-        }
-
         private GrantingPermissionsBO() { }
     }
 }

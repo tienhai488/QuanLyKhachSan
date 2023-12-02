@@ -2,17 +2,18 @@
 {
     using HotelManagement.Data.Access.Core;
     using HotelManagement.Data.Transfer;
+
     using Microsoft.EntityFrameworkCore;
 
-    using System;
     using System.Numerics;
 
     public class InvoiceDAO : DbContext
     {
         public bool HasStaffId(BigInteger id)
-            => (from i in Set<Invoice>()
-                where i.StaffID == id
-                select i).Any();
+            => (from i in Invoices where i.StaffID == id select i).Any()
+            || (from rd in RentRoomDetails where rd.StaffID == id select rd).Any()
+            || (from sd in UseServiceDetails where sd.StaffID == id select sd).Any();
+
         public DbSet<Invoice> Invoices { get; set; }
 
         public DbSet<RentRoomDetail> RentRoomDetails { get; set; }

@@ -26,7 +26,14 @@
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
+
+            var gbo = GrantingPermissionsBO.Instance;
+            var mbo = StaffManagerBO.Instance;
+            gbo.SelectedAccessable = mbo.SelectedStaff;
+            gbo.Editing = editing;
+
             LoadStaffs();
+            AdjustSelectedIndex();
             LoadActions();
             LoadInfo();
             OnResize(EventArgs.Empty);
