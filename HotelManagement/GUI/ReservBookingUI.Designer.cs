@@ -528,7 +528,6 @@ namespace HotelManagement.GUI
             // tableBook
             // 
             tableBook.AllowUserToAddRows = false;
-            tableBook.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             tableBook.BackgroundColor = SystemColors.Control;
             tableBook.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             tableBook.Dock = DockStyle.Fill;
