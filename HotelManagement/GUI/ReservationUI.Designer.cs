@@ -32,6 +32,7 @@
             dataGridView1 = new DataGridView();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel1 = new Panel();
+            label1 = new MaterialSkin.Controls.MaterialLabel();
             txtIdFilter = new MaterialSkin.Controls.MaterialTextBox();
             panel2 = new Panel();
             panel3 = new Panel();
@@ -40,7 +41,6 @@
             btnAddBook = new MaterialSkin.Controls.MaterialButton();
             btnDelete = new MaterialSkin.Controls.MaterialButton();
             btnUpdate = new MaterialSkin.Controls.MaterialButton();
-            label1 = new MaterialSkin.Controls.MaterialLabel();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tableLayoutPanel2.SuspendLayout();
@@ -51,10 +51,11 @@
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 3;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel1.ColumnCount = 4;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.5F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 15F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 7.5F));
             tableLayoutPanel1.Controls.Add(dataGridView1, 1, 1);
             tableLayoutPanel1.Controls.Add(tableLayoutPanel2, 1, 0);
             tableLayoutPanel1.Controls.Add(panel4, 2, 1);
@@ -77,7 +78,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.GridColor = SystemColors.ButtonHighlight;
-            dataGridView1.Location = new Point(157, 83);
+            dataGridView1.Location = new Point(80, 83);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
@@ -97,7 +98,7 @@
             tableLayoutPanel2.Controls.Add(panel2, 1, 0);
             tableLayoutPanel2.Controls.Add(panel3, 2, 0);
             tableLayoutPanel2.Dock = DockStyle.Fill;
-            tableLayoutPanel2.Location = new Point(154, 0);
+            tableLayoutPanel2.Location = new Point(77, 0);
             tableLayoutPanel2.Margin = new Padding(0);
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.Padding = new Padding(3);
@@ -116,6 +117,19 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(356, 74);
             panel1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Depth = 0;
+            label1.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Pixel);
+            label1.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
+            label1.Location = new Point(3, 4);
+            label1.MouseState = MaterialSkin.MouseState.HOVER;
+            label1.Name = "label1";
+            label1.Size = new Size(75, 14);
+            label1.TabIndex = 1;
+            label1.Text = "ReservationID";
             // 
             // txtIdFilter
             // 
@@ -157,9 +171,9 @@
             // 
             panel4.Controls.Add(tableLayoutPanel3);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(876, 83);
+            panel4.Location = new Point(799, 83);
             panel4.Name = "panel4";
-            panel4.Size = new Size(149, 223);
+            panel4.Size = new Size(148, 223);
             panel4.TabIndex = 9;
             // 
             // tableLayoutPanel3
@@ -176,7 +190,7 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 33.3333321F));
-            tableLayoutPanel3.Size = new Size(149, 223);
+            tableLayoutPanel3.Size = new Size(148, 223);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // btnAddBook
@@ -192,7 +206,7 @@
             btnAddBook.MouseState = MaterialSkin.MouseState.HOVER;
             btnAddBook.Name = "btnAddBook";
             btnAddBook.NoAccentTextColor = Color.Empty;
-            btnAddBook.Size = new Size(141, 36);
+            btnAddBook.Size = new Size(140, 36);
             btnAddBook.TabIndex = 0;
             btnAddBook.Text = "BOOK A ROOM";
             btnAddBook.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -213,7 +227,7 @@
             btnDelete.MouseState = MaterialSkin.MouseState.HOVER;
             btnDelete.Name = "btnDelete";
             btnDelete.NoAccentTextColor = Color.Empty;
-            btnDelete.Size = new Size(141, 36);
+            btnDelete.Size = new Size(140, 36);
             btnDelete.TabIndex = 9;
             btnDelete.Text = "Delete";
             btnDelete.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -234,26 +248,13 @@
             btnUpdate.MouseState = MaterialSkin.MouseState.HOVER;
             btnUpdate.Name = "btnUpdate";
             btnUpdate.NoAccentTextColor = Color.Empty;
-            btnUpdate.Size = new Size(141, 36);
+            btnUpdate.Size = new Size(140, 36);
             btnUpdate.TabIndex = 9;
             btnUpdate.Text = "Update";
             btnUpdate.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
             btnUpdate.UseAccentColor = false;
             btnUpdate.UseVisualStyleBackColor = true;
             btnUpdate.Click += btnUpdate_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Depth = 0;
-            label1.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Pixel);
-            label1.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
-            label1.Location = new Point(3, 4);
-            label1.MouseState = MaterialSkin.MouseState.HOVER;
-            label1.Name = "label1";
-            label1.Size = new Size(75, 14);
-            label1.TabIndex = 1;
-            label1.Text = "ReservationID";
             // 
             // ReservationUI
             // 
