@@ -45,7 +45,7 @@ namespace HotelManagement.GUI
         {
             if (serviceBUS.validateType(name))
             {
-                int result = serviceBUS.addType(new ServiceType() {Id = id, Name = name });
+                int result = serviceBUS.addType(new ServiceType() { Id = id, Name = name });
                 if (result > 0)
                 {
                     MessageBox.Show("Thêm loại dịch vụ thành công!");
