@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             tableLayoutPanel1 = new TableLayoutPanel();
-            panel1 = new Panel();
+            panelB = new Panel();
             btnStatistic = new MaterialSkin.Controls.MaterialButton();
             btnAccount = new MaterialSkin.Controls.MaterialButton();
             btnStaff = new MaterialSkin.Controls.MaterialButton();
@@ -37,12 +37,12 @@
             btnService = new MaterialSkin.Controls.MaterialButton();
             btnRoom = new MaterialSkin.Controls.MaterialButton();
             btnInvoice = new MaterialSkin.Controls.MaterialButton();
-            btnRentDetail = new MaterialSkin.Controls.MaterialButton();
-            btnReservation = new MaterialSkin.Controls.MaterialButton();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             btnhome = new MaterialSkin.Controls.MaterialButton();
-            panelB = new Panel();
+            btnReservation = new MaterialSkin.Controls.MaterialButton();
+            btnRentDetail = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel1.SuspendLayout();
-            panel1.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -51,8 +51,8 @@
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 165F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Controls.Add(panelB, 1, 0);
+            tableLayoutPanel1.Controls.Add(flowLayoutPanel1, 0, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
             tableLayoutPanel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             tableLayoutPanel1.Location = new Point(3, 88);
@@ -63,27 +63,16 @@
             tableLayoutPanel1.Size = new Size(1597, 912);
             tableLayoutPanel1.TabIndex = 0;
             // 
-            // panel1
+            // panelB
             // 
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(btnStatistic);
-            panel1.Controls.Add(btnAccount);
-            panel1.Controls.Add(btnStaff);
-            panel1.Controls.Add(btnCustomer);
-            panel1.Controls.Add(btnService);
-            panel1.Controls.Add(btnRoom);
-            panel1.Controls.Add(btnInvoice);
-            panel1.Controls.Add(btnRentDetail);
-            panel1.Controls.Add(btnReservation);
-            panel1.Controls.Add(btnhome);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(0);
-            panel1.Name = "panel1";
-            panel1.Padding = new Padding(3);
-            panel1.Size = new Size(165, 912);
-            panel1.TabIndex = 1;
+            panelB.BackColor = Color.White;
+            panelB.Dock = DockStyle.Fill;
+            panelB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            panelB.Location = new Point(165, 0);
+            panelB.Margin = new Padding(0);
+            panelB.Name = "panelB";
+            panelB.Size = new Size(1432, 912);
+            panelB.TabIndex = 0;
             // 
             // btnStatistic
             // 
@@ -96,12 +85,12 @@
             btnStatistic.HighEmphasis = true;
             btnStatistic.Icon = Properties.Resources.icons8_graph_48;
             btnStatistic.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStatistic.Location = new Point(6, 554);
+            btnStatistic.Location = new Point(3, 555);
             btnStatistic.Margin = new Padding(0, 3, 0, 3);
             btnStatistic.MouseState = MaterialSkin.MouseState.HOVER;
             btnStatistic.Name = "btnStatistic";
             btnStatistic.NoAccentTextColor = Color.Empty;
-            btnStatistic.Size = new Size(153, 55);
+            btnStatistic.Size = new Size(159, 55);
             btnStatistic.TabIndex = 10;
             btnStatistic.Text = "STATISTIC";
             btnStatistic.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
@@ -120,12 +109,12 @@
             btnAccount.HighEmphasis = true;
             btnAccount.Icon = Properties.Resources.icons8_change_user_48;
             btnAccount.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAccount.Location = new Point(6, 493);
+            btnAccount.Location = new Point(3, 494);
             btnAccount.Margin = new Padding(0, 3, 0, 3);
             btnAccount.MouseState = MaterialSkin.MouseState.HOVER;
             btnAccount.Name = "btnAccount";
             btnAccount.NoAccentTextColor = Color.Empty;
-            btnAccount.Size = new Size(153, 55);
+            btnAccount.Size = new Size(159, 55);
             btnAccount.TabIndex = 9;
             btnAccount.Text = "ACCOUNT";
             btnAccount.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
@@ -144,12 +133,12 @@
             btnStaff.HighEmphasis = true;
             btnStaff.Icon = Properties.Resources.icons8_valet_48;
             btnStaff.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStaff.Location = new Point(6, 432);
+            btnStaff.Location = new Point(3, 433);
             btnStaff.Margin = new Padding(0, 3, 0, 3);
             btnStaff.MouseState = MaterialSkin.MouseState.HOVER;
             btnStaff.Name = "btnStaff";
             btnStaff.NoAccentTextColor = Color.Empty;
-            btnStaff.Size = new Size(153, 55);
+            btnStaff.Size = new Size(159, 55);
             btnStaff.TabIndex = 8;
             btnStaff.Text = "STAFF";
             btnStaff.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
@@ -168,12 +157,12 @@
             btnCustomer.HighEmphasis = true;
             btnCustomer.Icon = Properties.Resources.icons8_customer_48;
             btnCustomer.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCustomer.Location = new Point(6, 371);
+            btnCustomer.Location = new Point(3, 372);
             btnCustomer.Margin = new Padding(0, 3, 0, 3);
             btnCustomer.MouseState = MaterialSkin.MouseState.HOVER;
             btnCustomer.Name = "btnCustomer";
             btnCustomer.NoAccentTextColor = Color.Empty;
-            btnCustomer.Size = new Size(153, 55);
+            btnCustomer.Size = new Size(159, 55);
             btnCustomer.TabIndex = 7;
             btnCustomer.Text = "CUSTOMER";
             btnCustomer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
@@ -192,12 +181,12 @@
             btnService.HighEmphasis = true;
             btnService.Icon = Properties.Resources.icons8_janitor_48;
             btnService.ImageAlign = ContentAlignment.MiddleLeft;
-            btnService.Location = new Point(6, 310);
+            btnService.Location = new Point(3, 311);
             btnService.Margin = new Padding(0, 3, 0, 3);
             btnService.MouseState = MaterialSkin.MouseState.HOVER;
             btnService.Name = "btnService";
             btnService.NoAccentTextColor = Color.Empty;
-            btnService.Size = new Size(153, 55);
+            btnService.Size = new Size(159, 55);
             btnService.TabIndex = 6;
             btnService.Text = "SERVICE";
             btnService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
@@ -216,12 +205,12 @@
             btnRoom.HighEmphasis = true;
             btnRoom.Icon = Properties.Resources.icons8_bedroom_48;
             btnRoom.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRoom.Location = new Point(6, 249);
+            btnRoom.Location = new Point(3, 250);
             btnRoom.Margin = new Padding(0, 3, 0, 3);
             btnRoom.MouseState = MaterialSkin.MouseState.HOVER;
             btnRoom.Name = "btnRoom";
             btnRoom.NoAccentTextColor = Color.Empty;
-            btnRoom.Size = new Size(153, 55);
+            btnRoom.Size = new Size(159, 55);
             btnRoom.TabIndex = 5;
             btnRoom.Text = "ROOM";
             btnRoom.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
@@ -240,12 +229,12 @@
             btnInvoice.HighEmphasis = true;
             btnInvoice.Icon = Properties.Resources.icons8_receipt_48;
             btnInvoice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInvoice.Location = new Point(6, 188);
+            btnInvoice.Location = new Point(3, 189);
             btnInvoice.Margin = new Padding(0, 3, 0, 3);
             btnInvoice.MouseState = MaterialSkin.MouseState.HOVER;
             btnInvoice.Name = "btnInvoice";
             btnInvoice.NoAccentTextColor = Color.Empty;
-            btnInvoice.Size = new Size(153, 55);
+            btnInvoice.Size = new Size(159, 55);
             btnInvoice.TabIndex = 4;
             btnInvoice.Text = "INVOICE";
             btnInvoice.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
@@ -253,53 +242,25 @@
             btnInvoice.UseVisualStyleBackColor = true;
             btnInvoice.Click += btnInvoice_Click;
             // 
-            // btnRentDetail
+            // flowLayoutPanel1
             // 
-            btnRentDetail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnRentDetail.AutoSize = false;
-            btnRentDetail.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnRentDetail.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnRentDetail.Depth = 0;
-            btnRentDetail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRentDetail.HighEmphasis = true;
-            btnRentDetail.Icon = Properties.Resources.icons8_door_hanger_48;
-            btnRentDetail.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRentDetail.Location = new Point(6, 127);
-            btnRentDetail.Margin = new Padding(0, 3, 0, 3);
-            btnRentDetail.MouseState = MaterialSkin.MouseState.HOVER;
-            btnRentDetail.Name = "btnRentDetail";
-            btnRentDetail.NoAccentTextColor = Color.Empty;
-            btnRentDetail.Size = new Size(153, 55);
-            btnRentDetail.TabIndex = 3;
-            btnRentDetail.Text = "RENT DETAIL";
-            btnRentDetail.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnRentDetail.UseAccentColor = true;
-            btnRentDetail.UseVisualStyleBackColor = true;
-            btnRentDetail.Click += btnRentDetail_Click;
-            // 
-            // btnReservation
-            // 
-            btnReservation.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnReservation.AutoSize = false;
-            btnReservation.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnReservation.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnReservation.Depth = 0;
-            btnReservation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnReservation.HighEmphasis = true;
-            btnReservation.Icon = Properties.Resources.icons8_hotel_48;
-            btnReservation.ImageAlign = ContentAlignment.MiddleLeft;
-            btnReservation.Location = new Point(6, 66);
-            btnReservation.Margin = new Padding(0, 3, 0, 3);
-            btnReservation.MouseState = MaterialSkin.MouseState.HOVER;
-            btnReservation.Name = "btnReservation";
-            btnReservation.NoAccentTextColor = Color.Empty;
-            btnReservation.Size = new Size(153, 55);
-            btnReservation.TabIndex = 2;
-            btnReservation.Text = "RESERVATION";
-            btnReservation.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnReservation.UseAccentColor = true;
-            btnReservation.UseVisualStyleBackColor = true;
-            btnReservation.Click += btnReservation_Click;
+            flowLayoutPanel1.Controls.Add(btnhome);
+            flowLayoutPanel1.Controls.Add(btnReservation);
+            flowLayoutPanel1.Controls.Add(btnRentDetail);
+            flowLayoutPanel1.Controls.Add(btnInvoice);
+            flowLayoutPanel1.Controls.Add(btnRoom);
+            flowLayoutPanel1.Controls.Add(btnService);
+            flowLayoutPanel1.Controls.Add(btnCustomer);
+            flowLayoutPanel1.Controls.Add(btnStaff);
+            flowLayoutPanel1.Controls.Add(btnAccount);
+            flowLayoutPanel1.Controls.Add(btnStatistic);
+            flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Location = new Point(0, 0);
+            flowLayoutPanel1.Margin = new Padding(0);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            flowLayoutPanel1.Padding = new Padding(3);
+            flowLayoutPanel1.Size = new Size(165, 912);
+            flowLayoutPanel1.TabIndex = 1;
             // 
             // btnhome
             // 
@@ -312,12 +273,12 @@
             btnhome.HighEmphasis = true;
             btnhome.Icon = Properties.Resources.icons8_marriott_hotels_48;
             btnhome.ImageAlign = ContentAlignment.MiddleLeft;
-            btnhome.Location = new Point(6, 5);
+            btnhome.Location = new Point(3, 6);
             btnhome.Margin = new Padding(0, 3, 0, 3);
             btnhome.MouseState = MaterialSkin.MouseState.HOVER;
             btnhome.Name = "btnhome";
             btnhome.NoAccentTextColor = Color.Empty;
-            btnhome.Size = new Size(153, 55);
+            btnhome.Size = new Size(159, 55);
             btnhome.TabIndex = 1;
             btnhome.Text = "HOME";
             btnhome.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
@@ -325,16 +286,53 @@
             btnhome.UseVisualStyleBackColor = true;
             btnhome.Click += btnhome_Click;
             // 
-            // panelB
+            // btnReservation
             // 
-            panelB.BackColor = Color.White;
-            panelB.Dock = DockStyle.Fill;
-            panelB.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            panelB.Location = new Point(165, 0);
-            panelB.Margin = new Padding(0);
-            panelB.Name = "panelB";
-            panelB.Size = new Size(1432, 912);
-            panelB.TabIndex = 0;
+            btnReservation.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnReservation.AutoSize = false;
+            btnReservation.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnReservation.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnReservation.Depth = 0;
+            btnReservation.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnReservation.HighEmphasis = true;
+            btnReservation.Icon = Properties.Resources.icons8_hotel_48;
+            btnReservation.ImageAlign = ContentAlignment.MiddleLeft;
+            btnReservation.Location = new Point(3, 67);
+            btnReservation.Margin = new Padding(0, 3, 0, 3);
+            btnReservation.MouseState = MaterialSkin.MouseState.HOVER;
+            btnReservation.Name = "btnReservation";
+            btnReservation.NoAccentTextColor = Color.Empty;
+            btnReservation.Size = new Size(159, 55);
+            btnReservation.TabIndex = 2;
+            btnReservation.Text = "RESERVATION";
+            btnReservation.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnReservation.UseAccentColor = true;
+            btnReservation.UseVisualStyleBackColor = true;
+            btnReservation.Click += btnReservation_Click;
+            // 
+            // btnRentDetail
+            // 
+            btnRentDetail.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnRentDetail.AutoSize = false;
+            btnRentDetail.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnRentDetail.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnRentDetail.Depth = 0;
+            btnRentDetail.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRentDetail.HighEmphasis = true;
+            btnRentDetail.Icon = Properties.Resources.icons8_door_hanger_48;
+            btnRentDetail.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRentDetail.Location = new Point(3, 128);
+            btnRentDetail.Margin = new Padding(0, 3, 0, 3);
+            btnRentDetail.MouseState = MaterialSkin.MouseState.HOVER;
+            btnRentDetail.Name = "btnRentDetail";
+            btnRentDetail.NoAccentTextColor = Color.Empty;
+            btnRentDetail.Size = new Size(159, 55);
+            btnRentDetail.TabIndex = 3;
+            btnRentDetail.Text = "RENT DETAIL";
+            btnRentDetail.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnRentDetail.UseAccentColor = true;
+            btnRentDetail.UseVisualStyleBackColor = true;
+            btnRentDetail.Click += btnRentDetail_Click;
             // 
             // Main2UI
             // 
@@ -351,14 +349,13 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Main2UI";
             tableLayoutPanel1.ResumeLayout(false);
-            panel1.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
         private TableLayoutPanel tableLayoutPanel1;
-        private Panel panel1;
         private Panel panelB;
         private MaterialSkin.Controls.MaterialButton btnhome;
         private MaterialSkin.Controls.MaterialButton btnStatistic;
@@ -370,5 +367,6 @@
         private MaterialSkin.Controls.MaterialButton btnInvoice;
         private MaterialSkin.Controls.MaterialButton btnRentDetail;
         private MaterialSkin.Controls.MaterialButton btnReservation;
+        private FlowLayoutPanel flowLayoutPanel1;
     }
 }

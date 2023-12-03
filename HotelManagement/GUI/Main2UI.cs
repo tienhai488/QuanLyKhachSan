@@ -34,7 +34,7 @@ namespace HotelManagement.GUI
                 Accent.Orange400,     // Warm accent color for highlights
                 TextShade.WHITE       // Light text color for better readability
             );
-            AddHomeForm();
+            showButton();
         }
 
         private void ActivateButton(object btnSender)
@@ -80,6 +80,22 @@ namespace HotelManagement.GUI
             });
         }
 
+        private void showButton()
+        {
+            btnhome.Visible = true;
+            btnReservation.Visible = LoginBO.IsPermissionGranted(Permission.UpdateReservation);
+            btnRentDetail.Visible = LoginBO.IsPermissionGranted(Permission.UpdateRoomDetails);
+            btnInvoice.Visible = LoginBO.IsPermissionGranted(Permission.UpdateInvoice);
+            btnRoom.Visible = LoginBO.IsPermissionGranted(Permission.ReadRoom)
+                || LoginBO.IsPermissionGranted(Permission.ReadRoomType)
+                || LoginBO.IsPermissionGranted(Permission.ReadConvenient);
+            btnService.Visible = LoginBO.IsPermissionGranted(Permission.ReadService)
+                || LoginBO.IsPermissionGranted(Permission.ReadServiceType);
+            btnCustomer.Visible = LoginBO.IsPermissionGranted(Permission.ReadCustomer);
+            btnStaff.Visible = LoginBO.IsPermissionGranted(Permission.ReadStaff) || LoginBO.IsPermissionGranted(Permission.ReadRole);
+            btnAccount.Visible = LoginBO.IsPermissionGranted(Permission.ReadAccount) || LoginBO.IsPermissionGranted(Permission.ReadPermissionGroup);
+            btnStatistic.Visible = true;
+        }
         private void AddHomeForm()
         {
             if (activeForm != null)
