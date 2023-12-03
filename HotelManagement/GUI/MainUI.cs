@@ -40,7 +40,6 @@ namespace HotelManagement.GUI
         private void addForm()
         {
             AddReservationForm();
-            AddRentRoomsForm();
             AddInvoiceListForm();
             AddRoomForm();
             AddServiceForm();
@@ -48,6 +47,7 @@ namespace HotelManagement.GUI
             AddStaffOrRoleForm();
             AddAccountOrPermissionGroupForm();
             AddStatistic2Form();
+            AddRentRoomsForm();
         }
 
         private void PermissionRequired(TabPage page)
