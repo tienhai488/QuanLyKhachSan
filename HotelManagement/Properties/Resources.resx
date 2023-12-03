@@ -121,6 +121,9 @@
   <data name="icons8-receipt-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-receipt-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-sales-performance-94" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-sales-performance-94.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-customer-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-customer-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,11 +136,17 @@
   <data name="icons8-valet-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-valet-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="icons8-cash-94" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-cash-94.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="icons8-marriott-hotels-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-marriott-hotels-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-bedroom-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-bedroom-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="icons8-graph-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-graph-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="icons8-door-hanger-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-door-hanger-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -145,7 +154,7 @@
   <data name="icons8-change-user-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\icons8-change-user-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="icons8-graph-48" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\icons8-graph-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icons8-door-94" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icons8-door-94.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
