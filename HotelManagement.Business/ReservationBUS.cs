@@ -294,5 +294,10 @@ namespace HotelManagement.Business
             item.StartTime = startTimeUpdate;
             return reservationDAO.SaveChanges();
         }
+
+        public int getLengthRentRoomInMonth(int month, int year)
+        {
+            return getAllRoomReservation().Where(item => item.StartTime.Month == month && item.StartTime.Year == year).Count();
+        }
     }
 }

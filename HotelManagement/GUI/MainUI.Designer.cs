@@ -415,7 +415,7 @@
             // 
             // MainUI
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1600, 1000);
             Controls.Add(materialTabControl1);

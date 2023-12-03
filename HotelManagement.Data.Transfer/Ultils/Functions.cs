@@ -26,5 +26,10 @@
             return DateTime.ParseExact(str, Configs.formatBirthday, CultureInfo.InvariantCulture, DateTimeStyles.None);
         }
 
+        public static bool equalMonthAndyear(DateTime date, int month, int year)
+        {
+            return date.Month == month && date.Year == year;    
+        }
+
     }
 }

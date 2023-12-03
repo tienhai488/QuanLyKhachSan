@@ -84,7 +84,7 @@
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1484, 769);
+            tableLayoutPanel1.Size = new Size(1484, 664);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -97,7 +97,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(222, 769);
+            panel1.Size = new Size(222, 664);
             panel1.TabIndex = 0;
             // 
             // panel4
@@ -105,7 +105,7 @@
             panel4.Controls.Add(panelRoomClean);
             panel4.Controls.Add(label3);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 506);
+            panel4.Location = new Point(0, 450);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(17, 20, 17, 20);
@@ -214,7 +214,7 @@
             panel3.Controls.Add(panelRoomType);
             panel3.Controls.Add(label2);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 285);
+            panel3.Location = new Point(0, 229);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(17, 20, 17, 20);
@@ -271,7 +271,7 @@
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
             panel2.Padding = new Padding(17, 20, 17, 20);
-            panel2.Size = new Size(222, 285);
+            panel2.Size = new Size(222, 229);
             panel2.TabIndex = 0;
             // 
             // panelRoomStatus
@@ -284,7 +284,7 @@
             panelRoomStatus.Dock = DockStyle.Fill;
             panelRoomStatus.Location = new Point(17, 57);
             panelRoomStatus.Name = "panelRoomStatus";
-            panelRoomStatus.Size = new Size(188, 208);
+            panelRoomStatus.Size = new Size(188, 152);
             panelRoomStatus.TabIndex = 15;
             // 
             // materialRadioButton8
@@ -381,7 +381,7 @@
             flowLayoutRooms.Margin = new Padding(0);
             flowLayoutRooms.Name = "flowLayoutRooms";
             flowLayoutRooms.Padding = new Padding(17, 20, 17, 20);
-            flowLayoutRooms.Size = new Size(1262, 769);
+            flowLayoutRooms.Size = new Size(1262, 664);
             flowLayoutRooms.TabIndex = 1;
             flowLayoutRooms.MouseUp += roomStatus_MouseUp;
             // 
@@ -493,7 +493,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1490, 884);
+            ClientSize = new Size(1490, 779);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel5);
             FormStyle = FormStyles.StatusAndActionBar_None;

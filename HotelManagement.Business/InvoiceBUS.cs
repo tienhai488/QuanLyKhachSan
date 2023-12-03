@@ -38,6 +38,7 @@ namespace HotelManagement.Business
         {
             return invoiceDAO.RentRoomDetails
                 .Include(i => i.Room)
+                .Include(i => i.Room.RoomType)
                 .Include(i => i.Staff)
                 .Include(i => i.Invoice)
                 .Include(i => i.Invoice.Customer)
@@ -76,12 +77,12 @@ namespace HotelManagement.Business
             return getAll().Count;
         }
 
-        public RentRoomDetail getRentRoomDetail(string roomId, string fromTime,string toTime)
+        public RentRoomDetail getRentRoomDetail(string roomId, string fromTime, string toTime)
         {
             RentRoomDetail rentRoomDetail = getAll().Find(item => item.RoomID.Equals(roomId)
             && fromTime.Equals(item.StartTime.ToString(Configs.formatBirthday))
             && toTime.Equals(item.EndTime.ToString(Configs.formatBirthday)));
-                
+
             return rentRoomDetail;
         }
 
@@ -110,7 +111,51 @@ namespace HotelManagement.Business
             temp.PaidTime = DateTime.Now;
             return invoiceDAO.SaveChanges();
         }
+
+        public double getTotalServiceRevenueInMonth(int month, int year)
+        {
+            double total = 0;
+            getAll().Where(item => Functions.equalMonthAndyear(item.PaidTime, month, year))
+                .ToList().ForEach(item =>
+                {
+                    total += getTotalService(item.Id);
+
+                });
+            return total;
+        }
+
+        public double getTotalService(string rentRoomId)
+        {
+            double total = 0;
+            invoiceDAO.UseServiceDetails.Where(item => item.RentRoomID.Equals(rentRoomId))
+                .Include(item => item.Service)
+                .ToList()
+                .ForEach(item => total += item.Quantity * item.Service.UnitPrice );
+            return total;
+        }
+
+        public double getTotalRoomRevenueInMonth(int month, int year)
+        {
+            double total = 0;
+            getAll().Where(item => Functions.equalMonthAndyear(item.PaidTime, month, year))
+                .ToList().ForEach(item =>
+                {
+                    int days = Functions.getDayGap(item.StartTime, item.EndTime) + 1;
+                    total += days * item.Room.RoomType.UnitPrice;
+                });
+            return total;
+        }
+
+        public int getYearMin()
+        {
+            return getAll().Where(item => item.PaidTime.Year != 1).Min(item => item.PaidTime.Year); 
+        }
+
+        
     }
+
+        
+    
 
     public class UseServiceDetailBUS
     {

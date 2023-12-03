@@ -31,30 +31,27 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
             tableLayoutPanel1 = new TableLayoutPanel();
             panel3 = new Panel();
-            label5 = new Label();
+            lbCountRoomBooked = new Label();
             label6 = new Label();
             panel2 = new Panel();
-            label3 = new Label();
+            lbServiceRevenue = new Label();
             label4 = new Label();
             panel1 = new Panel();
-            label2 = new Label();
+            lbRoomRevenue = new Label();
             label1 = new Label();
-            materialButton1 = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel2 = new TableLayoutPanel();
             panel5 = new Panel();
-            chartGrossRevenue = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            comboBox2 = new ComboBox();
+            chartLine = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            cbxYear = new ComboBox();
             label8 = new Label();
             panel4 = new Panel();
-            chartTopProducts = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            comboBox1 = new ComboBox();
+            chartPie = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            cbxMonth = new ComboBox();
             label7 = new Label();
             tableLayoutPanel1.SuspendLayout();
             panel3.SuspendLayout();
@@ -62,22 +59,21 @@
             panel1.SuspendLayout();
             tableLayoutPanel2.SuspendLayout();
             panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chartGrossRevenue).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chartLine).BeginInit();
             panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)chartTopProducts).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)chartPie).BeginInit();
             SuspendLayout();
             // 
             // tableLayoutPanel1
             // 
-            tableLayoutPanel1.ColumnCount = 4;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 30F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 10F));
+            tableLayoutPanel1.ColumnCount = 3;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.4827461F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 31.0345039F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.4827461F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             tableLayoutPanel1.Controls.Add(panel3, 2, 0);
             tableLayoutPanel1.Controls.Add(panel2, 1, 0);
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
-            tableLayoutPanel1.Controls.Add(materialButton1, 3, 0);
             tableLayoutPanel1.Dock = DockStyle.Top;
             tableLayoutPanel1.Location = new Point(0, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -89,25 +85,25 @@
             // panel3
             // 
             panel3.BackColor = SystemColors.GrayText;
-            panel3.Controls.Add(label5);
+            panel3.Controls.Add(lbCountRoomBooked);
             panel3.Controls.Add(label6);
             panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(702, 10);
+            panel3.Location = new Point(765, 10);
             panel3.Margin = new Padding(10);
             panel3.Name = "panel3";
-            panel3.Size = new Size(326, 169);
+            panel3.Size = new Size(379, 169);
             panel3.TabIndex = 2;
             // 
-            // label5
+            // lbCountRoomBooked
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.ForeColor = SystemColors.ButtonHighlight;
-            label5.Location = new Point(16, 120);
-            label5.Name = "label5";
-            label5.Size = new Size(84, 26);
-            label5.TabIndex = 1;
-            label5.Text = "10 lượt";
+            lbCountRoomBooked.AutoSize = true;
+            lbCountRoomBooked.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbCountRoomBooked.ForeColor = SystemColors.ButtonHighlight;
+            lbCountRoomBooked.Location = new Point(16, 120);
+            lbCountRoomBooked.Name = "lbCountRoomBooked";
+            lbCountRoomBooked.Size = new Size(84, 26);
+            lbCountRoomBooked.TabIndex = 1;
+            lbCountRoomBooked.Text = "10 lượt";
             // 
             // label6
             // 
@@ -123,25 +119,25 @@
             // panel2
             // 
             panel2.BackColor = Color.LightSalmon;
-            panel2.Controls.Add(label3);
+            panel2.Controls.Add(lbServiceRevenue);
             panel2.Controls.Add(label4);
             panel2.Dock = DockStyle.Fill;
-            panel2.Location = new Point(356, 10);
+            panel2.Location = new Point(407, 10);
             panel2.Margin = new Padding(10);
             panel2.Name = "panel2";
-            panel2.Size = new Size(326, 169);
+            panel2.Size = new Size(338, 169);
             panel2.TabIndex = 1;
             // 
-            // label3
+            // lbServiceRevenue
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.ForeColor = SystemColors.ButtonHighlight;
-            label3.Location = new Point(16, 120);
-            label3.Name = "label3";
-            label3.Size = new Size(170, 26);
-            label3.TabIndex = 1;
-            label3.Text = "1,000,000 VND";
+            lbServiceRevenue.AutoSize = true;
+            lbServiceRevenue.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbServiceRevenue.ForeColor = SystemColors.ButtonHighlight;
+            lbServiceRevenue.Location = new Point(16, 120);
+            lbServiceRevenue.Name = "lbServiceRevenue";
+            lbServiceRevenue.Size = new Size(170, 26);
+            lbServiceRevenue.TabIndex = 1;
+            lbServiceRevenue.Text = "1,000,000 VND";
             // 
             // label4
             // 
@@ -157,26 +153,25 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.MenuHighlight;
-            panel1.Controls.Add(label2);
+            panel1.Controls.Add(lbRoomRevenue);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(10, 10);
             panel1.Margin = new Padding(10);
             panel1.Name = "panel1";
-            panel1.Size = new Size(326, 169);
+            panel1.Size = new Size(377, 169);
             panel1.TabIndex = 0;
             // 
-            // label2
+            // lbRoomRevenue
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.ForeColor = SystemColors.ButtonHighlight;
-            label2.Location = new Point(16, 120);
-            label2.Name = "label2";
-            label2.Size = new Size(170, 26);
-            label2.TabIndex = 1;
-            label2.Text = "1,000,000 VND";
-            label2.Click += label2_Click;
+            lbRoomRevenue.AutoSize = true;
+            lbRoomRevenue.Font = new Font("Arial", 13.8F, FontStyle.Regular, GraphicsUnit.Point);
+            lbRoomRevenue.ForeColor = SystemColors.ButtonHighlight;
+            lbRoomRevenue.Location = new Point(16, 120);
+            lbRoomRevenue.Name = "lbRoomRevenue";
+            lbRoomRevenue.Size = new Size(170, 26);
+            lbRoomRevenue.TabIndex = 1;
+            lbRoomRevenue.Text = "1,000,000 VND";
             // 
             // label1
             // 
@@ -188,25 +183,6 @@
             label1.Size = new Size(246, 33);
             label1.TabIndex = 0;
             label1.Text = "Doanh thu phòng";
-            // 
-            // materialButton1
-            // 
-            materialButton1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            materialButton1.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            materialButton1.Depth = 0;
-            materialButton1.HighEmphasis = true;
-            materialButton1.Icon = null;
-            materialButton1.Location = new Point(1042, 6);
-            materialButton1.Margin = new Padding(4, 6, 4, 6);
-            materialButton1.MouseState = MaterialSkin.MouseState.HOVER;
-            materialButton1.Name = "materialButton1";
-            materialButton1.NoAccentTextColor = Color.Empty;
-            materialButton1.Size = new Size(65, 36);
-            materialButton1.TabIndex = 3;
-            materialButton1.Text = "Excel";
-            materialButton1.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            materialButton1.UseAccentColor = false;
-            materialButton1.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -223,12 +199,11 @@
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel2.Size = new Size(1154, 452);
             tableLayoutPanel2.TabIndex = 1;
-            tableLayoutPanel2.Paint += tableLayoutPanel2_Paint;
             // 
             // panel5
             // 
-            panel5.Controls.Add(chartGrossRevenue);
-            panel5.Controls.Add(comboBox2);
+            panel5.Controls.Add(chartLine);
+            panel5.Controls.Add(cbxYear);
             panel5.Controls.Add(label8);
             panel5.Dock = DockStyle.Fill;
             panel5.Location = new Point(461, 0);
@@ -237,41 +212,44 @@
             panel5.Size = new Size(683, 452);
             panel5.TabIndex = 1;
             // 
-            // chartGrossRevenue
+            // chartLine
             // 
+            chartArea1.BorderWidth = 2;
             chartArea1.Name = "ChartArea1";
-            chartGrossRevenue.ChartAreas.Add(chartArea1);
-            chartGrossRevenue.Dock = DockStyle.Fill;
-            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Top;
-            legend1.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            legend1.IsTextAutoFit = false;
+            chartLine.ChartAreas.Add(chartArea1);
+            chartLine.Dock = DockStyle.Fill;
+            legend1.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
             legend1.Name = "Legend1";
-            chartGrossRevenue.Legends.Add(legend1);
-            chartGrossRevenue.Location = new Point(0, 48);
-            chartGrossRevenue.Margin = new Padding(5);
-            chartGrossRevenue.Name = "chartGrossRevenue";
+            chartLine.Legends.Add(legend1);
+            chartLine.Location = new Point(0, 48);
+            chartLine.Name = "chartLine";
             series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.SplineArea;
+            series1.IsValueShownAsLabel = true;
+            series1.LabelBorderWidth = 3;
+            series1.LabelToolTip = "data";
             series1.Legend = "Legend1";
+            series1.MarkerBorderWidth = 3;
+            series1.MarkerColor = Color.FromArgb(255, 128, 0);
+            series1.MarkerSize = 10;
+            series1.MarkerStyle = System.Windows.Forms.DataVisualization.Charting.MarkerStyle.Circle;
             series1.Name = "Series1";
-            chartGrossRevenue.Series.Add(series1);
-            chartGrossRevenue.Size = new Size(683, 404);
-            chartGrossRevenue.TabIndex = 14;
-            chartGrossRevenue.Text = "chartGrossRevenue";
-            title1.Alignment = ContentAlignment.TopLeft;
-            title1.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            title1.Name = "Title1";
-            title1.Text = "Gross revenue";
-            chartGrossRevenue.Titles.Add(title1);
+            chartLine.Series.Add(series1);
+            chartLine.Size = new Size(683, 404);
+            chartLine.TabIndex = 3;
+            chartLine.Text = "chart1";
             // 
-            // comboBox2
+            // cbxYear
             // 
-            comboBox2.Dock = DockStyle.Top;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(0, 20);
-            comboBox2.Margin = new Padding(0, 10, 0, 0);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(683, 28);
-            comboBox2.TabIndex = 2;
+            cbxYear.Dock = DockStyle.Top;
+            cbxYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxYear.FormattingEnabled = true;
+            cbxYear.Location = new Point(0, 20);
+            cbxYear.Margin = new Padding(0, 10, 0, 0);
+            cbxYear.Name = "cbxYear";
+            cbxYear.Size = new Size(683, 28);
+            cbxYear.TabIndex = 2;
+            cbxYear.SelectedIndexChanged += cbxYear_SelectedIndexChanged;
             // 
             // label8
             // 
@@ -286,8 +264,8 @@
             // 
             // panel4
             // 
-            panel4.Controls.Add(chartTopProducts);
-            panel4.Controls.Add(comboBox1);
+            panel4.Controls.Add(chartPie);
+            panel4.Controls.Add(cbxMonth);
             panel4.Controls.Add(label7);
             panel4.Dock = DockStyle.Fill;
             panel4.Location = new Point(10, 0);
@@ -296,45 +274,36 @@
             panel4.Size = new Size(451, 452);
             panel4.TabIndex = 0;
             // 
-            // chartTopProducts
+            // chartPie
             // 
             chartArea2.Name = "ChartArea1";
-            chartTopProducts.ChartAreas.Add(chartArea2);
-            chartTopProducts.Dock = DockStyle.Fill;
+            chartPie.ChartAreas.Add(chartArea2);
+            chartPie.Dock = DockStyle.Fill;
             legend2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            legend2.Font = new Font("Microsoft Sans Serif", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            legend2.IsTextAutoFit = false;
             legend2.Name = "Legend1";
-            chartTopProducts.Legends.Add(legend2);
-            chartTopProducts.Location = new Point(0, 48);
-            chartTopProducts.Margin = new Padding(5);
-            chartTopProducts.Name = "chartTopProducts";
+            chartPie.Legends.Add(legend2);
+            chartPie.Location = new Point(0, 48);
+            chartPie.Name = "chartPie";
             series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Doughnut;
-            series2.Font = new Font("Microsoft Sans Serif", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            series2.IsValueShownAsLabel = true;
-            series2.LabelForeColor = Color.White;
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series2.Legend = "Legend1";
             series2.Name = "Series1";
-            chartTopProducts.Series.Add(series2);
-            chartTopProducts.Size = new Size(451, 404);
-            chartTopProducts.TabIndex = 15;
-            chartTopProducts.Text = "chartTopProducts";
-            title2.Alignment = ContentAlignment.TopLeft;
-            title2.Font = new Font("Microsoft Sans Serif", 15F, FontStyle.Regular, GraphicsUnit.Point);
-            title2.Name = "Title1";
-            title2.Text = "5 Best selling products";
-            chartTopProducts.Titles.Add(title2);
+            chartPie.Series.Add(series2);
+            chartPie.Size = new Size(451, 404);
+            chartPie.TabIndex = 2;
+            chartPie.Text = "chart2";
             // 
-            // comboBox1
+            // cbxMonth
             // 
-            comboBox1.Dock = DockStyle.Top;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(0, 20);
-            comboBox1.Margin = new Padding(0, 10, 0, 0);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(451, 28);
-            comboBox1.TabIndex = 1;
+            cbxMonth.Dock = DockStyle.Top;
+            cbxMonth.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbxMonth.FormattingEnabled = true;
+            cbxMonth.Location = new Point(0, 20);
+            cbxMonth.Margin = new Padding(0, 10, 0, 0);
+            cbxMonth.Name = "cbxMonth";
+            cbxMonth.Size = new Size(451, 28);
+            cbxMonth.TabIndex = 1;
+            cbxMonth.SelectedIndexChanged += cbxMonth_SelectedIndexChanged;
             // 
             // label7
             // 
@@ -359,7 +328,6 @@
             Name = "StatisticsUI";
             Text = "Store statistics";
             tableLayoutPanel1.ResumeLayout(false);
-            tableLayoutPanel1.PerformLayout();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             panel2.ResumeLayout(false);
@@ -369,10 +337,10 @@
             tableLayoutPanel2.ResumeLayout(false);
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)chartGrossRevenue).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chartLine).EndInit();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)chartTopProducts).EndInit();
+            ((System.ComponentModel.ISupportInitialize)chartPie).EndInit();
             ResumeLayout(false);
         }
 
@@ -381,22 +349,21 @@
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panel1;
         private Label label1;
-        private Label label2;
+        private Label lbRoomRevenue;
         private Panel panel3;
-        private Label label5;
+        private Label lbCountRoomBooked;
         private Label label6;
         private Panel panel2;
-        private Label label3;
+        private Label lbServiceRevenue;
         private Label label4;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel4;
-        private ComboBox comboBox1;
+        private ComboBox cbxMonth;
         private Label label7;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartTopProducts;
         private Panel panel5;
         private Label label8;
-        private MaterialSkin.Controls.MaterialButton materialButton1;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chartGrossRevenue;
-        private ComboBox comboBox2;
+        private ComboBox cbxYear;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartLine;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chartPie;
     }
 }
