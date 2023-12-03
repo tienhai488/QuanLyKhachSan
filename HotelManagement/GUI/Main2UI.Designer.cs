@@ -30,6 +30,7 @@ namespace HotelManagement.GUI
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main2UI));
             tableLayoutPanel1 = new TableLayoutPanel();
             panelB = new Panel();
             flowLayoutPanel1 = new FlowLayoutPanel();
@@ -372,11 +373,12 @@ namespace HotelManagement.GUI
             Controls.Add(tableLayoutPanel1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             FormStyle = FormStyles.ActionBar_64;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "Main2UI";
             Padding = new Padding(3, 88, 0, 0);
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "THE GRAND HOTEL BUDAPEST";
+            Text = "THE GRAND BUDAPEST HOTEL ";
             tableLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
