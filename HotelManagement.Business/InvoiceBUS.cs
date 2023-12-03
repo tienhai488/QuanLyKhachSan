@@ -148,7 +148,11 @@ namespace HotelManagement.Business
 
         public int getYearMin()
         {
-            return getAll().Where(item => item.PaidTime.Year != 1).Min(item => item.PaidTime.Year); 
+            if (getAll().Count > 0)
+            {
+                return getAll().Where(item => item.PaidTime.Year != 1).Min(item => item.PaidTime.Year);
+            }
+            return DateTime.Now.Year;
         }
 
         
