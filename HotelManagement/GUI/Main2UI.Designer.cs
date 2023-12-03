@@ -30,6 +30,7 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             panel1 = new Panel();
+            btnLogout = new MaterialSkin.Controls.MaterialButton();
             btnStatistic = new MaterialSkin.Controls.MaterialButton();
             btnAccount = new MaterialSkin.Controls.MaterialButton();
             btnStaff = new MaterialSkin.Controls.MaterialButton();
@@ -66,6 +67,7 @@
             // panel1
             // 
             panel1.BackColor = Color.White;
+            panel1.Controls.Add(btnLogout);
             panel1.Controls.Add(btnStatistic);
             panel1.Controls.Add(btnAccount);
             panel1.Controls.Add(btnStaff);
@@ -84,6 +86,30 @@
             panel1.Padding = new Padding(3);
             panel1.Size = new Size(165, 912);
             panel1.TabIndex = 1;
+            // 
+            // btnLogout
+            // 
+            btnLogout.AutoSize = false;
+            btnLogout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnLogout.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnLogout.Depth = 0;
+            btnLogout.Dock = DockStyle.Bottom;
+            btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogout.HighEmphasis = true;
+            btnLogout.Icon = Properties.Resources.icons8_graph_48;
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(3, 854);
+            btnLogout.Margin = new Padding(0, 3, 0, 3);
+            btnLogout.MouseState = MaterialSkin.MouseState.HOVER;
+            btnLogout.Name = "btnLogout";
+            btnLogout.NoAccentTextColor = Color.Empty;
+            btnLogout.Size = new Size(159, 55);
+            btnLogout.TabIndex = 10;
+            btnLogout.Text = "LOGOUT";
+            btnLogout.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnLogout.UseAccentColor = true;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
             // 
             // btnStatistic
             // 
@@ -338,7 +364,7 @@
             // 
             // Main2UI
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(236, 64, 122);
             ClientSize = new Size(1600, 1000);
@@ -370,5 +396,6 @@
         private MaterialSkin.Controls.MaterialButton btnInvoice;
         private MaterialSkin.Controls.MaterialButton btnRentDetail;
         private MaterialSkin.Controls.MaterialButton btnReservation;
+        private MaterialSkin.Controls.MaterialButton btnLogout;
     }
 }
