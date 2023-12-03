@@ -105,7 +105,7 @@
             panel4.Controls.Add(panelRoomClean);
             panel4.Controls.Add(label3);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 450);
+            panel4.Location = new Point(0, 461);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
             panel4.Padding = new Padding(17, 20, 17, 20);
@@ -218,7 +218,7 @@
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
             panel3.Padding = new Padding(17, 20, 17, 20);
-            panel3.Size = new Size(222, 221);
+            panel3.Size = new Size(222, 232);
             panel3.TabIndex = 1;
             // 
             // panelRoomType
@@ -228,7 +228,7 @@
             panelRoomType.Dock = DockStyle.Fill;
             panelRoomType.Location = new Point(17, 57);
             panelRoomType.Name = "panelRoomType";
-            panelRoomType.Size = new Size(188, 144);
+            panelRoomType.Size = new Size(188, 155);
             panelRoomType.TabIndex = 0;
             // 
             // materialRadioButton1
