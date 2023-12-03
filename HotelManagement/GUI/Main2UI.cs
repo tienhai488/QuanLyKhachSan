@@ -318,57 +318,68 @@ namespace HotelManagement.GUI
         }
         private void btnhome_Click(object sender, EventArgs e)
         {
+            this.Text = "THE GRAND BUDAPEST HOTEL";
             AddHomeForm();
         }
 
         private void btnReservation_Click(object sender, EventArgs e)
         {
+            this.Text = "RESERVATION";
             AddReservationForm();
         }
 
         private void btnRentDetail_Click(object sender, EventArgs e)
         {
+            this.Text = "RENT DETAIL";
             AddRentRoomsForm();
         }
 
         private void btnInvoice_Click(object sender, EventArgs e)
         {
+            this.Text = "INVOICE";
             AddInvoiceListForm();
         }
 
         private void btnRoom_Click(object sender, EventArgs e)
         {
+            this.Text = "ROOM";
             AddRoomForm();
         }
 
         private void btnService_Click(object sender, EventArgs e)
         {
+            this.Text = "SERVICE";
             AddServiceForm();
         }
 
         private void btnCustomer_Click(object sender, EventArgs e)
         {
+            this.Text = "CUSTOMER";
             AddCustomerForm();
         }
 
         private void btnStaff_Click(object sender, EventArgs e)
         {
+            this.Text = "STAFF";
             AddStaffOrRoleForm();
         }
 
         private void btnAccount_Click(object sender, EventArgs e)
         {
+            this.Text = "ACCOUNT";
             AddAccountOrPermissionGroupForm();
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)
         {
+            this.Text = "STATISTIC";
             AddStatistic2Form();
         }
 
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            this.Text = "THE GRAND BUDAPEST HOTEL";
             if (MessageBox.Show("Bạn có chắc chắn muốn thoát không!", "Đăng xuất", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.Close();
