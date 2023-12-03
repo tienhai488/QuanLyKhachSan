@@ -28,11 +28,12 @@ namespace HotelManagement.GUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(
-            Primary.Pink800,   // Main background color
-            Primary.Purple900, // Darker background color
-            Primary.Purple500, // Accent background color
-            Accent.Amber200,   // Warm accent color for highlights
-            TextShade.WHITE);    // Text color
+                Primary.Pink700,      // Main background color (Deeper Pink)
+                Primary.Purple400,    // Darker background color
+                Primary.Purple300,    // Slightly lighter accent background color
+                Accent.Orange400,     // Warm accent color for highlights
+                TextShade.WHITE       // Light text color for better readability
+            );
             addForm();
         }
 
@@ -107,14 +108,21 @@ namespace HotelManagement.GUI
                 || LoginBO.IsPermissionGranted(Permission.ReadRoomType)
                 || LoginBO.IsPermissionGranted(Permission.ReadConvenient))
             {
-                ServiceUI serviceForm = new ServiceUI();
+                /*ServiceUI serviceForm = new ServiceUI();
                 serviceForm.TopLevel = false;
                 serviceForm.FormBorderStyle = FormBorderStyle.None;
                 serviceForm.Dock = DockStyle.Fill;
                 serviceForm.Show();
-                tabPage5.Controls.Add(serviceForm);
+                tabPage5.Controls.Add(serviceForm);*/
+
+                RoomUI rForm = new RoomUI();
+                rForm.TopLevel = false;
+                rForm.FormBorderStyle = FormBorderStyle.None;
+                rForm.Dock = DockStyle.Fill;
+                rForm.Show();
+                tabPage5.Controls.Add(rForm);
             }
-            else PermissionRequired(tabPage7);
+            else PermissionRequired(tabPage5);
         }
 
         private void AddServiceForm()

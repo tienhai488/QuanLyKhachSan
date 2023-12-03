@@ -78,100 +78,40 @@ namespace HotelManagement.GUI
         }
         #endregion
 
-        #region event
-        private void btnAddService_Click(object sender, EventArgs e)
+        #region serviceType
+
+        private void mbtnDelFilterTypeID_Click(object sender, EventArgs e)
         {
-            int index = 1;
-            if (serviceBUS.getLengthService() > 0)
-            {
-                index = serviceBUS.getAllService().Max(item => Functions.convertIdToInteger(item.Id, "SE")) + 1;
-            }
-            string id = "SE" + index.ToString("D3");
-            ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
-            serviceInfoUI.fillData(id, "", 0, "", "", "Thêm dịch vụ");
-            serviceInfoUI.Show();
+            cbxFilterTypeID.Text = String.Empty;
         }
 
-        private void btnUpdateService_Click(object sender, EventArgs e)
+        private void mbtnDelFilterTypeName_Click(object sender, EventArgs e)
         {
-            int selectedCellCount =
-dtgvService.SelectedCells.Count;
-            if (selectedCellCount > 0)
-            {
-                DataGridViewCell selectedCell = dtgvService.SelectedCells[0];
-
-                DataGridViewRow selectedRow = selectedCell.OwningRow;
-
-                if (!selectedRow.IsNewRow)
-                {
-                    string id = selectedRow.Cells[0].Value.ToString();
-                    string name = selectedRow.Cells[1].Value.ToString();
-                    double unitPrice = Double.Parse(selectedRow.Cells[3].Value.ToString());
-                    string unit = selectedRow.Cells[4].Value.ToString();
-                    string serviceTypeName = selectedRow.Cells[2].Value.ToString();
-
-                    ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
-
-                    serviceInfoUI.fillData(id, name, unitPrice, unit, serviceTypeName, "Lưu thông tin");
-                    serviceInfoUI.Show();
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn dịch vụ muốn cập nhập!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn dịch vụ muốn cập nhập!");
-            }
+            cbxFilterTypeName.Text = String.Empty;
         }
 
-        private void btnDeleteService_Click(object sender, EventArgs e)
+        private void mbtnDeleteAllFilterType_Click(object sender, EventArgs e)
         {
-            int selectedCellCount =
-        dtgvService.SelectedCells.Count;
-            if (selectedCellCount > 0)
-            {
-                DataGridViewCell selectedCell = dtgvService.SelectedCells[0];
-
-                // Lấy dòng chứa ô đó
-                DataGridViewRow selectedRow = selectedCell.OwningRow;
-                // Lấy dòng được chọn (lấy dòng đầu tiên nếu có nhiều dòng được chọn)
-
-                if (!selectedRow.IsNewRow)
-                {
-                    string id = selectedRow.Cells[0].Value.ToString();
-                    if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa dịch vụ", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        if(useServiceDetailBUS.getLengthUseServiceById(id) > 0)
-                        {
-                            MessageBox.Show("Thông tin dịch vụ đã được sử dụng! Vui lòng kiểm tra lại!");
-                            return;
-                        }
-                        int result = serviceBUS.deleteService(id);
-                        if (result == 0)
-                        {
-                            MessageBox.Show("Xóa dịch vụ không thành công!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Xóa dịch vụ thành công!");
-                            initServiceTable();
-                        }
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chọn dịch vụ muốn xóa!");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Vui lòng chọn dịch vụ muốn xóa!");
-            }
+            cbxFilterTypeID.Text = String.Empty;
+            cbxFilterTypeName.Text = String.Empty;
         }
 
-        private void btnAddType_Click(object sender, EventArgs e)
+        private void mbtnFilterType_Click(object sender, EventArgs e)
+        {
+            string id = cbxFilterTypeID.Text;
+            string name = cbxFilterTypeName.Text;
+
+
+            bindingSourceServiceType.Filter = @$"
+            `Mã Loại` like '%{id}%' and
+            `Tên Loại` like '%{name}%'
+            ";
+
+            dtgvType.DataSource = bindingSourceServiceType;
+            initCbxFilterAllServiceType();
+        }
+
+        private void mbtnAddType_Click(object sender, EventArgs e)
         {
             int index = 1;
             if (serviceBUS.getLengthType() > 0)
@@ -184,10 +124,9 @@ dtgvService.SelectedCells.Count;
             ui.Show();
         }
 
-        private void btnUpdateType_Click(object sender, EventArgs e)
+        private void mbtnUpdateType_Click(object sender, EventArgs e)
         {
-            int selectedCellCount =
-dtgvType.SelectedCells.Count;
+            int selectedCellCount = dtgvType.SelectedCells.Count;
             if (selectedCellCount > 0)
             {
                 DataGridViewCell selectedCell = dtgvType.SelectedCells[0];
@@ -216,10 +155,10 @@ dtgvType.SelectedCells.Count;
             }
         }
 
-        private void btnDeleteType_Click(object sender, EventArgs e)
+        private void mbtnDeleteType_Click(object sender, EventArgs e)
         {
-            int selectedCellCount =
-        dtgvType.SelectedCells.Count;
+
+            int selectedCellCount = dtgvType.SelectedCells.Count;
             if (selectedCellCount > 0)
             {
                 DataGridViewCell selectedCell = dtgvType.SelectedCells[0];
@@ -264,30 +203,32 @@ dtgvType.SelectedCells.Count;
             }
         }
 
+        #endregion
 
-        private void btnDelFilterServiceID_Click(object sender, EventArgs e)
+        #region service
+        private void mbtnDelFilterServiceID_Click(object sender, EventArgs e)
         {
             cbxFilterServiceID.Text = String.Empty;
         }
 
-        private void btnDelFilterServiceName_Click(object sender, EventArgs e)
+        private void mbtnDelFilterServiceName_Click(object sender, EventArgs e)
         {
             cbxFilterServiceName.Text = String.Empty;
         }
 
-        private void btnDelFilterServiceType_Click(object sender, EventArgs e)
+        private void mbtnDelFilterServiceType_Click(object sender, EventArgs e)
         {
             cbxFilterServiceType.Text = String.Empty;
         }
 
-        private void btnDeleteAllFilterService_Click(object sender, EventArgs e)
+        private void mbtnDeleteAllFilterService_Click(object sender, EventArgs e)
         {
             cbxFilterServiceID.Text = String.Empty;
             cbxFilterServiceName.Text = String.Empty;
             cbxFilterServiceType.Text = String.Empty;
         }
 
-        private void btnFilterService_Click(object sender, EventArgs e)
+        private void mbtnFilterService_Click(object sender, EventArgs e)
         {
             string id = cbxFilterServiceID.Text;
             string name = cbxFilterServiceName.Text;
@@ -301,38 +242,96 @@ dtgvType.SelectedCells.Count;
 
             dtgvService.DataSource = bindingSourceService;
             initCbxFilterAllService();
-
         }
 
-        private void btnDelFilterTypeID_Click(object sender, EventArgs e)
+        private void mbtnAddService_Click(object sender, EventArgs e)
         {
-            cbxFilterTypeID.Text = String.Empty;
+            int index = 1;
+            if (serviceBUS.getLengthService() > 0)
+            {
+                index = serviceBUS.getAllService().Max(item => Functions.convertIdToInteger(item.Id, "SE")) + 1;
+            }
+            string id = "SE" + index.ToString("D3");
+            ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
+            serviceInfoUI.fillData(id, "", 0, "", "", "Thêm dịch vụ");
+            serviceInfoUI.Show();
         }
 
-        private void btnDelFilterTypeName_Click(object sender, EventArgs e)
+        private void mbtnUpdateService_Click(object sender, EventArgs e)
         {
-            cbxFilterTypeName.Text = String.Empty;
+            int selectedCellCount = dtgvService.SelectedCells.Count;
+            if (selectedCellCount > 0)
+            {
+                DataGridViewCell selectedCell = dtgvService.SelectedCells[0];
+
+                DataGridViewRow selectedRow = selectedCell.OwningRow;
+
+                if (!selectedRow.IsNewRow)
+                {
+                    string id = selectedRow.Cells[0].Value.ToString();
+                    string name = selectedRow.Cells[1].Value.ToString();
+                    double unitPrice = Double.Parse(selectedRow.Cells[3].Value.ToString());
+                    string unit = selectedRow.Cells[4].Value.ToString();
+                    string serviceTypeName = selectedRow.Cells[2].Value.ToString();
+
+                    ServiceInfoUI serviceInfoUI = new ServiceInfoUI(this);
+
+                    serviceInfoUI.fillData(id, name, unitPrice, unit, serviceTypeName, "Lưu thông tin");
+                    serviceInfoUI.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn dịch vụ muốn cập nhập!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn dịch vụ muốn cập nhập!");
+            }
         }
 
-        private void btnDeleteAllFilterType_Click(object sender, EventArgs e)
+        private void mbtnDeleteService_Click(object sender, EventArgs e)
         {
-            cbxFilterTypeID.Text = String.Empty;
-            cbxFilterTypeName.Text = String.Empty;
-        }
+            int selectedCellCount = dtgvService.SelectedCells.Count;
+            if (selectedCellCount > 0)
+            {
+                DataGridViewCell selectedCell = dtgvService.SelectedCells[0];
 
-        private void btnFilterType_Click(object sender, EventArgs e)
-        {
-            string id = cbxFilterTypeID.Text;
-            string name = cbxFilterTypeName.Text;
+                // Lấy dòng chứa ô đó
+                DataGridViewRow selectedRow = selectedCell.OwningRow;
+                // Lấy dòng được chọn (lấy dòng đầu tiên nếu có nhiều dòng được chọn)
 
-
-            bindingSourceServiceType.Filter = @$"
-            `Mã Loại` like '%{id}%' and
-            `Tên Loại` like '%{name}%'
-            ";
-
-            dtgvType.DataSource = bindingSourceServiceType;
-            initCbxFilterAllServiceType();
+                if (!selectedRow.IsNewRow)
+                {
+                    string id = selectedRow.Cells[0].Value.ToString();
+                    if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa dịch vụ", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        if (useServiceDetailBUS.getLengthUseServiceById(id) > 0)
+                        {
+                            MessageBox.Show("Thông tin dịch vụ đã được sử dụng! Vui lòng kiểm tra lại!");
+                            return;
+                        }
+                        int result = serviceBUS.deleteService(id);
+                        if (result == 0)
+                        {
+                            MessageBox.Show("Xóa dịch vụ không thành công!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Xóa dịch vụ thành công!");
+                            initServiceTable();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chọn dịch vụ muốn xóa!");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn dịch vụ muốn xóa!");
+            }
         }
         #endregion
     }
