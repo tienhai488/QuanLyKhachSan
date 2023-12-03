@@ -95,6 +95,7 @@ namespace HotelManagement.GUI
             btnStaff.Visible = LoginBO.IsPermissionGranted(Permission.ReadStaff) || LoginBO.IsPermissionGranted(Permission.ReadRole);
             btnAccount.Visible = LoginBO.IsPermissionGranted(Permission.ReadAccount) || LoginBO.IsPermissionGranted(Permission.ReadPermissionGroup);
             btnStatistic.Visible = true;
+            btnLogout.Visible = true;
         }
         private void AddHomeForm()
         {
