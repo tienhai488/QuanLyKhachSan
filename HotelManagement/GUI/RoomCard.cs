@@ -50,7 +50,7 @@ namespace HotelManagement.GUI
 
                 RentRoomDetailUI rentRoomDetail = new RentRoomDetailUI(this.rentRoomsUIOld, reservation, this.roomReservationOld, room, labelRoomStatus.Text);
                 rentRoomDetail.Show();
-                //this.rentRoomsUIOld.initFlowLayoutRoom();
+                this.rentRoomsUIOld.initFlowLayoutRoom();
             }
             else
             {
