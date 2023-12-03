@@ -1,4 +1,4 @@
-﻿namespace HotelManagement.GUI
+namespace HotelManagement.GUI
 {
     partial class RoomCard
     {
@@ -41,11 +41,11 @@
             panel1 = new Panel();
             labelRoomStatus = new MaterialSkin.Controls.MaterialLabel();
             labelRoomClean = new MaterialSkin.Controls.MaterialLabel();
-            panel3 = new Panel();
+            panelRoomCard = new Panel();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
             panel1.SuspendLayout();
-            panel3.SuspendLayout();
+            panelRoomCard.SuspendLayout();
             SuspendLayout();
             // 
             // pictureBox1
@@ -68,7 +68,7 @@
             labelRoomID.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelRoomID.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             labelRoomID.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomID.Location = new Point(18, 15);
+            labelRoomID.Location = new Point(14, 14);
             labelRoomID.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomID.Name = "labelRoomID";
             labelRoomID.Size = new Size(90, 24);
@@ -84,7 +84,7 @@
             labelRoomType.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelRoomType.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             labelRoomType.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomType.Location = new Point(231, 15);
+            labelRoomType.Location = new Point(198, 14);
             labelRoomType.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomType.Name = "labelRoomType";
             labelRoomType.Size = new Size(115, 24);
@@ -95,11 +95,11 @@
             // labelFromTime
             // 
             labelFromTime.AutoSize = true;
-            labelFromTime.BackColor = Color.IndianRed;
+            labelFromTime.BackColor = Color.FromArgb(255, 128, 0);
             labelFromTime.Depth = 0;
             labelFromTime.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelFromTime.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
-            labelFromTime.Location = new Point(3, 37);
+            labelFromTime.Location = new Point(18, 37);
             labelFromTime.MouseState = MaterialSkin.MouseState.HOVER;
             labelFromTime.Name = "labelFromTime";
             labelFromTime.Size = new Size(38, 17);
@@ -113,7 +113,7 @@
             labelToTime.Depth = 0;
             labelToTime.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelToTime.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
-            labelToTime.Location = new Point(199, 37);
+            labelToTime.Location = new Point(198, 37);
             labelToTime.MouseState = MaterialSkin.MouseState.HOVER;
             labelToTime.Name = "labelToTime";
             labelToTime.Size = new Size(22, 17);
@@ -142,7 +142,7 @@
             panel2.Controls.Add(labelTagReservationID);
             panel2.Controls.Add(labelMain);
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(18, 42);
+            panel2.Location = new Point(14, 58);
             panel2.Name = "panel2";
             panel2.Size = new Size(331, 93);
             panel2.TabIndex = 37;
@@ -151,48 +151,51 @@
             // labelReservationID
             // 
             labelReservationID.AutoSize = true;
-            labelReservationID.ForeColor = Color.Black;
             labelReservationID.Location = new Point(223, 65);
             labelReservationID.Name = "labelReservationID";
-            labelReservationID.Size = new Size(23, 21);
+            labelReservationID.Size = new Size(29, 28);
             labelReservationID.TabIndex = 34;
             labelReservationID.Text = "id";
+            labelReservationID.DoubleClick += card_DoubleClick;
             // 
             // labelTagReservationID
             // 
             labelTagReservationID.AutoSize = true;
-            labelTagReservationID.ForeColor = Color.Black;
             labelTagReservationID.Location = new Point(81, 65);
             labelTagReservationID.Name = "labelTagReservationID";
-            labelTagReservationID.Size = new Size(110, 21);
+            labelTagReservationID.Size = new Size(136, 28);
             labelTagReservationID.TabIndex = 34;
             labelTagReservationID.Text = "ReservationID:";
+            labelTagReservationID.DoubleClick += card_DoubleClick;
             // 
             // panel1
             // 
-            panel1.BackColor = Color.IndianRed;
+            panel1.BackColor = Color.FromArgb(255, 224, 192);
             panel1.Controls.Add(labelRoomStatus);
             panel1.Controls.Add(labelRoomClean);
             panel1.Controls.Add(labelFromTime);
             panel1.Controls.Add(labelToTime);
-            panel1.Location = new Point(21, 141);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 154);
+            panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(334, 63);
+            panel1.Size = new Size(362, 63);
             panel1.TabIndex = 36;
             panel1.DoubleClick += card_DoubleClick;
             // 
             // labelRoomStatus
             // 
             labelRoomStatus.AutoSize = true;
+            labelRoomStatus.BackColor = SystemColors.Control;
             labelRoomStatus.Depth = 0;
             labelRoomStatus.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             labelRoomStatus.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomStatus.Location = new Point(3, 9);
+            labelRoomStatus.Location = new Point(14, 9);
             labelRoomStatus.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomStatus.Name = "labelRoomStatus";
-            labelRoomStatus.Size = new Size(190, 19);
+            labelRoomStatus.Size = new Size(103, 19);
             labelRoomStatus.TabIndex = 35;
-            labelRoomStatus.Text = "{Room Status Reservation}";
+            labelRoomStatus.Text = "{Room Status}";
             labelRoomStatus.DoubleClick += card_DoubleClick;
             // 
             // labelRoomClean
@@ -201,7 +204,7 @@
             labelRoomClean.Depth = 0;
             labelRoomClean.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             labelRoomClean.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomClean.Location = new Point(199, 9);
+            labelRoomClean.Location = new Point(198, 9);
             labelRoomClean.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomClean.Name = "labelRoomClean";
             labelRoomClean.Size = new Size(147, 19);
@@ -209,38 +212,40 @@
             labelRoomClean.Text = "{Room Status Clean}";
             labelRoomClean.DoubleClick += card_DoubleClick;
             // 
-            // panel3
+            // panelRoomCard
             // 
-            panel3.BackColor = Color.IndianRed;
-            panel3.Controls.Add(panel1);
-            panel3.Controls.Add(panel2);
-            panel3.Controls.Add(labelRoomID);
-            panel3.Controls.Add(labelRoomType);
-            panel3.Dock = DockStyle.Fill;
-            panel3.Location = new Point(0, 0);
-            panel3.Name = "panel3";
-            panel3.Padding = new Padding(15);
-            panel3.Size = new Size(364, 219);
-            panel3.TabIndex = 35;
-            panel3.Click += roomCard_Click;
+            panelRoomCard.BackColor = SystemColors.Control;
+            panelRoomCard.Controls.Add(panel1);
+            panelRoomCard.Controls.Add(labelRoomType);
+            panelRoomCard.Controls.Add(labelRoomID);
+            panelRoomCard.Controls.Add(panel2);
+            panelRoomCard.Dock = DockStyle.Fill;
+            panelRoomCard.Location = new Point(0, 0);
+            panelRoomCard.Name = "panelRoomCard";
+            panelRoomCard.Size = new Size(362, 217);
+            panelRoomCard.TabIndex = 38;
+            panelRoomCard.DoubleClick += card_DoubleClick;
             // 
             // RoomCard
             // 
             AutoScaleMode = AutoScaleMode.None;
+            BackColor = SystemColors.Control;
             BackgroundImageLayout = ImageLayout.Zoom;
-            Controls.Add(panel3);
+            BorderStyle = BorderStyle.FixedSingle;
+            Controls.Add(panelRoomCard);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             ForeColor = Color.FromArgb(74, 20, 140);
             Margin = new Padding(10);
             Name = "RoomCard";
-            Size = new Size(364, 219);
+            Size = new Size(362, 217);
+            DoubleClick += card_DoubleClick;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            panelRoomCard.ResumeLayout(false);
+            panelRoomCard.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -257,6 +262,6 @@
         private Panel panel2;
         private Label labelTagReservationID;
         private Label labelReservationID;
-        private Panel panel3;
+        private Panel panelRoomCard;
     }
 }
