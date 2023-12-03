@@ -1,4 +1,6 @@
-﻿namespace HotelManagement.GUI
+﻿using System.Windows.Forms;
+
+namespace HotelManagement.GUI
 {
     partial class Main2UI
     {
@@ -30,19 +32,18 @@
         {
             tableLayoutPanel1 = new TableLayoutPanel();
             panelB = new Panel();
-            panel1 = new Panel();
-            btnLogout = new MaterialSkin.Controls.MaterialButton();
-            btnStatistic = new MaterialSkin.Controls.MaterialButton();
-            btnAccount = new MaterialSkin.Controls.MaterialButton();
-            btnStaff = new MaterialSkin.Controls.MaterialButton();
-            btnCustomer = new MaterialSkin.Controls.MaterialButton();
-            btnService = new MaterialSkin.Controls.MaterialButton();
-            btnRoom = new MaterialSkin.Controls.MaterialButton();
-            btnInvoice = new MaterialSkin.Controls.MaterialButton();
             flowLayoutPanel1 = new FlowLayoutPanel();
             btnhome = new MaterialSkin.Controls.MaterialButton();
             btnReservation = new MaterialSkin.Controls.MaterialButton();
             btnRentDetail = new MaterialSkin.Controls.MaterialButton();
+            btnInvoice = new MaterialSkin.Controls.MaterialButton();
+            btnRoom = new MaterialSkin.Controls.MaterialButton();
+            btnService = new MaterialSkin.Controls.MaterialButton();
+            btnCustomer = new MaterialSkin.Controls.MaterialButton();
+            btnStaff = new MaterialSkin.Controls.MaterialButton();
+            btnAccount = new MaterialSkin.Controls.MaterialButton();
+            btnStatistic = new MaterialSkin.Controls.MaterialButton();
+            btnLogout = new MaterialSkin.Controls.MaterialButton();
             tableLayoutPanel1.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
             SuspendLayout();
@@ -75,221 +76,10 @@
             panelB.Name = "panelB";
             panelB.Size = new Size(1432, 912);
             panelB.TabIndex = 0;
-            panel1.BackColor = Color.White;
-            panel1.Controls.Add(btnLogout);
-            panel1.Controls.Add(btnStatistic);
-            panel1.Controls.Add(btnAccount);
-            panel1.Controls.Add(btnStaff);
-            panel1.Controls.Add(btnCustomer);
-            panel1.Controls.Add(btnService);
-            panel1.Controls.Add(btnRoom);
-            panel1.Controls.Add(btnInvoice);
-            panel1.Controls.Add(btnRentDetail);
-            panel1.Controls.Add(btnReservation);
-            panel1.Controls.Add(btnhome);
-            panel1.Dock = DockStyle.Fill;
-            panel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            panel1.Location = new Point(0, 0);
-            panel1.Margin = new Padding(0);
-            panel1.Name = "panel1";
-            panel1.Padding = new Padding(3);
-            panel1.Size = new Size(165, 912);
-            panel1.TabIndex = 1;
-            // 
-            // btnLogout
-            // 
-            btnLogout.AutoSize = false;
-            btnLogout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnLogout.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnLogout.Depth = 0;
-            btnLogout.Dock = DockStyle.Bottom;
-            btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnLogout.HighEmphasis = true;
-            btnLogout.Icon = Properties.Resources.icons8_graph_48;
-            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
-            btnLogout.Location = new Point(3, 854);
-            btnLogout.Margin = new Padding(0, 3, 0, 3);
-            btnLogout.MouseState = MaterialSkin.MouseState.HOVER;
-            btnLogout.Name = "btnLogout";
-            btnLogout.NoAccentTextColor = Color.Empty;
-            btnLogout.Size = new Size(159, 55);
-            btnLogout.TabIndex = 10;
-            btnLogout.Text = "LOGOUT";
-            btnLogout.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnLogout.UseAccentColor = true;
-            btnLogout.UseVisualStyleBackColor = true;
-            btnLogout.Click += btnLogout_Click;
-            // 
-            // btnStatistic
-            // 
-            btnStatistic.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnStatistic.AutoSize = false;
-            btnStatistic.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnStatistic.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnStatistic.Depth = 0;
-            btnStatistic.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStatistic.HighEmphasis = true;
-            btnStatistic.Icon = Properties.Resources.icons8_graph_48;
-            btnStatistic.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStatistic.Location = new Point(3, 555);
-            btnStatistic.Margin = new Padding(0, 3, 0, 3);
-            btnStatistic.MouseState = MaterialSkin.MouseState.HOVER;
-            btnStatistic.Name = "btnStatistic";
-            btnStatistic.NoAccentTextColor = Color.Empty;
-            btnStatistic.Size = new Size(159, 55);
-            btnStatistic.TabIndex = 10;
-            btnStatistic.Text = "STATISTIC";
-            btnStatistic.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnStatistic.UseAccentColor = true;
-            btnStatistic.UseVisualStyleBackColor = true;
-            btnStatistic.Click += btnStatistic_Click;
-            // 
-            // btnAccount
-            // 
-            btnAccount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnAccount.AutoSize = false;
-            btnAccount.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnAccount.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnAccount.Depth = 0;
-            btnAccount.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnAccount.HighEmphasis = true;
-            btnAccount.Icon = Properties.Resources.icons8_change_user_48;
-            btnAccount.ImageAlign = ContentAlignment.MiddleLeft;
-            btnAccount.Location = new Point(3, 494);
-            btnAccount.Margin = new Padding(0, 3, 0, 3);
-            btnAccount.MouseState = MaterialSkin.MouseState.HOVER;
-            btnAccount.Name = "btnAccount";
-            btnAccount.NoAccentTextColor = Color.Empty;
-            btnAccount.Size = new Size(159, 55);
-            btnAccount.TabIndex = 9;
-            btnAccount.Text = "ACCOUNT";
-            btnAccount.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnAccount.UseAccentColor = true;
-            btnAccount.UseVisualStyleBackColor = true;
-            btnAccount.Click += btnAccount_Click;
-            // 
-            // btnStaff
-            // 
-            btnStaff.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnStaff.AutoSize = false;
-            btnStaff.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnStaff.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnStaff.Depth = 0;
-            btnStaff.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnStaff.HighEmphasis = true;
-            btnStaff.Icon = Properties.Resources.icons8_valet_48;
-            btnStaff.ImageAlign = ContentAlignment.MiddleLeft;
-            btnStaff.Location = new Point(3, 433);
-            btnStaff.Margin = new Padding(0, 3, 0, 3);
-            btnStaff.MouseState = MaterialSkin.MouseState.HOVER;
-            btnStaff.Name = "btnStaff";
-            btnStaff.NoAccentTextColor = Color.Empty;
-            btnStaff.Size = new Size(159, 55);
-            btnStaff.TabIndex = 8;
-            btnStaff.Text = "STAFF";
-            btnStaff.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnStaff.UseAccentColor = true;
-            btnStaff.UseVisualStyleBackColor = true;
-            btnStaff.Click += btnStaff_Click;
-            // 
-            // btnCustomer
-            // 
-            btnCustomer.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnCustomer.AutoSize = false;
-            btnCustomer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnCustomer.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnCustomer.Depth = 0;
-            btnCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnCustomer.HighEmphasis = true;
-            btnCustomer.Icon = Properties.Resources.icons8_customer_48;
-            btnCustomer.ImageAlign = ContentAlignment.MiddleLeft;
-            btnCustomer.Location = new Point(3, 372);
-            btnCustomer.Margin = new Padding(0, 3, 0, 3);
-            btnCustomer.MouseState = MaterialSkin.MouseState.HOVER;
-            btnCustomer.Name = "btnCustomer";
-            btnCustomer.NoAccentTextColor = Color.Empty;
-            btnCustomer.Size = new Size(159, 55);
-            btnCustomer.TabIndex = 7;
-            btnCustomer.Text = "CUSTOMER";
-            btnCustomer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnCustomer.UseAccentColor = true;
-            btnCustomer.UseVisualStyleBackColor = true;
-            btnCustomer.Click += btnCustomer_Click;
-            // 
-            // btnService
-            // 
-            btnService.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnService.AutoSize = false;
-            btnService.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnService.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnService.Depth = 0;
-            btnService.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnService.HighEmphasis = true;
-            btnService.Icon = Properties.Resources.icons8_janitor_48;
-            btnService.ImageAlign = ContentAlignment.MiddleLeft;
-            btnService.Location = new Point(3, 311);
-            btnService.Margin = new Padding(0, 3, 0, 3);
-            btnService.MouseState = MaterialSkin.MouseState.HOVER;
-            btnService.Name = "btnService";
-            btnService.NoAccentTextColor = Color.Empty;
-            btnService.Size = new Size(159, 55);
-            btnService.TabIndex = 6;
-            btnService.Text = "SERVICE";
-            btnService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnService.UseAccentColor = true;
-            btnService.UseVisualStyleBackColor = true;
-            btnService.Click += btnService_Click;
-            // 
-            // btnRoom
-            // 
-            btnRoom.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnRoom.AutoSize = false;
-            btnRoom.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnRoom.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnRoom.Depth = 0;
-            btnRoom.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRoom.HighEmphasis = true;
-            btnRoom.Icon = Properties.Resources.icons8_bedroom_48;
-            btnRoom.ImageAlign = ContentAlignment.MiddleLeft;
-            btnRoom.Location = new Point(3, 250);
-            btnRoom.Margin = new Padding(0, 3, 0, 3);
-            btnRoom.MouseState = MaterialSkin.MouseState.HOVER;
-            btnRoom.Name = "btnRoom";
-            btnRoom.NoAccentTextColor = Color.Empty;
-            btnRoom.Size = new Size(159, 55);
-            btnRoom.TabIndex = 5;
-            btnRoom.Text = "ROOM";
-            btnRoom.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnRoom.UseAccentColor = true;
-            btnRoom.UseVisualStyleBackColor = true;
-            btnRoom.Click += btnRoom_Click;
-            // 
-            // btnInvoice
-            // 
-            btnInvoice.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            btnInvoice.AutoSize = false;
-            btnInvoice.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            btnInvoice.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            btnInvoice.Depth = 0;
-            btnInvoice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnInvoice.HighEmphasis = true;
-            btnInvoice.Icon = Properties.Resources.icons8_receipt_48;
-            btnInvoice.ImageAlign = ContentAlignment.MiddleLeft;
-            btnInvoice.Location = new Point(3, 189);
-            btnInvoice.Margin = new Padding(0, 3, 0, 3);
-            btnInvoice.MouseState = MaterialSkin.MouseState.HOVER;
-            btnInvoice.Name = "btnInvoice";
-            btnInvoice.NoAccentTextColor = Color.Empty;
-            btnInvoice.Size = new Size(159, 55);
-            btnInvoice.TabIndex = 4;
-            btnInvoice.Text = "INVOICE";
-            btnInvoice.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
-            btnInvoice.UseAccentColor = true;
-            btnInvoice.UseVisualStyleBackColor = true;
-            btnInvoice.Click += btnInvoice_Click;
             // 
             // flowLayoutPanel1
             // 
+            flowLayoutPanel1.BackColor = Color.White;
             flowLayoutPanel1.Controls.Add(btnhome);
             flowLayoutPanel1.Controls.Add(btnReservation);
             flowLayoutPanel1.Controls.Add(btnRentDetail);
@@ -300,7 +90,9 @@
             flowLayoutPanel1.Controls.Add(btnStaff);
             flowLayoutPanel1.Controls.Add(btnAccount);
             flowLayoutPanel1.Controls.Add(btnStatistic);
+            flowLayoutPanel1.Controls.Add(btnLogout);
             flowLayoutPanel1.Dock = DockStyle.Fill;
+            flowLayoutPanel1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Margin = new Padding(0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -380,9 +172,200 @@
             btnRentDetail.UseVisualStyleBackColor = true;
             btnRentDetail.Click += btnRentDetail_Click;
             // 
+            // btnInvoice
+            // 
+            btnInvoice.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnInvoice.AutoSize = false;
+            btnInvoice.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnInvoice.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnInvoice.Depth = 0;
+            btnInvoice.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnInvoice.HighEmphasis = true;
+            btnInvoice.Icon = Properties.Resources.icons8_receipt_48;
+            btnInvoice.ImageAlign = ContentAlignment.MiddleLeft;
+            btnInvoice.Location = new Point(3, 189);
+            btnInvoice.Margin = new Padding(0, 3, 0, 3);
+            btnInvoice.MouseState = MaterialSkin.MouseState.HOVER;
+            btnInvoice.Name = "btnInvoice";
+            btnInvoice.NoAccentTextColor = Color.Empty;
+            btnInvoice.Size = new Size(159, 55);
+            btnInvoice.TabIndex = 4;
+            btnInvoice.Text = "INVOICE";
+            btnInvoice.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnInvoice.UseAccentColor = true;
+            btnInvoice.UseVisualStyleBackColor = true;
+            btnInvoice.Click += btnInvoice_Click;
+            // 
+            // btnRoom
+            // 
+            btnRoom.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnRoom.AutoSize = false;
+            btnRoom.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnRoom.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnRoom.Depth = 0;
+            btnRoom.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnRoom.HighEmphasis = true;
+            btnRoom.Icon = Properties.Resources.icons8_bedroom_48;
+            btnRoom.ImageAlign = ContentAlignment.MiddleLeft;
+            btnRoom.Location = new Point(3, 250);
+            btnRoom.Margin = new Padding(0, 3, 0, 3);
+            btnRoom.MouseState = MaterialSkin.MouseState.HOVER;
+            btnRoom.Name = "btnRoom";
+            btnRoom.NoAccentTextColor = Color.Empty;
+            btnRoom.Size = new Size(159, 55);
+            btnRoom.TabIndex = 5;
+            btnRoom.Text = "ROOM";
+            btnRoom.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnRoom.UseAccentColor = true;
+            btnRoom.UseVisualStyleBackColor = true;
+            btnRoom.Click += btnRoom_Click;
+            // 
+            // btnService
+            // 
+            btnService.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnService.AutoSize = false;
+            btnService.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnService.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnService.Depth = 0;
+            btnService.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnService.HighEmphasis = true;
+            btnService.Icon = Properties.Resources.icons8_janitor_48;
+            btnService.ImageAlign = ContentAlignment.MiddleLeft;
+            btnService.Location = new Point(3, 311);
+            btnService.Margin = new Padding(0, 3, 0, 3);
+            btnService.MouseState = MaterialSkin.MouseState.HOVER;
+            btnService.Name = "btnService";
+            btnService.NoAccentTextColor = Color.Empty;
+            btnService.Size = new Size(159, 55);
+            btnService.TabIndex = 6;
+            btnService.Text = "SERVICE";
+            btnService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnService.UseAccentColor = true;
+            btnService.UseVisualStyleBackColor = true;
+            btnService.Click += btnService_Click;
+            // 
+            // btnCustomer
+            // 
+            btnCustomer.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnCustomer.AutoSize = false;
+            btnCustomer.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnCustomer.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnCustomer.Depth = 0;
+            btnCustomer.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnCustomer.HighEmphasis = true;
+            btnCustomer.Icon = Properties.Resources.icons8_customer_48;
+            btnCustomer.ImageAlign = ContentAlignment.MiddleLeft;
+            btnCustomer.Location = new Point(3, 372);
+            btnCustomer.Margin = new Padding(0, 3, 0, 3);
+            btnCustomer.MouseState = MaterialSkin.MouseState.HOVER;
+            btnCustomer.Name = "btnCustomer";
+            btnCustomer.NoAccentTextColor = Color.Empty;
+            btnCustomer.Size = new Size(159, 55);
+            btnCustomer.TabIndex = 7;
+            btnCustomer.Text = "CUSTOMER";
+            btnCustomer.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnCustomer.UseAccentColor = true;
+            btnCustomer.UseVisualStyleBackColor = true;
+            btnCustomer.Click += btnCustomer_Click;
+            // 
+            // btnStaff
+            // 
+            btnStaff.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnStaff.AutoSize = false;
+            btnStaff.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnStaff.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnStaff.Depth = 0;
+            btnStaff.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStaff.HighEmphasis = true;
+            btnStaff.Icon = Properties.Resources.icons8_valet_48;
+            btnStaff.ImageAlign = ContentAlignment.MiddleLeft;
+            btnStaff.Location = new Point(3, 433);
+            btnStaff.Margin = new Padding(0, 3, 0, 3);
+            btnStaff.MouseState = MaterialSkin.MouseState.HOVER;
+            btnStaff.Name = "btnStaff";
+            btnStaff.NoAccentTextColor = Color.Empty;
+            btnStaff.Size = new Size(159, 55);
+            btnStaff.TabIndex = 8;
+            btnStaff.Text = "STAFF";
+            btnStaff.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnStaff.UseAccentColor = true;
+            btnStaff.UseVisualStyleBackColor = true;
+            btnStaff.Click += btnStaff_Click;
+            // 
+            // btnAccount
+            // 
+            btnAccount.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnAccount.AutoSize = false;
+            btnAccount.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnAccount.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnAccount.Depth = 0;
+            btnAccount.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnAccount.HighEmphasis = true;
+            btnAccount.Icon = Properties.Resources.icons8_change_user_48;
+            btnAccount.ImageAlign = ContentAlignment.MiddleLeft;
+            btnAccount.Location = new Point(3, 494);
+            btnAccount.Margin = new Padding(0, 3, 0, 3);
+            btnAccount.MouseState = MaterialSkin.MouseState.HOVER;
+            btnAccount.Name = "btnAccount";
+            btnAccount.NoAccentTextColor = Color.Empty;
+            btnAccount.Size = new Size(159, 55);
+            btnAccount.TabIndex = 9;
+            btnAccount.Text = "ACCOUNT";
+            btnAccount.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnAccount.UseAccentColor = true;
+            btnAccount.UseVisualStyleBackColor = true;
+            btnAccount.Click += btnAccount_Click;
+            // 
+            // btnStatistic
+            // 
+            btnStatistic.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            btnStatistic.AutoSize = false;
+            btnStatistic.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnStatistic.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnStatistic.Depth = 0;
+            btnStatistic.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnStatistic.HighEmphasis = true;
+            btnStatistic.Icon = Properties.Resources.icons8_graph_48;
+            btnStatistic.ImageAlign = ContentAlignment.MiddleLeft;
+            btnStatistic.Location = new Point(3, 555);
+            btnStatistic.Margin = new Padding(0, 3, 0, 3);
+            btnStatistic.MouseState = MaterialSkin.MouseState.HOVER;
+            btnStatistic.Name = "btnStatistic";
+            btnStatistic.NoAccentTextColor = Color.Empty;
+            btnStatistic.Size = new Size(159, 55);
+            btnStatistic.TabIndex = 10;
+            btnStatistic.Text = "STATISTIC";
+            btnStatistic.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnStatistic.UseAccentColor = true;
+            btnStatistic.UseVisualStyleBackColor = true;
+            btnStatistic.Click += btnStatistic_Click;
+            // 
+            // btnLogout
+            // 
+            btnLogout.AutoSize = false;
+            btnLogout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            btnLogout.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            btnLogout.Depth = 0;
+            btnLogout.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogout.HighEmphasis = true;
+            btnLogout.Icon = Properties.Resources.icons8_logout_48;
+            btnLogout.ImageAlign = ContentAlignment.MiddleLeft;
+            btnLogout.Location = new Point(3, 616);
+            btnLogout.Margin = new Padding(0, 3, 0, 3);
+            btnLogout.MouseState = MaterialSkin.MouseState.HOVER;
+            btnLogout.Name = "btnLogout";
+            btnLogout.NoAccentTextColor = Color.Empty;
+            btnLogout.Size = new Size(159, 55);
+            btnLogout.TabIndex = 10;
+            btnLogout.Text = "LOGOUT";
+            btnLogout.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Text;
+            btnLogout.UseAccentColor = true;
+            btnLogout.UseVisualStyleBackColor = true;
+            btnLogout.Click += btnLogout_Click;
+            // 
             // Main2UI
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(236, 64, 122);
             ClientSize = new Size(1600, 1000);
@@ -393,7 +376,7 @@
             Name = "Main2UI";
             Padding = new Padding(3, 88, 0, 0);
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Main2UI";
+            Text = "THE GRAND HOTEL BUDAPEST";
             tableLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);
             ResumeLayout(false);
