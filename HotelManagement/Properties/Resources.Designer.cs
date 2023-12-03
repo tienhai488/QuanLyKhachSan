@@ -73,6 +73,16 @@ namespace HotelManagement.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_cash_94 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-cash-94", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_change_user_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-change-user-48", resourceCulture);
@@ -86,6 +96,16 @@ namespace HotelManagement.Properties {
         internal static System.Drawing.Bitmap icons8_customer_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-customer-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_door_94 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-door-94", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -146,6 +166,16 @@ namespace HotelManagement.Properties {
         internal static System.Drawing.Bitmap icons8_receipt_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8-receipt-48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_sales_performance_94 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-sales-performance-94", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
