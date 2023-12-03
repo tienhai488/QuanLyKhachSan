@@ -24,7 +24,7 @@ namespace HotelManagement
             Application.SetCompatibleTextRenderingDefault(false);
             Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
 
-            Application.Run(new StatisticsUI());
+            Application.Run(new LoginUI());
         }
 
         private static void VerifyRootAccountValid()

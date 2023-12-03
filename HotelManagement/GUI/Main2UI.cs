@@ -306,7 +306,7 @@ namespace HotelManagement.GUI
             if (activeForm != null)
                 activeForm.Close();
             panelB.Controls.Clear();
-            StatisticsUI2 statsForm = new StatisticsUI2();
+            StatisticLayout statsForm = new StatisticLayout();
             activeForm = statsForm;
             statsForm.TopLevel = false;
             statsForm.AutoScroll = true;
@@ -363,6 +363,15 @@ namespace HotelManagement.GUI
         private void btnStatistic_Click(object sender, EventArgs e)
         {
             AddStatistic2Form();
+        }
+
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn thoát không!", "Đăng xuất", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }
