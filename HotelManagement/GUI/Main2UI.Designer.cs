@@ -386,6 +386,7 @@ namespace HotelManagement.GUI
 
         private TableLayoutPanel tableLayoutPanel1;
         private Panel panelB;
+        private Panel panel1;
         private MaterialSkin.Controls.MaterialButton btnhome;
         private MaterialSkin.Controls.MaterialButton btnStatistic;
         private MaterialSkin.Controls.MaterialButton btnAccount;
