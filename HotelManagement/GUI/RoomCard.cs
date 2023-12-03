@@ -35,10 +35,13 @@ namespace HotelManagement.GUI
             labelReservationID.Text = reservationID;
             labelTagReservationID.Text = "ReservationID:";
             labelTagReservationID.Visible = roomReservation != null;
+
+            panelRoomCard.BackColor = GetRoomColor(roomStatus);
         }
 
         private void card_DoubleClick(object sender, EventArgs e)
         {
+
             string reservationID = labelReservationID.Text;
             if (reservationID != "")
             {
@@ -47,10 +50,26 @@ namespace HotelManagement.GUI
 
                 RentRoomDetailUI rentRoomDetail = new RentRoomDetailUI(this.rentRoomsUIOld, reservation, this.roomReservationOld, room, labelRoomStatus.Text);
                 rentRoomDetail.Show();
+                //this.rentRoomsUIOld.initFlowLayoutRoom();
             }
             else
             {
                 MessageBox.Show("Phòng chưa được đặt hay chưa đươc thuê!");
+            }
+        }
+
+        private Color GetRoomColor(string status)
+        {
+            switch (status)
+            {
+                case "Empty":
+                    return SystemColors.Control;
+                case "Booked":
+                    return Color.Silver;
+                case "Rented":
+                    return Color.DarkSalmon;
+                default:
+                    return SystemColors.Control;
             }
         }
 

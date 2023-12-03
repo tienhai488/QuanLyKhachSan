@@ -104,6 +104,11 @@ namespace HotelManagement.GUI
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("No row selected."); ;
+                return;
+            }
             DataGridViewCell selectedCell = dataGridView1.SelectedCells[0];
 
             DataGridViewRow selectedRow = selectedCell.OwningRow;
@@ -116,6 +121,11 @@ namespace HotelManagement.GUI
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("No row selected."); ;
+                return;
+            }
             DataGridViewCell selectedCell = dataGridView1.SelectedCells[0];
 
             DataGridViewRow selectedRow = selectedCell.OwningRow;

@@ -72,12 +72,12 @@ namespace HotelManagement.GUI
         private void btnUpdateCustomer_Click(object sender, EventArgs e)
         {
             int selectedCellCount = dataGridView1.SelectedCells.Count;
-            if (selectedCellCount <= 0 )
+            if (selectedCellCount <= 0)
             {
                 MessageBox.Show("Vui lòng chọn khách hàng muốn cập nhập!");
                 return;
             }
-            
+
             DataGridViewCell selectedCell = dataGridView1.SelectedCells[0];
 
             // Lấy dòng chứa ô đó
@@ -115,7 +115,7 @@ namespace HotelManagement.GUI
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa khách hàng", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int count = reservationBUS.getLengthReservationByCustomerId(id);
-                if(count > 0)
+                if (count > 0)
                 {
                     MessageBox.Show("Dữ liệu của Khách hàng đã tồn tại trong thông tin đặt phòng! Vui lòng kiểm tra lại!");
                     return;
@@ -132,7 +132,7 @@ namespace HotelManagement.GUI
                     initTable();
                 }
             }
-            
+
         }
 
         private void btnDelFilterID_Click(object sender, EventArgs e)
