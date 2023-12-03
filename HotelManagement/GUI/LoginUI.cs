@@ -63,7 +63,7 @@ namespace HotelManagement
             if (bo.SignIn())
             {
                 Hide();
-                new MainUI().ShowDialog();
+                new Main2UI().ShowDialog();
                 LoginBO.SignOut();
                 LoadDefault();
                 Show();
