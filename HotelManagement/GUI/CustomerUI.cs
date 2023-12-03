@@ -55,7 +55,55 @@ namespace HotelManagement.GUI
         #endregion
 
         #region event
-        private void btnAddCustomer_Click(object sender, EventArgs e)
+
+        private void mbtnDelFilterID_Click(object sender, EventArgs e)
+        {
+            cbxFilterID.Text = string.Empty;
+        }
+
+        private void mbtnDeleteAllFilter_Click(object sender, EventArgs e)
+        {
+            cbxFilterID.Text = string.Empty;
+            cbxFilterName.Text = string.Empty;
+            cbxFilterGender.Text = string.Empty;
+            cbxFilterCCCD.Text = string.Empty;
+        }
+
+        private void mbtnFilter_Click(object sender, EventArgs e)
+        {
+            string id = cbxFilterID.Text;
+            string name = cbxFilterName.Text;
+            string gender = cbxFilterGender.Text;
+            string cccd = cbxFilterCCCD.Text;
+
+            bindingSource.Filter = @$"
+            `Mã KH` like '%{id}%' and
+            `Họ Tên` like '%{name}%' and
+            `Giới Tính` like '%{gender}%' and
+            `CCCD` like '%{cccd}%'
+            ";
+
+            dataGridView1.DataSource = bindingSource;
+            initCbxFilterAll();
+
+        }
+
+        private void mcbxDeleteFilterName_Click(object sender, EventArgs e)
+        {
+            cbxFilterName.Text = string.Empty;
+        }
+
+        private void mcbxDeleteFilterGender_Click(object sender, EventArgs e)
+        {
+            cbxFilterGender.Text = string.Empty;
+        }
+
+        private void mcbxDeleteFilterCCCD_Click(object sender, EventArgs e)
+        {
+            cbxFilterCCCD.Text = string.Empty;
+        }
+
+        private void mbtnAddCustomer_Click(object sender, EventArgs e)
         {
             int index = 1;
             if (customerBUS.getLength() > 0)
@@ -69,15 +117,15 @@ namespace HotelManagement.GUI
             customerInfoUI.Show();
         }
 
-        private void btnUpdateCustomer_Click(object sender, EventArgs e)
+        private void mbtnUpdateCustomer_Click(object sender, EventArgs e)
         {
             int selectedCellCount = dataGridView1.SelectedCells.Count;
-            if (selectedCellCount <= 0 )
+            if (selectedCellCount <= 0)
             {
                 MessageBox.Show("Vui lòng chọn khách hàng muốn cập nhập!");
                 return;
             }
-            
+
             DataGridViewCell selectedCell = dataGridView1.SelectedCells[0];
 
             // Lấy dòng chứa ô đó
@@ -99,7 +147,7 @@ namespace HotelManagement.GUI
             customerInfoUI.Show();
         }
 
-        private void btnDeleteCustomer_Click(object sender, EventArgs e)
+        private void mbtnDeleteCustomer_Click(object sender, EventArgs e)
         {
             int selectedCellCount = dataGridView1.SelectedCells.Count;
             if (selectedCellCount <= 0)
@@ -115,7 +163,7 @@ namespace HotelManagement.GUI
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa hay không?", "Xóa khách hàng", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 int count = reservationBUS.getLengthReservationByCustomerId(id);
-                if(count > 0)
+                if (count > 0)
                 {
                     MessageBox.Show("Dữ liệu của Khách hàng đã tồn tại trong thông tin đặt phòng! Vui lòng kiểm tra lại!");
                     return;
@@ -132,56 +180,9 @@ namespace HotelManagement.GUI
                     initTable();
                 }
             }
-            
-        }
-
-        private void btnDelFilterID_Click(object sender, EventArgs e)
-        {
-            cbxFilterID.Text = string.Empty;
-        }
-
-        private void cbxDeleteFilterName_Click(object sender, EventArgs e)
-        {
-            cbxFilterName.Text = string.Empty;
-        }
-
-        private void cbxDeleteFilterGender_Click(object sender, EventArgs e)
-        {
-            cbxFilterGender.Text = string.Empty;
-        }
-
-        private void cbxDeleteFilterCCCD_Click(object sender, EventArgs e)
-        {
-            cbxFilterCCCD.Text = string.Empty;
-        }
-
-        private void btnDeleteAllFilter_Click(object sender, EventArgs e)
-        {
-            cbxFilterID.Text = string.Empty;
-            cbxFilterName.Text = string.Empty;
-            cbxFilterGender.Text = string.Empty;
-            cbxFilterCCCD.Text = string.Empty;
-        }
-
-        private void btnFilter_Click(object sender, EventArgs e)
-        {
-            string id = cbxFilterID.Text;
-            string name = cbxFilterName.Text;
-            string gender = cbxFilterGender.Text;
-            string cccd = cbxFilterCCCD.Text;
-
-            bindingSource.Filter = @$"
-            `Mã KH` like '%{id}%' and
-            `Họ Tên` like '%{name}%' and
-            `Giới Tính` like '%{gender}%' and
-            `CCCD` like '%{cccd}%'
-            ";
-
-            dataGridView1.DataSource = bindingSource;
-            initCbxFilterAll();
-
         }
 
         #endregion
+
     }
 }

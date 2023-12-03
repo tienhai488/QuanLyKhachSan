@@ -141,7 +141,7 @@ namespace HotelManagement.GUI
             }
         }
 
-        private void btnRoomDetail_Click(object sender, EventArgs e)
+        private void mbtnRoomDetail_Click(object sender, EventArgs e)
         {
             if (index < 0 || index >= roomList.Count)
             {
@@ -172,8 +172,7 @@ namespace HotelManagement.GUI
         //    roomInfoUI.ShowDialog();
         //}
 
-
-        private void btnUpdateRoom_Click(object sender, EventArgs e)
+        private void mbtnEditRoom_Click(object sender, EventArgs e)
         {
             if (index < 0 || index >= roomList.Count)
             {
@@ -192,7 +191,6 @@ namespace HotelManagement.GUI
             roomInfo.ShowDialog();
             index = -1;
         }
-
 
         //private void btnDeleteRoom_Click(object sender, EventArgs e)
         //{
@@ -227,7 +225,8 @@ namespace HotelManagement.GUI
 
 
         // Lọc --------------------------------------------------------------
-        private void btnFilterRoom_Click(object sender, EventArgs e)
+
+        private void mbtnFilterRoom_Click(object sender, EventArgs e)
         {
             string id = cbbFilterIDRoom.Text;
             string status = cbbFilterStateRoom.Text;
@@ -243,29 +242,29 @@ namespace HotelManagement.GUI
             initCbxFilterAllRoom();
         }
 
-
-
-        private void btnDeleteFilterIDRoom_Click(object sender, EventArgs e)
+        private void mbtnDeleteFilterIDRoom_Click(object sender, EventArgs e)
         {
             cbbFilterIDRoom.Text = string.Empty;
         }
 
-        private void btnDeleteFilterStatusRoom_Click(object sender, EventArgs e)
+        private void mbtnDeleteFilterStatusRoom_Click(object sender, EventArgs e)
         {
             cbbFilterStateRoom.Text = string.Empty;
         }
 
-        private void btnDeleteFilterIDTypeRoom_Click(object sender, EventArgs e)
+        private void mbtnDeleteFilterIDTypeRoom_Click(object sender, EventArgs e)
         {
             cbbFilterIDTypeRoom.Text = string.Empty;
         }
 
-        private void btnDeleteAllFilterRoom_Click(object sender, EventArgs e)
+        private void mbtnDeleteAllFilterRoom_Click(object sender, EventArgs e)
         {
             cbbFilterIDRoom.Text = string.Empty;
             cbbFilterStateRoom.Text = string.Empty;
             cbbFilterIDTypeRoom.Text = string.Empty;
         }
+
+
         #endregion
 
 
@@ -348,7 +347,8 @@ namespace HotelManagement.GUI
             }
         }
 
-        private void btnRoomTypeDetail_Click(object sender, EventArgs e)
+
+        private void mbtnRoomTypeDetail_Click(object sender, EventArgs e)
         {
             if (index1 < 0 || index1 >= roomTypeList.Count)
             {
@@ -368,9 +368,7 @@ namespace HotelManagement.GUI
             index1 = -1;
         }
 
-
-
-        private void btnAddRoomType_Click(object sender, EventArgs e)
+        private void mbtnAddRoomType_Click(object sender, EventArgs e)
         {
             RoomTypeInfoUI roomTypeInfoUI = new RoomTypeInfoUI(this);
             RoomType roomType = new RoomType();
@@ -386,7 +384,7 @@ namespace HotelManagement.GUI
             roomTypeInfoUI.ShowDialog();
         }
 
-        private void btnEditRoomType_Click(object sender, EventArgs e)
+        private void mbtnEditRoomType_Click(object sender, EventArgs e)
         {
             if (index1 < 0 || index1 >= roomTypeList.Count)
             {
@@ -406,7 +404,7 @@ namespace HotelManagement.GUI
             index1 = -1;
         }
 
-        private void btnDeleteRoomType_Click(object sender, EventArgs e)
+        private void mbtnDeleteRoomType_Click(object sender, EventArgs e)
         {
             convinience_RoomTypeList = roomBus.getAllRoomTypeConvinience();
             if (index1 < 0 || index1 >= roomTypeList.Count)
@@ -451,7 +449,22 @@ namespace HotelManagement.GUI
 
         // Lọc-------------------------------
 
-        private void btnFilterRoomType_Click(object sender, EventArgs e)
+        private void mbtnDeleteFilterIDRoomType_Click(object sender, EventArgs e)
+        {
+            cbbFilterIDRoomType.Text = string.Empty;
+        }
+
+        private void mbtnDeleteFilterNameRoomType_Click(object sender, EventArgs e)
+        {
+            cbbFilterNameRoomType.Text = string.Empty;
+        }
+        private void mbtnDeleteAllFilterRoomType_Click(object sender, EventArgs e)
+        {
+            cbbFilterIDRoomType.Text = string.Empty;
+            cbbFilterNameRoomType.Text = string.Empty;
+        }
+
+        private void mbtnFilterRoomType_Click(object sender, EventArgs e)
         {
             string id = cbbFilterIDRoomType.Text;
             string name = cbbFilterNameRoomType.Text;
@@ -464,24 +477,6 @@ namespace HotelManagement.GUI
             status2 = "filter2";
             initCbxFilterAllRoomType();
         }
-
-        private void btnDeleteFilterIDRoomType_Click(object sender, EventArgs e)
-        {
-            cbbFilterIDRoomType.Text = string.Empty;
-        }
-
-        private void btnDeleteFilterNameRoomType_Click(object sender, EventArgs e)
-        {
-            cbbFilterNameRoomType.Text = string.Empty;
-        }
-
-        private void btnDeleteAllFilterRoomType_Click(object sender, EventArgs e)
-        {
-            cbbFilterIDRoomType.Text = string.Empty;
-            cbbFilterNameRoomType.Text = string.Empty;
-        }
-
-
 
 
         #endregion
@@ -565,7 +560,23 @@ namespace HotelManagement.GUI
 
         }
 
-        private void btnConvinienceDetail_Click(object sender, EventArgs e)
+
+
+        private void mbtnFilterConvinience_Click(object sender, EventArgs e)
+        {
+            string id = cbbFilterConvinienceID.Text;
+            string name = cbbFilterConvinienceName.Text;
+
+            bindingSourceConvinience.Filter = @$"
+            `Mã tiện nghi` like '%{id}%' and
+            `Tên tiện nghi` like '%{name}%'";
+
+            dtgvShowConvinience.DataSource = bindingSourceConvinience;
+            status3 = "filter3";
+            initCbxFilterAllConvinience();
+        }
+
+        private void mbtnConvinienceDetail_Click(object sender, EventArgs e)
         {
             if (index2 < 0 || index2 >= convinienceList.Count)
             {
@@ -584,7 +595,7 @@ namespace HotelManagement.GUI
             index2 = -1;
         }
 
-        private void btnAddConvinience_Click(object sender, EventArgs e)
+        private void mbtnAddConvinience_Click(object sender, EventArgs e)
         {
             ConvinienceInfoUI convInfoUI = new ConvinienceInfoUI(this);
             Convinience conv = new Convinience();
@@ -599,8 +610,9 @@ namespace HotelManagement.GUI
             convInfoUI.ShowDialog();
         }
 
-        private void btnEditConvinience_Click(object sender, EventArgs e)
+        private void mbtnEditConvinience_Click(object sender, EventArgs e)
         {
+
             if (index2 < 0 || index2 >= convinienceList.Count)
             {
                 MessageBox.Show("Bạn chưa chọn tiện nghi nào.");
@@ -618,21 +630,7 @@ namespace HotelManagement.GUI
             index2 = -1;
         }
 
-        private void btnFilterConvinience_Click(object sender, EventArgs e)
-        {
-            string id = cbbFilterConvinienceID.Text;
-            string name = cbbFilterConvinienceName.Text;
-
-            bindingSourceConvinience.Filter = @$"
-            `Mã tiện nghi` like '%{id}%' and
-            `Tên tiện nghi` like '%{name}%'";
-
-            dtgvShowConvinience.DataSource = bindingSourceConvinience;
-            status3 = "filter3";
-            initCbxFilterAllConvinience();
-        }
-
-        private void btnDeleteConvinience_Click(object sender, EventArgs e)
+        private void mbtnDeleteConvinience_Click(object sender, EventArgs e)
         {
             convinienceList = roomBus.getAllConvinience();
             if (index2 < 0 || index2 >= convinienceList.Count)
@@ -664,51 +662,48 @@ namespace HotelManagement.GUI
 
 
         // Lọc ----------------------------------------------------------
-        private void btnDeleteFilterConvinienceID_Click(object sender, EventArgs e)
+        private void mbtnDeleteFilterConvinienceID_Click(object sender, EventArgs e)
         {
             cbbFilterConvinienceID.Text = string.Empty;
         }
 
-        private void btnDeleteFilterConvinienceName_Click(object sender, EventArgs e)
+        private void mbtnDeleteFilterConvinienceName_Click(object sender, EventArgs e)
         {
             cbbFilterConvinienceName.Text = string.Empty;
         }
 
-        private void btnDeleteAllFilterConvinience_Click(object sender, EventArgs e)
+        private void mbtnDeleteAllFilterConvinience_Click(object sender, EventArgs e)
         {
             cbbFilterConvinienceID.Text = string.Empty;
             cbbFilterConvinienceName.Text = string.Empty;
         }
-
-
-
 
         public void checkPermission()
         {
             bool permission = LoginBO.IsPermissionGranted(Permission.WriteRoom);
             if (permission)
-                btnEditRoom.Visible = permission;
+                mbtnEditRoom.Visible = permission;
             else
-                btnEditRoom.Visible = !permission;
+                mbtnEditRoom.Visible = !permission;
 
             bool permission1 = LoginBO.IsPermissionGranted(Permission.WriteRoomType);
             if (permission1)
             {
-                btnAddRoomType.Visible = btnEditRoomType.Visible = btnDeleteRoomType.Visible = permission1;
+                mbtnAddRoomType.Visible = mbtnEditRoomType.Visible = mbtnDeleteRoomType.Visible = permission1;
             }
             else
             {
-                btnAddRoomType.Visible = btnEditRoomType.Visible = btnDeleteRoomType.Visible = !permission1;
+                mbtnAddRoomType.Visible = mbtnEditRoomType.Visible = mbtnDeleteRoomType.Visible = !permission1;
             }
 
             bool permission2 = LoginBO.IsPermissionGranted(Permission.WriteConvenient);
             if (permission2)
             {
-                btnAddConvinience.Visible = btnEditConvinience.Visible = btnDeleteConvinience.Visible = permission2;
+                mbtnAddConvinience.Visible = mbtnEditConvinience.Visible = mbtnDeleteConvinience.Visible = permission2;
             }
             else
             {
-                btnAddConvinience.Visible = btnEditConvinience.Visible = btnDeleteConvinience.Visible = !permission2;
+                mbtnAddConvinience.Visible = mbtnEditConvinience.Visible = mbtnDeleteConvinience.Visible = !permission2;
             }
 
             if (LoginBO.IsPermissionGranted(Permission.ReadRoom))
@@ -718,15 +713,9 @@ namespace HotelManagement.GUI
             else if (LoginBO.IsPermissionGranted(Permission.ReadConvenient))
                 tabPageConvinience.Visible = false;
         }
+
         #endregion
 
-
-
-
-
-
-
-
-        
     }
 }
+

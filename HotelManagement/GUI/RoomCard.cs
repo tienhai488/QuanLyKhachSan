@@ -39,6 +39,11 @@ namespace HotelManagement.GUI
 
         private void card_DoubleClick(object sender, EventArgs e)
         {
+
+        }
+
+        private void roomCard_Click(object sender, EventArgs e)
+        {
             string reservationID = labelReservationID.Text;
             if (reservationID != "")
             {
@@ -53,7 +58,5 @@ namespace HotelManagement.GUI
                 MessageBox.Show("Phòng chưa được đặt hay chưa đươc thuê!");
             }
         }
-
-
     }
 }
