@@ -274,13 +274,13 @@
             materialTabControl1.Depth = 0;
             materialTabControl1.Dock = DockStyle.Fill;
             materialTabControl1.ImageList = imageList1;
-            materialTabControl1.Location = new Point(3, 85);
+            materialTabControl1.Location = new Point(3, 80);
             materialTabControl1.Margin = new Padding(0);
             materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
             materialTabControl1.Multiline = true;
             materialTabControl1.Name = "materialTabControl1";
             materialTabControl1.SelectedIndex = 0;
-            materialTabControl1.Size = new Size(1823, 1013);
+            materialTabControl1.Size = new Size(1593, 916);
             materialTabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -288,10 +288,9 @@
             tabPage1.BackColor = Color.White;
             tabPage1.ImageKey = "icons8-marriott-hotels-48.png";
             tabPage1.Location = new Point(4, 39);
-            tabPage1.Margin = new Padding(3, 4, 3, 4);
+            tabPage1.Margin = new Padding(4);
             tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3, 4, 3, 4);
-            tabPage1.Size = new Size(1815, 970);
+            tabPage1.Size = new Size(1585, 873);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "HOME";
             // 
@@ -299,10 +298,9 @@
             // 
             tabPage2.ImageKey = "icons8-hotel-48.png";
             tabPage2.Location = new Point(4, 39);
-            tabPage2.Margin = new Padding(3, 4, 3, 4);
+            tabPage2.Margin = new Padding(4);
             tabPage2.Name = "tabPage2";
-            tabPage2.Padding = new Padding(3, 4, 3, 4);
-            tabPage2.Size = new Size(1815, 970);
+            tabPage2.Size = new Size(1585, 873);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "RESERVATION";
             tabPage2.UseVisualStyleBackColor = true;
@@ -311,10 +309,9 @@
             // 
             tabPage3.ImageKey = "icons8-door-hanger-48.png";
             tabPage3.Location = new Point(4, 39);
-            tabPage3.Margin = new Padding(3, 4, 3, 4);
+            tabPage3.Margin = new Padding(4);
             tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new Padding(3, 4, 3, 4);
-            tabPage3.Size = new Size(1815, 970);
+            tabPage3.Size = new Size(1585, 873);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "RENT DETAIL";
             tabPage3.UseVisualStyleBackColor = true;
@@ -323,10 +320,9 @@
             // 
             tabPage4.ImageKey = "icons8-receipt-48.png";
             tabPage4.Location = new Point(4, 39);
-            tabPage4.Margin = new Padding(3, 4, 3, 4);
+            tabPage4.Margin = new Padding(4);
             tabPage4.Name = "tabPage4";
-            tabPage4.Padding = new Padding(3, 4, 3, 4);
-            tabPage4.Size = new Size(1815, 970);
+            tabPage4.Size = new Size(1585, 873);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "INVOICE";
             tabPage4.UseVisualStyleBackColor = true;
@@ -335,21 +331,20 @@
             // 
             tabPage5.ImageKey = "icons8-bedroom-48.png";
             tabPage5.Location = new Point(4, 39);
-            tabPage5.Margin = new Padding(3, 4, 3, 4);
+            tabPage5.Margin = new Padding(4);
             tabPage5.Name = "tabPage5";
-            tabPage5.Padding = new Padding(3, 4, 3, 4);
-            tabPage5.Size = new Size(1815, 970);
+            tabPage5.Size = new Size(1585, 873);
             tabPage5.TabIndex = 4;
             tabPage5.Text = "ROOM";
             tabPage5.UseVisualStyleBackColor = true;
-            
+            // 
             // tabPage7
             // 
             tabPage7.ImageKey = "icons8-janitor-48.png";
             tabPage7.Location = new Point(4, 39);
-            tabPage7.Margin = new Padding(3, 4, 3, 4);
+            tabPage7.Margin = new Padding(4);
             tabPage7.Name = "tabPage7";
-            tabPage7.Size = new Size(1814, 1068);
+            tabPage7.Size = new Size(1585, 873);
             tabPage7.TabIndex = 6;
             tabPage7.Text = "SERVICE";
             tabPage7.UseVisualStyleBackColor = true;
@@ -358,9 +353,9 @@
             // 
             tabPage8.ImageKey = "icons8-customer-48.png";
             tabPage8.Location = new Point(4, 39);
-            tabPage8.Margin = new Padding(3, 4, 3, 4);
+            tabPage8.Margin = new Padding(4);
             tabPage8.Name = "tabPage8";
-            tabPage8.Size = new Size(1814, 1068);
+            tabPage8.Size = new Size(1585, 873);
             tabPage8.TabIndex = 7;
             tabPage8.Text = "CUSTOMER";
             tabPage8.UseVisualStyleBackColor = true;
@@ -369,9 +364,9 @@
             // 
             tabPage9.ImageKey = "icons8-valet-48.png";
             tabPage9.Location = new Point(4, 39);
-            tabPage9.Margin = new Padding(3, 4, 3, 4);
+            tabPage9.Margin = new Padding(4);
             tabPage9.Name = "tabPage9";
-            tabPage9.Size = new Size(1814, 1068);
+            tabPage9.Size = new Size(1585, 873);
             tabPage9.TabIndex = 8;
             tabPage9.Text = "STAFF";
             tabPage9.UseVisualStyleBackColor = true;
@@ -380,9 +375,9 @@
             // 
             tabPage10.ImageKey = "icons8-change-user-48.png";
             tabPage10.Location = new Point(4, 39);
-            tabPage10.Margin = new Padding(3, 4, 3, 4);
+            tabPage10.Margin = new Padding(4);
             tabPage10.Name = "tabPage10";
-            tabPage10.Size = new Size(1814, 1068);
+            tabPage10.Size = new Size(1585, 873);
             tabPage10.TabIndex = 9;
             tabPage10.Text = "ACCOUNT";
             tabPage10.UseVisualStyleBackColor = true;
@@ -391,10 +386,9 @@
             // 
             tabPage11.ImageKey = "icons8-graph-48.png";
             tabPage11.Location = new Point(4, 39);
-            tabPage11.Margin = new Padding(3, 4, 3, 4);
+            tabPage11.Margin = new Padding(4);
             tabPage11.Name = "tabPage11";
-            tabPage11.Padding = new Padding(3, 4, 3, 4);
-            tabPage11.Size = new Size(1814, 1068);
+            tabPage11.Size = new Size(1585, 873);
             tabPage11.TabIndex = 10;
             tabPage11.Text = "THỐNG KÊ";
             tabPage11.UseVisualStyleBackColor = true;
@@ -421,15 +415,17 @@
             // 
             // MainUI
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1829, 1102);
+            ClientSize = new Size(1600, 1000);
             Controls.Add(materialTabControl1);
             DrawerAutoShow = true;
             DrawerTabControl = materialTabControl1;
-            Margin = new Padding(3, 4, 3, 4);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            FormStyle = FormStyles.ActionBar_56;
+            Margin = new Padding(4);
             Name = "MainUI";
-            Padding = new Padding(3, 85, 3, 4);
+            Padding = new Padding(3, 80, 4, 4);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "THE GRAND HOTEL BUDAPEST";
             tableLayoutPanel1.ResumeLayout(false);
