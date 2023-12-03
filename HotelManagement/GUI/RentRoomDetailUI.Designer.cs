@@ -731,7 +731,6 @@
             // dataGridViewService
             // 
             dataGridViewService.AllowUserToAddRows = false;
-            dataGridViewService.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewService.BackgroundColor = SystemColors.Control;
             dataGridViewService.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewService.Dock = DockStyle.Fill;
