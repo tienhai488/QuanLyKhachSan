@@ -1,5 +1,6 @@
 ﻿using HotelManagement.Data;
 using HotelManagement.Data.Access;
+using HotelManagement.Ultils;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 
@@ -81,6 +82,24 @@ namespace HotelManagement.BUS
             {
                 return false;
             }
+
+            StringBuilder sb = new StringBuilder();
+            if (!ValidationCustom.checkPhoneNumber(customer.PhoneNumber))
+            {
+                sb.Append("Số điện thoại không hợp lệ!\n");
+            }
+
+            if (!ValidationCustom.checkCitizenId(customer.CitizenID))
+            {
+                sb.Append("CCCD không hợp lệ!\n");
+            }
+
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString());
+                return false;
+            }
+
             return true;
         }
 

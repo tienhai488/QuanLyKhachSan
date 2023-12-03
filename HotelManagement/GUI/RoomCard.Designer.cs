@@ -68,7 +68,7 @@ namespace HotelManagement.GUI
             labelRoomID.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelRoomID.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             labelRoomID.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomID.Location = new Point(14, 14);
+            labelRoomID.Location = new Point(10, 14);
             labelRoomID.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomID.Name = "labelRoomID";
             labelRoomID.Size = new Size(90, 24);
@@ -84,7 +84,7 @@ namespace HotelManagement.GUI
             labelRoomType.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelRoomType.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             labelRoomType.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomType.Location = new Point(198, 14);
+            labelRoomType.Location = new Point(190, 14);
             labelRoomType.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomType.Name = "labelRoomType";
             labelRoomType.Size = new Size(115, 24);
@@ -113,7 +113,7 @@ namespace HotelManagement.GUI
             labelToTime.Depth = 0;
             labelToTime.Font = new Font("Roboto Medium", 14F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelToTime.FontType = MaterialSkin.MaterialSkinManager.fontType.Subtitle2;
-            labelToTime.Location = new Point(198, 37);
+            labelToTime.Location = new Point(191, 37);
             labelToTime.MouseState = MaterialSkin.MouseState.HOVER;
             labelToTime.Name = "labelToTime";
             labelToTime.Size = new Size(22, 17);
@@ -142,7 +142,7 @@ namespace HotelManagement.GUI
             panel2.Controls.Add(labelTagReservationID);
             panel2.Controls.Add(labelMain);
             panel2.Controls.Add(pictureBox1);
-            panel2.Location = new Point(14, 58);
+            panel2.Location = new Point(7, 58);
             panel2.Name = "panel2";
             panel2.Size = new Size(331, 93);
             panel2.TabIndex = 37;
@@ -179,7 +179,7 @@ namespace HotelManagement.GUI
             panel1.Location = new Point(0, 154);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(362, 63);
+            panel1.Size = new Size(346, 63);
             panel1.TabIndex = 36;
             panel1.DoubleClick += card_DoubleClick;
             // 
@@ -204,7 +204,7 @@ namespace HotelManagement.GUI
             labelRoomClean.Depth = 0;
             labelRoomClean.Font = new Font("Roboto", 14F, FontStyle.Regular, GraphicsUnit.Pixel);
             labelRoomClean.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomClean.Location = new Point(198, 9);
+            labelRoomClean.Location = new Point(191, 9);
             labelRoomClean.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomClean.Name = "labelRoomClean";
             labelRoomClean.Size = new Size(147, 19);
@@ -222,7 +222,7 @@ namespace HotelManagement.GUI
             panelRoomCard.Dock = DockStyle.Fill;
             panelRoomCard.Location = new Point(0, 0);
             panelRoomCard.Name = "panelRoomCard";
-            panelRoomCard.Size = new Size(362, 217);
+            panelRoomCard.Size = new Size(346, 217);
             panelRoomCard.TabIndex = 38;
             panelRoomCard.DoubleClick += card_DoubleClick;
             // 
@@ -237,7 +237,7 @@ namespace HotelManagement.GUI
             ForeColor = Color.FromArgb(74, 20, 140);
             Margin = new Padding(10);
             Name = "RoomCard";
-            Size = new Size(362, 217);
+            Size = new Size(346, 217);
             DoubleClick += card_DoubleClick;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);

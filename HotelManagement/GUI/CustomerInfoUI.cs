@@ -10,7 +10,7 @@ namespace HotelManagement.GUI
         private bool isEdit = false;
         private CustomerBUS customerBUS = new CustomerBUS();
         private CustomerUI customerUI;
-        private ReservBookingUI reservBookingUI;
+        private ReservBookingUI reservBookingUI = null;
         public CustomerInfoUI()
         {
             InitializeComponent();
@@ -63,7 +63,11 @@ namespace HotelManagement.GUI
                 {
                     MessageBox.Show("Thêm khách hàng thành công!");
                     this.customerUI.initTable();
-                    this.reservBookingUI.fillDataCustomer(customer);
+                    if (this.reservBookingUI != null)
+                    {
+
+                        this.reservBookingUI.fillDataCustomer(customer);
+                    }
                     this.Dispose();
                 }
                 else
@@ -82,7 +86,11 @@ namespace HotelManagement.GUI
                 {
                     MessageBox.Show("Cập nhật khách hàng thành công!");
                     this.customerUI.initTable();
-                    this.reservBookingUI.fillDataCustomer(customer);
+                    if (this.reservBookingUI != null)
+                    {
+
+                        this.reservBookingUI.fillDataCustomer(customer);
+                    }
                     this.Dispose();
                 }
                 else
