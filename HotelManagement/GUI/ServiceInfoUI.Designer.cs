@@ -61,7 +61,7 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(701, 72);
+            panel1.Size = new Size(459, 72);
             panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -76,7 +76,7 @@
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel2.Size = new Size(701, 72);
+            tableLayoutPanel2.Size = new Size(459, 72);
             tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -84,7 +84,7 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(262, 24);
+            label1.Location = new Point(141, 24);
             label1.Name = "label1";
             label1.Size = new Size(176, 24);
             label1.TabIndex = 0;
@@ -96,7 +96,7 @@
             panel3.Dock = DockStyle.Bottom;
             panel3.Location = new Point(0, 477);
             panel3.Name = "panel3";
-            panel3.Size = new Size(701, 51);
+            panel3.Size = new Size(459, 51);
             panel3.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -112,7 +112,7 @@
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(701, 51);
+            tableLayoutPanel1.Size = new Size(459, 51);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // btnReset
@@ -121,7 +121,7 @@
             btnReset.BackColor = SystemColors.HotTrack;
             btnReset.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnReset.ForeColor = SystemColors.ButtonHighlight;
-            btnReset.Location = new Point(446, 8);
+            btnReset.Location = new Point(264, 8);
             btnReset.Name = "btnReset";
             btnReset.Size = new Size(159, 34);
             btnReset.TabIndex = 2;
@@ -135,7 +135,7 @@
             btnSave.BackColor = SystemColors.HotTrack;
             btnSave.Font = new Font("Arial", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
             btnSave.ForeColor = SystemColors.ButtonHighlight;
-            btnSave.Location = new Point(95, 8);
+            btnSave.Location = new Point(35, 8);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(159, 34);
             btnSave.TabIndex = 1;
@@ -151,7 +151,7 @@
             panel2.Location = new Point(0, 72);
             panel2.Margin = new Padding(20, 0, 20, 0);
             panel2.Name = "panel2";
-            panel2.Size = new Size(701, 405);
+            panel2.Size = new Size(459, 405);
             panel2.TabIndex = 2;
             // 
             // tableLayoutPanel3
@@ -187,7 +187,7 @@
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            tableLayoutPanel3.Size = new Size(701, 405);
+            tableLayoutPanel3.Size = new Size(459, 405);
             tableLayoutPanel3.TabIndex = 0;
             // 
             // txtUnit
@@ -196,7 +196,7 @@
             txtUnit.Location = new Point(15, 360);
             txtUnit.Margin = new Padding(15, 0, 15, 0);
             txtUnit.Name = "txtUnit";
-            txtUnit.Size = new Size(671, 27);
+            txtUnit.Size = new Size(429, 27);
             txtUnit.TabIndex = 29;
             // 
             // label7
@@ -206,7 +206,7 @@
             label7.Location = new Point(15, 340);
             label7.Margin = new Padding(15, 0, 0, 0);
             label7.Name = "label7";
-            label7.Size = new Size(686, 20);
+            label7.Size = new Size(444, 20);
             label7.TabIndex = 26;
             label7.Text = "Đơn vị";
             // 
@@ -217,7 +217,7 @@
             label6.Location = new Point(15, 260);
             label6.Margin = new Padding(15, 0, 0, 0);
             label6.Name = "label6";
-            label6.Size = new Size(686, 20);
+            label6.Size = new Size(444, 20);
             label6.TabIndex = 25;
             label6.Text = "Giá dịch vụ";
             // 
@@ -228,7 +228,7 @@
             label5.Location = new Point(15, 180);
             label5.Margin = new Padding(15, 0, 0, 0);
             label5.Name = "label5";
-            label5.Size = new Size(686, 20);
+            label5.Size = new Size(444, 20);
             label5.TabIndex = 24;
             label5.Text = "Loại dịch vụ";
             // 
@@ -239,7 +239,7 @@
             label4.Location = new Point(15, 100);
             label4.Margin = new Padding(15, 0, 0, 0);
             label4.Name = "label4";
-            label4.Size = new Size(686, 20);
+            label4.Size = new Size(444, 20);
             label4.TabIndex = 23;
             label4.Text = "Tên dịch vụ";
             // 
@@ -249,7 +249,7 @@
             txtUnitPrice.Location = new Point(15, 280);
             txtUnitPrice.Margin = new Padding(15, 0, 15, 0);
             txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(671, 27);
+            txtUnitPrice.Size = new Size(429, 27);
             txtUnitPrice.TabIndex = 22;
             // 
             // txtName
@@ -258,7 +258,7 @@
             txtName.Location = new Point(15, 120);
             txtName.Margin = new Padding(15, 0, 15, 0);
             txtName.Name = "txtName";
-            txtName.Size = new Size(671, 27);
+            txtName.Size = new Size(429, 27);
             txtName.TabIndex = 18;
             // 
             // label2
@@ -268,7 +268,7 @@
             label2.Location = new Point(15, 20);
             label2.Margin = new Padding(15, 0, 0, 0);
             label2.Name = "label2";
-            label2.Size = new Size(686, 20);
+            label2.Size = new Size(444, 20);
             label2.TabIndex = 0;
             label2.Text = "Mã dịch vụ";
             // 
@@ -280,7 +280,7 @@
             txtId.Margin = new Padding(15, 0, 15, 0);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(671, 27);
+            txtId.Size = new Size(429, 27);
             txtId.TabIndex = 1;
             // 
             // cbxServiceType
@@ -291,12 +291,12 @@
             cbxServiceType.Location = new Point(15, 200);
             cbxServiceType.Margin = new Padding(15, 0, 15, 0);
             cbxServiceType.Name = "cbxServiceType";
-            cbxServiceType.Size = new Size(671, 28);
+            cbxServiceType.Size = new Size(429, 28);
             cbxServiceType.TabIndex = 45;
             // 
             // ServiceInfoUI
             // 
-            ClientSize = new Size(701, 528);
+            ClientSize = new Size(459, 528);
             Controls.Add(panel2);
             Controls.Add(panel3);
             Controls.Add(panel1);

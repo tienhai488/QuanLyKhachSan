@@ -48,7 +48,7 @@ namespace HotelManagement.GUI
             txtUnit.Text = unit;
             txtUnitPrice.Text = unitPrice.ToString();
 
-            if(typeName != "")
+            if (typeName != "")
             {
                 cbxServiceType.Text = typeName;
             }
@@ -66,7 +66,7 @@ namespace HotelManagement.GUI
             if (serviceBUS.validateService(name, unit, unitPrice))
             {
                 Service service = new Service()
-                { Id  = id,  Name = name, Unit = unit, UnitPrice = int.Parse(unitPrice)};
+                { Id = id, Name = name, Unit = unit, UnitPrice = int.Parse(unitPrice) };
                 service.ServiceTypeId = serviceTypeId;
                 int result = serviceBUS.addService(service);
                 if (result > 0)
@@ -87,7 +87,7 @@ namespace HotelManagement.GUI
             if (serviceBUS.validateService(name, unit, unitPrice))
             {
                 Service service = new Service()
-                { Id = id, Name = name, Unit = unit, UnitPrice = int.Parse(unitPrice)};
+                { Id = id, Name = name, Unit = unit, UnitPrice = int.Parse(unitPrice) };
                 service.ServiceTypeId = serviceTypeId;
                 int result = serviceBUS.updateService(service);
                 if (result > 0)
@@ -114,7 +114,7 @@ namespace HotelManagement.GUI
             string name = txtName.Text;
             string unit = txtUnit.Text;
             string unitPrice = txtUnitPrice.Text;
-            string serviceTypeId = cbxServiceType.SelectedValue.ToString()+"";
+            string serviceTypeId = cbxServiceType.SelectedValue.ToString() + "";
 
             if (isEdit)
             {
