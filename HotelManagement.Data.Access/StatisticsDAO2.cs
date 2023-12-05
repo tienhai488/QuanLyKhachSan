@@ -23,8 +23,8 @@
                        let d = k.Month - 1 + k.Year * 12
                        group rd by d into rm
                        let rr = (from r in rm
-                                 let hours = Math.Truncate((r.EndTime - r.StartTime).TotalHours)
-                                 select r.Room.RoomType.UnitPrice * hours).Sum()
+                                 let days = Math.Truncate((r.EndTime - r.StartTime).TotalDays) + 1
+                                 select r.Room.RoomType.UnitPrice * days).Sum()
                        let sr = (from r in rm
                                  from sd in r.UseServiceDetails
                                  select sd.Service.UnitPrice * sd.Quantity).Sum()
@@ -45,8 +45,8 @@
                          where d >= start && d <= end
                          group rd by rd.Room.RoomTypeId into rm
                          let value = (from r in rm
-                                      let hours = Math.Truncate((r.EndTime - r.StartTime).TotalHours)
-                                      select r.Room.RoomType.UnitPrice * hours).Sum()
+                                      let days = Math.Truncate((r.EndTime - r.StartTime).TotalDays) + 1
+                                      select r.Room.RoomType.UnitPrice * days).Sum()
                          select ValueTuple.Create(rm.Key, value));
             }
             using (var dao = new RoomDAO())

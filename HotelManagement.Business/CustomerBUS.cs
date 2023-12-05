@@ -94,6 +94,11 @@ namespace HotelManagement.BUS
                 sb.Append("CCCD không hợp lệ!\n");
             }
 
+            if(getAll().Any(item => !item.Id.Equals(customer.Id) && item.CitizenID.Equals(customer.CitizenID)))
+            {
+                sb.Append("CCCD đã tồn tại!\n");
+            }
+
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString());

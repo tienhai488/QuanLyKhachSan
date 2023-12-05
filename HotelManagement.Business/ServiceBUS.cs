@@ -117,8 +117,9 @@ namespace HotelManagement.BUS
             return true;
         }
 
-        public bool validateService(string name, string unit, string unitPrice)
+        public bool validateService(string id, string name, string unit, string unitPrice)
         {
+
             if (!validateEmptyService(name, unit, unitPrice))
             {
                 return false;
@@ -129,6 +130,11 @@ namespace HotelManagement.BUS
             {
                 sb.Append("Giá dịch vụ không hợp lệ! Vui lòng nhập lại.");
             }
+
+            //if (getAllService().Any(item => !item.Equals(id) && item.Name.Equals(name)))
+            //{
+            //    sb.Append("Tên dịch vụ đã tồn tại!\n");
+            //}
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString());
@@ -144,20 +150,36 @@ namespace HotelManagement.BUS
             {
                 sb.Append("Tên loại dịch vụ không được để trống!\n");
             }
+
+
             if (sb.Length > 0)
             {
                 MessageBox.Show(sb.ToString());
                 return false;
             }
+            
             return true;
         }
 
-        public bool validateType(string name)
+        public bool validateType(string id, string name)
         {
+            StringBuilder sb = new StringBuilder();
             if (!validateEmptyType(name))
             {
                 return false;
             }
+
+            //if (getAllType().Any(item => !item.Id.Equals(id) && item.Name.Equals(name)))
+            //{
+            //    sb.Append("Tên loại dịch vụ đã tồn tại\n");
+            //}
+
+            if (sb.Length > 0)
+            {
+                MessageBox.Show(sb.ToString());
+                return false;
+            }
+
             return true;
         }
 

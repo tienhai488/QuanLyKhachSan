@@ -43,7 +43,7 @@ namespace HotelManagement.GUI
 
         public void addType(string id, string name)
         {
-            if (serviceBUS.validateType(name))
+            if (serviceBUS.validateType(id, name))
             {
                 int result = serviceBUS.addType(new ServiceType() { Id = id, Name = name });
                 if (result > 0)
@@ -61,7 +61,7 @@ namespace HotelManagement.GUI
 
         public void updateType(string id, string name)
         {
-            if (serviceBUS.validateType(name))
+            if (serviceBUS.validateType(id, name))
             {
                 int result = serviceBUS.updateType(new ServiceType() { Id = id, Name = name });
                 if (result > 0)

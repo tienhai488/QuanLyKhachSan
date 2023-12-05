@@ -81,7 +81,9 @@ namespace HotelManagement.Business
         {
             RentRoomDetail rentRoomDetail = getAll().Find(item => item.RoomID.Equals(roomId)
             && fromTime.Equals(item.StartTime.ToString(Configs.formatBirthday))
-            && toTime.Equals(item.EndTime.ToString(Configs.formatBirthday)));
+            && toTime.Equals(item.EndTime.ToString(Configs.formatBirthday))
+            && item.PaidTime == default
+            );
 
             return rentRoomDetail;
         }

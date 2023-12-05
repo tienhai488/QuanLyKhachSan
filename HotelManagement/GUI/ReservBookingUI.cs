@@ -126,7 +126,7 @@ namespace HotelManagement.GUI
             tableRoom.DataSource = null;
             tableRoom.Columns.Clear();
 
-            bool checkDateTime = Functions.getDayGap(DateTime.Now, from) >= 0 && Functions.getDayGap(from, to) >=0;
+            bool checkDateTime = Functions.getDayGap(DateTime.Now, from) >= 0 && Functions.getDayGap(from, to) >= 0;
 
             if (checkDateTime)
             {

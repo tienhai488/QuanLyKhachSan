@@ -33,6 +33,7 @@
         {
             var values = dao.RevenueByMonthStatistic();
             int ld = -1;
+            RevenueByMonth.Clear();
             foreach (var (d, t) in values)
             {
                 if (ld >= 0)
