@@ -247,7 +247,7 @@
             dateTimePicker1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dateTimePicker1.Location = new Point(100, 31);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(0, 27);
+            dateTimePicker1.Size = new Size(0, 23);
             dateTimePicker1.TabIndex = 15;
             // 
             // materialLabel4
@@ -356,7 +356,7 @@
             dateTimePicker2.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dateTimePicker2.Location = new Point(100, 31);
             dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(0, 27);
+            dateTimePicker2.Size = new Size(0, 23);
             dateTimePicker2.TabIndex = 15;
             // 
             // materialLabel2
@@ -463,7 +463,7 @@
             dateTimePicker3.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dateTimePicker3.Location = new Point(100, 31);
             dateTimePicker3.Name = "dateTimePicker3";
-            dateTimePicker3.Size = new Size(100, 27);
+            dateTimePicker3.Size = new Size(100, 23);
             dateTimePicker3.TabIndex = 15;
             // 
             // materialLabel5
@@ -572,7 +572,7 @@
             dateTimePicker4.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dateTimePicker4.Location = new Point(100, 31);
             dateTimePicker4.Name = "dateTimePicker4";
-            dateTimePicker4.Size = new Size(0, 27);
+            dateTimePicker4.Size = new Size(0, 23);
             dateTimePicker4.TabIndex = 15;
             // 
             // materialLabel7
@@ -681,7 +681,7 @@
             dateTimePicker5.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dateTimePicker5.Location = new Point(100, 31);
             dateTimePicker5.Name = "dateTimePicker5";
-            dateTimePicker5.Size = new Size(0, 27);
+            dateTimePicker5.Size = new Size(0, 23);
             dateTimePicker5.TabIndex = 15;
             // 
             // materialLabel9
@@ -707,13 +707,13 @@
             tableLayoutPanel7.Controls.Add(panel19, 0, 0);
             tableLayoutPanel7.Controls.Add(panel20, 1, 0);
             tableLayoutPanel7.Dock = DockStyle.Fill;
-            tableLayoutPanel7.Location = new Point(469, 64);
+            tableLayoutPanel7.Location = new Point(409, 48);
             tableLayoutPanel7.Margin = new Padding(0);
             tableLayoutPanel7.Name = "tableLayoutPanel7";
             tableLayoutPanel7.RowCount = 2;
-            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
+            tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
             tableLayoutPanel7.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel7.Size = new Size(804, 679);
+            tableLayoutPanel7.Size = new Size(703, 509);
             tableLayoutPanel7.TabIndex = 8;
             // 
             // panel18
@@ -721,11 +721,11 @@
             panel18.Controls.Add(dataGridViewService);
             panel18.Controls.Add(materialLabel10);
             panel18.Dock = DockStyle.Fill;
-            panel18.Location = new Point(0, 64);
+            panel18.Location = new Point(0, 48);
             panel18.Margin = new Padding(0);
             panel18.Name = "panel18";
-            panel18.Padding = new Padding(21, 20, 21, 20);
-            panel18.Size = new Size(402, 615);
+            panel18.Padding = new Padding(18, 15, 18, 15);
+            panel18.Size = new Size(351, 461);
             panel18.TabIndex = 21;
             // 
             // dataGridViewService
@@ -734,8 +734,7 @@
             dataGridViewService.BackgroundColor = SystemColors.Control;
             dataGridViewService.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewService.Dock = DockStyle.Fill;
-            dataGridViewService.Location = new Point(21, 44);
-            dataGridViewService.Margin = new Padding(3, 4, 3, 4);
+            dataGridViewService.Location = new Point(18, 39);
             dataGridViewService.MultiSelect = false;
             dataGridViewService.Name = "dataGridViewService";
             dataGridViewService.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -743,7 +742,7 @@
             dataGridViewService.RowHeadersWidth = 51;
             dataGridViewService.RowTemplate.Height = 25;
             dataGridViewService.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewService.Size = new Size(360, 551);
+            dataGridViewService.Size = new Size(315, 407);
             dataGridViewService.TabIndex = 16;
             // 
             // materialLabel10
@@ -753,7 +752,7 @@
             materialLabel10.Dock = DockStyle.Top;
             materialLabel10.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel10.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel10.Location = new Point(21, 20);
+            materialLabel10.Location = new Point(18, 15);
             materialLabel10.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel10.Name = "materialLabel10";
             materialLabel10.Size = new Size(84, 24);
@@ -771,11 +770,11 @@
             panel10.Controls.Add(materialLabel19);
             panel10.Controls.Add(txtRoomStatus);
             panel10.Dock = DockStyle.Fill;
-            panel10.Location = new Point(402, 64);
+            panel10.Location = new Point(351, 48);
             panel10.Margin = new Padding(0);
             panel10.Name = "panel10";
-            panel10.Padding = new Padding(17, 20, 17, 20);
-            panel10.Size = new Size(402, 615);
+            panel10.Padding = new Padding(15);
+            panel10.Size = new Size(352, 461);
             panel10.TabIndex = 20;
             // 
             // cbxRoomClean
@@ -793,11 +792,12 @@
             cbxRoomClean.FormattingEnabled = true;
             cbxRoomClean.IntegralHeight = false;
             cbxRoomClean.ItemHeight = 43;
-            cbxRoomClean.Location = new Point(21, 202);
+            cbxRoomClean.Location = new Point(18, 152);
+            cbxRoomClean.Margin = new Padding(3, 2, 3, 2);
             cbxRoomClean.MaxDropDownItems = 4;
             cbxRoomClean.MouseState = MaterialSkin.MouseState.OUT;
             cbxRoomClean.Name = "cbxRoomClean";
-            cbxRoomClean.Size = new Size(361, 49);
+            cbxRoomClean.Size = new Size(316, 49);
             cbxRoomClean.StartIndex = 0;
             cbxRoomClean.TabIndex = 27;
             // 
@@ -806,10 +806,9 @@
             datetimeEndChange.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             datetimeEndChange.CustomFormat = "dd/MM/yyyy";
             datetimeEndChange.Format = DateTimePickerFormat.Custom;
-            datetimeEndChange.Location = new Point(22, 449);
-            datetimeEndChange.Margin = new Padding(3, 4, 3, 4);
+            datetimeEndChange.Location = new Point(19, 337);
             datetimeEndChange.Name = "datetimeEndChange";
-            datetimeEndChange.Size = new Size(360, 27);
+            datetimeEndChange.Size = new Size(316, 23);
             datetimeEndChange.TabIndex = 26;
             // 
             // datetimeStartChange
@@ -817,10 +816,9 @@
             datetimeStartChange.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             datetimeStartChange.CustomFormat = "dd/MM/yyyy";
             datetimeStartChange.Format = DateTimePickerFormat.Custom;
-            datetimeStartChange.Location = new Point(22, 337);
-            datetimeStartChange.Margin = new Padding(3, 4, 3, 4);
+            datetimeStartChange.Location = new Point(19, 253);
             datetimeStartChange.Name = "datetimeStartChange";
-            datetimeStartChange.Size = new Size(360, 27);
+            datetimeStartChange.Size = new Size(316, 23);
             datetimeStartChange.TabIndex = 26;
             // 
             // materialLabel14
@@ -829,7 +827,7 @@
             materialLabel14.Depth = 0;
             materialLabel14.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel14.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel14.Location = new Point(22, 410);
+            materialLabel14.Location = new Point(19, 308);
             materialLabel14.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel14.Name = "materialLabel14";
             materialLabel14.Size = new Size(180, 24);
@@ -842,7 +840,7 @@
             changeEndT.Depth = 0;
             changeEndT.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             changeEndT.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            changeEndT.Location = new Point(22, 298);
+            changeEndT.Location = new Point(19, 224);
             changeEndT.MouseState = MaterialSkin.MouseState.HOVER;
             changeEndT.Name = "changeEndT";
             changeEndT.Size = new Size(203, 24);
@@ -855,7 +853,7 @@
             materialLabel20.Depth = 0;
             materialLabel20.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel20.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel20.Location = new Point(22, 159);
+            materialLabel20.Location = new Point(19, 119);
             materialLabel20.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel20.Name = "materialLabel20";
             materialLabel20.Size = new Size(131, 24);
@@ -868,7 +866,7 @@
             materialLabel19.Depth = 0;
             materialLabel19.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel19.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel19.Location = new Point(22, 30);
+            materialLabel19.Location = new Point(19, 22);
             materialLabel19.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel19.Name = "materialLabel19";
             materialLabel19.Size = new Size(143, 24);
@@ -883,14 +881,13 @@
             txtRoomStatus.Depth = 0;
             txtRoomStatus.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtRoomStatus.LeadingIcon = null;
-            txtRoomStatus.Location = new Point(21, 69);
-            txtRoomStatus.Margin = new Padding(3, 4, 3, 4);
+            txtRoomStatus.Location = new Point(18, 52);
             txtRoomStatus.MaxLength = 50;
             txtRoomStatus.MouseState = MaterialSkin.MouseState.OUT;
             txtRoomStatus.Multiline = false;
             txtRoomStatus.Name = "txtRoomStatus";
             txtRoomStatus.ReadOnly = true;
-            txtRoomStatus.Size = new Size(361, 50);
+            txtRoomStatus.Size = new Size(316, 50);
             txtRoomStatus.TabIndex = 19;
             txtRoomStatus.Text = "";
             txtRoomStatus.TrailingIcon = null;
@@ -903,8 +900,8 @@
             panel19.Location = new Point(0, 0);
             panel19.Margin = new Padding(0);
             panel19.Name = "panel19";
-            panel19.Padding = new Padding(17, 20, 17, 20);
-            panel19.Size = new Size(402, 64);
+            panel19.Padding = new Padding(15);
+            panel19.Size = new Size(351, 48);
             panel19.TabIndex = 17;
             // 
             // materialLabel12
@@ -913,7 +910,7 @@
             materialLabel12.Depth = 0;
             materialLabel12.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel12.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel12.Location = new Point(21, 20);
+            materialLabel12.Location = new Point(18, 15);
             materialLabel12.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel12.Name = "materialLabel12";
             materialLabel12.Size = new Size(61, 24);
@@ -928,14 +925,13 @@
             txtFrom.Depth = 0;
             txtFrom.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtFrom.LeadingIcon = null;
-            txtFrom.Location = new Point(101, 10);
-            txtFrom.Margin = new Padding(3, 4, 3, 4);
+            txtFrom.Location = new Point(88, 8);
             txtFrom.MaxLength = 50;
             txtFrom.MouseState = MaterialSkin.MouseState.OUT;
             txtFrom.Multiline = false;
             txtFrom.Name = "txtFrom";
             txtFrom.ReadOnly = true;
-            txtFrom.Size = new Size(277, 50);
+            txtFrom.Size = new Size(241, 50);
             txtFrom.TabIndex = 19;
             txtFrom.Text = "";
             txtFrom.TrailingIcon = null;
@@ -945,11 +941,11 @@
             panel20.Controls.Add(txtTo);
             panel20.Controls.Add(materialLabel13);
             panel20.Dock = DockStyle.Fill;
-            panel20.Location = new Point(402, 0);
+            panel20.Location = new Point(351, 0);
             panel20.Margin = new Padding(0);
             panel20.Name = "panel20";
-            panel20.Padding = new Padding(17, 20, 17, 20);
-            panel20.Size = new Size(402, 64);
+            panel20.Padding = new Padding(15);
+            panel20.Size = new Size(352, 48);
             panel20.TabIndex = 19;
             // 
             // txtTo
@@ -960,14 +956,13 @@
             txtTo.Depth = 0;
             txtTo.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtTo.LeadingIcon = null;
-            txtTo.Location = new Point(59, 10);
-            txtTo.Margin = new Padding(3, 4, 3, 4);
+            txtTo.Location = new Point(52, 8);
             txtTo.MaxLength = 50;
             txtTo.MouseState = MaterialSkin.MouseState.OUT;
             txtTo.Multiline = false;
             txtTo.Name = "txtTo";
             txtTo.ReadOnly = true;
-            txtTo.Size = new Size(322, 50);
+            txtTo.Size = new Size(282, 50);
             txtTo.TabIndex = 20;
             txtTo.Text = "";
             txtTo.TrailingIcon = null;
@@ -978,7 +973,7 @@
             materialLabel13.Depth = 0;
             materialLabel13.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel13.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel13.Location = new Point(21, 20);
+            materialLabel13.Location = new Point(18, 15);
             materialLabel13.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel13.Name = "materialLabel13";
             materialLabel13.Size = new Size(32, 24);
@@ -993,12 +988,12 @@
             btnChange.Depth = 0;
             btnChange.HighEmphasis = true;
             btnChange.Icon = null;
-            btnChange.Location = new Point(189, 8);
-            btnChange.Margin = new Padding(5, 8, 5, 8);
+            btnChange.Location = new Point(165, 6);
+            btnChange.Margin = new Padding(4, 6, 4, 6);
             btnChange.MouseState = MaterialSkin.MouseState.HOVER;
             btnChange.Name = "btnChange";
             btnChange.NoAccentTextColor = Color.Empty;
-            btnChange.Size = new Size(193, 48);
+            btnChange.Size = new Size(169, 36);
             btnChange.TabIndex = 14;
             btnChange.Text = "CHANGE";
             btnChange.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1020,15 +1015,15 @@
             tableLayoutPanel1.Controls.Add(panel11, 1, 1);
             tableLayoutPanel1.Controls.Add(labelRentRoomId, 2, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 85);
+            tableLayoutPanel1.Location = new Point(3, 64);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 4;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
-            tableLayoutPanel1.Size = new Size(1340, 871);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel1.Size = new Size(1172, 653);
             tableLayoutPanel1.TabIndex = 1;
             // 
             // tableLayoutPanel8
@@ -1039,13 +1034,13 @@
             tableLayoutPanel8.Controls.Add(panel12, 1, 0);
             tableLayoutPanel8.Controls.Add(panel6, 0, 0);
             tableLayoutPanel8.Dock = DockStyle.Fill;
-            tableLayoutPanel8.Location = new Point(469, 743);
+            tableLayoutPanel8.Location = new Point(409, 557);
             tableLayoutPanel8.Margin = new Padding(0);
             tableLayoutPanel8.Name = "tableLayoutPanel8";
             tableLayoutPanel8.RowCount = 1;
             tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
-            tableLayoutPanel8.Size = new Size(804, 64);
+            tableLayoutPanel8.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel8.Size = new Size(703, 48);
             tableLayoutPanel8.TabIndex = 10;
             // 
             // panel12
@@ -1053,11 +1048,11 @@
             panel12.Controls.Add(materialButton2);
             panel12.Controls.Add(btnChange);
             panel12.Dock = DockStyle.Fill;
-            panel12.Location = new Point(402, 0);
+            panel12.Location = new Point(351, 0);
             panel12.Margin = new Padding(0);
             panel12.Name = "panel12";
-            panel12.Padding = new Padding(17, 20, 17, 20);
-            panel12.Size = new Size(402, 64);
+            panel12.Padding = new Padding(15);
+            panel12.Size = new Size(352, 48);
             panel12.TabIndex = 1;
             // 
             // materialButton2
@@ -1068,8 +1063,8 @@
             materialButton2.Depth = 0;
             materialButton2.HighEmphasis = true;
             materialButton2.Icon = null;
-            materialButton2.Location = new Point(501, 28);
-            materialButton2.Margin = new Padding(5, 8, 5, 8);
+            materialButton2.Location = new Point(417, 21);
+            materialButton2.Margin = new Padding(4, 6, 4, 6);
             materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
             materialButton2.Name = "materialButton2";
             materialButton2.NoAccentTextColor = Color.Empty;
@@ -1087,8 +1082,8 @@
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(0);
             panel6.Name = "panel6";
-            panel6.Padding = new Padding(17, 20, 17, 20);
-            panel6.Size = new Size(402, 64);
+            panel6.Padding = new Padding(15);
+            panel6.Size = new Size(351, 48);
             panel6.TabIndex = 0;
             // 
             // btnUpdateService
@@ -1100,12 +1095,12 @@
             btnUpdateService.Depth = 0;
             btnUpdateService.HighEmphasis = true;
             btnUpdateService.Icon = null;
-            btnUpdateService.Location = new Point(187, 8);
-            btnUpdateService.Margin = new Padding(5, 8, 5, 8);
+            btnUpdateService.Location = new Point(163, 6);
+            btnUpdateService.Margin = new Padding(4, 6, 4, 6);
             btnUpdateService.MouseState = MaterialSkin.MouseState.HOVER;
             btnUpdateService.Name = "btnUpdateService";
             btnUpdateService.NoAccentTextColor = Color.Empty;
-            btnUpdateService.Size = new Size(193, 48);
+            btnUpdateService.Size = new Size(169, 36);
             btnUpdateService.TabIndex = 11;
             btnUpdateService.Text = "UPDATE SERVICE";
             btnUpdateService.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1118,11 +1113,11 @@
             panel13.Controls.Add(btnCheckout);
             panel13.Controls.Add(btnCancel);
             panel13.Dock = DockStyle.Fill;
-            panel13.Location = new Point(469, 807);
+            panel13.Location = new Point(409, 605);
             panel13.Margin = new Padding(0);
             panel13.Name = "panel13";
-            panel13.Padding = new Padding(17, 20, 17, 20);
-            panel13.Size = new Size(804, 64);
+            panel13.Padding = new Padding(15);
+            panel13.Size = new Size(703, 48);
             panel13.TabIndex = 11;
             // 
             // btnCheckout
@@ -1134,12 +1129,12 @@
             btnCheckout.Depth = 0;
             btnCheckout.HighEmphasis = true;
             btnCheckout.Icon = null;
-            btnCheckout.Location = new Point(387, 8);
-            btnCheckout.Margin = new Padding(5, 8, 5, 8);
+            btnCheckout.Location = new Point(338, 6);
+            btnCheckout.Margin = new Padding(4, 6, 4, 6);
             btnCheckout.MouseState = MaterialSkin.MouseState.HOVER;
             btnCheckout.Name = "btnCheckout";
             btnCheckout.NoAccentTextColor = Color.Empty;
-            btnCheckout.Size = new Size(193, 48);
+            btnCheckout.Size = new Size(169, 36);
             btnCheckout.TabIndex = 15;
             btnCheckout.Text = "RECEIVE ROOM";
             btnCheckout.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
@@ -1156,12 +1151,12 @@
             btnCancel.Depth = 0;
             btnCancel.HighEmphasis = true;
             btnCancel.Icon = null;
-            btnCancel.Location = new Point(590, 8);
-            btnCancel.Margin = new Padding(5, 8, 5, 8);
+            btnCancel.Location = new Point(515, 6);
+            btnCancel.Margin = new Padding(4, 6, 4, 6);
             btnCancel.MouseState = MaterialSkin.MouseState.HOVER;
             btnCancel.Name = "btnCancel";
             btnCancel.NoAccentTextColor = Color.Empty;
-            btnCancel.Size = new Size(193, 48);
+            btnCancel.Size = new Size(169, 36);
             btnCancel.TabIndex = 13;
             btnCancel.Text = "CANCEL";
             btnCancel.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Outlined;
@@ -1173,11 +1168,11 @@
             // 
             panel14.Controls.Add(labelRoomID);
             panel14.Dock = DockStyle.Fill;
-            panel14.Location = new Point(67, 0);
+            panel14.Location = new Point(58, 0);
             panel14.Margin = new Padding(0);
             panel14.Name = "panel14";
-            panel14.Padding = new Padding(17, 20, 17, 20);
-            panel14.Size = new Size(402, 64);
+            panel14.Padding = new Padding(15);
+            panel14.Size = new Size(351, 48);
             panel14.TabIndex = 12;
             // 
             // labelRoomID
@@ -1187,7 +1182,7 @@
             labelRoomID.Depth = 0;
             labelRoomID.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelRoomID.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            labelRoomID.Location = new Point(28, 20);
+            labelRoomID.Location = new Point(24, 15);
             labelRoomID.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomID.Name = "labelRoomID";
             labelRoomID.Size = new Size(97, 24);
@@ -1205,11 +1200,11 @@
             panel11.Controls.Add(txtInvoiceId);
             panel11.Controls.Add(materialLabel15);
             panel11.Dock = DockStyle.Fill;
-            panel11.Location = new Point(67, 64);
+            panel11.Location = new Point(58, 48);
             panel11.Margin = new Padding(0);
             panel11.Name = "panel11";
-            panel11.Padding = new Padding(17, 20, 17, 20);
-            panel11.Size = new Size(402, 679);
+            panel11.Padding = new Padding(15);
+            panel11.Size = new Size(351, 509);
             panel11.TabIndex = 13;
             // 
             // txtPhone
@@ -1220,14 +1215,13 @@
             txtPhone.Depth = 0;
             txtPhone.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtPhone.LeadingIcon = null;
-            txtPhone.Location = new Point(21, 488);
-            txtPhone.Margin = new Padding(3, 4, 3, 4);
+            txtPhone.Location = new Point(18, 366);
             txtPhone.MaxLength = 50;
             txtPhone.MouseState = MaterialSkin.MouseState.OUT;
             txtPhone.Multiline = false;
             txtPhone.Name = "txtPhone";
             txtPhone.ReadOnly = true;
-            txtPhone.Size = new Size(361, 50);
+            txtPhone.Size = new Size(315, 50);
             txtPhone.TabIndex = 19;
             txtPhone.Text = "";
             txtPhone.TrailingIcon = null;
@@ -1238,7 +1232,7 @@
             materialLabel18.Depth = 0;
             materialLabel18.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel18.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel18.Location = new Point(21, 452);
+            materialLabel18.Location = new Point(18, 339);
             materialLabel18.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel18.Name = "materialLabel18";
             materialLabel18.Size = new Size(72, 24);
@@ -1253,14 +1247,13 @@
             txtName.Depth = 0;
             txtName.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtName.LeadingIcon = null;
-            txtName.Location = new Point(21, 195);
-            txtName.Margin = new Padding(3, 4, 3, 4);
+            txtName.Location = new Point(18, 146);
             txtName.MaxLength = 50;
             txtName.MouseState = MaterialSkin.MouseState.OUT;
             txtName.Multiline = false;
             txtName.Name = "txtName";
             txtName.ReadOnly = true;
-            txtName.Size = new Size(361, 50);
+            txtName.Size = new Size(315, 50);
             txtName.TabIndex = 19;
             txtName.Text = "";
             txtName.TrailingIcon = null;
@@ -1273,14 +1266,13 @@
             txtCCCD.Depth = 0;
             txtCCCD.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtCCCD.LeadingIcon = null;
-            txtCCCD.Location = new Point(21, 349);
-            txtCCCD.Margin = new Padding(3, 4, 3, 4);
+            txtCCCD.Location = new Point(18, 262);
             txtCCCD.MaxLength = 50;
             txtCCCD.MouseState = MaterialSkin.MouseState.OUT;
             txtCCCD.Multiline = false;
             txtCCCD.Name = "txtCCCD";
             txtCCCD.ReadOnly = true;
-            txtCCCD.Size = new Size(361, 50);
+            txtCCCD.Size = new Size(315, 50);
             txtCCCD.TabIndex = 16;
             txtCCCD.Text = "";
             txtCCCD.TrailingIcon = null;
@@ -1291,7 +1283,7 @@
             materialLabel17.Depth = 0;
             materialLabel17.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel17.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel17.Location = new Point(21, 159);
+            materialLabel17.Location = new Point(18, 119);
             materialLabel17.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel17.Name = "materialLabel17";
             materialLabel17.Size = new Size(62, 24);
@@ -1304,7 +1296,7 @@
             materialLabel16.Depth = 0;
             materialLabel16.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel16.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel16.Location = new Point(21, 313);
+            materialLabel16.Location = new Point(18, 235);
             materialLabel16.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel16.Name = "materialLabel16";
             materialLabel16.Size = new Size(104, 24);
@@ -1319,14 +1311,13 @@
             txtInvoiceId.Depth = 0;
             txtInvoiceId.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtInvoiceId.LeadingIcon = null;
-            txtInvoiceId.Location = new Point(21, 56);
-            txtInvoiceId.Margin = new Padding(3, 4, 3, 4);
+            txtInvoiceId.Location = new Point(18, 42);
             txtInvoiceId.MaxLength = 50;
             txtInvoiceId.MouseState = MaterialSkin.MouseState.OUT;
             txtInvoiceId.Multiline = false;
             txtInvoiceId.Name = "txtInvoiceId";
             txtInvoiceId.ReadOnly = true;
-            txtInvoiceId.Size = new Size(361, 50);
+            txtInvoiceId.Size = new Size(315, 50);
             txtInvoiceId.TabIndex = 16;
             txtInvoiceId.Text = "";
             txtInvoiceId.TrailingIcon = null;
@@ -1337,7 +1328,7 @@
             materialLabel15.Depth = 0;
             materialLabel15.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             materialLabel15.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            materialLabel15.Location = new Point(21, 20);
+            materialLabel15.Location = new Point(18, 15);
             materialLabel15.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel15.Name = "materialLabel15";
             materialLabel15.Size = new Size(83, 24);
@@ -1351,7 +1342,7 @@
             labelRentRoomId.Depth = 0;
             labelRentRoomId.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelRentRoomId.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
-            labelRentRoomId.Location = new Point(810, 20);
+            labelRentRoomId.Location = new Point(699, 12);
             labelRentRoomId.MouseState = MaterialSkin.MouseState.HOVER;
             labelRentRoomId.Name = "labelRentRoomId";
             labelRentRoomId.Size = new Size(122, 24);
@@ -1360,13 +1351,11 @@
             // 
             // RentRoomDetailUI
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1346, 960);
+            ClientSize = new Size(1178, 720);
             Controls.Add(tableLayoutPanel1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "RentRoomDetailUI";
-            Padding = new Padding(3, 85, 3, 4);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RentRoomDetail";
             tableLayoutPanel2.ResumeLayout(false);

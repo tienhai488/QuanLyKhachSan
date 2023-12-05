@@ -96,7 +96,7 @@
             ucGranting.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             ucGranting.ForeColor = Color.Black;
             ucGranting.Location = new Point(0, 744);
-            ucGranting.Margin = new Padding(4, 4, 4, 4);
+            ucGranting.Margin = new Padding(4);
             ucGranting.MinimumSize = new Size(360, 0);
             ucGranting.Name = "ucGranting";
             ucGranting.Size = new Size(360, 1280);
@@ -121,7 +121,7 @@
             lbStaffInfoTitle.Font = new Font("Segoe UI", 26F, FontStyle.Bold, GraphicsUnit.Pixel);
             lbStaffInfoTitle.Location = new Point(0, 0);
             lbStaffInfoTitle.Name = "lbStaffInfoTitle";
-            lbStaffInfoTitle.Size = new Size(326, 84);
+            lbStaffInfoTitle.Size = new Size(343, 84);
             lbStaffInfoTitle.TabIndex = 2;
             lbStaffInfoTitle.Text = "Thông tin nhân viên";
             lbStaffInfoTitle.TextAlign = ContentAlignment.MiddleCenter;
@@ -168,7 +168,7 @@
             tbSearchBox.BorderStyle = BorderStyle.FixedSingle;
             tbSearchBox.Margin = new Padding(0);
             tbSearchBox.Name = "tbSearchBox";
-            tbSearchBox.Size = new Size(248, 39);
+            tbSearchBox.Size = new Size(248, 23);
             tbSearchBox.TextChanged += OnLookingUp;
             // 
             // btnMore
@@ -189,7 +189,7 @@
             // 
             dbtnSave.Image = (Image)resources.GetObject("dbtnSave.Image");
             dbtnSave.Name = "dbtnSave";
-            dbtnSave.Size = new Size(262, 44);
+            dbtnSave.Size = new Size(132, 22);
             dbtnSave.Text = "Lưu";
             dbtnSave.Click += OnSave;
             // 
@@ -197,7 +197,7 @@
             // 
             dbtnSearch.Image = (Image)resources.GetObject("dbtnSearch.Image");
             dbtnSearch.Name = "dbtnSearch";
-            dbtnSearch.Size = new Size(262, 44);
+            dbtnSearch.Size = new Size(132, 22);
             dbtnSearch.Text = "Tìm kiếm";
             dbtnSearch.Click += OnStartSearch;
             // 
@@ -205,7 +205,7 @@
             // 
             dbtnAdd.Image = (Image)resources.GetObject("dbtnAdd.Image");
             dbtnAdd.Name = "dbtnAdd";
-            dbtnAdd.Size = new Size(262, 44);
+            dbtnAdd.Size = new Size(132, 22);
             dbtnAdd.Text = "Thêm";
             dbtnAdd.Click += OnAdding;
             // 
@@ -213,7 +213,7 @@
             // 
             dbtnEdit.Image = (Image)resources.GetObject("dbtnEdit.Image");
             dbtnEdit.Name = "dbtnEdit";
-            dbtnEdit.Size = new Size(262, 44);
+            dbtnEdit.Size = new Size(132, 22);
             dbtnEdit.Text = "Sửa";
             dbtnEdit.Click += OnEditing;
             // 
@@ -221,7 +221,7 @@
             // 
             dbtnDelete.Image = (Image)resources.GetObject("dbtnDelete.Image");
             dbtnDelete.Name = "dbtnDelete";
-            dbtnDelete.Size = new Size(262, 44);
+            dbtnDelete.Size = new Size(132, 22);
             dbtnDelete.Text = "Xóa";
             dbtnDelete.Click += OnDeleting;
             // 
@@ -229,7 +229,7 @@
             // 
             dbtnImex.Image = (Image)resources.GetObject("dbtnImex.Image");
             dbtnImex.Name = "dbtnImex";
-            dbtnImex.Size = new Size(262, 44);
+            dbtnImex.Size = new Size(132, 22);
             dbtnImex.Text = "Nhập/Xuất";
             dbtnImex.Click += OnStartImex;
             // 
@@ -237,7 +237,7 @@
             // 
             dbtnRoleManager.Image = (Image)resources.GetObject("dbtnRoleManager.Image");
             dbtnRoleManager.Name = "dbtnRoleManager";
-            dbtnRoleManager.Size = new Size(262, 44);
+            dbtnRoleManager.Size = new Size(132, 22);
             dbtnRoleManager.Text = "Chức vụ";
             dbtnRoleManager.Click += OnStartRoleManager;
             // 
