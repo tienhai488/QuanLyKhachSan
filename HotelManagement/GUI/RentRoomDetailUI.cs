@@ -44,11 +44,12 @@ namespace HotelManagement.GUI
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
             materialSkinManager.ColorScheme = new ColorScheme(
-            Primary.Pink800,   // Main background color
-            Primary.Purple900, // Darker background color
-            Primary.Red100, // Accent background color
-            Accent.Amber200,   // Warm accent color for highlights
-            TextShade.WHITE);    // Text color
+                Primary.Pink700,      // Main background color (Deeper Pink)
+                Primary.Purple400,    // Darker background color
+                Primary.Purple300,    // Slightly lighter accent background color
+                Accent.Orange400,     // Warm accent color for highlights
+                TextShade.WHITE       // Light text color for better readability
+            );
 
             this.reservationOld = reservation;
             this.roomOld = room;

@@ -84,9 +84,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(141, 24);
+            label1.Location = new Point(158, 26);
             label1.Name = "label1";
-            label1.Size = new Size(176, 24);
+            label1.Size = new Size(142, 19);
             label1.TabIndex = 0;
             label1.Text = "Thông tin dịch vụ";
             // 
@@ -196,17 +196,17 @@
             txtUnit.Location = new Point(15, 360);
             txtUnit.Margin = new Padding(15, 0, 15, 0);
             txtUnit.Name = "txtUnit";
-            txtUnit.Size = new Size(429, 27);
+            txtUnit.Size = new Size(429, 23);
             txtUnit.TabIndex = 29;
             // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Dock = DockStyle.Bottom;
-            label7.Location = new Point(15, 340);
+            label7.Location = new Point(15, 345);
             label7.Margin = new Padding(15, 0, 0, 0);
             label7.Name = "label7";
-            label7.Size = new Size(444, 20);
+            label7.Size = new Size(444, 15);
             label7.TabIndex = 26;
             label7.Text = "Đơn vị";
             // 
@@ -214,10 +214,10 @@
             // 
             label6.AutoSize = true;
             label6.Dock = DockStyle.Bottom;
-            label6.Location = new Point(15, 260);
+            label6.Location = new Point(15, 265);
             label6.Margin = new Padding(15, 0, 0, 0);
             label6.Name = "label6";
-            label6.Size = new Size(444, 20);
+            label6.Size = new Size(444, 15);
             label6.TabIndex = 25;
             label6.Text = "Giá dịch vụ";
             // 
@@ -225,10 +225,10 @@
             // 
             label5.AutoSize = true;
             label5.Dock = DockStyle.Bottom;
-            label5.Location = new Point(15, 180);
+            label5.Location = new Point(15, 185);
             label5.Margin = new Padding(15, 0, 0, 0);
             label5.Name = "label5";
-            label5.Size = new Size(444, 20);
+            label5.Size = new Size(444, 15);
             label5.TabIndex = 24;
             label5.Text = "Loại dịch vụ";
             // 
@@ -236,10 +236,10 @@
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Bottom;
-            label4.Location = new Point(15, 100);
+            label4.Location = new Point(15, 105);
             label4.Margin = new Padding(15, 0, 0, 0);
             label4.Name = "label4";
-            label4.Size = new Size(444, 20);
+            label4.Size = new Size(444, 15);
             label4.TabIndex = 23;
             label4.Text = "Tên dịch vụ";
             // 
@@ -249,7 +249,7 @@
             txtUnitPrice.Location = new Point(15, 280);
             txtUnitPrice.Margin = new Padding(15, 0, 15, 0);
             txtUnitPrice.Name = "txtUnitPrice";
-            txtUnitPrice.Size = new Size(429, 27);
+            txtUnitPrice.Size = new Size(429, 23);
             txtUnitPrice.TabIndex = 22;
             // 
             // txtName
@@ -258,17 +258,17 @@
             txtName.Location = new Point(15, 120);
             txtName.Margin = new Padding(15, 0, 15, 0);
             txtName.Name = "txtName";
-            txtName.Size = new Size(429, 27);
+            txtName.Size = new Size(429, 23);
             txtName.TabIndex = 18;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Dock = DockStyle.Bottom;
-            label2.Location = new Point(15, 20);
+            label2.Location = new Point(15, 25);
             label2.Margin = new Padding(15, 0, 0, 0);
             label2.Name = "label2";
-            label2.Size = new Size(444, 20);
+            label2.Size = new Size(444, 15);
             label2.TabIndex = 0;
             label2.Text = "Mã dịch vụ";
             // 
@@ -280,7 +280,7 @@
             txtId.Margin = new Padding(15, 0, 15, 0);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(429, 27);
+            txtId.Size = new Size(429, 23);
             txtId.TabIndex = 1;
             // 
             // cbxServiceType
@@ -291,7 +291,7 @@
             cbxServiceType.Location = new Point(15, 200);
             cbxServiceType.Margin = new Padding(15, 0, 15, 0);
             cbxServiceType.Name = "cbxServiceType";
-            cbxServiceType.Size = new Size(429, 28);
+            cbxServiceType.Size = new Size(429, 23);
             cbxServiceType.TabIndex = 45;
             // 
             // ServiceInfoUI

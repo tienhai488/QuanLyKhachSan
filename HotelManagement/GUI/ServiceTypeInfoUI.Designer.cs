@@ -78,9 +78,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
             label1.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(93, 24);
+            label1.Location = new Point(114, 26);
             label1.Name = "label1";
-            label1.Size = new Size(215, 24);
+            label1.Size = new Size(173, 19);
             label1.TabIndex = 0;
             label1.Text = "Thông tin loại dịch vụ";
             // 
@@ -182,10 +182,10 @@
             // 
             label4.AutoSize = true;
             label4.Dock = DockStyle.Bottom;
-            label4.Location = new Point(15, 100);
+            label4.Location = new Point(15, 105);
             label4.Margin = new Padding(15, 0, 0, 0);
             label4.Name = "label4";
-            label4.Size = new Size(386, 20);
+            label4.Size = new Size(386, 15);
             label4.TabIndex = 23;
             label4.Text = "Tên dịch vụ";
             // 
@@ -195,17 +195,17 @@
             txtName.Location = new Point(15, 120);
             txtName.Margin = new Padding(15, 0, 15, 0);
             txtName.Name = "txtName";
-            txtName.Size = new Size(371, 27);
+            txtName.Size = new Size(371, 23);
             txtName.TabIndex = 18;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Dock = DockStyle.Bottom;
-            label2.Location = new Point(15, 20);
+            label2.Location = new Point(15, 25);
             label2.Margin = new Padding(15, 0, 0, 0);
             label2.Name = "label2";
-            label2.Size = new Size(386, 20);
+            label2.Size = new Size(386, 15);
             label2.TabIndex = 0;
             label2.Text = "Mã dịch vụ";
             // 
@@ -217,7 +217,7 @@
             txtId.Margin = new Padding(15, 0, 15, 0);
             txtId.Name = "txtId";
             txtId.ReadOnly = true;
-            txtId.Size = new Size(371, 27);
+            txtId.Size = new Size(371, 23);
             txtId.TabIndex = 1;
             // 
             // ServiceTypeInfoUI

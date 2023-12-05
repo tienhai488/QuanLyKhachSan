@@ -79,12 +79,12 @@
             tableLayoutPanel1.Controls.Add(panel1, 0, 0);
             tableLayoutPanel1.Controls.Add(flowLayoutRooms, 1, 0);
             tableLayoutPanel1.Dock = DockStyle.Fill;
-            tableLayoutPanel1.Location = new Point(3, 111);
+            tableLayoutPanel1.Location = new Point(3, 83);
             tableLayoutPanel1.Margin = new Padding(0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 1;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel1.Size = new Size(1484, 664);
+            tableLayoutPanel1.Size = new Size(1298, 498);
             tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -97,7 +97,7 @@
             panel1.Location = new Point(0, 0);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(222, 664);
+            panel1.Size = new Size(194, 498);
             panel1.TabIndex = 0;
             // 
             // panel4
@@ -105,11 +105,11 @@
             panel4.Controls.Add(panelRoomClean);
             panel4.Controls.Add(label3);
             panel4.Dock = DockStyle.Top;
-            panel4.Location = new Point(0, 461);
+            panel4.Location = new Point(0, 346);
             panel4.Margin = new Padding(0);
             panel4.Name = "panel4";
-            panel4.Padding = new Padding(17, 20, 17, 20);
-            panel4.Size = new Size(222, 297);
+            panel4.Padding = new Padding(15);
+            panel4.Size = new Size(194, 223);
             panel4.TabIndex = 2;
             // 
             // panelRoomClean
@@ -119,9 +119,10 @@
             panelRoomClean.Controls.Add(materialRadioButton10);
             panelRoomClean.Controls.Add(materialRadioButton11);
             panelRoomClean.Dock = DockStyle.Fill;
-            panelRoomClean.Location = new Point(17, 57);
+            panelRoomClean.Location = new Point(15, 45);
+            panelRoomClean.Margin = new Padding(3, 2, 3, 2);
             panelRoomClean.Name = "panelRoomClean";
-            panelRoomClean.Size = new Size(188, 220);
+            panelRoomClean.Size = new Size(164, 163);
             panelRoomClean.TabIndex = 0;
             // 
             // materialRadioButton2
@@ -135,7 +136,7 @@
             materialRadioButton2.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton2.Name = "materialRadioButton2";
             materialRadioButton2.Ripple = true;
-            materialRadioButton2.Size = new Size(188, 37);
+            materialRadioButton2.Size = new Size(164, 37);
             materialRadioButton2.TabIndex = 17;
             materialRadioButton2.TabStop = true;
             materialRadioButton2.Text = "Maintaining";
@@ -153,7 +154,7 @@
             materialRadioButton4.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton4.Name = "materialRadioButton4";
             materialRadioButton4.Ripple = true;
-            materialRadioButton4.Size = new Size(188, 37);
+            materialRadioButton4.Size = new Size(164, 37);
             materialRadioButton4.TabIndex = 16;
             materialRadioButton4.TabStop = true;
             materialRadioButton4.Text = "NotCleanedYet";
@@ -171,7 +172,7 @@
             materialRadioButton10.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton10.Name = "materialRadioButton10";
             materialRadioButton10.Ripple = true;
-            materialRadioButton10.Size = new Size(188, 37);
+            materialRadioButton10.Size = new Size(164, 37);
             materialRadioButton10.TabIndex = 15;
             materialRadioButton10.TabStop = true;
             materialRadioButton10.Text = "Cleaned";
@@ -190,7 +191,7 @@
             materialRadioButton11.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton11.Name = "materialRadioButton11";
             materialRadioButton11.Ripple = true;
-            materialRadioButton11.Size = new Size(188, 37);
+            materialRadioButton11.Size = new Size(164, 37);
             materialRadioButton11.TabIndex = 14;
             materialRadioButton11.TabStop = true;
             materialRadioButton11.Text = "All";
@@ -203,9 +204,9 @@
             label3.Dock = DockStyle.Top;
             label3.Font = new Font("Segoe UI Black", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label3.ForeColor = Color.FromArgb(255, 224, 130);
-            label3.Location = new Point(17, 20);
+            label3.Location = new Point(15, 15);
             label3.Name = "label3";
-            label3.Size = new Size(175, 37);
+            label3.Size = new Size(142, 30);
             label3.TabIndex = 3;
             label3.Text = "Room Clean";
             // 
@@ -214,11 +215,11 @@
             panel3.Controls.Add(panelRoomType);
             panel3.Controls.Add(label2);
             panel3.Dock = DockStyle.Top;
-            panel3.Location = new Point(0, 229);
+            panel3.Location = new Point(0, 172);
             panel3.Margin = new Padding(0);
             panel3.Name = "panel3";
-            panel3.Padding = new Padding(17, 20, 17, 20);
-            panel3.Size = new Size(222, 232);
+            panel3.Padding = new Padding(15);
+            panel3.Size = new Size(194, 174);
             panel3.TabIndex = 1;
             // 
             // panelRoomType
@@ -226,9 +227,10 @@
             panelRoomType.AutoScroll = true;
             panelRoomType.Controls.Add(materialRadioButton1);
             panelRoomType.Dock = DockStyle.Fill;
-            panelRoomType.Location = new Point(17, 57);
+            panelRoomType.Location = new Point(15, 45);
+            panelRoomType.Margin = new Padding(3, 2, 3, 2);
             panelRoomType.Name = "panelRoomType";
-            panelRoomType.Size = new Size(188, 155);
+            panelRoomType.Size = new Size(164, 114);
             panelRoomType.TabIndex = 0;
             // 
             // materialRadioButton1
@@ -243,7 +245,7 @@
             materialRadioButton1.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton1.Name = "materialRadioButton1";
             materialRadioButton1.Ripple = true;
-            materialRadioButton1.Size = new Size(188, 37);
+            materialRadioButton1.Size = new Size(164, 37);
             materialRadioButton1.TabIndex = 16;
             materialRadioButton1.TabStop = true;
             materialRadioButton1.Text = "All";
@@ -256,9 +258,9 @@
             label2.Dock = DockStyle.Top;
             label2.Font = new Font("Segoe UI Black", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label2.ForeColor = Color.FromArgb(255, 224, 130);
-            label2.Location = new Point(17, 20);
+            label2.Location = new Point(15, 15);
             label2.Name = "label2";
-            label2.Size = new Size(168, 37);
+            label2.Size = new Size(136, 30);
             label2.TabIndex = 2;
             label2.Text = "Room Type";
             // 
@@ -270,8 +272,8 @@
             panel2.Location = new Point(0, 0);
             panel2.Margin = new Padding(0);
             panel2.Name = "panel2";
-            panel2.Padding = new Padding(17, 20, 17, 20);
-            panel2.Size = new Size(222, 229);
+            panel2.Padding = new Padding(15);
+            panel2.Size = new Size(194, 172);
             panel2.TabIndex = 0;
             // 
             // panelRoomStatus
@@ -282,9 +284,10 @@
             panelRoomStatus.Controls.Add(materialRadioButton6);
             panelRoomStatus.Controls.Add(materialRadioButton5);
             panelRoomStatus.Dock = DockStyle.Fill;
-            panelRoomStatus.Location = new Point(17, 57);
+            panelRoomStatus.Location = new Point(15, 45);
+            panelRoomStatus.Margin = new Padding(3, 2, 3, 2);
             panelRoomStatus.Name = "panelRoomStatus";
-            panelRoomStatus.Size = new Size(188, 152);
+            panelRoomStatus.Size = new Size(164, 112);
             panelRoomStatus.TabIndex = 15;
             // 
             // materialRadioButton8
@@ -298,7 +301,7 @@
             materialRadioButton8.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton8.Name = "materialRadioButton8";
             materialRadioButton8.Ripple = true;
-            materialRadioButton8.Size = new Size(188, 37);
+            materialRadioButton8.Size = new Size(147, 37);
             materialRadioButton8.TabIndex = 13;
             materialRadioButton8.TabStop = true;
             materialRadioButton8.Text = "Rented";
@@ -316,7 +319,7 @@
             materialRadioButton7.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton7.Name = "materialRadioButton7";
             materialRadioButton7.Ripple = true;
-            materialRadioButton7.Size = new Size(188, 37);
+            materialRadioButton7.Size = new Size(147, 37);
             materialRadioButton7.TabIndex = 12;
             materialRadioButton7.TabStop = true;
             materialRadioButton7.Text = "Booked";
@@ -334,7 +337,7 @@
             materialRadioButton6.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton6.Name = "materialRadioButton6";
             materialRadioButton6.Ripple = true;
-            materialRadioButton6.Size = new Size(188, 37);
+            materialRadioButton6.Size = new Size(147, 37);
             materialRadioButton6.TabIndex = 11;
             materialRadioButton6.TabStop = true;
             materialRadioButton6.Text = "Empty";
@@ -353,7 +356,7 @@
             materialRadioButton5.MouseState = MaterialSkin.MouseState.HOVER;
             materialRadioButton5.Name = "materialRadioButton5";
             materialRadioButton5.Ripple = true;
-            materialRadioButton5.Size = new Size(188, 37);
+            materialRadioButton5.Size = new Size(147, 37);
             materialRadioButton5.TabIndex = 10;
             materialRadioButton5.TabStop = true;
             materialRadioButton5.Text = "All";
@@ -366,9 +369,9 @@
             label1.Dock = DockStyle.Top;
             label1.Font = new Font("Segoe UI Black", 16F, FontStyle.Regular, GraphicsUnit.Point);
             label1.ForeColor = Color.FromArgb(255, 224, 130);
-            label1.Location = new Point(17, 20);
+            label1.Location = new Point(15, 15);
             label1.Name = "label1";
-            label1.Size = new Size(185, 37);
+            label1.Size = new Size(151, 30);
             label1.TabIndex = 1;
             label1.Text = "Room Status";
             // 
@@ -377,11 +380,11 @@
             flowLayoutRooms.AutoScroll = true;
             flowLayoutRooms.BackColor = Color.White;
             flowLayoutRooms.Dock = DockStyle.Fill;
-            flowLayoutRooms.Location = new Point(222, 0);
+            flowLayoutRooms.Location = new Point(194, 0);
             flowLayoutRooms.Margin = new Padding(0);
             flowLayoutRooms.Name = "flowLayoutRooms";
-            flowLayoutRooms.Padding = new Padding(17, 20, 17, 20);
-            flowLayoutRooms.Size = new Size(1262, 664);
+            flowLayoutRooms.Padding = new Padding(15);
+            flowLayoutRooms.Size = new Size(1104, 498);
             flowLayoutRooms.TabIndex = 1;
             flowLayoutRooms.MouseUp += roomStatus_MouseUp;
             // 
@@ -389,10 +392,10 @@
             // 
             panel5.Controls.Add(tableLayoutPanel2);
             panel5.Dock = DockStyle.Top;
-            panel5.Location = new Point(3, 4);
+            panel5.Location = new Point(3, 3);
             panel5.Margin = new Padding(0);
             panel5.Name = "panel5";
-            panel5.Size = new Size(1484, 107);
+            panel5.Size = new Size(1298, 80);
             panel5.TabIndex = 1;
             // 
             // tableLayoutPanel2
@@ -410,7 +413,7 @@
             tableLayoutPanel2.Name = "tableLayoutPanel2";
             tableLayoutPanel2.RowCount = 1;
             tableLayoutPanel2.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            tableLayoutPanel2.Size = new Size(1484, 107);
+            tableLayoutPanel2.Size = new Size(1298, 80);
             tableLayoutPanel2.TabIndex = 7;
             // 
             // panel6
@@ -420,7 +423,7 @@
             panel6.Location = new Point(0, 0);
             panel6.Margin = new Padding(0);
             panel6.Name = "panel6";
-            panel6.Size = new Size(222, 107);
+            panel6.Size = new Size(194, 80);
             panel6.TabIndex = 9;
             // 
             // datetimeFilter
@@ -429,10 +432,9 @@
             datetimeFilter.CustomFormat = "dd/MM/yyyy";
             datetimeFilter.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
             datetimeFilter.Format = DateTimePickerFormat.Custom;
-            datetimeFilter.Location = new Point(0, 31);
-            datetimeFilter.Margin = new Padding(3, 4, 3, 4);
+            datetimeFilter.Location = new Point(0, 23);
             datetimeFilter.Name = "datetimeFilter";
-            datetimeFilter.Size = new Size(218, 39);
+            datetimeFilter.Size = new Size(191, 32);
             datetimeFilter.TabIndex = 3;
             datetimeFilter.ValueChanged += datetimeFilter_ValueChanged;
             // 
@@ -441,10 +443,10 @@
             panel7.Controls.Add(materialLabel1);
             panel7.Controls.Add(txtFilter);
             panel7.Dock = DockStyle.Fill;
-            panel7.Location = new Point(222, 0);
+            panel7.Location = new Point(194, 0);
             panel7.Margin = new Padding(0);
             panel7.Name = "panel7";
-            panel7.Size = new Size(742, 107);
+            panel7.Size = new Size(649, 80);
             panel7.TabIndex = 10;
             // 
             // materialLabel1
@@ -453,7 +455,7 @@
             materialLabel1.Depth = 0;
             materialLabel1.Font = new Font("Roboto", 12F, FontStyle.Regular, GraphicsUnit.Pixel);
             materialLabel1.FontType = MaterialSkin.MaterialSkinManager.fontType.Caption;
-            materialLabel1.Location = new Point(8, 11);
+            materialLabel1.Location = new Point(7, 8);
             materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel1.Name = "materialLabel1";
             materialLabel1.Size = new Size(44, 14);
@@ -468,13 +470,12 @@
             txtFilter.Depth = 0;
             txtFilter.Font = new Font("Roboto", 16F, FontStyle.Regular, GraphicsUnit.Pixel);
             txtFilter.LeadingIcon = null;
-            txtFilter.Location = new Point(0, 31);
-            txtFilter.Margin = new Padding(3, 4, 3, 4);
+            txtFilter.Location = new Point(0, 23);
             txtFilter.MaxLength = 50;
             txtFilter.MouseState = MaterialSkin.MouseState.OUT;
             txtFilter.Multiline = false;
             txtFilter.Name = "txtFilter";
-            txtFilter.Size = new Size(739, 50);
+            txtFilter.Size = new Size(647, 50);
             txtFilter.TabIndex = 9;
             txtFilter.Text = "";
             txtFilter.TrailingIcon = null;
@@ -483,23 +484,22 @@
             // panel8
             // 
             panel8.Dock = DockStyle.Fill;
-            panel8.Location = new Point(964, 0);
+            panel8.Location = new Point(843, 0);
             panel8.Margin = new Padding(0);
             panel8.Name = "panel8";
-            panel8.Size = new Size(520, 107);
+            panel8.Size = new Size(455, 80);
             panel8.TabIndex = 11;
             // 
             // RentRoomsUI
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1490, 779);
+            ClientSize = new Size(1304, 584);
             Controls.Add(tableLayoutPanel1);
             Controls.Add(panel5);
             FormStyle = FormStyles.StatusAndActionBar_None;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "RentRoomsUI";
-            Padding = new Padding(3, 4, 3, 4);
+            Padding = new Padding(3);
             StartPosition = FormStartPosition.CenterScreen;
             Text = "RoomUI";
             tableLayoutPanel1.ResumeLayout(false);

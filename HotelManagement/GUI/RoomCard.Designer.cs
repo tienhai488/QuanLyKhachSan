@@ -50,7 +50,7 @@ namespace HotelManagement.GUI
             // 
             // pictureBox1
             // 
-            pictureBox1.BackColor = Color.White;
+            pictureBox1.BackColor = SystemColors.Control;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(3, 4);
             pictureBox1.Name = "pictureBox1";
@@ -62,7 +62,6 @@ namespace HotelManagement.GUI
             // 
             // labelRoomID
             // 
-            labelRoomID.Anchor = AnchorStyles.None;
             labelRoomID.AutoSize = true;
             labelRoomID.Depth = 0;
             labelRoomID.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
@@ -78,13 +77,12 @@ namespace HotelManagement.GUI
             // 
             // labelRoomType
             // 
-            labelRoomType.Anchor = AnchorStyles.None;
             labelRoomType.AutoSize = true;
             labelRoomType.Depth = 0;
             labelRoomType.Font = new Font("Roboto Medium", 20F, FontStyle.Bold, GraphicsUnit.Pixel);
             labelRoomType.FontType = MaterialSkin.MaterialSkinManager.fontType.H6;
             labelRoomType.ForeColor = Color.FromArgb(222, 0, 0, 0);
-            labelRoomType.Location = new Point(190, 14);
+            labelRoomType.Location = new Point(191, 14);
             labelRoomType.MouseState = MaterialSkin.MouseState.HOVER;
             labelRoomType.Name = "labelRoomType";
             labelRoomType.Size = new Size(115, 24);
@@ -138,13 +136,14 @@ namespace HotelManagement.GUI
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel2.Controls.Add(labelReservationID);
             panel2.Controls.Add(labelTagReservationID);
             panel2.Controls.Add(labelMain);
             panel2.Controls.Add(pictureBox1);
             panel2.Location = new Point(7, 58);
             panel2.Name = "panel2";
-            panel2.Size = new Size(331, 93);
+            panel2.Size = new Size(314, 93);
             panel2.TabIndex = 37;
             panel2.DoubleClick += card_DoubleClick;
             // 
@@ -153,7 +152,7 @@ namespace HotelManagement.GUI
             labelReservationID.AutoSize = true;
             labelReservationID.Location = new Point(223, 65);
             labelReservationID.Name = "labelReservationID";
-            labelReservationID.Size = new Size(29, 28);
+            labelReservationID.Size = new Size(23, 21);
             labelReservationID.TabIndex = 34;
             labelReservationID.Text = "id";
             labelReservationID.DoubleClick += card_DoubleClick;
@@ -163,7 +162,7 @@ namespace HotelManagement.GUI
             labelTagReservationID.AutoSize = true;
             labelTagReservationID.Location = new Point(81, 65);
             labelTagReservationID.Name = "labelTagReservationID";
-            labelTagReservationID.Size = new Size(136, 28);
+            labelTagReservationID.Size = new Size(110, 21);
             labelTagReservationID.TabIndex = 34;
             labelTagReservationID.Text = "ReservationID:";
             labelTagReservationID.DoubleClick += card_DoubleClick;
@@ -179,7 +178,7 @@ namespace HotelManagement.GUI
             panel1.Location = new Point(0, 154);
             panel1.Margin = new Padding(0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(346, 63);
+            panel1.Size = new Size(324, 63);
             panel1.TabIndex = 36;
             panel1.DoubleClick += card_DoubleClick;
             // 
@@ -219,10 +218,9 @@ namespace HotelManagement.GUI
             panelRoomCard.Controls.Add(labelRoomType);
             panelRoomCard.Controls.Add(labelRoomID);
             panelRoomCard.Controls.Add(panel2);
-            panelRoomCard.Dock = DockStyle.Fill;
             panelRoomCard.Location = new Point(0, 0);
             panelRoomCard.Name = "panelRoomCard";
-            panelRoomCard.Size = new Size(346, 217);
+            panelRoomCard.Size = new Size(324, 217);
             panelRoomCard.TabIndex = 38;
             panelRoomCard.DoubleClick += card_DoubleClick;
             // 
@@ -237,7 +235,7 @@ namespace HotelManagement.GUI
             ForeColor = Color.FromArgb(74, 20, 140);
             Margin = new Padding(10);
             Name = "RoomCard";
-            Size = new Size(346, 217);
+            Size = new Size(325, 217);
             DoubleClick += card_DoubleClick;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel2.ResumeLayout(false);
