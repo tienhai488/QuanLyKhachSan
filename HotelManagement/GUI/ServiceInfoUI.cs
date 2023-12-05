@@ -63,7 +63,7 @@ namespace HotelManagement.GUI
 
         public void addService(string id, string name, string unit, string unitPrice, string serviceTypeId)
         {
-            if (serviceBUS.validateService(name, unit, unitPrice))
+            if (serviceBUS.validateService(id, name, unit, unitPrice))
             {
                 Service service = new Service()
                 { Id = id, Name = name, Unit = unit, UnitPrice = int.Parse(unitPrice) };
@@ -84,7 +84,7 @@ namespace HotelManagement.GUI
 
         public void updateService(string id, string name, string unit, string unitPrice, string serviceTypeId)
         {
-            if (serviceBUS.validateService(name, unit, unitPrice))
+            if (serviceBUS.validateService(id,  name, unit, unitPrice))
             {
                 Service service = new Service()
                 { Id = id, Name = name, Unit = unit, UnitPrice = int.Parse(unitPrice) };

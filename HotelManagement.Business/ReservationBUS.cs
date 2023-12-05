@@ -182,7 +182,8 @@ namespace HotelManagement.Business
                 {
                     bool checkInRange = (Functions.getDayGap(from, item.StartTime) >= 0 && Functions.getDayGap(item.StartTime, to) >= 0) ||
                     (Functions.getDayGap(from, item.EndTime) >= 0 && Functions.getDayGap(item.EndTime, to) >= 0);
-                    bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented;
+                    bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented  ;
+                    //bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented || (Functions.getDayGap(from, item.StartTime) == 0 && Functions.getDayGap(item.StartTime, to) == 0 && item.Status == RoomReservationStatus.Paid) ;
                     return checkStatus && checkInRange;
                 })
                 .ToList();  
@@ -195,7 +196,8 @@ namespace HotelManagement.Business
                 {
                     bool checkInRange = (Functions.getDayGap(from, item.StartTime) >= 0 && Functions.getDayGap(item.StartTime, to) >= 0) ||
                     (Functions.getDayGap(from, item.EndTime) >= 0 && Functions.getDayGap(item.EndTime, to) >= 0);
-                    bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented;
+                    bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented  ;
+                    //bool checkStatus = item.Status == RoomReservationStatus.Booked || item.Status == RoomReservationStatus.Rented || (Functions.getDayGap(from, item.StartTime) == 0 && Functions.getDayGap(item.StartTime, to) == 0 && item.Status == RoomReservationStatus.Paid) ;
                     return checkStatus && checkInRange && !item.ReservationId.Equals(reservationId);
                 })
                 .ToList();

@@ -83,7 +83,7 @@
         private void Chart1_AxisViewChanged(object? sender, ViewEventArgs e)
         {
             double start = e.NewPosition, end = e.NewSize;
-            if (!double.IsNaN(end) && !double.IsNaN(start)) end += start - 1;
+            //if (!double.IsNaN(end) && !double.IsNaN(start)) end += start - 1;
             var bo = StatisticsBO2.Instance;
             int istart = 0, iend = bo.RevenueByMonth.Count - 1;
             if (!double.IsNaN(start))

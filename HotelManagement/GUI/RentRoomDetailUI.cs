@@ -28,6 +28,7 @@ namespace HotelManagement.GUI
         private string roomStatusOld = null;
         private bool isCheckout = false;
         private RoomReservation roomReservationOld = null;
+
         private RentRoomDetail rentRoomDetailOld = null;
         private RentRoomsUI rentRoomsUIOld = null;
 
@@ -221,6 +222,7 @@ namespace HotelManagement.GUI
             data.InvoiceID = txtInvoiceId.Text;
 
             rentRoomDetailBUS.add(data);
+            this.rentRoomDetailOld = rentRoomDetailBUS.getRentRoomById(data.Id);
 
             int result = 0;
             if (this.roomReservationOld != null)
@@ -235,7 +237,6 @@ namespace HotelManagement.GUI
             if (result == 0)
             {
                 MessageBox.Show("Nhận phòng không thành công");
-                this.rentRoomDetailOld = rentRoomDetailBUS.getRentRoomById(this.rentRoomDetailOld.Id);
                 this.rentRoomsUIOld.initFlowLayoutRoom();
             }
             else
@@ -246,8 +247,6 @@ namespace HotelManagement.GUI
                 initUseServiceTable();
                 this.rentRoomsUIOld.initFlowLayoutRoom();
             }
-
-
         }
         #endregion
 

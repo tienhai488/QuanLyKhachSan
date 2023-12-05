@@ -108,6 +108,11 @@ namespace HotelManagement.GUI
 
         private void dataGridViewInvoice_DoubleClick(object sender, EventArgs e)
         {
+            if(dataGridViewInvoice.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("No row select");
+                return;
+            }
             DataGridViewCell selectedCell = dataGridViewInvoice.SelectedCells[0];
 
             DataGridViewRow selectedRow = selectedCell.OwningRow;
